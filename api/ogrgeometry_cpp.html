@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OGRGeometry C++ API &mdash; GDAL  ドキュメント</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="canonical" href="https://gdal.org/api/ogrgeometry_cpp.html"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=c033477b"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/translations.js?v=4dbe4bdc"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="このドキュメントについて" href="../about.html" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="OGRLayer C++ API" href="ogrlayer_cpp.html" />
+    <link rel="prev" title="OGRFeature Style C++ API" href="ogrfeaturestyle_cpp.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/gdalicon.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../download.html">ダウンロード</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programs/index.html">プログラム</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">Raster drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">Vector drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/index.html">ユーザー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">チュートリアル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">Sponsors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GDAL</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html"> GDAL  ドキュメント </a> &raquo;</li>
+      
+          <li><a href="index.html">API</a> &raquo;</li>
+      
+      <li>OGRGeometry C++ API</li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/OSGeo/gdal/edit/master/doc/source/api/ogrgeometry_cpp.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="ogrlayer_cpp.html" class="btn btn-neutral float-right" title="OGRLayer C++ API" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ogrfeaturestyle_cpp.html" class="btn btn-neutral float-left" title="OGRFeature Style C++ API" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+  </div>
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ogrgeometry-c-api">
+<span id="ogrgeometry-cpp"></span><h1>OGRGeometry C++ API<a class="headerlink" href="#ogrgeometry-c-api" title="Link to this heading"></a></h1>
+<p>Include file: ogr_geometry.h</p>
+<section id="ogrgeometryfactory-class">
+<h2>OGRGeometryFactory class<a class="headerlink" href="#ogrgeometryfactory-class" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>doxygenclass: Unable to find project 'api' in breathe_projects dictionary</p>
+</div>
+</section>
+<section id="ogrgeometry-class">
+<h2>OGRGeometry class<a class="headerlink" href="#ogrgeometry-class" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>doxygenclass: Unable to find project 'api' in breathe_projects dictionary</p>
+</div>
+</section>
+<section id="ogrpoint-class">
+<h2>OGRPoint class<a class="headerlink" href="#ogrpoint-class" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>doxygenclass: Unable to find project 'api' in breathe_projects dictionary</p>
+</div>
+</section>
+<section id="ogrlinestring-class">
+<h2>OGRLineString class<a class="headerlink" href="#ogrlinestring-class" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>doxygenclass: Unable to find project 'api' in breathe_projects dictionary</p>
+</div>
+</section>
+<section id="ogrlinearring-class">
+<h2>OGRLinearRing class<a class="headerlink" href="#ogrlinearring-class" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>doxygenclass: Unable to find project 'api' in breathe_projects dictionary</p>
+</div>
+</section>
+<section id="ogrcircularstring-class">
+<h2>OGRCircularString class<a class="headerlink" href="#ogrcircularstring-class" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>doxygenclass: Unable to find project 'api' in breathe_projects dictionary</p>
+</div>
+</section>
+<section id="ogrcurve-class">
+<h2>OGRCurve class<a class="headerlink" href="#ogrcurve-class" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>doxygenclass: Unable to find project 'api' in breathe_projects dictionary</p>
+</div>
+</section>
+<section id="ogrsurface-class">
+<h2>OGRSurface class<a class="headerlink" href="#ogrsurface-class" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>doxygenclass: Unable to find project 'api' in breathe_projects dictionary</p>
+</div>
+</section>
+<section id="ogrpolygon-class">
+<h2>OGRPolygon class<a class="headerlink" href="#ogrpolygon-class" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>doxygenclass: Unable to find project 'api' in breathe_projects dictionary</p>
+</div>
+</section>
+<section id="ogrcurvepolygon-class">
+<h2>OGRCurvePolygon class<a class="headerlink" href="#ogrcurvepolygon-class" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>doxygenclass: Unable to find project 'api' in breathe_projects dictionary</p>
+</div>
+</section>
+<section id="ogrmultipoint-class">
+<h2>OGRMultiPoint class<a class="headerlink" href="#ogrmultipoint-class" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>doxygenclass: Unable to find project 'api' in breathe_projects dictionary</p>
+</div>
+</section>
+<section id="ogrmultilinestring-class">
+<h2>OGRMultiLineString class<a class="headerlink" href="#ogrmultilinestring-class" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>doxygenclass: Unable to find project 'api' in breathe_projects dictionary</p>
+</div>
+</section>
+<section id="ogrmultipolygon-class">
+<h2>OGRMultiPolygon class<a class="headerlink" href="#ogrmultipolygon-class" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>doxygenclass: Unable to find project 'api' in breathe_projects dictionary</p>
+</div>
+</section>
+<section id="ogrgeometrycollection-class">
+<h2>OGRGeometryCollection class<a class="headerlink" href="#ogrgeometrycollection-class" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>doxygenclass: Unable to find project 'api' in breathe_projects dictionary</p>
+</div>
+</section>
+<section id="ogrmulticurve-class">
+<h2>OGRMultiCurve class<a class="headerlink" href="#ogrmulticurve-class" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>doxygenclass: Unable to find project 'api' in breathe_projects dictionary</p>
+</div>
+</section>
+<section id="ogrmultisurface-class">
+<h2>OGRMultiSurface class<a class="headerlink" href="#ogrmultisurface-class" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>doxygenclass: Unable to find project 'api' in breathe_projects dictionary</p>
+</div>
+</section>
+<section id="ogrpolyhedralsurface-class">
+<h2>OGRPolyhedralSurface class<a class="headerlink" href="#ogrpolyhedralsurface-class" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>doxygenclass: Unable to find project 'api' in breathe_projects dictionary</p>
+</div>
+</section>
+<section id="ogrtriangle-class">
+<h2>OGRTriangle class<a class="headerlink" href="#ogrtriangle-class" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>doxygenclass: Unable to find project 'api' in breathe_projects dictionary</p>
+</div>
+</section>
+<section id="ogrtriangulatedsurface-class">
+<h2>OGRTriangulatedSurface class<a class="headerlink" href="#ogrtriangulatedsurface-class" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>doxygenclass: Unable to find project 'api' in breathe_projects dictionary</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ogrlayer_cpp.html" class="btn btn-neutral float-right" title="OGRLayer C++ API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ogrfeaturestyle_cpp.html" class="btn btn-neutral float-left" title="OGRFeature Style C++ API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <div class="info">
+      <a class="logo-link" href="https://osgeo.org">
+        <div class="osgeo-logo"></div>
+      </a>
+      <div class="copyright">
+      
+
+      &copy; 1998-2024 <a href="https://github.com/warmerdam">Frank Warmerdam</a>,
+      <a href="https://github.com/rouault">Even Rouault</a>, and
+      <a href="https://github.com/OSGeo/gdal/graphs/contributors">others</a>
+
+
+      
+      </div>
+    </div>
+  </div>
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

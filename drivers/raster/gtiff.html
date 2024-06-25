@@ -52,7 +52,7 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../download.html">ダウンロード</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">プログラム</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Raster drivers</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">ラスタードライバー</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="aaigrid.html">AAIGrid -- Arc/Info ASCII Grid</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ace2.html">ACE2 -- ACE2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adrg.html">ADRG -- ADRG/ARC Digitized Raster Graphics (.gen/.thf)</a></li>
@@ -255,12 +255,12 @@
 <li class="toctree-l2"><a class="reference internal" href="zmap.html">ZMap -- ZMap Plus Grid</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../vector/index.html">Vector drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vector/index.html">ベクタードライバー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
@@ -300,7 +300,7 @@
     
       <li><a href="../../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">Raster drivers</a> &raquo;</li>
+          <li><a href="index.html">ラスタードライバー</a> &raquo;</li>
       
       <li>GTiff -- GeoTIFF File Format</li>
     
@@ -1153,6 +1153,23 @@ any situation.</p>
 write an uncompressed, non-sparse GeoTIFF. Disabling this check is not
 expected to be necessary, unless GDAL is incorrectly determining the disk
 space available on the destination file system.</p>
+</li>
+<li><p id="config-GTIFF_READ_ANGULAR_PARAMS_IN_DEGREE"><strong>GTIFF_READ_ANGULAR_PARAMS_IN_DEGREE=[YES/NO]: </strong> (GDAL &gt;= 3.9.1)  Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. Conformant GeoTIFF files should have the values of angular projection
+parameters written in the unit of the GeogAngularUnitsGeoKey. But some
+non-conformant implementations, such as GDAL &lt;= 3.9.0, always wrote them
+in degrees.
+This option can be set to YES when reading such non-conformant GeoTIFF
+files (typically using grads), to instruct GDAL (&gt;= 3.9.1) that the projection
+parameters are in degrees, instead of being expressed in the unit of the
+GeogAngularUnitsGeoKey.</p>
+</li>
+<li><p id="config-GTIFF_WRITE_ANGULAR_PARAMS_IN_DEGREE"><strong>GTIFF_WRITE_ANGULAR_PARAMS_IN_DEGREE=[YES/NO]: </strong> (GDAL &gt;= 3.9.1)  Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. Conformant GeoTIFF files should have the values of angular projection
+parameters written in the unit of the GeogAngularUnitsGeoKey. But some
+non-conformant implementations, such as GDAL &gt;= 3.0 and &lt;= 3.9.0, assumed
+those values to be in degree.
+This option can be set to YES to force writing such non-conformant GeoTIFF
+files. It should <em>not</em> be nominally used, except to workaround interoperability
+issues.</p>
 </li>
 </ul>
 </section>

@@ -52,7 +52,7 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../download.html">ダウンロード</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">プログラム</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Raster drivers</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">ラスタードライバー</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="aaigrid.html">AAIGrid -- Arc/Info ASCII Grid</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ace2.html">ACE2 -- ACE2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adrg.html">ADRG -- ADRG/ARC Digitized Raster Graphics (.gen/.thf)</a></li>
@@ -226,12 +226,12 @@
 <li class="toctree-l2"><a class="reference internal" href="zmap.html">ZMap -- ZMap Plus Grid</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../vector/index.html">Vector drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vector/index.html">ベクタードライバー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
@@ -271,7 +271,7 @@
     
       <li><a href="../../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">Raster drivers</a> &raquo;</li>
+          <li><a href="index.html">ラスタードライバー</a> &raquo;</li>
       
       <li>STACIT - Spatio-Temporal Asset Catalog Items</li>
     
@@ -322,9 +322,6 @@ It builds a virtual mosaic from the items.</p>
 <p>A STACIT dataset which has no subdatasets is actually a <a class="reference internal" href="vrt.html#raster-vrt"><span class="std std-ref">VRT -- GDAL Virtual Format</span></a> dataset.
 Thus, translating it into VRT will result in a VRT file that directly references the items.</p>
 <p>Note that <a class="reference external" href="https://github.com/radiantearth/stac-api-spec/blob/main/fragments/itemcollection/README.md">STAC API ItemCollections</a> are not the same as  <a class="reference external" href="https://github.com/radiantearth/stac-spec/tree/master/collection-spec">STAC Collections</a>. STAC API ItemCollections are GeoJSON FeatureCollections enhanced with STAC entities.</p>
-<p>Note that when the ItemCollections contains overlapping items, and that some items
-are fully covered by other items that are more recent, the STACIT virtual mosaic will
-not list those fully covered items not participating to the pixel values of the mosaic.</p>
 <section id="open-syntax">
 <h2>Open syntax<a class="headerlink" href="#open-syntax" title="Link to this heading"></a></h2>
 <p>STACIT datasets/subdatasets can be accessed with one of the following syntaxes:</p>
@@ -349,6 +346,19 @@ not list those fully covered items not participating to the pixel values of the 
 <li><p id="drivers/raster/stacit-oo-ASSET"><strong>ASSET=value: </strong>Name of asset to read.</p>
 </li>
 <li><p id="drivers/raster/stacit-oo-RESOLUTION"><strong>RESOLUTION=[AVERAGE/HIGHEST/LOWEST]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">AVERAGE</span></code>. Strategy to use to determine dataset resolution.</p>
+</li>
+<li><p id="drivers/raster/stacit-oo-OVERLAP_STRATEGY"><strong>OVERLAP_STRATEGY=[REMOVE_IF_NO_NODATA/USE_ALL/USE_MOST_RECENT]: </strong> (GDAL &gt;= 3.9.1)  Defaults to <code class="docutils literal notranslate"><span class="pre">REMOVE_IF_NO_NODATA</span></code>. Strategy to use when the ItemCollections contains overlapping items, and
+that some items are fully covered by other items that are more recent.<p>Starting with GDAL 3.9.1, the <code class="docutils literal notranslate"><span class="pre">REMOVE_IF_NO_NODATA</span></code> strategy is applied
+by default. The STACIT virtual mosaic will omit fully covered items,
+only if no band declares a nodata value.
+(Note that the determination whether a band has a nodata value of not is
+done by opening one of the items, and assuming it is representative of
+the characteristics of the others in the collection).</p>
+<p>This strategy can be forced in all cases by selecting the <code class="docutils literal notranslate"><span class="pre">USE_MOST_RECENT</span></code>
+strategy (this was the strategy applied prior to 3.9.1)</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">USE_ALL</span></code> strategy always causes all items to be listed in the virtual
+mosaic, with the most recent ones being rendered on top of the less recent ones.</p>
+</p>
 </li>
 </ul>
 </section>

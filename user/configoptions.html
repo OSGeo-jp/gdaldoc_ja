@@ -52,8 +52,8 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../download.html">ダウンロード</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../programs/index.html">プログラム</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">Raster drivers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">Vector drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">ラスタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">ベクタードライバー</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">ユーザー</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="raster_data_model.html">Raster Data Model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="multidim_raster_data_model.html">Multidimensional Raster Data Model</a></li>
@@ -86,8 +86,8 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">開発</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">コミュニティ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">Sponsors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
@@ -1284,8 +1284,10 @@ horizontal datum.</p>
 <li><p><a class="reference internal" href="../drivers/raster/gtiff.html#config-GTIFF_IGNORE_READ_ERRORS"><code class="docutils literal notranslate"><span class="pre">GTIFF_IGNORE_READ_ERRORS</span></code></a>: <a class="reference internal" href="../drivers/raster/gtiff.html">GTiff -- GeoTIFF File Format</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/gtiff.html#config-GTIFF_LINEAR_UNITS"><code class="docutils literal notranslate"><span class="pre">GTIFF_LINEAR_UNITS</span></code></a>: <a class="reference internal" href="../drivers/raster/gtiff.html">GTiff -- GeoTIFF File Format</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/gtiff.html#config-GTIFF_POINT_GEO_IGNORE"><code class="docutils literal notranslate"><span class="pre">GTIFF_POINT_GEO_IGNORE</span></code></a>: <a class="reference internal" href="../drivers/raster/gtiff.html">GTiff -- GeoTIFF File Format</a></p></li>
+<li><p><a class="reference internal" href="../drivers/raster/gtiff.html#config-GTIFF_READ_ANGULAR_PARAMS_IN_DEGREE"><code class="docutils literal notranslate"><span class="pre">GTIFF_READ_ANGULAR_PARAMS_IN_DEGREE</span></code></a>: <a class="reference internal" href="../drivers/raster/gtiff.html">GTiff -- GeoTIFF File Format</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/gtiff.html#config-GTIFF_REPORT_COMPD_CS"><code class="docutils literal notranslate"><span class="pre">GTIFF_REPORT_COMPD_CS</span></code></a>: <a class="reference internal" href="../drivers/raster/gtiff.html">GTiff -- GeoTIFF File Format</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/gtiff.html#config-GTIFF_VIRTUAL_MEM_IO"><code class="docutils literal notranslate"><span class="pre">GTIFF_VIRTUAL_MEM_IO</span></code></a>: <a class="reference internal" href="../drivers/raster/gtiff.html">GTiff -- GeoTIFF File Format</a></p></li>
+<li><p><a class="reference internal" href="../drivers/raster/gtiff.html#config-GTIFF_WRITE_ANGULAR_PARAMS_IN_DEGREE"><code class="docutils literal notranslate"><span class="pre">GTIFF_WRITE_ANGULAR_PARAMS_IN_DEGREE</span></code></a>: <a class="reference internal" href="../drivers/raster/gtiff.html">GTiff -- GeoTIFF File Format</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/gtiff.html#config-GTIFF_WRITE_TOWGS84"><code class="docutils literal notranslate"><span class="pre">GTIFF_WRITE_TOWGS84</span></code></a>: <a class="reference internal" href="../drivers/raster/gtiff.html">GTiff -- GeoTIFF File Format</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/hfa.html#config-HFA_COMPRESS_OVR"><code class="docutils literal notranslate"><span class="pre">HFA_COMPRESS_OVR</span></code></a>: <a class="reference internal" href="../drivers/raster/hfa.html">HFA -- Erdas Imagine .img</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/hfa.html#config-HFA_USE_RRD"><code class="docutils literal notranslate"><span class="pre">HFA_USE_RRD</span></code></a>: <a class="reference internal" href="../drivers/raster/hfa.html">HFA -- Erdas Imagine .img</a></p></li>
@@ -1434,6 +1436,7 @@ horizontal datum.</p>
 </p></li>
 <li><p><a class="reference internal" href="../drivers/vector/pdf.html#config-OGR_PDF_READ_NON_STRUCTURED"><code class="docutils literal notranslate"><span class="pre">OGR_PDF_READ_NON_STRUCTURED</span></code></a>: <a class="reference internal" href="../drivers/vector/pdf.html">PDF -- Geospatial PDF</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/pg.html#config-OGR_PG_CURSOR_PAGE"><code class="docutils literal notranslate"><span class="pre">OGR_PG_CURSOR_PAGE</span></code></a>: <a class="reference internal" href="../drivers/vector/pg.html">PostgreSQL / PostGIS</a></p></li>
+<li><p><a class="reference internal" href="../drivers/vector/pg.html#config-OGR_PG_ENABLE_METADATA"><code class="docutils literal notranslate"><span class="pre">OGR_PG_ENABLE_METADATA</span></code></a>: <a class="reference internal" href="../drivers/vector/pg.html">PostgreSQL / PostGIS</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/pg.html#config-OGR_PG_RETRIEVE_FID"><code class="docutils literal notranslate"><span class="pre">OGR_PG_RETRIEVE_FID</span></code></a>: <ul>
 <li><p><a class="reference internal" href="../drivers/vector/pg.html">PostgreSQL / PostGIS</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/pg_advanced.html">PostgreSQL / PostGIS - Advanced Driver Information</a></p></li>

@@ -147,7 +147,7 @@
 <li class="toctree-l2"><a class="reference internal" href="isis3.html">ISIS3 -- USGS Astrogeology ISIS Cube (Version 3)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jdem.html">JDEM -- Japanese DEM (.mem)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2ecw.html">JP2ECW -- ERDAS JPEG2000 (.jp2)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="jp2kak.html">JP2KAK -- JPEG-2000 (based on Kakadu)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jp2kak.html">JP2KAK -- JPEG 2000 (based on Kakadu SDK)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2lura.html">JP2Lura -- JPEG2000 driver based on Lurawave library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2mrsid.html">JP2MrSID -- JPEG2000 via MrSID SDK</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2openjpeg.html">JP2OpenJPEG -- JPEG2000 driver based on OpenJPEG library</a></li>
@@ -245,10 +245,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -401,7 +401,8 @@ which covers the extent at all zoom levels. The user can also specify
 the USE_TILE_EXTENT=YES open option to use the actual extent of tiles at
 the maximum zoom level. Or it can specify any of MINX/MINY/MAXX/MAXY to
 have a custom extent.</p>
-<p>The following open options are available:</p>
+<p><a href="#id2"><span class="problematic" id="id3">|about-open-options|</span></a>
+The following open options are available:</p>
 <ul class="simple">
 <li><p id="drivers/raster/gpkg-oo-TABLE"><strong>TABLE=&lt;table_name&gt;: </strong>Name of the table containing the tiles
 (called <a class="reference external" href="http://www.geopackage.org/spec/#tiles_user_tables">&quot;Tile Pyramid User Data
@@ -626,7 +627,7 @@ GoogleCRS84Quad definition.</p></li>
 <p>In all the above tiling schemes, consecutive zoom levels defer by a
 resolution of a factor of two.</p>
 <p>Starting with GDAL 3.2, it is also possible to use a Tile Matrix Set definition,
-encoded as a JSon file, according to the <a class="reference external" href="http://docs.opengeospatial.org/is/17-083r2/17-083r2.html">OGC Two Dimensional Tile Matrix Set standard</a>
+encoded as a JSON file, according to the <a class="reference external" href="http://docs.opengeospatial.org/is/17-083r2/17-083r2.html">OGC Two Dimensional Tile Matrix Set standard</a>
 Examples of such files can be found at <a class="reference external" href="http://schemas.opengis.net/tms/1.0/json/examples/">http://schemas.opengis.net/tms/1.0/json/examples/</a>
 The GDAL data directory also contains files prefixed with <code class="docutils literal notranslate"><span class="pre">tms_</span></code> and with a <code class="docutils literal notranslate"><span class="pre">.json</span></code>
 extension. If there is a <code class="docutils literal notranslate"><span class="pre">tms_FOO.json</span></code> file, then <code class="docutils literal notranslate"><span class="pre">FOO</span></code> can be used as the
@@ -718,7 +719,8 @@ the input nodata value to another value.</p>
 </section>
 <section id="creation-options">
 <h3>Creation options<a class="headerlink" href="#creation-options" title="Link to this heading"></a></h3>
-<p>The following creation options are available:</p>
+<p><a href="#id4"><span class="problematic" id="id5">|about-creation-options|</span></a>
+The following creation options are available:</p>
 <ul class="simple">
 <li><p id="drivers/raster/gpkg-co-RASTER_TABLE"><strong>RASTER_TABLE=value: </strong>Name of tile user table. By default, based
 on the filename (i.e. if filename is foo.gpkg, the table will be

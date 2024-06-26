@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>gdal2tiles.py &mdash; GDAL  ドキュメント</title>
+  <title>gdal2tiles &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
       <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
 
@@ -25,7 +25,7 @@
     <link rel="author" title="このドキュメントについて" href="../about.html" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
-    <link rel="next" title="gdal2xyz.py" href="gdal2xyz.html" />
+    <link rel="next" title="gdal2xyz" href="gdal2xyz.html" />
     <link rel="prev" title="gdal-config (Unix)" href="gdal-config.html" /> 
 </head>
 
@@ -56,45 +56,45 @@
 <li class="toctree-l2 current"><a class="reference internal" href="index.html#raster-programs">ラスタープログラム</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="raster_common_options.html">共通オプション</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdal-config.html">gdal-config (Unix)</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">gdal2tiles.py</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">gdal2tiles</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#synopsis">Synopsis</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#description">Description</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="gdal2xyz.html">gdal2xyz.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="gdal_calc.html">gdal_calc.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gdal2xyz.html">gdal2xyz</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gdal_calc.html">gdal_calc</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdal_contour.html">gdal_contour</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdal_create.html">gdal_create</a></li>
-<li class="toctree-l3"><a class="reference internal" href="gdal_edit.html">gdal_edit.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="gdal_fillnodata.html">gdal_fillnodata.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gdal_edit.html">gdal_edit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gdal_fillnodata.html">gdal_fillnodata</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdal_footprint.html">gdal_footprint</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdal_grid.html">gdal_grid</a></li>
-<li class="toctree-l3"><a class="reference internal" href="gdal_merge.html">gdal_merge.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="gdal_pansharpen.html">gdal_pansharpen.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="gdal_polygonize.html">gdal_polygonize.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="gdal_proximity.html">gdal_proximity.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gdal_merge.html">gdal_merge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gdal_pansharpen.html">gdal_pansharpen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gdal_polygonize.html">gdal_polygonize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gdal_proximity.html">gdal_proximity</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdal_rasterize.html">gdal_rasterize</a></li>
-<li class="toctree-l3"><a class="reference internal" href="gdal_retile.html">gdal_retile.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="gdal_sieve.html">gdal_sieve.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gdal_retile.html">gdal_retile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gdal_sieve.html">gdal_sieve</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdal_translate.html">gdal_translate</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdal_viewshed.html">gdal_viewshed</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdaladdo.html">gdaladdo</a></li>
-<li class="toctree-l3"><a class="reference internal" href="gdalattachpct.html">gdalattachpct.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gdalattachpct.html">gdalattachpct</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdalbuildvrt.html">gdalbuildvrt</a></li>
-<li class="toctree-l3"><a class="reference internal" href="gdalcompare.html">gdalcompare.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gdalcompare.html">gdalcompare</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdaldem.html">gdaldem</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdalinfo.html">gdalinfo</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdallocationinfo.html">gdallocationinfo</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdalmanage.html">gdalmanage</a></li>
-<li class="toctree-l3"><a class="reference internal" href="gdalmove.html">gdalmove.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gdalmove.html">gdalmove</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdalsrsinfo.html">gdalsrsinfo</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdaltindex.html">gdaltindex</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdaltransform.html">gdaltransform</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdalwarp.html">gdalwarp</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nearblack.html">nearblack</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pct2rgb.html">pct2rgb.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="rgb2pct.html">rgb2pct.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pct2rgb.html">pct2rgb</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rgb2pct.html">rgb2pct</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#multidimensional-raster-programs">多次元ラスタープログラム</a></li>
@@ -103,17 +103,17 @@
 <li class="toctree-l2"><a class="reference internal" href="index.html#other-utilities">その他ユーティリティ</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">Raster drivers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">Vector drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">ラスタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">ベクタードライバー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">開発</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">コミュニティ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -151,7 +151,7 @@
       
           <li><a href="index.html">プログラム</a> &raquo;</li>
       
-      <li>gdal2tiles.py</li>
+      <li>gdal2tiles</li>
     
 
     
@@ -170,7 +170,7 @@
   
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
-        <a href="gdal2xyz.html" class="btn btn-neutral float-right" title="gdal2xyz.py" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="gdal2xyz.html" class="btn btn-neutral float-right" title="gdal2xyz" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="gdal-config.html" class="btn btn-neutral float-left" title="gdal-config (Unix)" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -182,12 +182,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="gdal2tiles-py">
-<span id="gdal2tiles"></span><h1>gdal2tiles.py<a class="headerlink" href="#gdal2tiles-py" title="Link to this heading"></a></h1>
+  <section id="gdal2tiles">
+<span id="id1"></span><h1>gdal2tiles<a class="headerlink" href="#gdal2tiles" title="Link to this heading"></a></h1>
 <p>Generates directory with TMS tiles, KMLs and simple web viewers.</p>
 <section id="synopsis">
 <span id="index-0"></span><h2>Synopsis<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdal2tiles</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="o">-</span><span class="n">general</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdal2tiles</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="o">-</span><span class="n">general</span><span class="p">]</span>
               <span class="p">[</span><span class="o">-</span><span class="n">p</span> <span class="o">&lt;</span><span class="n">profile</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">r</span> <span class="n">resampling</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">s</span> <span class="o">&lt;</span><span class="n">srs</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">z</span> <span class="o">&lt;</span><span class="n">zoom</span><span class="o">&gt;</span><span class="p">]</span>
               <span class="p">[</span><span class="o">-</span><span class="n">e</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">a</span> <span class="n">nodata</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">v</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">q</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">k</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">n</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">u</span> <span class="o">&lt;</span><span class="n">url</span><span class="o">&gt;</span><span class="p">]</span>
               <span class="p">[</span><span class="o">-</span><span class="n">w</span> <span class="o">&lt;</span><span class="n">webviewer</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">t</span> <span class="o">&lt;</span><span class="n">title</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">c</span> <span class="o">&lt;</span><span class="n">copyright</span><span class="o">&gt;</span><span class="p">]</span>
@@ -221,6 +221,10 @@ rescale input to the <code class="docutils literal notranslate"><span class="pre
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
 <p>Config options of the input drivers may have an effect on the output of gdal2tiles. An example driver config option is GDAL_PDF_DPI, which can be found at <a class="reference internal" href="../user/configoptions.html#configoptions"><span class="std std-ref">設定オプション</span></a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>gdal2tiles is a Python utility, and is only available if GDAL Python bindings are available.</p>
 </div>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal2tiles-help">
@@ -462,10 +466,6 @@ Only taken into account for average resampling.</p>
 <dd><p>Bing Maps API key from <a class="reference external" href="https://www.bingmapsportal.com/">https://www.bingmapsportal.com/</a></p>
 </dd></dl>
 
-<div class="admonition note">
-<p class="admonition-title">注釈</p>
-<p>gdal2tiles.py is a Python script that needs to be run against Python GDAL binding.</p>
-</div>
 </section>
 <section id="mapml-options">
 <h3>MapML options<a class="headerlink" href="#mapml-options" title="Link to this heading"></a></h3>
@@ -493,7 +493,7 @@ will be used</p>
 <section id="webp-options">
 <h3>WEBP options<a class="headerlink" href="#webp-options" title="Link to this heading"></a></h3>
 <p>WEBP tiledriver support is new to GDAL 3.6. It is enabled by using --tiledriver=WEBP.</p>
-<p>The following configuration options are available to further customize the webp output:</p>
+<p>The following configuration options are available to further customize the WebP output:</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal2tiles-webp-quality">
 <span class="sig-name descname"><span class="pre">--webp-quality</span></span><span class="sig-prename descclassname"><span class="pre">=&lt;QUALITY&gt;</span></span><a class="headerlink" href="#cmdoption-gdal2tiles-webp-quality" title="Link to this definition"></a></dt>
@@ -516,7 +516,7 @@ will be used</p>
 <p>JPEG tiledriver support is new to GDAL 3.9. It is enabled by using --tiledriver=JPEG.</p>
 <p>Note that JPEG does not support transparency, hence edge tiles will display black
 pixels in areas not covered by the source raster.</p>
-<p>The following configuration options are available to further customize the webp output:</p>
+<p>The following configuration options are available to further customize the JPEG output:</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal2tiles-jpeg-quality">
 <span class="sig-name descname"><span class="pre">---jpeg-quality</span></span><span class="sig-prename descclassname"><span class="pre">=JPEG_QUALITY</span></span><a class="headerlink" href="#cmdoption-gdal2tiles-jpeg-quality" title="Link to this definition"></a></dt>
@@ -528,15 +528,15 @@ pixels in areas not covered by the source raster.</p>
 <section id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
 <p>Basic example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdal2tiles</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">zoom</span><span class="o">=</span><span class="mi">2</span><span class="o">-</span><span class="mi">5</span> <span class="nb">input</span><span class="o">.</span><span class="n">tif</span> <span class="n">output_folder</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdal2tiles</span> <span class="o">--</span><span class="n">zoom</span><span class="o">=</span><span class="mi">2</span><span class="o">-</span><span class="mi">5</span> <span class="nb">input</span><span class="o">.</span><span class="n">tif</span> <span class="n">output_folder</span>
 </pre></div>
 </div>
 <p>MapML generation:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdal2tiles</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">zoom</span><span class="o">=</span><span class="mi">16</span><span class="o">-</span><span class="mi">18</span> <span class="o">-</span><span class="n">w</span> <span class="n">mapml</span> <span class="o">-</span><span class="n">p</span> <span class="n">APSTILE</span> <span class="o">--</span><span class="n">url</span> <span class="s2">&quot;https://example.com&quot;</span> <span class="nb">input</span><span class="o">.</span><span class="n">tif</span> <span class="n">output_folder</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdal2tiles</span> <span class="o">--</span><span class="n">zoom</span><span class="o">=</span><span class="mi">16</span><span class="o">-</span><span class="mi">18</span> <span class="o">-</span><span class="n">w</span> <span class="n">mapml</span> <span class="o">-</span><span class="n">p</span> <span class="n">APSTILE</span> <span class="o">--</span><span class="n">url</span> <span class="s2">&quot;https://example.com&quot;</span> <span class="nb">input</span><span class="o">.</span><span class="n">tif</span> <span class="n">output_folder</span>
 </pre></div>
 </div>
 <p>MPI example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>mpiexec -n $NB_PROCESSES gdal2tiles.py --mpi --config GDAL_CACHEMAX 500 --zoom=2-5 input.tif output_folder
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>mpiexec -n $NB_PROCESSES gdal2tiles --mpi --config GDAL_CACHEMAX 500 --zoom=2-5 input.tif output_folder
 </pre></div>
 </div>
 </section>
@@ -549,7 +549,7 @@ pixels in areas not covered by the source raster.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="gdal2xyz.html" class="btn btn-neutral float-right" title="gdal2xyz.py" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="gdal2xyz.html" class="btn btn-neutral float-right" title="gdal2xyz" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="gdal-config.html" class="btn btn-neutral float-left" title="gdal-config (Unix)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

@@ -158,6 +158,7 @@
 <li class="toctree-l2"><a class="reference internal" href="wfs.html">WFS - OGC WFS service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xls.html">XLS - MS Excel format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xlsx.html">XLSX - MS Office Open XML spreadsheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xodr.html">XODR -- OpenDRIVE Road Description Format</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
@@ -165,10 +166,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -594,8 +595,8 @@ end of the file, -1 being the last time step.</p>
 </section>
 <section id="datasource-creation-options">
 <h2>Datasource creation options<a class="headerlink" href="#datasource-creation-options" title="Link to this heading"></a></h2>
-<p>Datasource creation options can be specified with the &quot;<code class="docutils literal notranslate"><span class="pre">-dsco</span></code>&quot; flag
-in ogr2ogr.</p>
+<p><a href="#id1"><span class="problematic" id="id2">|about-dataset-creation-options|</span></a>
+The following dataset creation options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/vector/selafin-dsco-TITLE"><strong>TITLE=value: </strong>Title of the datasource, stored in the Selafin file. The title must
 not hold more than 72 characters. If it is longer, it will be
@@ -613,8 +614,8 @@ time zone.</p>
 </section>
 <section id="layer-creation-options">
 <h2>Layer creation options<a class="headerlink" href="#layer-creation-options" title="Link to this heading"></a></h2>
-<p>Layer creation options can be specified with the &quot;<code class="docutils literal notranslate"><span class="pre">-lco</span></code>&quot; flag in
-ogr2ogr.</p>
+<p><a href="#id3"><span class="problematic" id="id4">|about-layer-creation-options|</span></a>
+The following layer creation options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/vector/selafin-lco-DATE"><strong>DATE=value: </strong>Date of the time step relative to the starting date of the simulation
 (see <a class="reference external" href="#DCO">Datasource creation options</a>). This is a single
@@ -622,7 +623,7 @@ floating-point value giving the number of seconds since the starting
 date.</p>
 </li>
 </ul>
-<p>An example of datasource creation option is: <code class="docutils literal notranslate"><span class="pre">-lco</span> <span class="pre">DATE=24000</span></code>.</p>
+<p>An example of a layer creation option is: <code class="docutils literal notranslate"><span class="pre">-lco</span> <span class="pre">DATE=24000</span></code>.</p>
 </section>
 <section id="notes-about-the-creation-and-the-update-of-a-selafin-datasource">
 <h2>Notes about the creation and the update of a Selafin datasource<a class="headerlink" href="#notes-about-the-creation-and-the-update-of-a-selafin-datasource" title="Link to this heading"></a></h2>

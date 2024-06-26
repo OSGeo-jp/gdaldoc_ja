@@ -127,7 +127,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#hiearchical-organization">Hiearchical organization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#transaction-support">Transaction support</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#geometry-coordinate-precision">Geometry coordinate precision</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#comparison-with-the-filegdb-driver">Comparison with the FileGDB driver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#advantages-of-the-openfilegdb-driver-compared-to-the-filegdb-driver">Advantages of the OpenFileGDB driver, compared to the FileGDB driver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#limitations">Limitations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#links">Links</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#credits">Credits</a></li>
@@ -160,6 +161,7 @@
 <li class="toctree-l2"><a class="reference internal" href="wfs.html">WFS - OGC WFS service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xls.html">XLS - MS Excel format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xlsx.html">XLSX - MS Office Open XML spreadsheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xodr.html">XODR -- OpenDRIVE Road Description Format</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
@@ -167,10 +169,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -316,8 +318,8 @@ does not involve extent recomputation.</p>
 </section>
 <section id="configuration-options">
 <h2>Configuration options<a class="headerlink" href="#configuration-options" title="Link to this heading"></a></h2>
-<p>The following <a class="reference internal" href="../../user/configoptions.html#configoptions"><span class="std std-ref">configuration options</span></a> are
-available:</p>
+<p><a href="#id1"><span class="problematic" id="id2">|about-config-options|</span></a>
+The following configuration options are available:</p>
 <ul class="simple">
 <li><p id="config-OPENFILEGDB_IN_MEMORY_SPI"><strong>OPENFILEGDB_IN_MEMORY_SPI=[YES/NO]: </strong>If <code class="docutils literal notranslate"><span class="pre">YES</span></code>, an in-memory spatial index will be built instead of
 using the native spatial index. See <a class="reference internal" href="#spatial-filtering">Spatial filtering</a>.</p>
@@ -329,8 +331,10 @@ CreateField() is the unspecified value 0. This defaults to 65536.</p>
 </section>
 <section id="dataset-open-options">
 <h2>Dataset open options<a class="headerlink" href="#dataset-open-options" title="Link to this heading"></a></h2>
+<p><a href="#id3"><span class="problematic" id="id4">|about-open-options|</span></a>
+The following open options are supported:</p>
 <ul class="simple">
-<li><p id="drivers/vector/openfilegdb-dsco-LIST_ALL_TABLES"><strong>LIST_ALL_TABLES=[YES/NO]: </strong> (GDAL &gt;= 3.4) This may be &quot;YES&quot; to force all tables,
+<li><p id="drivers/vector/openfilegdb-oo-LIST_ALL_TABLES"><strong>LIST_ALL_TABLES=[YES/NO]: </strong> (GDAL &gt;= 3.4) This may be &quot;YES&quot; to force all tables,
 including system and internal tables (such as the GDB_* tables) to be listed</p>
 </li>
 </ul>
@@ -341,6 +345,8 @@ including system and internal tables (such as the GDB_* tables) to be listed</p>
 </section>
 <section id="layer-creation-options">
 <h2>Layer Creation Options<a class="headerlink" href="#layer-creation-options" title="Link to this heading"></a></h2>
+<p><a href="#id5"><span class="problematic" id="id6">|about-layer-creation-options|</span></a>
+The following layer creation options are supported:</p>
 <ul>
 <li><p id="drivers/vector/openfilegdb-lco-TARGET_ARCGIS_VERSION"><strong>TARGET_ARCGIS_VERSION=[ALL/ARCGIS_PRO_3_2_OR_LATER]: </strong> (GDAL &gt;= 3.9)  Defaults to <code class="docutils literal notranslate"><span class="pre">ALL</span></code>. ArcGIS version that the dataset must be compatible with.
 If creation of Integer64, Date, Time field types is needed, the
@@ -492,10 +498,8 @@ specific options of <code class="xref cpp cpp-class docutils literal notranslate
 ZORIGIN, XYTOLERANCE, ZTOLERANCE, MTOLERANCE layer creation options will be
 used in priority over the settings of <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRGeomCoordinatePrecision</span></code>.</p>
 </section>
-<section id="comparison-with-the-filegdb-driver">
-<h2>Comparison with the FileGDB driver<a class="headerlink" href="#comparison-with-the-filegdb-driver" title="Link to this heading"></a></h2>
-<p>(Comparison done with a FileGDB driver using FileGDB API SDK 1.4)</p>
-<p>Advantages of the OpenFileGDB driver:</p>
+<section id="advantages-of-the-openfilegdb-driver-compared-to-the-filegdb-driver">
+<h2>Advantages of the OpenFileGDB driver, compared to the FileGDB driver<a class="headerlink" href="#advantages-of-the-openfilegdb-driver-compared-to-the-filegdb-driver" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>Can read ArcGIS 9.X Geodatabases, and not only 10 or above.</p></li>
 <li><p>Can open layers with any spatial reference system.</p></li>
@@ -506,10 +510,17 @@ Geodatabase in a ZIP file or stored on a HTTP server.</p></li>
 <li><p>Does not depend on a third-party library.</p></li>
 <li><p>Robust against corrupted Geodatabase files.</p></li>
 </ul>
-<p>Drawbacks of the OpenFileGDB driver:</p>
+</section>
+<section id="limitations">
+<h2>Limitations<a class="headerlink" href="#limitations" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p>Cannot read data from compressed data in CDF format (Compressed Data
-Format).</p></li>
+<li><p>Reading data compressed in SDC format (Smart Data Compression) or in
+CDF format (Compressed Data Format) is not supported. For CDF,
+the <a class="reference internal" href="filegdb.html#vector-filegdb"><span class="std std-ref">FileGDB driver</span></a> can be used.</p></li>
+<li><p>Support for tables with 64-bit OBJECTIDs (which require GDAL &gt;= 3.10), where
+OBJECTIDs are sparse, is read-only and incomplete.
+The driver will emit a warning if such situation occurs, and will attribute
+non-faithful OBJECTIDs.</p></li>
 </ul>
 </section>
 <section id="examples">

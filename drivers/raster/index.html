@@ -126,7 +126,7 @@
 <li class="toctree-l2"><a class="reference internal" href="isis3.html">ISIS3 -- USGS Astrogeology ISIS Cube (Version 3)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jdem.html">JDEM -- Japanese DEM (.mem)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2ecw.html">JP2ECW -- ERDAS JPEG2000 (.jp2)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="jp2kak.html">JP2KAK -- JPEG-2000 (based on Kakadu)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jp2kak.html">JP2KAK -- JPEG 2000 (based on Kakadu SDK)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2lura.html">JP2Lura -- JPEG2000 driver based on Lurawave library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2mrsid.html">JP2MrSID -- JPEG2000 via MrSID SDK</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2openjpeg.html">JP2OpenJPEG -- JPEG2000 driver based on OpenJPEG library</a></li>
@@ -224,10 +224,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -308,8 +308,8 @@
 <thead>
 <tr class="row-odd"><th class="head"><p>Short name</p></th>
 <th class="head"><p>Long name</p></th>
-<th class="head"><p>Creation</p></th>
-<th class="head"><p>Copy</p></th>
+<th class="head"><p>Creation (1)</p></th>
+<th class="head"><p>Copy (2)</p></th>
 <th class="head"><p>Geo-referencing</p></th>
 <th class="head"><p>Build requirements</p></th>
 </tr>
@@ -827,11 +827,11 @@
 <td><p>ECW SDK</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="jp2kak.html#raster-jp2kak"><span class="std std-ref">JP2KAK</span></a></p></td>
-<td><p>JPEG-2000 (based on Kakadu)</p></td>
+<td><p>JPEG 2000 (based on Kakadu SDK)</p></td>
 <td><p>No</p></td>
 <td><p><strong>Yes</strong></p></td>
 <td><p><strong>Yes</strong></p></td>
-<td><p>Kakadu library</p></td>
+<td><p>Kakadu SDK</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="jp2lura.html#raster-jp2lura"><span class="std std-ref">JP2LURA</span></a></p></td>
 <td><p>JPEG2000 driver based on Lurawave library</p></td>
@@ -1465,6 +1465,10 @@
 </tr>
 </tbody>
 </table>
+<ul class="simple">
+<li><p>(1): Creation refers to implementing <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALCreate()</span></code>.</p></li>
+<li><p>(2): Copy refers to implementing <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALCreateCopy()</span></code>.</p></li>
+</ul>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
 <p>The following drivers have been retired and moved to the
@@ -1545,7 +1549,7 @@
 <li class="toctree-l1"><a class="reference internal" href="isis3.html">ISIS3 -- USGS Astrogeology ISIS Cube (Version 3)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="jdem.html">JDEM -- Japanese DEM (.mem)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="jp2ecw.html">JP2ECW -- ERDAS JPEG2000 (.jp2)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="jp2kak.html">JP2KAK -- JPEG-2000 (based on Kakadu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jp2kak.html">JP2KAK -- JPEG 2000 (based on Kakadu SDK)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="jp2lura.html">JP2Lura -- JPEG2000 driver based on Lurawave library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="jp2mrsid.html">JP2MrSID -- JPEG2000 via MrSID SDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="jp2openjpeg.html">JP2OpenJPEG -- JPEG2000 driver based on OpenJPEG library</a></li>

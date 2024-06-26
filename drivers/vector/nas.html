@@ -141,6 +141,7 @@
 <li class="toctree-l2"><a class="reference internal" href="wfs.html">WFS - OGC WFS service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xls.html">XLS - MS Excel format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xlsx.html">XLSX - MS Office Open XML spreadsheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xodr.html">XODR -- OpenDRIVE Road Description Format</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
@@ -148,10 +149,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -246,7 +247,10 @@ ax_flurstueck.objektkoordinaten next to the regular wkb_geometry).
 Starting with GDAL 3.7, defining the NAS_GFS_TEMPLATE configuration option is
 required for the NAS driver to open a file. It may be set to the empty string
 to mean that the driver should try to establish the schema of the file from its
-content, but using one of templates mentioned below is recommended.</p>
+content, but using one of templates mentioned below is recommended.
+Alternatively, starting with GDAL 3.10, specifying the <code class="docutils literal notranslate"><span class="pre">-if</span> <span class="pre">NAS</span></code> option to command line utilities
+accepting it, or <code class="docutils literal notranslate"><span class="pre">NAS</span></code> as the only value of the <code class="docutils literal notranslate"><span class="pre">papszAllowedDrivers</span></code> of
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpenEx()</span></code>, also forces the driver to recognize the passed filename.</p>
 <p>The GFS templates and PostgreSQL schemas are part of <a class="reference external" href="http://www.norbit.de/68/">norGIS
 ALKIS-Import</a> (also featuring a shell script and
 PyQt frontend which ease the import).  There are currently two versions:</p>
@@ -262,6 +266,9 @@ the configuration option <strong>NAS_NO_RELATION_LAYER</strong> allowed to disab
 population - which was default in ALKIS-Import. The information found there was
 redundant to the relation fields also contained in original elements/tables.
 Enabling the option also made progress reporting available.</p>
+<p>Duplicate data in datasets will usually causes errors.  When importing separate
+datasets into PostgreSQL it is useful to enable &quot;OGR_PG_SKIP_CONFLICTS&quot; to skip
+conflicting features.</p>
 <p>This driver was implemented within the context of the <a class="reference external" href="http://trac.wheregroup.com/PostNAS">PostNAS
 project</a>, which has more
 information on its use and other related projects.</p>

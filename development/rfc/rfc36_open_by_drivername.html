@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RFC 36: Allow specification of intended driver on GDALOpen &mdash; GDAL  ドキュメント</title>
+  <title>RFC 36: Allow specification of intended driver on GDALOpen (withdrawn) &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d10597a4" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/gdal.css?v=e152ac3b" />
 
@@ -52,14 +52,14 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../download.html">ダウンロード</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">プログラム</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../drivers/raster/index.html">Raster drivers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../drivers/vector/index.html">Vector drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../drivers/raster/index.html">ラスタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../drivers/vector/index.html">ベクタードライバー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Development</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">開発</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../dev_environment.html">Setting up a development environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../building_from_source.html">Building GDAL from source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../building_from_source.html">GDAL のソースからのビルド</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dev_practices.html">Development practices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../testing.html">Automated testing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dev_documentation.html">Building documentation</a></li>
@@ -100,7 +100,7 @@
 <li class="toctree-l3"><a class="reference internal" href="rfc33_gtiff_pixelispoint.html">RFC 33: GTiff - Fixing PixelIsPoint Interpretation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="rfc34_license_policy.html">RFC 34: License Policy Enforcement</a></li>
 <li class="toctree-l3"><a class="reference internal" href="rfc35_deletereorderalterfielddefn.html">RFC 35: Delete, reorder and alter field definitions of OGR layers</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">RFC 36: Allow specification of intended driver on GDALOpen</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">RFC 36: Allow specification of intended driver on GDALOpen (withdrawn)</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#summary">Summary</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#justification">Justification</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#concept">Concept</a></li>
@@ -178,11 +178,11 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">Community</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -218,11 +218,11 @@
     
       <li><a href="../../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="../index.html">Development</a> &raquo;</li>
+          <li><a href="../index.html">開発</a> &raquo;</li>
       
           <li><a href="index.html">RFC list</a> &raquo;</li>
       
-      <li>RFC 36: Allow specification of intended driver on GDALOpen</li>
+      <li>RFC 36: Allow specification of intended driver on GDALOpen (withdrawn)</li>
     
 
     
@@ -253,11 +253,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="rfc-36-allow-specification-of-intended-driver-on-gdalopen">
-<span id="rfc-36"></span><h1>RFC 36: Allow specification of intended driver on GDALOpen<a class="headerlink" href="#rfc-36-allow-specification-of-intended-driver-on-gdalopen" title="Link to this heading"></a></h1>
+  <section id="rfc-36-allow-specification-of-intended-driver-on-gdalopen-withdrawn">
+<span id="rfc-36"></span><h1>RFC 36: Allow specification of intended driver on GDALOpen (withdrawn)<a class="headerlink" href="#rfc-36-allow-specification-of-intended-driver-on-gdalopen-withdrawn" title="Link to this heading"></a></h1>
 <p>Authors: Ivan Lucena</p>
 <p>Contact: <a class="reference external" href="mailto:ivan&#46;lucena&#37;&#52;&#48;pmldnet&#46;com">ivan<span>&#46;</span>lucena<span>&#64;</span>pmldnet<span>&#46;</span>com</a></p>
-<p>Status: Proposed</p>
+<p>Status: Withdrawn.</p>
+<p>Covered by <a class="reference external" href="./rfc46_gdal_ogr_unification">RFC 46: GDAL/OGR unification</a></p>
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Link to this heading"></a></h2>
 <p>This document proposes a mechanism to explicitly tell GDAL what driver

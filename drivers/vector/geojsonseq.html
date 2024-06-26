@@ -146,6 +146,7 @@
 <li class="toctree-l2"><a class="reference internal" href="wfs.html">WFS - OGC WFS service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xls.html">XLS - MS Excel format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xlsx.html">XLSX - MS Office Open XML spreadsheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xodr.html">XODR -- OpenDRIVE Road Description Format</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
@@ -153,10 +154,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -240,7 +241,7 @@
 </div>
 <p>This driver implements read/creation support for features encoded
 individually as <a class="reference external" href="http://geojson.org/">GeoJSON</a> Feature objects,
-separated by newline (LF) (<a class="reference external" href="http://ndjson.org/">Newline Delimited
+separated by newline (LF) (<a class="reference external" href="https://github.com/ndjson/ndjson-spec">Newline Delimited
 JSON</a>) or record-separator (RS) characters (<a class="reference external" href="https://tools.ietf.org/html/rfc8142">RFC
 8142</a> standard: GeoJSON Text
 Sequences)</p>
@@ -276,12 +277,16 @@ extension .geojsonl or .geojsons</p></li>
 <li><p>Text passed directly as filename, and encoded as GeoJSON sequences</p></li>
 </ul>
 <p>The URL/filename/text might be prefixed with GeoJSONSeq: to avoid any
-ambiguity with other drivers.</p>
+ambiguity with other drivers. Alternatively, starting
+with GDAL 3.10, specifying the <code class="docutils literal notranslate"><span class="pre">-if</span> <span class="pre">GeoJSONSeq</span></code> option to command line utilities
+accepting it, or <code class="docutils literal notranslate"><span class="pre">GeoJSONSeq</span></code> as the only value of the <code class="docutils literal notranslate"><span class="pre">papszAllowedDrivers</span></code> of
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpenEx()</span></code>, also forces the driver to recognize the passed
+URL/filename/text.</p>
 </section>
 <section id="configuration-options">
 <h2>Configuration options<a class="headerlink" href="#configuration-options" title="Link to this heading"></a></h2>
-<p>The following <a class="reference internal" href="../../user/configoptions.html#configoptions"><span class="std std-ref">configuration option</span></a> is
-available:</p>
+<p><a href="#id1"><span class="problematic" id="id2">|about-config-options|</span></a>
+The following configuration option is available:</p>
 <ul class="simple">
 <li><p><p id="config-OGR_GEOJSON_MAX_OBJ_SIZE"><strong>OGR_GEOJSON_MAX_OBJ_SIZE=&lt;MBytes&gt;: </strong> (GDAL &gt;= 3.0.2)  Defaults to <code class="docutils literal notranslate"><span class="pre">200</span></code>. size in MBytes of the maximum accepted single feature,
 or 0 to allow for a unlimited size (GDAL &gt;= 3.5.2).</p>
@@ -290,6 +295,8 @@ or 0 to allow for a unlimited size (GDAL &gt;= 3.5.2).</p>
 </section>
 <section id="layer-creation-options">
 <h2>Layer creation options<a class="headerlink" href="#layer-creation-options" title="Link to this heading"></a></h2>
+<p><a href="#id3"><span class="problematic" id="id4">|about-layer-creation-options|</span></a>
+The following layer creation options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/vector/geojsonseq-lco-RS"><strong>RS=[YES/NO]: </strong>whether to start records with the RS=0x1E character,
 so as to be compatible with the <a class="reference external" href="https://tools.ietf.org/html/rfc8142">RFC
@@ -311,8 +318,8 @@ as the 'id' member of Feature objects.</p>
 <li><p id="drivers/vector/geojsonseq-lco-ID_TYPE"><strong>ID_TYPE=[AUTO/String/Integer]: </strong>Type of the 'id' member of Feature objects.</p>
 </li>
 <li><p id="drivers/vector/geojsonseq-lco-WRITE_NON_FINITE_VALUES"><strong>WRITE_NON_FINITE_VALUES=[YES/NO]: </strong> (GDAL &gt;= 3.8)  Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. Whether to write
-NaN / Infinity values. Such values are not allowed in strict JSon
-mode, but some JSon parsers (libjson-c &gt;= 0.12 for example) can
+NaN / Infinity values. Such values are not allowed in strict JSON
+mode, but some JSON parsers (libjson-c &gt;= 0.12 for example) can
 understand them as they are allowed by ECMAScript.</p>
 </li>
 <li><p id="drivers/vector/geojsonseq-lco-AUTODETECT_JSON_STRINGS"><strong>AUTODETECT_JSON_STRINGS=[YES/NO]: </strong> (GDAL &gt;= 3.8)  Defaults to <code class="docutils literal notranslate"><span class="pre">YES</span></code>. Whether to try to interpret string fields as JSON arrays or objects

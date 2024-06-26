@@ -52,14 +52,14 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../download.html">ダウンロード</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../programs/index.html">プログラム</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">Raster drivers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">Vector drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">ラスタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">ベクタードライバー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Development</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">開発</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="dev_environment.html">Setting up a development environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="building_from_source.html">Building GDAL from source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building_from_source.html">GDAL のソースからのビルド</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dev_practices.html">Development practices</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Automated testing</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#running-a-subset-of-tests-using-ctest">Running a subset of tests using <code class="docutils literal notranslate"><span class="pre">ctest</span></code></a></li>
@@ -78,11 +78,11 @@
 <li class="toctree-l2"><a class="reference internal" href="rfc/index.html">RFC list</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">コミュニティ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -118,7 +118,7 @@
     
       <li><a href="../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">Development</a> &raquo;</li>
+          <li><a href="index.html">開発</a> &raquo;</li>
       
       <li>Automated testing</li>
     
@@ -151,8 +151,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <span class="target" id="testing"></span><section id="automated-testing">
-<h1>Automated testing<a class="headerlink" href="#automated-testing" title="Link to this heading"></a></h1>
+  <section id="automated-testing">
+<span id="testing"></span><h1>Automated testing<a class="headerlink" href="#automated-testing" title="Link to this heading"></a></h1>
 <p>GDAL includes a comprehensive test suite, implemented using a combination of Python (via pytest) and C++ (via gtest).</p>
 <p>After building GDAL using CMake, the complete test suite can be run using <code class="docutils literal notranslate"><span class="pre">ctest</span> <span class="pre">-v</span> <span class="pre">--output-on-failure</span></code>. This will automatically set environment variables so that tests are run on the
 the built version of GDAL, rather than an installed system copy.</p>
@@ -167,22 +167,7 @@ For example, <code class="docutils literal notranslate"><span class="pre">ctest<
 <h2>Running a subset of tests using <code class="docutils literal notranslate"><span class="pre">pytest</span></code><a class="headerlink" href="#running-a-subset-of-tests-using-pytest" title="Link to this heading"></a></h2>
 <p>The test subsets exposed by <code class="docutils literal notranslate"><span class="pre">ctest</span></code> are still rather large and some may take several minutes to run.
 If a higher level of specificity is needed, <code class="docutils literal notranslate"><span class="pre">pytest</span></code> can be called directly to run groups of tests or individual tests.
-Before running <code class="docutils literal notranslate"><span class="pre">pytest</span></code>, it is important to set environment variables so that the development build of GDAL is tested,
-rather than a system version. This can be done by sourcing the following from the build directory:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.<span class="w"> </span>../scripts/setdevenv.sh
-</pre></div>
-</div>
-<p>(with adjustments to the above path if the build directory is not a subdirectory of the GDAL source root).
-To verify that environment variables were set correctly, you can check the version of a GDAL binary:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdalinfo<span class="w"> </span>--version
-<span class="c1"># GDAL 3.7.0dev-5327c149f5-dirty, released 2018/99/99 (debug build)</span>
-</pre></div>
-</div>
-<p>and the Python bindings:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;from osgeo import gdal; print(gdal.__version__)&#39;</span>
-<span class="c1"># 3.7.0dev-5327c149f5-dirty</span>
-</pre></div>
-</div>
+Before running <code class="docutils literal notranslate"><span class="pre">pytest</span></code>, it is important to set <a class="reference internal" href="dev_environment.html#setting-dev-environment-variables"><span class="std std-ref">development environment variables</span></a> so that the development build of GDAL is tested, rather than a system version.</p>
 <p>Tests can then be run by calling <code class="docutils literal notranslate"><span class="pre">pytest</span></code>, for example on an individual file.
 On Linux and MacOS builds, the tests are symlinked into the build directory, so this
 can be done by running the following from the build directory:</p>

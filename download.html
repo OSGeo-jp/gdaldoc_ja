@@ -51,21 +51,26 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">ダウンロード</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#current-release">カレントリリース</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#past-releases">過去のリリース</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#development-source">開発ソース</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#source-code">ソースコード</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#current-release">カレントリリース</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#past-releases">過去のリリース</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#development-source">開発ソース</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#binaries">バイナリ</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#windows">Windows</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#debian">Debian</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#conda">Conda</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#gdal-master-conda-builds">GDAL master Conda builds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#linux">Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mac-os">Mac OS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cross-platform-package-managers">Cross-Platform Package Managers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#conda">Conda</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vcpkg">vcpkg</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#spack">Spack</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#vcpkg">Vcpkg</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#spack">Spack</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#linux-docker-images">Linux Docker images</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#containers">Containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#documentation">Documentation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="programs/index.html">プログラム</a></li>
@@ -151,162 +156,44 @@
 <nav class="contents" id="id2">
 <p class="topic-title">目次</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#download" id="id87">ダウンロード</a></p>
+<li><p><a class="reference internal" href="#download" id="id7">ダウンロード</a></p>
 <ul>
-<li><p><a class="reference internal" href="#current-release" id="id88">カレントリリース</a></p></li>
-<li><p><a class="reference internal" href="#past-releases" id="id89">過去のリリース</a></p></li>
-<li><p><a class="reference internal" href="#development-source" id="id90">開発ソース</a></p></li>
-<li><p><a class="reference internal" href="#binaries" id="id91">バイナリ</a></p>
+<li><p><a class="reference internal" href="#source-code" id="id8">ソースコード</a></p>
 <ul>
-<li><p><a class="reference internal" href="#windows" id="id92">Windows</a></p></li>
-<li><p><a class="reference internal" href="#debian" id="id93">Debian</a></p></li>
-<li><p><a class="reference internal" href="#conda" id="id94">Conda</a></p></li>
-<li><p><a class="reference internal" href="#vcpkg" id="id95">Vcpkg</a></p></li>
-<li><p><a class="reference internal" href="#spack" id="id96">Spack</a></p></li>
-<li><p><a class="reference internal" href="#linux-docker-images" id="id97">Linux Docker images</a></p></li>
+<li><p><a class="reference internal" href="#current-release" id="id9">カレントリリース</a></p></li>
+<li><p><a class="reference internal" href="#past-releases" id="id10">過去のリリース</a></p></li>
+<li><p><a class="reference internal" href="#development-source" id="id11">開発ソース</a></p></li>
 </ul>
 </li>
+<li><p><a class="reference internal" href="#binaries" id="id12">バイナリ</a></p>
+<ul>
+<li><p><a class="reference internal" href="#windows" id="id13">Windows</a></p></li>
+<li><p><a class="reference internal" href="#linux" id="id14">Linux</a></p></li>
+<li><p><a class="reference internal" href="#mac-os" id="id15">Mac OS</a></p></li>
+<li><p><a class="reference internal" href="#cross-platform-package-managers" id="id16">Cross-Platform Package Managers</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#containers" id="id17">Containers</a></p></li>
+<li><p><a class="reference internal" href="#documentation" id="id18">Documentation</a></p></li>
 </ul>
 </li>
 </ul>
 </nav>
+<p>The GDAL project distributes GDAL as source code and <a class="reference internal" href="#containers"><span class="std std-ref">Containers</span></a> only. <a class="reference internal" href="#binaries"><span class="std std-ref">バイナリ</span></a> produced by others are available for a variety of platforms and package managers.</p>
+<section id="source-code">
+<h2>ソースコード<a class="headerlink" href="#source-code" title="Link to this heading"></a></h2>
 <section id="current-release">
-<h2>カレントリリース<a class="headerlink" href="#current-release" title="Link to this heading"></a></h2>
+<h3>カレントリリース<a class="headerlink" href="#current-release" title="Link to this heading"></a></h3>
 <ul class="simple">
-<li><p><strong>2024-04-04</strong> <a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.8.5/gdal-3.8.5.tar.gz">gdal-3.8.5.tar.gz</a> <a class="reference external" href="https://github.com/OSGeo/gdal/blob/v3.8.5/NEWS.md">3.8.5 Release Notes</a> (<a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.8.5/gdal-3.8.5.tar.gz.md5">3.8.5 md5</a>)</p></li>
+<li><p><strong>2024-05-10</strong> <a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.9.0/gdal-3.9.0.tar.gz">gdal-3.9.0.tar.gz</a> <a class="reference external" href="https://github.com/OSGeo/gdal/blob/v3.9.0/NEWS.md">3.9.0 Release Notes</a> (<a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.9.0/gdal-3.9.0.tar.gz.md5">3.9.0 md5</a>)</p></li>
 </ul>
 </section>
 <section id="past-releases">
-<h2>過去のリリース<a class="headerlink" href="#past-releases" title="Link to this heading"></a></h2>
-<ul class="simple">
-<li><p><strong>2024-02-18</strong> <a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.8.4/gdal-3.8.4.tar.gz">gdal-3.8.4.tar.gz</a> <a class="reference external" href="https://github.com/OSGeo/gdal/blob/v3.8.4/NEWS.md">3.8.4 Release Notes</a> (<a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.8.4/gdal-3.8.4.tar.gz.md5">3.8.4 md5</a>)</p></li>
-</ul>
-<ul class="simple">
-<li><p><strong>2024-01-08</strong> <a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.8.3/gdal-3.8.3.tar.gz">gdal-3.8.3.tar.gz</a> <a class="reference external" href="https://github.com/OSGeo/gdal/blob/v3.8.3/NEWS.md">3.8.3 Release Notes</a> (<a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.8.3/gdal-3.8.3.tar.gz.md5">3.8.3 md5</a>)</p></li>
-</ul>
-<ul class="simple">
-<li><p><strong>2023-12-20</strong> <a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.8.2/gdal-3.8.2.tar.gz">gdal-3.8.2.tar.gz</a> <a class="reference external" href="https://github.com/OSGeo/gdal/blob/v3.8.2/NEWS.md">3.8.2 Release Notes</a> (<a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.8.2/gdal-3.8.2.tar.gz.md5">3.8.2 md5</a>)</p></li>
-</ul>
-<ul class="simple">
-<li><p><strong>2023-11-30</strong> <a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.8.1/gdal-3.8.1.tar.gz">gdal-3.8.1.tar.gz</a> <a class="reference external" href="https://github.com/OSGeo/gdal/blob/v3.8.1/NEWS.md">3.8.1 Release Notes</a> (<a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.8.1/gdal-3.8.1.tar.gz.md5">3.8.1 md5</a>)</p></li>
-</ul>
-<ul class="simple">
-<li><p><strong>2023-11-13</strong> <a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.8.0/gdal-3.8.0.tar.gz">gdal-3.8.0.tar.gz</a> <a class="reference external" href="https://github.com/OSGeo/gdal/blob/v3.8.0/NEWS.md">3.8.0 Release Notes</a> (<a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.8.0/gdal-3.8.0.tar.gz.md5">3.8.0 md5</a>)</p></li>
-</ul>
-<ul class="simple">
-<li><p><strong>2023-11-03</strong> <a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.7.3/gdal-3.7.3.tar.gz">gdal-3.7.3.tar.gz</a> <a class="reference external" href="https://github.com/OSGeo/gdal/blob/v3.7.3/NEWS.md">3.7.3 Release Notes</a> (<a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.7.3/gdal-3.7.3.tar.gz.md5">3.7.3 md5</a>)</p></li>
-</ul>
-<ul class="simple">
-<li><p><strong>2023-09-13</strong> <a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.7.2/gdal-3.7.2.tar.gz">gdal-3.7.2.tar.gz</a> <a class="reference external" href="https://github.com/OSGeo/gdal/blob/v3.7.2/NEWS.md">3.7.2 Release Notes</a> (<a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.7.2/gdal-3.7.2.tar.gz.md5">3.7.2 md5</a>)</p></li>
-</ul>
-<ul class="simple">
-<li><p><strong>2023-07-13</strong> <a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.7.1/gdal-3.7.1.tar.gz">gdal-3.7.1.tar.gz</a> <a class="reference external" href="https://github.com/OSGeo/gdal/blob/v3.7.1/NEWS.md">3.7.1 Release Notes</a> (<a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.7.1/gdal-3.7.1.tar.gz.md5">3.7.1 md5</a>)</p></li>
-</ul>
-<ul class="simple">
-<li><p><strong>2023-05-10</strong> <a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.7.0/gdal-3.7.0.tar.gz">gdal-3.7.0.tar.gz</a> <a class="reference external" href="https://github.com/OSGeo/gdal/blob/v3.7.0/NEWS.md">3.7.0 Release Notes</a> (<a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.7.0/gdal-3.7.0.tar.gz.md5">3.7.0 md5</a>)</p></li>
-</ul>
-<ul class="simple">
-<li><p><strong>2023-04-21</strong> <a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.6.4/gdal-3.6.4.tar.gz">gdal-3.6.4.tar.gz</a> <a class="reference external" href="https://github.com/OSGeo/gdal/blob/v3.6.4/NEWS.md">3.6.4 Release Notes</a> (<a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.6.4/gdal-3.6.4.tar.gz.md5">3.6.4 md5</a>)</p></li>
-</ul>
-<ul class="simple">
-<li><p><strong>2023-03-13</strong> <a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.6.3/gdal-3.6.3.tar.gz">gdal-3.6.3.tar.gz</a> <a class="reference external" href="https://github.com/OSGeo/gdal/blob/v3.6.3/NEWS.md">3.6.3 Release Notes</a> (<a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.6.3/gdal-3.6.3.tar.gz.md5">3.6.3 md5</a>)</p></li>
-</ul>
-<ul class="simple">
-<li><p><strong>2023-01-05</strong> <a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.6.2/gdal-3.6.2.tar.gz">gdal-3.6.2.tar.gz</a> <a class="reference external" href="https://github.com/OSGeo/gdal/blob/v3.6.2/NEWS.md">3.6.2 Release Notes</a> (<a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.6.2/gdal-3.6.2.tar.gz.md5">3.6.2 md5</a>)</p></li>
-</ul>
-<ul class="simple">
-<li><p><strong>2022-12-11</strong> <a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.6.1/gdal-3.6.1.tar.gz">gdal-3.6.1.tar.gz</a> <a class="reference external" href="https://github.com/OSGeo/gdal/blob/v3.6.1/NEWS.md">3.6.1 Release Notes</a> (<a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.6.1/gdal-3.6.1.tar.gz.md5">3.6.1 md5</a>)</p></li>
-</ul>
-<ul class="simple">
-<li><p><strong>2022-11-06</strong> <a class="reference external" href="https://github.com/OSGeo/gdal/blob/v3.6.0/NEWS.md">3.6.0 Release Notes</a> <em>Warning</em>: this version has been official retracted and superseded per 3.6.1</p></li>
-</ul>
-<ul class="simple">
-<li><p><strong>2022-10-21</strong> <a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.5.3/gdal-3.5.3.tar.gz">gdal-3.5.3.tar.gz</a> <a class="reference external" href="https://github.com/OSGeo/gdal/blob/v3.5.3/NEWS.md">3.5.3 Release Notes</a> (<a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.5.3/gdal-3.5.3.tar.gz.md5">3.5.3 md5</a>)</p></li>
-</ul>
-<ul class="simple">
-<li><p><strong>2022-09-12</strong> <a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.5.2/gdal-3.5.2.tar.gz">gdal-3.5.2.tar.gz</a> <a class="reference external" href="https://github.com/OSGeo/gdal/blob/v3.5.2/NEWS.md">3.5.2 Release Notes</a> (<a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.5.2/gdal-3.5.2.tar.gz.md5">3.5.2 md5</a>)</p></li>
-</ul>
-<ul class="simple">
-<li><p><strong>2022-07-06</strong> <a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.5.1/gdal-3.5.1.tar.gz">gdal-3.5.1.tar.gz</a> <a class="reference external" href="https://github.com/OSGeo/gdal/blob/v3.5.1/NEWS.md">3.5.1 Release Notes</a> (<a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.5.1/gdal-3.5.1.tar.gz.md5">3.5.1 md5</a>)</p></li>
-</ul>
-<ul class="simple">
-<li><p><strong>2022-05-13</strong> <a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.5.0/gdal-3.5.0.tar.gz">gdal-3.5.0.tar.gz</a> <a class="reference external" href="https://github.com/OSGeo/gdal/blob/v3.5.0/NEWS.md">3.5.0 Release Notes</a> (<a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.5.0/gdal-3.5.0.tar.gz.md5">3.5.0 md5</a>)</p></li>
-</ul>
-<ul class="simple">
-<li><p><strong>2022-04-22</strong> <a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.4.3/gdal-3.4.3.tar.gz">gdal-3.4.3.tar.gz</a> <a class="reference external" href="https://github.com/OSGeo/gdal/blob/v3.4.3/gdal/NEWS.md">3.4.3 Release Notes</a> (<a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.4.3/gdal-3.4.3.tar.gz.md5">3.4.3 md5</a>)</p></li>
-</ul>
-<ul class="simple">
-<li><p><strong>2022-03-08</strong> <a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.4.2/gdal-3.4.2.tar.gz">gdal-3.4.2.tar.gz</a> <a class="reference external" href="https://github.com/OSGeo/gdal/blob/v3.4.2/gdal/NEWS.md">3.4.2 Release Notes</a> (<a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.4.2/gdal-3.4.2.tar.gz.md5">3.4.2 md5</a>)</p></li>
-</ul>
-<ul class="simple">
-<li><p><strong>2021-12-27</strong> <a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.4.1/gdal-3.4.1.tar.gz">gdal-3.4.1.tar.gz</a> <a class="reference external" href="https://github.com/OSGeo/gdal/blob/v3.4.1/gdal/NEWS.md">3.4.1 Release Notes</a> (<a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.4.1/gdal-3.4.1.tar.gz.md5">3.4.1 md5</a>)</p></li>
-</ul>
-<ul class="simple">
-<li><p><strong>2021-11-08</strong> <a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.4.0/gdal-3.4.0.tar.gz">gdal-3.4.0.tar.gz</a> <a class="reference external" href="https://github.com/OSGeo/gdal/blob/v3.4.0/gdal/NEWS.md">3.4.0 Release Notes</a> (<a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.4.0/gdal-3.4.0.tar.gz.md5">3.4.0 md5</a>)</p></li>
-</ul>
-<ul class="simple">
-<li><p><strong>2021-10-29</strong> <a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.3.3/gdal-3.3.3.tar.gz">gdal-3.3.3.tar.gz</a> <a class="reference external" href="https://github.com/OSGeo/gdal/blob/v3.3.3/gdal/NEWS">3.3.3 Release Notes</a> (<a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.3.3/gdal-3.3.3.tar.gz.md5">3.3.3 md5</a>)</p></li>
-</ul>
-<ul class="simple">
-<li><p><strong>2021-09-01</strong> <a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.3.2/gdal-3.3.2.tar.gz">gdal-3.3.2.tar.gz</a> <a class="reference external" href="https://github.com/OSGeo/gdal/blob/v3.3.2/gdal/NEWS">3.3.2 Release Notes</a> (<a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.3.2/gdal-3.3.2.tar.gz.md5">3.3.2 md5</a>)</p></li>
-</ul>
-<ul class="simple">
-<li><p><strong>2021-07-05</strong> <a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.3.1/gdal-3.3.1.tar.gz">gdal-3.3.1.tar.gz</a> <a class="reference external" href="https://github.com/OSGeo/gdal/blob/v3.3.1/gdal/NEWS">3.3.1 Release Notes</a> (<a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.3.1/gdal-3.3.1.tar.gz.md5">3.3.1 md5</a>)</p></li>
-</ul>
-<ul class="simple">
-<li><p><strong>2021-05-03</strong> <a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.3.0/gdal-3.3.0.tar.gz">gdal-3.3.0.tar.gz</a> <a class="reference external" href="https://github.com/OSGeo/gdal/blob/v3.3.0/gdal/NEWS">3.3.0 Release Notes</a> (<a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.3.0/gdal-3.3.0.tar.gz.md5">3.3.0 md5</a>)</p></li>
-</ul>
-<ul class="simple">
-<li><p><strong>2021-05-04</strong> <a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.2.3/gdal-3.2.3.tar.gz">gdal-3.2.3.tar.gz</a> <a class="reference external" href="https://github.com/OSGeo/gdal/blob/v3.2.3/gdal/NEWS">3.2.3 Release Notes</a> (<a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.2.3/gdal-3.2.3.tar.gz.md5">3.2.3 md5</a>)</p></li>
-</ul>
-<ul class="simple">
-<li><p><strong>2021-03-10</strong> <a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.2.2/gdal-3.2.2.tar.gz">gdal-3.2.2.tar.gz</a> <a class="reference external" href="https://github.com/OSGeo/gdal/blob/v3.2.2/gdal/NEWS">3.2.2 Release Notes</a> (<a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.2.2/gdal-3.2.2.tar.gz.md5">3.2.2 md5</a>)</p></li>
-</ul>
-<ul class="simple">
-<li><p><strong>2020-12-28</strong> <a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.2.1/gdal-3.2.1.tar.gz">gdal-3.2.1.tar.gz</a> <a class="reference external" href="https://github.com/OSGeo/gdal/blob/v3.2.1/gdal/NEWS">3.2.1 Release Notes</a> (<a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.2.1/gdal-3.2.1.tar.gz.md5">3.2.1 md5</a>)</p></li>
-</ul>
-<ul class="simple">
-<li><p><strong>2020-10-26</strong> <a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.2.0/gdal-3.2.0.tar.gz">gdal-3.2.0.tar.gz</a> <a class="reference external" href="https://github.com/OSGeo/gdal/blob/v3.2.0/gdal/NEWS">3.2.0 Release Notes</a> (<a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.2.0/gdal-3.2.0.tar.gz.md5">3.2.0 md5</a>)</p></li>
-</ul>
-<ul class="simple">
-<li><p><strong>2020-10-23</strong> <a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.1.4/gdal-3.1.4.tar.gz">gdal-3.1.4.tar.gz</a> <a class="reference external" href="https://github.com/OSGeo/gdal/blob/v3.1.4/gdal/NEWS">3.1.4 Release Notes</a> (<a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.1.4/gdal-3.1.4.tar.gz.md5">3.1.4 md5</a>)</p></li>
-</ul>
-<ul class="simple">
-<li><p><strong>2020-09-01</strong> <a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.1.3/gdal-3.1.3.tar.gz">gdal-3.1.3.tar.gz</a> <a class="reference external" href="https://github.com/OSGeo/gdal/blob/v3.1.3/gdal/NEWS">3.1.3 Release Notes</a> (<a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.1.3/gdal-3.1.3.tar.gz.md5">3.1.3 md5</a>)</p></li>
-</ul>
-<ul class="simple">
-<li><p><strong>2020-07-07</strong> <a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.1.2/gdal-3.1.2.tar.gz">gdal-3.1.2.tar.gz</a> <a class="reference external" href="https://github.com/OSGeo/gdal/blob/v3.1.2/gdal/NEWS">3.1.2 Release Notes</a> (<a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.1.2/gdal-3.1.2.tar.gz.md5">3.1.2 md5</a>)</p></li>
-</ul>
-<ul class="simple">
-<li><p><strong>2020-06-22</strong> <a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.1.1/gdal-3.1.1.tar.gz">gdal-3.1.1.tar.gz</a> <a class="reference external" href="https://github.com/OSGeo/gdal/blob/v3.1.1/gdal/NEWS">3.1.1 Release Notes</a> (<a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.1.1/gdal-3.1.1.tar.gz.md5">3.1.1 md5</a>)</p></li>
-</ul>
-<ul class="simple">
-<li><p><strong>2020-05-03</strong> <a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.1.0/gdal-3.1.0.tar.gz">gdal-3.1.0.tar.gz</a> <a class="reference external" href="https://github.com/OSGeo/gdal/blob/v3.1.0/gdal/NEWS">3.1.0 Release Notes</a> (<a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.1.0/gdal-3.1.0.tar.gz.md5">3.1.0 md5</a>)</p></li>
-</ul>
-<ul class="simple">
-<li><p><strong>2020-01-28</strong> <a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.0.4/gdal-3.0.4.tar.gz">gdal-3.0.4.tar.gz</a> <a class="reference external" href="https://github.com/OSGeo/gdal/blob/v3.0.4/gdal/NEWS">3.0.4 Release Notes</a> (<a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.0.4/gdal-3.0.4.tar.gz.md5">3.0.4 md5</a>)</p></li>
-</ul>
-<ul class="simple">
-<li><p><strong>2020-01-08</strong> <a class="reference external" href="https://download.osgeo.org/gdal/2.4.4/gdal-2.4.4.tar.gz">gdal-2.4.4.tar.gz</a> <a class="reference external" href="https://github.com/OSGeo/gdal/blob/v2.4.4/gdal/NEWS">2.4.4 Release Notes</a> (<a class="reference external" href="https://download.osgeo.org/gdal/2.4.4/gdal-2.4.4.tar.gz.md5">2.4.4 md5</a>)</p></li>
-</ul>
-<ul class="simple">
-<li><p><strong>2020-01-08</strong> <a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.0.3/gdal-3.0.3.tar.gz">gdal-3.0.3.tar.gz</a> <a class="reference external" href="https://github.com/OSGeo/gdal/blob/v3.0.3/gdal/NEWS">3.0.3 Release Notes</a> (<a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.0.3/gdal-3.0.3.tar.gz.md5">3.0.3 md5</a>)</p></li>
-</ul>
-<ul class="simple">
-<li><p><strong>2019-10-28</strong> <a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.0.2/gdal-3.0.2.tar.gz">gdal-3.0.2.tar.gz</a> <a class="reference external" href="https://github.com/OSGeo/gdal/blob/v3.0.2/gdal/NEWS">3.0.2 Release Notes</a> (<a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.0.2/gdal-3.0.2.tar.gz.md5">3.0.2 md5</a>)</p></li>
-</ul>
-<ul class="simple">
-<li><p><strong>2019-10-28</strong> <a class="reference external" href="https://download.osgeo.org/gdal/2.4.3/gdal-2.4.3.tar.gz">gdal-2.4.3.tar.gz</a> <a class="reference external" href="https://github.com/OSGeo/gdal/blob/v2.4.3/gdal/NEWS">2.4.3 Release Notes</a> (<a class="reference external" href="https://download.osgeo.org/gdal/2.4.3/gdal-2.4.3.tar.gz.md5">2.4.3 md5</a>)</p></li>
-</ul>
-<ul class="simple">
-<li><p><strong>2019-06-28</strong> <a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.0.1/gdal-3.0.1.tar.gz">gdal-3.0.1.tar.gz</a> <a class="reference external" href="https://github.com/OSGeo/gdal/blob/v3.0.1/gdal/NEWS">3.0.1 Release Notes</a> (<a class="reference external" href="https://github.com/OSGeo/gdal/releases/download/v3.0.1/gdal-3.0.1.tar.gz.md5">3.0.1 md5</a>)</p></li>
-</ul>
-<ul class="simple">
-<li><p><strong>2019-06-28</strong> <a class="reference external" href="https://download.osgeo.org/gdal/2.4.2/gdal-2.4.2.tar.gz">gdal-2.4.2.tar.gz</a> <a class="reference external" href="https://github.com/OSGeo/gdal/blob/v2.4.2/gdal/NEWS">2.4.2 Release Notes</a> (<a class="reference external" href="https://download.osgeo.org/gdal/2.4.2/gdal-2.4.2.tar.gz.md5">2.4.2 md5</a>)</p></li>
-</ul>
+<h3>過去のリリース<a class="headerlink" href="#past-releases" title="Link to this heading"></a></h3>
+<p>Links to <a class="reference internal" href="download_past.html#download-past"><span class="std std-ref">過去のリリース</span></a> are also available.</p>
 </section>
 <section id="development-source">
-<span id="source"></span><h2>開発ソース<a class="headerlink" href="#development-source" title="Link to this heading"></a></h2>
+<span id="source"></span><h3>開発ソース<a class="headerlink" href="#development-source" title="Link to this heading"></a></h3>
 <p>The main repository for GDAL is located on GitHub at
 <a class="reference external" href="https://github.com/OSGeo/GDAL">https://github.com/OSGeo/GDAL</a>.</p>
 <p>You can obtain a copy of the active source code by issuing the following
@@ -314,10 +201,11 @@ command</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">OSGeo</span><span class="o">/</span><span class="n">GDAL</span><span class="o">.</span><span class="n">git</span>
 </pre></div>
 </div>
-<p>Additional information is available about <a class="reference internal" href="development/dev_environment.html#build-requirements"><span class="std std-ref">Build requirements</span></a> and <a class="reference internal" href="development/building_from_source.html#building-from-source"><span class="std std-ref">GDAL のソースからのビルド</span></a>.</p>
+<p>Additional information is available about <a class="reference internal" href="development/building_from_source.html#build-requirements"><span class="std std-ref">Build requirements</span></a> and <a class="reference internal" href="development/building_from_source.html#building-from-source"><span class="std std-ref">GDAL のソースからのビルド</span></a>.</p>
+</section>
 </section>
 <section id="binaries">
-<h2>バイナリ<a class="headerlink" href="#binaries" title="Link to this heading"></a></h2>
+<span id="id3"></span><h2>バイナリ<a class="headerlink" href="#binaries" title="Link to this heading"></a></h2>
 <p>In this section we list a number of the binary distributions of GDAL
 all of which should have fully reproducible open source build recipes.</p>
 <p>Note that the maintainers of those distributions are generally not the maintainers
@@ -326,17 +214,24 @@ their own support channels.</p>
 <section id="windows">
 <h3>Windows<a class="headerlink" href="#windows" title="Link to this heading"></a></h3>
 <p>Windows builds are available via <a class="reference external" href="https://anaconda.org/conda-forge/gdal">Conda Forge</a> (64-bit only). See the
-<a class="reference internal" href="#conda"><span class="std std-ref">Conda</span></a> section for more detailed information.</p>
+<a class="reference internal" href="#conda"><span class="std std-ref">Conda</span></a> section for more detailed information. GDAL is also distributed
+by <a class="reference external" href="https://www.gisinternals.com/index.html">GISInternals</a> and <a class="reference external" href="https://trac.osgeo.org/osgeo4w/">OSGeo4W</a> and through the <a class="reference external" href="https://www.nuget.org/packages?q=GDAL">NuGet</a> and <a class="reference internal" href="#vcpkg"><span class="std std-ref">vcpkg</span></a> package managers.</p>
 </section>
-<section id="debian">
-<h3>Debian<a class="headerlink" href="#debian" title="Link to this heading"></a></h3>
-<p>Debian packages are now available on <a class="reference external" href="https://tracker.debian.org/pkg/gdal">Debian Unstable</a>.</p>
+<section id="linux">
+<h3>Linux<a class="headerlink" href="#linux" title="Link to this heading"></a></h3>
+<p>Packages are available for <a class="reference external" href="https://tracker.debian.org/pkg/gdal">Debian</a>, <cite>Alpine_</cite>, <cite>Fedora_</cite>, and other distributions.</p>
 </section>
+<section id="mac-os">
+<h3>Mac OS<a class="headerlink" href="#mac-os" title="Link to this heading"></a></h3>
+<p>GDAL packages are available on <a class="reference external" href="https://formulae.brew.sh/formula/gdal">Homebrew</a>.</p>
+</section>
+<section id="cross-platform-package-managers">
+<h3>Cross-Platform Package Managers<a class="headerlink" href="#cross-platform-package-managers" title="Link to this heading"></a></h3>
 <section id="conda">
-<span id="id86"></span><h3>Conda<a class="headerlink" href="#conda" title="Link to this heading"></a></h3>
+<span id="id4"></span><h4>Conda<a class="headerlink" href="#conda" title="Link to this heading"></a></h4>
 <p><a class="reference external" href="https://anaconda.org">Conda</a> can be used on multiple platforms (Windows, macOS, and Linux) to
 install software packages and manage environments. Conda packages for GDAL are
-available at <a class="reference external" href="https://anaconda.org/conda-forge/gdal">https://anaconda.org/conda-forge/gdal</a>.</p>
+available through <a class="reference external" href="https://anaconda.org/conda-forge/gdal">conda-forge</a>.</p>
 <p>Latest version: <a class="reference external" href="https://anaconda.org/conda-forge/gdal"><img alt="Conda badge" src="https://anaconda.org/conda-forge/gdal/badges/version.svg" /></a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="p">[</span><span class="o">-</span><span class="n">c</span> <span class="n">channel</span><span class="p">]</span> <span class="p">[</span><span class="n">package</span><span class="o">...</span><span class="p">]</span>
 </pre></div>
@@ -349,7 +244,7 @@ available at <a class="reference external" href="https://anaconda.org/conda-forg
 </pre></div>
 </div>
 <section id="gdal-master-conda-builds">
-<h4>GDAL master Conda builds<a class="headerlink" href="#gdal-master-conda-builds" title="Link to this heading"></a></h4>
+<h5>GDAL master Conda builds<a class="headerlink" href="#gdal-master-conda-builds" title="Link to this heading"></a></h5>
 <p>GDAL master builds are available in the <a class="reference external" href="https://anaconda.org/gdal-master/gdal">gdal-master</a>
 channel. They are based on dependencies from the <code class="docutils literal notranslate"><span class="pre">conda-forge</span></code> channel.</p>
 <p>First, install mamba into the <code class="docutils literal notranslate"><span class="pre">base</span></code> environment, create a dedicated <code class="docutils literal notranslate"><span class="pre">gdal_master_env</span></code>
@@ -368,10 +263,9 @@ environment, and then activate the dedicated <code class="docutils literal notra
 </section>
 </section>
 <section id="vcpkg">
-<h3>Vcpkg<a class="headerlink" href="#vcpkg" title="Link to this heading"></a></h3>
-<p>The gdal port in vcpkg is kept up to date by Microsoft team members and community contributors.
-The url of vcpkg is: <a class="reference external" href="https://github.com/Microsoft/vcpkg">https://github.com/Microsoft/vcpkg</a> .
-You can download and install gdal using the vcpkg dependency manager:</p>
+<span id="id5"></span><h4>vcpkg<a class="headerlink" href="#vcpkg" title="Link to this heading"></a></h4>
+<p>The GDAL port in the <a class="reference external" href="https://github.com/Microsoft/vcpkg">vcpkg</a> dependency manager is kept up to date by Microsoft team members and community contributors.
+You can download and install GDAL using the vcpkg as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">Microsoft</span><span class="o">/</span><span class="n">vcpkg</span><span class="o">.</span><span class="n">git</span>
 <span class="n">cd</span> <span class="n">vcpkg</span>
 <span class="o">./</span><span class="n">bootstrap</span><span class="o">-</span><span class="n">vcpkg</span><span class="o">.</span><span class="n">sh</span>  <span class="c1"># ./bootstrap-vcpkg.bat for Windows</span>
@@ -382,13 +276,13 @@ You can download and install gdal using the vcpkg dependency manager:</p>
 <p>If the version is out of date, please <a class="reference external" href="https://github.com/Microsoft/vcpkg">create an issue or pull request</a> on the vcpkg repository.</p>
 </section>
 <section id="spack">
-<h3>Spack<a class="headerlink" href="#spack" title="Link to this heading"></a></h3>
+<h4>Spack<a class="headerlink" href="#spack" title="Link to this heading"></a></h4>
 <p>Spack is a package management tool designed to support multiple versions and
 configurations of software on a wide variety of platforms and environments.
 It was designed for large supercomputing centers. Spack builds packages from
 sources, and allows tweaking their configurations.</p>
 <p>You can find information about GDAL in Spack at
-<a class="reference external" href="https://spack.readthedocs.io/en/latest/package_list.html#gdal">https://spack.readthedocs.io/en/latest/package_list.html#gdal</a></p>
+<a class="reference external" href="https://packages.spack.io/package.html?name=gdal">https://packages.spack.io/package.html?name=gdal</a></p>
 <p>For the default GDAL build with a reduced number of drivers:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="o">-</span><span class="n">c</span> <span class="n">feature</span><span class="o">.</span><span class="n">manyFiles</span><span class="o">=</span><span class="n">true</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">spack</span><span class="o">/</span><span class="n">spack</span><span class="o">.</span><span class="n">git</span>
 <span class="n">cd</span> <span class="n">spack</span><span class="o">/</span><span class="nb">bin</span>
@@ -400,13 +294,20 @@ sources, and allows tweaking their configurations.</p>
 </pre></div>
 </div>
 </section>
-<section id="linux-docker-images">
-<h3>Linux Docker images<a class="headerlink" href="#linux-docker-images" title="Link to this heading"></a></h3>
-<p>Images with nightly builds of GDAL master and tagged releases are available at
-<a class="reference external" href="https://github.com/OSGeo/gdal/pkgs/container/gdal">GitHub Container registry</a></p>
-<p>Information on the content of the different configurations can be found at
-<a class="reference external" href="https://github.com/OSGeo/gdal/tree/master/docker">https://github.com/OSGeo/gdal/tree/master/docker</a></p>
 </section>
+</section>
+<section id="containers">
+<span id="id6"></span><h2>Containers<a class="headerlink" href="#containers" title="Link to this heading"></a></h2>
+<p>Docker images with nightly builds of GDAL master and tagged releases are available at
+<a class="reference external" href="https://github.com/OSGeo/gdal/pkgs/container/gdal">GitHub Container registry</a>.</p>
+<p>Information on the content of the different configurations can be found at
+<a class="reference external" href="https://github.com/OSGeo/gdal/tree/master/docker">https://github.com/OSGeo/gdal/tree/master/docker</a>.</p>
+</section>
+<section id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Link to this heading"></a></h2>
+<p>Besides being included when downloading the software, the documentation is
+also available independently as a <a class="reference external" href="https://gdal.org/gdal.pdf">PDF file</a>,
+and <a class="reference external" href="https://github.com/OSGeo/gdal-docs/archive/refs/heads/master.zip">a ZIP of individual HTML pages</a> for offline browsing. (The ZIP also includes the PDF.) The documentation reflects the latest state of the development branch of the software.</p>
 </section>
 </section>
 

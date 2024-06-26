@@ -126,7 +126,7 @@
 <li class="toctree-l2"><a class="reference internal" href="isis3.html">ISIS3 -- USGS Astrogeology ISIS Cube (Version 3)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jdem.html">JDEM -- Japanese DEM (.mem)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2ecw.html">JP2ECW -- ERDAS JPEG2000 (.jp2)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="jp2kak.html">JP2KAK -- JPEG-2000 (based on Kakadu)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jp2kak.html">JP2KAK -- JPEG 2000 (based on Kakadu SDK)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2lura.html">JP2Lura -- JPEG2000 driver based on Lurawave library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2mrsid.html">JP2MrSID -- JPEG2000 via MrSID SDK</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2openjpeg.html">JP2OpenJPEG -- JPEG2000 driver based on OpenJPEG library</a></li>
@@ -262,10 +262,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -388,7 +388,8 @@ for developers.</p>
 </section>
 <section id="creation-options">
 <h2>Creation options<a class="headerlink" href="#creation-options" title="Link to this heading"></a></h2>
-<p>The following creations options are supported:</p>
+<p><a href="#id1"><span class="problematic" id="id2">|about-creation-options|</span></a>
+The following creation options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/raster/vrt-oo-BLOCKXSIZE"><strong>BLOCKXSIZE=value: </strong> (GDAL &gt;= 3.7) Sets block width.</p>
 </li>
@@ -616,7 +617,7 @@ If not specified, defaults to the minimum of the raster height and 128.</p></li>
 <ul class="simple">
 <li><p><strong>SimpleSource</strong>: The <a class="reference internal" href="#simplesource">SimpleSource</a> indicates that raster data should be read from a separate dataset, indicating the dataset, and band to be read from, and how the data should map into this band's raster space.</p></li>
 <li><p><strong>AveragedSource</strong>: The AveragedSource is derived from the SimpleSource and shares the same properties except that it uses an averaging resampling instead of a nearest neighbour algorithm as in SimpleSource, when the size of the destination rectangle is not the same as the size of the source rectangle. Note: a more general mechanism to specify resampling algorithms can be used. See above paragraph about the 'resampling' attribute.</p></li>
-<li><p><strong>NoDataFromMaskSource</strong>: (GDAL &gt;= 3.9) The NoDataFromMaskSource is derived from the SimpleSource and shares the same properties except that it replaces the value of the source with the value of the NODATA child element when the value of the mask band of the source is less or equal to the MaskValueThreshold child element.</p></li>
+<li><p><strong>NoDataFromMaskSource</strong>: (GDAL &gt;= 3.9) The NoDataFromMaskSource is derived from the SimpleSource and shares the same properties except that it replaces the value of the source with the value of the NODATA child element when the value of the mask band of the source is less or equal to the MaskValueThreshold child element. This is typically used to transform a R,G,B,A image into a R,G,B one with a NoData value.</p></li>
 <li><p><strong>ComplexSource</strong>: The <a class="reference internal" href="#complexsource">ComplexSource</a> is derived from the SimpleSource (so it shares the SourceFilename, SourceBand, SrcRect and DstRect elements), but it provides support to rescale and offset the range of the source values. Certain regions of the source can be masked by specifying the NODATA value, or starting with GDAL 3.3, with the &lt;UseMaskBand&gt;true&lt;/UseMaskBand&gt; element.</p></li>
 <li><p><strong>KernelFilteredSource</strong>: The <a class="reference internal" href="#kernelfilteredsource">KernelFilteredSource</a> is a pixel source derived from the Simple Source (so it shares the SourceFilename, SourceBand, SrcRect and DstRect elements, but it also passes the data through a simple filtering kernel specified with the Kernel element.</p></li>
 <li><p><strong>ArraySource</strong>: The <a class="reference internal" href="#arraysource">ArraySource</a> indicates that raster data should be read from a 2D array using the multidimensional API.</p></li>
@@ -796,6 +797,7 @@ For example, a Gaussian blur:</p>
 <p><span class="versionmodified added">Added in version 3.9.</span></p>
 </div>
 <p>The NoDataFromMaskSource is derived from the SimpleSource and shares the same properties except that it replaces the value of the source with the value of the NODATA child element when the value of the mask band of the source is less or equal to the MaskValueThreshold child element.
+This is typically used to transform a R,G,B,A image into a R,G,B one with a NoData value.
 An optional RemappedValue element can be set to specify the value onto which valid pixels whose value is the one of NODATA should be remapped to. When RemappedValue is not explicitly specified, for Byte bands, if NODATA=255, it is implicitly set to 254, otherwise it is set to NODATA+1.</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;NoDataFromMaskSource&gt;</span>
 <span class="w">  </span><span class="nt">&lt;SourceFilename</span><span class="w"> </span><span class="na">relativeToVRT=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>in.tif<span class="nt">&lt;/SourceFilename&gt;</span>

@@ -155,6 +155,7 @@
 <li class="toctree-l2"><a class="reference internal" href="wfs.html">WFS - OGC WFS service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xls.html">XLS - MS Excel format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xlsx.html">XLSX - MS Office Open XML spreadsheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xodr.html">XODR -- OpenDRIVE Road Description Format</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
@@ -162,10 +163,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -264,8 +265,8 @@ used. Feature types cannot be mixed in one layer.</p>
 </section>
 <section id="open-options">
 <h2>Open options<a class="headerlink" href="#open-options" title="Link to this heading"></a></h2>
-<p>Starting with GDAL 2.3, the following open options can be specified
-(typically with the <code class="docutils literal notranslate"><span class="pre">-oo</span> <span class="pre">name=value</span></code> parameters of ogrinfo or ogr2ogr):</p>
+<p><a href="#id1"><span class="problematic" id="id2">|about-open-options|</span></a>
+Starting with GDAL 2.3, the following open options can be specified:</p>
 <ul class="simple">
 <li><p id="drivers/vector/vfk-oo-SUPPRESS_GEOMETRY"><strong>SUPPRESS_GEOMETRY=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. Setting it to YES
 will skip resolving geometry. All layers will be recognized with no
@@ -281,8 +282,8 @@ all layers.</p>
 </section>
 <section id="configuration-options">
 <h2>Configuration options<a class="headerlink" href="#configuration-options" title="Link to this heading"></a></h2>
-<p>Several <a class="reference internal" href="../../user/configoptions.html#configoptions"><span class="std std-ref">configuration options</span></a> are
-available:</p>
+<p><a href="#id3"><span class="problematic" id="id4">|about-config-options|</span></a>
+The following configuration options are available:</p>
 <ul class="simple">
 <li><p id="config-OGR_VFK_DB_NAME"><strong>OGR_VFK_DB_NAME=value: </strong>Determine the name of the SQLite backend database used when reading VFK
 data. By default, SQLite database is created in a directory of input VFK

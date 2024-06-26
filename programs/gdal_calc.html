@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>gdal_calc.py &mdash; GDAL  ドキュメント</title>
+  <title>gdal_calc &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
       <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
 
@@ -26,7 +26,7 @@
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="gdal_contour" href="gdal_contour.html" />
-    <link rel="prev" title="gdal2xyz.py" href="gdal2xyz.html" /> 
+    <link rel="prev" title="gdal2xyz" href="gdal2xyz.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -56,9 +56,9 @@
 <li class="toctree-l2 current"><a class="reference internal" href="index.html#raster-programs">ラスタープログラム</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="raster_common_options.html">共通オプション</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdal-config.html">gdal-config (Unix)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="gdal2tiles.html">gdal2tiles.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="gdal2xyz.html">gdal2xyz.py</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">gdal_calc.py</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="gdal2tiles.html">gdal2tiles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gdal2xyz.html">gdal2xyz</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">gdal_calc</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#synopsis">Synopsis</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#python-options">Python options</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a></li>
@@ -66,35 +66,35 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="gdal_contour.html">gdal_contour</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdal_create.html">gdal_create</a></li>
-<li class="toctree-l3"><a class="reference internal" href="gdal_edit.html">gdal_edit.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="gdal_fillnodata.html">gdal_fillnodata.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gdal_edit.html">gdal_edit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gdal_fillnodata.html">gdal_fillnodata</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdal_footprint.html">gdal_footprint</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdal_grid.html">gdal_grid</a></li>
-<li class="toctree-l3"><a class="reference internal" href="gdal_merge.html">gdal_merge.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="gdal_pansharpen.html">gdal_pansharpen.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="gdal_polygonize.html">gdal_polygonize.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="gdal_proximity.html">gdal_proximity.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gdal_merge.html">gdal_merge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gdal_pansharpen.html">gdal_pansharpen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gdal_polygonize.html">gdal_polygonize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gdal_proximity.html">gdal_proximity</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdal_rasterize.html">gdal_rasterize</a></li>
-<li class="toctree-l3"><a class="reference internal" href="gdal_retile.html">gdal_retile.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="gdal_sieve.html">gdal_sieve.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gdal_retile.html">gdal_retile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gdal_sieve.html">gdal_sieve</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdal_translate.html">gdal_translate</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdal_viewshed.html">gdal_viewshed</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdaladdo.html">gdaladdo</a></li>
-<li class="toctree-l3"><a class="reference internal" href="gdalattachpct.html">gdalattachpct.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gdalattachpct.html">gdalattachpct</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdalbuildvrt.html">gdalbuildvrt</a></li>
-<li class="toctree-l3"><a class="reference internal" href="gdalcompare.html">gdalcompare.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gdalcompare.html">gdalcompare</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdaldem.html">gdaldem</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdalinfo.html">gdalinfo</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdallocationinfo.html">gdallocationinfo</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdalmanage.html">gdalmanage</a></li>
-<li class="toctree-l3"><a class="reference internal" href="gdalmove.html">gdalmove.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gdalmove.html">gdalmove</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdalsrsinfo.html">gdalsrsinfo</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdaltindex.html">gdaltindex</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdaltransform.html">gdaltransform</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdalwarp.html">gdalwarp</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nearblack.html">nearblack</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pct2rgb.html">pct2rgb.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="rgb2pct.html">rgb2pct.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pct2rgb.html">pct2rgb</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rgb2pct.html">rgb2pct</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#multidimensional-raster-programs">多次元ラスタープログラム</a></li>
@@ -103,17 +103,17 @@
 <li class="toctree-l2"><a class="reference internal" href="index.html#other-utilities">その他ユーティリティ</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">Raster drivers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">Vector drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">ラスタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">ベクタードライバー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">開発</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">コミュニティ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -151,7 +151,7 @@
       
           <li><a href="index.html">プログラム</a> &raquo;</li>
       
-      <li>gdal_calc.py</li>
+      <li>gdal_calc</li>
     
 
     
@@ -173,7 +173,7 @@
         <a href="gdal_contour.html" class="btn btn-neutral float-right" title="gdal_contour" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="gdal2xyz.html" class="btn btn-neutral float-left" title="gdal2xyz.py" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="gdal2xyz.html" class="btn btn-neutral float-left" title="gdal2xyz" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -182,12 +182,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="gdal-calc-py">
-<span id="gdal-calc"></span><h1>gdal_calc.py<a class="headerlink" href="#gdal-calc-py" title="Link to this heading"></a></h1>
+  <section id="gdal-calc">
+<span id="id1"></span><h1>gdal_calc<a class="headerlink" href="#gdal-calc" title="Link to this heading"></a></h1>
 <p>Command line raster calculator with numpy syntax.</p>
 <section id="synopsis">
 <span id="index-0"></span><h2>Synopsis<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdal_calc</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="o">-</span><span class="n">general</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdal_calc</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="o">-</span><span class="n">general</span><span class="p">]</span>
              <span class="o">--</span><span class="n">calc</span><span class="o">=</span><span class="n">expression</span> <span class="o">--</span><span class="n">outfile</span><span class="o">=&lt;</span><span class="n">out_filename</span><span class="o">&gt;</span> <span class="p">[</span><span class="o">-</span><span class="n">A</span> <span class="o">&lt;</span><span class="n">filename</span><span class="o">&gt;</span><span class="p">]</span>
              <span class="p">[</span><span class="o">--</span><span class="n">A_band</span><span class="o">=&lt;</span><span class="n">n</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">B</span><span class="o">...-</span><span class="n">Z</span> <span class="o">&lt;</span><span class="n">filename</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">other_options</span><span class="o">&gt;</span><span class="p">]</span>
 </pre></div>
@@ -198,6 +198,10 @@ arithmetic supported by numpy arrays such as <code class="docutils literal notra
 <code class="docutils literal notranslate"><span class="pre">/</span></code> along with logical operators such as <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>.
 Note that all files must have the same dimensions (unless extent option is used),
 but no projection checking is performed (unless projectionCheck option is used).</p>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>gdal_calc is a Python utility, and is only available if GDAL Python bindings are available.</p>
+</div>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-help">
 <span class="sig-name descname"><span class="pre">--help</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-help" title="Link to this definition"></a></dt>
@@ -399,52 +403,53 @@ They are not available using the command prompt.</p>
 <section id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
 <p>Add two files together:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_calc.py<span class="w"> </span>-A<span class="w"> </span>input1.tif<span class="w"> </span>-B<span class="w"> </span>input2.tif<span class="w"> </span>--outfile<span class="o">=</span>result.tif<span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;A+B&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_calc<span class="w"> </span>-A<span class="w"> </span>input1.tif<span class="w"> </span>-B<span class="w"> </span>input2.tif<span class="w"> </span>--outfile<span class="o">=</span>result.tif<span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;A+B&quot;</span>
 </pre></div>
 </div>
 <p>Average of two layers:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_calc.py<span class="w"> </span>-A<span class="w"> </span>input1.tif<span class="w"> </span>-B<span class="w"> </span>input2.tif<span class="w"> </span>--outfile<span class="o">=</span>result.tif<span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;(A+B)/2&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_calc<span class="w"> </span>-A<span class="w"> </span>input1.tif<span class="w"> </span>-B<span class="w"> </span>input2.tif<span class="w"> </span>--outfile<span class="o">=</span>result.tif<span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;(A+B)/2&quot;</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
 <p>In the previous example, beware that if A and B inputs are of the same datatype, for example integers, you
 may need to force the conversion of one of the operands before the division operation.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_calc.py<span class="w"> </span>-A<span class="w"> </span>input.tif<span class="w"> </span>-B<span class="w"> </span>input2.tif<span class="w"> </span>--outfile<span class="o">=</span>result.tif<span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;(A.astype(numpy.float64) + B) / 2&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_calc<span class="w"> </span>-A<span class="w"> </span>input.tif<span class="w"> </span>-B<span class="w"> </span>input2.tif<span class="w"> </span>--outfile<span class="o">=</span>result.tif<span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;(A.astype(numpy.float64) + B) / 2&quot;</span>
 </pre></div>
 </div>
 </div>
 <p>Add three files together (two options with the same result):</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_calc.py<span class="w"> </span>-A<span class="w"> </span>input1.tif<span class="w"> </span>-B<span class="w"> </span>input2.tif<span class="w"> </span>-C<span class="w"> </span>input3.tif<span class="w"> </span>--outfile<span class="o">=</span>result.tif<span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;A+B+C&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_calc<span class="w"> </span>-A<span class="w"> </span>input1.tif<span class="w"> </span>-B<span class="w"> </span>input2.tif<span class="w"> </span>-C<span class="w"> </span>input3.tif<span class="w"> </span>--outfile<span class="o">=</span>result.tif<span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;A+B+C&quot;</span>
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_calc.py<span class="w"> </span>-A<span class="w"> </span>input1.tif<span class="w"> </span>-A<span class="w"> </span>input2.tif<span class="w"> </span>-A<span class="w"> </span>input3.tif<span class="w"> </span>--outfile<span class="o">=</span>result.tif<span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;numpy.sum(A,axis=0)&quot;</span>.
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_calc<span class="w"> </span>-A<span class="w"> </span>input1.tif<span class="w"> </span>-A<span class="w"> </span>input2.tif<span class="w"> </span>-A<span class="w"> </span>input3.tif<span class="w"> </span>--outfile<span class="o">=</span>result.tif<span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;numpy.sum(A,axis=0)&quot;</span>.
 </pre></div>
 </div>
 <p>Average of three layers (two options with the same result):</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_calc.py<span class="w"> </span>-A<span class="w"> </span>input1.tif<span class="w"> </span>-B<span class="w"> </span>input2.tif<span class="w"> </span>-C<span class="w"> </span>input3.tif<span class="w"> </span>--outfile<span class="o">=</span>result.tif<span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;(A+B+C)/3&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_calc<span class="w"> </span>-A<span class="w"> </span>input1.tif<span class="w"> </span>-B<span class="w"> </span>input2.tif<span class="w"> </span>-C<span class="w"> </span>input3.tif<span class="w"> </span>--outfile<span class="o">=</span>result.tif<span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;(A+B+C)/3&quot;</span>
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_calc.py<span class="w"> </span>-A<span class="w"> </span>input1.tif<span class="w"> </span>input2.tif<span class="w"> </span>input3.tif<span class="w"> </span>--outfile<span class="o">=</span>result.tif<span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;numpy.average(a,axis=0)&quot;</span>.
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_calc<span class="w"> </span>-A<span class="w"> </span>input1.tif<span class="w"> </span>input2.tif<span class="w"> </span>input3.tif<span class="w"> </span>--outfile<span class="o">=</span>result.tif<span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;numpy.average(a,axis=0)&quot;</span>.
 </pre></div>
 </div>
 <p>Maximum of three layers  (two options with the same result):</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_calc.py<span class="w"> </span>-A<span class="w"> </span>input1.tif<span class="w"> </span>-B<span class="w"> </span>input2.tif<span class="w"> </span>-C<span class="w"> </span>input3.tif<span class="w"> </span>--outfile<span class="o">=</span>result.tif<span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;numpy.max((A,B,C),axis=0)&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_calc<span class="w"> </span>-A<span class="w"> </span>input1.tif<span class="w"> </span>-B<span class="w"> </span>input2.tif<span class="w"> </span>-C<span class="w"> </span>input3.tif<span class="w"> </span>--outfile<span class="o">=</span>result.tif<span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;numpy.max((A,B,C),axis=0)&quot;</span>
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_calc.py<span class="w"> </span>-A<span class="w"> </span>input1.tif<span class="w"> </span>input2.tif<span class="w"> </span>input3.tif<span class="w"> </span>--outfile<span class="o">=</span>result.tif<span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;numpy.max(A,axis=0)&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_calc<span class="w"> </span>-A<span class="w"> </span>input1.tif<span class="w"> </span>input2.tif<span class="w"> </span>input3.tif<span class="w"> </span>--outfile<span class="o">=</span>result.tif<span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;numpy.max(A,axis=0)&quot;</span>
 </pre></div>
 </div>
 <p>Set values of zero and below to null:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_calc.py<span class="w"> </span>-A<span class="w"> </span>input.tif<span class="w"> </span>--outfile<span class="o">=</span>result.tif<span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;A*(A&gt;0)&quot;</span><span class="w"> </span>--NoDataValue<span class="o">=</span><span class="m">0</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_calc<span class="w"> </span>-A<span class="w"> </span>input.tif<span class="w"> </span>--outfile<span class="o">=</span>result.tif<span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;A*(A&gt;0)&quot;</span><span class="w"> </span>--NoDataValue<span class="o">=</span><span class="m">0</span>
 </pre></div>
 </div>
 <p>Using logical operator to keep a range of values from input:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_calc.py<span class="w"> </span>-A<span class="w"> </span>input.tif<span class="w"> </span>--outfile<span class="o">=</span>result.tif<span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;A*logical_and(A&gt;100,A&lt;150)&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_calc<span class="w"> </span>-A<span class="w"> </span>input.tif<span class="w"> </span>--outfile<span class="o">=</span>result.tif<span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;A*logical_and(A&gt;100,A&lt;150)&quot;</span>
 </pre></div>
 </div>
 <p>Work with multiple bands:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_calc.py<span class="w"> </span>-A<span class="w"> </span>input.tif<span class="w"> </span>--A_band<span class="o">=</span><span class="m">1</span><span class="w"> </span>-B<span class="w"> </span>input.tif<span class="w"> </span>--B_band<span class="o">=</span><span class="m">2</span><span class="w"> </span>--outfile<span class="o">=</span>result.tif<span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;(A+B)/2&quot;</span><span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;B*logical_and(A&gt;100,A&lt;150)&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_calc<span class="w"> </span>-A<span class="w"> </span>input.tif<span class="w"> </span>--A_band<span class="o">=</span><span class="m">1</span><span class="w"> </span>-B<span class="w"> </span>input.tif<span class="w"> </span>--B_band<span class="o">=</span><span class="m">2</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--outfile<span class="o">=</span>result.tif<span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;(A+B)/2&quot;</span><span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;B*logical_and(A&gt;100,A&lt;150)&quot;</span>
 </pre></div>
 </div>
 </section>
@@ -460,7 +465,7 @@ may need to force the conversion of one of the operands before the division oper
         <a href="gdal_contour.html" class="btn btn-neutral float-right" title="gdal_contour" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="gdal2xyz.html" class="btn btn-neutral float-left" title="gdal2xyz.py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="gdal2xyz.html" class="btn btn-neutral float-left" title="gdal2xyz" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

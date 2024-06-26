@@ -151,6 +151,7 @@
 <li class="toctree-l2"><a class="reference internal" href="wfs.html">WFS - OGC WFS service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xls.html">XLS - MS Excel format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xlsx.html">XLSX - MS Office Open XML spreadsheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xodr.html">XODR -- OpenDRIVE Road Description Format</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
@@ -158,10 +159,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -267,6 +268,8 @@ The GeoParquet 1.1.0 specification is supported since GDAL 3.9.0.</p>
 </section>
 <section id="open-options">
 <h2>Open options<a class="headerlink" href="#open-options" title="Link to this heading"></a></h2>
+<p><a href="#id3"><span class="problematic" id="id4">|about-open-options|</span></a>
+The following open options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/vector/parquet-oo-GEOM_POSSIBLE_NAMES"><strong>GEOM_POSSIBLE_NAMES=value: </strong> (GDAL &gt;= 3.8)  Defaults to <code class="docutils literal notranslate"><span class="pre">geometry,wkb_geometry,wkt_geometry</span></code>. Comma separated list of possible names for geometry column(s). Only used
 for files without GeoParquet dataset-level metadata.
@@ -288,6 +291,8 @@ be a PROJ.4 or WKT CRS string.</p>
 </section>
 <section id="layer-creation-options">
 <h2>Layer creation options<a class="headerlink" href="#layer-creation-options" title="Link to this heading"></a></h2>
+<p><a href="#id5"><span class="problematic" id="id6">|about-layer-creation-options|</span></a>
+The following layer creation options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/vector/parquet-lco-COMPRESSION"><strong>COMPRESSION=[NONE/UNCOMPRESSED/SNAPPY/GZIP/BROTLI/ZSTD/LZ4_RAW/LZ4_HADOOP]: </strong><p>Compression method.
 Available values depend on how the Parquet library was compiled.
@@ -365,7 +370,10 @@ speed-up evaluations of SQL requests like:
 <p>Starting with GDAL 3.6.0, the driver can read directories that contain several
 Parquet files, and expose them as a single layer. This support is only enabled
 if the driver is built against the <code class="docutils literal notranslate"><span class="pre">arrowdataset</span></code> C++ library.</p>
-<p>Note that no optimization is currently done regarding filtering.</p>
+<p>It is also possible to force opening single Parquet file in that mode by prefixing
+their filename with <code class="docutils literal notranslate"><span class="pre">PARQUET:</span></code>.</p>
+<p>Optimized spatial and attribute filtering for Arrow datasets is available since
+GDAL 3.10.</p>
 </section>
 <section id="metadata">
 <h2>Metadata<a class="headerlink" href="#metadata" title="Link to this heading"></a></h2>

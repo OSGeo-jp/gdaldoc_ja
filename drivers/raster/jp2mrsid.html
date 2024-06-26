@@ -126,7 +126,7 @@
 <li class="toctree-l2"><a class="reference internal" href="isis3.html">ISIS3 -- USGS Astrogeology ISIS Cube (Version 3)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jdem.html">JDEM -- Japanese DEM (.mem)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2ecw.html">JP2ECW -- ERDAS JPEG2000 (.jp2)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="jp2kak.html">JP2KAK -- JPEG-2000 (based on Kakadu)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jp2kak.html">JP2KAK -- JPEG 2000 (based on Kakadu SDK)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2lura.html">JP2Lura -- JPEG2000 driver based on Lurawave library</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">JP2MrSID -- JPEG2000 via MrSID SDK</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#driver-capabilities">Driver capabilities</a></li>
@@ -231,10 +231,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -337,21 +337,23 @@ DSDK and ESDK.</p>
 <p>Georeferencing information can come from different sources : internal
 (GeoJP2 or GMLJP2 boxes), worldfile .j2w/.wld sidecar files, or PAM
 (Persistent Auxiliary metadata) .aux.xml sidecar files. By default,
-information is fetched in following order (first listed is the most
-prioritary): PAM, GeoJP2, GMLJP2, WORLDFILE.</p>
+information is fetched in following order (first listed is the highest
+priority): PAM, GeoJP2, GMLJP2, WORLDFILE.</p>
 <p>Starting with GDAL 2.2, the allowed sources and their priority order can
 be changed with the <a class="reference internal" href="../../user/configoptions.html#config-GDAL_GEOREF_SOURCES"><code class="docutils literal notranslate"><span class="pre">GDAL_GEOREF_SOURCES</span></code></a> configuration option (or
 <a class="reference internal" href="#drivers/raster/jp2mrsid-oo-GEOREF_SOURCES"><code class="docutils literal notranslate"><span class="pre">GEOREF_SOURCES</span></code></a> open option) whose value is a comma-separated list of the
 following keywords : PAM, GEOJP2, GMLJP2, INTERNAL (shortcut for
-GEOJP2,GMLJP2), WORLDFILE, NONE. First mentioned sources are the most
-prioritary over the next ones. A non mentioned source will be ignored.</p>
+GEOJP2,GMLJP2), WORLDFILE, NONE. Earlier mentioned sources take
+priority over later ones. A non mentioned source will be ignored.</p>
 <p>For example setting it to &quot;WORLDFILE,PAM,INTERNAL&quot; will make a
-geotransformation matrix from a potential worldfile prioritary over PAM
+geotransformation matrix from a potential worldfile priority over PAM
 or internal JP2 boxes. Setting it to &quot;PAM,WORLDFILE,GEOJP2&quot; will use the
 mentioned sources and ignore GMLJP2 boxes.</p>
 </section>
 <section id="open-options">
 <h2>Open Options<a class="headerlink" href="#open-options" title="Link to this heading"></a></h2>
+<p><a href="#id3"><span class="problematic" id="id4">|about-open-options|</span></a>
+The following open option is available:</p>
 <ul class="simple">
 <li><p id="drivers/raster/jp2mrsid-oo-GEOREF_SOURCES"><strong>GEOREF_SOURCES=value: </strong> (GDAL &gt;= 2.2) Define which georeferencing
 sources are allowed and their priority order. See
@@ -362,7 +364,9 @@ sources are allowed and their priority order. See
 <section id="creation-options">
 <h2>Creation Options<a class="headerlink" href="#creation-options" title="Link to this heading"></a></h2>
 <p>If you have the MrSID ESDK (5.x or newer), it can be used to write
-JPEG2000 files. The following creation options are supported.</p>
+JPEG2000 files.
+<a href="#id5"><span class="problematic" id="id6">|about-creation-options|</span></a>
+The following creation options are supported.</p>
 <ul class="simple">
 <li><p id="drivers/raster/jp2mrsid-co-WORLDFILE"><strong>WORLDFILE=YES: </strong>to write an ESRI world file (with the extension .j2w).</p>
 </li>

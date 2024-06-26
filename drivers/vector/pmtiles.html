@@ -127,6 +127,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#layer-configuration">Layer configuration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#layer-creation-options">Layer creation options</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#vsipmtiles-virtual-file-system">/vsipmtiles/ virtual file system</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
@@ -148,6 +149,7 @@
 <li class="toctree-l2"><a class="reference internal" href="wfs.html">WFS - OGC WFS service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xls.html">XLS - MS Excel format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xlsx.html">XLSX - MS Office Open XML spreadsheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xodr.html">XODR -- OpenDRIVE Road Description Format</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
@@ -155,10 +157,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -276,7 +278,8 @@ to hide those discontinuities.</p>
 </section>
 <section id="opening-options">
 <h2>Opening options<a class="headerlink" href="#opening-options" title="Link to this heading"></a></h2>
-<p>The following open options are available:</p>
+<p><a href="#id5"><span class="problematic" id="id6">|about-open-options|</span></a>
+The following open options are available:</p>
 <ul class="simple">
 <li><p id="drivers/vector/pmtiles-oo-CLIP"><strong>CLIP=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">YES</span></code>. Whether to clip geometries of vector features to tile extent.<p>Vector tiles are generally produced with a buffer that provides overlaps
 between adjacent tiles, and can be used to display them properly. When
@@ -313,6 +316,8 @@ mode that will involve computing them by discretizing geometry coordinates.</p>
 </section>
 <section id="dataset-creation-options">
 <h2>Dataset creation options<a class="headerlink" href="#dataset-creation-options" title="Link to this heading"></a></h2>
+<p><a href="#id7"><span class="problematic" id="id8">|about-dataset-creation-options|</span></a>
+The following dataset creation options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/vector/pmtiles-co-NAME"><strong>NAME=value: </strong>Tileset name. Defaults to the basename of the
 output file/directory. Used to fill metadata records.</p>
@@ -327,8 +332,8 @@ output file/directory. Used to fill metadata records.</p>
 generated. Maximum supported value is 22.</p>
 </p>
 </li>
-<li><p id="drivers/vector/pmtiles-co-CONF"><strong>CONF=[&lt;json&gt;/&lt;filename&gt;]: </strong>Layer configuration as a JSon serialized string.
-Or filename containing the configuration as JSon.</p>
+<li><p id="drivers/vector/pmtiles-co-CONF"><strong>CONF=[&lt;json&gt;/&lt;filename&gt;]: </strong>Layer configuration as a JSON serialized string.
+Or filename containing the configuration as JSON.</p>
 </li>
 <li><p id="drivers/vector/pmtiles-co-SIMPLIFICATION"><strong>SIMPLIFICATION=float: </strong>Simplification factor for linear or
 polygonal geometries. The unit is the integer unit of tiles after
@@ -361,7 +366,7 @@ discarded.</p>
 <section id="layer-configuration">
 <h2>Layer configuration<a class="headerlink" href="#layer-configuration" title="Link to this heading"></a></h2>
 <p>The above mentioned CONF dataset creation option can be set to a string
-whose value is a JSon serialized document such as the below one:</p>
+whose value is a JSON serialized document such as the below one:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;boundaries_lod0&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;target_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;boundaries&quot;</span><span class="p">,</span>
@@ -386,6 +391,8 @@ case.</p>
 </section>
 <section id="layer-creation-options">
 <h2>Layer creation options<a class="headerlink" href="#layer-creation-options" title="Link to this heading"></a></h2>
+<p><a href="#id9"><span class="problematic" id="id10">|about-layer-creation-options|</span></a>
+The following layer creation options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/vector/pmtiles-lco-MINZOOM"><strong>MINZOOM=&lt;integer&gt;: </strong>Minimum zoom level at which tiles are
 generated. Defaults to the dataset creation option <a class="reference internal" href="#drivers/vector/pmtiles-co-MINZOOM"><code class="docutils literal notranslate"><span class="pre">MINZOOM</span></code></a> value.</p>
@@ -478,6 +485,21 @@ dataset</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>swig/python/gdal-utils/osgeo_utils/samples/gdal_cp.py<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;/vsipmtiles//vsicurl/https://protomaps.github.io/PMTiles/protomaps(vector)ODbL_firenze.pmtiles&quot;</span><span class="w"> </span>out_pmtiles
 </pre></div>
 </div>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
+<ul>
+<li><p>Simple translation of a single shapefile into PMTiles. Dataset creation options (dsco) MINZOOM and MAXZOOM specifies tile zoom levels.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ogr2ogr</span> <span class="o">-</span><span class="n">dsco</span> <span class="n">MINZOOM</span><span class="o">=</span><span class="mi">10</span> <span class="o">-</span><span class="n">dsco</span> <span class="n">MAXZOOM</span><span class="o">=</span><span class="mi">20</span> <span class="o">-</span><span class="n">f</span> <span class="s2">&quot;PMTiles&quot;</span> <span class="n">filename</span><span class="o">.</span><span class="n">pmtiles</span> <span class="n">my_shapes</span><span class="o">.</span><span class="n">shp</span>
+</pre></div>
+</div>
+</li>
+<li><p>Merge all PostgreSQL/PostGIS tables in a schema into a single PMTiles file. PostgreSQL table names are used as layer names. Dataset creation options (dsco) MINZOOM and MAXZOOM specifies tile zoom levels.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ogr2ogr</span> <span class="o">-</span><span class="n">dsco</span> <span class="n">MINZOOM</span><span class="o">=</span><span class="mi">0</span> <span class="o">-</span><span class="n">dsco</span> <span class="n">MAXZOOM</span><span class="o">=</span><span class="mi">22</span> <span class="o">-</span><span class="n">f</span> <span class="s2">&quot;PMTiles&quot;</span> <span class="n">filename</span><span class="o">.</span><span class="n">pmtiles</span> <span class="s2">&quot;PG:host=my_host port=my_port dbname=my_database user=my_user password=my_password schemas=my_schema&quot;</span>
+</pre></div>
+</div>
+</li>
+</ul>
 </section>
 <section id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>

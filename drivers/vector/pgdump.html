@@ -150,6 +150,7 @@
 <li class="toctree-l2"><a class="reference internal" href="wfs.html">WFS - OGC WFS service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xls.html">XLS - MS Excel format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xlsx.html">XLSX - MS Office Open XML spreadsheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xodr.html">XODR -- OpenDRIVE Road Description Format</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
@@ -157,10 +158,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -266,6 +267,8 @@ multiple PostGIS geometry columns (following <a class="reference internal" href=
 <h2>Creation options<a class="headerlink" href="#creation-options" title="Link to this heading"></a></h2>
 <section id="dataset-creation-options">
 <h3>Dataset Creation Options<a class="headerlink" href="#dataset-creation-options" title="Link to this heading"></a></h3>
+<p><a href="#id1"><span class="problematic" id="id2">|about-dataset-creation-options|</span></a>
+The following dataset creation options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/vector/pgdump-dsco-LINEFORMAT"><strong>LINEFORMAT=[CRLF/LF]: </strong>By default files are created with the line
 termination conventions of the local platform (CR/LF on win32 or LF
@@ -277,6 +280,8 @@ on all other systems). This may be overridden through use of the
 </section>
 <section id="layer-creation-options">
 <h3>Layer Creation Options<a class="headerlink" href="#layer-creation-options" title="Link to this heading"></a></h3>
+<p><a href="#id3"><span class="problematic" id="id4">|about-layer-creation-options|</span></a>
+The following layer creation options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/vector/pgdump-lco-GEOM_TYPE"><strong>GEOM_TYPE=[geometry/geography]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">geometry</span></code>. The <a class="reference internal" href="#drivers/vector/pgdump-lco-GEOM_TYPE"><code class="docutils literal notranslate"><span class="pre">GEOM_TYPE</span></code></a> layer creation option can be set to one
 of &quot;geometry&quot; or &quot;geography&quot; (PostGIS &gt;= 1.5) to force the type of
@@ -393,6 +398,8 @@ preserved by default by ogr2ogr, unless the -nomd option is used.</p>
 </section>
 <section id="environment-variables">
 <h3>Environment variables<a class="headerlink" href="#environment-variables" title="Link to this heading"></a></h3>
+<p><a href="#id5"><span class="problematic" id="id6">|about-config-options|</span></a>
+The following configuration options are available:</p>
 <ul class="simple">
 <li><p><p id="config-PG_USE_COPY"><strong>PG_USE_COPY=value: </strong>This may be &quot;YES&quot; for using COPY for inserting data
 to Postgresql. COPY is significantly faster than INSERT. COPY is used by

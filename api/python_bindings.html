@@ -52,17 +52,17 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../download.html">ダウンロード</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../programs/index.html">プログラム</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">Raster drivers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">Vector drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">ラスタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">ベクタードライバー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">開発</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">コミュニティ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -190,10 +190,9 @@ To install the Python dependencies and build numpy-based raster support:</p>
 </div>
 <p>This is most often due to pip reusing a cached GDAL installation.
 Verify that the necessary dependencies have been installed and then run the following to force a clean build:</p>
-<dl class="simple">
-<dt>::</dt><dd><p>pip install --no-cache --force-reinstall gdal[numpy]==&quot;$(gdal-config --version).*&quot;</p>
-</dd>
-</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">cache</span> <span class="o">--</span><span class="n">force</span><span class="o">-</span><span class="n">reinstall</span> <span class="n">gdal</span><span class="p">[</span><span class="n">numpy</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;$(gdal-config --version).*&quot;</span>
+</pre></div>
+</div>
 </section>
 <section id="potential-issues-with-gdal-3-9-python-3-9-and-numpy-2-0">
 <h3>Potential issues with GDAL &gt;= 3.9, Python &gt;= 3.9 and NumPy 2.0<a class="headerlink" href="#potential-issues-with-gdal-3-9-python-3-9-and-numpy-2-0" title="Link to this heading"></a></h3>

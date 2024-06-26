@@ -126,7 +126,7 @@
 <li class="toctree-l2"><a class="reference internal" href="isis3.html">ISIS3 -- USGS Astrogeology ISIS Cube (Version 3)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jdem.html">JDEM -- Japanese DEM (.mem)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2ecw.html">JP2ECW -- ERDAS JPEG2000 (.jp2)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="jp2kak.html">JP2KAK -- JPEG-2000 (based on Kakadu)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jp2kak.html">JP2KAK -- JPEG 2000 (based on Kakadu SDK)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2lura.html">JP2Lura -- JPEG2000 driver based on Lurawave library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2mrsid.html">JP2MrSID -- JPEG2000 via MrSID SDK</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2openjpeg.html">JP2OpenJPEG -- JPEG2000 driver based on OpenJPEG library</a></li>
@@ -250,10 +250,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -376,6 +376,8 @@ content in the EMBEDDED_METADATA metadata domain.</p>
 </section>
 <section id="configuration-options">
 <h2>Configuration options<a class="headerlink" href="#configuration-options" title="Link to this heading"></a></h2>
+<p><a href="#id1"><span class="problematic" id="id2">|about-config-options|</span></a>
+The following configuration options are supported:</p>
 <ul class="simple">
 <li><p id="config-GDAL_PDF_DPI"><strong>GDAL_PDF_DPI=value: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">150</span></code>. To control the dimensions of the raster by
 specifying the DPI of the rasterization.
@@ -418,7 +420,8 @@ layers for the vector part to be &quot;laundered&quot;.</p>
 </ul>
 <section id="open-options">
 <h3>Open Options<a class="headerlink" href="#open-options" title="Link to this heading"></a></h3>
-<p>Above configuration options are also available as open options.</p>
+<p><a href="#id3"><span class="problematic" id="id4">|about-open-options|</span></a>
+Above configuration options are also available as open options.</p>
 <ul class="simple">
 <li><p id="drivers/raster/pdf-oo-RENDERING_OPTIONS"><strong>RENDERING_OPTIONS=[RASTER,VECTOR,TEXT/RASTER,VECTOR/RASTER,TEXT/RASTER/VECTOR,TEXT/VECTOR/TEXT]: </strong>Equivalent of <a class="reference internal" href="#config-GDAL_PDF_RENDERING_OPTIONS"><code class="docutils literal notranslate"><span class="pre">GDAL_PDF_RENDERING_OPTIONS</span></code></a> configuration option.</p>
 </li>
@@ -490,6 +493,8 @@ types).</p>
 <p>Note: PDF write support does not require linking to any backend.</p>
 <section id="creation-options">
 <h3>Creation Options<a class="headerlink" href="#creation-options" title="Link to this heading"></a></h3>
+<p><a href="#id5"><span class="problematic" id="id6">|about-creation-options|</span></a>
+The following creation options are available:</p>
 <ul class="simple">
 <li><p id="drivers/raster/pdf-co-COMPRESS"><strong>COMPRESS=[NONE/DEFLATE/JPEG/JPEG2000]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">DEFLATE</span></code>. Set the compression to use for raster data.</p>
 </li>

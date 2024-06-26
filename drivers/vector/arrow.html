@@ -145,6 +145,7 @@
 <li class="toctree-l2"><a class="reference internal" href="wfs.html">WFS - OGC WFS service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xls.html">XLS - MS Excel format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xlsx.html">XLSX - MS Office Open XML spreadsheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xodr.html">XODR -- OpenDRIVE Road Description Format</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
@@ -152,10 +153,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -255,7 +256,11 @@ On opening, it might difficult for the driver to detect that the content is
 specifically a Arrow IPC stream, especially if the extension is not <code class="docutils literal notranslate"><span class="pre">.arrows</span></code>,
 and the metadata section is large.
 Prefixing the filename with <code class="docutils literal notranslate"><span class="pre">ARROW_IPC_STREAM:</span></code> (e.g &quot;ARROW_IPC_STREAM:/vsistdin/&quot;)
-will cause the driver to unconditionally open the file as a streaming IPC format.</p></li>
+will cause the driver to unconditionally open the file as a streaming IPC format.
+Alternatively, starting with GDAL 3.10, specifying the <code class="docutils literal notranslate"><span class="pre">-if</span> <span class="pre">ARROW</span></code> option to
+command line utilities accepting it, or <code class="docutils literal notranslate"><span class="pre">ARROW</span></code> as the only value of the
+<code class="docutils literal notranslate"><span class="pre">papszAllowedDrivers</span></code> of <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpenEx()</span></code>, also forces the driver to
+recognize the passed filename.</p></li>
 </ul>
 <p>This driver also supports geometry columns using the GeoArrow specification.</p>
 <div class="admonition note">
@@ -283,6 +288,8 @@ will cause the driver to unconditionally open the file as a streaming IPC format
 </section>
 <section id="layer-creation-options">
 <h2>Layer creation options<a class="headerlink" href="#layer-creation-options" title="Link to this heading"></a></h2>
+<p><a href="#id1"><span class="problematic" id="id2">|about-layer-creation-options|</span></a>
+The following layer creation options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/vector/arrow-lco-COMPRESSION"><strong>COMPRESSION=[NONE/ZSTD/LZ4]: </strong>Compression method.
 Available values depend on how the Arrow library was compiled.

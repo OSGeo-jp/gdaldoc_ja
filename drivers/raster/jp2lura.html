@@ -26,7 +26,7 @@
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="検索" href="../../search.html" />
     <link rel="next" title="JP2MrSID -- JPEG2000 via MrSID SDK" href="jp2mrsid.html" />
-    <link rel="prev" title="JP2KAK -- JPEG-2000 (based on Kakadu)" href="jp2kak.html" /> 
+    <link rel="prev" title="JP2KAK -- JPEG 2000 (based on Kakadu SDK)" href="jp2kak.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -126,12 +126,12 @@
 <li class="toctree-l2"><a class="reference internal" href="isis3.html">ISIS3 -- USGS Astrogeology ISIS Cube (Version 3)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jdem.html">JDEM -- Japanese DEM (.mem)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2ecw.html">JP2ECW -- ERDAS JPEG2000 (.jp2)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="jp2kak.html">JP2KAK -- JPEG-2000 (based on Kakadu)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jp2kak.html">JP2KAK -- JPEG 2000 (based on Kakadu SDK)</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">JP2Lura -- JPEG2000 driver based on Lurawave library</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#driver-capabilities">Driver capabilities</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#georeferencing">Georeferencing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#configuration-options">Configuration Options</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#option-options">Option Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#open-options">Open Options</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#creation-options">Creation Options</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#lossless-compression">Lossless compression</a></li>
 </ul>
@@ -237,10 +237,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -300,7 +300,7 @@
         <a href="jp2mrsid.html" class="btn btn-neutral float-right" title="JP2MrSID -- JPEG2000 via MrSID SDK" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="jp2kak.html" class="btn btn-neutral float-left" title="JP2KAK -- JPEG-2000 (based on Kakadu)" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="jp2kak.html" class="btn btn-neutral float-left" title="JP2KAK -- JPEG 2000 (based on Kakadu SDK)" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -346,21 +346,23 @@ compressed NITF files.</p>
 <p>Georeferencing information can come from different sources : internal
 (GeoJP2 or GMLJP2 boxes), worldfile .j2w/.wld sidecar files, or PAM
 (Persistent Auxiliary metadata) .aux.xml sidecar files. By default,
-information is fetched in following order (first listed is the most
-prioritary): PAM, GeoJP2, GMLJP2, WORLDFILE.</p>
+information is fetched in following order (first listed is the highest
+priority): PAM, GeoJP2, GMLJP2, WORLDFILE.</p>
 <p>The allowed sources and their priority order can be changed with the
 <a class="reference internal" href="../../user/configoptions.html#config-GDAL_GEOREF_SOURCES"><code class="docutils literal notranslate"><span class="pre">GDAL_GEOREF_SOURCES</span></code></a> configuration option (or <a class="reference internal" href="#drivers/raster/jp2lura-oo-GEOREF_SOURCES"><code class="docutils literal notranslate"><span class="pre">GEOREF_SOURCES</span></code></a> open option)
 whose value is a comma-separated list of the following keywords : PAM,
 GEOJP2, GMLJP2, INTERNAL (shortcut for GEOJP2,GMLJP2), WORLDFILE, NONE.
-First mentioned sources are the most prioritary over the next ones. A
-non mentioned source will be ignored.</p>
+Earlier mentioned sources take priority over later ones. A non mentioned source
+will be ignored.</p>
 <p>For example setting it to &quot;WORLDFILE,PAM,INTERNAL&quot; will make a
-geotransformation matrix from a potential worldfile prioritary over PAM
+geotransformation matrix from a potential worldfile priority over PAM
 or internal JP2 boxes. Setting it to &quot;PAM,WORLDFILE,GEOJP2&quot; will use the
 mentioned sources and ignore GMLJP2 boxes.</p>
 </section>
 <section id="configuration-options">
 <h2>Configuration Options<a class="headerlink" href="#configuration-options" title="Link to this heading"></a></h2>
+<p><a href="#id1"><span class="problematic" id="id2">|about-config-options|</span></a>
+The following configuration options are supported:</p>
 <ul class="simple">
 <li><p id="config-LURA_LICENSE_NUM_1"><strong>LURA_LICENSE_NUM_1=value: </strong> (required) First component of license number.</p>
 </li>
@@ -368,9 +370,10 @@ mentioned sources and ignore GMLJP2 boxes.</p>
 </li>
 </ul>
 </section>
-<section id="option-options">
-<h2>Option Options<a class="headerlink" href="#option-options" title="Link to this heading"></a></h2>
-<p>The following open option is available:</p>
+<section id="open-options">
+<h2>Open Options<a class="headerlink" href="#open-options" title="Link to this heading"></a></h2>
+<p><a href="#id3"><span class="problematic" id="id4">|about-open-options|</span></a>
+The following open option is available:</p>
 <ul class="simple">
 <li><p id="drivers/raster/jp2lura-oo-GEOREF_SOURCES"><strong>GEOREF_SOURCES=value: </strong>Define which georeferencing
 sources are allowed and their priority order. See
@@ -380,6 +383,8 @@ sources are allowed and their priority order. See
 </section>
 <section id="creation-options">
 <h2>Creation Options<a class="headerlink" href="#creation-options" title="Link to this heading"></a></h2>
+<p><a href="#id5"><span class="problematic" id="id6">|about-creation-options|</span></a>
+The following creation options are available:</p>
 <ul class="simple">
 <li><p id="drivers/raster/jp2lura-co-CODEC"><strong>CODEC=[JP2/Codestream]: </strong>JP2 will add JP2 boxes around the
 codestream data. The value is determined automatically from the file
@@ -394,12 +399,12 @@ GML in JPEG2000 specification should be included in the file. Unless
 the <a class="reference external" href="http://docs.opengeospatial.org/is/08-085r5/08-085r5.html">OGC GML in JPEG2000, version
 2.0.1</a>
 specification should be included in the file. <em>filename</em> must point
-to a file with a JSon content that defines how the GMLJP2 v2 box
+to a file with a JSON content that defines how the GMLJP2 v2 box
 should be built. See <a class="reference internal" href="jp2openjpeg.html#gmjp2v2def"><span class="std std-ref">GMLJP2v2 definition file
 section</span></a> in documentation of
-the JP2OpenJPEG driver for the syntax of the JSon configuration file.
+the JP2OpenJPEG driver for the syntax of the JSON configuration file.
 It is also possible to
-directly pass the JSon content inlined as a string. If filename is
+directly pass the JSON content inlined as a string. If filename is
 just set to YES, a minimal instance will be built.</p>
 </li>
 <li><p id="drivers/raster/jp2lura-co-GeoJP2"><strong>GeoJP2=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. Indicates whether a UUID/GeoTIFF box conforming to
@@ -614,7 +619,7 @@ source)</span></a></p></li>
         <a href="jp2mrsid.html" class="btn btn-neutral float-right" title="JP2MrSID -- JPEG2000 via MrSID SDK" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="jp2kak.html" class="btn btn-neutral float-left" title="JP2KAK -- JPEG-2000 (based on Kakadu)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="jp2kak.html" class="btn btn-neutral float-left" title="JP2KAK -- JPEG 2000 (based on Kakadu SDK)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

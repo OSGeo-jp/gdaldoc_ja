@@ -42,18 +42,18 @@ Georeferencing
 Georeferencing information can come from different sources : internal
 (GeoJP2 or GMLJP2 boxes), worldfile .j2w/.wld sidecar files, or PAM
 (Persistent Auxiliary metadata) .aux.xml sidecar files. By default,
-information is fetched in following order (first listed is the most
-prioritary): PAM, GeoJP2, GMLJP2, WORLDFILE.
+information is fetched in following order (first listed is the highest
+priority): PAM, GeoJP2, GMLJP2, WORLDFILE.
 
 Starting with GDAL 2.2, the allowed sources and their priority order can
 be changed with the :config:`GDAL_GEOREF_SOURCES` configuration option (or
 :oo:`GEOREF_SOURCES` open option) whose value is a comma-separated list of the
 following keywords : PAM, GEOJP2, GMLJP2, INTERNAL (shortcut for
-GEOJP2,GMLJP2), WORLDFILE, NONE. First mentioned sources are the most
-prioritary over the next ones. A non mentioned source will be ignored.
+GEOJP2,GMLJP2), WORLDFILE, NONE. Earlier mentioned sources take
+priority over later ones. A non mentioned source will be ignored.
 
 For example setting it to "WORLDFILE,PAM,INTERNAL" will make a
-geotransformation matrix from a potential worldfile prioritary over PAM
+geotransformation matrix from a potential worldfile priority over PAM
 or internal JP2 boxes. Setting it to "PAM,WORLDFILE,GEOJP2" will use the
 mentioned sources and ignore GMLJP2 boxes.
 
@@ -83,6 +83,7 @@ Both multi-threading mechanism can be combined together.
 Open Options
 --------------
 
+|about-open-options|
 The following open options are available:
 
 -  .. oo:: STRICT
@@ -121,6 +122,9 @@ The following open options are available:
 Creation Options
 ----------------
 
+|about-creation-options|
+The following creation options are available:
+
 -  .. co:: CODEC
       :choices: JP2, J2K
 
@@ -144,9 +148,9 @@ Creation Options
       a GML box conforming to the `OGC GML in JPEG2000, version
       2.0.1 <http://docs.opengeospatial.org/is/08-085r5/08-085r5.html>`__
       specification should be included in the file. *filename* must point
-      to a file with a JSon content that defines how the GMLJP2 v2 box
-      should be built. See below section for the syntax of the JSon
-      configuration file. It is also possible to directly pass the JSon
+      to a file with a JSON content that defines how the GMLJP2 v2 box
+      should be built. See below section for the syntax of the JSON 
+      configuration file. It is also possible to directly pass the JSON 
       content inlined as a string. If filename is just set to YES, a
       minimal instance will be built. Note: GDAL 2.0 and 2.1 use the older
       `OGC GML in JPEG2000, version

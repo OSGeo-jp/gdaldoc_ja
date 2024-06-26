@@ -126,7 +126,7 @@
 <li class="toctree-l2"><a class="reference internal" href="isis3.html">ISIS3 -- USGS Astrogeology ISIS Cube (Version 3)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jdem.html">JDEM -- Japanese DEM (.mem)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2ecw.html">JP2ECW -- ERDAS JPEG2000 (.jp2)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="jp2kak.html">JP2KAK -- JPEG-2000 (based on Kakadu)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jp2kak.html">JP2KAK -- JPEG 2000 (based on Kakadu SDK)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2lura.html">JP2Lura -- JPEG2000 driver based on Lurawave library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2mrsid.html">JP2MrSID -- JPEG2000 via MrSID SDK</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2openjpeg.html">JP2OpenJPEG -- JPEG2000 driver based on OpenJPEG library</a></li>
@@ -205,6 +205,7 @@
 <li class="toctree-l2"><a class="reference internal" href="til.html">TIL -- EarthWatch/DigitalGlobe .TIL</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">TileDB - TileDB raster</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#driver-capabilities">Driver capabilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#open-options">Open options</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#creation-options">Creation options</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#multidimensional-api-support">Multidimensional API support</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#see-also">See Also</a></li>
@@ -230,10 +231,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -337,12 +338,57 @@
 <p>This driver supports <a class="reference internal" href="../../user/virtual_file_systems.html#virtual-file-systems"><span class="std std-ref">virtual I/O operations (/vsimem/, etc.)</span></a></p>
 </div>
 </section>
+<section id="open-options">
+<h2>Open options<a class="headerlink" href="#open-options" title="Link to this heading"></a></h2>
+<p>The following open options exist:</p>
+<ul class="simple">
+<li><p id="drivers/raster/tiledb-oo-TILEDB_CONFIG"><strong>TILEDB_CONFIG=&lt;filename&gt;: </strong>A local file with TileDB configuration
+<a class="reference external" href="https://docs.tiledb.io/en/stable/tutorials/config.html">options</a></p>
+</li>
+<li><p id="drivers/raster/tiledb-oo-TILEDB_TIMESTAMP"><strong>TILEDB_TIMESTAMP=&lt;integer&gt;: </strong>Open array at this timestamp. Should be strictly greater than zero when set.</p>
+</li>
+<li><p id="drivers/raster/tiledb-oo-STATS"><strong>STATS=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. Whether TileDB <a class="reference external" href="https://docs.tiledb.com/main/how-to/performance/using-performance-statistics">performance statistics</a>
+should be displayed.</p>
+</li>
+<li><p id="drivers/raster/tiledb-oo-TILEDB_ATTRIBUTE"><strong>TILEDB_ATTRIBUTE=&lt;string&gt;: </strong>Attribute to read from each band</p>
+</li>
+</ul>
+</section>
 <section id="creation-options">
 <h2>Creation options<a class="headerlink" href="#creation-options" title="Link to this heading"></a></h2>
-<p>Various creation and open options exists, among them :</p>
+<p>The following creation options exist:</p>
 <ul class="simple">
 <li><p id="drivers/raster/tiledb-co-TILEDB_CONFIG"><strong>TILEDB_CONFIG=&lt;filename&gt;: </strong>A local file with TileDB configuration
 <a class="reference external" href="https://docs.tiledb.io/en/stable/tutorials/config.html">options</a></p>
+</li>
+<li><p id="drivers/raster/tiledb-co-COMPRESSION"><strong>COMPRESSION=[NONE/GZIP/ZSTD/LZ4/RLE/BZIP2/DOUBLE-DELTA/POSITIVE-DELTA]: </strong>Compression to use. Default is NONE</p>
+</li>
+<li><p id="drivers/raster/tiledb-co-COMPRESSION_LEVEL"><strong>COMPRESSION_LEVEL=&lt;integer&gt;: </strong>Compression level</p>
+</li>
+<li><p id="drivers/raster/tiledb-co-BLOCKXSIZE"><strong>BLOCKXSIZE=&lt;integer&gt;: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">256</span></code>. Tile width.</p>
+</li>
+<li><p id="drivers/raster/tiledb-co-BLOCKYSIZE"><strong>BLOCKYSIZE=&lt;integer&gt;: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">256</span></code>. Tile height</p>
+</li>
+<li><p id="drivers/raster/tiledb-co-STATS"><strong>STATS=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. Whether TileDB <a class="reference external" href="https://docs.tiledb.com/main/how-to/performance/using-performance-statistics">performance statistics</a>
+should be displayed.</p>
+</li>
+<li><p id="drivers/raster/tiledb-co-TILEDB_ATTRIBUTE"><strong>TILEDB_ATTRIBUTE=&lt;string&gt;: </strong>Co-registered file to add as TileDB attributes. Only applicable for interleave types of band or pixel</p>
+</li>
+<li><p id="drivers/raster/tiledb-co-INTERLEAVE"><strong>INTERLEAVE=[BAND/PIXEL/ATTRIBUTES]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">BAND</span></code>. Indexing order. Influences how multi-band rasters are stored.<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">BAND</span></code>: a 3D array is created with the slowest varying dimension being the band.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PIXEL</span></code>: a 3D array is created with the fastest varying dimension being the band.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ATTRIBUTES</span></code>: a 2D array is created with each band being stored in a separate TileDB attribute.</p></li>
+</ul>
+</p>
+</li>
+<li><p id="drivers/raster/tiledb-co-TILEDB_TIMESTAMP"><strong>TILEDB_TIMESTAMP=&lt;integer&gt;: </strong>Create array at this timestamp. Should be strictly greater than zero when set.</p>
+</li>
+<li><p id="drivers/raster/tiledb-co-CREATE_GROUP"><strong>CREATE_GROUP=[YES/NO]: </strong> (GDAL &gt;= 3.10)  Defaults to <code class="docutils literal notranslate"><span class="pre">YES</span></code> since 3.10 (NO previously). Whether the dataset should be created within a TileDB group.<p>When the dataset is created within a TileDB group, overviews that may be
+created are stored as TileDB arrays inside that group, next to the full
+resolution array. This makes administration of the dataset easier.</p>
+<p>Otherwise, the past default behavior (CREATE_GROUP=NO) is to create the dataset
+as a TileDB array. Overviews cannot be created in that mode.</p>
+</p>
 </li>
 </ul>
 </section>
@@ -370,7 +416,7 @@ raster API of GDAL.</p>
 <ul class="simple">
 <li><p><strong>TILEDB_CONFIG=config</strong>: A local file with TileDB configuration
 <a class="reference external" href="https://docs.tiledb.io/en/stable/tutorials/config.html">options</a></p></li>
-<li><p><strong>TILEDB_TIMESTAMP=val</strong>: inclusive ending timestamp when opening this array</p></li>
+<li><p><strong>TILEDB_TIMESTAMP=val</strong>: Create array at this timestamp. Should be strictly greater than zero when set.</p></li>
 </ul>
 <p>The following array open options are available:</p>
 <ul class="simple">
@@ -384,7 +430,7 @@ Compression to use. Default is NONE</p></li>
 <li><p><strong>COMPRESSION_LEVEL=int_value</strong>: compression level</p></li>
 <li><p><strong>IN_MEMORY=YES/NO</strong>: hether the array should be only in-memory. Useful to
 create an indexing variable that is serialized as a dimension label</p></li>
-<li><p><strong>TILEDB_TIMESTAMP=val</strong>: inclusive ending timestamp when opening this array</p></li>
+<li><p><strong>TILEDB_TIMESTAMP=val</strong>: Create array at this timestamp. Should be strictly greater than zero when set.</p></li>
 </ul>
 <p>Cf <a href="#id1"><span class="problematic" id="id2">:source_file:`autotest/gdrivers/tiledb_multidim.py`</span></a> for examples of how to
 use the Python multidimensional API with the TileDB driver.</p>

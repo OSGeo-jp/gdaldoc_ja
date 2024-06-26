@@ -158,6 +158,7 @@
 <li class="toctree-l2"><a class="reference internal" href="wfs.html">WFS - OGC WFS service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xls.html">XLS - MS Excel format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xlsx.html">XLSX - MS Office Open XML spreadsheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xodr.html">XODR -- OpenDRIVE Road Description Format</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
@@ -165,10 +166,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -373,6 +374,8 @@ COPY-based approach can be chosen by setting the config option
 <code class="docutils literal notranslate"><span class="pre">PG_USE_COPY</span></code> to <code class="docutils literal notranslate"><span class="pre">YES</span></code>, which may significantly speed up the operation.</p>
 <section id="dataset-open-options">
 <h3>Dataset open options<a class="headerlink" href="#dataset-open-options" title="Link to this heading"></a></h3>
+<p><a href="#id1"><span class="problematic" id="id2">|about-open-options|</span></a>
+The following open options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/vector/pg-oo-DBNAME"><strong>DBNAME=&lt;string&gt;: </strong>Database name.</p>
 </li>
@@ -421,6 +424,8 @@ semi-column (;) sign. With the above example value for
 </section>
 <section id="layer-creation-options">
 <h3>Layer Creation Options<a class="headerlink" href="#layer-creation-options" title="Link to this heading"></a></h3>
+<p><a href="#id3"><span class="problematic" id="id4">|about-layer-creation-options|</span></a>
+The following layer creation options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/vector/pg-lco-GEOM_TYPE"><strong>GEOM_TYPE=[geometry/geography/BYTEA/OID]: </strong>The GEOM_TYPE layer creation option can be set to one
 of &quot;geometry&quot;, &quot;geography&quot;, &quot;BYTEA&quot; or &quot;OID&quot; to
@@ -517,8 +522,8 @@ ogr2ogr, unless the -nomd option is used.</p>
 </section>
 <section id="configuration-options">
 <h3>Configuration Options<a class="headerlink" href="#configuration-options" title="Link to this heading"></a></h3>
-<p>The following <a class="reference internal" href="../../user/configoptions.html#configoptions"><span class="std std-ref">configuration options</span></a> are
-available:</p>
+<p><a href="#id5"><span class="problematic" id="id6">|about-config-options|</span></a>
+The following configuration options are available:</p>
 <ul class="simple">
 <li><p id="config-PG_USE_COPY"><strong>PG_USE_COPY=value: </strong>This may be &quot;YES&quot; for using COPY for inserting data
 to Postgresql. COPY is significantly faster than INSERT. COPY is used by
@@ -563,6 +568,11 @@ be destroyed. Typical use case: <code class="docutils literal notranslate"><span
 <li><p id="config-OGR_PG_ENABLE_METADATA"><strong>OGR_PG_ENABLE_METADATA=[YES/NO]: </strong> (GDAL &gt;= 3.9)  Defaults to <code class="docutils literal notranslate"><span class="pre">YES</span></code>. If set to &quot;YES&quot; (the default), the driver will try to use (and potentially
 create) the <code class="docutils literal notranslate"><span class="pre">ogr_system_tables.metadata</span></code> table to retrieve and store
 layer metadata.</p>
+</li>
+<li><p id="config-OGR_PG_SKIP_CONFLICTS"><strong>OGR_PG_SKIP_CONFLICTS=[YES/NO]: </strong> (GDAL &gt;= 3.10)  Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. If set to &quot;YES&quot; (not the default),
+conflicts when inserting features will be skipped
+(requires OGR_PG_RETRIEVE_FID to be off and only applies when PG_USE_COPY
+is off).</p>
 </li>
 </ul>
 </section>

@@ -142,6 +142,7 @@
 <li class="toctree-l2"><a class="reference internal" href="wfs.html">WFS - OGC WFS service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xls.html">XLS - MS Excel format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xlsx.html">XLSX - MS Office Open XML spreadsheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xodr.html">XODR -- OpenDRIVE Road Description Format</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
@@ -149,10 +150,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -232,7 +233,7 @@
 <p>Open Design Alliance Teigha library</p>
 </div>
 <p>OGR supports reading most versions of AutoCAD DWG when built with the
-Open Design Alliance Teigha library. DWG is an binary working format used
+Open Design Alliance Teigha library. DWG is a binary working format used
 for AutoCAD drawings. A reasonable effort has been made to make the OGR
 DWG driver work similarly to the OGR DXF driver which shares a common
 data model. The entire contents of the .dwg file is represented as a
@@ -258,8 +259,8 @@ options control the approximation of arcs, ellipses, circles and rounded
 polylines as linestrings.</p>
 <section id="configuration-options">
 <h2>Configuration options<a class="headerlink" href="#configuration-options" title="Link to this heading"></a></h2>
-<p>The following <a class="reference internal" href="../../user/configoptions.html#configoptions"><span class="std std-ref">configuration options</span></a> are
-available:</p>
+<p><a href="#id1"><span class="problematic" id="id2">|about-config-options|</span></a>
+The following configuration options are available:</p>
 <ul class="simple">
 <li><p id="config-DWG_INLINE_BLOCKS"><strong>DWG_INLINE_BLOCKS=[TRUE/FALSE]: </strong>The default behavior is for
 block references to be expanded with the geometry of the block they

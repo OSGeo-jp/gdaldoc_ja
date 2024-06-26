@@ -153,6 +153,7 @@
 <li class="toctree-l2"><a class="reference internal" href="wfs.html">WFS - OGC WFS service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xls.html">XLS - MS Excel format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xlsx.html">XLSX - MS Office Open XML spreadsheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xodr.html">XODR -- OpenDRIVE Road Description Format</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
@@ -160,10 +161,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -286,8 +287,8 @@ at dataset level.</p>
 </section>
 <section id="configuration-options">
 <h2>Configuration options<a class="headerlink" href="#configuration-options" title="Link to this heading"></a></h2>
-<p>The following <a class="reference internal" href="../../user/configoptions.html#configoptions"><span class="std std-ref">configuration options</span></a> are
-available:</p>
+<p><a href="#id1"><span class="problematic" id="id2">|about-config-options|</span></a>
+The following configuration options are available:</p>
 <ul class="simple">
 <li><p id="config-GPX_USE_EXTENSIONS"><strong>GPX_USE_EXTENSIONS=value: </strong>See <a class="reference internal" href="#extensions-element-reading">Extensions element reading</a>.</p>
 </li>
@@ -314,7 +315,8 @@ feature.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.9.</span></p>
 </div>
-<p>The following open options are available:</p>
+<p><a href="#id3"><span class="problematic" id="id4">|about-open-options|</span></a>
+The following open options are available:</p>
 <ul class="simple">
 <li><p id="drivers/vector/gpx-oo-SHORT_NAMES"><strong>SHORT_NAMES=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">FALSE</span></code>. If <code class="docutils literal notranslate"><span class="pre">YES</span></code>, the following fields will be renamed:<ul>
 <li><p>&quot;track_seg_id&quot; to &quot;trksegid&quot;</p></li>
@@ -431,6 +433,8 @@ first track point to fill the &lt;name&gt; element of the route.</p>
 </section>
 <section id="layer-creation-options">
 <h2>Layer creation options<a class="headerlink" href="#layer-creation-options" title="Link to this heading"></a></h2>
+<p><a href="#id5"><span class="problematic" id="id6">|about-layer-creation-options|</span></a>
+The following layer creation options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/vector/gpx-lco-FORCE_GPX_TRACK"><strong>FORCE_GPX_TRACK=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. By default when writing a layer whose features
 are of type wkbLineString, the GPX driver chooses to write them as
@@ -446,6 +450,8 @@ provided that the multilines are composed of only one single line.</p>
 </section>
 <section id="dataset-creation-options">
 <h2>Dataset creation options<a class="headerlink" href="#dataset-creation-options" title="Link to this heading"></a></h2>
+<p><a href="#id7"><span class="problematic" id="id8">|about-dataset-creation-options|</span></a>
+The following dataset creation options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/vector/gpx-dsco-GPX_USE_EXTENSIONS"><strong>GPX_USE_EXTENSIONS=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. By default, the GPX driver will discard
 attribute fields that do not match the GPX XML definition (name, cmt,

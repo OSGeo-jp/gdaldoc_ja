@@ -143,43 +143,50 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="osgeo.gdal.BuildVRT">
 <span class="sig-prename descclassname"><span class="pre">osgeo.gdal.</span></span><span class="sig-name descname"><span class="pre">BuildVRT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">destName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">srcDSOrSrcDSTab</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#osgeo.gdal.BuildVRT" title="Link to this definition"></a></dt>
-<dd><p>Build a VRT from a list of datasets.
-Arguments are :</p>
-<blockquote>
-<div><p>destName --- Output dataset name
-srcDSOrSrcDSTab --- an array of Dataset objects or filenames, or a Dataset object or a filename</p>
-</div></blockquote>
-<dl class="simple">
-<dt>Keyword arguments are :</dt><dd><p>options --- return of gdal.BuildVRTOptions(), string or array of strings
-other keywords arguments of gdal.BuildVRTOptions()</p>
+<dd><p>Build a VRT from a list of datasets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">パラメータ<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>destName</strong> -- Output dataset name.</p></li>
+<li><p><strong>srcDSOrSrcDSTab</strong> -- An array of Dataset objects or filenames, or a Dataset object or a filename.</p></li>
+<li><p><strong>kwargs</strong> -- options: return of gdal.BuildVRTOptions(), string or array of strings,
+other keywords arguments of gdal.BuildVRTOptions().
+If options is provided as a gdal.BuildVRTOptions() object,
+other keywords are ignored.</p></li>
+</ul>
 </dd>
 </dl>
-<p>If options is provided as a gdal.BuildVRTOptions() object, other keywords are ignored.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="osgeo.gdal.BuildVRTOptions">
-<span class="sig-prename descclassname"><span class="pre">osgeo.gdal.</span></span><span class="sig-name descname"><span class="pre">BuildVRTOptions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resolution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputBounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xRes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yRes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">targetAlignedPixels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">separate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bandList</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">addAlpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resampleAlg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputSRS</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allowProjectionDifference</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">srcNodata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">VRTNodata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hideNodata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#osgeo.gdal.BuildVRTOptions" title="Link to this definition"></a></dt>
-<dd><p>Create a BuildVRTOptions() object that can be passed to gdal.BuildVRT()
-Keyword arguments are :</p>
-<blockquote>
-<div><p>options --- can be be an array of strings, a string or let empty and filled from other keywords..
-resolution --- 'highest', 'lowest', 'average', 'user'.
-outputBounds --- output bounds as (minX, minY, maxX, maxY) in target SRS.
-xRes, yRes --- output resolution in target SRS.
-targetAlignedPixels --- whether to force output bounds to be multiple of output resolution.
-separate --- whether each source file goes into a separate stacked band in the VRT band.
-bandList --- array of band numbers (index start at 1).
-addAlpha --- whether to add an alpha mask band to the VRT when the source raster have none.
-resampleAlg --- resampling mode.
-outputSRS --- assigned output SRS.
-allowProjectionDifference --- whether to accept input datasets have not the same projection. Note: they will <em>not</em> be reprojected.
-srcNodata --- source nodata value(s).
-VRTNodata --- nodata values at the VRT band level.
-hideNodata --- whether to make the VRT band not report the NoData value.
-callback --- callback method.
-callback_data --- user data for callback.</p>
-</div></blockquote>
+<span class="sig-prename descclassname"><span class="pre">osgeo.gdal.</span></span><span class="sig-name descname"><span class="pre">BuildVRTOptions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resolution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputBounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xRes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yRes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">targetAlignedPixels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">separate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bandList</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">addAlpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resampleAlg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputSRS</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allowProjectionDifference</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">srcNodata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">VRTNodata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hideNodata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#osgeo.gdal.BuildVRTOptions" title="Link to this definition"></a></dt>
+<dd><p>Create a BuildVRTOptions() object that can be passed to gdal.BuildVRT()</p>
+<dl class="field-list simple">
+<dt class="field-odd">パラメータ<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>options</strong> (<em>l</em>) -- can be be an array of strings, a string or let empty and filled from other keywords.</p></li>
+<li><p><strong>resolution</strong> -- 'highest', 'lowest', 'average', 'user'.</p></li>
+<li><p><strong>outputBounds</strong> (<em>l</em>) -- output bounds as (minX, minY, maxX, maxY) in target SRS.</p></li>
+<li><p><strong>xRes</strong> -- output resolution in target SRS.</p></li>
+<li><p><strong>yRes</strong> -- output resolution in target SRS.</p></li>
+<li><p><strong>targetAlignedPixels</strong> -- whether to force output bounds to be multiple of output resolution.</p></li>
+<li><p><strong>separate</strong> -- whether each source file goes into a separate stacked band in the VRT band.</p></li>
+<li><p><strong>bandList</strong> -- array of band numbers (index start at 1).</p></li>
+<li><p><strong>addAlpha</strong> -- whether to add an alpha mask band to the VRT when the source raster have none.</p></li>
+<li><p><strong>resampleAlg</strong> -- resampling mode.</p></li>
+<li><p><strong>outputSRS</strong> -- assigned output SRS.</p></li>
+<li><p><strong>allowProjectionDifference</strong> -- whether to accept input datasets have not the same projection.
+Note: they will <em>not</em> be reprojected.</p></li>
+<li><p><strong>srcNodata</strong> -- source nodata value(s).</p></li>
+<li><p><strong>VRTNodata</strong> -- nodata values at the VRT band level.</p></li>
+<li><p><strong>hideNodata</strong> -- whether to make the VRT band not report the NoData value.</p></li>
+<li><p><strong>strict</strong> -- set to True if warnings should be failures</p></li>
+<li><p><strong>callback</strong> -- callback method.</p></li>
+<li><p><strong>callback_data</strong> -- user data for callback.</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
@@ -200,49 +207,53 @@ callback_data --- user data for callback.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="osgeo.gdal.DEMProcessing">
 <span class="sig-prename descclassname"><span class="pre">osgeo.gdal.</span></span><span class="sig-name descname"><span class="pre">DEMProcessing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">destName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">srcDS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processing</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#osgeo.gdal.DEMProcessing" title="Link to this definition"></a></dt>
-<dd><p>Apply a DEM processing.
-Arguments are :</p>
-<blockquote>
-<div><p>destName --- Output dataset name
-srcDS --- a Dataset object or a filename
-processing --- one of &quot;hillshade&quot;, &quot;slope&quot;, &quot;aspect&quot;, &quot;color-relief&quot;, &quot;TRI&quot;, &quot;TPI&quot;, &quot;Roughness&quot;</p>
-</div></blockquote>
-<dl class="simple">
-<dt>Keyword arguments are :</dt><dd><p>options --- return of gdal.DEMProcessingOptions(), string or array of strings
-other keywords arguments of gdal.DEMProcessingOptions()</p>
+<dd><p>Apply a DEM processing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">パラメータ<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>destName</strong> -- Output dataset name</p></li>
+<li><p><strong>srcDS</strong> -- a Dataset object or a filename</p></li>
+<li><p><strong>processing</strong> -- one of &quot;hillshade&quot;, &quot;slope&quot;, &quot;aspect&quot;, &quot;color-relief&quot;, &quot;TRI&quot;, &quot;TPI&quot;, &quot;Roughness&quot;</p></li>
+<li><p><strong>kwargs</strong> -- options: return of gdal.DEMProcessingOptions(), string or array of strings,
+other keywords arguments of gdal.DEMProcessingOptions().
+If options is provided as a gdal.DEMProcessingOptions() object,
+other keywords are ignored.</p></li>
+</ul>
 </dd>
 </dl>
-<p>If options is provided as a gdal.DEMProcessingOptions() object, other keywords are ignored.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="osgeo.gdal.DEMProcessingOptions">
 <span class="sig-prename descclassname"><span class="pre">osgeo.gdal.</span></span><span class="sig-name descname"><span class="pre">DEMProcessingOptions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colorFilename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">creationOptions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">computeEdges</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">band</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zFactor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">azimuth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">altitude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">combined</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multiDirectional</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">igor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slopeFormat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trigonometric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zeroForFlat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">addAlpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colorSelection</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#osgeo.gdal.DEMProcessingOptions" title="Link to this definition"></a></dt>
-<dd><p>Create a DEMProcessingOptions() object that can be passed to gdal.DEMProcessing()
-Keyword arguments are :</p>
-<blockquote>
-<div><p>options --- can be be an array of strings, a string or let empty and filled from other keywords.
-colorFilename --- (mandatory for &quot;color-relief&quot;) name of file that contains palette definition for the &quot;color-relief&quot; processing.
-format --- output format (&quot;GTiff&quot;, etc...)
-creationOptions --- list of creation options
-computeEdges --- whether to compute values at raster edges.
-alg --- 'Horn' (default) or 'ZevenbergenThorne' for hillshade, slope or aspect. 'Wilson' (default) or 'Riley' for TRI
-band --- source band number to use
-zFactor --- (hillshade only) vertical exaggeration used to pre-multiply the elevations.
-scale --- ratio of vertical units to horizontal.
-azimuth --- (hillshade only) azimuth of the light, in degrees. 0 if it comes from the top of the raster, 90 from the east, ... The default value, 315, should rarely be changed as it is the value generally used to generate shaded maps.
-altitude ---(hillshade only) altitude of the light, in degrees. 90 if the light comes from above the DEM, 0 if it is raking light.
-combined --- (hillshade only) whether to compute combined shading, a combination of slope and oblique shading. Only one of combined, multiDirectional and igor can be specified.
-multiDirectional --- (hillshade only) whether to compute multi-directional shading. Only one of combined, multiDirectional and igor can be specified.
-igor --- (hillshade only) whether to use Igor's hillshading from Maperitive.  Only one of combined, multiDirectional and igor can be specified.
-slopeformat --- (slope only) &quot;degree&quot; or &quot;percent&quot;.
-trigonometric --- (aspect only) whether to return trigonometric angle instead of azimuth. Thus 0deg means East, 90deg North, 180deg West, 270deg South.
-zeroForFlat --- (aspect only) whether to return 0 for flat areas with slope=0, instead of -9999.
-addAlpha --- adds an alpha band to the output file (only for processing = 'color-relief')
-colorSelection --- (color-relief only) Determines how color entries are selected from an input value. Can be &quot;nearest_color_entry&quot;, &quot;exact_color_entry&quot; or &quot;linear_interpolation&quot;. Defaults to &quot;linear_interpolation&quot;
-callback --- callback method
-callback_data --- user data for callback</p>
-</div></blockquote>
+<dd><p>Create a DEMProcessingOptions() object that can be passed to gdal.DEMProcessing()</p>
+<dl class="field-list simple">
+<dt class="field-odd">パラメータ<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>options</strong> -- can be be an array of strings, a string or let empty and filled from other keywords.</p></li>
+<li><p><strong>colorFilename</strong> -- (mandatory for &quot;color-relief&quot;) name of file that contains palette definition for the &quot;color-relief&quot; processing.</p></li>
+<li><p><strong>format</strong> -- output format (&quot;GTiff&quot;, etc...)</p></li>
+<li><p><strong>creationOptions</strong> -- list of creation options</p></li>
+<li><p><strong>computeEdges</strong> -- whether to compute values at raster edges.</p></li>
+<li><p><strong>alg</strong> -- 'Horn' (default) or 'ZevenbergenThorne' for hillshade, slope or aspect. 'Wilson' (default) or 'Riley' for TRI</p></li>
+<li><p><strong>band</strong> -- source band number to use</p></li>
+<li><p><strong>zFactor</strong> -- (hillshade only) vertical exaggeration used to pre-multiply the elevations.</p></li>
+<li><p><strong>scale</strong> -- ratio of vertical units to horizontal.</p></li>
+<li><p><strong>azimuth</strong> -- (hillshade only) azimuth of the light, in degrees. 0 if it comes from the top of the raster, 90 from the east, ... The default value, 315, should rarely be changed as it is the value generally used to generate shaded maps.</p></li>
+<li><p><strong>altitude</strong> -- (hillshade only) altitude of the light, in degrees. 90 if the light comes from above the DEM, 0 if it is raking light.</p></li>
+<li><p><strong>combined</strong> -- (hillshade only) whether to compute combined shading, a combination of slope and oblique shading. Only one of combined, multiDirectional and igor can be specified.</p></li>
+<li><p><strong>multiDirectional</strong> -- (hillshade only) whether to compute multi-directional shading. Only one of combined, multiDirectional and igor can be specified.</p></li>
+<li><p><strong>igor</strong> -- (hillshade only) whether to use Igor's hillshading from Maperitive.  Only one of combined, multiDirectional and igor can be specified.</p></li>
+<li><p><strong>slopeformat</strong> -- (slope only) &quot;degree&quot; or &quot;percent&quot;.</p></li>
+<li><p><strong>trigonometric</strong> -- (aspect only) whether to return trigonometric angle instead of azimuth. Thus 0deg means East, 90deg North, 180deg West, 270deg South.</p></li>
+<li><p><strong>zeroForFlat</strong> -- (aspect only) whether to return 0 for flat areas with slope=0, instead of -9999.</p></li>
+<li><p><strong>addAlpha</strong> -- adds an alpha band to the output file (only for processing = 'color-relief')</p></li>
+<li><p><strong>colorSelection</strong> -- (color-relief only) Determines how color entries are selected from an input value. Can be &quot;nearest_color_entry&quot;, &quot;exact_color_entry&quot; or &quot;linear_interpolation&quot;. Defaults to &quot;linear_interpolation&quot;</p></li>
+<li><p><strong>callback</strong> -- callback method</p></li>
+<li><p><strong>callback_data</strong> -- user data for callback</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
@@ -253,62 +264,71 @@ callback_data --- user data for callback</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="osgeo.gdal.Grid">
 <span class="sig-prename descclassname"><span class="pre">osgeo.gdal.</span></span><span class="sig-name descname"><span class="pre">Grid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">destName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">srcDS</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#osgeo.gdal.Grid" title="Link to this definition"></a></dt>
-<dd><p>Create raster from the scattered data.
-Arguments are :</p>
-<blockquote>
-<div><p>destName --- Output dataset name
-srcDS --- a Dataset object or a filename</p>
-</div></blockquote>
-<dl class="simple">
-<dt>Keyword arguments are :</dt><dd><p>options --- return of gdal.GridOptions(), string or array of strings
-other keywords arguments of gdal.GridOptions()</p>
+<dd><p>Create raster from the scattered data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">パラメータ<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>destName</strong> -- Output dataset name</p></li>
+<li><p><strong>srcDS</strong> -- a Dataset object or a filename</p></li>
+<li><p><strong>kwargs</strong> -- options: return of gdal.GridOptions(), string or array of strings,
+other keywords arguments of gdal.GridOptions()
+If options is provided as a gdal.GridOptions() object, other keywords are ignored.</p></li>
+</ul>
 </dd>
 </dl>
-<p>If options is provided as a gdal.GridOptions() object, other keywords are ignored.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="osgeo.gdal.GridOptions">
 <span class="sig-prename descclassname"><span class="pre">osgeo.gdal.</span></span><span class="sig-name descname"><span class="pre">GridOptions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputType</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">creationOptions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputBounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputSRS</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noData</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">algorithm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">SQLStatement</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">where</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spatFilter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zfield</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z_increase</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z_multiply</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#osgeo.gdal.GridOptions" title="Link to this definition"></a></dt>
-<dd><p>Create a GridOptions() object that can be passed to gdal.Grid()
-Keyword arguments are :</p>
-<blockquote>
-<div><p>options --- can be be an array of strings, a string or let empty and filled from other keywords.
-format --- output format (&quot;GTiff&quot;, etc...)
-outputType --- output type (gdalconst.GDT_Byte, etc...)
-width --- width of the output raster in pixel
-height --- height of the output raster in pixel
-creationOptions --- list of creation options
-outputBounds --- assigned output bounds: [ulx, uly, lrx, lry]
-outputSRS --- assigned output SRS
-noData --- nodata value
-algorithm --- e.g &quot;invdist:power=2.0:smoothing=0.0:radius1=0.0:radius2=0.0:angle=0.0:max_points=0:min_points=0:nodata=0.0&quot;
-layers --- list of layers to convert
-SQLStatement --- SQL statement to apply to the source dataset
-where --- WHERE clause to apply to source layer(s)
-spatFilter --- spatial filter as (minX, minY, maxX, maxY) bounding box
-zfield --- Identifies an attribute field on the features to be used to get a Z value from. This value overrides Z value read from feature geometry record.
-z_increase --- Addition to the attribute field on the features to be used to get a Z value from. The addition should be the same unit as Z value. The result value will be Z value + Z increase value. The default value is 0.
-z_multiply - Multiplication ratio for Z field. This can be used for shift from e.g. foot to meters or from  elevation to deep. The result value will be (Z value + Z increase value) * Z multiply value.  The default value is 1.
-callback --- callback method
-callback_data --- user data for callback</p>
-</div></blockquote>
+<dd><p>Create a GridOptions() object that can be passed to gdal.Grid()</p>
+<dl class="field-list simple">
+<dt class="field-odd">パラメータ<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>options</strong> -- can be be an array of strings, a string or let empty and filled from other keywords.</p></li>
+<li><p><strong>format</strong> -- output format (&quot;GTiff&quot;, etc...)</p></li>
+<li><p><strong>outputType</strong> -- output type (gdalconst.GDT_Byte, etc...)</p></li>
+<li><p><strong>width</strong> -- width of the output raster in pixel</p></li>
+<li><p><strong>height</strong> -- height of the output raster in pixel</p></li>
+<li><p><strong>creationOptions</strong> -- list of creation options</p></li>
+<li><p><strong>outputBounds</strong> -- assigned output bounds:
+[ulx, uly, lrx, lry]</p></li>
+<li><p><strong>outputSRS</strong> -- assigned output SRS</p></li>
+<li><p><strong>noData</strong> -- nodata value</p></li>
+<li><p><strong>algorithm</strong> -- e.g &quot;invdist:power=2.0:smoothing=0.0:radius1=0.0:radius2=0.0:angle=0.0:max_points=0:min_points=0:nodata=0.0&quot;</p></li>
+<li><p><strong>layers</strong> -- list of layers to convert</p></li>
+<li><p><strong>SQLStatement</strong> -- SQL statement to apply to the source dataset</p></li>
+<li><p><strong>where</strong> -- WHERE clause to apply to source layer(s)</p></li>
+<li><p><strong>spatFilter</strong> -- spatial filter as (minX, minY, maxX, maxY) bounding box</p></li>
+<li><p><strong>zfield</strong> -- Identifies an attribute field on the features to be used to get a Z value from.
+This value overrides Z value read from feature geometry record.</p></li>
+<li><p><strong>z_increase</strong> -- Addition to the attribute field on the features to be used to get a Z value from.
+The addition should be the same unit as Z value. The result value will be
+Z value + Z increase value. The default value is 0.</p></li>
+<li><p><strong>z_multiply</strong> -- Multiplication ratio for Z field. This can be used for shift from e.g. foot to meters
+or from  elevation to deep. The result value will be
+(Z value + Z increase value) * Z multiply value. The default value is 1.</p></li>
+<li><p><strong>callback</strong> -- callback method</p></li>
+<li><p><strong>callback_data</strong> -- user data for callback</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="osgeo.gdal.Info">
 <span class="sig-prename descclassname"><span class="pre">osgeo.gdal.</span></span><span class="sig-name descname"><span class="pre">Info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#osgeo.gdal.Info" title="Link to this definition"></a></dt>
-<dd><p>Return information on a dataset.
-Arguments are :</p>
-<blockquote>
-<div><p>ds --- a Dataset object or a filename</p>
-</div></blockquote>
-<dl class="simple">
-<dt>Keyword arguments are :</dt><dd><p>options --- return of gdal.InfoOptions(), string or array of strings
-other keywords arguments of gdal.InfoOptions()</p>
+<dd><p>Return information on a dataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">パラメータ<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ds</strong> -- a Dataset object or a filename</p></li>
+<li><p><strong>kwargs</strong> -- options: return of gdal.InfoOptions(), string or array of strings
+other keywords arguments of gdal.InfoOptions().
+If options is provided as a gdal.InfoOptions() object, other keywords are ignored.</p></li>
+</ul>
 </dd>
 </dl>
-<p>If options is provided as a gdal.InfoOptions() object, other keywords are ignored.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -321,38 +341,41 @@ options can be be an array of strings, a string or let empty and filled from oth
 <dl class="py function">
 <dt class="sig sig-object py" id="osgeo.gdal.Nearblack">
 <span class="sig-prename descclassname"><span class="pre">osgeo.gdal.</span></span><span class="sig-name descname"><span class="pre">Nearblack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">destNameOrDestDS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">srcDS</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#osgeo.gdal.Nearblack" title="Link to this definition"></a></dt>
-<dd><p>Convert nearly black/white borders to exact value.
-Arguments are :</p>
-<blockquote>
-<div><p>destNameOrDestDS --- Output dataset name or object
-srcDS --- a Dataset object or a filename</p>
-</div></blockquote>
-<dl class="simple">
-<dt>Keyword arguments are :</dt><dd><p>options --- return of gdal.NearblackOptions(), string or array of strings
-other keywords arguments of gdal.NearblackOptions()</p>
+<dd><p>Convert nearly black/white borders to exact value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">パラメータ<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>destNameOrDestDS</strong> -- Output dataset name or object</p></li>
+<li><p><strong>srcDS</strong> -- a Dataset object or a filename</p></li>
+<li><p><strong>kwargs</strong> -- options: return of gdal.NearblackOptions(), string or array of strings,
+other keywords arguments of gdal.NearblackOptions().
+If options is provided as a gdal.NearblackOptions() object, other keywords are ignored.</p></li>
+</ul>
 </dd>
 </dl>
-<p>If options is provided as a gdal.NearblackOptions() object, other keywords are ignored.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="osgeo.gdal.NearblackOptions">
 <span class="sig-prename descclassname"><span class="pre">osgeo.gdal.</span></span><span class="sig-name descname"><span class="pre">NearblackOptions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">creationOptions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">white</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxNonBlack</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nearDist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">setAlpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">setMask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#osgeo.gdal.NearblackOptions" title="Link to this definition"></a></dt>
-<dd><p>Create a NearblackOptions() object that can be passed to gdal.Nearblack()
-Keyword arguments are :</p>
-<blockquote>
-<div><p>options --- can be be an array of strings, a string or let empty and filled from other keywords.
-format --- output format (&quot;GTiff&quot;, etc...)
-creationOptions --- list of creation options
-white --- whether to search for nearly white (255) pixels instead of nearly black pixels.
-colors --- list of colors  to search for, e.g. ((0,0,0),(255,255,255)). The pixels that are considered as the collar are set to 0
-maxNonBlack --- number of non-black (or other searched colors specified with white / colors) pixels that can be encountered before the giving up search inwards. Defaults to 2.
-nearDist --- select how far from black, white or custom colors the pixel values can be and still considered near black, white or custom color.  Defaults to 15.
-setAlpha --- adds an alpha band to the output file.
-setMask --- adds a mask band to the output file.
-callback --- callback method
-callback_data --- user data for callback</p>
-</div></blockquote>
+<dd><p>Create a NearblackOptions() object that can be passed to gdal.Nearblack()</p>
+<dl class="field-list simple">
+<dt class="field-odd">パラメータ<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>options</strong> -- can be be an array of strings, a string or let empty and filled from other keywords.</p></li>
+<li><p><strong>format</strong> -- output format (&quot;GTiff&quot;, etc...)</p></li>
+<li><p><strong>creationOptions</strong> -- list of creation options</p></li>
+<li><p><strong>white</strong> -- whether to search for nearly white (255) pixels instead of nearly black pixels.</p></li>
+<li><p><strong>colors</strong> -- list of colors  to search for, e.g. ((0,0,0),(255,255,255)). The pixels that are considered as the collar are set to 0</p></li>
+<li><p><strong>maxNonBlack</strong> -- number of non-black (or other searched colors specified with white / colors) pixels that can be encountered before the giving up search inwards. Defaults to 2.</p></li>
+<li><p><strong>nearDist</strong> -- select how far from black, white or custom colors the pixel values can be and still considered near black, white or custom color.  Defaults to 15.</p></li>
+<li><p><strong>setAlpha</strong> -- adds an alpha band to the output file.</p></li>
+<li><p><strong>setMask</strong> -- adds a mask band to the output file.</p></li>
+<li><p><strong>callback</strong> -- callback method</p></li>
+<li><p><strong>callback_data</strong> -- user data for callback</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
@@ -363,54 +386,74 @@ callback_data --- user data for callback</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="osgeo.gdal.Rasterize">
 <span class="sig-prename descclassname"><span class="pre">osgeo.gdal.</span></span><span class="sig-name descname"><span class="pre">Rasterize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">destNameOrDestDS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">srcDS</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#osgeo.gdal.Rasterize" title="Link to this definition"></a></dt>
-<dd><p>Burns vector geometries into a raster
-Arguments are :</p>
-<blockquote>
-<div><p>destNameOrDestDS --- Output dataset name or object
-srcDS --- a Dataset object or a filename</p>
-</div></blockquote>
-<dl class="simple">
-<dt>Keyword arguments are :</dt><dd><p>options --- return of gdal.RasterizeOptions(), string or array of strings
-other keywords arguments of gdal.RasterizeOptions()</p>
+<dd><p>Burns vector geometries into a raster</p>
+<dl class="field-list simple">
+<dt class="field-odd">パラメータ<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>destNameOrDestDS</strong> -- Output dataset name or object</p></li>
+<li><p><strong>srcDS</strong> -- a Dataset object or a filename</p></li>
+<li><p><strong>kwargs</strong> -- options: return of gdal.RasterizeOptions(), string or array of strings,
+other keywords arguments of gdal.RasterizeOptions()
+If options is provided as a gdal.RasterizeOptions() object, other keywords are ignored.</p></li>
+</ul>
 </dd>
 </dl>
-<p>If options is provided as a gdal.RasterizeOptions() object, other keywords are ignored.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="osgeo.gdal.RasterizeOptions">
 <span class="sig-prename descclassname"><span class="pre">osgeo.gdal.</span></span><span class="sig-name descname"><span class="pre">RasterizeOptions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputType</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">creationOptions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noData</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initValues</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputBounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputSRS</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transformerOptions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xRes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yRes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">targetAlignedPixels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bands</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inverse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allTouched</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">burnValues</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attribute</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">useZ</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">SQLStatement</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">SQLDialect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">where</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#osgeo.gdal.RasterizeOptions" title="Link to this definition"></a></dt>
-<dd><p>Create a RasterizeOptions() object that can be passed to gdal.Rasterize()
-Keyword arguments are :</p>
-<blockquote>
-<div><p>options --- can be be an array of strings, a string or let empty and filled from other keywords.
-format --- output format (&quot;GTiff&quot;, etc...)
-outputType --- output type (gdalconst.GDT_Byte, etc...)
-creationOptions --- list of creation options
-outputBounds --- assigned output bounds: [minx, miny, maxx, maxy]
-outputSRS --- assigned output SRS
-transformerOptions --- list of transformer options
-width --- width of the output raster in pixel
-height --- height of the output raster in pixel
-xRes, yRes --- output resolution in target SRS
-targetAlignedPixels --- whether to force output bounds to be multiple of output resolution
-noData --- nodata value
-initValues --- Value or list of values to pre-initialize the output image bands with.  However, it is not marked as the nodata value in the output file.  If only one value is given, the same value is used in all the bands.
-bands --- list of output bands to burn values into
-inverse --- whether to invert rasterization, i.e. burn the fixed burn value, or the burn value associated  with the first feature into all parts of the image not inside the provided a polygon.
-allTouched -- whether to enable the ALL_TOUCHED rasterization option so that all pixels touched by lines or polygons will be updated, not just those on the line render path, or whose center point is within the polygon.
-burnValues -- list of fixed values to burn into each band for all objects. Excusive with attribute.
-attribute --- identifies an attribute field on the features to be used for a burn-in value. The value will be burned into all output bands. Excusive with burnValues.
-useZ --- whether to indicate that a burn value should be extracted from the &quot;Z&quot; values of the feature. These values are added to the burn value given by burnValues or attribute if provided. As of now, only points and lines are drawn in 3D.
-layers --- list of layers from the datasource that will be used for input features.
-SQLStatement --- SQL statement to apply to the source dataset
-SQLDialect --- SQL dialect ('OGRSQL', 'SQLITE', ...)
-where --- WHERE clause to apply to source layer(s)
-optim --- optimization mode ('RASTER', 'VECTOR')
-add --- set to True to use additive mode instead of replace when burning values
-callback --- callback method
-callback_data --- user data for callback</p>
-</div></blockquote>
+<dd><p>Create a RasterizeOptions() object that can be passed to gdal.Rasterize()</p>
+<dl class="field-list simple">
+<dt class="field-odd">パラメータ<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>options</strong> -- can be be an array of strings, a string or let empty and filled from other keywords.</p></li>
+<li><p><strong>format</strong> -- output format (&quot;GTiff&quot;, etc...)</p></li>
+<li><p><strong>outputType</strong> -- output type (gdalconst.GDT_Byte, etc...)</p></li>
+<li><p><strong>creationOptions</strong> -- list of creation options</p></li>
+<li><p><strong>outputBounds</strong> -- assigned output bounds:
+[minx, miny, maxx, maxy]</p></li>
+<li><p><strong>outputSRS</strong> -- assigned output SRS</p></li>
+<li><p><strong>transformerOptions</strong> -- list of transformer options</p></li>
+<li><p><strong>width</strong> -- width of the output raster in pixel</p></li>
+<li><p><strong>height</strong> -- height of the output raster in pixel</p></li>
+<li><p><strong>xRes</strong> -- output resolution in target SRS</p></li>
+<li><p><strong>yRes</strong> -- output resolution in target SRS</p></li>
+<li><p><strong>targetAlignedPixels</strong> -- whether to force output bounds to be multiple of output resolution</p></li>
+<li><p><strong>noData</strong> -- nodata value</p></li>
+<li><p><strong>initValues</strong> -- <dl class="simple">
+<dt>Value or list of values to pre-initialize the output image bands with.</dt><dd><dl class="simple">
+<dt>However, it is not marked as the nodata value in the output file.</dt><dd><p>If only one value is given, the same value is used in all the bands.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>bands</strong> -- list of output bands to burn values into</p></li>
+<li><p><strong>inverse</strong> -- whether to invert rasterization, i.e. burn the fixed burn value, or the
+burn value associated with the first feature into all parts of the image
+not inside the provided a polygon.</p></li>
+<li><p><strong>allTouched</strong> -- whether to enable the ALL_TOUCHED rasterization option so that all pixels
+touched by lines or polygons will be updated, not just those on the line
+render path, or whose center point is within the polygon.</p></li>
+<li><p><strong>burnValues</strong> -- list of fixed values to burn into each band for all objects.
+Excusive with attribute.</p></li>
+<li><p><strong>attribute</strong> -- identifies an attribute field on the features to be used for a burn-in value.
+The value will be burned into all output bands. Excusive with burnValues.</p></li>
+<li><p><strong>useZ</strong> -- whether to indicate that a burn value should be extracted from the &quot;Z&quot; values
+of the feature. These values are added to the burn value given by burnValues
+or attribute if provided. As of now, only points and lines are drawn in 3D.</p></li>
+<li><p><strong>layers</strong> -- list of layers from the datasource that will be used for input features.</p></li>
+<li><p><strong>SQLStatement</strong> -- SQL statement to apply to the source dataset</p></li>
+<li><p><strong>SQLDialect</strong> -- SQL dialect ('OGRSQL', 'SQLITE', ...)</p></li>
+<li><p><strong>where</strong> -- WHERE clause to apply to source layer(s)</p></li>
+<li><p><strong>optim</strong> -- optimization mode ('RASTER', 'VECTOR')</p></li>
+<li><p><strong>add</strong> -- set to True to use additive mode instead of replace when burning values</p></li>
+<li><p><strong>callback</strong> -- callback method</p></li>
+<li><p><strong>callback_data</strong> -- user data for callback</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
@@ -426,129 +469,138 @@ callback_data --- user data for callback</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="osgeo.gdal.Translate">
 <span class="sig-prename descclassname"><span class="pre">osgeo.gdal.</span></span><span class="sig-name descname"><span class="pre">Translate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">destName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">srcDS</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#osgeo.gdal.Translate" title="Link to this definition"></a></dt>
-<dd><p>Convert a dataset.
-Arguments are :</p>
-<blockquote>
-<div><p>destName --- Output dataset name
-srcDS --- a Dataset object or a filename</p>
-</div></blockquote>
-<dl class="simple">
-<dt>Keyword arguments are :</dt><dd><p>options --- return of gdal.TranslateOptions(), string or array of strings
-other keywords arguments of gdal.TranslateOptions()</p>
+<dd><p>Convert a dataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">パラメータ<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>destName</strong> -- Output dataset name</p></li>
+<li><p><strong>srcDS</strong> -- a Dataset object or a filename</p></li>
+<li><p><strong>kwargs</strong> -- options: return of gdal.TranslateOptions(), string or array of strings
+other keywords arguments of gdal.TranslateOptions().
+If options is provided as a gdal.TranslateOptions() object, other keywords are ignored.</p></li>
+</ul>
 </dd>
 </dl>
-<p>If options is provided as a gdal.TranslateOptions() object, other keywords are ignored.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="osgeo.gdal.TranslateOptions">
-<span class="sig-prename descclassname"><span class="pre">osgeo.gdal.</span></span><span class="sig-name descname"><span class="pre">TranslateOptions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputType</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bandList</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maskBand</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">widthPct</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">heightPct</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xRes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yRes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">creationOptions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">srcWin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projWin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projWinSRS</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unscale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaleParams</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exponents</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputBounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadataOptions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputSRS</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nogcp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">GCPs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noData</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rgbExpand</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stats</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resampleAlg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#osgeo.gdal.TranslateOptions" title="Link to this definition"></a></dt>
-<dd><p>Create a TranslateOptions() object that can be passed to gdal.Translate()
-Keyword arguments are :</p>
-<blockquote>
-<div><p>options --- can be be an array of strings, a string or let empty and filled from other keywords.
-format --- output format (&quot;GTiff&quot;, etc...)
-outputType --- output type (gdalconst.GDT_Byte, etc...)
-bandList --- array of band numbers (index start at 1)
-maskBand --- mask band to generate or not (&quot;none&quot;, &quot;auto&quot;, &quot;mask&quot;, 1, ...)
-width --- width of the output raster in pixel
-height --- height of the output raster in pixel
-widthPct --- width of the output raster in percentage (100 = original width)
-heightPct --- height of the output raster in percentage (100 = original height)
-xRes --- output horizontal resolution
-yRes --- output vertical resolution
-creationOptions --- list of creation options
-srcWin --- subwindow in pixels to extract: [left_x, top_y, width, height]
-projWin --- subwindow in projected coordinates to extract: [ulx, uly, lrx, lry]
-projWinSRS --- SRS in which projWin is expressed
-strict --- strict mode
-unscale --- unscale values with scale and offset metadata
-scaleParams --- list of scale parameters, each of the form [src_min,src_max] or [src_min,src_max,dst_min,dst_max]
-exponents --- list of exponentiation parameters
-outputBounds --- assigned output bounds: [ulx, uly, lrx, lry]
-metadataOptions --- list of metadata options
-outputSRS --- assigned output SRS
-nogcp --- ignore GCP in the raster
-GCPs --- list of GCPs
-noData --- nodata value (or &quot;none&quot; to unset it)
-rgbExpand --- Color palette expansion mode: &quot;gray&quot;, &quot;rgb&quot;, &quot;rgba&quot;
-stats --- whether to calculate statistics
-rat --- whether to write source RAT
-resampleAlg --- resampling mode
-callback --- callback method
-callback_data --- user data for callback</p>
-</div></blockquote>
+<span class="sig-prename descclassname"><span class="pre">osgeo.gdal.</span></span><span class="sig-name descname"><span class="pre">TranslateOptions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputType</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bandList</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maskBand</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">widthPct</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">heightPct</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xRes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yRes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">creationOptions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">srcWin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projWin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projWinSRS</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unscale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaleParams</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exponents</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputBounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadataOptions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputSRS</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nogcp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">GCPs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noData</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rgbExpand</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stats</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xmp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resampleAlg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overviewLevel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'AUTO'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#osgeo.gdal.TranslateOptions" title="Link to this definition"></a></dt>
+<dd><p>Create a TranslateOptions() object that can be passed to gdal.Translate()</p>
+<dl class="field-list simple">
+<dt class="field-odd">パラメータ<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>options</strong> -- can be be an array of strings, a string or let empty and filled from other keywords.</p></li>
+<li><p><strong>format</strong> -- output format (&quot;GTiff&quot;, etc...)</p></li>
+<li><p><strong>outputType</strong> -- output type (gdalconst.GDT_Byte, etc...)</p></li>
+<li><p><strong>bandList</strong> -- array of band numbers (index start at 1)</p></li>
+<li><p><strong>maskBand</strong> -- mask band to generate or not (&quot;none&quot;, &quot;auto&quot;, &quot;mask&quot;, 1, ...)</p></li>
+<li><p><strong>width</strong> -- width of the output raster in pixel</p></li>
+<li><p><strong>height</strong> -- height of the output raster in pixel</p></li>
+<li><p><strong>widthPct</strong> -- width of the output raster in percentage (100 = original width)</p></li>
+<li><p><strong>heightPct</strong> -- height of the output raster in percentage (100 = original height)</p></li>
+<li><p><strong>xRes</strong> -- output horizontal resolution</p></li>
+<li><p><strong>yRes</strong> -- output vertical resolution</p></li>
+<li><p><strong>creationOptions</strong> -- list of creation options</p></li>
+<li><p><strong>srcWin</strong> -- subwindow in pixels to extract: [left_x, top_y, width, height]</p></li>
+<li><p><strong>projWin</strong> -- subwindow in projected coordinates to extract: [ulx, uly, lrx, lry]</p></li>
+<li><p><strong>projWinSRS</strong> -- SRS in which projWin is expressed</p></li>
+<li><p><strong>strict</strong> -- strict mode</p></li>
+<li><p><strong>unscale</strong> -- unscale values with scale and offset metadata</p></li>
+<li><p><strong>scaleParams</strong> -- list of scale parameters, each of the form [src_min,src_max] or [src_min,src_max,dst_min,dst_max]</p></li>
+<li><p><strong>exponents</strong> -- list of exponentiation parameters</p></li>
+<li><p><strong>outputBounds</strong> -- assigned output bounds: [ulx, uly, lrx, lry]</p></li>
+<li><p><strong>metadataOptions</strong> -- list of metadata options</p></li>
+<li><p><strong>outputSRS</strong> -- assigned output SRS</p></li>
+<li><p><strong>nogcp</strong> -- ignore GCP in the raster</p></li>
+<li><p><strong>GCPs</strong> -- list of GCPs</p></li>
+<li><p><strong>noData</strong> -- nodata value (or &quot;none&quot; to unset it)</p></li>
+<li><p><strong>rgbExpand</strong> -- Color palette expansion mode: &quot;gray&quot;, &quot;rgb&quot;, &quot;rgba&quot;</p></li>
+<li><p><strong>stats</strong> -- whether to calculate statistics</p></li>
+<li><p><strong>rat</strong> -- whether to write source RAT</p></li>
+<li><p><strong>xmp</strong> -- whether to copy XMP metadata</p></li>
+<li><p><strong>resampleAlg</strong> -- resampling mode</p></li>
+<li><p><strong>overviewLevel</strong> -- To specify which overview level of source files must be used</p></li>
+<li><p><strong>callback</strong> -- callback method</p></li>
+<li><p><strong>callback_data</strong> -- user data for callback</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="osgeo.gdal.ViewshedGenerate">
-<span class="sig-prename descclassname"><span class="pre">osgeo.gdal.</span></span><span class="sig-name descname"><span class="pre">ViewshedGenerate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Band</span> <span class="pre">srcBand</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">char</span> <span class="pre">const</span> <span class="pre">*</span> <span class="pre">driverName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">char</span> <span class="pre">const</span> <span class="pre">*</span> <span class="pre">targetRasterName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">char</span> <span class="pre">**</span> <span class="pre">creationOptions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double</span> <span class="pre">observerX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double</span> <span class="pre">observerY</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double</span> <span class="pre">observerHeight</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double</span> <span class="pre">targetHeight</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double</span> <span class="pre">visibleVal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double</span> <span class="pre">invisibleVal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double</span> <span class="pre">outOfRangeVal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double</span> <span class="pre">noDataVal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double</span> <span class="pre">dfCurvCoeff</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">GDALViewshedMode</span> <span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double</span> <span class="pre">maxDistance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">GDALProgressFunc</span> <span class="pre">callback=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">void</span> <span class="pre">*</span> <span class="pre">callback_data=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">GDALViewshedOutputType</span> <span class="pre">heightMode=GVOT_NORMAL</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">char</span> <span class="pre">**</span> <span class="pre">papszOptions=None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="raster_api.html#osgeo.gdal.Dataset" title="osgeo.gdal.Dataset"><span class="pre">Dataset</span></a></span></span><a class="headerlink" href="#osgeo.gdal.ViewshedGenerate" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">osgeo.gdal.</span></span><span class="sig-name descname"><span class="pre">ViewshedGenerate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Band</span> <span class="pre">srcBand</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">char</span> <span class="pre">const</span> <span class="pre">*</span> <span class="pre">driverName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">char</span> <span class="pre">const</span> <span class="pre">*</span> <span class="pre">targetRasterName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">char</span> <span class="pre">**</span> <span class="pre">creationOptions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double</span> <span class="pre">observerX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double</span> <span class="pre">observerY</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double</span> <span class="pre">observerHeight</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double</span> <span class="pre">targetHeight</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double</span> <span class="pre">visibleVal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double</span> <span class="pre">invisibleVal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double</span> <span class="pre">outOfRangeVal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double</span> <span class="pre">noDataVal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double</span> <span class="pre">dfCurvCoeff</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">GDALViewshedMode</span> <span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double</span> <span class="pre">maxDistance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">GDALProgressFunc</span> <span class="pre">callback=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">void</span> <span class="pre">*</span> <span class="pre">callback_data=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">GDALViewshedOutputType</span> <span class="pre">heightMode=GVOT_NORMAL</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">char</span> <span class="pre">**</span> <span class="pre">options=None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="raster_api.html#osgeo.gdal.Dataset" title="osgeo.gdal.Dataset"><span class="pre">Dataset</span></a></span></span><a class="headerlink" href="#osgeo.gdal.ViewshedGenerate" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="osgeo.gdal.Warp">
 <span class="sig-prename descclassname"><span class="pre">osgeo.gdal.</span></span><span class="sig-name descname"><span class="pre">Warp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">destNameOrDestDS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">srcDSOrSrcDSTab</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#osgeo.gdal.Warp" title="Link to this definition"></a></dt>
-<dd><p>Warp one or several datasets.
-Arguments are :</p>
-<blockquote>
-<div><p>destNameOrDestDS --- Output dataset name or object
-srcDSOrSrcDSTab --- an array of Dataset objects or filenames, or a Dataset object or a filename</p>
-</div></blockquote>
-<dl class="simple">
-<dt>Keyword arguments are :</dt><dd><p>options --- return of gdal.WarpOptions(), string or array of strings
-other keywords arguments of gdal.WarpOptions()</p>
+<dd><p>Warp one or several datasets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">パラメータ<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>destNameOrDestDS</strong> -- Output dataset name or object</p></li>
+<li><p><strong>srcDSOrSrcDSTab</strong> -- an array of Dataset objects or filenames, or a Dataset object or a filename</p></li>
+<li><p><strong>kwargs</strong> -- options: return of gdal.WarpOptions(), string or array of strings,
+other keywords arguments of gdal.WarpOptions().
+If options is provided as a gdal.WarpOptions() object, other keywords are ignored.</p></li>
+</ul>
 </dd>
 </dl>
-<p>If options is provided as a gdal.WarpOptions() object, other keywords are ignored.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="osgeo.gdal.WarpOptions">
 <span class="sig-prename descclassname"><span class="pre">osgeo.gdal.</span></span><span class="sig-name descname"><span class="pre">WarpOptions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputBounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputBoundsSRS</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xRes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yRes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">targetAlignedPixels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">srcSRS</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dstSRS</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coordinateOperation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">srcAlpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dstAlpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">warpOptions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errorThreshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">warpMemoryLimit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">creationOptions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputType</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workingType</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resampleAlg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">srcNodata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dstNodata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multithread</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rpc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geoloc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">polynomialOrder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transformerOptions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cutlineDSName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cutlineLayer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cutlineWhere</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cutlineSQL</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cutlineBlend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cropToCutline</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copyMetadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadataConflictValue</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">setColorInterpretation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overviewLevel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'AUTO'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#osgeo.gdal.WarpOptions" title="Link to this definition"></a></dt>
-<dd><p>Create a WarpOptions() object that can be passed to gdal.Warp()
-Keyword arguments are :</p>
-<blockquote>
-<div><p>options --- can be be an array of strings, a string or let empty and filled from other keywords.
-format --- output format (&quot;GTiff&quot;, etc...)
-outputBounds --- output bounds as (minX, minY, maxX, maxY) in target SRS
-outputBoundsSRS --- SRS in which output bounds are expressed, in the case they are not expressed in dstSRS
-xRes, yRes --- output resolution in target SRS
-targetAlignedPixels --- whether to force output bounds to be multiple of output resolution
-width --- width of the output raster in pixel
-height --- height of the output raster in pixel
-srcSRS --- source SRS
-dstSRS --- output SRS
-coordinateOperation -- coordinate operation as a PROJ string or WKT string
-srcAlpha --- whether to force the last band of the input dataset to be considered as an alpha band
-dstAlpha --- whether to force the creation of an output alpha band
-outputType --- output type (gdalconst.GDT_Byte, etc...)
-workingType --- working type (gdalconst.GDT_Byte, etc...)
-warpOptions --- list of warping options
-errorThreshold --- error threshold for approximation transformer (in pixels)
-warpMemoryLimit --- size of working buffer in MB
-resampleAlg --- resampling mode
-creationOptions --- list of creation options
-srcNodata --- source nodata value(s)
-dstNodata --- output nodata value(s)
-multithread --- whether to multithread computation and I/O operations
-tps --- whether to use Thin Plate Spline GCP transformer
-rpc --- whether to use RPC transformer
-geoloc --- whether to use GeoLocation array transformer
-polynomialOrder --- order of polynomial GCP interpolation
-transformerOptions --- list of transformer options
-cutlineDSName --- cutline dataset name
-cutlineLayer --- cutline layer name
-cutlineWhere --- cutline WHERE clause
-cutlineSQL --- cutline SQL statement
-cutlineBlend --- cutline blend distance in pixels
-cropToCutline --- whether to use cutline extent for output bounds
-copyMetadata --- whether to copy source metadata
-metadataConflictValue --- metadata data conflict value
-setColorInterpretation --- whether to force color interpretation of input bands to output bands
-overviewLevel --- To specify which overview level of source files must be used
-callback --- callback method
-callback_data --- user data for callback</p>
-</div></blockquote>
+<dd><p>Create a WarpOptions() object that can be passed to gdal.Warp()</p>
+<dl class="field-list simple">
+<dt class="field-odd">パラメータ<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>options</strong> -- can be be an array of strings, a string or let empty and filled from other keywords.</p></li>
+<li><p><strong>format</strong> -- output format (&quot;GTiff&quot;, etc...)</p></li>
+<li><p><strong>outputBounds</strong> -- output bounds as (minX, minY, maxX, maxY) in target SRS</p></li>
+<li><p><strong>outputBoundsSRS</strong> -- SRS in which output bounds are expressed, in the case they are not expressed in dstSRS</p></li>
+<li><p><strong>xRes</strong> -- output resolution in target SRS</p></li>
+<li><p><strong>yRes</strong> -- output resolution in target SRS</p></li>
+<li><p><strong>targetAlignedPixels</strong> -- whether to force output bounds to be multiple of output resolution</p></li>
+<li><p><strong>width</strong> -- width of the output raster in pixel</p></li>
+<li><p><strong>height</strong> -- height of the output raster in pixel</p></li>
+<li><p><strong>srcSRS</strong> -- source SRS</p></li>
+<li><p><strong>dstSRS</strong> -- output SRS</p></li>
+<li><p><strong>coordinateOperation</strong> -- coordinate operation as a PROJ string or WKT string</p></li>
+<li><p><strong>srcAlpha</strong> -- whether to force the last band of the input dataset to be considered as an alpha band</p></li>
+<li><p><strong>dstAlpha</strong> -- whether to force the creation of an output alpha band</p></li>
+<li><p><strong>outputType</strong> -- output type (gdalconst.GDT_Byte, etc...)</p></li>
+<li><p><strong>workingType</strong> -- working type (gdalconst.GDT_Byte, etc...)</p></li>
+<li><p><strong>warpOptions</strong> -- list of warping options</p></li>
+<li><p><strong>errorThreshold</strong> -- error threshold for approximation transformer (in pixels)</p></li>
+<li><p><strong>warpMemoryLimit</strong> -- size of working buffer in MB</p></li>
+<li><p><strong>resampleAlg</strong> -- resampling mode</p></li>
+<li><p><strong>creationOptions</strong> -- list of creation options</p></li>
+<li><p><strong>srcNodata</strong> -- source nodata value(s)</p></li>
+<li><p><strong>dstNodata</strong> -- output nodata value(s)</p></li>
+<li><p><strong>multithread</strong> -- whether to multithread computation and I/O operations</p></li>
+<li><p><strong>tps</strong> -- whether to use Thin Plate Spline GCP transformer</p></li>
+<li><p><strong>rpc</strong> -- whether to use RPC transformer</p></li>
+<li><p><strong>geoloc</strong> -- whether to use GeoLocation array transformer</p></li>
+<li><p><strong>polynomialOrder</strong> -- order of polynomial GCP interpolation</p></li>
+<li><p><strong>transformerOptions</strong> -- list of transformer options</p></li>
+<li><p><strong>cutlineDSName</strong> -- cutline dataset name</p></li>
+<li><p><strong>cutlineLayer</strong> -- cutline layer name</p></li>
+<li><p><strong>cutlineWhere</strong> -- cutline WHERE clause</p></li>
+<li><p><strong>cutlineSQL</strong> -- cutline SQL statement</p></li>
+<li><p><strong>cutlineBlend</strong> -- cutline blend distance in pixels</p></li>
+<li><p><strong>cropToCutline</strong> -- whether to use cutline extent for output bounds</p></li>
+<li><p><strong>copyMetadata</strong> -- whether to copy source metadata</p></li>
+<li><p><strong>metadataConflictValue</strong> -- metadata data conflict value</p></li>
+<li><p><strong>setColorInterpretation</strong> -- whether to force color interpretation of input bands to output bands</p></li>
+<li><p><strong>overviewLevel</strong> -- To specify which overview level of source files must be used</p></li>
+<li><p><strong>callback</strong> -- callback method</p></li>
+<li><p><strong>callback_data</strong> -- user data for callback</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </section>
@@ -557,17 +609,17 @@ callback_data --- user data for callback</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="osgeo.gdal.MultiDimInfo">
 <span class="sig-prename descclassname"><span class="pre">osgeo.gdal.</span></span><span class="sig-name descname"><span class="pre">MultiDimInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#osgeo.gdal.MultiDimInfo" title="Link to this definition"></a></dt>
-<dd><p>Return information on a dataset.
-Arguments are :</p>
-<blockquote>
-<div><p>ds --- a Dataset object or a filename</p>
-</div></blockquote>
-<dl class="simple">
-<dt>Keyword arguments are :</dt><dd><p>options --- return of gdal.MultiDimInfoOptions(), string or array of strings
-other keywords arguments of gdal.MultiDimInfoOptions()</p>
+<dd><p>Return information on a dataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">パラメータ<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ds</strong> -- a Dataset object or a filename</p></li>
+<li><p><strong>kwargs</strong> -- options: return of gdal.MultiDimInfoOptions(), string or array of strings
+other keywords arguments of gdal.MultiDimInfoOptions().
+If options is provided as a gdal.MultiDimInfoOptions() object, other keywords are ignored.</p></li>
+</ul>
 </dd>
 </dl>
-<p>If options is provided as a gdal.MultiDimInfoOptions() object, other keywords are ignored.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -580,36 +632,44 @@ options can be be an array of strings, a string or let empty and filled from oth
 <dl class="py function">
 <dt class="sig sig-object py" id="osgeo.gdal.MultiDimTranslate">
 <span class="sig-prename descclassname"><span class="pre">osgeo.gdal.</span></span><span class="sig-name descname"><span class="pre">MultiDimTranslate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">destName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">srcDSOrSrcDSTab</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#osgeo.gdal.MultiDimTranslate" title="Link to this definition"></a></dt>
-<dd><p>MultiDimTranslate one or several datasets.
-Arguments are :</p>
-<blockquote>
-<div><p>destName --- Output dataset name
-srcDSOrSrcDSTab --- an array of Dataset objects or filenames, or a Dataset object or a filename</p>
-</div></blockquote>
-<dl class="simple">
-<dt>Keyword arguments are :</dt><dd><p>options --- return of gdal.MultiDimTranslateOptions(), string or array of strings
-other keywords arguments of gdal.MultiDimTranslateOptions()</p>
+<dd><p>MultiDimTranslate one or several datasets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">パラメータ<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>destName</strong> -- Output dataset name</p></li>
+<li><p><strong>srcDSOrSrcDSTab</strong> -- an array of Dataset objects or filenames, or a Dataset object or a filename</p></li>
+<li><p><strong>kwargs</strong> -- options: return of gdal.MultiDimTranslateOptions(), string or array of strings
+other keywords arguments of gdal.MultiDimTranslateOptions().
+If options is provided as a gdal.MultiDimTranslateOptions() object,
+other keywords are ignored.</p></li>
+</ul>
 </dd>
 </dl>
-<p>If options is provided as a gdal.MultiDimTranslateOptions() object, other keywords are ignored.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="osgeo.gdal.MultiDimTranslateOptions">
 <span class="sig-prename descclassname"><span class="pre">osgeo.gdal.</span></span><span class="sig-name descname"><span class="pre">MultiDimTranslateOptions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">creationOptions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arraySpecs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">groupSpecs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subsetSpecs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaleAxesSpecs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#osgeo.gdal.MultiDimTranslateOptions" title="Link to this definition"></a></dt>
-<dd><p>Create a MultiDimTranslateOptions() object that can be passed to gdal.MultiDimTranslate()
-Keyword arguments are :</p>
-<blockquote>
-<div><p>options --- can be be an array of strings, a string or let empty and filled from other keywords.
-format --- output format (&quot;GTiff&quot;, etc...)
-creationOptions --- list of creation options
-arraySpecs -- list of array specifications, each of them being an array name or &quot;name={src_array_name},dstname={dst_name},transpose=[1,0],view=[:,::-1]&quot;
-groupSpecs -- list of group specifications, each of them being a group name or &quot;name={src_array_name},dstname={dst_name},recursive=no&quot;
-subsetSpecs -- list of subset specifications, each of them being like &quot;{dim_name}({min_val},{max_val})&quot; or &quot;{dim_name}({slice_va})&quot;
-scaleAxesSpecs -- list of dimension scaling specifications, each of them being like &quot;{dim_name}({scale_factor})&quot;
-callback --- callback method
-callback_data --- user data for callback</p>
-</div></blockquote>
+<dd><p>Create a MultiDimTranslateOptions() object that can be passed to gdal.MultiDimTranslate()</p>
+<dl class="field-list simple">
+<dt class="field-odd">パラメータ<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>options</strong> -- can be be an array of strings, a string or let empty and filled from other keywords.</p></li>
+<li><p><strong>format</strong> -- output format (&quot;GTiff&quot;, etc...)</p></li>
+<li><p><strong>creationOptions</strong> -- list of creation options</p></li>
+<li><p><strong>arraySpecs</strong> -- list of array specifications, each of them being an array name or
+&quot;name={src_array_name},dstname={dst_name},transpose=[1,0],view=[:,::-1]&quot;</p></li>
+<li><p><strong>groupSpecs</strong> -- list of group specifications, each of them being a group name or
+&quot;name={src_array_name},dstname={dst_name},recursive=no&quot;</p></li>
+<li><p><strong>subsetSpecs</strong> -- list of subset specifications, each of them being like
+&quot;{dim_name}({min_val},{max_val})&quot; or &quot;{dim_name}({slice_va})&quot;</p></li>
+<li><p><strong>scaleAxesSpecs</strong> -- list of dimension scaling specifications, each of them being like
+&quot;{dim_name}({scale_factor})&quot;</p></li>
+<li><p><strong>callback</strong> -- callback method</p></li>
+<li><p><strong>callback_data</strong> -- user data for callback</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </section>
@@ -618,57 +678,61 @@ callback_data --- user data for callback</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="osgeo.gdal.VectorTranslate">
 <span class="sig-prename descclassname"><span class="pre">osgeo.gdal.</span></span><span class="sig-name descname"><span class="pre">VectorTranslate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">destNameOrDestDS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">srcDS</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#osgeo.gdal.VectorTranslate" title="Link to this definition"></a></dt>
-<dd><p>Convert one vector dataset
-Arguments are :</p>
-<blockquote>
-<div><p>destNameOrDestDS --- Output dataset name or object
-srcDS --- a Dataset object or a filename</p>
-</div></blockquote>
-<dl class="simple">
-<dt>Keyword arguments are :</dt><dd><p>options --- return of gdal.VectorTranslateOptions(), string or array of strings
-other keywords arguments of gdal.VectorTranslateOptions()</p>
+<dd><p>Convert one vector dataset</p>
+<dl class="field-list simple">
+<dt class="field-odd">パラメータ<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>destNameOrDestDS</strong> -- Output dataset name or object</p></li>
+<li><p><strong>srcDS</strong> -- a Dataset object or a filename</p></li>
+<li><p><strong>kwargs</strong> -- options: return of gdal.VectorTranslateOptions(), string or array of strings,
+other keywords arguments of gdal.VectorTranslateOptions().
+If options is provided as a gdal.VectorTranslateOptions() object,
+other keywords are ignored.</p></li>
+</ul>
 </dd>
 </dl>
-<p>If options is provided as a gdal.VectorTranslateOptions() object, other keywords are ignored.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="osgeo.gdal.VectorTranslateOptions">
 <span class="sig-prename descclassname"><span class="pre">osgeo.gdal.</span></span><span class="sig-name descname"><span class="pre">VectorTranslateOptions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accessMode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">srcSRS</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dstSRS</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reproject</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coordinateOperation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">SQLStatement</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">SQLDialect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">where</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selectFields</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">addFields</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">forceNullable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emptyStrAsNull</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spatFilter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spatSRS</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datasetCreationOptions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layerCreationOptions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layerName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geometryType</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">segmentizeMaxDist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">makeValid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zField</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resolveDomains</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skipFailures</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#osgeo.gdal.VectorTranslateOptions" title="Link to this definition"></a></dt>
-<dd><p>Create a VectorTranslateOptions() object that can be passed to gdal.VectorTranslate()
-Keyword arguments are :</p>
-<blockquote>
-<div><p>options --- can be be an array of strings, a string or let empty and filled from other keywords.
-format --- output format (&quot;ESRI Shapefile&quot;, etc...)
-accessMode --- None for creation, 'update', 'append', 'overwrite'
-srcSRS --- source SRS
-dstSRS --- output SRS (with reprojection if reproject = True)
-coordinateOperation -- coordinate operation as a PROJ string or WKT string
-reproject --- whether to do reprojection
-SQLStatement --- SQL statement to apply to the source dataset
-SQLDialect --- SQL dialect ('OGRSQL', 'SQLITE', ...)
-where --- WHERE clause to apply to source layer(s)
-selectFields --- list of fields to select
-addFields --- whether to add new fields found in source layers (to be used with accessMode == 'append')
-forceNullable --- whether to drop NOT NULL constraints on newly created fields
-emptyStrAsNull --- whether to treat empty string values as NULL
-spatFilter --- spatial filter as (minX, minY, maxX, maxY) bounding box
-spatSRS --- SRS in which the spatFilter is expressed. If not specified, it is assumed to be the one of the layer(s)
-datasetCreationOptions --- list of dataset creation options
-layerCreationOptions --- list of layer creation options
-layers --- list of layers to convert
-layerName --- output layer name
-geometryType --- output layer geometry type ('POINT', ....)
-dim --- output dimension ('XY', 'XYZ', 'XYM', 'XYZM', 'layer_dim')
-segmentizeMaxDist --- maximum distance between consecutive nodes of a line geometry
-makeValid --- run MakeValid() on geometries
-zField --- name of field to use to set the Z component of geometries
-resolveDomains --- whether to create an additional field for each field associated with a coded field domain.
-skipFailures --- whether to skip failures
-limit -- maximum number of features to read per layer
-callback --- callback method
-callback_data --- user data for callback</p>
-</div></blockquote>
+<dd><p>Create a VectorTranslateOptions() object that can be passed to gdal.VectorTranslate()</p>
+<dl class="field-list simple">
+<dt class="field-odd">パラメータ<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>options</strong> -- can be be an array of strings, a string or let empty and filled from other keywords.</p></li>
+<li><p><strong>format</strong> -- format (&quot;ESRI Shapefile&quot;, etc...)</p></li>
+<li><p><strong>accessMode</strong> -- None for creation, 'update', 'append', 'upsert', 'overwrite'</p></li>
+<li><p><strong>srcSRS</strong> -- source SRS</p></li>
+<li><p><strong>dstSRS</strong> -- output SRS (with reprojection if reproject = True)</p></li>
+<li><p><strong>coordinateOperation</strong> -- coordinate operation as a PROJ string or WKT string</p></li>
+<li><p><strong>reproject</strong> -- whether to do reprojection</p></li>
+<li><p><strong>SQLStatement</strong> -- SQL statement to apply to the source dataset</p></li>
+<li><p><strong>SQLDialect</strong> -- SQL dialect ('OGRSQL', 'SQLITE', ...)</p></li>
+<li><p><strong>where</strong> -- WHERE clause to apply to source layer(s)</p></li>
+<li><p><strong>selectFields</strong> -- list of fields to select</p></li>
+<li><p><strong>addFields</strong> -- whether to add new fields found in source layers (to be used with accessMode == 'append' or 'upsert')</p></li>
+<li><p><strong>forceNullable</strong> -- whether to drop NOT NULL constraints on newly created fields</p></li>
+<li><p><strong>emptyStrAsNull</strong> -- whether to treat empty string values as NULL</p></li>
+<li><p><strong>spatFilter</strong> -- spatial filter as (minX, minY, maxX, maxY) bounding box</p></li>
+<li><p><strong>spatSRS</strong> -- SRS in which the spatFilter is expressed. If not specified, it is assumed to be the one of the layer(s)</p></li>
+<li><p><strong>datasetCreationOptions</strong> -- list of dataset creation options</p></li>
+<li><p><strong>layerCreationOptions</strong> -- list of layer creation options</p></li>
+<li><p><strong>layers</strong> -- list of layers to convert</p></li>
+<li><p><strong>layerName</strong> -- output layer name</p></li>
+<li><p><strong>geometryType</strong> -- output layer geometry type ('POINT', ....)</p></li>
+<li><p><strong>dim</strong> -- output dimension ('XY', 'XYZ', 'XYM', 'XYZM', 'layer_dim')</p></li>
+<li><p><strong>segmentizeMaxDist</strong> -- maximum distance between consecutive nodes of a line geometry</p></li>
+<li><p><strong>makeValid</strong> -- run MakeValid() on geometries</p></li>
+<li><p><strong>zField</strong> -- name of field to use to set the Z component of geometries</p></li>
+<li><p><strong>resolveDomains</strong> -- whether to create an additional field for each field associated with a coded field domain.</p></li>
+<li><p><strong>skipFailures</strong> -- whether to skip failures</p></li>
+<li><p><strong>limit</strong> -- maximum number of features to read per layer</p></li>
+<li><p><strong>callback</strong> -- callback method</p></li>
+<li><p><strong>callback_data</strong> -- user data for callback</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </section>

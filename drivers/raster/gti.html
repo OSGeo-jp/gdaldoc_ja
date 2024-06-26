@@ -134,7 +134,7 @@
 <li class="toctree-l2"><a class="reference internal" href="isis3.html">ISIS3 -- USGS Astrogeology ISIS Cube (Version 3)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jdem.html">JDEM -- Japanese DEM (.mem)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2ecw.html">JP2ECW -- ERDAS JPEG2000 (.jp2)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="jp2kak.html">JP2KAK -- JPEG-2000 (based on Kakadu)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jp2kak.html">JP2KAK -- JPEG 2000 (based on Kakadu SDK)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2lura.html">JP2Lura -- JPEG2000 driver based on Lurawave library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2mrsid.html">JP2MrSID -- JPEG2000 via MrSID SDK</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2openjpeg.html">JP2OpenJPEG -- JPEG2000 driver based on OpenJPEG library</a></li>
@@ -232,10 +232,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -354,6 +354,10 @@ individually in a VRT file before being referenced in the GTI index.</p></li>
 FlatGeoBuf format with a <code class="docutils literal notranslate"><span class="pre">.gti.fgb</span></code> extension, meeting the minimum requirements
 for a GTI compatible tile index, detailed later.</p>
 <p>For example: <code class="docutils literal notranslate"><span class="pre">tileindex.gti.gpkg</span></code></p>
+<p>Starting with GDAL 3.10, specifying the <code class="docutils literal notranslate"><span class="pre">-if</span> <span class="pre">GTI</span></code> option to command line utilities
+accepting it, or <code class="docutils literal notranslate"><span class="pre">GTI</span></code> as the only value of the <code class="docutils literal notranslate"><span class="pre">papszAllowedDrivers</span></code> of
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpenEx()</span></code>, also forces the driver to recognize the passed filename
+if its extension is just <code class="docutils literal notranslate"><span class="pre">.gpkg</span></code> or <code class="docutils literal notranslate"><span class="pre">.fgb</span></code>.</p>
 </li>
 <li><p>any vector file in a GDAL supported format, with its filename (or connection
 string prefixed with <code class="docutils literal notranslate"><span class="pre">GTI:</span></code></p>
@@ -616,7 +620,8 @@ the above format specifications are met.</p>
 </section>
 <section id="open-options">
 <h2>Open options<a class="headerlink" href="#open-options" title="Link to this heading"></a></h2>
-<p>The following open options are available. Most of them can be
+<p><a href="#id1"><span class="problematic" id="id2">|about-open-options|</span></a>
+The following open options are available. Most of them can be
 also defined as layer metadata items or in the .gti XML file</p>
 <ul class="simple">
 <li><p id="drivers/raster/gti-oo-LAYER"><strong>LAYER=&lt;string&gt;: </strong>For dataset with multiple layers, indicates which one should be used as

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>gdal_proximity.py &mdash; GDAL  ドキュメント</title>
+  <title>gdal_proximity &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
       <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
 
@@ -26,7 +26,7 @@
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="gdal_rasterize" href="gdal_rasterize.html" />
-    <link rel="prev" title="gdal_polygonize.py" href="gdal_polygonize.html" /> 
+    <link rel="prev" title="gdal_polygonize" href="gdal_polygonize.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -56,44 +56,44 @@
 <li class="toctree-l2 current"><a class="reference internal" href="index.html#raster-programs">ラスタープログラム</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="raster_common_options.html">共通オプション</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdal-config.html">gdal-config (Unix)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="gdal2tiles.html">gdal2tiles.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="gdal2xyz.html">gdal2xyz.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="gdal_calc.html">gdal_calc.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gdal2tiles.html">gdal2tiles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gdal2xyz.html">gdal2xyz</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gdal_calc.html">gdal_calc</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdal_contour.html">gdal_contour</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdal_create.html">gdal_create</a></li>
-<li class="toctree-l3"><a class="reference internal" href="gdal_edit.html">gdal_edit.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="gdal_fillnodata.html">gdal_fillnodata.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gdal_edit.html">gdal_edit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gdal_fillnodata.html">gdal_fillnodata</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdal_footprint.html">gdal_footprint</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdal_grid.html">gdal_grid</a></li>
-<li class="toctree-l3"><a class="reference internal" href="gdal_merge.html">gdal_merge.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="gdal_pansharpen.html">gdal_pansharpen.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="gdal_polygonize.html">gdal_polygonize.py</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">gdal_proximity.py</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="gdal_merge.html">gdal_merge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gdal_pansharpen.html">gdal_pansharpen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gdal_polygonize.html">gdal_polygonize</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">gdal_proximity</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#synopsis">Synopsis</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#description">Description</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="gdal_rasterize.html">gdal_rasterize</a></li>
-<li class="toctree-l3"><a class="reference internal" href="gdal_retile.html">gdal_retile.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="gdal_sieve.html">gdal_sieve.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gdal_retile.html">gdal_retile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gdal_sieve.html">gdal_sieve</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdal_translate.html">gdal_translate</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdal_viewshed.html">gdal_viewshed</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdaladdo.html">gdaladdo</a></li>
-<li class="toctree-l3"><a class="reference internal" href="gdalattachpct.html">gdalattachpct.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gdalattachpct.html">gdalattachpct</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdalbuildvrt.html">gdalbuildvrt</a></li>
-<li class="toctree-l3"><a class="reference internal" href="gdalcompare.html">gdalcompare.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gdalcompare.html">gdalcompare</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdaldem.html">gdaldem</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdalinfo.html">gdalinfo</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdallocationinfo.html">gdallocationinfo</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdalmanage.html">gdalmanage</a></li>
-<li class="toctree-l3"><a class="reference internal" href="gdalmove.html">gdalmove.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gdalmove.html">gdalmove</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdalsrsinfo.html">gdalsrsinfo</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdaltindex.html">gdaltindex</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdaltransform.html">gdaltransform</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdalwarp.html">gdalwarp</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nearblack.html">nearblack</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pct2rgb.html">pct2rgb.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="rgb2pct.html">rgb2pct.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pct2rgb.html">pct2rgb</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rgb2pct.html">rgb2pct</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#multidimensional-raster-programs">多次元ラスタープログラム</a></li>
@@ -102,17 +102,17 @@
 <li class="toctree-l2"><a class="reference internal" href="index.html#other-utilities">その他ユーティリティ</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">Raster drivers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">Vector drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">ラスタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">ベクタードライバー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">開発</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">コミュニティ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -150,7 +150,7 @@
       
           <li><a href="index.html">プログラム</a> &raquo;</li>
       
-      <li>gdal_proximity.py</li>
+      <li>gdal_proximity</li>
     
 
     
@@ -172,7 +172,7 @@
         <a href="gdal_rasterize.html" class="btn btn-neutral float-right" title="gdal_rasterize" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="gdal_polygonize.html" class="btn btn-neutral float-left" title="gdal_polygonize.py" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="gdal_polygonize.html" class="btn btn-neutral float-left" title="gdal_polygonize" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -181,12 +181,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="gdal-proximity-py">
-<span id="gdal-proximity"></span><h1>gdal_proximity.py<a class="headerlink" href="#gdal-proximity-py" title="Link to this heading"></a></h1>
+  <section id="gdal-proximity">
+<span id="id1"></span><h1>gdal_proximity<a class="headerlink" href="#gdal-proximity" title="Link to this heading"></a></h1>
 <p>Produces a raster proximity map.</p>
 <section id="synopsis">
 <span id="index-0"></span><h2>Synopsis<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdal_proximity</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="o">-</span><span class="n">general</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdal_proximity</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="o">-</span><span class="n">general</span><span class="p">]</span>
                   <span class="o">&lt;</span><span class="n">srcfile</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">dstfile</span><span class="o">&gt;</span> <span class="p">[</span><span class="o">-</span><span class="n">srcband</span> <span class="o">&lt;</span><span class="n">n</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">dstband</span> <span class="o">&lt;</span><span class="n">n</span><span class="o">&gt;</span><span class="p">]</span>
                   <span class="p">[</span><span class="o">-</span><span class="n">of</span> <span class="o">&lt;</span><span class="nb">format</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">co</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;=&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span>
                   <span class="p">[</span><span class="o">-</span><span class="n">ot</span> <span class="n">Byte</span><span class="o">/</span><span class="n">UInt16</span><span class="o">/</span><span class="n">UInt32</span><span class="o">/</span><span class="n">Float32</span><span class="o">/</span><span class="n">etc</span><span class="p">]</span>
@@ -198,10 +198,14 @@
 </section>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
-<p>The <strong class="program">gdal_proximity.py</strong> script generates a raster proximity map indicating
+<p><strong class="program">gdal_proximity</strong> generates a raster proximity map indicating
 the distance from the center of each pixel to the center of the nearest
 pixel identified as a target pixel.  Target pixels are those in the source
 raster for which the raster pixel value is in the set of target pixel values.</p>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>gdal_proximity is a Python utility, and is only available if GDAL Python bindings are available.</p>
+</div>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_proximity-help">
 <span class="sig-name descname"><span class="pre">--help</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal_proximity-help" title="Link to this definition"></a></dt>
@@ -261,7 +265,7 @@ supported for a format can be listed with the
 <a class="reference internal" href="raster_common_options.html#raster-common-options-formats"><span class="std std-ref">--formats</span></a>
 command line option but the documentation for the format is the
 definitive source of information on driver creation options.
-See <a class="reference internal" href="../drivers/raster/index.html#raster-drivers"><span class="std std-ref">Raster drivers</span></a> format
+See <a class="reference internal" href="../drivers/raster/index.html#raster-drivers"><span class="std std-ref">ラスタードライバー</span></a> format
 specific documentation for legal creation options for each format.</p>
 </dd></dl>
 
@@ -312,7 +316,8 @@ then the value 65535 will be used. Distance is interpreted in pixels unless
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_proximity-fixed-buf-val">
 <span class="sig-name descname"><span class="pre">-fixed-buf-val</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;n&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_proximity-fixed-buf-val" title="Link to this definition"></a></dt>
-<dd><p>Specify a value to be applied to all pixels that are within the -maxdist of target pixels (including the target pixels) instead of a distance value.</p>
+<dd><p>Specify a value to be applied to all pixels that are within the
+-maxdist of target pixels (including the target pixels) instead of a distance value.</p>
 </dd></dl>
 
 </section>
@@ -328,7 +333,7 @@ then the value 65535 will be used. Distance is interpreted in pixels unless
         <a href="gdal_rasterize.html" class="btn btn-neutral float-right" title="gdal_rasterize" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="gdal_polygonize.html" class="btn btn-neutral float-left" title="gdal_polygonize.py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="gdal_polygonize.html" class="btn btn-neutral float-left" title="gdal_polygonize" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

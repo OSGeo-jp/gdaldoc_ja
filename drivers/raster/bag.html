@@ -136,7 +136,7 @@
 <li class="toctree-l2"><a class="reference internal" href="isis3.html">ISIS3 -- USGS Astrogeology ISIS Cube (Version 3)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jdem.html">JDEM -- Japanese DEM (.mem)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2ecw.html">JP2ECW -- ERDAS JPEG2000 (.jp2)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="jp2kak.html">JP2KAK -- JPEG-2000 (based on Kakadu)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jp2kak.html">JP2KAK -- JPEG 2000 (based on Kakadu SDK)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2lura.html">JP2Lura -- JPEG2000 driver based on Lurawave library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2mrsid.html">JP2MrSID -- JPEG2000 via MrSID SDK</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2openjpeg.html">JP2OpenJPEG -- JPEG2000 driver based on OpenJPEG library</a></li>
@@ -234,10 +234,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -356,7 +356,8 @@ encoding the spatial reference system.</p>
 </section>
 <section id="open-options">
 <h2>Open options<a class="headerlink" href="#open-options" title="Link to this heading"></a></h2>
-<p>For open options specific to variable resolution, see following chapter.</p>
+<p><a href="#id3"><span class="problematic" id="id4">|about-open-options|</span></a>
+For open options specific to variable resolution, see following chapter.</p>
 <p>Other open options are:</p>
 <ul class="simple">
 <li><p id="drivers/raster/bag-oo-REPORT_VERTCRS"><strong>REPORT_VERTCRS=[YES/NO]: </strong> (GDAL &gt;= 3.2)  Defaults to <code class="docutils literal notranslate"><span class="pre">YES</span></code>. To report
@@ -544,8 +545,9 @@ file, which is by default,
 found in the GDAL data definition files. This template contains
 variables, present as ${KEYNAME} or ${KEYNAME:default_value} in the XML
 file, that can be substituted by providing a creation option whose name
-is the VAR_ string prefixed to the key name. Currently those creation
-options are:</p>
+is the VAR_ string prefixed to the key name.</p>
+<p><a href="#id5"><span class="problematic" id="id6">|about-creation-options|</span></a>
+The following creation options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/raster/bag-co-VAR_INDIVIDUAL_NAME"><strong>VAR_INDIVIDUAL_NAME=value: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">unknown</span></code>. String to fill contact/CI_ResponsibleParty/individualName.</p>
 </li>

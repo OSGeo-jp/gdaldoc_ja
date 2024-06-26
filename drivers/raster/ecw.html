@@ -141,7 +141,7 @@
 <li class="toctree-l2"><a class="reference internal" href="isis3.html">ISIS3 -- USGS Astrogeology ISIS Cube (Version 3)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jdem.html">JDEM -- Japanese DEM (.mem)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2ecw.html">JP2ECW -- ERDAS JPEG2000 (.jp2)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="jp2kak.html">JP2KAK -- JPEG-2000 (based on Kakadu)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jp2kak.html">JP2KAK -- JPEG 2000 (based on Kakadu SDK)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2lura.html">JP2Lura -- JPEG2000 driver based on Lurawave library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2mrsid.html">JP2MrSID -- JPEG2000 via MrSID SDK</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2openjpeg.html">JP2OpenJPEG -- JPEG2000 driver based on OpenJPEG library</a></li>
@@ -239,10 +239,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -382,6 +382,8 @@ is already considered to be optimized for &quot;arbitrary overviews&quot;.</p>
 </section>
 <section id="creation-options-1">
 <span id="id1"></span><h2>Creation Options:<a class="headerlink" href="#creation-options-1" title="Link to this heading"></a></h2>
+<p><a href="#id4"><span class="problematic" id="id5">|about-creation-options|</span></a>
+The following creation options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/raster/ecw-co-LARGE_OK"><strong>LARGE_OK=[YES/NO]: </strong><em>(v3.x SDK only)</em> Allow compressing files larger
 than 500MB in accordance with EULA terms. Deprecated since v4.x and
@@ -420,10 +422,8 @@ created. Default, 2 to retain widest compatibility.</p>
 </section>
 <section id="configuration-options">
 <h2>Configuration Options<a class="headerlink" href="#configuration-options" title="Link to this heading"></a></h2>
-<p>The ERDAS ECW SDK supports a variety of <a class="reference external" href="http://trac.osgeo.org/gdal/wiki/ConfigOptions">runtime configuration
-options</a> to control
-various features. Most of these are exposed as GDAL configuration
-options. See the ECW SDK documentation for full details on the meaning
+<p><a href="#id6"><span class="problematic" id="id7">|about-config-options|</span></a>
+The ERDAS ECW SDK supports a variety of configuration options to control various features. See the ECW SDK documentation for full details on the meaning
 of these options.</p>
 <ul class="simple">
 <li><p id="config-ECW_CACHE_MAXMEM"><strong>ECW_CACHE_MAXMEM=&lt;bytes&gt;: </strong>maximum bytes of RAM used for in-memory
@@ -507,7 +507,7 @@ with SetProjection() and the PROJ, DATUM or UNITS with
 SetMetadataItem(), the later values will override the values built from
 the projection string.</p>
 <p>All those can for example be modified with the -a_ullr, -a_srs or -mo
-switches of the <a class="reference internal" href="../../programs/gdal_edit.html#gdal-edit"><span class="std std-ref">gdal_edit.py</span></a> utility.</p>
+switches of the <a class="reference internal" href="../../programs/gdal_edit.html#gdal-edit"><span class="std std-ref">gdal_edit</span></a> utility.</p>
 <p>For example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdal_edit</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">mo</span> <span class="n">DATUM</span><span class="o">=</span><span class="n">WGS84</span> <span class="o">-</span><span class="n">mo</span> <span class="n">PROJ</span><span class="o">=</span><span class="n">GEODETIC</span> <span class="o">-</span><span class="n">a_ullr</span> <span class="mi">7</span> <span class="mi">47</span> <span class="mi">8</span> <span class="mi">46</span> <span class="n">test</span><span class="o">.</span><span class="n">ecw</span>
 
@@ -554,6 +554,7 @@ Guide</a></p></li>
 <li><p>Support for non-GDAL specific issues should be directed to the
 <a class="reference external" href="https://supportsi.hexagon.com/help/s/erdas-apollo">Hexagon Geospatial public
 forum</a></p></li>
+<li><p>Community contributed <a class="reference external" href="https://github.com/rouault/libecwj2-3.3-builds/blob/main/libecwj2-3.3.patch">patches</a> to apply to ECW SDK 3.3 sources</p></li>
 <li><p><a class="reference external" href="http://trac.osgeo.org/gdal/wiki/ECW">GDAL ECW Build Hints</a></p></li>
 </ul>
 </section>

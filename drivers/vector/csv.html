@@ -157,6 +157,7 @@
 <li class="toctree-l2"><a class="reference internal" href="wfs.html">WFS - OGC WFS service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xls.html">XLS - MS Excel format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xlsx.html">XLSX - MS Office Open XML spreadsheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xodr.html">XODR -- OpenDRIVE Road Description Format</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
@@ -164,10 +165,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -261,6 +262,10 @@ are also recognized.</p>
 <p>For files structured as CSV, but not ending
 with the &quot;.csv&quot; extension, the 'CSV:' prefix can be added before the filename
 to force loading by the CSV driver.</p>
+<p>Starting with GDAL 3.10, specifying the <code class="docutils literal notranslate"><span class="pre">-if</span> <span class="pre">CSV</span></code> option to command line utilities
+accepting it, or <code class="docutils literal notranslate"><span class="pre">CSV</span></code> as the only value of the <code class="docutils literal notranslate"><span class="pre">papszAllowedDrivers</span></code> of
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpenEx()</span></code>, also forces the driver to recognize the passed
+filename, without the <code class="docutils literal notranslate"><span class="pre">CSV:</span></code> prefix.</p>
 <p>The OGR CSV driver supports reading and writing. Because the CSV format
 has variable length text lines, reading is done sequentially. Reading
 features in random order will generally be very slow. OGR CSV layer
@@ -288,7 +293,7 @@ for geometries encoded in WKT</p>
 <p>Starting with GDAL 2.2, the &quot;JSonStringList&quot;, &quot;JSonIntegerList&quot;,
 &quot;JSonInteger64List&quot; and &quot;JSonRealList&quot; types can be used in .csvt to map
 to the corresponding OGR StringList, IntegerList, Integer64List and
-RealList types. The field values are then encoded as JSon arrays, with
+RealList types. The field values are then encoded as JSON arrays, with
 proper CSV escaping.</p>
 <p>Automatic field type guessing can also be done
 if specifying the open options described in the below &quot;Open options&quot;
@@ -386,7 +391,7 @@ Y_POSSIBLE_NAMES=Lat* -oo KEEP_GEOM_COLUMNS=NO</em> will return :</p>
   <span class="n">POINT</span> <span class="p">(</span><span class="mf">0.75</span> <span class="mf">47.5</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>If CSV file does not have a header line, the dummy &quot;field_n&quot; names can be
+<p>If the CSV file does not have a header line, the dummy &quot;field_n&quot; names can be
 used as possible names for coordinate fields. For example plain XYZ point
 data can be opened as</p>
 <p><em>ogrinfo -ro -al elevation.xyz -oo X_POSSIBLE_NAMES=field_1 -oo
@@ -469,8 +474,8 @@ is used.</p>
 </section>
 <section id="open-options">
 <h2>Open options<a class="headerlink" href="#open-options" title="Link to this heading"></a></h2>
-<p>The following open options can be specified
-(typically with the -oo name=value parameters of ogrinfo or ogr2ogr):</p>
+<p><a href="#id1"><span class="problematic" id="id2">|about-open-options|</span></a>
+The following open options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/vector/csv-oo-SEPARATOR"><strong>SEPARATOR=[AUTO/COMMA/SEMICOLON/TAB/SPACE/PIPE]: </strong> (GDAL &gt;= 3.8)  Defaults to <code class="docutils literal notranslate"><span class="pre">AUTO</span></code>. Field separator character. Default value is AUTO for autodetection.</p>
 </li>
@@ -566,6 +571,8 @@ be stored in RAM temporarily before flushing to disk.</p>
 </section>
 <section id="layer-creation-options">
 <h2>Layer Creation options<a class="headerlink" href="#layer-creation-options" title="Link to this heading"></a></h2>
+<p><a href="#id3"><span class="problematic" id="id4">|about-layer-creation-options|</span></a>
+The following layer creation options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/vector/csv-lco-LINEFORMAT"><strong>LINEFORMAT=[CRLF/LF]: </strong>By default when creating new .csv files they are
 created with the line termination conventions of the local platform
@@ -604,8 +611,8 @@ IF_NEEDED)</p>
 </section>
 <section id="configuration-options">
 <h2>Configuration options<a class="headerlink" href="#configuration-options" title="Link to this heading"></a></h2>
-<p>The following <a class="reference internal" href="../../user/configoptions.html#configoptions"><span class="std std-ref">configuration options</span></a> are
-available:</p>
+<p><a href="#id5"><span class="problematic" id="id6">|about-config-options|</span></a>
+The following configuration options are available:</p>
 <ul class="simple">
 <li><p id="config-OGR_WKT_PRECISION"><strong>OGR_WKT_PRECISION=&lt;integer&gt;: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">15</span></code>. Number of decimals for coordinate
 values. A heuristic is used to remove insignificant
@@ -628,8 +635,9 @@ first columns in the .csv file</p>
 </div>
 </li>
 <li><p>This example shows using ogr2ogr to transform a shapefile into a .csv
-file with geography field formatted using GeoJSON format.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ogr2ogr</span> <span class="o">-</span><span class="n">f</span> <span class="n">CSV</span> <span class="o">-</span><span class="n">dialect</span> <span class="n">sqlite</span> <span class="o">-</span><span class="n">sql</span> <span class="s2">&quot;select AsGeoJSON(geometry) AS geom, * from input&quot;</span> <span class="n">output</span><span class="o">.</span><span class="n">csv</span> <span class="nb">input</span><span class="o">.</span><span class="n">shp</span>
+file with geometry field formatted using GeoJSON format.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ogr2ogr</span> <span class="o">-</span><span class="n">f</span> <span class="n">CSV</span> <span class="n">output</span><span class="o">.</span><span class="n">csv</span> <span class="nb">input</span><span class="o">.</span><span class="n">shp</span> <span class="o">-</span><span class="n">dialect</span> <span class="n">sqlite</span> <span class="o">-</span><span class="n">sql</span> \
+    <span class="s2">&quot;select AsGeoJSON(geometry) AS geom, * from input&quot;</span>
 </pre></div>
 </div>
 </li>
@@ -644,6 +652,20 @@ file with geography field formatted using GeoJSON format.</p>
 </pre></div>
 </div>
 </div></blockquote>
+</li>
+<li><p>Use <cite>ogr2ogr -segmentize</cite> to densify a input geometry being specified in the <code class="docutils literal notranslate"><span class="pre">WKT</span></code> special field. Note that one needs to specify the GEOMETRY=AS_WKT layer creation option, otherwise the input geometry would be returned unmodified:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cat input.csv
+WKT,ID,Name
+&quot;LINESTRING (-900 -1450,-900 100)&quot;,0,900W
+
+$ ogr2ogr -segmentize 400 -lco GEOMETRY=AS_WKT \
+  -sql &quot;SELECT ID, Name FROM input&quot; output.csv input.csv
+
+$ cat output.csv
+WKT,ID,Name
+&quot;LINESTRING (-900 -1450,-900 -1062.5,-900 -675,-900 -287.5,-900 100)&quot;,&quot;0&quot;,900W
+</pre></div>
+</div>
 </li>
 </ul>
 </section>

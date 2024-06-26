@@ -126,7 +126,7 @@
 <li class="toctree-l2"><a class="reference internal" href="isis3.html">ISIS3 -- USGS Astrogeology ISIS Cube (Version 3)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jdem.html">JDEM -- Japanese DEM (.mem)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2ecw.html">JP2ECW -- ERDAS JPEG2000 (.jp2)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="jp2kak.html">JP2KAK -- JPEG-2000 (based on Kakadu)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jp2kak.html">JP2KAK -- JPEG 2000 (based on Kakadu SDK)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2lura.html">JP2Lura -- JPEG2000 driver based on Lurawave library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2mrsid.html">JP2MrSID -- JPEG2000 via MrSID SDK</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2openjpeg.html">JP2OpenJPEG -- JPEG2000 driver based on OpenJPEG library</a></li>
@@ -229,10 +229,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -352,7 +352,12 @@ the following, specifying a deferred processing</p>
 </div>
 </li>
 <li><p>passing a string &quot;OGCAPI:{url}&quot; where {url} is the URL to a OGC API landing page
-In that case the driver will return subdatasets with the different collections.</p></li>
+In that case the driver will return subdatasets with the different collections.</p>
+<p>Starting with GDAL 3.10, specifying the <code class="docutils literal notranslate"><span class="pre">-if</span> <span class="pre">OGCAPI</span></code> option to command line utilities
+accepting it, or <code class="docutils literal notranslate"><span class="pre">OGCAPI</span></code> as the only value of the <code class="docutils literal notranslate"><span class="pre">papszAllowedDrivers</span></code> of
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpenEx()</span></code>, also forces the driver to recognize the passed
+URL,  without the <code class="docutils literal notranslate"><span class="pre">OGCAPI:</span></code> prefix.</p>
+</li>
 <li><p>passing a string &quot;OGCAPI:{url}&quot; where {url} is the URL to a OGC API collection description</p></li>
 </ul>
 <p>When the driver opens a collection, for raster, it will look if tiles or maps
@@ -366,7 +371,8 @@ matrix set when available</p>
 </section>
 <section id="open-options">
 <h2>Open options<a class="headerlink" href="#open-options" title="Link to this heading"></a></h2>
-<p>The following open options are available:</p>
+<p><a href="#id1"><span class="problematic" id="id2">|about-open-options|</span></a>
+The following open options are available:</p>
 <ul class="simple">
 <li><p id="drivers/raster/ogcapi-oo-API"><strong>API=[AUTO/MAPS/TILES/COVERAGE/ITEMS]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">AUTO</span></code>. Which API to use for data acquisition.
 In AUTO mode, for raster access, coverage is used if available, and

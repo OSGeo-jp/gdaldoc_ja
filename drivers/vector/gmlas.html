@@ -160,6 +160,7 @@
 <li class="toctree-l2"><a class="reference internal" href="wfs.html">WFS - OGC WFS service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xls.html">XLS - MS Excel format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xlsx.html">XLSX - MS Office Open XML spreadsheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xodr.html">XODR -- OpenDRIVE Road Description Format</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
@@ -167,10 +168,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -278,10 +279,13 @@ usage, due to its working in streaming mode.</p>
 </section>
 <section id="opening-syntax">
 <h2>Opening syntax<a class="headerlink" href="#opening-syntax" title="Link to this heading"></a></h2>
-<p>The connection string is GMLAS:/path/to/the.gml. Note the GMLAS: prefix.
+<p>The connection string is GMLAS:/path/to/the.gml. Note the <code class="docutils literal notranslate"><span class="pre">GMLAS:</span></code> prefix.
 If this prefix it is omitted, then the GML driver is likely to be used.</p>
-<p>It is also possible to only used &quot;GMLAS:&quot; as the connection string, but
-in that case the schemas must be explicitly provided with the XSD open
+<p>Alternatively, starting with GDAL 3.10, specifying the <code class="docutils literal notranslate"><span class="pre">-if</span> <span class="pre">GMLAS</span></code> option to command line utilities
+accepting it, or <code class="docutils literal notranslate"><span class="pre">GMLAS</span></code> as the only value of the <code class="docutils literal notranslate"><span class="pre">papszAllowedDrivers</span></code> of
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpenEx()</span></code>, also forces the driver to recognize the passed filename.</p>
+<p>It is also possible to only used <code class="docutils literal notranslate"><span class="pre">GMLAS:</span></code> as the connection string, but
+in that case the schemas must be explicitly provided with the <code class="docutils literal notranslate"><span class="pre">XSD</span></code> open
 option.</p>
 </section>
 <section id="mapping-of-xml-structure-to-ogr-layers-and-fields">
@@ -409,6 +413,8 @@ nested elements.</p>
 </section>
 <section id="open-options">
 <h2>Open options<a class="headerlink" href="#open-options" title="Link to this heading"></a></h2>
+<p><a href="#id9"><span class="problematic" id="id10">|about-open-options|</span></a>
+The following open options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/vector/gmlas-oo-XSD"><strong>XSD=value: </strong>to specify an explicit XSD application schema
 to use (or a list of filenames, provided they are comma separated).
@@ -524,7 +530,8 @@ affected by those filters.</p>
 </section>
 <section id="dataset-creation-options">
 <h3>Dataset creation options<a class="headerlink" href="#dataset-creation-options" title="Link to this heading"></a></h3>
-<p>The supported dataset creation options are:</p>
+<p><a href="#id11"><span class="problematic" id="id12">|about-dataset-creation-options|</span></a>
+The supported dataset creation options are:</p>
 <ul class="simple">
 <li><p id="drivers/vector/gmlas-dsco-INPUT_XSD"><strong>INPUT_XSD=value: </strong>to specify an explicit XSD application
 schema to use (or a list of filenames, provided they are comma

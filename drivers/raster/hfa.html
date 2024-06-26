@@ -132,7 +132,7 @@
 <li class="toctree-l2"><a class="reference internal" href="isis3.html">ISIS3 -- USGS Astrogeology ISIS Cube (Version 3)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jdem.html">JDEM -- Japanese DEM (.mem)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2ecw.html">JP2ECW -- ERDAS JPEG2000 (.jp2)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="jp2kak.html">JP2KAK -- JPEG-2000 (based on Kakadu)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jp2kak.html">JP2KAK -- JPEG 2000 (based on Kakadu SDK)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2lura.html">JP2Lura -- JPEG2000 driver based on Lurawave library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2mrsid.html">JP2MrSID -- JPEG2000 via MrSID SDK</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2openjpeg.html">JP2OpenJPEG -- JPEG2000 driver based on OpenJPEG library</a></li>
@@ -230,10 +230,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -354,7 +354,8 @@ Pseudo-Color tables will be written if using the
 GDALDriver::CreateCopy() methodology. Most projections should be
 supported, though translation of unusual datums (other than WGS84, WGS72,
 NAD83, and NAD27) may be problematic.</p>
-<p>Creation Options:</p>
+<p><a href="#id3"><span class="problematic" id="id4">|about-creation-options|</span></a>
+The following creation options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/raster/hfa-co-BLOCKSIZE"><strong>BLOCKSIZE=32-2048: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">64</span></code>. Tile width/height.</p>
 </li>
@@ -404,9 +405,8 @@ Resampling', 'IMAGINE 4X4 Resampling', and others)</p></li>
 </section>
 <section id="configuration-options">
 <h2>Configuration Options<a class="headerlink" href="#configuration-options" title="Link to this heading"></a></h2>
-<p>Currently three <a class="reference external" href="http://trac.osgeo.org/gdal/wiki/ConfigOptions">runtime configuration
-options</a> are supported
-by the HFA driver:</p>
+<p><a href="#id5"><span class="problematic" id="id6">|about-config-options|</span></a>
+Currently the following configuration options are supported by the HFA driver:</p>
 <ul class="simple">
 <li><p id="config-HFA_USE_RRD"><strong>HFA_USE_RRD=[YES/NO]: </strong>Whether to force creation of external
 overviews in Erdas rrd format and with .rrd file name extension

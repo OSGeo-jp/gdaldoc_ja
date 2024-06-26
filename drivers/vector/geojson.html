@@ -83,7 +83,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#open-options">Open options</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#layer-creation-options">Layer creation options</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#vsi-virtual-file-system-api-support">VSI Virtual File System API support</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#round-tripping-of-extra-json-members">Round-tripping of extra JSon members</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#round-tripping-of-extra-json-members">Round-tripping of extra JSON members</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#rfc-7946-write-support">RFC 7946 write support</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#geometry-coordinate-precision">Geometry coordinate precision</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a></li>
@@ -154,6 +154,7 @@
 <li class="toctree-l2"><a class="reference internal" href="wfs.html">WFS - OGC WFS service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xls.html">XLS - MS Excel format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xlsx.html">XLSX - MS Office Open XML spreadsheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xodr.html">XODR -- OpenDRIVE Road Description Format</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
@@ -161,10 +162,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -285,7 +286,11 @@ extension .geojson or .json</p></li>
 <li><p>Text passed directly and encoded in GeoJSON</p></li>
 </ul>
 <p>Starting with GDAL 2.3, the URL/filename/text might be prefixed with
-GeoJSON: to avoid any ambiguity with other drivers.</p>
+GeoJSON: to avoid any ambiguity with other drivers. Alternatively, starting
+with GDAL 3.10, specifying the <code class="docutils literal notranslate"><span class="pre">-if</span> <span class="pre">GeoJSON</span></code> option to command line utilities
+accepting it, or <code class="docutils literal notranslate"><span class="pre">GeoJSON</span></code> as the only value of the <code class="docutils literal notranslate"><span class="pre">papszAllowedDrivers</span></code> of
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpenEx()</span></code>, also forces the driver to recognize the passed
+URL/filename/text.</p>
 </section>
 <section id="layer">
 <h2>Layer<a class="headerlink" href="#layer" title="Link to this heading"></a></h2>
@@ -314,7 +319,7 @@ request == single page.</p>
 <em>FeatureCollection</em>, the driver will produce a layer with only one
 feature. Otherwise, a layer will consists of a set of features.</p>
 <p>If the <a class="reference internal" href="#drivers/vector/geojson-oo-NATIVE_DATA"><code class="docutils literal notranslate"><span class="pre">NATIVE_DATA</span></code></a> open option is set to YES, members at the level of
-the FeatureCollection will be stored as a serialized JSon object in the
+the FeatureCollection will be stored as a serialized JSON object in the
 NATIVE_DATA item of the NATIVE_DATA metadata domain of the layer object
 (and &quot;application/vnd.geo+json&quot; in the NATIVE_MEDIA_TYPE of the
 NATIVE_DATA metadata domain).</p>
@@ -341,15 +346,15 @@ setting configuration option <a class="reference internal" href="#config-ATTRIBU
 Default behavior is to preserve all attributes (as an union, see
 previous paragraph), what is equal to setting
 <a class="reference internal" href="#config-ATTRIBUTES_SKIP"><code class="docutils literal notranslate"><span class="pre">ATTRIBUTES_SKIP=NO</span></code></a>.</p>
-<p>If the <a class="reference internal" href="#drivers/vector/geojson-oo-NATIVE_DATA"><code class="docutils literal notranslate"><span class="pre">NATIVE_DATA</span></code></a> open option is set to YES, the Feature JSon object
-will be stored as a serialized JSon object in the NativeData property of
+<p>If the <a class="reference internal" href="#drivers/vector/geojson-oo-NATIVE_DATA"><code class="docutils literal notranslate"><span class="pre">NATIVE_DATA</span></code></a> open option is set to YES, the Feature JSON object
+will be stored as a serialized JSON object in the NativeData property of
 the OGRFeature object (and &quot;application/vnd.geo+json&quot; in the
 NativeMediaType property). On write, if a OGRFeature to be written has
 its NativeMediaType property set to &quot;application/vnd.geo+json&quot; and its
-NativeData property set to a string that is a serialized JSon object,
+NativeData property set to a string that is a serialized JSON object,
 then extra members of this object (i.e. not the &quot;property&quot; dictionary,
 nor the first 3 dimensions of geometry coordinates) will be used to
-enhance the created JSon object from the OGRFeature. See <a class="reference internal" href="../../development/rfc/rfc60_improved_roundtripping_in_ogr.html#rfc-60"><span class="std std-ref">RFC 60 : Improved round-tripping in OGR</span></a>
+enhance the created JSON object from the OGRFeature. See <a class="reference internal" href="../../development/rfc/rfc60_improved_roundtripping_in_ogr.html#rfc-60"><span class="std std-ref">RFC 60 : Improved round-tripping in OGR</span></a>
 for more details.</p>
 </section>
 <section id="geometry">
@@ -368,8 +373,8 @@ the <a class="reference internal" href="#config-GEOMETRY_AS_COLLECTION"><code cl
 </section>
 <section id="configuration-options">
 <h2>Configuration options<a class="headerlink" href="#configuration-options" title="Link to this heading"></a></h2>
-<p>The following <a class="reference internal" href="../../user/configoptions.html#configoptions"><span class="std std-ref">configuration options</span></a> are
-available:</p>
+<p><a href="#id1"><span class="problematic" id="id2">|about-config-options|</span></a>
+The following configuration options are available:</p>
 <ul class="simple">
 <li><p id="config-GEOMETRY_AS_COLLECTION"><strong>GEOMETRY_AS_COLLECTION=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. used to control translation of
 geometries: YES: wrap geometries with OGRGeometryCollection type</p>
@@ -387,6 +392,8 @@ or 0 to allow for a unlimited size (GDAL &gt;= 3.5.2).</p>
 </section>
 <section id="open-options">
 <h2>Open options<a class="headerlink" href="#open-options" title="Link to this heading"></a></h2>
+<p><a href="#id3"><span class="problematic" id="id4">|about-open-options|</span></a>
+This driver supports the following open options:</p>
 <ul class="simple">
 <li><p id="drivers/vector/geojson-oo-FLATTEN_NESTED_ATTRIBUTES"><strong>FLATTEN_NESTED_ATTRIBUTES=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. Whether to recursively
 explore nested objects and produce flatten OGR attributes.</p>
@@ -397,13 +404,13 @@ explore nested objects and produce flatten OGR attributes.</p>
 through results with a ArcGIS Feature Service endpoint.</p>
 </li>
 <li><p id="drivers/vector/geojson-oo-NATIVE_DATA"><strong>NATIVE_DATA=[YES/NO]: </strong> (GDAL &gt;= 2.1)  Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. Whether to store the native
-JSon representation at FeatureCollection and Feature level.
+JSON representation at FeatureCollection and Feature level.
 This option can be used to improve round-tripping from GeoJSON
-to GeoJSON by preserving some extra JSon objects that would otherwise
+to GeoJSON by preserving some extra JSON objects that would otherwise
 be ignored by the OGR abstraction. Note that ogr2ogr by default
 enable this option, unless you specify its -noNativeData switch.</p>
 </li>
-<li><p id="drivers/vector/geojson-oo-ARRAY_AS_STRING"><strong>ARRAY_AS_STRING=[YES/NO]: </strong> (GDAL &gt;= 2.1) Whether to expose JSon
+<li><p id="drivers/vector/geojson-oo-ARRAY_AS_STRING"><strong>ARRAY_AS_STRING=[YES/NO]: </strong> (GDAL &gt;= 2.1) Whether to expose JSON
 arrays of strings, integers or reals as a OGR String. Default is NO.
 Can also be set with the <a class="reference internal" href="#config-OGR_GEOJSON_ARRAY_AS_STRING"><code class="docutils literal notranslate"><span class="pre">OGR_GEOJSON_ARRAY_AS_STRING</span></code></a>
 configuration option.</p>
@@ -451,6 +458,8 @@ fragment:</p>
 </section>
 <section id="layer-creation-options">
 <h2>Layer creation options<a class="headerlink" href="#layer-creation-options" title="Link to this heading"></a></h2>
+<p><a href="#id5"><span class="problematic" id="id6">|about-layer-creation-options|</span></a>
+This driver supports the following layer creation options:</p>
 <ul class="simple">
 <li><p id="drivers/vector/geojson-lco-WRITE_BBOX"><strong>WRITE_BBOX=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. Set to YES to write a bbox
 property with the bounding box of the geometries at the feature and
@@ -466,7 +475,7 @@ significant figures when writing floating-point numbers.
 If explicitly specified, and <a class="reference internal" href="#drivers/vector/geojson-lco-COORDINATE_PRECISION"><code class="docutils literal notranslate"><span class="pre">COORDINATE_PRECISION</span></code></a> is not, this
 will also apply to coordinates.</p>
 </li>
-<li><p id="drivers/vector/geojson-lco-NATIVE_DATA"><strong>NATIVE_DATA=value: </strong> (GDAL &gt;= 2.1) Serialized JSon object that
+<li><p id="drivers/vector/geojson-lco-NATIVE_DATA"><strong>NATIVE_DATA=value: </strong> (GDAL &gt;= 2.1) Serialized JSON object that
 contains extra properties to store at FeatureCollection level.</p>
 </li>
 <li><p id="drivers/vector/geojson-lco-NATIVE_MEDIA_TYPE"><strong>NATIVE_MEDIA_TYPE=value: </strong> (GDAL &gt;= 2.1) Format of <a class="reference internal" href="#drivers/vector/geojson-lco-NATIVE_DATA"><code class="docutils literal notranslate"><span class="pre">NATIVE_DATA</span></code></a>.
@@ -498,8 +507,8 @@ must be written as the 'id' member of Feature objects.</p>
 <li><p id="drivers/vector/geojson-lco-ID_GENERATE"><strong>ID_GENERATE=[YES/NO]: </strong> (GDAL &gt;= 3.1) Auto-generate feature ids</p>
 </li>
 <li><p id="drivers/vector/geojson-lco-WRITE_NON_FINITE_VALUES"><strong>WRITE_NON_FINITE_VALUES=[YES/NO]: </strong> (GDAL &gt;= 2.4)  Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. Whether to write
-NaN / Infinity values. Such values are not allowed in strict JSon
-mode, but some JSon parsers (libjson-c &gt;= 0.12 for example) can
+NaN / Infinity values. Such values are not allowed in strict JSON
+mode, but some JSON parsers (libjson-c &gt;= 0.12 for example) can
 understand them as they are allowed by ECMAScript.</p>
 </li>
 <li><p id="drivers/vector/geojson-lco-AUTODETECT_JSON_STRINGS"><strong>AUTODETECT_JSON_STRINGS=[YES/NO]: </strong> (GDAL &gt;= 3.8)  Defaults to <code class="docutils literal notranslate"><span class="pre">YES</span></code>. Whether to try to interpret string fields as JSON arrays or objects
@@ -529,9 +538,9 @@ domains.</p>
 <p>Writing to /dev/stdout or /vsistdout/ is also supported.</p>
 </section>
 <section id="round-tripping-of-extra-json-members">
-<h2>Round-tripping of extra JSon members<a class="headerlink" href="#round-tripping-of-extra-json-members" title="Link to this heading"></a></h2>
+<h2>Round-tripping of extra JSON members<a class="headerlink" href="#round-tripping-of-extra-json-members" title="Link to this heading"></a></h2>
 <p>See <a class="reference internal" href="../../development/rfc/rfc60_improved_roundtripping_in_ogr.html#rfc-60"><span class="std std-ref">RFC 60 : Improved round-tripping in OGR</span></a> for more details.</p>
-<p>Starting with GDAL 2.1, extra JSon members at the FeatureCollection,
+<p>Starting with GDAL 2.1, extra JSON members at the FeatureCollection,
 Feature or geometry levels that are not normally reflected in the OGR
 abstraction, such as the ones called &quot;extra_XXXXX_member&quot; in the below
 snippet, are by default preserved when executing ogr2ogr with GeoJSON
@@ -648,7 +657,7 @@ JSON</p></li>
 <li><p><a class="reference external" href="http://json.org/">JSON</a> - JavaScript Object Notation</p></li>
 <li><p><a class="reference internal" href="geojsonseq.html#vector-geojsonseq"><span class="std std-ref">GeoJSON sequence driver</span></a></p></li>
 <li><p><a class="reference internal" href="jsonfg.html#vector-jsonfg"><span class="std std-ref">OGC Features and Geometries JSON (JSON-FG) driver</span></a></p></li>
-<li><p><a class="reference internal" href="esrijson.html#vector-esrijson"><span class="std std-ref">ESRI JSon / FeatureService driver</span></a></p></li>
+<li><p><a class="reference internal" href="esrijson.html#vector-esrijson"><span class="std std-ref">ESRI JSON / FeatureService driver</span></a></p></li>
 <li><p><a class="reference internal" href="topojson.html#vector-topojson"><span class="std std-ref">TopoJSON driver</span></a></p></li>
 </ul>
 </section>

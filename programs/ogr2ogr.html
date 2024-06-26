@@ -65,29 +65,30 @@
 <li class="toctree-l4"><a class="reference internal" href="#known-issues">Known issues</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#c-api">C API</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#advanced-examples">Advanced examples</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="ogrtindex.html">ogrtindex</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ogrlineref.html">ogrlineref</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ogrmerge.html">ogrmerge.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ogr_layer_algebra.html">ogr_layer_algebra.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ogrmerge.html">ogrmerge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ogr_layer_algebra.html">ogr_layer_algebra</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#geographic-network-programs">空間ネットワークプログラム</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#other-utilities">その他ユーティリティ</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">Raster drivers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">Vector drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">ラスタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">ベクタードライバー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">開発</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">コミュニティ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -162,38 +163,53 @@
 <section id="synopsis">
 <span id="index-0"></span><h2>Synopsis<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ogr2ogr</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">long</span><span class="o">-</span><span class="n">usage</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="o">-</span><span class="n">general</span><span class="p">]</span>
-        <span class="p">[</span><span class="o">-</span><span class="n">of</span> <span class="o">&lt;</span><span class="n">output_format</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">dsco</span> <span class="o">&lt;</span><span class="n">NAME</span><span class="o">&gt;=&lt;</span><span class="n">VALUE</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span> <span class="p">[</span><span class="o">-</span><span class="n">lco</span> <span class="o">&lt;</span><span class="n">NAME</span><span class="o">&gt;=&lt;</span><span class="n">VALUE</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span>
+        <span class="p">[</span><span class="o">-</span><span class="n">of</span> <span class="o">&lt;</span><span class="n">output_format</span><span class="o">&gt;</span><span class="p">]</span>
+        <span class="p">[</span><span class="o">-</span><span class="n">dsco</span> <span class="o">&lt;</span><span class="n">NAME</span><span class="o">&gt;=&lt;</span><span class="n">VALUE</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span> <span class="p">[</span><span class="o">-</span><span class="n">lco</span> <span class="o">&lt;</span><span class="n">NAME</span><span class="o">&gt;=&lt;</span><span class="n">VALUE</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span>
         <span class="p">[[</span><span class="o">-</span><span class="n">append</span><span class="p">]</span><span class="o">|</span><span class="p">[</span><span class="o">-</span><span class="n">upsert</span><span class="p">]</span><span class="o">|</span><span class="p">[</span><span class="o">-</span><span class="n">overwrite</span><span class="p">]]</span>
-        <span class="p">[</span><span class="o">-</span><span class="n">update</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">sql</span> <span class="o">&lt;</span><span class="n">statement</span><span class="o">&gt;|@&lt;</span><span class="n">filename</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">dialect</span> <span class="o">&lt;</span><span class="n">dialect</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">spat</span> <span class="o">&lt;</span><span class="n">xmin</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">ymin</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">xmax</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">ymax</span><span class="o">&gt;</span><span class="p">]</span>
-        <span class="p">[</span><span class="o">-</span><span class="n">where</span> <span class="o">&lt;</span><span class="n">restricted_where</span><span class="o">&gt;|@&lt;</span><span class="n">filename</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">select</span> <span class="o">&lt;</span><span class="n">field_list</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">nln</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">nlt</span> <span class="o">&lt;</span><span class="nb">type</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span>
+        <span class="p">[</span><span class="o">-</span><span class="n">update</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">sql</span> <span class="o">&lt;</span><span class="n">statement</span><span class="o">&gt;|@&lt;</span><span class="n">filename</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">dialect</span> <span class="o">&lt;</span><span class="n">dialect</span><span class="o">&gt;</span><span class="p">]</span>
+        <span class="p">[</span><span class="o">-</span><span class="n">spat</span> <span class="o">&lt;</span><span class="n">xmin</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">ymin</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">xmax</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">ymax</span><span class="o">&gt;</span><span class="p">]</span>
+        <span class="p">[</span><span class="o">-</span><span class="n">where</span> <span class="o">&lt;</span><span class="n">restricted_where</span><span class="o">&gt;|@&lt;</span><span class="n">filename</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">select</span> <span class="o">&lt;</span><span class="n">field_list</span><span class="o">&gt;</span><span class="p">]</span>
+        <span class="p">[</span><span class="o">-</span><span class="n">nln</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">nlt</span> <span class="o">&lt;</span><span class="nb">type</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span>
         <span class="p">[</span><span class="o">-</span><span class="n">s_srs</span> <span class="o">&lt;</span><span class="n">srs_def</span><span class="o">&gt;</span><span class="p">]</span>
         <span class="p">[[</span><span class="o">-</span><span class="n">a_srs</span> <span class="o">&lt;</span><span class="n">srs_def</span><span class="o">&gt;</span><span class="p">]</span><span class="o">|</span><span class="p">[</span><span class="o">-</span><span class="n">t_srs</span> <span class="o">&lt;</span><span class="n">srs_def</span><span class="o">&gt;</span><span class="p">]]</span>
         <span class="o">&lt;</span><span class="n">dst_dataset_name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">src_dataset_name</span><span class="o">&gt;</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">layer_name</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span>
 
 <span class="n">Field</span> <span class="n">related</span> <span class="n">options</span><span class="p">:</span>
-       <span class="p">[</span><span class="o">-</span><span class="n">addfields</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">relaxedFieldNameMatch</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">fieldTypeToString</span> <span class="n">All</span><span class="o">|&lt;</span><span class="n">type1</span><span class="o">&gt;</span><span class="p">[,</span><span class="o">&lt;</span><span class="n">type2</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span><span class="p">]</span>
-       <span class="p">[</span><span class="o">-</span><span class="n">mapFieldType</span> <span class="o">&lt;</span><span class="n">srctype</span><span class="o">&gt;|</span><span class="n">All</span><span class="o">=&lt;</span><span class="n">dsttype</span><span class="o">&gt;</span><span class="p">[,</span><span class="o">&lt;</span><span class="n">srctype2</span><span class="o">&gt;=&lt;</span><span class="n">dsttype2</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">fieldmap</span> <span class="o">&lt;</span><span class="n">field_1</span><span class="o">&gt;</span><span class="p">[,</span><span class="o">&lt;</span><span class="n">field_2</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span><span class="p">]</span>
-       <span class="p">[</span><span class="o">-</span><span class="n">splitlistfields</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">maxsubfields</span> <span class="o">&lt;</span><span class="n">n</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">emptyStrAsNull</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">forceNullable</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">unsetFieldWidth</span><span class="p">]</span>
-       <span class="p">[</span><span class="o">-</span><span class="n">unsetDefault</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">resolveDomains</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">dateTimeTo</span> <span class="n">UTC</span><span class="o">|</span><span class="n">UTC</span><span class="p">(</span><span class="o">+|-</span><span class="p">)</span><span class="o">&lt;</span><span class="n">HH</span><span class="o">&gt;|</span><span class="n">UTC</span><span class="p">(</span><span class="o">+|-</span><span class="p">)</span><span class="o">&lt;</span><span class="n">HH</span><span class="o">&gt;</span><span class="p">:</span><span class="o">&lt;</span><span class="n">MM</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">noNativeData</span><span class="p">]</span>
+       <span class="p">[</span><span class="o">-</span><span class="n">addfields</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">relaxedFieldNameMatch</span><span class="p">]</span>
+       <span class="p">[</span><span class="o">-</span><span class="n">fieldTypeToString</span> <span class="n">All</span><span class="o">|&lt;</span><span class="n">type1</span><span class="o">&gt;</span><span class="p">[,</span><span class="o">&lt;</span><span class="n">type2</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span><span class="p">]</span>
+       <span class="p">[</span><span class="o">-</span><span class="n">mapFieldType</span> <span class="o">&lt;</span><span class="n">srctype</span><span class="o">&gt;|</span><span class="n">All</span><span class="o">=&lt;</span><span class="n">dsttype</span><span class="o">&gt;</span><span class="p">[,</span><span class="o">&lt;</span><span class="n">srctype2</span><span class="o">&gt;=&lt;</span><span class="n">dsttype2</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span><span class="p">]</span>
+       <span class="p">[</span><span class="o">-</span><span class="n">fieldmap</span> <span class="o">&lt;</span><span class="n">field_1</span><span class="o">&gt;</span><span class="p">[,</span><span class="o">&lt;</span><span class="n">field_2</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span><span class="p">]</span>
+       <span class="p">[</span><span class="o">-</span><span class="n">splitlistfields</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">maxsubfields</span> <span class="o">&lt;</span><span class="n">n</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">emptyStrAsNull</span><span class="p">]</span>
+       <span class="p">[</span><span class="o">-</span><span class="n">forceNullable</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">unsetFieldWidth</span><span class="p">]</span>
+       <span class="p">[</span><span class="o">-</span><span class="n">unsetDefault</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">resolveDomains</span><span class="p">]</span>
+       <span class="p">[</span><span class="o">-</span><span class="n">dateTimeTo</span> <span class="n">UTC</span><span class="o">|</span><span class="n">UTC</span><span class="p">(</span><span class="o">+|-</span><span class="p">)</span><span class="o">&lt;</span><span class="n">HH</span><span class="o">&gt;|</span><span class="n">UTC</span><span class="p">(</span><span class="o">+|-</span><span class="p">)</span><span class="o">&lt;</span><span class="n">HH</span><span class="o">&gt;</span><span class="p">:</span><span class="o">&lt;</span><span class="n">MM</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">noNativeData</span><span class="p">]</span>
 
 <span class="n">Advanced</span> <span class="n">geometry</span> <span class="ow">and</span> <span class="n">SRS</span> <span class="n">related</span> <span class="n">options</span><span class="p">:</span>
-       <span class="p">[</span><span class="o">-</span><span class="n">dim</span> <span class="n">layer_dim</span><span class="o">|</span><span class="mi">2</span><span class="o">|</span><span class="n">XY</span><span class="o">|</span><span class="mi">3</span><span class="o">|</span><span class="n">XYZ</span><span class="o">|</span><span class="n">XYM</span><span class="o">|</span><span class="n">XYZM</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">s_coord_epoch</span> <span class="o">&lt;</span><span class="n">epoch</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">a_coord_epoch</span> <span class="o">&lt;</span><span class="n">epoch</span><span class="o">&gt;</span><span class="p">]</span>
-       <span class="p">[</span><span class="o">-</span><span class="n">t_coord_epoch</span> <span class="o">&lt;</span><span class="n">epoch</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">ct</span> <span class="o">&lt;</span><span class="n">pipeline_def</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">spat_srs</span> <span class="o">&lt;</span><span class="n">srs_def</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">geomfield</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="p">]</span>
-       <span class="p">[</span><span class="o">-</span><span class="n">segmentize</span> <span class="o">&lt;</span><span class="n">max_dist</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">simplify</span> <span class="o">&lt;</span><span class="n">tolerance</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">makevalid</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">wrapdateline</span><span class="p">]</span>
-       <span class="p">[</span><span class="o">-</span><span class="n">datelineoffset</span> <span class="o">&lt;</span><span class="n">val_in_degree</span><span class="o">&gt;</span><span class="p">]</span>
+       <span class="p">[</span><span class="o">-</span><span class="n">dim</span> <span class="n">layer_dim</span><span class="o">|</span><span class="mi">2</span><span class="o">|</span><span class="n">XY</span><span class="o">|</span><span class="mi">3</span><span class="o">|</span><span class="n">XYZ</span><span class="o">|</span><span class="n">XYM</span><span class="o">|</span><span class="n">XYZM</span><span class="p">]</span>
+       <span class="p">[</span><span class="o">-</span><span class="n">s_coord_epoch</span> <span class="o">&lt;</span><span class="n">epoch</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">a_coord_epoch</span> <span class="o">&lt;</span><span class="n">epoch</span><span class="o">&gt;</span><span class="p">]</span>
+       <span class="p">[</span><span class="o">-</span><span class="n">t_coord_epoch</span> <span class="o">&lt;</span><span class="n">epoch</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">ct</span> <span class="o">&lt;</span><span class="n">pipeline_def</span><span class="o">&gt;</span><span class="p">]</span>
+       <span class="p">[</span><span class="o">-</span><span class="n">spat_srs</span> <span class="o">&lt;</span><span class="n">srs_def</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">geomfield</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="p">]</span>
+       <span class="p">[</span><span class="o">-</span><span class="n">segmentize</span> <span class="o">&lt;</span><span class="n">max_dist</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">simplify</span> <span class="o">&lt;</span><span class="n">tolerance</span><span class="o">&gt;</span><span class="p">]</span>
+       <span class="p">[</span><span class="o">-</span><span class="n">makevalid</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">wrapdateline</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">datelineoffset</span> <span class="o">&lt;</span><span class="n">val_in_degree</span><span class="o">&gt;</span><span class="p">]</span>
        <span class="p">[</span><span class="o">-</span><span class="n">clipsrc</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">xmin</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">ymin</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">xmax</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">ymax</span><span class="o">&gt;</span><span class="p">]</span><span class="o">|&lt;</span><span class="n">WKT</span><span class="o">&gt;|&lt;</span><span class="n">datasource</span><span class="o">&gt;|</span><span class="n">spat_extent</span><span class="p">]</span>
-       <span class="p">[</span><span class="o">-</span><span class="n">clipsrcsql</span> <span class="o">&lt;</span><span class="n">sql_statement</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">clipsrclayer</span> <span class="o">&lt;</span><span class="n">layername</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">clipsrcwhere</span> <span class="o">&lt;</span><span class="n">expression</span><span class="o">&gt;</span><span class="p">]</span>
-       <span class="p">[</span><span class="o">-</span><span class="n">clipdst</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">xmin</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">ymin</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">xmax</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">ymax</span><span class="o">&gt;</span><span class="p">]</span><span class="o">|&lt;</span><span class="n">WKT</span><span class="o">&gt;|&lt;</span><span class="n">datasource</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">clipdstsql</span> <span class="o">&lt;</span><span class="n">sql_statement</span><span class="o">&gt;</span><span class="p">]</span>
-       <span class="p">[</span><span class="o">-</span><span class="n">clipdstlayer</span> <span class="o">&lt;</span><span class="n">layername</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">clipdstwhere</span> <span class="o">&lt;</span><span class="n">expression</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">explodecollections</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">zfield</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="p">]</span>
+       <span class="p">[</span><span class="o">-</span><span class="n">clipsrcsql</span> <span class="o">&lt;</span><span class="n">sql_statement</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">clipsrclayer</span> <span class="o">&lt;</span><span class="n">layername</span><span class="o">&gt;</span><span class="p">]</span>
+       <span class="p">[</span><span class="o">-</span><span class="n">clipsrcwhere</span> <span class="o">&lt;</span><span class="n">expression</span><span class="o">&gt;</span><span class="p">]</span>
+       <span class="p">[</span><span class="o">-</span><span class="n">clipdst</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">xmin</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">ymin</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">xmax</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">ymax</span><span class="o">&gt;</span><span class="p">]</span><span class="o">|&lt;</span><span class="n">WKT</span><span class="o">&gt;|&lt;</span><span class="n">datasource</span><span class="o">&gt;</span><span class="p">]</span>
+       <span class="p">[</span><span class="o">-</span><span class="n">clipdstsql</span> <span class="o">&lt;</span><span class="n">sql_statement</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">clipdstlayer</span> <span class="o">&lt;</span><span class="n">layername</span><span class="o">&gt;</span><span class="p">]</span>
+       <span class="p">[</span><span class="o">-</span><span class="n">clipdstwhere</span> <span class="o">&lt;</span><span class="n">expression</span><span class="o">&gt;</span><span class="p">]</span>
+       <span class="p">[</span><span class="o">-</span><span class="n">explodecollections</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">zfield</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="p">]</span>
        <span class="p">[</span><span class="o">-</span><span class="n">gcp</span> <span class="o">&lt;</span><span class="n">ungeoref_x</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">ungeoref_y</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">georef_x</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">georef_y</span><span class="o">&gt;</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">elevation</span><span class="o">&gt;</span><span class="p">]]</span><span class="o">...</span>
        <span class="p">[</span><span class="o">-</span><span class="n">tps</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">order</span> <span class="mi">1</span><span class="o">|</span><span class="mi">2</span><span class="o">|</span><span class="mi">3</span><span class="p">]</span>
-       <span class="p">[</span><span class="o">-</span><span class="n">xyRes</span> <span class="o">&lt;</span><span class="n">val</span><span class="o">&gt;</span><span class="p">[</span> <span class="n">m</span><span class="o">|</span><span class="n">mm</span><span class="o">|</span><span class="n">deg</span><span class="p">]]</span> <span class="p">[</span><span class="o">-</span><span class="n">zRes</span> <span class="o">&lt;</span><span class="n">val</span><span class="o">&gt;</span><span class="p">[</span> <span class="n">m</span><span class="o">|</span><span class="n">mm</span><span class="p">]]</span> <span class="p">[</span><span class="o">-</span><span class="n">mRes</span> <span class="o">&lt;</span><span class="n">val</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">unsetCoordPrecision</span><span class="p">]</span>
+       <span class="p">[</span><span class="o">-</span><span class="n">xyRes</span> <span class="o">&lt;</span><span class="n">val</span><span class="o">&gt;</span><span class="p">[</span> <span class="n">m</span><span class="o">|</span><span class="n">mm</span><span class="o">|</span><span class="n">deg</span><span class="p">]]</span> <span class="p">[</span><span class="o">-</span><span class="n">zRes</span> <span class="o">&lt;</span><span class="n">val</span><span class="o">&gt;</span><span class="p">[</span> <span class="n">m</span><span class="o">|</span><span class="n">mm</span><span class="p">]]</span> <span class="p">[</span><span class="o">-</span><span class="n">mRes</span> <span class="o">&lt;</span><span class="n">val</span><span class="o">&gt;</span><span class="p">]</span>
+       <span class="p">[</span><span class="o">-</span><span class="n">unsetCoordPrecision</span><span class="p">]</span>
 
 <span class="n">Other</span> <span class="n">options</span><span class="p">:</span>
-       <span class="p">[</span><span class="o">--</span><span class="n">quiet</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">progress</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="k">if</span> <span class="o">&lt;</span><span class="nb">format</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span> <span class="p">[</span><span class="o">-</span><span class="n">oo</span> <span class="o">&lt;</span><span class="n">NAME</span><span class="o">&gt;=&lt;</span><span class="n">VALUE</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span> <span class="p">[</span><span class="o">-</span><span class="n">doo</span> <span class="o">&lt;</span><span class="n">NAME</span><span class="o">&gt;=&lt;</span><span class="n">VALUE</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span>
+       <span class="p">[</span><span class="o">--</span><span class="n">quiet</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">progress</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="k">if</span> <span class="o">&lt;</span><span class="nb">format</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span>
+       <span class="p">[</span><span class="o">-</span><span class="n">oo</span> <span class="o">&lt;</span><span class="n">NAME</span><span class="o">&gt;=&lt;</span><span class="n">VALUE</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span> <span class="p">[</span><span class="o">-</span><span class="n">doo</span> <span class="o">&lt;</span><span class="n">NAME</span><span class="o">&gt;=&lt;</span><span class="n">VALUE</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span>
        <span class="p">[</span><span class="o">-</span><span class="n">fid</span> <span class="o">&lt;</span><span class="n">FID</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">preserve_fid</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">unsetFid</span><span class="p">]</span>
        <span class="p">[[</span><span class="o">-</span><span class="n">skipfailures</span><span class="p">]</span><span class="o">|</span><span class="p">[</span><span class="o">-</span><span class="n">gt</span> <span class="o">&lt;</span><span class="n">n</span><span class="o">&gt;|</span><span class="n">unlimited</span><span class="p">]]</span>
-       <span class="p">[</span><span class="o">-</span><span class="n">limit</span> <span class="o">&lt;</span><span class="n">nb_features</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">ds_transaction</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">mo</span> <span class="o">&lt;</span><span class="n">NAME</span><span class="o">&gt;=&lt;</span><span class="n">VALUE</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span> <span class="p">[</span><span class="o">-</span><span class="n">nomd</span><span class="p">]</span>
+       <span class="p">[</span><span class="o">-</span><span class="n">limit</span> <span class="o">&lt;</span><span class="n">nb_features</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">ds_transaction</span><span class="p">]</span>
+       <span class="p">[</span><span class="o">-</span><span class="n">mo</span> <span class="o">&lt;</span><span class="n">NAME</span><span class="o">&gt;=&lt;</span><span class="n">VALUE</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span> <span class="p">[</span><span class="o">-</span><span class="n">nomd</span><span class="p">]</span>
 </pre></div>
 </div>
 </section>
@@ -319,9 +335,9 @@ indicate that the content is in the pointed filename.</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-ogr2ogr-dialect">
 <span class="sig-name descname"><span class="pre">-dialect</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;dialect&gt;</span></span><a class="headerlink" href="#cmdoption-ogr2ogr-dialect" title="Link to this definition"></a></dt>
-<dd><p>SQL dialect. In some cases can be used to use (unoptimized) <a class="reference internal" href="../user/ogr_sql_dialect.html#ogr-sql-dialect"><span class="std std-ref">OGR SQL dialect</span></a> instead
+<dd><p>SQL dialect. In some cases can be used to use the (unoptimized) <a class="reference internal" href="../user/ogr_sql_dialect.html#ogr-sql-dialect"><span class="std std-ref">OGR SQL dialect</span></a> instead
 of the native SQL of an RDBMS by passing the <code class="docutils literal notranslate"><span class="pre">OGRSQL</span></code> dialect value.
-The <a class="reference internal" href="../user/sql_sqlite_dialect.html#sql-sqlite-dialect"><span class="std std-ref">SQL SQLite dialect</span></a> dialect can be select with the <code class="docutils literal notranslate"><span class="pre">SQLITE</span></code>
+The <a class="reference internal" href="../user/sql_sqlite_dialect.html#sql-sqlite-dialect"><span class="std std-ref">SQL SQLite dialect</span></a> dialect can be chosen with the <code class="docutils literal notranslate"><span class="pre">SQLITE</span></code>
 and <code class="docutils literal notranslate"><span class="pre">INDIRECT_SQLITE</span></code> dialect values, and this can be used with any datasource.</p>
 </dd></dl>
 
@@ -460,7 +476,7 @@ PROJ.4 declarations, or the name of a .prj file containing a WKT CRS definition.
 <p>Assign a coordinate epoch, linked with the output SRS. Useful when the
 output SRS is a dynamic CRS. Only taken into account if <a class="reference internal" href="#cmdoption-ogr2ogr-t_srs"><code class="xref std std-option docutils literal notranslate"><span class="pre">-t_srs</span></code></a>
 is used. It is also mutually exclusive with  <a class="reference internal" href="#cmdoption-ogr2ogr-a_coord_epoch"><code class="xref std std-option docutils literal notranslate"><span class="pre">-a_coord_epoch</span></code></a>.</p>
-<p>Before PROJ 9.4, <a class="reference internal" href="#cmdoption-ogr2ogr-s_coord_epoch"><code class="xref std std-option docutils literal notranslate"><span class="pre">-s_coord_epoch</span></code></a> and <a class="reference internal" href="#cmdoption-ogr2ogr-t_coord_epoch"><code class="xref std std-option docutils literal notranslate"><span class="pre">-t_coord_epoch</span></code></a> are
+<p>Before PROJ 9.4, <a class="reference internal" href="#cmdoption-ogr2ogr-s_coord_epoch"><code class="xref std std-option docutils literal notranslate"><span class="pre">-s_coord_epoch</span></code></a> and <a class="reference internal" href="#cmdoption-ogr2ogr-t_coord_epoch"><code class="xref std std-option docutils literal notranslate"><span class="pre">-t_coord_epoch</span></code></a> were
 mutually exclusive, due to lack of support for transformations between two dynamic CRS.</p>
 </dd></dl>
 
@@ -538,7 +554,7 @@ coordinate resolution of the source layer, if available, is used.</p>
 <p>Assign a coordinate epoch, linked with the source SRS. Useful when the
 source SRS is a dynamic CRS. Only taken into account if <a class="reference internal" href="#cmdoption-ogr2ogr-s_srs"><code class="xref std std-option docutils literal notranslate"><span class="pre">-s_srs</span></code></a>
 is used.</p>
-<p>Before PROJ 9.4, <a class="reference internal" href="#cmdoption-ogr2ogr-s_coord_epoch"><code class="xref std std-option docutils literal notranslate"><span class="pre">-s_coord_epoch</span></code></a> and <a class="reference internal" href="#cmdoption-ogr2ogr-t_coord_epoch"><code class="xref std std-option docutils literal notranslate"><span class="pre">-t_coord_epoch</span></code></a> are
+<p>Before PROJ 9.4, <a class="reference internal" href="#cmdoption-ogr2ogr-s_coord_epoch"><code class="xref std std-option docutils literal notranslate"><span class="pre">-s_coord_epoch</span></code></a> and <a class="reference internal" href="#cmdoption-ogr2ogr-t_coord_epoch"><code class="xref std std-option docutils literal notranslate"><span class="pre">-t_coord_epoch</span></code></a> were
 mutually exclusive, due to lack of support for transformations between two dynamic CRS.</p>
 </dd></dl>
 
@@ -548,8 +564,11 @@ mutually exclusive, due to lack of support for transformations between two dynam
 <dd><p>A PROJ string (single step operation or multiple step string starting with
 +proj=pipeline), a WKT2 string describing a CoordinateOperation, or a
 <a class="reference external" href="urn:ogc:def:coordinateOperation:EPSG::XXXX">urn:ogc:def:coordinateOperation:EPSG::XXXX</a> URN overriding the default
-transformation from the source to the target CRS. It must take into account
-the axis order of the source and target CRS.</p>
+transformation from the source to the target CRS.</p>
+<p>It must take into account the axis order of the source and target CRS, that
+is typically include a <code class="docutils literal notranslate"><span class="pre">step</span> <span class="pre">proj=axisswap</span> <span class="pre">order=2,1</span></code> at the beginning of
+the pipeline if the source CRS has northing/easting axis order, and/or at
+the end of the pipeline if the target CRS has northing/easting axis order.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.0.</span></p>
 </div>
@@ -694,12 +713,21 @@ within 170deg to -170deg will be split)</p>
 <dd><p>Distance tolerance for simplification. Note: the algorithm used preserves
 topology per feature, in particular for polygon geometries, but not for a
 whole layer.</p>
+<p>The specified value of this option is the tolerance used to merge
+consecutive points of the output geometry using the
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRGeometry::Simplify()</span></code> method
+The unit of the distance is in
+georeferenced units of the source vector dataset.
+This option is applied before the reprojection implied by <a class="reference internal" href="#cmdoption-ogr2ogr-t_srs"><code class="xref std std-option docutils literal notranslate"><span class="pre">-t_srs</span></code></a></p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-ogr2ogr-segmentize">
 <span class="sig-name descname"><span class="pre">-segmentize</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;max_dist&gt;</span></span><a class="headerlink" href="#cmdoption-ogr2ogr-segmentize" title="Link to this definition"></a></dt>
-<dd><p>Maximum distance between 2 nodes. Used to create intermediate points.</p>
+<dd><p>The specified value of this option is the maximum distance between two
+consecutive points of the output geometry before intermediate points are added.
+The unit of the distance is georeferenced units of the source raster.
+This option is applied before the reprojection implied by <a class="reference internal" href="#cmdoption-ogr2ogr-t_srs"><code class="xref std std-option docutils literal notranslate"><span class="pre">-t_srs</span></code></a></p>
 </dd></dl>
 
 <dl class="std option">
@@ -788,8 +816,13 @@ can be used to store the original FID if needed.</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-ogr2ogr-gcp">
 <span class="sig-name descname"><span class="pre">-gcp</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;ungeoref_x&gt;</span> <span class="pre">&lt;ungeoref_y&gt;</span> <span class="pre">&lt;georef_x&gt;</span> <span class="pre">&lt;georef_y&gt;</span> <span class="pre">[&lt;elevation&gt;]</span></span><a class="headerlink" href="#cmdoption-ogr2ogr-gcp" title="Link to this definition"></a></dt>
-<dd><p>Add the indicated ground control point. This option may be provided
-multiple times to provide a set of GCPs.</p>
+<dd><p>Use the indicated ground control point to compute a coordinate transformation.
+The transformation method can be selected by specifying the <a class="reference internal" href="#cmdoption-ogr2ogr-order"><code class="xref std std-option docutils literal notranslate"><span class="pre">-order</span></code></a>
+or <a class="reference internal" href="#cmdoption-ogr2ogr-tps"><code class="xref std std-option docutils literal notranslate"><span class="pre">-tps</span></code></a> options.
+Note that unlike raster tools such as gdal_edit or gdal_translate, GCPs
+are not added to the output dataset.
+This option may be provided multiple times to provide a set of GCPs (at
+least 2 GCPs are needed).</p>
 </dd></dl>
 
 <dl class="std option">
@@ -958,43 +991,114 @@ needed with GDAL &gt;= 3.9, please file an issue on the
 </section>
 <section id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
-<p>Basic conversion from Shapefile to GeoPackage:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogr2ogr<span class="w"> </span>output.gpkg<span class="w"> </span>input.shp
+<ul>
+<li><p>Basic conversion from Shapefile to GeoPackage:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogr2ogr<span class="w"> </span>output.gpkg<span class="w"> </span>input.shp
 </pre></div>
 </div>
-<p>Change the coordinate reference system from <code class="docutils literal notranslate"><span class="pre">EPSG:4326</span></code> to <code class="docutils literal notranslate"><span class="pre">EPSG:3857</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogr2ogr<span class="w"> </span>-s_srs<span class="w"> </span>EPSG:4326<span class="w"> </span>-t_srs<span class="w"> </span>EPSG:3857<span class="w"> </span>output.gpkg<span class="w"> </span>input.gpkg
+</div></blockquote>
+</li>
+<li><p>Change the coordinate reference system from <code class="docutils literal notranslate"><span class="pre">EPSG:4326</span></code> to <code class="docutils literal notranslate"><span class="pre">EPSG:3857</span></code>:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogr2ogr<span class="w"> </span>-s_srs<span class="w"> </span>EPSG:4326<span class="w"> </span>-t_srs<span class="w"> </span>EPSG:3857<span class="w"> </span>output.gpkg<span class="w"> </span>input.gpkg
 </pre></div>
 </div>
-<p>Example appending to an existing layer:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogr2ogr<span class="w"> </span>-append<span class="w"> </span>-f<span class="w"> </span>PostgreSQL<span class="w"> </span>PG:dbname<span class="o">=</span>warmerda<span class="w"> </span>abc.tab
+</div></blockquote>
+</li>
+<li><p>Example appending to an existing layer:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogr2ogr<span class="w"> </span>-append<span class="w"> </span>-f<span class="w"> </span>PostgreSQL<span class="w"> </span>PG:dbname<span class="o">=</span>warmerda<span class="w"> </span>abc.tab
 </pre></div>
 </div>
-<p>Clip input layer with a bounding box (&lt;xmin&gt; &lt;ymin&gt; &lt;xmax&gt; &lt;ymax&gt;):</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogr2ogr<span class="w"> </span>-spat<span class="w"> </span>-13.931<span class="w"> </span><span class="m">34</span>.886<span class="w"> </span><span class="m">46</span>.23<span class="w"> </span><span class="m">74</span>.12<span class="w"> </span>output.gpkg<span class="w"> </span>natural_earth_vector.gpkg
+</div></blockquote>
+</li>
+<li><p>Clip input layer with a bounding box (&lt;xmin&gt; &lt;ymin&gt; &lt;xmax&gt; &lt;ymax&gt;):</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogr2ogr<span class="w"> </span>-spat<span class="w"> </span>-13.931<span class="w"> </span><span class="m">34</span>.886<span class="w"> </span><span class="m">46</span>.23<span class="w"> </span><span class="m">74</span>.12<span class="w"> </span>output.gpkg<span class="w"> </span>natural_earth_vector.gpkg
 </pre></div>
 </div>
-<p>Filter Features by a <code class="docutils literal notranslate"><span class="pre">-where</span></code> clause:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogr2ogr<span class="w"> </span>-where<span class="w"> </span><span class="s2">&quot;\&quot;POP_EST\&quot; &lt; 1000000&quot;</span><span class="w"> </span><span class="se">\</span>
+</div></blockquote>
+</li>
+<li><p>Filter Features by a <code class="docutils literal notranslate"><span class="pre">-where</span></code> clause:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogr2ogr<span class="w"> </span>-where<span class="w"> </span><span class="s2">&quot;\&quot;POP_EST\&quot; &lt; 1000000&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>output.gpkg<span class="w"> </span>natural_earth_vector.gpkg<span class="w"> </span>ne_10m_admin_0_countries
 </pre></div>
 </div>
-<p>Example reprojecting from ETRS_1989_LAEA_52N_10E to EPSG:4326 and clipping to a bounding box:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogr2ogr<span class="w"> </span>-wrapdateline<span class="w"> </span>-t_srs<span class="w"> </span>EPSG:4326<span class="w"> </span>-clipdst<span class="w"> </span>-5<span class="w"> </span><span class="m">40</span><span class="w"> </span><span class="m">15</span><span class="w"> </span><span class="m">55</span><span class="w"> </span>france_4326.shp<span class="w"> </span>europe_laea.shp
+</div></blockquote>
+</li>
+</ul>
+<p>More examples are given in the individual format pages.</p>
+</section>
+<section id="advanced-examples">
+<h2>Advanced examples<a class="headerlink" href="#advanced-examples" title="Link to this heading"></a></h2>
+<ul>
+<li><p>Reprojecting from ETRS_1989_LAEA_52N_10E to EPSG:4326 and clipping to a bounding box:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogr2ogr<span class="w"> </span>-wrapdateline<span class="w"> </span>-t_srs<span class="w"> </span>EPSG:4326<span class="w"> </span>-clipdst<span class="w"> </span>-5<span class="w"> </span><span class="m">40</span><span class="w"> </span><span class="m">15</span><span class="w"> </span><span class="m">55</span><span class="w"> </span>france_4326.shp<span class="w"> </span>europe_laea.shp
 </pre></div>
 </div>
-<p>Example for using the <code class="docutils literal notranslate"><span class="pre">-fieldmap</span></code> setting. The first field of the source layer is
+</div></blockquote>
+</li>
+<li><p>Using the <code class="docutils literal notranslate"><span class="pre">-fieldmap</span></code> setting. The first field of the source layer is
 used to fill the third field (index 2 = third field) of the target layer, the
 second field of the source layer is ignored, the third field of the source
 layer used to fill the fifth field of the target layer.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogr2ogr<span class="w"> </span>-append<span class="w"> </span>-fieldmap<span class="w"> </span><span class="m">2</span>,-1,4<span class="w"> </span>dst.shp<span class="w"> </span>src.shp
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogr2ogr<span class="w"> </span>-append<span class="w"> </span>-fieldmap<span class="w"> </span><span class="m">2</span>,-1,4<span class="w"> </span>dst.shp<span class="w"> </span>src.shp
 </pre></div>
 </div>
-<p>Note that not all formats preserve geometries on layer creation by default. E.g., here we need <code class="docutils literal notranslate"><span class="pre">-lco</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogr2ogr<span class="w"> </span>-lco<span class="w"> </span><span class="nv">GEOMETRY</span><span class="o">=</span>AS_XYZ<span class="w"> </span>TrackWaypoint.csv<span class="w"> </span>TrackWaypoint.kml
+</div></blockquote>
+</li>
+<li><p>Outputting geometries with the CSV driver.</p>
+<p>By default, this driver does not preserve geometries on layer creation by
+default. An explicit layer creation option is needed:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogr2ogr<span class="w"> </span>-lco<span class="w"> </span><span class="nv">GEOMETRY</span><span class="o">=</span>AS_XYZ<span class="w"> </span>TrackWaypoint.csv<span class="w"> </span>TrackWaypoint.kml
 </pre></div>
 </div>
-<p>More examples are given in the individual format pages.</p>
+</div></blockquote>
+</li>
+<li><p>Extracting only geometries.</p>
+<p>There are different situations, depending if the input layer has a named geometry
+column, or not. First check, with ogrinfo if there is a reported geometry column.</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogrinfo<span class="w"> </span>-so<span class="w"> </span>CadNSDI.gdb.zip<span class="w"> </span>PLSSPoint<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s1">&#39;Geometry Column&#39;</span>
+Geometry<span class="w"> </span><span class="nv">Column</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>SHAPE
+</pre></div>
+</div>
+</div></blockquote>
+<p>In that situation where the input format is a FileGeodatabase, it is called SHAPE
+and can thus be referenced directly in a SELECT statement.</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogr2ogr<span class="w"> </span>-sql<span class="w"> </span><span class="s2">&quot;SELECT SHAPE FROM PLSSPoint&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-lco<span class="w"> </span><span class="nv">GEOMETRY</span><span class="o">=</span>AS_XY<span class="w"> </span>-f<span class="w"> </span>CSV<span class="w"> </span>/vsistdout/<span class="w"> </span>CadNSDI.gdb.zip
+</pre></div>
+</div>
+</div></blockquote>
+<p>For a shapefile with a unnamed geometry column, <code class="docutils literal notranslate"><span class="pre">_ogr_geometry_</span></code> can be used as
+a special name to designate the implicit geometry column, when using the default
+<a class="reference internal" href="../user/ogr_sql_dialect.html#ogr-sql-dialect"><span class="std std-ref">OGR SQL</span></a> dialect. The name begins with
+an underscore and SQL syntax requires that it must appear between double quotes.
+In addition the command line interpreter may require that double quotes are
+escaped and the final SELECT statement could look like:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogr2ogr<span class="w"> </span>-sql<span class="w"> </span><span class="s2">&quot;SELECT \&quot;_ogr_geometry_\&quot; FROM PLSSPoint&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-lco<span class="w"> </span><span class="nv">GEOMETRY</span><span class="o">=</span>AS_XY<span class="w"> </span>-f<span class="w"> </span>CSV<span class="w"> </span>/vsistdout/<span class="w"> </span>CadNSDI.shp
+</pre></div>
+</div>
+</div></blockquote>
+<p>If using the <a class="reference internal" href="../user/sql_sqlite_dialect.html#sql-sqlite-dialect"><span class="std std-ref">SQL SQLite</span></a> dialect, the special geometry
+name is <code class="docutils literal notranslate"><span class="pre">geometry</span></code> when the source geometry column has no name.</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogr2ogr<span class="w"> </span>-sql<span class="w"> </span><span class="s2">&quot;SELECT geometry FROM PLSSPoint&quot;</span><span class="w"> </span>-dialect<span class="w"> </span>SQLite<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-lco<span class="w"> </span><span class="nv">GEOMETRY</span><span class="o">=</span>AS_XY<span class="w"> </span>-f<span class="w"> </span>CSV<span class="w"> </span>/vsistdout/<span class="w"> </span>CadNSDI.shp
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
 </section>
 </section>
 

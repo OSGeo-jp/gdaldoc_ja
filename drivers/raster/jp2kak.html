@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JP2KAK -- JPEG-2000 (based on Kakadu) &mdash; GDAL  ドキュメント</title>
+  <title>JP2KAK -- JPEG 2000 (based on Kakadu SDK) &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d10597a4" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/gdal.css?v=e152ac3b" />
 
@@ -126,13 +126,13 @@
 <li class="toctree-l2"><a class="reference internal" href="isis3.html">ISIS3 -- USGS Astrogeology ISIS Cube (Version 3)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jdem.html">JDEM -- Japanese DEM (.mem)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2ecw.html">JP2ECW -- ERDAS JPEG2000 (.jp2)</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">JP2KAK -- JPEG-2000 (based on Kakadu)</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">JP2KAK -- JPEG 2000 (based on Kakadu SDK)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#driver-capabilities">Driver capabilities</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#configuration-options">Configuration Options</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#georeferencing">Georeferencing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#option-options">Option Options</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#creation-issues">Creation Issues</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#known-kakadu-issues">Known Kakadu Issues</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#known-kakadu-sdk-issues">Known Kakadu SDK Issues</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#alpha-channel-writing-in-v7-8">Alpha Channel Writing in v7.8</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#kdu-get-num-processors-always-returns-0-for-some-platforms">kdu_get_num_processors always returns 0 for some platforms</a></li>
 </ul>
@@ -237,10 +237,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -278,7 +278,7 @@
       
           <li><a href="index.html">ラスタードライバー</a> &raquo;</li>
       
-      <li>JP2KAK -- JPEG-2000 (based on Kakadu)</li>
+      <li>JP2KAK -- JPEG 2000 (based on Kakadu SDK)</li>
     
 
     
@@ -309,45 +309,47 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="jp2kak-jpeg-2000-based-on-kakadu">
-<span id="raster-jp2kak"></span><h1>JP2KAK -- JPEG-2000 (based on Kakadu)<a class="headerlink" href="#jp2kak-jpeg-2000-based-on-kakadu" title="Link to this heading"></a></h1>
+  <section id="jp2kak-jpeg-2000-based-on-kakadu-sdk">
+<span id="raster-jp2kak"></span><h1>JP2KAK -- JPEG 2000 (based on Kakadu SDK)<a class="headerlink" href="#jp2kak-jpeg-2000-based-on-kakadu-sdk" title="Link to this heading"></a></h1>
 <div class="admonition shortname" id="shortname-0">
 <p class="admonition-title">Driver short name</p>
 <p>JP2KAK</p>
 </div>
 <div class="admonition build_dependencies" id="build_dependencies-0">
 <p class="admonition-title">Build dependencies</p>
-<p>Kakadu library</p>
+<p>Kakadu SDK</p>
 </div>
-<p>Most forms of JPEG2000 JP2 and JPC compressed images (ISO/IEC 15444-1)
-can be read with GDAL using a driver based on the Kakadu library. As
-well, new images can be written. Existing images cannot be updated in
-place.</p>
-<p>The JPEG2000 file format supports lossy and lossless compression of 8bit
-and 16bit images with 1 or more bands (components). Via the <a class="reference external" href="https://web.archive.org/web/20151028081930/http://www.lizardtech.com/download/geo/geotiff_box.txt">GeoJP2
-(tm)</a>
-mechanism, GeoTIFF style coordinate system and georeferencing
-information can be embedded within the JP2 file. JPEG2000 files use a
-substantially different format and compression mechanism than the
-traditional JPEG compression and JPEG JFIF format. They are distinct
-compression mechanisms produced by the same group. JPEG2000 is based on
+<p>The JP2KAK driver, which uses the proprietary <a class="reference external" href="http://www.kakadusoftware.com/">Kakadu SDK</a>, supports JPEG 2000 images, which are
+specified in the Rec. ITU-T T.8xx | ISO/IEC 15444 family of standards. JPEG 2000
+uses a substantially different format and compression mechanism than the
+traditional JPEG compression and JPEG JFIF format. JPEG and JPEG 2000 are
+distinct compression standards produced by the same group. JPEG 2000 is based on
 wavelet compression.</p>
-<p>The JPEG2000 driver documented on this page (the JP2KAK driver) is
-implemented on top of the proprietary
-<a class="reference external" href="http://www.kakadusoftware.com/">Kakadu</a> library. This is a high
-quality and high performance JPEG2000 library in wide used in the
-geospatial and general imaging community. However, it is not free, and
-so normally builds of GDAL from source will not include support for this
-driver unless the builder purchases a license for the library and
-configures accordingly.</p>
-<p>When reading images this driver will represent the bands as being Byte
-(8bit unsigned), 16 bit signed/unsigned, and 32 bit signed/unsigned. Georeferencing and
-coordinate system information will be available if the file is a GeoJP2
-(tm) file. Files color encoded in YCbCr color space will be
-automatically translated to RGB. Paletted images are also supported.</p>
-<p>XMP metadata can be extracted from JPEG2000
-files, and will be stored as XML raw content in the xml:XMP metadata
-domain.</p>
+<p>The driver includes support for:</p>
+<ul class="simple">
+<li><p>reading both JPEG 2000 codestreams (.j2c or .jpc) and JP2 files (.jp2). New
+images can be also written, but existing images cannot be updated in place.</p></li>
+<li><p>lossy and lossless compression of 8-bit and 16-bit images with 1 or more bands
+(components).</p></li>
+<li><p>GeoTIFF style coordinate system and georeferencing information in JP2 file via
+the
+<a class="reference external" href="https://web.archive.org/web/20151028081930/http://www.lizardtech.com/download/geo/geotiff_box.txt">GeoJP2(tm)</a>
+mechanism.</p></li>
+<li><p>JPEG 2000 Part 1 (Rec. ITU-T T.800 | ISO/IEC 15444-1), Part 2 (Rec. ITU-T
+T.801 | ISO/IEC 15444-2) and Part 15 (HTJ2K) (Rec. ITU-T T.814 | ISO/IEC 15444-15)</p></li>
+</ul>
+<p>The Kakadu SDK is a high quality and high performance JPEG 2000 library in wide
+used in the geospatial and general imaging community. However, it is not free,
+and, by default, a builds of GDAL from source does not include support for the
+JP2KAK driver. The builder must acquire a license for the Kakadu SDK and
+configure GDAL accordingly.</p>
+<p>When reading images this driver will represent the bands as being Byte (8-bit
+unsigned), 16-bit signed/unsigned, and 32-bit signed/unsigned. Georeferencing
+and coordinate system information will be available if the file is a GeoJP2 (tm)
+file. Files color encoded in YCbCr color space will be automatically translated
+to RGB. Paletted images are also supported.</p>
+<p>XMP metadata can be extracted from JPEG 2000 files, and will be stored as XML
+raw content in the xml:XMP metadata domain.</p>
 <section id="driver-capabilities">
 <h2>Driver capabilities<a class="headerlink" href="#driver-capabilities" title="Link to this heading"></a></h2>
 <div class="admonition supports_createcopy" id="supports_createcopy-0">
@@ -365,27 +367,26 @@ domain.</p>
 </section>
 <section id="configuration-options">
 <h2>Configuration Options<a class="headerlink" href="#configuration-options" title="Link to this heading"></a></h2>
-<p>The JP2KAK driver supports the following <a class="reference external" href="http://trac.osgeo.org/gdal/wiki/ConfigOptions">Config
-Options</a>. These
-runtime options can be used to alter the behavior of the driver.</p>
+<p><a href="#id3"><span class="problematic" id="id4">|about-config-options|</span></a>
+The JP2KAK driver supports the following configuration options:</p>
 <ul class="simple">
 <li><p id="config-JP2KAK_THREADS"><strong>JP2KAK_THREADS=value: </strong>By default an effort is made to take
 advantage of multi-threading on multi-core computers using default
-rules from the Kakadu library. This option may be set to a value of
+rules from the Kakadu SDK. This option may be set to a value of
 zero to avoid using additional threads or to a specific count to
 create the requested number of worker threads.</p>
 </li>
 <li><p id="config-JP2KAK_FUSSY"><strong>JP2KAK_FUSSY=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. This can be set to YES to turn on fussy
-reporting of problems with the JPEG2000 data stream.</p>
+reporting of problems with the JPEG 2000 data stream.</p>
 </li>
 <li><p id="config-JP2KAK_RESILIENT"><strong>JP2KAK_RESILIENT=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. This can be set to YES to force Kakadu
-to maximize resilience with incorrectly created JPEG2000 data files,
+to maximize resilience with incorrectly created JPEG 2000 data files,
 likely at some cost in performance. This is likely to be necessary
 if, among other reasons, you get an error message about &quot;Expected to
 find EPH marker following packet header&quot; or error reports indicating
 the need to run with the resilient and sequential flags on.</p>
 </li>
-<li><p id="config-USE_TILE_AS_BLOCK"><strong>USE_TILE_AS_BLOCK=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. Whether to use the JPEG2000 block size as the GDAL block size.</p>
+<li><p id="config-USE_TILE_AS_BLOCK"><strong>USE_TILE_AS_BLOCK=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. Whether to use the JPEG 2000 block size as the GDAL block size.</p>
 </li>
 </ul>
 </section>
@@ -394,22 +395,23 @@ the need to run with the resilient and sequential flags on.</p>
 <p>Georeferencing information can come from different sources : internal
 (GeoJP2 or GMLJP2 boxes), worldfile .j2w/.wld sidecar files, or PAM
 (Persistent Auxiliary metadata) .aux.xml sidecar files. By default,
-information is fetched in following order (first listed is the most
-prioritary): PAM, GeoJP2, GMLJP2, WORLDFILE.</p>
+information is fetched in following order (first listed is the highest
+priority): PAM, GeoJP2, GMLJP2, WORLDFILE.</p>
 <p>Starting with GDAL 2.2, the allowed sources and their priority order can
 be changed with the <a class="reference internal" href="../../user/configoptions.html#config-GDAL_GEOREF_SOURCES"><code class="docutils literal notranslate"><span class="pre">GDAL_GEOREF_SOURCES</span></code></a> configuration option (or
 <a class="reference internal" href="#drivers/raster/jp2kak-oo-GEOREF_SOURCES"><code class="docutils literal notranslate"><span class="pre">GEOREF_SOURCES</span></code></a> open option) whose value is a comma-separated list of the
 following keywords : PAM, GEOJP2, GMLJP2, INTERNAL (shortcut for
-GEOJP2,GMLJP2), WORLDFILE, NONE. First mentioned sources are the most
-prioritary over the next ones. A non mentioned source will be ignored.</p>
+GEOJP2,GMLJP2), WORLDFILE, NONE. Earlier mentioned sources take
+priority over later ones. A non mentioned source will be ignored.</p>
 <p>For example setting it to &quot;WORLDFILE,PAM,INTERNAL&quot; will make a
-geotransformation matrix from a potential worldfile prioritary over PAM
+geotransformation matrix from a potential worldfile priority over PAM
 or internal JP2 boxes. Setting it to &quot;PAM,WORLDFILE,GEOJP2&quot; will use the
 mentioned sources and ignore GMLJP2 boxes.</p>
 </section>
 <section id="option-options">
 <h2>Option Options<a class="headerlink" href="#option-options" title="Link to this heading"></a></h2>
-<p>The following open option is available:</p>
+<p><a href="#id5"><span class="problematic" id="id6">|about-open-options|</span></a>
+The following open options are available:</p>
 <ul class="simple">
 <li><p id="drivers/raster/jp2kak-oo-1BIT_ALPHA_PROMOTION"><strong>1BIT_ALPHA_PROMOTION=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">YES</span></code>. Whether a 1-bit alpha channel should be promoted to 8-bit.</p>
 </li>
@@ -421,16 +423,17 @@ sources are allowed and their priority order. See
 </section>
 <section id="creation-issues">
 <h2>Creation Issues<a class="headerlink" href="#creation-issues" title="Link to this heading"></a></h2>
-<p>JPEG2000 files can only be created using the CreateCopy mechanism to
+<p>JPEG 2000 files can only be created using the CreateCopy mechanism to
 copy from an existing dataset.</p>
-<p>JPEG2000 overviews are maintained as part of the mathematical
+<p>JPEG 2000 overviews are maintained as part of the mathematical
 description of the image. Overviews cannot be built as a separate
 process, but on read the image will generally be represented as having
 overview levels at various power of two factors.</p>
-<p>Creation Options:</p>
+<p><a href="#id7"><span class="problematic" id="id8">|about-creation-options|</span></a>
+The following creation options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/raster/jp2kak-co-CODEC"><strong>CODEC=[JP2/J2K]: </strong>Codec to use. If not specified, guess based on file
-extension. If unknown, default to JP2</p>
+extension. If unknown, default to JP2.</p>
 </li>
 <li><p id="drivers/raster/jp2kak-co-QUALITY"><strong>QUALITY=value: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">20</span></code>. Set the compressed size ratio as a percentage of the
 size of the uncompressed image. The default is 20 indicating that the
@@ -451,24 +454,22 @@ writing files. Required to be FALSE for RLPC and LRPC Corder. May use
 a lot of memory when FALSE while writing large images.</p>
 </li>
 <li><p id="drivers/raster/jp2kak-co-GMLJP2"><strong>GMLJP2=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">YES</span></code>. Indicates whether a GML box conforming to the OGC
-GML in JPEG2000 specification should be included in the file. Unless
+GML in JPEG 2000 specification should be included in the file. Unless
 GMLJP2V2_DEF is used, the version of the GMLJP2 box will be version
 1.</p>
 </li>
 <li><p id="drivers/raster/jp2kak-co-GMLJP2V2_DEF"><strong>GMLJP2V2_DEF=[&lt;filename&gt;/&lt;json&gt;/YES]: </strong>Indicates whether
-a GML box conforming to the <a class="reference external" href="http://docs.opengeospatial.org/is/08-085r4/08-085r4.html">OGC GML in JPEG2000, version
-2</a>
+a GML box conforming to the <a class="reference external" href="http://docs.opengeospatial.org/is/08-085r4/08-085r4.html">OGC GML in JPEG 2000, version 2</a>
 specification should be included in the file. <em>filename</em> must point
-to a file with a JSon content that defines how the GMLJP2 v2 box
-should be built. See <a class="reference internal" href="jp2openjpeg.html#gmjp2v2def"><span class="std std-ref">GMLJP2v2 definition file
-section</span></a> in documentation of
-the JP2OpenJPEG driver for the syntax of the JSon configuration file.
-It is also possible to directly pass the JSon content inlined as a
+to a file with a JSON content that defines how the GMLJP2 v2 box
+should be built. See <a class="reference internal" href="jp2openjpeg.html#gmjp2v2def"><span class="std std-ref">GMLJP2v2 definition file section</span></a> in documentation of
+the JP2OpenJPEG driver for the syntax of the JSON configuration file.
+It is also possible to directly pass the JSON content inlined as a
 string. If filename is just set to YES, a minimal instance will be
 built.</p>
 </li>
 <li><p id="drivers/raster/jp2kak-co-GeoJP2"><strong>GeoJP2=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">YES</span></code>. Indicates whether a UUID/GeoTIFF box conforming to
-the GeoJP2 (GeoTIFF in JPEG2000) specification should be included in
+the GeoJP2 (GeoTIFF in JPEG 2000) specification should be included in
 the file.</p>
 </li>
 <li><p id="drivers/raster/jp2kak-co-LAYERS"><strong>LAYERS=value: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">12</span></code>. Control the number of layers produced. These are sort
@@ -483,25 +484,25 @@ settings &quot;ROI=0,0,100,100&quot;, &quot;Rweight=7&quot; would encode the top
 to the rest of the image.</p>
 </li>
 </ul>
-<p>The following creation options are tightly tied to the Kakadu library,
-and are considered to be for advanced use only. Consult Kakadu
-documentation to better understand their meaning.</p>
+<p>The following creation options are tightly tied to the Kakadu SDK, and are
+considered to be for advanced use only. Consult the Kakadu SDK documentation to
+better understand their meaning.</p>
 <ul class="simple">
 <li><p><strong>Corder</strong>: Defaults to &quot;PRCL&quot;.</p></li>
 <li><p><strong>Cprecincts</strong>: Defaults to
 &quot;{512,512},{256,512},{128,512},{64,512},{32,512},{16,512},{8,512},{4,512},{2,512}&quot;.</p></li>
 <li><p><strong>ORGgen_plt</strong>: Defaults to &quot;yes&quot;.</p></li>
-<li><p><strong>ORGgen_tlm</strong>: Kakadu library default used.</p></li>
-<li><p><strong>ORGtparts</strong>: Kakadu library default used.</p></li>
-<li><p><strong>Cmodes</strong>: Kakadu library default used.</p></li>
-<li><p><strong>Clevels</strong>: Kakadu library default used.</p></li>
-<li><p><strong>Rshift</strong>: Kakadu library default used.</p></li>
-<li><p><strong>Rlevels</strong>: Kakadu library default used.</p></li>
-<li><p><strong>Rweight</strong>: Kakadu library default used.</p></li>
-<li><p><strong>Qguard</strong>: Kakadu library default used.</p></li>
+<li><p><strong>ORGgen_tlm</strong>: Kakadu SDK defaults used.</p></li>
+<li><p><strong>ORGtparts</strong>: Kakadu SDK defaults used.</p></li>
+<li><p><strong>Cmodes</strong>: Kakadu SDK defaults used.</p></li>
+<li><p><strong>Clevels</strong>: Kakadu SDK defaults used.</p></li>
+<li><p><strong>Rshift</strong>: Kakadu SDK defaults used.</p></li>
+<li><p><strong>Rlevels</strong>: Kakadu SDK defaults used.</p></li>
+<li><p><strong>Rweight</strong>: Kakadu SDK defaults used.</p></li>
+<li><p><strong>Qguard</strong>: Kakadu SDK defaults used.</p></li>
 <li><p><strong>Creversible</strong>: If not set and QUALITY &gt;= 99.5, set to &quot;yes&quot;, otherwise to &quot;false&quot;.</p></li>
-<li><p><strong>Sprofile</strong>: Kakadu library default used.</p></li>
-<li><p><strong>RATE</strong>: Kakadu library default used.
+<li><p><strong>Sprofile</strong>: Kakadu SDK defaults used.</p></li>
+<li><p><strong>RATE</strong>: Kakadu SDK defaults used.
 One or more bit-rates, expressed in terms of the ratio between the total number of compressed bits
 (including headers) and the product of the largest horizontal and  vertical image component dimensions. A dash, -,
 may be used in place of the first bit-rate in the list to indicate that the final quality layer should include all
@@ -513,11 +514,11 @@ assigned roughly logarithmically spaced bit-rates. When only one rate is specifi
 a lower bound and logarithmically spaces the layer rates over the range. The rates have to be in ASC order.</p></li>
 </ul>
 </section>
-<section id="known-kakadu-issues">
-<h2>Known Kakadu Issues<a class="headerlink" href="#known-kakadu-issues" title="Link to this heading"></a></h2>
+<section id="known-kakadu-sdk-issues">
+<h2>Known Kakadu SDK Issues<a class="headerlink" href="#known-kakadu-sdk-issues" title="Link to this heading"></a></h2>
 <section id="alpha-channel-writing-in-v7-8">
 <h3>Alpha Channel Writing in v7.8<a class="headerlink" href="#alpha-channel-writing-in-v7-8" title="Link to this heading"></a></h3>
-<p>Kakadu v7.8 has a bug in jp2_channels::set_opacity_mapping that can
+<p>Kakadu SDK v7.8 has a bug in jp2_channels::set_opacity_mapping that can
 cause an error when writing images with an alpha channel. Please upgrade
 to version 7.9.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Error</span><span class="p">:</span> <span class="n">GdalIO</span><span class="p">:</span> <span class="n">Error</span> <span class="ow">in</span> <span class="n">Kakadu</span> <span class="n">File</span> <span class="n">Format</span> <span class="n">Support</span><span class="p">:</span> <span class="n">Attempting</span> <span class="n">to</span>
@@ -528,7 +529,7 @@ to version 7.9.</p>
 </section>
 <section id="kdu-get-num-processors-always-returns-0-for-some-platforms">
 <h3>kdu_get_num_processors always returns 0 for some platforms<a class="headerlink" href="#kdu-get-num-processors-always-returns-0-for-some-platforms" title="Link to this heading"></a></h3>
-<p>On non-windows / non-mac installs (e.g. Linux), Kakadu might not include
+<p>On non-windows / non-mac installs (e.g. Linux), Kakadu SDK might not include
 unistd.h in kdu_arch.cpp. This means that _SC_NPROCESSORS_ONLN and
 _SC_NPROCESSORS_CONF are not defined and kdu_get_num_processors will
 always return 0. Therefore the jp2kak driver might not default to
@@ -539,10 +540,10 @@ creating worker threads.</p>
 <h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>Implemented as <a href="#id1"><span class="problematic" id="id2">:source_file:`frmts/jp2kak/jp2kakdataset.cpp`</span></a>.</p></li>
-<li><p>If you're using a Kakadu release before v7.5, configure &amp; compile
+<li><p>If you're using a Kakadu SDK release before v7.5, configure &amp; compile
 GDAL with eg.
 <cite>CXXFLAGS=&quot;-DKDU_MAJOR_VERSION=7 -DKDU_MINOR_VERSION=3 -DKDU_PATCH_VERSION=2&quot;</cite>
-for Kakadu version 7.3.2.</p></li>
+for Kakadu SDK version 7.3.2.</p></li>
 <li><p>Alternate <a class="reference internal" href="jp2openjpeg.html#raster-jp2openjpeg"><span class="std std-ref">JP2OpenJPEG -- JPEG2000 driver based on OpenJPEG library</span></a> driver.</p></li>
 </ul>
 </section>

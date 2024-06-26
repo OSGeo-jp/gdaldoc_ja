@@ -10,8 +10,8 @@
 
    * - Short name
      - Long name
-     - Creation
-     - Copy
+     - Creation (1)
+     - Copy (2)
      - Geo-referencing
      - Build requirements
    * - :ref:`AAIGrid <raster.aaigrid>`
@@ -453,11 +453,11 @@
      - **Yes**
      - ECW SDK
    * - :ref:`JP2KAK <raster.jp2kak>`
-     - JPEG-2000 (based on Kakadu)
+     - JPEG 2000 (based on Kakadu SDK)
      - No
      - **Yes**
      - **Yes**
-     - Kakadu library
+     - Kakadu SDK
    * - :ref:`JP2LURA <raster.jp2lura>`
      - JPEG2000 driver based on Lurawave library
      - No
@@ -998,3 +998,6 @@
      - **Yes**
      - **Yes**
      - Built-in by default
+
+- (1): Creation refers to implementing :cpp:func:`GDALCreate`.
+- (2): Copy refers to implementing :cpp:func:`GDALCreateCopy`.

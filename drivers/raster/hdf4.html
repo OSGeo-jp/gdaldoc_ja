@@ -137,7 +137,7 @@
 <li class="toctree-l2"><a class="reference internal" href="isis3.html">ISIS3 -- USGS Astrogeology ISIS Cube (Version 3)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jdem.html">JDEM -- Japanese DEM (.mem)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2ecw.html">JP2ECW -- ERDAS JPEG2000 (.jp2)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="jp2kak.html">JP2KAK -- JPEG-2000 (based on Kakadu)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jp2kak.html">JP2KAK -- JPEG 2000 (based on Kakadu SDK)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2lura.html">JP2Lura -- JPEG2000 driver based on Lurawave library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2mrsid.html">JP2MrSID -- JPEG2000 via MrSID SDK</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2openjpeg.html">JP2OpenJPEG -- JPEG2000 driver based on OpenJPEG library</a></li>
@@ -235,10 +235,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -500,7 +500,8 @@ have the special attribute:</p>
 <p>&quot;Signature=Created with GDAL (<a class="reference external" href="http://www.remotesensing.org/gdal/">http://www.remotesensing.org/gdal/</a>)&quot;</p>
 <p>and are automatically recognised when read, so the projection info and
 transformation matrix restored back.</p>
-<p>Creation Options:</p>
+<p><a href="#id5"><span class="problematic" id="id6">|about-creation-options|</span></a>
+The following creation options are supported:</p>
 <p id="drivers/raster/hdf4-co-RANK"><strong>RANK=[2/3]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">3</span></code>. Create <strong>n</strong>-dimensional SDS. Currently only 2D and 3D
 datasets supported. By default a 3-dimensional dataset will be
 created.</p>
@@ -513,7 +514,8 @@ well as to particular subdatasets.</p>
 </section>
 <section id="open-options">
 <h2>Open options<a class="headerlink" href="#open-options" title="Link to this heading"></a></h2>
-<p>The following open option is supported:</p>
+<p><a href="#id7"><span class="problematic" id="id8">|about-open-options|</span></a>
+The following open option is supported:</p>
 <p id="drivers/raster/hdf4-oo-LIST_SDS"><strong>LIST_SDS=[AUTO/YES/NO]: </strong> (GDAL &gt;= 3.2) Whether to report Scientific Data Sets (SDS).
 By default, when a HDF file contains EOS_SWATH or EOS_GRID, SDS will not be
 listed as GDAL subdatasets (as this would cause them to be reported twice).

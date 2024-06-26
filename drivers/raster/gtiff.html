@@ -163,7 +163,7 @@
 <li class="toctree-l2"><a class="reference internal" href="isis3.html">ISIS3 -- USGS Astrogeology ISIS Cube (Version 3)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jdem.html">JDEM -- Japanese DEM (.mem)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2ecw.html">JP2ECW -- ERDAS JPEG2000 (.jp2)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="jp2kak.html">JP2KAK -- JPEG-2000 (based on Kakadu)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jp2kak.html">JP2KAK -- JPEG 2000 (based on Kakadu SDK)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2lura.html">JP2Lura -- JPEG2000 driver based on Lurawave library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2mrsid.html">JP2MrSID -- JPEG2000 via MrSID SDK</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2openjpeg.html">JP2OpenJPEG -- JPEG2000 driver based on OpenJPEG library</a></li>
@@ -261,10 +261,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -390,17 +390,17 @@ GDAL will also check for, and use an ESRI <a class="reference internal" href="wl
 file</span></a> with the extension .tfw, .tifw/.tiffw or
 .wld, as well as a MapInfo .tab file.</p>
 <p>By default, information is fetched in following order (first listed is
-the most prioritary): PAM (Persistent Auxiliary metadata) .aux.xml
+the highest priority): PAM (Persistent Auxiliary metadata) .aux.xml
 sidecar file, INTERNAL (GeoTIFF keys and tags), TABFILE (.tab),
 WORLDFILE (.tfw, .tifw/.tiffw or .wld), XML (.xml)</p>
 <p>Starting with GDAL 2.2, the allowed sources and their priority order can
 be changed with the <a class="reference internal" href="../../user/configoptions.html#config-GDAL_GEOREF_SOURCES"><code class="docutils literal notranslate"><span class="pre">GDAL_GEOREF_SOURCES</span></code></a> configuration option (or
 <a class="reference internal" href="#drivers/raster/gtiff-oo-GEOREF_SOURCES"><code class="docutils literal notranslate"><span class="pre">GEOREF_SOURCES</span></code></a> open option) whose value is a comma-separated list of the
 following keywords : PAM, INTERNAL, TABFILE, WORLDFILE, XML (added in 3.7), NONE.
-First mentioned sources are the most prioritary over the next ones. A non
+Earlier mentioned sources take priority over later ones. A non
 mentioned source will be ignored.</p>
 <p>For example setting it to &quot;WORLDFILE,PAM,INTERNAL&quot; will make a
-geotransformation matrix from a potential worldfile prioritary over PAM
+geotransformation matrix from a potential worldfile priority over PAM
 or GeoTIFF.</p>
 <p>Minimum support for extracting the CRS from ESRI .xml side car files has been
 added in GDAL 3.7, using the metadata.refSysInfo.RefSystem.refSysID.identCode.code
@@ -613,6 +613,8 @@ GTIFF_RAW:</p>
 </section>
 <section id="open-options">
 <h2>Open options<a class="headerlink" href="#open-options" title="Link to this heading"></a></h2>
+<p><a href="#id1"><span class="problematic" id="id2">|about-open-options|</span></a>
+This driver supports the following open options:</p>
 <p id="drivers/raster/gtiff-oo-NUM_THREADS"><strong>NUM_THREADS=[&lt;number_of_threads&gt;/ALL_CPUS]: </strong> (GDAL &gt;= 2.1) Enable
 multi-threaded compression by specifying the number of worker
 threads. Worth it for slow compression algorithms such as DEFLATE or
@@ -661,6 +663,8 @@ discarded.</p>
 files</a></p>
 <section id="creation-options">
 <h3>Creation Options<a class="headerlink" href="#creation-options" title="Link to this heading"></a></h3>
+<p><a href="#id3"><span class="problematic" id="id4">|about-creation-options|</span></a>
+This driver supports the following creation options:</p>
 <ul class="simple">
 <li><p id="drivers/raster/gtiff-co-TFW"><strong>TFW=[YES/NO]: </strong>Force the generation of an associated ESRI world file
 (.tfw).See the <a class="reference internal" href="wld.html#raster-wld"><span class="std std-ref">World Files</span></a> page for details.</p>
@@ -1045,7 +1049,8 @@ block order of the streamed input.</p>
 </section>
 <section id="configuration-options">
 <h3>Configuration options<a class="headerlink" href="#configuration-options" title="Link to this heading"></a></h3>
-<p>This paragraph lists the configuration options that can be set to alter
+<p><a href="#id5"><span class="problematic" id="id6">|about-config-options|</span></a>
+This paragraph lists the configuration options that can be set to alter
 the default behavior of the GTiff driver.</p>
 <ul class="simple">
 <li><p id="config-GTIFF_IGNORE_READ_ERRORS"><strong>GTIFF_IGNORE_READ_ERRORS=[TRUE/FALSE]: </strong>Can be set to TRUE to avoid turning libtiff errors into GDAL errors. Can

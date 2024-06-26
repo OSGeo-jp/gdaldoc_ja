@@ -25,8 +25,8 @@
     <link rel="author" title="このドキュメントについて" href="../about.html" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
-    <link rel="next" title="Building GDAL from source" href="building_from_source.html" />
-    <link rel="prev" title="Development" href="index.html" /> 
+    <link rel="next" title="GDAL のソースからのビルド" href="building_from_source.html" />
+    <link rel="prev" title="開発" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -52,12 +52,12 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../download.html">ダウンロード</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../programs/index.html">プログラム</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">Raster drivers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">Vector drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">ラスタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">ベクタードライバー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Development</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">開発</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Setting up a development environment</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#build-requirements">Build requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#vagrant">Vagrant</a></li>
@@ -70,9 +70,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#build-gdal">Build GDAL</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#setting-development-environment-variables">Setting development environment variables</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="building_from_source.html">Building GDAL from source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building_from_source.html">GDAL のソースからのビルド</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dev_practices.html">Development practices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="testing.html">Automated testing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dev_documentation.html">Building documentation</a></li>
@@ -80,11 +81,11 @@
 <li class="toctree-l2"><a class="reference internal" href="rfc/index.html">RFC list</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">コミュニティ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -120,7 +121,7 @@
     
       <li><a href="../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">Development</a> &raquo;</li>
+          <li><a href="index.html">開発</a> &raquo;</li>
       
       <li>Setting up a development environment</li>
     
@@ -141,10 +142,10 @@
   
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
-        <a href="building_from_source.html" class="btn btn-neutral float-right" title="Building GDAL from source" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="building_from_source.html" class="btn btn-neutral float-right" title="GDAL のソースからのビルド" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral float-left" title="Development" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="開発" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -156,24 +157,8 @@
   <section id="setting-up-a-development-environment">
 <span id="dev-environment"></span><h1>Setting up a development environment<a class="headerlink" href="#setting-up-a-development-environment" title="Link to this heading"></a></h1>
 <section id="build-requirements">
-<span id="id1"></span><h2>Build requirements<a class="headerlink" href="#build-requirements" title="Link to this heading"></a></h2>
-<p>The minimum requirements to build GDAL are:</p>
-<ul class="simple">
-<li><p>CMake &gt;= 3.16, and an associated build system (make, ninja, Visual Studio, etc.)</p></li>
-<li><p>C99 compiler</p></li>
-<li><p>C++17 compiler since GDAL 3.9 (C++11 in previous versions)</p></li>
-<li><p>PROJ &gt;= 6.3.1</p></li>
-</ul>
-<p>Additional requirements to run the GDAL test suite are:</p>
-<ul class="simple">
-<li><p>SWIG &gt;= 4, for building bindings to other programming languages</p></li>
-<li><p>Python &gt;= 3.8</p></li>
-<li><p>Python packages listed in <cite>autotest/requirements.txt</cite></p></li>
-</ul>
-<p>A number of optional libraries are also strongly recommended for most builds:
-SQLite3, expat, libcurl, zlib, libtiff, libgeotiff, libpng, libjpeg, etc.
-Consult <a class="reference internal" href="../drivers/raster/index.html#raster-drivers"><span class="std std-ref">Raster drivers</span></a> and <a class="reference internal" href="../drivers/vector/index.html#vector-drivers"><span class="std std-ref">Vector drivers</span></a> pages for information
-on dependencies of optional drivers.</p>
+<h2>Build requirements<a class="headerlink" href="#build-requirements" title="Link to this heading"></a></h2>
+<p>See <a class="reference internal" href="building_from_source.html#build-requirements"><span class="std std-ref">Build requirements</span></a></p>
 </section>
 <section id="vagrant">
 <h2>Vagrant<a class="headerlink" href="#vagrant" title="Link to this heading"></a></h2>
@@ -206,7 +191,7 @@ to allow faster VM reconstruction</p></li>
 <h2>Docker<a class="headerlink" href="#docker" title="Link to this heading"></a></h2>
 <p>The Linux environments used for building and testing GDAL on GitHub Actions are
 defined by Docker images that can be pulled to any machine for development. The
-Docker image used for each build is specified in <a href="#id3"><span class="problematic" id="id4">:source_file:`.github/workflows/linux_build.yml`</span></a>. As an
+Docker image used for each build is specified in <a href="#id2"><span class="problematic" id="id3">:source_file:`.github/workflows/linux_build.yml`</span></a>. As an
 example, the following commands can be run from the GDAL source root to build
 and test GDAL using the clang address sanitizer (ASAN) in the same environment
 that is used in GitHub Actions:</p>
@@ -276,6 +261,27 @@ to use the <code class="docutils literal notranslate"><span class="pre">vs2019_w
 </div>
 </section>
 </section>
+<section id="setting-development-environment-variables">
+<h2>Setting development environment variables<a class="headerlink" href="#setting-development-environment-variables" title="Link to this heading"></a></h2>
+<p>Once GDAL has been built, a number of environment variables must be set to be
+able to execute C++ or Python utilities of the build directory, or run tests.</p>
+<p>This can be done by sourcing the following from the build directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.<span class="w"> </span>../scripts/setdevenv.sh
+</pre></div>
+</div>
+<p>(with adjustments to the above path if the build directory is not a subdirectory of the GDAL source root).</p>
+<p>For Windows, a similar <code class="docutils literal notranslate"><span class="pre">scripts/setdevenv.bat</span></code> script exists (it currently assumes a Release build).</p>
+<p>To verify that environment variables have been set correctly, you can check the version of a GDAL binary:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdalinfo<span class="w"> </span>--version
+<span class="c1"># GDAL 3.7.0dev-5327c149f5-dirty, released 2018/99/99 (debug build)</span>
+</pre></div>
+</div>
+<p>and the Python bindings:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;from osgeo import gdal; print(gdal.__version__)&#39;</span>
+<span class="c1"># 3.7.0dev-5327c149f5-dirty</span>
+</pre></div>
+</div>
+</section>
 </section>
 
 
@@ -285,10 +291,10 @@ to use the <code class="docutils literal notranslate"><span class="pre">vs2019_w
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="building_from_source.html" class="btn btn-neutral float-right" title="Building GDAL from source" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="building_from_source.html" class="btn btn-neutral float-right" title="GDAL のソースからのビルド" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral float-left" title="Development" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="開発" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

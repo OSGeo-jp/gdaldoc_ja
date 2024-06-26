@@ -60,6 +60,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">開発</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="dev_environment.html">Setting up a development environment</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">GDAL のソースからのビルド</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#build-requirements">Build requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#cmake-gdal-versions-3-5-0">CMake (GDAL versions &gt;= 3.5.0)</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#building-on-windows">Building on Windows</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#building-on-macos">Building on MacOS</a></li>
@@ -87,11 +88,11 @@
 <li class="toctree-l2"><a class="reference internal" href="rfc/index.html">RFC list</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">コミュニティ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -162,6 +163,26 @@
              
   <section id="building-gdal-from-source">
 <span id="building-from-source"></span><h1>GDAL のソースからのビルド<a class="headerlink" href="#building-gdal-from-source" title="Link to this heading"></a></h1>
+<section id="build-requirements">
+<span id="id1"></span><h2>Build requirements<a class="headerlink" href="#build-requirements" title="Link to this heading"></a></h2>
+<p>The minimum requirements to build GDAL are:</p>
+<ul class="simple">
+<li><p>CMake &gt;= 3.16, and an associated build system (make, ninja, Visual Studio, etc.)</p></li>
+<li><p>C99 compiler</p></li>
+<li><p>C++17 compiler since GDAL 3.9 (C++11 in previous versions)</p></li>
+<li><p>PROJ &gt;= 6.3.1</p></li>
+</ul>
+<p>Additional requirements to run the GDAL test suite are:</p>
+<ul class="simple">
+<li><p>SWIG &gt;= 4, for building bindings to other programming languages</p></li>
+<li><p>Python &gt;= 3.8</p></li>
+<li><p>Python packages listed in <cite>autotest/requirements.txt</cite></p></li>
+</ul>
+<p>A number of optional libraries are also strongly recommended for most builds:
+SQLite3, expat, libcurl, zlib, libtiff, libgeotiff, libpng, libjpeg, etc.
+Consult <a class="reference internal" href="../drivers/raster/index.html#raster-drivers"><span class="std std-ref">ラスタードライバー</span></a> and <a class="reference internal" href="../drivers/vector/index.html#vector-drivers"><span class="std std-ref">ベクタードライバー</span></a> pages for information
+on dependencies of optional drivers.</p>
+</section>
 <section id="cmake-gdal-versions-3-5-0">
 <h2>CMake (GDAL versions &gt;= 3.5.0)<a class="headerlink" href="#cmake-gdal-versions-3-5-0" title="Link to this heading"></a></h2>
 <p>Since version 3.5.0, GDAL can be built using the CMake build system.
@@ -205,6 +226,8 @@ paths to the include directory and the library:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake<span class="w"> </span>-DCMAKE_PREFIX_PATH<span class="o">=</span>/opt/SQLite<span class="w"> </span>..
 </pre></div>
 </div>
+<p>It is strongly recommended (and sometimes compulsory) to specify paths on Windows
+using forward slashes as well, e.g.: <code class="docutils literal notranslate"><span class="pre">c:/path/to/include</span></code>.</p>
 <p>You can unset existing cached variables, by using the -U switch of cmake, for example with wildcards:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake<span class="w"> </span>..<span class="w"> </span>-UGDAL_USE_*
 </pre></div>
@@ -1283,7 +1306,7 @@ It can be detected with pkg-config.</p>
 </section>
 <section id="kdu">
 <h4>KDU<a class="headerlink" href="#kdu" title="Link to this heading"></a></h4>
-<p>The Kakadu library (proprietary) is required for the <a class="reference internal" href="../drivers/raster/jp2kak.html#raster-jp2kak"><span class="std std-ref">JP2KAK -- JPEG-2000 (based on Kakadu)</span></a> and
+<p>The Kakadu library (proprietary) is required for the <a class="reference internal" href="../drivers/raster/jp2kak.html#raster-jp2kak"><span class="std std-ref">JP2KAK -- JPEG 2000 (based on Kakadu SDK)</span></a> and
 <a class="reference internal" href="../drivers/raster/jpipkak.html#raster-jpipkak"><span class="std std-ref">JPIPKAK - JPIP Streaming</span></a> drivers.
 There is no standardized installation layout, nor fixed library file names, so finding
 Kakadu artifacts is a bit challenging. Currently automatic finding of it from
@@ -1465,6 +1488,22 @@ It is used by the internal libtiff library or the <a class="reference internal" 
 <dt class="sig sig-object std" id="cmdoption-arg-GDAL_USE_LIBLZMA">
 <span class="sig-name descname"><span class="pre">GDAL_USE_LIBLZMA</span></span><span class="sig-prename descclassname"><span class="pre">=ON/OFF</span></span><a class="headerlink" href="#cmdoption-arg-GDAL_USE_LIBLZMA" title="Link to this definition"></a></dt>
 <dd><p>Control whether to use LibLZMA. Defaults to ON when LibLZMA is found.</p>
+</dd></dl>
+
+</section>
+<section id="libopendrive">
+<h4>libOpenDRIVE<a class="headerlink" href="#libopendrive" title="Link to this heading"></a></h4>
+<p><a class="reference external" href="https://github.com/pageldev/libOpenDRIVE">libOpenDRIVE</a> is required for the <a class="reference internal" href="../drivers/vector/xodr.html#vector-xodr"><span class="std std-ref">XODR -- OpenDRIVE Road Description Format</span></a> driver.</p>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-arg-OpenDrive_DIR">
+<span class="sig-name descname"><span class="pre">OpenDrive_DIR</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-OpenDrive_DIR" title="Link to this definition"></a></dt>
+<dd><p>Path to libOpenDRIVE CMake configuration directory <code class="docutils literal notranslate"><span class="pre">&lt;installDir&gt;/cmake/</span></code>. The <code class="file docutils literal notranslate"><span class="pre">cmake/</span></code> path is usually automatically created when installing libOpenDRIVE and contains the necessary configuration files for inclusion into other project builds.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-arg-GDAL_USE_OPENDRIVE">
+<span class="sig-name descname"><span class="pre">GDAL_USE_OPENDRIVE</span></span><span class="sig-prename descclassname"><span class="pre">=ON/OFF</span></span><a class="headerlink" href="#cmdoption-arg-GDAL_USE_OPENDRIVE" title="Link to this definition"></a></dt>
+<dd><p>Control whether to use libOpenDRIVE. Defaults to ON when libOpenDRIVE is found.</p>
 </dd></dl>
 
 </section>
@@ -1945,7 +1984,7 @@ be needed: -DOPENSSL_USE_STATIC_LIBS=TRUE -DOPENSSL_MSVC_STATIC_RT=TRUE</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-arg-Oracle_ROOT">
 <span class="sig-name descname"><span class="pre">Oracle_ROOT</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-Oracle_ROOT" title="Link to this definition"></a></dt>
-<dd><p>Path to the root directory of the Oracle Instant Client SDK</p>
+<dd><p>Path to the root directory of the Oracle Instant Client SDK.</p>
 </dd></dl>
 
 <dl class="std option">
@@ -1986,7 +2025,7 @@ Regular Expressions support. It is used for the REGEXP operator in drivers using
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-arg-PCRE2_LIBRARY">
 <span class="sig-name descname"><span class="pre">PCRE2_LIBRARY</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-PCRE2_LIBRARY" title="Link to this definition"></a></dt>
-<dd><p>Path to a shared or static library file with &quot;pcre2-8&quot; in its name</p>
+<dd><p>Path to a shared or static library file with &quot;pcre2-8&quot; in its name.</p>
 </dd></dl>
 
 <dl class="std option">
@@ -2492,7 +2531,7 @@ with it). It is used by the internal libtiff library or the <a class="reference 
 </section>
 </section>
 <section id="selection-of-drivers">
-<span id="id39"></span><h3>Selection of drivers<a class="headerlink" href="#selection-of-drivers" title="Link to this heading"></a></h3>
+<span id="id41"></span><h3>Selection of drivers<a class="headerlink" href="#selection-of-drivers" title="Link to this heading"></a></h3>
 <p>By default, all drivers that have their build requirements satisfied will be
 built-in in the GDAL core library.</p>
 <p>The following options are available to select a subset of drivers:</p>
@@ -2595,8 +2634,8 @@ on vector drivers).
 When such dependencies are not met, a CMake error will be emitted with a hint
 for the way to resolve the issue.
 It is also possible to anticipate such errors by looking at files
-<a href="#id40"><span class="problematic" id="id41">:source_file:`frmts/CMakeLists.txt`</span></a> for dependencies of raster drivers
-and <a href="#id42"><span class="problematic" id="id43">:source_file:`ogr/ogrsf_frmts/CMakeLists.txt`</span></a> for dependencies of vector drivers.</p>
+<a href="#id42"><span class="problematic" id="id43">:source_file:`frmts/CMakeLists.txt`</span></a> for dependencies of raster drivers
+and <a href="#id44"><span class="problematic" id="id45">:source_file:`ogr/ogrsf_frmts/CMakeLists.txt`</span></a> for dependencies of vector drivers.</p>
 </div>
 </dd></dl>
 
@@ -2967,7 +3006,7 @@ into the build tree and build the needed files from it into the driver.</p>
 <section id="cross-compiling-for-android">
 <h3>Cross-compiling for Android<a class="headerlink" href="#cross-compiling-for-android" title="Link to this heading"></a></h3>
 <p>First refer to <a class="reference external" href="https://cmake.org/cmake/help/latest/manual/cmake-toolchains.7.html#cross-compiling-for-android">https://cmake.org/cmake/help/latest/manual/cmake-toolchains.7.html#cross-compiling-for-android</a>
-and to <a href="#id45"><span class="problematic" id="id46">:source_file:`.github/workflows/android_cmake/start.sh`</span></a> for
+and to <a href="#id47"><span class="problematic" id="id48">:source_file:`.github/workflows/android_cmake/start.sh`</span></a> for
 an example of a build script to cross-compile from Ubuntu.</p>
 </section>
 <section id="typical-build-issues">
@@ -2976,7 +3015,7 @@ an example of a build script to cross-compile from Ubuntu.</p>
 <h4>How do I get PROJ ?<a class="headerlink" href="#how-do-i-get-proj" title="Link to this heading"></a></h4>
 <p>PROJ is the only required build-time dependency of GDAL that is not vendorized
 in the GDAL source code tree. Consequently, the PROJ header and library must be available
-when configuring GDAL's CMake. Consult <cite>PROJ installation &lt;https://proj.org/install.html&gt;</cite>.</p>
+when configuring GDAL's CMake. Consult <a class="reference external" href="https://proj.org/install.html">PROJ installation</a>.</p>
 </section>
 <section id="conflicting-proj-libraries">
 <h4>Conflicting PROJ libraries<a class="headerlink" href="#conflicting-proj-libraries" title="Link to this heading"></a></h4>

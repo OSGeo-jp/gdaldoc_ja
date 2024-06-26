@@ -152,6 +152,7 @@
 <li class="toctree-l2"><a class="reference internal" href="wfs.html">WFS - OGC WFS service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xls.html">XLS - MS Excel format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xlsx.html">XLSX - MS Office Open XML spreadsheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xodr.html">XODR -- OpenDRIVE Road Description Format</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
@@ -159,10 +160,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -290,7 +291,8 @@ The <code class="docutils literal notranslate"><span class="pre">hstore_get_valu
 or <a class="reference internal" href="../../user/sql_sqlite_dialect.html#sql-sqlite-dialect"><span class="std std-ref">SQLite</span></a> SQL dialects to extract the value of a
 given key.</p>
 <p>For example :</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ogr2ogr</span> <span class="o">-</span><span class="n">f</span> <span class="n">PostgreSQL</span> <span class="s2">&quot;PG:dbname=osm&quot;</span> <span class="n">test</span><span class="o">.</span><span class="n">pbf</span> <span class="o">-</span><span class="n">lco</span> <span class="n">COLUMN_TYPES</span><span class="o">=</span><span class="n">other_tags</span><span class="o">=</span><span class="n">hstore</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ogr2ogr</span> <span class="o">-</span><span class="n">f</span> <span class="n">PostgreSQL</span> <span class="s2">&quot;PG:dbname=osm&quot;</span> <span class="n">test</span><span class="o">.</span><span class="n">pbf</span> \
+<span class="o">-</span><span class="n">lco</span> <span class="n">COLUMN_TYPES</span><span class="o">=</span><span class="n">other_tags</span><span class="o">=</span><span class="n">hstore</span>
 </pre></div>
 </div>
 <p>Starting with GDAL 3.7, it is possible to ask the format of this field to
@@ -307,8 +309,8 @@ with &quot;other_tags&quot;.</p>
 </section>
 <section id="configuration-options">
 <h2>Configuration options<a class="headerlink" href="#configuration-options" title="Link to this heading"></a></h2>
-<p>The following <a class="reference internal" href="../../user/configoptions.html#configoptions"><span class="std std-ref">configuration options</span></a> are
-available:</p>
+<p><a href="#id3"><span class="problematic" id="id4">|about-config-options|</span></a>
+The following configuration options are available:</p>
 <ul class="simple">
 <li><p id="config-OSM_CONFIG_FILE"><strong>OSM_CONFIG_FILE=&lt;filename&gt;: </strong>Path to an OSM configuration file. See <a class="reference internal" href="#configuration">Configuration</a>.</p>
 </li>
@@ -398,20 +400,25 @@ Unix), with the following command :</p>
 </pre></div>
 </div>
 <p>You can convert a .osm or .pbf file without downloading it :</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="o">-</span><span class="n">O</span> <span class="o">-</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">some</span><span class="o">.</span><span class="n">pbf</span> <span class="o">|</span> <span class="n">ogr2ogr</span> <span class="o">-</span><span class="n">f</span> <span class="n">SQLite</span> <span class="n">my</span><span class="o">.</span><span class="n">sqlite</span> <span class="o">/</span><span class="n">vsistdin</span><span class="o">/</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="o">-</span><span class="n">O</span> <span class="o">-</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">some</span><span class="o">.</span><span class="n">pbf</span> <span class="o">|</span>
+<span class="n">ogr2ogr</span> <span class="o">-</span><span class="n">f</span> <span class="n">SQLite</span> <span class="n">my</span><span class="o">.</span><span class="n">sqlite</span> <span class="o">/</span><span class="n">vsistdin</span><span class="o">/</span>
 
 <span class="ow">or</span>
 
-<span class="n">ogr2ogr</span> <span class="o">-</span><span class="n">f</span> <span class="n">SQLite</span> <span class="n">my</span><span class="o">.</span><span class="n">sqlite</span> <span class="o">/</span><span class="n">vsicurl_streaming</span><span class="o">/</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">some</span><span class="o">.</span><span class="n">pbf</span> <span class="o">-</span><span class="n">progress</span>
+<span class="n">ogr2ogr</span> <span class="o">-</span><span class="n">f</span> <span class="n">SQLite</span> <span class="n">my</span><span class="o">.</span><span class="n">sqlite</span> \
+<span class="o">/</span><span class="n">vsicurl_streaming</span><span class="o">/</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">some</span><span class="o">.</span><span class="n">pbf</span> <span class="o">-</span><span class="n">progress</span>
 </pre></div>
 </div>
 <p>And to combine the above steps :</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="o">-</span><span class="n">O</span> <span class="o">-</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">some</span><span class="o">.</span><span class="n">osm</span><span class="o">.</span><span class="n">bz2</span> <span class="o">|</span> <span class="n">bzcat</span> <span class="o">|</span> <span class="n">ogr2ogr</span> <span class="o">-</span><span class="n">f</span> <span class="n">SQLite</span> <span class="n">my</span><span class="o">.</span><span class="n">sqlite</span> <span class="o">/</span><span class="n">vsistdin</span><span class="o">/</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="o">-</span><span class="n">O</span> <span class="o">-</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">some</span><span class="o">.</span><span class="n">osm</span><span class="o">.</span><span class="n">bz2</span> <span class="o">|</span>
+<span class="n">bzcat</span> <span class="o">|</span> <span class="n">ogr2ogr</span> <span class="o">-</span><span class="n">f</span> <span class="n">SQLite</span> <span class="n">my</span><span class="o">.</span><span class="n">sqlite</span> <span class="o">/</span><span class="n">vsistdin</span><span class="o">/</span>
 </pre></div>
 </div>
 </section>
 <section id="open-options">
 <h2>Open options<a class="headerlink" href="#open-options" title="Link to this heading"></a></h2>
+<p><a href="#id5"><span class="problematic" id="id6">|about-open-options|</span></a>
+The following open options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/vector/osm-oo-CONFIG_FILE"><strong>CONFIG_FILE=&lt;filename&gt;: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">{GDAL_DATA}/osmconf.ini</span></code>. Configuration filename.</p>
 </li>

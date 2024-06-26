@@ -126,7 +126,7 @@
 <li class="toctree-l2"><a class="reference internal" href="isis3.html">ISIS3 -- USGS Astrogeology ISIS Cube (Version 3)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jdem.html">JDEM -- Japanese DEM (.mem)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2ecw.html">JP2ECW -- ERDAS JPEG2000 (.jp2)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="jp2kak.html">JP2KAK -- JPEG-2000 (based on Kakadu)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jp2kak.html">JP2KAK -- JPEG 2000 (based on Kakadu SDK)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2lura.html">JP2Lura -- JPEG2000 driver based on Lurawave library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2mrsid.html">JP2MrSID -- JPEG2000 via MrSID SDK</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2openjpeg.html">JP2OpenJPEG -- JPEG2000 driver based on OpenJPEG library</a></li>
@@ -231,10 +231,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -318,7 +318,11 @@
 <p>PDS3 datasets can incorporate a VICAR header. By default, GDAL will use the
 <a class="reference internal" href="pds.html#raster-pds"><span class="std std-ref">PDS</span></a> driver in that situation. Starting with GDAL 3.1, if
 the <a class="reference internal" href="pds.html#config-GDAL_TRY_PDS3_WITH_VICAR"><code class="docutils literal notranslate"><span class="pre">GDAL_TRY_PDS3_WITH_VICAR</span></code></a> configuration option is
-set to YES, the dataset will be opened by the VICAR driver.</p>
+set to YES, the dataset will be opened by the VICAR driver.
+Alternatively, starting with GDAL 3.10, specifying the <code class="docutils literal notranslate"><span class="pre">-if</span> <span class="pre">VICAR</span></code> option
+to command line utilities accepting it, or <code class="docutils literal notranslate"><span class="pre">VICAR</span></code> as the only value of
+the <code class="docutils literal notranslate"><span class="pre">papszAllowedDrivers</span></code> of <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpenEx()</span></code>, also forces the
+driver to recognize the passed filename.</p>
 </div>
 <section id="driver-capabilities">
 <h2>Driver capabilities<a class="headerlink" href="#driver-capabilities" title="Link to this heading"></a></h2>
@@ -342,7 +346,7 @@ set to YES, the dataset will be opened by the VICAR driver.</p>
 <section id="metadata">
 <h2>Metadata<a class="headerlink" href="#metadata" title="Link to this heading"></a></h2>
 <p>Starting with GDAL 3.1, the VICAR label can be retrieved as
-JSon-serialized content in the json:VICAR metadata domain.</p>
+JSON-serialized content in the json:VICAR metadata domain.</p>
 <p>For example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python3
 from osgeo import gdal
@@ -485,7 +489,8 @@ Create() interfaces.</p>
 to preserve as much as possible of the original label when doing VICAR
 to VICAR conversions. This can be disabled with the <a class="reference internal" href="#drivers/raster/vicar-co-USE_SRC_LABEL"><code class="docutils literal notranslate"><span class="pre">USE_SRC_LABEL=NO</span></code></a>
 creation option.</p>
-<p>The available creation options are:</p>
+<p><a href="#id3"><span class="problematic" id="id4">|about-creation-options|</span></a>
+The available creation options are:</p>
 <ul>
 <li><p id="drivers/raster/vicar-co-GEOREF_FORMAT"><strong>GEOREF_FORMAT=[MIPL/GEOTIFF]: </strong> (GDAL &gt;= 3.4) How to encode georeferencing
 information. Defaults to MIPL using the <code class="docutils literal notranslate"><span class="pre">MAP</span></code> property group. When setting to

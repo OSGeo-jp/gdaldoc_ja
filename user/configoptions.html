@@ -78,7 +78,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#proj-options">PROJ options</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#list-of-configuration-options-and-where-they-apply">List of configuration options and where they apply</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#list-of-configuration-options-and-where-they-are-documented">List of configuration options and where they are documented</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="gdal_python_utilities.html">GDAL Python Utilities</a></li>
@@ -88,10 +88,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../development/index.html">開発</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -623,9 +623,16 @@ and double quote character must be backslash-escaped.  e.g
 GDAL_HTTP_HEADERS=Foo: Bar,&quot;Baz: escaped backslash \\, escaped double-quote
 \&quot;, end of value&quot;,Another: Header</p>
 </li>
-<li><p id="config-GDAL_HTTP_MAX_RETRY"><strong>GDAL_HTTP_MAX_RETRY=value: </strong> (GDAL &gt;= 2.3) Set the number of HTTP attempts in case of HTTP errors 429, 502, 503, or 504.</p>
+<li><p id="config-GDAL_HTTP_MAX_RETRY"><strong>GDAL_HTTP_MAX_RETRY=value: </strong> (GDAL &gt;= 2.3)  Defaults to <code class="docutils literal notranslate"><span class="pre">0</span></code>. Set the number of HTTP attempts, when a retry is allowed.
+(cf <a class="reference internal" href="#config-GDAL_HTTP_RETRY_CODES"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_RETRY_CODES</span></code></a> for conditions where a retry is attempted.)
+The default value is 0, meaning no retry.</p>
 </li>
-<li><p id="config-GDAL_HTTP_RETRY_DELAY"><strong>GDAL_HTTP_RETRY_DELAY=&lt;seconds&gt;: </strong> (GDAL &gt;= 2.3) Set the delay between HTTP attempts.</p>
+<li><p id="config-GDAL_HTTP_RETRY_DELAY"><strong>GDAL_HTTP_RETRY_DELAY=&lt;seconds&gt;: </strong> (GDAL &gt;= 2.3)  Defaults to <code class="docutils literal notranslate"><span class="pre">30</span></code>. Set the delay between HTTP attempts.</p>
+</li>
+<li><p id="config-GDAL_HTTP_RETRY_CODES"><strong>GDAL_HTTP_RETRY_CODES=ALL or comma-separated list of codes: </strong> (GDAL &gt;= 3.10) Specify which HTTP error codes should trigger a retry attempt.
+Valid values are <code class="docutils literal notranslate"><span class="pre">ALL</span></code> or a comma-separated list of HTTP codes.
+By default, 429, 500, 502, 503 or 504 HTTP errors are considered, as
+well as other situations with a particular HTTP or Curl error message.</p>
 </li>
 <li><p id="config-GDAL_HTTP_TCP_KEEPALIVE"><strong>GDAL_HTTP_TCP_KEEPALIVE=[YES/NO]: </strong> (GDAL &gt;= 3.6)  Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. Sets whether to enable TCP keep-alive.</p>
 </li>
@@ -711,8 +718,9 @@ and enables decoding of a response when a Content-Encoding: header</p>
 </li>
 <li><p id="config-GDAL_HTTP_TIMEOUT"><strong>GDAL_HTTP_TIMEOUT=value: </strong>Set HTTP timeout value, where value is in seconds</p>
 </li>
-<li><p id="config-GDAL_HTTP_USERAGENT"><strong>GDAL_HTTP_USERAGENT=value: </strong>When set this string will be used to set the <code class="docutils literal notranslate"><span class="pre">User-Agent</span></code> header in the http
-request sent to the remote server.</p>
+<li><p id="config-GDAL_HTTP_USERAGENT"><strong>GDAL_HTTP_USERAGENT=value: </strong>This string will be used to set the <code class="docutils literal notranslate"><span class="pre">User-Agent</span></code> header in the HTTP
+request sent to the remote server.
+Defaults to &quot;GDAL/x.y.z&quot; where x.y.z is the GDAL build version.</p>
 </li>
 <li><p id="config-GDAL_HTTP_UNSAFESSL"><strong>GDAL_HTTP_UNSAFESSL=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. Set to &quot;YES&quot; to get the curl library to skip SSL host / certificate
 verification.</p>
@@ -792,8 +800,8 @@ horizontal datum.</p>
 </ul>
 </section>
 </section>
-<section id="list-of-configuration-options-and-where-they-apply">
-<span id="list-config-options"></span><h2>List of configuration options and where they apply<a class="headerlink" href="#list-of-configuration-options-and-where-they-apply" title="Link to this heading"></a></h2>
+<section id="list-of-configuration-options-and-where-they-are-documented">
+<span id="list-config-options"></span><h2>List of configuration options and where they are documented<a class="headerlink" href="#list-of-configuration-options-and-where-they-are-documented" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="../drivers/raster/aaigrid.html#config-AAIGRID_DATATYPE"><code class="docutils literal notranslate"><span class="pre">AAIGRID_DATATYPE</span></code></a>: <a class="reference internal" href="../drivers/raster/aaigrid.html">AAIGrid -- Arc/Info ASCII Grid</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/amigocloud.html#config-AMIGOCLOUD_API_KEY"><code class="docutils literal notranslate"><span class="pre">AMIGOCLOUD_API_KEY</span></code></a>: <a class="reference internal" href="../drivers/vector/amigocloud.html">AmigoCloud</a></p></li>
@@ -828,7 +836,6 @@ horizontal datum.</p>
 <li><p><a class="reference internal" href="../programs/gdaladdo.html">gdaladdo</a></p></li>
 </ul>
 </p></li>
-<li><p><a class="reference internal" href="../drivers/vector/mitab.html#config-BLOCKSIZE"><code class="docutils literal notranslate"><span class="pre">BLOCKSIZE</span></code></a>: <a class="reference internal" href="../drivers/vector/mitab.html">MapInfo TAB and MIF/MID</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/carto.html#config-CARTO_API_KEY"><code class="docutils literal notranslate"><span class="pre">CARTO_API_KEY</span></code></a>: <a class="reference internal" href="../drivers/vector/carto.html">Carto</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/carto.html#config-CARTO_API_URL"><code class="docutils literal notranslate"><span class="pre">CARTO_API_URL</span></code></a>: <a class="reference internal" href="../drivers/vector/carto.html">Carto</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/carto.html#config-CARTO_HTTPS"><code class="docutils literal notranslate"><span class="pre">CARTO_HTTPS</span></code></a>: <a class="reference internal" href="../drivers/vector/carto.html">Carto</a></p></li>
@@ -997,7 +1004,6 @@ horizontal datum.</p>
 <li><p><a class="reference internal" href="../drivers/vector/elasticsearch.html#config-ES_WRITEMAP"><code class="docutils literal notranslate"><span class="pre">ES_WRITEMAP</span></code></a>: <a class="reference internal" href="../drivers/vector/elasticsearch.html">Elasticsearch: Geographically Encoded Objects for Elasticsearch</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/filegdb.html#config-FGDB_BULK_LOAD"><code class="docutils literal notranslate"><span class="pre">FGDB_BULK_LOAD</span></code></a>: <a class="reference internal" href="../drivers/vector/filegdb.html">ESRI File Geodatabase (FileGDB)</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/aaigrid.html#config-FORCE_CELLSIZE"><code class="docutils literal notranslate"><span class="pre">FORCE_CELLSIZE</span></code></a>: <a class="reference internal" href="../drivers/raster/aaigrid.html">AAIGrid -- Arc/Info ASCII Grid</a></p></li>
-<li><p><a class="reference internal" href="../drivers/vector/mitab.html#config-FORMAT"><code class="docutils literal notranslate"><span class="pre">FORMAT</span></code></a>: <a class="reference internal" href="../drivers/vector/mitab.html">MapInfo TAB and MIF/MID</a></p></li>
 <li><p><a class="reference internal" href="#config-GDAL_BAND_BLOCK_CACHE"><code class="docutils literal notranslate"><span class="pre">GDAL_BAND_BLOCK_CACHE</span></code></a>: <ul>
 <li><p><a class="reference internal" href="../development/rfc/rfc26_blockcache.html">RFC 26: GDAL Block Cache Improvements</a></p></li>
 <li><p><a class="reference internal" href="#">設定オプション</a></p></li>
@@ -1038,7 +1044,7 @@ horizontal datum.</p>
 <li><p><a class="reference internal" href="#config-GDAL_GEOREF_SOURCES"><code class="docutils literal notranslate"><span class="pre">GDAL_GEOREF_SOURCES</span></code></a>: <ul>
 <li><p><a class="reference internal" href="../drivers/raster/gtiff.html">GTiff -- GeoTIFF File Format</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/jp2ecw.html">JP2ECW -- ERDAS JPEG2000 (.jp2)</a></p></li>
-<li><p><a class="reference internal" href="../drivers/raster/jp2kak.html">JP2KAK -- JPEG-2000 (based on Kakadu)</a></p></li>
+<li><p><a class="reference internal" href="../drivers/raster/jp2kak.html">JP2KAK -- JPEG 2000 (based on Kakadu SDK)</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/jp2lura.html">JP2Lura -- JPEG2000 driver based on Lurawave library</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/jp2mrsid.html">JP2MrSID -- JPEG2000 via MrSID SDK</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/jp2openjpeg.html">JP2OpenJPEG -- JPEG2000 driver based on OpenJPEG library</a></p></li>
@@ -1093,6 +1099,11 @@ horizontal datum.</p>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="#config-GDAL_HTTP_PROXYUSERPWD"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_PROXYUSERPWD</span></code></a>: <ul>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+</ul>
+</p></li>
+<li><p><a class="reference internal" href="#config-GDAL_HTTP_RETRY_CODES"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_RETRY_CODES</span></code></a>: <ul>
 <li><p><a class="reference internal" href="#">設定オプション</a></p></li>
 <li><p><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
 </ul>
@@ -1297,9 +1308,9 @@ horizontal datum.</p>
 <li><p><a class="reference internal" href="../programs/gdaladdo.html">gdaladdo</a></p></li>
 </ul>
 </p></li>
-<li><p><a class="reference internal" href="../drivers/raster/jp2kak.html#config-JP2KAK_FUSSY"><code class="docutils literal notranslate"><span class="pre">JP2KAK_FUSSY</span></code></a>: <a class="reference internal" href="../drivers/raster/jp2kak.html">JP2KAK -- JPEG-2000 (based on Kakadu)</a></p></li>
-<li><p><a class="reference internal" href="../drivers/raster/jp2kak.html#config-JP2KAK_RESILIENT"><code class="docutils literal notranslate"><span class="pre">JP2KAK_RESILIENT</span></code></a>: <a class="reference internal" href="../drivers/raster/jp2kak.html">JP2KAK -- JPEG-2000 (based on Kakadu)</a></p></li>
-<li><p><a class="reference internal" href="../drivers/raster/jp2kak.html#config-JP2KAK_THREADS"><code class="docutils literal notranslate"><span class="pre">JP2KAK_THREADS</span></code></a>: <a class="reference internal" href="../drivers/raster/jp2kak.html">JP2KAK -- JPEG-2000 (based on Kakadu)</a></p></li>
+<li><p><a class="reference internal" href="../drivers/raster/jp2kak.html#config-JP2KAK_FUSSY"><code class="docutils literal notranslate"><span class="pre">JP2KAK_FUSSY</span></code></a>: <a class="reference internal" href="../drivers/raster/jp2kak.html">JP2KAK -- JPEG 2000 (based on Kakadu SDK)</a></p></li>
+<li><p><a class="reference internal" href="../drivers/raster/jp2kak.html#config-JP2KAK_RESILIENT"><code class="docutils literal notranslate"><span class="pre">JP2KAK_RESILIENT</span></code></a>: <a class="reference internal" href="../drivers/raster/jp2kak.html">JP2KAK -- JPEG 2000 (based on Kakadu SDK)</a></p></li>
+<li><p><a class="reference internal" href="../drivers/raster/jp2kak.html#config-JP2KAK_THREADS"><code class="docutils literal notranslate"><span class="pre">JP2KAK_THREADS</span></code></a>: <a class="reference internal" href="../drivers/raster/jp2kak.html">JP2KAK -- JPEG 2000 (based on Kakadu SDK)</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/jpeg.html#config-JPEG_MASK_BIT_ORDER"><code class="docutils literal notranslate"><span class="pre">JPEG_MASK_BIT_ORDER</span></code></a>: <a class="reference internal" href="../drivers/raster/jpeg.html">JPEG -- JPEG JFIF File Format</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/gtiff.html#config-JPEG_QUALITY_OVERVIEW"><code class="docutils literal notranslate"><span class="pre">JPEG_QUALITY_OVERVIEW</span></code></a>: <a class="reference internal" href="../drivers/raster/gtiff.html">GTiff -- GeoTIFF File Format</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/jpeg.html#config-JPEG_READ_MASK"><code class="docutils literal notranslate"><span class="pre">JPEG_READ_MASK</span></code></a>: <a class="reference internal" href="../drivers/raster/jpeg.html">JPEG -- JPEG JFIF File Format</a></p></li>
@@ -1442,6 +1453,7 @@ horizontal datum.</p>
 <li><p><a class="reference internal" href="../drivers/vector/pg_advanced.html">PostgreSQL / PostGIS - Advanced Driver Information</a></p></li>
 </ul>
 </p></li>
+<li><p><a class="reference internal" href="../drivers/vector/pg.html#config-OGR_PG_SKIP_CONFLICTS"><code class="docutils literal notranslate"><span class="pre">OGR_PG_SKIP_CONFLICTS</span></code></a>: <a class="reference internal" href="../drivers/vector/pg.html">PostgreSQL / PostGIS</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/sqlite.html#config-OGR_PROMOTE_TO_INTEGER64"><code class="docutils literal notranslate"><span class="pre">OGR_PROMOTE_TO_INTEGER64</span></code></a>: <ul>
 <li><p><a class="reference internal" href="../development/rfc/rfc31_ogr_64.html">RFC 31: OGR 64bit Integer Fields and FIDs</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/sqlite.html">SQLite / Spatialite RDBMS</a></p></li>
@@ -1561,7 +1573,6 @@ horizontal datum.</p>
 <li><p><a class="reference internal" href="../drivers/vector/shapefile.html#config-SHAPE_RESTORE_SHX"><code class="docutils literal notranslate"><span class="pre">SHAPE_RESTORE_SHX</span></code></a>: <a class="reference internal" href="../drivers/vector/shapefile.html">ESRI Shapefile / DBF</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/shapefile.html#config-SHAPE_REWIND_ON_WRITE"><code class="docutils literal notranslate"><span class="pre">SHAPE_REWIND_ON_WRITE</span></code></a>: <a class="reference internal" href="../drivers/vector/shapefile.html">ESRI Shapefile / DBF</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/gtiff.html#config-SPARSE_OK_OVERVIEW"><code class="docutils literal notranslate"><span class="pre">SPARSE_OK_OVERVIEW</span></code></a>: <a class="reference internal" href="../drivers/raster/gtiff.html">GTiff -- GeoTIFF File Format</a></p></li>
-<li><p><a class="reference internal" href="../drivers/vector/mitab.html#config-SPATIAL_INDEX_MODE"><code class="docutils literal notranslate"><span class="pre">SPATIAL_INDEX_MODE</span></code></a>: <a class="reference internal" href="../drivers/vector/mitab.html">MapInfo TAB and MIF/MID</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/sqlite.html#config-SQLITE_LIST_ALL_TABLES"><code class="docutils literal notranslate"><span class="pre">SQLITE_LIST_ALL_TABLES</span></code></a>: <a class="reference internal" href="../drivers/vector/sqlite.html">SQLite / Spatialite RDBMS</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/sqlite.html#config-SQLITE_USE_OGR_VFS"><code class="docutils literal notranslate"><span class="pre">SQLITE_USE_OGR_VFS</span></code></a>: <ul>
 <li><p><a class="reference internal" href="../drivers/vector/gpkg.html">GPKG -- GeoPackage vector</a></p></li>
@@ -1590,7 +1601,7 @@ horizontal datum.</p>
 </p></li>
 <li><p><a class="reference internal" href="../drivers/raster/hfa.html#config-USE_SPILL"><code class="docutils literal notranslate"><span class="pre">USE_SPILL</span></code></a>: <a class="reference internal" href="../drivers/raster/hfa.html">HFA -- Erdas Imagine .img</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/gpsbabel.html#config-USE_TEMPFILE"><code class="docutils literal notranslate"><span class="pre">USE_TEMPFILE</span></code></a>: <a class="reference internal" href="../drivers/vector/gpsbabel.html">GPSBabel</a></p></li>
-<li><p><a class="reference internal" href="../drivers/raster/jp2kak.html#config-USE_TILE_AS_BLOCK"><code class="docutils literal notranslate"><span class="pre">USE_TILE_AS_BLOCK</span></code></a>: <a class="reference internal" href="../drivers/raster/jp2kak.html">JP2KAK -- JPEG-2000 (based on Kakadu)</a></p></li>
+<li><p><a class="reference internal" href="../drivers/raster/jp2kak.html#config-USE_TILE_AS_BLOCK"><code class="docutils literal notranslate"><span class="pre">USE_TILE_AS_BLOCK</span></code></a>: <a class="reference internal" href="../drivers/raster/jp2kak.html">JP2KAK -- JPEG 2000 (based on Kakadu SDK)</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/vrt.html#config-VRT_SHARED_SOURCE"><code class="docutils literal notranslate"><span class="pre">VRT_SHARED_SOURCE</span></code></a>: <a class="reference internal" href="../drivers/raster/vrt.html">VRT -- GDAL Virtual Format</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/vrt.html#config-VRT_VIRTUAL_OVERVIEWS"><code class="docutils literal notranslate"><span class="pre">VRT_VIRTUAL_OVERVIEWS</span></code></a>: <a class="reference internal" href="../drivers/raster/vrt.html">VRT -- GDAL Virtual Format</a></p></li>
 <li><p><a class="reference internal" href="virtual_file_systems.html#config-VSIOSS_CHUNK_SIZE"><code class="docutils literal notranslate"><span class="pre">VSIOSS_CHUNK_SIZE</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>

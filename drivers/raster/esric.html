@@ -98,6 +98,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#features-and-limitations">Features and Limitations</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#open-options">Open options</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
@@ -136,7 +137,7 @@
 <li class="toctree-l2"><a class="reference internal" href="isis3.html">ISIS3 -- USGS Astrogeology ISIS Cube (Version 3)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jdem.html">JDEM -- Japanese DEM (.mem)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2ecw.html">JP2ECW -- ERDAS JPEG2000 (.jp2)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="jp2kak.html">JP2KAK -- JPEG-2000 (based on Kakadu)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jp2kak.html">JP2KAK -- JPEG 2000 (based on Kakadu SDK)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2lura.html">JP2Lura -- JPEG2000 driver based on Lurawave library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2mrsid.html">JP2MrSID -- JPEG2000 via MrSID SDK</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2openjpeg.html">JP2OpenJPEG -- JPEG2000 driver based on OpenJPEG library</a></li>
@@ -234,10 +235,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -435,6 +436,21 @@ file until the raster size drops below INT32_MAX is a possible
 workaround, but the highest resolution levels will not be read.</p></li>
 </ul>
 </section>
+</section>
+<section id="open-options">
+<h2>Open options<a class="headerlink" href="#open-options" title="Link to this heading"></a></h2>
+<p><a href="#id3"><span class="problematic" id="id4">|about-open-options|</span></a>
+The following open options are available:</p>
+<ul class="simple">
+<li><p id="drivers/raster/esric-oo-EXTENT_SOURCE"><strong>EXTENT_SOURCE=[FULL_EXTENT/INITIAL_EXTENT/TILING_SCHEME]: </strong> (GDAL &gt;= 3.9.1)  Defaults to <code class="docutils literal notranslate"><span class="pre">FULL_EXTENT</span></code>. Which source should be used for the extent of Esri Tile Package (.tpkx) datasets.
+By default, or if specifying <code class="docutils literal notranslate"><span class="pre">FULL_EXTENT</span></code>, the &quot;fullExtent&quot; element of
+the root.json file will be selected, which normally covers all tiles with data.
+<code class="docutils literal notranslate"><span class="pre">INITIAL_EXTENT</span></code> can be specified to use the default initial extent described
+in the &quot;initialExtent&quot; element of the root.json file.
+<code class="docutils literal notranslate"><span class="pre">TILING_SCHEME</span></code> will return the extent of the whole tiling scheme, which
+is typically world coverage.</p>
+</li>
+</ul>
 </section>
 <section id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>

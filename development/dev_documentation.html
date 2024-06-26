@@ -52,14 +52,14 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../download.html">ダウンロード</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../programs/index.html">プログラム</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">Raster drivers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">Vector drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">ラスタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">ベクタードライバー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Development</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">開発</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="dev_environment.html">Setting up a development environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="building_from_source.html">Building GDAL from source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building_from_source.html">GDAL のソースからのビルド</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dev_practices.html">Development practices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="testing.html">Automated testing</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Building documentation</a><ul>
@@ -90,11 +90,11 @@
 <li class="toctree-l2"><a class="reference internal" href="rfc/index.html">RFC list</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">コミュニティ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -130,7 +130,7 @@
     
       <li><a href="../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">Development</a> &raquo;</li>
+          <li><a href="index.html">開発</a> &raquo;</li>
       
       <li>Building documentation</li>
     
@@ -168,18 +168,40 @@
 <section id="documentation-overview">
 <h2>Documentation overview<a class="headerlink" href="#documentation-overview" title="Link to this heading"></a></h2>
 <p>GDAL's documentation includes C and C++ <a class="reference internal" href="../api/index.html#api"><span class="std std-ref">API documentation</span></a> built
-automatically from source comments using doxygen and reStructuredText (rst)
+automatically from source comments using Doxygen and reStructuredText (rst)
 files containing manually-edited content.</p>
-<p><a class="reference external" href="https://www.sphinx-doc.org/">Sphinx</a> is used to combine the above components into a complete set of documentation in HTML, PDF, and other formats.</p>
-<p><a class="reference external" href="https://www.sphinx-doc.org/">Sphinx</a> and extensions used by GDAL can be installed by running <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span></code> from
+<p><a href="#id7"><span class="problematic" id="id8">|Sphinx|</span></a> is used to combine the above components into a complete set of documentation in HTML, PDF, and other formats.</p>
+<p><a href="#id9"><span class="problematic" id="id10">|Sphinx|</span></a> and extensions used by GDAL can be installed by running <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span></code> from
 the <code class="docutils literal notranslate"><span class="pre">doc</span></code> subdirectory.</p>
 </section>
 <section id="id1">
 <h2>Building documentation<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
-<p>HTML documentation can be built by running <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code> in the <code class="docutils literal notranslate"><span class="pre">doc</span></code> subdirectory of the GDAL source repository.
-The generated files will be output to <code class="docutils literal notranslate"><span class="pre">doc/build</span></code> where they can be viewed using a web browser.
-Doxygen content that is incorporated into the output is not automatically rebuilt but can be regenerated using <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">doxygen</span></code>.</p>
-<p>To visualize documentation changes while editing, it may be useful to install the <a class="reference external" href="https://pypi.org/project/sphinx-autobuild/">sphinx-autobuild</a> python package.
+<p>Documentation can be generated with Makefile targets, from the <code class="docutils literal notranslate"><span class="pre">doc</span></code> subdirectory
+of the GDAL source repository (only on Unix systems).</p>
+<p>The following targets are available:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">html</span></code>: build HTML documentation into the <code class="docutils literal notranslate"><span class="pre">doc/build/html</span></code> directory, where
+they can be viewed using a web browser.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">man</span></code>: build MAN pages into the <code class="docutils literal notranslate"><span class="pre">doc/build/man</span></code> directory.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">latexpdf</span></code>: build PDF documentation into the <code class="docutils literal notranslate"><span class="pre">doc/build/pdf</span></code> directory</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">doxygen</span></code>: regenerate API Doxygen XML and HTML output, that is used by the
+<code class="docutils literal notranslate"><span class="pre">html</span></code> target. Doxygen content is not automatically rebuilt when source files
+are modified, hence this target must be explicitly run to refresh it.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">doxygen_check_warnings</span></code>: same as <code class="docutils literal notranslate"><span class="pre">doxygen</span></code>, but errors out when Doxygen
+emits a warning (the <code class="docutils literal notranslate"><span class="pre">doxygen</span></code> target is tolerant to Doxygen warnings).
+This can be useful to reproduce one of the continuous integration checks that
+verifies that there are no Doxygen warnings.
+Requires Doxygen &gt;= 1.9.3 to be warning free.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">clean</span></code>: clean the <code class="docutils literal notranslate"><span class="pre">doc/build</span></code> directory.</p></li>
+</ul>
+<p>It is also possible to run those targets as CMake targets. In that case, the
+output directory will be the <code class="docutils literal notranslate"><span class="pre">doc/build</span></code> subdirectory of the CMake
+build directory. To only clean the documentation, the <code class="docutils literal notranslate"><span class="pre">clean_doc</span></code> target can
+be invoked.
+Note: those CMake targets are only available if the CMake BUILD_DOCS=ON variable
+is set (it is set by default if build preconditions are met, that is if Doxygen,
+Sphinx and make are available)</p>
+<p>To visualize documentation changes while editing, it may be useful to install the <a href="#id11"><span class="problematic" id="id12">|sphinx-autobuild|</span></a> python package.
 Once installed, running <code class="docutils literal notranslate"><span class="pre">sphinx-autobuild</span> <span class="pre">-b</span> <span class="pre">html</span> <span class="pre">source</span> <span class="pre">build</span></code> from the <code class="docutils literal notranslate"><span class="pre">doc</span></code> subdirectory will build documentation
 and serve it on a local web server at <code class="docutils literal notranslate"><span class="pre">http://127.0.0.1:8000</span></code>. The pages served will be automatically refreshed as changes
 are made to underlying <code class="docutils literal notranslate"><span class="pre">rst</span></code> documentation files.</p>

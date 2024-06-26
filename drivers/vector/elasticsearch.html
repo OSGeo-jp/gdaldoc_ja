@@ -160,6 +160,7 @@
 <li class="toctree-l2"><a class="reference internal" href="wfs.html">WFS - OGC WFS service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xls.html">XLS - MS Excel format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xlsx.html">XLSX - MS Office Open XML spreadsheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xodr.html">XODR -- OpenDRIVE Road Description Format</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
@@ -167,10 +168,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -282,6 +283,8 @@ a dataset:</p>
 </section>
 <section id="layer-open-options">
 <h2>Layer open options<a class="headerlink" href="#layer-open-options" title="Link to this heading"></a></h2>
+<p><a href="#id1"><span class="problematic" id="id2">|about-open-options|</span></a>
+The following open options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/vector/elasticsearch-oo-HOST"><strong>HOST=&lt;hostname&gt;: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">localhost</span></code>. Server hostname.</p>
 </li>
@@ -370,14 +373,14 @@ SetAttributeFilter() are converted to <a class="reference external" href="https:
 syntax</a>.
 They will be combined with the potentially defined spatial filter.</p>
 <p>It is also possible to directly use a Elasticsearch filter by setting
-the string passed to SetAttributeFilter() as a JSon serialized object,
+the string passed to SetAttributeFilter() as a JSON serialized object,
 e.g.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;post_filter&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;term&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;properties.EAS_ID&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">169</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
 </pre></div>
 </div>
-<p>Note: if defining directly an Elastic Search JSon filter, the spatial
+<p>Note: if defining directly an Elastic Search JSON filter, the spatial
 filter specified through SetSpatialFilter() will be ignored, and must
-thus be included in the JSon filter if needed.</p>
+thus be included in the JSON filter if needed.</p>
 </section>
 <section id="paging">
 <h2>Paging<a class="headerlink" href="#paging" title="Link to this heading"></a></h2>
@@ -394,7 +397,7 @@ of attribute and geometry fields, since OGR has a fixed schema concept.</p>
 and build the schema that best fit to the found fields and values.</p>
 <p>It is also possible to set the <a class="reference internal" href="#drivers/vector/elasticsearch-oo-JSON_FIELD"><code class="docutils literal notranslate"><span class="pre">JSON_FIELD=YES</span></code></a> open option so that a
 _json special field is added to the OGR schema. When reading Elastic
-Search documents as OGR features, the full JSon version of the document
+Search documents as OGR features, the full JSON version of the document
 will be stored in the _json field. This might be useful in case of
 complex documents or with data types that do not translate well in OGR
 data types. On creation/update of documents, if the _json field is
@@ -417,7 +420,7 @@ at all.</p>
 <p>Starting with GDAL 2.2, SQL requests, involving a single layer, with
 WHERE and ORDER BY statements will be translated as Elasticsearch
 queries.</p>
-<p>Otherwise, if specifying &quot;ES&quot; as the dialect of ExecuteSQL(), a JSon
+<p>Otherwise, if specifying &quot;ES&quot; as the dialect of ExecuteSQL(), a JSON
 string with a serialized <a class="reference external" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-filters.html">Elastic Search
 filter</a>
 can be passed. The search will be done on all indices and types, unless
@@ -486,7 +489,7 @@ the driver will analyze the mapping and use the geometry field definition
 found into it (provided there is a single one). Note that aggegration on
 geo_shape geometries is only supported since Elasticsearch 7 and may require
 a non-free license.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">geohash_grid</span></code> (optional): a JSon object, describing a few characteristics of
+<li><p><code class="docutils literal notranslate"><span class="pre">geohash_grid</span></code> (optional): a JSON object, describing a few characteristics of
 the geohash_grid, that can have the following members:</p>
 <blockquote>
 <div><ul class="simple">
@@ -503,7 +506,7 @@ the theoretical number of buckets returned does not exceed <code class="docutils
 </ul>
 </div></blockquote>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">fields</span></code> (optional): a JSon object, describing which additional statistical
+<li><p><code class="docutils literal notranslate"><span class="pre">fields</span></code> (optional): a JSON object, describing which additional statistical
 fields should be added, that can have the following members:</p>
 <blockquote>
 <div><ul class="simple">
@@ -594,13 +597,14 @@ EPSG:4326.</p>
 </section>
 <section id="layer-creation-options">
 <h2>Layer creation options<a class="headerlink" href="#layer-creation-options" title="Link to this heading"></a></h2>
-<p>Starting with GDAL 2.1, the driver supports the following layer creation
+<p><a href="#id3"><span class="problematic" id="id4">|about-layer-creation-options|</span></a>
+Starting with GDAL 2.1, the driver supports the following layer creation
 options:</p>
 <ul class="simple">
 <li><p id="drivers/vector/elasticsearch-lco-INDEX_NAME"><strong>INDEX_NAME=value: </strong>Name of the index to create (or reuse). By default the index name is the layer name.</p>
 </li>
 <li><p id="drivers/vector/elasticsearch-lco-INDEX_DEFINITION"><strong>INDEX_DEFINITION=[&lt;filename&gt;/&lt;json&gt;]: </strong> (GDAL &gt;= 2.4) Filename from which to read a user-defined index definition, or inlined index
-definition as serialized JSon.</p>
+definition as serialized JSON .</p>
 </li>
 <li><p id="drivers/vector/elasticsearch-lco-MAPPING_NAME"><strong>MAPPING_NAME=value: </strong>(Elasticsearch &lt; 7) Name of the mapping type within the index.
 By default, the mapping name is &quot;FeatureCollection&quot; and the documents
@@ -609,7 +613,7 @@ is chosen, a more &quot;flat&quot; structure will be used.  This option is
 ignored when converting to Elasticsearch &gt;=7 (see <a class="reference external" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/removal-of-types.html">Removal of mapping types</a>).
 With Elasticsearch 7 or later, a &quot;flat&quot; structure is always used.</p>
 </li>
-<li><p id="drivers/vector/elasticsearch-lco-MAPPING"><strong>MAPPING=[&lt;filename&gt;/&lt;json&gt;]: </strong>Filename from which to read a user-defined mapping, or mapping as serialized JSon.</p>
+<li><p id="drivers/vector/elasticsearch-lco-MAPPING"><strong>MAPPING=[&lt;filename&gt;/&lt;json&gt;]: </strong>Filename from which to read a user-defined mapping, or mapping as serialized JSON .</p>
 </li>
 <li><p id="drivers/vector/elasticsearch-lco-WRITE_MAPPING"><strong>WRITE_MAPPING=&lt;filename&gt;: </strong>Creates a mapping file that can be
 modified by the user prior to insert in to the index. No feature will
@@ -700,7 +704,8 @@ in field name as sub-document.</p>
 </section>
 <section id="configuration-options">
 <h2>Configuration options<a class="headerlink" href="#configuration-options" title="Link to this heading"></a></h2>
-<p>The following (deprecated) <a class="reference internal" href="../../user/configoptions.html#configoptions"><span class="std std-ref">configuration options</span></a> are
+<p><a href="#id5"><span class="problematic" id="id6">|about-config-options|</span></a>
+The following (deprecated) configuration options are
 available. Starting with GDAL 2.1, layer creation options are also available
 and should be preferred (see above):</p>
 <ul class="simple">

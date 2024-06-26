@@ -52,8 +52,8 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../download.html">ダウンロード</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../programs/index.html">プログラム</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">Raster drivers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">Vector drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">ラスタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">ベクタードライバー</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">ユーザー</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="raster_data_model.html">Raster Data Model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="multidim_raster_data_model.html">Multidimensional Raster Data Model</a></li>
@@ -78,12 +78,12 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">開発</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">コミュニティ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -616,7 +616,8 @@ explicitly included using a syntax like:</p>
 by default. Users do not need to select the geometry explicitly but it is still
 possible to do so. Common use case is when geometry is the only field that is needed.
 In this case the name of the geometry field to be used in the SQL statement is the
-name returned by <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::GetGeometryColumn()</span></code>. If the method returns
+name returned by <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::GetGeometryColumn()</span></code>, and also
+&quot;Geometry Column = ...&quot; in <strong class="program">ogrinfo</strong> output. If the method returns
 an empty string then a special name &quot;_ogr_geometry_&quot; must be used. The name begins
 with an underscore and SQL syntax requires that it must appear between double quotes.
 In addition the command line interpreter may require that double quotes are escaped
@@ -669,6 +670,18 @@ returned by OGRFeature::GetStyleString(). By using this field and the
 <code class="docutils literal notranslate"><span class="pre">LIKE</span></code> operator the result of the query can be filtered by the style.
 For example we can select the annotation features as:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">nation</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">OGR_STYLE</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;LABEL%&#39;</span>
+</pre></div>
+</div>
+<p>It is possible to use the <code class="docutils literal notranslate"><span class="pre">OGR_STYLE</span></code> field name as a special field name in
+the field selection as an alternate way of setting the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeature::SetStyleString()</span></code>
+value, typically by aliasing another field or a string literal.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;BRUSH(fc:#01234567)&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">OGR_STYLE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">source_layer</span>
+</pre></div>
+</div>
+<p>By default, the OGR_STYLE field will still be visible as a regular field. If this
+is undesirable, starting with GDAL 3.10, it can be hidden by adding the HIDDEN
+keyword at the end of the field specification.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">EXCLUDE</span><span class="p">(</span><span class="n">my_style_field</span><span class="p">),</span><span class="w"> </span><span class="n">my_style_field</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">OGR_STYLE</span><span class="w"> </span><span class="n">HIDDEN</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">source_layer</span>
 </pre></div>
 </div>
 </section>

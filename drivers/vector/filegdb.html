@@ -87,8 +87,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#layer-creation-options">Layer Creation Options</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#configuration-options">Configuration options</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#geometry-coordinate-precision">Geometry coordinate precision</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#known-issues">Known Issues</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#other-limitations">Other limitations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#limitations">Limitations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#links">Links</a></li>
 </ul>
 </li>
@@ -159,6 +158,7 @@
 <li class="toctree-l2"><a class="reference internal" href="wfs.html">WFS - OGC WFS service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xls.html">XLS - MS Excel format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xlsx.html">XLSX - MS Office Open XML spreadsheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xodr.html">XODR -- OpenDRIVE Road Description Format</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
@@ -166,10 +166,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -352,6 +352,8 @@ create features at the FID of their choice.</p>
 </section>
 <section id="layer-creation-options">
 <h2>Layer Creation Options<a class="headerlink" href="#layer-creation-options" title="Link to this heading"></a></h2>
+<p><a href="#id1"><span class="problematic" id="id2">|about-layer-creation-options|</span></a>
+The following layer creation options are supported:</p>
 <ul>
 <li><p id="drivers/vector/filegdb-lco-FEATURE_DATASET"><strong>FEATURE_DATASET=value: </strong>When this option is set, the new layer will be
 created inside the named FeatureDataset folder. If the folder does
@@ -435,8 +437,8 @@ properly tagged.</p>
 </section>
 <section id="configuration-options">
 <h2>Configuration options<a class="headerlink" href="#configuration-options" title="Link to this heading"></a></h2>
-<p>The following <a class="reference internal" href="../../user/configoptions.html#configoptions"><span class="std std-ref">configuration options</span></a> are
-available:</p>
+<p><a href="#id3"><span class="problematic" id="id4">|about-config-options|</span></a>
+The following configuration options are available:</p>
 <ul class="simple">
 <li><p id="config-FGDB_BULK_LOAD"><strong>FGDB_BULK_LOAD=[YES/NO]: </strong>Can be set to YES to speed-up
 feature insertion (or sometimes solve problems when inserting a lot of
@@ -470,8 +472,8 @@ specific options of <code class="xref cpp cpp-class docutils literal notranslate
 ZORIGIN, XYTOLERANCE, ZTOLERANCE, MTOLERANCE layer creation options will be
 used in priority over the settings of <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRGeomCoordinatePrecision</span></code>.</p>
 </section>
-<section id="known-issues">
-<h2>Known Issues<a class="headerlink" href="#known-issues" title="Link to this heading"></a></h2>
+<section id="limitations">
+<h2>Limitations<a class="headerlink" href="#limitations" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>The SDK is known to be unable to open layers with particular spatial
 reference systems. This might be the case if messages &quot;FGDB: Error
@@ -481,8 +483,8 @@ running <code class="docutils literal notranslate"><span class="pre">ogrinfo</sp
 <li><p>FGDB coordinate snapping will cause geometries to be altered during
 writing. Use the origin and scale layer creation options to control
 the snapping behavior.</p></li>
-<li><p>Driver can't read data in SDC format (Smart Data Compression) because
-operation is not supported by the ESRI SDK.</p></li>
+<li><p>Reading data compressed in SDC format (Smart Data Compression) is not
+support by the driver, because it is not supported by the ESRI SDK.</p></li>
 <li><p>Reading data compressed in CDF format (Compressed Data Format)
 requires ESRI SDK 1.4 or later.</p></li>
 <li><p>Some applications create FileGeodatabases with non-spatial tables which are
@@ -491,11 +493,6 @@ by the ESRI SDK, so GDAL will automatically fallback to the OpenFileGDB
 driver to read these tables. Accordingly they will be opened with the
 limitations of the OpenFileGDB driver (for instance, they will be
 read only).</p></li>
-</ul>
-</section>
-<section id="other-limitations">
-<h2>Other limitations<a class="headerlink" href="#other-limitations" title="Link to this heading"></a></h2>
-<ul class="simple">
 <li><p>The driver does not support 64-bit integers.</p></li>
 </ul>
 </section>

@@ -159,6 +159,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="xls.html">XLS - MS Excel format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xlsx.html">XLSX - MS Office Open XML spreadsheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xodr.html">XODR -- OpenDRIVE Road Description Format</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
@@ -166,10 +167,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -269,6 +270,10 @@ when the server supports them (such as OUTPUTFORMAT=json).</p>
 <p>The minimal syntax to open a WFS datasource is :
 <em>WFS:http://path/to/WFS/service</em> or
 <em>http://path/to/WFS/service?SERVICE=WFS</em></p>
+<p>Starting with GDAL 3.10, specifying the <code class="docutils literal notranslate"><span class="pre">-if</span> <span class="pre">WFS</span></code> option to command line utilities
+accepting it, or <code class="docutils literal notranslate"><span class="pre">WFS</span></code> as the only value of the <code class="docutils literal notranslate"><span class="pre">papszAllowedDrivers</span></code> of
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpenEx()</span></code>, also forces the driver to recognize the passed
+URL without the <code class="docutils literal notranslate"><span class="pre">WFS:</span></code> prefix.</p>
 <p>Additional optional parameters can be specified such as <em>TYPENAME</em>,
 <em>VERSION</em>, <em>MAXFEATURES</em> (WFS &lt; 2) or <em>COUNT</em> (WFS &gt; 2) as specified in WFS specification.</p>
 <p>The name provided to the TYPENAME parameter must be exactly the layer
@@ -507,7 +512,8 @@ result of the GetCapabilities request.</p>
 </section>
 <section id="open-options">
 <h2>Open options<a class="headerlink" href="#open-options" title="Link to this heading"></a></h2>
-<p>The following options are available:</p>
+<p><a href="#id1"><span class="problematic" id="id2">|about-open-options|</span></a>
+The following open options are available:</p>
 <ul class="simple">
 <li><p id="drivers/vector/wfs-oo-URL"><strong>URL=value: </strong>URL to the WFS server endpoint. Required when using
 the &quot;WFS:&quot; string as the connection string.</p>
@@ -537,8 +543,8 @@ gml_id will prevent WFS-T from working.</p>
 </section>
 <section id="configuration-options">
 <h2>Configuration options<a class="headerlink" href="#configuration-options" title="Link to this heading"></a></h2>
-<p>The following <a class="reference internal" href="../../user/configoptions.html#configoptions"><span class="std std-ref">configuration options</span></a> are
-available:</p>
+<p><a href="#id3"><span class="problematic" id="id4">|about-config-options|</span></a>
+The following configuration options are available:</p>
 <ul class="simple">
 <li><p id="config-OGR_WFS_USE_STREAMING"><strong>OGR_WFS_USE_STREAMING=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">YES</span></code>. Set to <code class="docutils literal notranslate"><span class="pre">NO</span></code> to disable streaming. See <a class="reference internal" href="#request-paging">Request paging</a>.</p>
 </li>

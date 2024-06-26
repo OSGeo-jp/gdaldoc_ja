@@ -67,25 +67,25 @@
 <li class="toctree-l3"><a class="reference internal" href="ogr2ogr.html">ogr2ogr</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ogrtindex.html">ogrtindex</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ogrlineref.html">ogrlineref</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ogrmerge.html">ogrmerge.py</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ogr_layer_algebra.html">ogr_layer_algebra.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ogrmerge.html">ogrmerge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ogr_layer_algebra.html">ogr_layer_algebra</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#geographic-network-programs">空間ネットワークプログラム</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#other-utilities">その他ユーティリティ</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">Raster drivers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">Vector drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">ラスタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">ベクタードライバー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">開発</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">コミュニティ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -289,6 +289,9 @@ system, layer schema, extents, and feature count.</p>
 reported. Starting with GDAL 2.1, the <code class="docutils literal notranslate"><span class="pre">&#64;&lt;filename&gt;</span></code> syntax can be used to
 indicate that the content is in the pointed filename.</p>
 <p>Example of <code class="docutils literal notranslate"><span class="pre">-where</span></code> and quoting:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-where<span class="w"> </span><span class="s2">&quot;\&quot;Corner Point Identifier\&quot; LIKE &#39;%__00_00&#39;&quot;</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="std option">
@@ -485,45 +488,45 @@ are provided, all features are reported.</p>
 <section id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
 <p>Example of reporting the names of the layers in a NTF file:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ogrinfo</span> <span class="n">wrk</span><span class="o">/</span><span class="n">SHETLAND_ISLANDS</span><span class="o">.</span><span class="n">NTF</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ogrinfo wrk/SHETLAND_ISLANDS.NTF
 
-<span class="c1"># INFO: Open of `wrk/SHETLAND_ISLANDS.NTF&#39;</span>
-<span class="c1"># using driver `UK .NTF&#39; successful.</span>
-<span class="c1"># 1: BL2000_LINK (Line String)</span>
-<span class="c1"># 2: BL2000_POLY (None)</span>
-<span class="c1"># 3: BL2000_COLLECTIONS (None)</span>
-<span class="c1"># 4: FEATURE_CLASSES (None)</span>
+INFO: Open of `wrk/SHETLAND_ISLANDS.NTF&#39;
+using driver `UK .NTF&#39; successful.
+1: BL2000_LINK (Line String)
+2: BL2000_POLY (None)
+3: BL2000_COLLECTIONS (None)
+4: FEATURE_CLASSES (None)
 </pre></div>
 </div>
 <p>Example of retrieving a summary (<code class="docutils literal notranslate"><span class="pre">-so</span></code>) of a layer without showing details about every single feature:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ogrinfo</span> \
-  <span class="o">-</span><span class="n">so</span> \
-  <span class="n">natural_earth_vector</span><span class="o">.</span><span class="n">gpkg</span> \
-  <span class="n">ne_10m_admin_0_antarctic_claim_limit_lines</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ogrinfo \
+  -so \
+  natural_earth_vector.gpkg \
+  ne_10m_admin_0_antarctic_claim_limit_lines
 
-  <span class="c1"># INFO: Open of `natural_earth_vector.gpkg&#39;</span>
-  <span class="c1">#      using driver `GPKG&#39; successful.</span>
+  INFO: Open of `natural_earth_vector.gpkg&#39;
+       using driver `GPKG&#39; successful.
 
-  <span class="c1"># Layer name: ne_10m_admin_0_antarctic_claim_limit_lines</span>
-  <span class="c1"># Geometry: Line String</span>
-  <span class="c1"># Feature Count: 23</span>
-  <span class="c1"># Extent: (-150.000000, -90.000000) - (160.100000, -60.000000)</span>
-  <span class="c1"># Layer SRS WKT:</span>
-  <span class="c1"># GEOGCS[&quot;WGS 84&quot;,</span>
-  <span class="c1">#     DATUM[&quot;WGS_1984&quot;,</span>
-  <span class="c1">#         SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,</span>
-  <span class="c1">#             AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],</span>
-  <span class="c1">#         AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],</span>
-  <span class="c1">#     PRIMEM[&quot;Greenwich&quot;,0,</span>
-  <span class="c1">#         AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],</span>
-  <span class="c1">#     UNIT[&quot;degree&quot;,0.0174532925199433,</span>
-  <span class="c1">#         AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],</span>
-  <span class="c1">#     AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]]</span>
-  <span class="c1"># FID Column = fid</span>
-  <span class="c1"># Geometry Column = geom</span>
-  <span class="c1"># type: String (15.0)</span>
-  <span class="c1"># scalerank: Integer (0.0)</span>
-  <span class="c1"># featurecla: String (50.0)</span>
+  Layer name: ne_10m_admin_0_antarctic_claim_limit_lines
+  Geometry: Line String
+  Feature Count: 23
+  Extent: (-150.000000, -90.000000) - (160.100000, -60.000000)
+  Layer SRS WKT:
+  GEOGCS[&quot;WGS 84&quot;,
+      DATUM[&quot;WGS_1984&quot;,
+          SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,
+              AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],
+          AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],
+      PRIMEM[&quot;Greenwich&quot;,0,
+          AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],
+      UNIT[&quot;degree&quot;,0.0174532925199433,
+          AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],
+      AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]]
+  FID Column = fid
+  Geometry Column = geom
+  type: String (15.0)
+  scalerank: Integer (0.0)
+  featurecla: String (50.0)
 </pre></div>
 </div>
 <p>Example of retrieving information on a file in JSON format without showing details about every single feature:</p>
@@ -557,7 +560,7 @@ are provided, all features are reported.</p>
 <span class="w">            </span><span class="mf">4765610.5</span>
 <span class="w">          </span><span class="p">],</span>
 <span class="w">          </span><span class="nt">&quot;coordinateSystem&quot;</span><span class="p">:{</span>
-<span class="w">            </span><span class="nt">&quot;wkt&quot;</span><span class="p">:</span><span class="s2">&quot;PROJCRS[\&quot;OSGB36 / British National Grid\&quot;,BASEGEOGCRS[\&quot;OSGB36\&quot;,DATUM[\&quot;Ordnance Survey of Great Britain 1936\&quot;,ELLIPSOID[\&quot;Airy 1830\&quot;,6377563.396,299.3249646,LENGTHUNIT[\&quot;metre\&quot;,1]]],PRIMEM[\&quot;Greenwich\&quot;,0,ANGLEUNIT[\&quot;degree\&quot;,0.0174532925199433]],ID[\&quot;EPSG\&quot;,4277]],CONVERSION[\&quot;British National Grid\&quot;,METHOD[\&quot;Transverse Mercator\&quot;,ID[\&quot;EPSG\&quot;,9807]],PARAMETER[\&quot;Latitude of natural origin\&quot;,49,ANGLEUNIT[\&quot;degree\&quot;,0.0174532925199433],ID[\&quot;EPSG\&quot;,8801]],PARAMETER[\&quot;Longitude of natural origin\&quot;,-2,ANGLEUNIT[\&quot;degree\&quot;,0.0174532925199433],ID[\&quot;EPSG\&quot;,8802]],PARAMETER[\&quot;Scale factor at natural origin\&quot;,0.9996012717,SCALEUNIT[\&quot;unity\&quot;,1],ID[\&quot;EPSG\&quot;,8805]],PARAMETER[\&quot;False easting\&quot;,400000,LENGTHUNIT[\&quot;metre\&quot;,1],ID[\&quot;EPSG\&quot;,8806]],PARAMETER[\&quot;False northing\&quot;,-100000,LENGTHUNIT[\&quot;metre\&quot;,1],ID[\&quot;EPSG\&quot;,8807]]],CS[Cartesian,2],AXIS[\&quot;(E)\&quot;,east,ORDER[1],LENGTHUNIT[\&quot;metre\&quot;,1]],AXIS[\&quot;(N)\&quot;,north,ORDER[2],LENGTHUNIT[\&quot;metre\&quot;,1]],USAGE[SCOPE[\&quot;Engineering survey, topographic mapping.\&quot;],AREA[\&quot;United Kingdom (UK) - offshore to boundary of UKCS within 49°45&#39;N to 61°N and 9°W to 2°E; onshore Great Britain (England, Wales and Scotland). Isle of Man onshore.\&quot;],BBOX[49.75,-9,61.01,2.01]],ID[\&quot;EPSG\&quot;,27700]]&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;wkt&quot;</span><span class="p">:</span><span class="s2">&quot;PROJCRS[\&quot;OSGB36 / British National Grid\&quot;,BASEGEOGCRS[\&quot;OSGB36\&quot;,DATUM...&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;projjson&quot;</span><span class="p">:{</span>
 <span class="w">              </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="s2">&quot;https://proj.org/schemas/v0.6/projjson.schema.json&quot;</span><span class="p">,</span>
 <span class="w">              </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;ProjectedCRS&quot;</span><span class="p">,</span>
@@ -670,7 +673,7 @@ are provided, all features are reported.</p>
 <span class="w">                </span><span class="p">]</span>
 <span class="w">              </span><span class="p">},</span>
 <span class="w">              </span><span class="nt">&quot;scope&quot;</span><span class="p">:</span><span class="s2">&quot;Engineering survey, topographic mapping.&quot;</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">&quot;area&quot;</span><span class="p">:</span><span class="s2">&quot;United Kingdom (UK) - offshore to boundary of UKCS within 49°45&#39;N to 61°N and 9°W to 2°E; onshore Great Britain (England, Wales and Scotland). Isle of Man onshore.&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;area&quot;</span><span class="p">:</span><span class="s2">&quot;United Kingdom (UK) - offshore to boundary of UKCS within 49°45...&quot;</span><span class="p">,</span>
 <span class="w">              </span><span class="nt">&quot;bbox&quot;</span><span class="p">:{</span>
 <span class="w">                </span><span class="nt">&quot;south_latitude&quot;</span><span class="p">:</span><span class="mf">49.75</span><span class="p">,</span>
 <span class="w">                </span><span class="nt">&quot;west_longitude&quot;</span><span class="p">:</span><span class="mi">-9</span><span class="p">,</span>
@@ -725,63 +728,20 @@ are provided, all features are reported.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Example of using an attribute query to restrict the output of the features
-in a layer:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ogrinfo</span> <span class="o">-</span><span class="n">ro</span> \
-    <span class="o">-</span><span class="n">where</span> <span class="s1">&#39;GLOBAL_LINK_ID=185878&#39;</span> \
-    <span class="n">wrk</span><span class="o">/</span><span class="n">SHETLAND_ISLANDS</span><span class="o">.</span><span class="n">NTF</span> <span class="n">BL2000_LINK</span>
+<p>Example of using -q and an attribute query, to restrict the output to
+certain features in a layer:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogrinfo<span class="w"> </span>-q<span class="w"> </span>-ro<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-where<span class="w"> </span><span class="s1">&#39;GLOBAL_LINK_ID=185878&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>wrk/SHETLAND_ISLANDS.NTF<span class="w"> </span>BL2000_LINK
 
-<span class="c1"># INFO: Open of `wrk/SHETLAND_ISLANDS.NTF&#39;</span>
-<span class="c1"># using driver `UK .NTF&#39; successful.</span>
-<span class="c1">#</span>
-<span class="c1"># Layer name: BL2000_LINK</span>
-<span class="c1"># Geometry: Line String</span>
-<span class="c1"># Feature Count: 1</span>
-<span class="c1"># Extent: (419794.100000, 1069031.000000) - (419927.900000, 1069153.500000)</span>
-<span class="c1"># Layer SRS WKT:</span>
-<span class="c1"># PROJCS[&quot;OSGB 1936 / British National Grid&quot;,</span>
-<span class="c1"># GEOGCS[&quot;OSGB 1936&quot;,</span>
-<span class="c1"># DATUM[&quot;OSGB_1936&quot;,</span>
-<span class="c1"># SPHEROID[&quot;Airy 1830&quot;,6377563.396,299.3249646]],</span>
-<span class="c1"># PRIMEM[&quot;Greenwich&quot;,0],</span>
-<span class="c1"># UNIT[&quot;degree&quot;,0.0174532925199433]],</span>
-<span class="c1"># PROJECTION[&quot;Transverse_Mercator&quot;],</span>
-<span class="c1"># PARAMETER[&quot;latitude_of_origin&quot;,49],</span>
-<span class="c1"># PARAMETER[&quot;central_meridian&quot;,-2],</span>
-<span class="c1"># PARAMETER[&quot;scale_factor&quot;,0.999601272],</span>
-<span class="c1"># PARAMETER[&quot;false_easting&quot;,400000],</span>
-<span class="c1"># PARAMETER[&quot;false_northing&quot;,-100000],</span>
-<span class="c1"># UNIT[&quot;metre&quot;,1]]</span>
-<span class="c1"># LINE_ID: Integer (6.0)</span>
-<span class="c1"># GEOM_ID: Integer (6.0)</span>
-<span class="c1"># FEAT_CODE: String (4.0)</span>
-<span class="c1"># GLOBAL_LINK_ID: Integer (10.0)</span>
-<span class="c1"># TILE_REF: String (10.0)</span>
-<span class="c1"># OGRFeature(BL2000_LINK):2</span>
-<span class="c1"># LINE_ID (Integer) = 2</span>
-<span class="c1"># GEOM_ID (Integer) = 2</span>
-<span class="c1"># FEAT_CODE (String) = (null)</span>
-<span class="c1"># GLOBAL_LINK_ID (Integer) = 185878</span>
-<span class="c1"># TILE_REF (String) = SHETLAND I</span>
-<span class="c1"># LINESTRING (419832.100 1069046.300,419820.100 1069043.800,419808.300</span>
-<span class="c1"># 1069048.800,419805.100 1069046.000,419805.000 1069040.600,419809.400</span>
-<span class="c1"># 1069037.400,419827.400 1069035.600,419842 1069031,419859.000</span>
-<span class="c1"># 1069032.800,419879.500 1069049.500,419886.700 1069061.400,419890.100</span>
-<span class="c1"># 1069070.500,419890.900 1069081.800,419896.500 1069086.800,419898.400</span>
-<span class="c1"># 1069092.900,419896.700 1069094.800,419892.500 1069094.300,419878.100</span>
-<span class="c1"># 1069085.600,419875.400 1069087.300,419875.100 1069091.100,419872.200</span>
-<span class="c1"># 1069094.600,419890.400 1069106.400,419907.600 1069112.800,419924.600</span>
-<span class="c1"># 1069133.800,419927.900 1069146.300,419927.600 1069152.400,419922.600</span>
-<span class="c1"># 1069153.500,419917.100 1069153.500,419911.500 1069153.000,419908.700</span>
-<span class="c1"># 1069152.500,419903.400 1069150.800,419898.800 1069149.400,419894.800</span>
-<span class="c1"># 1069149.300,419890.700 1069149.400,419890.600 1069149.400,419880.800</span>
-<span class="c1"># 1069149.800,419876.900 1069148.900,419873.100 1069147.500,419870.200</span>
-<span class="c1"># 1069146.400,419862.100 1069143.000,419860 1069142,419854.900</span>
-<span class="c1"># 1069138.600,419850 1069135,419848.800 1069134.100,419843</span>
-<span class="c1"># 1069130,419836.200 1069127.600,419824.600 1069123.800,419820.200</span>
-<span class="c1"># 1069126.900,419815.500 1069126.900,419808.200 1069116.500,419798.700</span>
-<span class="c1"># 1069117.600,419794.100 1069115.100,419796.300 1069109.100,419801.800</span>
-<span class="c1"># 1069106.800,419805.000  1069107.300)</span>
+Layer<span class="w"> </span>name:<span class="w"> </span>BL2000_LINK
+OGRFeature<span class="o">(</span>BL2000_LINK<span class="o">)</span>:2
+<span class="w">  </span>LINE_ID<span class="w"> </span><span class="o">(</span>Integer<span class="o">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span>
+<span class="w">  </span>GEOM_ID<span class="w"> </span><span class="o">(</span>Integer<span class="o">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span>
+<span class="w">  </span>FEAT_CODE<span class="w"> </span><span class="o">(</span>String<span class="o">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">(</span>null<span class="o">)</span>
+<span class="w">  </span>GLOBAL_LINK_ID<span class="w"> </span><span class="o">(</span>Integer<span class="o">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">185878</span>
+<span class="w">  </span>TILE_REF<span class="w"> </span><span class="o">(</span>String<span class="o">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>SHETLAND<span class="w"> </span>I
+<span class="w">  </span>LINESTRING<span class="w"> </span><span class="o">(</span><span class="m">419832</span>.100<span class="w"> </span><span class="m">1069046</span>.300,419820.100<span class="w"> </span><span class="m">1069043</span>.800,...
 </pre></div>
 </div>
 <p>Example of updating a value of an attribute in a shapefile with SQL by using the SQLite dialect:</p>
@@ -790,6 +750,11 @@ in a layer:</p>
 </div>
 <p>Adding a column to an input file:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogrinfo<span class="w"> </span>input.shp<span class="w"> </span>-sql<span class="w"> </span><span class="s2">&quot;ALTER TABLE input ADD fieldX float&quot;</span>
+</pre></div>
+</div>
+<p>Sometimes there is no input file involved in a calculation. In such cases one may
+use the <code class="docutils literal notranslate"><span class="pre">:memory:</span></code> input file which is a in-memory empty SQLite file (and the SQLite SQL dialect will be implicitly used).</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogrinfo<span class="w"> </span>:memory:<span class="w"> </span>-sql<span class="w"> </span><span class="s2">&quot;SELECT ST_Buffer(ST_GeomFromText(&#39;POINT(0 0)&#39;), 1)&quot;</span>
 </pre></div>
 </div>
 </section>

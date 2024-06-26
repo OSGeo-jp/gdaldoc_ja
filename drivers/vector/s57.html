@@ -147,6 +147,7 @@
 <li class="toctree-l2"><a class="reference internal" href="wfs.html">WFS - OGC WFS service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xls.html">XLS - MS Excel format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xlsx.html">XLSX - MS Office Open XML spreadsheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xodr.html">XODR -- OpenDRIVE Road Description Format</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
@@ -154,10 +155,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -357,7 +358,9 @@ record will have the same AGEN, FIDN, FIDS and LNAM value.</p>
 <p>There are several control options which can be used to alter the
 behavior of the S-57 reader. Users can set these by appending them in
 the OGR_S57_OPTIONS environment variable.</p>
-<p>They can also be specified independently as open options to the driver.</p>
+<p>They can also be specified independently as open options to the driver.
+<a href="#id1"><span class="problematic" id="id2">|about-open-options|</span></a>
+The following open options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/vector/s57-oo-UPDATES"><strong>UPDATES=[APPLY/IGNORE]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">APPLY</span></code>. Should update files be incorporated into
 the base data on the fly.</p>
@@ -418,7 +421,8 @@ required to support S-57 to S-57 conversion via OGR.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span> <span class="n">OGR_S57_OPTIONS</span> <span class="o">=</span> <span class="s2">&quot;RETURN_PRIMITIVES=ON,RETURN_LINKAGES=ON,LNAM_REFS=ON&quot;</span>
 </pre></div>
 </div>
-<p>The following dataset creation options are supported to supply basic
+<p><a href="#id3"><span class="problematic" id="id4">|about-dataset-creation-options|</span></a>
+The following dataset creation options are supported to supply basic
 information for the S-57 data set descriptive records (DSID and DSPM,
 see the S-57 standard for a more detailed description):</p>
 <ul class="simple">

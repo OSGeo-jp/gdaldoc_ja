@@ -95,7 +95,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#driver-capabilities">Driver capabilities</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#datasource">Datasource</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#styletable">StyleTable</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#datasource-creation-options">Datasource creation options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dataset-creation-options">Dataset creation options</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#layer">Layer</a><ul>
@@ -111,7 +111,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#fields">Fields</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#geometry">Geometry</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#vsi-virtual-file-system-api-support">VSI Virtual File System API support</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="lvbag.html">Dutch Kadaster LV BAG 2.0 Extract</a></li>
@@ -160,6 +160,7 @@
 <li class="toctree-l2"><a class="reference internal" href="wfs.html">WFS - OGC WFS service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xls.html">XLS - MS Excel format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xlsx.html">XLSX - MS Office Open XML spreadsheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xodr.html">XODR -- OpenDRIVE Road Description Format</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
@@ -167,10 +168,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -307,9 +308,10 @@ as one or more
 elements. Not all of <a class="reference internal" href="../../user/ogr_feature_style.html#ogr-feature-style"><span class="std std-ref">Feature Style Specification</span></a> can translate into
 KML.</p>
 </section>
-<section id="datasource-creation-options">
-<h3>Datasource creation options<a class="headerlink" href="#datasource-creation-options" title="Link to this heading"></a></h3>
-<p>The following datasource creation options can be
+<section id="dataset-creation-options">
+<h3>Dataset creation options<a class="headerlink" href="#dataset-creation-options" title="Link to this heading"></a></h3>
+<p><a href="#id2"><span class="problematic" id="id3">|about-dataset-creation-options|</span></a>
+The following dataset creation options can be
 used to generate a
 <a class="reference external" href="https://developers.google.com/kml/documentation/kmlreference#atomauthor">&lt;atom:Author&gt;</a>
 element at the top Document level.</p>
@@ -323,7 +325,7 @@ It should start with <code class="docutils literal notranslate"><span class="pre
 It should include a <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> character.</p>
 </li>
 </ul>
-<p>Additional datasource creation options affecting the top Document level:</p>
+<p>Additional dataset creation options affecting the top Document level:</p>
 <ul class="simple">
 <li><p id="drivers/vector/libkml-dsco-LINK"><strong>LINK=value: </strong>Specifies the href of an
 <a class="reference external" href="https://developers.google.com/kml/documentation/kmlreference#atomlink">&lt;atom:link&gt;</a>
@@ -470,7 +472,8 @@ is supported for .kml files, .kmz files, and directories.</p>
 </section>
 <section id="layer-creation-options">
 <h3>Layer creation options<a class="headerlink" href="#layer-creation-options" title="Link to this heading"></a></h3>
-<p>The following layer creation options can be used
+<p><a href="#id4"><span class="problematic" id="id5">|about-layer-creation-options|</span></a>
+The following layer creation options can be used
 to generate a
 <a class="reference external" href="https://developers.google.com/kml/documentation/kmlreference#lookat">&lt;LookAt&gt;</a>
 element at the layer level.</p>
@@ -602,6 +605,7 @@ element</p>
 element</p>
 </li>
 </ul>
+<p>Do not confuse them with the same named dataset creation options.</p>
 <p>The following layer creation options can be used to control how the
 folder of a layer appear in the Places panel of the Earth browser,
 trough a
@@ -713,7 +717,8 @@ available to define how fields in input and output, map to a KML
 <a class="reference external" href="https://developers.google.com/kml/documentation/kmlreference#placemark">&lt;Placemark&gt;</a>.
 For example, if you want a field called 'Cities' to map to the
 <a class="reference external" href="https://developers.google.com/kml/documentation/kmlreference#name">&lt;name&gt;</a>;
-tag in KML, you can set a configuration option.</p>
+tag in KML, you can set a configuration option. Note these are independent of layer
+creation and dataset creation options' <cite>&lt;name&gt;</cite>.</p>
 <ul class="simple">
 <li><p id="config-LIBKML_NAME_FIELD"><strong>LIBKML_NAME_FIELD=value: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">name</span></code>. Name of the string field that maps to the kml tag
 <a class="reference external" href="https://developers.google.com/kml/documentation/kmlreference#name">&lt;name&gt;</a>.</p>
@@ -940,8 +945,8 @@ File System API, which include &quot;regular&quot; files, as well as files in th
 domains.</p>
 <p>Writing to /dev/stdout or /vsistdout/ is also supported.</p>
 </section>
-<section id="example">
-<h2>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h2>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
 <p>The following bash script will build a
 <a class="reference internal" href="csv.html#vector-csv"><span class="std std-ref">csv</span></a> file and a
 <a class="reference internal" href="vrt.html#vector-vrt"><span class="std std-ref">vrt</span></a> file, and then translate them
@@ -1046,6 +1051,21 @@ cat &gt; qed.vrt &lt;&lt; EOF
 EOF
 
 ogr2ogr -f libkml qed.kml qed.vrt
+</pre></div>
+</div>
+<p>The following example shows how the three levels of <cite>&lt;name&gt;</cite>
+in LIBKML relate to their controlling options:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ogr2ogr -f LIBKML /dev/stdout 0.contours.csv \</span>
+<span class="go">  -dsco NAME=DSCO -lco NAME=LCO \</span>
+<span class="go">  -sql &#39;SELECT NAME FROM &quot;0.contours&quot;&#39;</span>
+
+<span class="go">&lt;Document id=&quot;root_doc&quot;&gt;</span>
+<span class="go">  &lt;name&gt;DSCO&lt;/name&gt;</span>
+<span class="go">  &lt;Document id=&quot;_0.contours&quot;&gt;</span>
+<span class="go">    &lt;name&gt;LCO&lt;/name&gt;</span>
+<span class="go">    &lt;Placemark id=&quot;_0.contours.1&quot;&gt;</span>
+<span class="go">      &lt;name&gt;-1500&lt;/name&gt;</span>
+<span class="go">      &lt;LineString&gt;</span>
 </pre></div>
 </div>
 </section>

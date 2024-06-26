@@ -153,6 +153,7 @@
 <li class="toctree-l2"><a class="reference internal" href="wfs.html">WFS - OGC WFS service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xls.html">XLS - MS Excel format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xlsx.html">XLSX - MS Office Open XML spreadsheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xodr.html">XODR -- OpenDRIVE Road Description Format</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
@@ -160,10 +161,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -281,7 +282,8 @@ host, port, user, password, database, etc...</p></li>
 required to make it recognize by this driver, instead of the legacy
 driver. If the URI is starting with
 <em>mongodb+srv://</em>, then it is not needed.</p>
-<p>The open options available are :</p>
+<p><a href="#id1"><span class="problematic" id="id2">|about-open-options|</span></a>
+The open options available are:</p>
 <ul class="simple">
 <li><p id="drivers/vector/mongodbv3-oo-URI"><strong>URI=value: </strong><a class="reference external" href="https://docs.mongodb.com/manual/reference/connection-string/index.html">Connection URI</a></p>
 </li>
@@ -339,7 +341,7 @@ the geometry field.</p>
 <p>However, in the current state, SQL attribute filters set with
 SetAttributeFilter() are evaluated only on client-side. To enable
 server-side filtering, the string passed to SetAttributeFilter() must be
-a JSon object in the <a class="reference external" href="https://docs.mongodb.com/manual/reference/method/db.collection.find/index.html">MongoDB filter
+a JSON object in the <a class="reference external" href="https://docs.mongodb.com/manual/reference/method/db.collection.find/index.html">MongoDB filter
 syntax</a>.</p>
 </section>
 <section id="paging">
@@ -364,7 +366,7 @@ written in _ogr_metadata by setting the USE_OGR_METADATA=NO open
 option.</p>
 <p>It is also possible to set the JSON_FIELD=YES open option so that a
 _json special field is added to the OGR schema. When reading MongoDB
-documents as OGR features, the full JSon version of the document will be
+documents as OGR features, the full JSON version of the document will be
 stored in the _json field. This might be useful in case of complex
 documents or with data types that do not translate well in OGR data
 types. On creation/update of documents, if the _json field is present
@@ -384,10 +386,10 @@ at all.</p>
 </section>
 <section id="executesql-interface">
 <h2>ExecuteSQL() interface<a class="headerlink" href="#executesql-interface" title="Link to this heading"></a></h2>
-<p>If specifying &quot;MongoDB&quot; as the dialect of ExecuteSQL(), a JSon string
+<p>If specifying &quot;MongoDB&quot; as the dialect of ExecuteSQL(), a JSON string
 with a serialized <a class="reference external" href="https://docs.mongodb.com/manual/reference/command/index.html">MongoDB
 command</a>
-can be passed. The result will be returned as a JSon string in a single
+can be passed. The result will be returned as a JSON string in a single
 OGR feature.</p>
 <p>Standard SQL requests will be executed on client-side.</p>
 </section>
@@ -402,7 +404,8 @@ SetFeature() operation.</p>
 </section>
 <section id="layer-creation-options">
 <h2>Layer creation options<a class="headerlink" href="#layer-creation-options" title="Link to this heading"></a></h2>
-<p>The following layer creation options are supported:</p>
+<p><a href="#id3"><span class="problematic" id="id4">|about-layer-creation-options|</span></a>
+The following layer creation options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/vector/mongodbv3-lco-OVERWRITE"><strong>OVERWRITE=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. Whether to overwrite an existing collection
 with the layer name to be created.</p>

@@ -126,7 +126,7 @@
 <li class="toctree-l2"><a class="reference internal" href="isis3.html">ISIS3 -- USGS Astrogeology ISIS Cube (Version 3)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jdem.html">JDEM -- Japanese DEM (.mem)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2ecw.html">JP2ECW -- ERDAS JPEG2000 (.jp2)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="jp2kak.html">JP2KAK -- JPEG-2000 (based on Kakadu)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jp2kak.html">JP2KAK -- JPEG 2000 (based on Kakadu SDK)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2lura.html">JP2Lura -- JPEG2000 driver based on Lurawave library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2mrsid.html">JP2MrSID -- JPEG2000 via MrSID SDK</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2openjpeg.html">JP2OpenJPEG -- JPEG2000 driver based on OpenJPEG library</a></li>
@@ -241,10 +241,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -377,7 +377,8 @@ object.</p>
 </section>
 <section id="configuration-options">
 <h2>Configuration options<a class="headerlink" href="#configuration-options" title="Link to this heading"></a></h2>
-<p>The following open options are available:</p>
+<p><a href="#id1"><span class="problematic" id="id2">|about-config-options|</span></a>
+The following configuration option is available:</p>
 <ul class="simple">
 <li><p id="config-MBTILES_BAND_COUNT"><strong>MBTILES_BAND_COUNT=value: </strong>Equivalent of <a class="reference internal" href="#drivers/raster/mbtiles-oo-BAND_COUNT"><code class="docutils literal notranslate"><span class="pre">BAND_COUNT</span></code></a> open option.</p>
 </li>
@@ -385,7 +386,8 @@ object.</p>
 </section>
 <section id="opening-options">
 <h2>Opening options<a class="headerlink" href="#opening-options" title="Link to this heading"></a></h2>
-<p>The following open options are available:</p>
+<p><a href="#id3"><span class="problematic" id="id4">|about-open-options|</span></a>
+The following open options are available:</p>
 <ul class="simple">
 <li><p>Raster and vector:</p>
 <ul>
@@ -509,7 +511,8 @@ with the <a class="reference internal" href="../../user/configoptions.html#confi
 </section>
 <section id="creation-options">
 <h2>Creation options<a class="headerlink" href="#creation-options" title="Link to this heading"></a></h2>
-<p>The following creation options are available:</p>
+<p><a href="#id5"><span class="problematic" id="id6">|about-creation-options|</span></a>
+The following creation options are available:</p>
 <ul class="simple">
 <li><p>Raster and vector:</p>
 <ul>
@@ -562,7 +565,7 @@ selects the closest zoom level.</p>
 <li><p id="drivers/raster/mbtiles-co-MAXZOOM"><strong>MAXZOOM=&lt;integer&gt;: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">5</span></code>. Maximum zoom level at which tiles are
 generated. Maximum supported value is 22</p>
 </li>
-<li><p id="drivers/raster/mbtiles-co-CONF"><strong>CONF=value: </strong>Layer configuration as a JSon serialized string.</p>
+<li><p id="drivers/raster/mbtiles-co-CONF"><strong>CONF=value: </strong>Layer configuration as a JSON serialized string.</p>
 </li>
 <li><p id="drivers/raster/mbtiles-co-SIMPLIFICATION"><strong>SIMPLIFICATION=&lt;float&gt;: </strong>Simplification factor for linear or
 polygonal geometries. The unit is the integer unit of tiles after
@@ -615,7 +618,7 @@ zoom level.</p>
 <section id="layer-configuration-vector">
 <h2>Layer configuration (vector)<a class="headerlink" href="#layer-configuration-vector" title="Link to this heading"></a></h2>
 <p>The above mentioned CONF dataset creation option can be set to a string
-whose value is a JSon serialized document such as the below one:</p>
+whose value is a JSON serialized document such as the below one:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;boundaries_lod0&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s2">&quot;target_name&quot;</span><span class="p">:</span> <span class="s2">&quot;boundaries&quot;</span><span class="p">,</span>
@@ -640,6 +643,8 @@ case.</p>
 </section>
 <section id="layer-creation-options-vector">
 <h2>Layer creation options (vector)<a class="headerlink" href="#layer-creation-options-vector" title="Link to this heading"></a></h2>
+<p><a href="#id7"><span class="problematic" id="id8">|about-layer-creation-options|</span></a>
+The following layer creation options are available:</p>
 <ul class="simple">
 <li><p id="drivers/raster/mbtiles-lco-MINZOOM"><strong>MINZOOM=&lt;integer&gt;: </strong>Minimum zoom level at which tiles are
 generated. Defaults to the dataset creation option MINZOOM value.</p>

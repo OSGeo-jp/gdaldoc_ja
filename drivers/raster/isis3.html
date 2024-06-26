@@ -133,7 +133,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="jdem.html">JDEM -- Japanese DEM (.mem)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2ecw.html">JP2ECW -- ERDAS JPEG2000 (.jp2)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="jp2kak.html">JP2KAK -- JPEG-2000 (based on Kakadu)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jp2kak.html">JP2KAK -- JPEG 2000 (based on Kakadu SDK)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2lura.html">JP2Lura -- JPEG2000 driver based on Lurawave library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2mrsid.html">JP2MrSID -- JPEG2000 via MrSID SDK</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2openjpeg.html">JP2OpenJPEG -- JPEG2000 driver based on OpenJPEG library</a></li>
@@ -231,10 +231,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -352,7 +352,7 @@ Geological Survey.</p>
 <section id="metadata">
 <h2>Metadata<a class="headerlink" href="#metadata" title="Link to this heading"></a></h2>
 <p>Starting with GDAL 2.2, the ISIS3 label can be retrieved as
-JSon-serialized content in the json:ISIS3 metadata domain.</p>
+JSON-serialized content in the json:ISIS3 metadata domain.</p>
 <p>For example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python 3
 from osgeo import gdal
@@ -460,7 +460,8 @@ Create() interfaces.</p>
 to preserve as much as possible of the original label when doing ISIS3
 to ISIS3 conversions. This can be disabled with the USE_SRC_LABEL=NO
 creation option.</p>
-<p>The available creation options are:</p>
+<p><a href="#id3"><span class="problematic" id="id4">|about-creation-options|</span></a>
+The available creation options are:</p>
 <ul class="simple">
 <li><p id="drivers/raster/isis3-co-DATA_LOCATION"><strong>DATA_LOCATION=[LABEL/EXTERNAL/GEOTIFF.]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">LABEL</span></code>. To specify the location
 of pixel data. The default value is LABEL, ie imagery immediately
@@ -549,7 +550,7 @@ Python :</p>
 <span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">gdal</span>
 
 <span class="n">src_ds</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s1">&#39;in.lbl&#39;</span><span class="p">)</span>
-<span class="c1"># Load source label as JSon</span>
+<span class="c1"># Load source label as JSON</span>
 <span class="n">label</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span> <span class="n">src_ds</span><span class="o">.</span><span class="n">GetMetadata_List</span><span class="p">(</span><span class="s1">&#39;json:ISIS3&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span>
 <span class="c1"># Update parameter</span>
 <span class="n">label</span><span class="p">[</span><span class="s2">&quot;IsisCube&quot;</span><span class="p">][</span><span class="s2">&quot;Mapping&quot;</span><span class="p">][</span><span class="s2">&quot;TargetName&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Moon&quot;</span>

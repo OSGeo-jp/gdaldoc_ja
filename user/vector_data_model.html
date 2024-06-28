@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vector Data Model &mdash; GDAL  ドキュメント</title>
+  <title>ベクターデータモデル &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
       <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
 
@@ -52,12 +52,12 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../download.html">ダウンロード</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../programs/index.html">プログラム</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">Raster drivers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">Vector drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">ラスタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">ベクタードライバー</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">ユーザー</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="raster_data_model.html">Raster Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="raster_data_model.html">ラスターデータモデル</a></li>
 <li class="toctree-l2"><a class="reference internal" href="multidim_raster_data_model.html">Multidimensional Raster Data Model</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Vector Data Model</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ベクターデータモデル</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#class-overview">Class Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#geometry">Geometry</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#compatibility-issues-with-non-linear-geometries">Compatibility issues with non-linear geometries</a></li>
@@ -86,12 +86,12 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">開発</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">コミュニティ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -129,7 +129,7 @@
       
           <li><a href="index.html">ユーザー向け文書</a> &raquo;</li>
       
-      <li>Vector Data Model</li>
+      <li>ベクターデータモデル</li>
     
 
     
@@ -161,7 +161,7 @@
            <div itemprop="articleBody">
              
   <section id="vector-data-model">
-<span id="id1"></span><h1>Vector Data Model<a class="headerlink" href="#vector-data-model" title="Link to this heading"></a></h1>
+<span id="id1"></span><h1>ベクターデータモデル<a class="headerlink" href="#vector-data-model" title="Link to this heading"></a></h1>
 <p>This page documents the classes used to handle vector data. Many data types and method names are based on the OGC Simple Features data model, so it may be helpful to review the <a class="reference external" href="https://www.ogc.org/standard/sfa/">specifications published by OGC</a>.
 For historical reasons, GDAL uses the &quot;OGR&quot; prefix to denote types and functions that apply only to vector data.</p>
 <section id="class-overview">
@@ -198,7 +198,7 @@ An additional set of types is used to store non-linear geometries: <code class="
 <h2>Spatial Reference<a class="headerlink" href="#spatial-reference" title="Link to this heading"></a></h2>
 <p>The <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRSpatialReference</span></code> class is intended to store an OpenGIS Spatial Reference System definition. Currently local, geographic and projected coordinate systems are supported. Vertical coordinate systems, geocentric coordinate systems, and compound (horizontal + vertical) coordinate systems are as well supported in recent GDAL versions.</p>
 <p>The spatial coordinate system data model is inherited from the OpenGIS Well Known Text format. A simple form of this is defined in the Simple Features specifications. A more sophisticated form is found in the Coordinate Transformation specification. The <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRSpatialReference</span></code> is built on the features of the Coordinate Transformation specification but is intended to be compatible with the earlier simple features form.</p>
-<p>There is also an associated <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRCoordinateTransformation</span></code> class that encapsulates use of <a class="reference external" href="http://proj.org">PROJ</a> for converting between different coordinate systems.</p>
+<p>There is also an associated <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRCoordinateTransformation</span></code> class that encapsulates use of <a href="#id2"><span class="problematic" id="id3">|PROJ|</span></a> for converting between different coordinate systems.</p>
 </section>
 <section id="feature-feature-definition">
 <h2>Feature / Feature Definition<a class="headerlink" href="#feature-feature-definition" title="Link to this heading"></a></h2>

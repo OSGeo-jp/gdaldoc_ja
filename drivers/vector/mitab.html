@@ -330,7 +330,7 @@ characters.</p></li>
 </ul>
 <section id="dataset-creation-options">
 <h3>Dataset Creation Options<a class="headerlink" href="#dataset-creation-options" title="Link to this heading"></a></h3>
-<p><a href="#id1"><span class="problematic" id="id2">|about-dataset-creation-options|</span></a>
+<p><a href="#id2"><span class="problematic" id="id3">|about-dataset-creation-options|</span></a>
 The following dataset creation options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/vector/mitab-dsco-FORMAT"><strong>FORMAT=[TAB/MIF]: </strong>To create MIF/MID instead of TAB files</p>
@@ -349,7 +349,7 @@ bytes. Any MapInfo version should be able to handle block sizes from
 </section>
 <section id="layer-creation-options">
 <h3>Layer Creation Options<a class="headerlink" href="#layer-creation-options" title="Link to this heading"></a></h3>
-<p><a href="#id3"><span class="problematic" id="id4">|about-layer-creation-options|</span></a>
+<p><a href="#id4"><span class="problematic" id="id5">|about-layer-creation-options|</span></a>
 The following layer creation options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/vector/mitab-lco-BOUNDS"><strong>BOUNDS=&lt;xmin,ymin,xmax,ymax&gt;: </strong>Define custom layer
@@ -359,8 +359,164 @@ geometry of written features must be within the defined box.</p>
 <li><p id="drivers/vector/mitab-lco-ENCODING"><strong>ENCODING=value: </strong> (GDAL &gt;= 2.3) Define the encoding for field
 names and field values. The encoding name is specified in the format
 supported by <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CPLRecode()</span></code> (e.g. ISO-8859-1, CP1251, CP1252 ...) and
-internally converted to MapInfo charsets names. Default value is ''
-that equals to 'Neutral' MapInfo charset.</p>
+internally converted to MapInfo charsets names. Default value is '' (empty string)
+that equals to 'Neutral' MapInfo charset.<p>Currently supported values for the encoding name are:</p>
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-text">MapInfo encodings</span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>ENCODING value</p></th>
+<th class="head"><p>MapInfo charset</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>&quot;&quot; (empty string)</p></td>
+<td><p>Neutral</p></td>
+<td><p>No character conversions performed.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISO-8859-1</p></td>
+<td><p>ISO8859_1</p></td>
+<td><p>ISO 8859-1 (UNIX)</p></td>
+</tr>
+<tr class="row-even"><td><p>ISO-8859-2</p></td>
+<td><p>ISO8859_2</p></td>
+<td><p>ISO 8859-2 (UNIX)</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISO-8859-3</p></td>
+<td><p>ISO8859_3</p></td>
+<td><p>ISO 8859-3 (UNIX)</p></td>
+</tr>
+<tr class="row-even"><td><p>ISO-8859-4</p></td>
+<td><p>ISO8859_4</p></td>
+<td><p>ISO 8859-4 (UNIX)</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISO-8859-5</p></td>
+<td><p>ISO8859_5</p></td>
+<td><p>ISO 8859-5 (UNIX)</p></td>
+</tr>
+<tr class="row-even"><td><p>ISO-8859-6</p></td>
+<td><p>ISO8859_6</p></td>
+<td><p>ISO 8859-6 (UNIX)</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISO-8859-7</p></td>
+<td><p>ISO8859_7</p></td>
+<td><p>ISO 8859-7 (UNIX)</p></td>
+</tr>
+<tr class="row-even"><td><p>ISO-8859-8</p></td>
+<td><p>ISO8859_8</p></td>
+<td><p>ISO 8859-8 (UNIX)</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISO-8859-9</p></td>
+<td><p>ISO8859_9</p></td>
+<td><p>ISO 8859-9 (UNIX)</p></td>
+</tr>
+<tr class="row-even"><td><p>EUC-JP</p></td>
+<td><p>PackedEUCJapaese</p></td>
+<td><p>UNIX, standard Japanese implementation.</p></td>
+</tr>
+<tr class="row-odd"><td><p>CP1252</p></td>
+<td><p>WindowsLatin1</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>CP1250</p></td>
+<td><p>WindowsLatin2</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>CP1256</p></td>
+<td><p>WindowsArabic</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>CP1251</p></td>
+<td><p>WindowsCyrillic</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>CP1257</p></td>
+<td><p>WindowsBalticRim</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>CP1253</p></td>
+<td><p>WindowsGreek</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>CP1255</p></td>
+<td><p>WindowsHebrew</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>CP1254</p></td>
+<td><p>WindowsTurkish</p></td>
+<td><p>Windows Eastern Europe</p></td>
+</tr>
+<tr class="row-odd"><td><p>CP950</p></td>
+<td><p>WindowsTradChinese</p></td>
+<td><p>Windows Traditional Chinese</p></td>
+</tr>
+<tr class="row-even"><td><p>CP936</p></td>
+<td><p>WindowsSimpChinese</p></td>
+<td><p>Windows Simplified Chinese</p></td>
+</tr>
+<tr class="row-odd"><td><p>CP932</p></td>
+<td><p>WindowsJapanese</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>CP949</p></td>
+<td><p>WindowsKorean</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>CP437</p></td>
+<td><p>CodePage437</p></td>
+<td><p>DOS Code Page 437 = IBM Extended ASCII</p></td>
+</tr>
+<tr class="row-even"><td><p>CP850</p></td>
+<td><p>CodePage850</p></td>
+<td><p>DOS Code Page 850 = Multilingual</p></td>
+</tr>
+<tr class="row-odd"><td><p>CP852</p></td>
+<td><p>CodePage852</p></td>
+<td><p>DOS Code Page 852 = Eastern Europe</p></td>
+</tr>
+<tr class="row-even"><td><p>CP855</p></td>
+<td><p>CodePage855</p></td>
+<td><p>DOS Code Page 855 = Cyrillic</p></td>
+</tr>
+<tr class="row-odd"><td><p>CP857</p></td>
+<td><p>CodePage857</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>CP860</p></td>
+<td><p>CodePage860</p></td>
+<td><p>DOS Code Page 860 = Portuguese</p></td>
+</tr>
+<tr class="row-odd"><td><p>CP861</p></td>
+<td><p>CodePage861</p></td>
+<td><p>DOS Code Page 861 = Icelandic</p></td>
+</tr>
+<tr class="row-even"><td><p>CP863</p></td>
+<td><p>CodePage863</p></td>
+<td><p>DOS Code Page 863 = French Canadian</p></td>
+</tr>
+<tr class="row-odd"><td><p>CP864</p></td>
+<td><p>CodePage864</p></td>
+<td><p>DOS Code Page 864 = Arabic</p></td>
+</tr>
+<tr class="row-even"><td><p>CP865</p></td>
+<td><p>CodePage865</p></td>
+<td><p>DOS Code Page 865 = Nordic</p></td>
+</tr>
+<tr class="row-odd"><td><p>CP869</p></td>
+<td><p>CodePage869</p></td>
+<td><p>DOS Code Page 869 = Modern Greek</p></td>
+</tr>
+<tr class="row-even"><td><p>(no iconv match)</p></td>
+<td><p>LICS</p></td>
+<td><p>Lotus worksheet release 1,2 character set</p></td>
+</tr>
+<tr class="row-odd"><td><p>(no iconv match)</p></td>
+<td><p>LMBCS</p></td>
+<td><p>Lotus worksheet release 3,4 character set</p></td>
+</tr>
+</tbody>
+</table>
+</p>
 </li>
 <li><p id="drivers/vector/mitab-lco-DESCRIPTION"><strong>DESCRIPTION=value: </strong> (GDAL &gt;= 3.1.0) Friendly layer name (only for
 TAB format). Friendly names can be up to 256 characters long and can include
@@ -370,7 +526,7 @@ most ASCII characters. Supported by MapInfo Pro v15.0 or higher.</p>
 </section>
 <section id="configuration-options">
 <h3>Configuration options<a class="headerlink" href="#configuration-options" title="Link to this heading"></a></h3>
-<p><a href="#id5"><span class="problematic" id="id6">|about-config-options|</span></a>
+<p><a href="#id6"><span class="problematic" id="id7">|about-config-options|</span></a>
 The following configuration options are available:</p>
 <ul class="simple">
 <li><p id="config-MITAB_BOUNDS_FILE"><strong>MITAB_BOUNDS_FILE=value: </strong>See <a class="reference internal" href="#creation-issues">Creation Issues</a>.</p>

@@ -59,10 +59,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -360,8 +360,18 @@
 <dd></dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="osgeo.gdal.MDArray.GetNoDataValue">
+<span class="sig-name descname"><span class="pre">GetNoDataValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">MDArray</span> <span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">value</span></span></span><a class="headerlink" href="#osgeo.gdal.MDArray.GetNoDataValue" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="osgeo.gdal.MDArray.GetNoDataValueAsDouble">
 <span class="sig-name descname"><span class="pre">GetNoDataValueAsDouble</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">MDArray</span> <span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#osgeo.gdal.MDArray.GetNoDataValueAsDouble" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="osgeo.gdal.MDArray.GetNoDataValueAsInt64">
+<span class="sig-name descname"><span class="pre">GetNoDataValueAsInt64</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">MDArray</span> <span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#osgeo.gdal.MDArray.GetNoDataValueAsInt64" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -372,6 +382,11 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="osgeo.gdal.MDArray.GetNoDataValueAsString">
 <span class="sig-name descname"><span class="pre">GetNoDataValueAsString</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">MDArray</span> <span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">retStringAndCPLFree</span> <span class="pre">*</span></span></span><a class="headerlink" href="#osgeo.gdal.MDArray.GetNoDataValueAsString" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="osgeo.gdal.MDArray.GetNoDataValueAsUInt64">
+<span class="sig-name descname"><span class="pre">GetNoDataValueAsUInt64</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">MDArray</span> <span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#osgeo.gdal.MDArray.GetNoDataValueAsUInt64" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -462,8 +477,18 @@
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="osgeo.gdal.MDArray.SetNoDataValue">
+<span class="sig-name descname"><span class="pre">SetNoDataValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">MDArray</span> <span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">CPLErr</span></span></span><a class="headerlink" href="#osgeo.gdal.MDArray.SetNoDataValue" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="osgeo.gdal.MDArray.SetNoDataValueDouble">
 <span class="sig-name descname"><span class="pre">SetNoDataValueDouble</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">MDArray</span> <span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double</span> <span class="pre">d</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">CPLErr</span></span></span><a class="headerlink" href="#osgeo.gdal.MDArray.SetNoDataValueDouble" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="osgeo.gdal.MDArray.SetNoDataValueInt64">
+<span class="sig-name descname"><span class="pre">SetNoDataValueInt64</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">MDArray</span> <span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">GIntBig</span> <span class="pre">v</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">CPLErr</span></span></span><a class="headerlink" href="#osgeo.gdal.MDArray.SetNoDataValueInt64" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -474,6 +499,11 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="osgeo.gdal.MDArray.SetNoDataValueString">
 <span class="sig-name descname"><span class="pre">SetNoDataValueString</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">MDArray</span> <span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">char</span> <span class="pre">const</span> <span class="pre">*</span> <span class="pre">nodata</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">CPLErr</span></span></span><a class="headerlink" href="#osgeo.gdal.MDArray.SetNoDataValueString" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="osgeo.gdal.MDArray.SetNoDataValueUInt64">
+<span class="sig-name descname"><span class="pre">SetNoDataValueUInt64</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">MDArray</span> <span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">GUIntBig</span> <span class="pre">v</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">CPLErr</span></span></span><a class="headerlink" href="#osgeo.gdal.MDArray.SetNoDataValueUInt64" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">

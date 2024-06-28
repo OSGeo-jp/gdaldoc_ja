@@ -438,9 +438,3 @@
      - **Yes**
      - No
      - libexpat
-   * - :ref:`XODR <vector.xodr>`
-     - OpenDRIVE Road Description Format
-     - No
-     - **Yes**
-     - libOpenDRIVE >= 0.5.0, GEOS
-

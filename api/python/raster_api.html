@@ -59,10 +59,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -274,6 +274,11 @@
 <dd></dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="osgeo.gdal.Dataset.AddRelationship">
+<span class="sig-name descname"><span class="pre">AddRelationship</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Dataset</span> <span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Relationship</span> <span class="pre">relationship</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#osgeo.gdal.Dataset.AddRelationship" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="osgeo.gdal.Dataset.AdviseRead">
 <span class="sig-name descname"><span class="pre">AdviseRead</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Dataset</span> <span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">int</span> <span class="pre">xoff</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">int</span> <span class="pre">yoff</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">int</span> <span class="pre">xsize</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">int</span> <span class="pre">ysize</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">int</span> <span class="pre">*</span> <span class="pre">buf_xsize=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">int</span> <span class="pre">*</span> <span class="pre">buf_ysize=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">GDALDataType</span> <span class="pre">*</span> <span class="pre">buf_type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">int</span> <span class="pre">band_list=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">char</span> <span class="pre">**</span> <span class="pre">options=None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">CPLErr</span></span></span><a class="headerlink" href="#osgeo.gdal.Dataset.AdviseRead" title="Link to this definition"></a></dt>
 <dd></dd></dl>
@@ -285,7 +290,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="osgeo.gdal.Dataset.BuildOverviews">
-<span class="sig-name descname"><span class="pre">BuildOverviews</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Dataset</span> <span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">char</span> <span class="pre">const</span> <span class="pre">*</span> <span class="pre">resampling=&quot;NEAREST&quot;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">int</span> <span class="pre">overviewlist=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">GDALProgressFunc</span> <span class="pre">callback=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">void</span> <span class="pre">*</span> <span class="pre">callback_data=None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#osgeo.gdal.Dataset.BuildOverviews" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">BuildOverviews</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Dataset</span> <span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">char</span> <span class="pre">const</span> <span class="pre">*</span> <span class="pre">resampling=&quot;NEAREST&quot;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">int</span> <span class="pre">overviewlist=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">GDALProgressFunc</span> <span class="pre">callback=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">void</span> <span class="pre">*</span> <span class="pre">callback_data=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">char</span> <span class="pre">**</span> <span class="pre">options=None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#osgeo.gdal.Dataset.BuildOverviews" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -314,10 +319,20 @@
 <dd></dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="osgeo.gdal.Dataset.DeleteFieldDomain">
+<span class="sig-name descname"><span class="pre">DeleteFieldDomain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Dataset</span> <span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">char</span> <span class="pre">const</span> <span class="pre">*</span> <span class="pre">name</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#osgeo.gdal.Dataset.DeleteFieldDomain" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="osgeo.gdal.Dataset.DeleteLayer">
 <span class="sig-name descname"><span class="pre">DeleteLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#osgeo.gdal.Dataset.DeleteLayer" title="Link to this definition"></a></dt>
 <dd><p>Deletes the layer given an index or layer name</p>
 </dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="osgeo.gdal.Dataset.DeleteRelationship">
+<span class="sig-name descname"><span class="pre">DeleteRelationship</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Dataset</span> <span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">char</span> <span class="pre">const</span> <span class="pre">*</span> <span class="pre">name</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#osgeo.gdal.Dataset.DeleteRelationship" title="Link to this definition"></a></dt>
+<dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="osgeo.gdal.Dataset.EndAsyncReader">
@@ -342,6 +357,11 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="osgeo.gdal.Dataset.GetFieldDomain">
 <span class="sig-name descname"><span class="pre">GetFieldDomain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Dataset</span> <span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">char</span> <span class="pre">const</span> <span class="pre">*</span> <span class="pre">name</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="vector_api.html#osgeo.ogr.FieldDomain" title="osgeo.ogr.FieldDomain"><span class="pre">FieldDomain</span></a></span></span><a class="headerlink" href="#osgeo.gdal.Dataset.GetFieldDomain" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="osgeo.gdal.Dataset.GetFieldDomainNames">
+<span class="sig-name descname"><span class="pre">GetFieldDomainNames</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Dataset</span> <span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">char</span> <span class="pre">**</span> <span class="pre">options=None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">char</span> <span class="pre">**</span></span></span><a class="headerlink" href="#osgeo.gdal.Dataset.GetFieldDomainNames" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -413,6 +433,16 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="osgeo.gdal.Dataset.GetRasterBand">
 <span class="sig-name descname"><span class="pre">GetRasterBand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Dataset</span> <span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">int</span> <span class="pre">nBand</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#osgeo.gdal.Band" title="osgeo.gdal.Band"><span class="pre">Band</span></a></span></span><a class="headerlink" href="#osgeo.gdal.Dataset.GetRasterBand" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="osgeo.gdal.Dataset.GetRelationship">
+<span class="sig-name descname"><span class="pre">GetRelationship</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Dataset</span> <span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">char</span> <span class="pre">const</span> <span class="pre">*</span> <span class="pre">name</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="vector_api.html#osgeo.gdal.Relationship" title="osgeo.gdal.Relationship"><span class="pre">Relationship</span></a></span></span><a class="headerlink" href="#osgeo.gdal.Dataset.GetRelationship" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="osgeo.gdal.Dataset.GetRelationshipNames">
+<span class="sig-name descname"><span class="pre">GetRelationshipNames</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Dataset</span> <span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">char</span> <span class="pre">**</span> <span class="pre">options=None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">char</span> <span class="pre">**</span></span></span><a class="headerlink" href="#osgeo.gdal.Dataset.GetRelationshipNames" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -580,6 +610,16 @@ parameters should generally not be specified if buf_obj is specified. The array 
 <dd></dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="osgeo.gdal.Dataset.UpdateFieldDomain">
+<span class="sig-name descname"><span class="pre">UpdateFieldDomain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Dataset</span> <span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FieldDomain</span> <span class="pre">fieldDomain</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#osgeo.gdal.Dataset.UpdateFieldDomain" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="osgeo.gdal.Dataset.UpdateRelationship">
+<span class="sig-name descname"><span class="pre">UpdateRelationship</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Dataset</span> <span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Relationship</span> <span class="pre">relationship</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#osgeo.gdal.Dataset.UpdateRelationship" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="osgeo.gdal.Dataset.WriteArray">
 <span class="sig-name descname"><span class="pre">WriteArray</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">band_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interleave</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'band'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resample_alg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#osgeo.gdal.Dataset.WriteArray" title="Link to this definition"></a></dt>
 <dd></dd></dl>
@@ -635,12 +675,12 @@ parameters should generally not be specified if buf_obj is specified. The array 
 
 <dl class="py method">
 <dt class="sig sig-object py" id="osgeo.gdal.Band.ComputeRasterMinMax">
-<span class="sig-name descname"><span class="pre">ComputeRasterMinMax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Band</span> <span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">int</span> <span class="pre">approx_ok=0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#osgeo.gdal.Band.ComputeRasterMinMax" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">ComputeRasterMinMax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Band</span> <span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bool</span> <span class="pre">approx_ok=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bool</span> <span class="pre">can_return_none=False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">(min,</span> <span class="pre">max)</span> <span class="pre">or</span> <span class="pre">None</span></span></span><a class="headerlink" href="#osgeo.gdal.Band.ComputeRasterMinMax" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="osgeo.gdal.Band.ComputeStatistics">
-<span class="sig-name descname"><span class="pre">ComputeStatistics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Band</span> <span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bool</span> <span class="pre">approx_ok</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">GDALProgressFunc</span> <span class="pre">callback=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">void</span> <span class="pre">*</span> <span class="pre">callback_data=None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">CPLErr</span></span></span><a class="headerlink" href="#osgeo.gdal.Band.ComputeStatistics" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">ComputeStatistics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Band</span> <span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bool</span> <span class="pre">approx_ok</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback_data=None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">CPLErr</span></span></span><a class="headerlink" href="#osgeo.gdal.Band.ComputeStatistics" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -751,7 +791,17 @@ parameters should generally not be specified if buf_obj is specified. The array 
 
 <dl class="py method">
 <dt class="sig sig-object py" id="osgeo.gdal.Band.GetNoDataValue">
-<span class="sig-name descname"><span class="pre">GetNoDataValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Band</span> <span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#osgeo.gdal.Band.GetNoDataValue" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">GetNoDataValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Band</span> <span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">value</span></span></span><a class="headerlink" href="#osgeo.gdal.Band.GetNoDataValue" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="osgeo.gdal.Band.GetNoDataValueAsInt64">
+<span class="sig-name descname"><span class="pre">GetNoDataValueAsInt64</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Band</span> <span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#osgeo.gdal.Band.GetNoDataValueAsInt64" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="osgeo.gdal.Band.GetNoDataValueAsUInt64">
+<span class="sig-name descname"><span class="pre">GetNoDataValueAsUInt64</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Band</span> <span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#osgeo.gdal.Band.GetNoDataValueAsUInt64" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -848,6 +898,11 @@ related dataset is also dropped.</p>
 <dd></dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="osgeo.gdal.Band.IsMaskBand">
+<span class="sig-name descname"><span class="pre">IsMaskBand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Band</span> <span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#osgeo.gdal.Band.IsMaskBand" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="osgeo.gdal.Band.ReadAsArray">
 <span class="sig-name descname"><span class="pre">ReadAsArray</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win_xsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">win_ysize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buf_xsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buf_ysize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buf_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buf_obj</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resample_alg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#osgeo.gdal.Band.ReadAsArray" title="Link to this definition"></a></dt>
 <dd><p>Reading a chunk of a GDAL band into a numpy array. The optional (buf_xsize,buf_ysize,buf_type)
@@ -896,7 +951,17 @@ parameters should generally not be specified if buf_obj is specified. The array 
 
 <dl class="py method">
 <dt class="sig sig-object py" id="osgeo.gdal.Band.SetNoDataValue">
-<span class="sig-name descname"><span class="pre">SetNoDataValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Band</span> <span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double</span> <span class="pre">d</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">CPLErr</span></span></span><a class="headerlink" href="#osgeo.gdal.Band.SetNoDataValue" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">SetNoDataValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Band</span> <span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">CPLErr</span></span></span><a class="headerlink" href="#osgeo.gdal.Band.SetNoDataValue" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="osgeo.gdal.Band.SetNoDataValueAsInt64">
+<span class="sig-name descname"><span class="pre">SetNoDataValueAsInt64</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Band</span> <span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">GIntBig</span> <span class="pre">v</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">CPLErr</span></span></span><a class="headerlink" href="#osgeo.gdal.Band.SetNoDataValueAsInt64" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="osgeo.gdal.Band.SetNoDataValueAsUInt64">
+<span class="sig-name descname"><span class="pre">SetNoDataValueAsUInt64</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Band</span> <span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">GUIntBig</span> <span class="pre">v</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">CPLErr</span></span></span><a class="headerlink" href="#osgeo.gdal.Band.SetNoDataValueAsUInt64" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">

@@ -51,15 +51,15 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../programs/index.html">プログラム</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">ラスタードライバー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">ベクタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programs/index.html">Programs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">Raster drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">Vector drivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">チュートリアル</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="index.html#raster">ラスター</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#multidimensional-raster">多次元ラスター</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html#vector">ベクター</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#raster">Raster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#multidimensional-raster">Multidimensional raster</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#vector">Vector</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="vector_api_tut.html">Vector API tutorial</a></li>
 <li class="toctree-l3"><a class="reference internal" href="vector_driver_tut.html">Vector driver implementation tutorial</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Vector driver in Python implementation tutorial</a><ul>
@@ -77,14 +77,14 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#geographic-network-model">空間ネットワークモデル</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#projections-and-spatial-reference-systems-tutorial-osr-ogrspatialreference">投影法と空間参照システムチュートリアル (OSR - OGRSpatialReference)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#geographic-network-model">Geographic Network Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#projections-and-spatial-reference-systems-tutorial-osr-ogrspatialreference">Projections and Spatial Reference Systems tutorial (OSR - OGRSpatialReference)</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../development/index.html">開発</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">スポンサー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">貢献する方法は?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">Sponsors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">ライセンス</a></li>
 </ul>
@@ -122,7 +122,7 @@
     
       <li><a href="../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">チュートリアル</a> &raquo;</li>
+          <li><a href="index.html">Tutorials</a> &raquo;</li>
       
       <li>Vector driver in Python implementation tutorial</li>
     
@@ -453,14 +453,14 @@ Each field is a dictionary with the following properties:</p>
 <dd><p>Required. A integer value of type ogr.wkb_ (from the SWIG Python bindings), or
 one of the following string values: <code class="docutils literal notranslate"><span class="pre">Unknown</span></code>, <code class="docutils literal notranslate"><span class="pre">Point</span></code>, <code class="docutils literal notranslate"><span class="pre">LineString</span></code>,
 <code class="docutils literal notranslate"><span class="pre">Polygon</span></code>, <code class="docutils literal notranslate"><span class="pre">MultiPoint</span></code>, <code class="docutils literal notranslate"><span class="pre">MultiLineString</span></code>, <code class="docutils literal notranslate"><span class="pre">MultiPolygon</span></code>,
-<code class="docutils literal notranslate"><span class="pre">GeometryCollections</span></code> or all other values returned by <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRGeometryTypeToName()</span></code></p>
+<code class="docutils literal notranslate"><span class="pre">GeometryCollections</span></code> or all other values returned by <a class="reference internal" href="../api/vector_c_api.html#_CPPv421OGRGeometryTypeToName18OGRwkbGeometryType" title="OGRGeometryTypeToName"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRGeometryTypeToName()</span></code></a></p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">srs</span></span></dt>
 <dd><p>The SRS attached to the geometry field as a string that can be ingested by
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::SetFromUserInput()</span></code>, such as a PROJ string,
+<a class="reference internal" href="../api/ogrspatialref.html#_CPPv4N19OGRSpatialReference16SetFromUserInputEPKc" title="OGRSpatialReference::SetFromUserInput"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::SetFromUserInput()</span></code></a>, such as a PROJ string,
 WKT string, or <code class="docutils literal notranslate"><span class="pre">AUTHORITY:CODE</span></code>.</p>
 </dd></dl>
 
@@ -645,7 +645,7 @@ attributes.</p>
 <dd class="field-odd"><p><strong>string</strong> (<em>cap</em>) -- potential values are BaseLayer.FastGetExtent,
 BaseLayer.FastSpatialFilter, BaseLayer.FastFeatureCount,
 BaseLayer.RandomRead, BaseLayer.StringsAsUTF8 or
-other strings supported by <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::TestCapability()</span></code></p>
+other strings supported by <a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer14TestCapabilityEPKc" title="OGRLayer::TestCapability"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::TestCapability()</span></code></a></p>
 </dd>
 <dt class="field-even">戻り値<span class="colon">:</span></dt>
 <dd class="field-even"><p>True if the capability is supported, False otherwise.</p>

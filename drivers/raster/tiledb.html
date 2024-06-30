@@ -51,8 +51,8 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">プログラム</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">ラスタードライバー</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">Programs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Raster drivers</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="aaigrid.html">AAIGrid -- Arc/Info ASCII Grid</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ace2.html">ACE2 -- ACE2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adrg.html">ADRG -- ADRG/ARC Digitized Raster Graphics (.gen/.thf)</a></li>
@@ -225,14 +225,14 @@
 <li class="toctree-l2"><a class="reference internal" href="zmap.html">ZMap -- ZMap Plus Grid</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../vector/index.html">ベクタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vector/index.html">Vector drivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
@@ -270,7 +270,7 @@
     
       <li><a href="../../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">ラスタードライバー</a> &raquo;</li>
+          <li><a href="index.html">Raster drivers</a> &raquo;</li>
       
       <li>TileDB - TileDB raster</li>
     
@@ -323,11 +323,11 @@
 <h2>Driver capabilities<a class="headerlink" href="#driver-capabilities" title="Link to this heading"></a></h2>
 <div class="admonition supports_createcopy" id="supports_createcopy-0">
 <p class="admonition-title">Supports CreateCopy()</p>
-<p>This driver supports the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::CreateCopy()</span></code> operation</p>
+<p>This driver supports the <a class="reference internal" href="../../api/gdaldriver_cpp.html#_CPPv4N10GDALDriver10CreateCopyEPKcP11GDALDataseti12CSLConstList16GDALProgressFuncPv" title="GDALDriver::CreateCopy"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::CreateCopy()</span></code></a> operation</p>
 </div>
 <div class="admonition supports_create" id="supports_create-0">
 <p class="admonition-title">Supports Create()</p>
-<p>This driver supports the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::Create()</span></code> operation</p>
+<p>This driver supports the <a class="reference internal" href="../../api/gdaldriver_cpp.html#_CPPv4N10GDALDriver6CreateEPKciii12GDALDataType12CSLConstList" title="GDALDriver::Create"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::Create()</span></code></a> operation</p>
 </div>
 <div class="admonition supports_georeferencing" id="supports_georeferencing-0">
 <p class="admonition-title">Supports Georeferencing</p>
@@ -432,7 +432,7 @@ Compression to use. Default is NONE</p></li>
 create an indexing variable that is serialized as a dimension label</p></li>
 <li><p><strong>TILEDB_TIMESTAMP=val</strong>: Create array at this timestamp. Should be strictly greater than zero when set.</p></li>
 </ul>
-<p>Cf <a href="#id1"><span class="problematic" id="id2">:source_file:`autotest/gdrivers/tiledb_multidim.py`</span></a> for examples of how to
+<p>Cf <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/autotest/gdrivers/tiledb_multidim.py">tiledb_multidim.py</a> for examples of how to
 use the Python multidimensional API with the TileDB driver.</p>
 </section>
 <section id="see-also">

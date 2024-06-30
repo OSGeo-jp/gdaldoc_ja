@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>プログラム &mdash; GDAL  ドキュメント</title>
+  <title>Programs &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
       <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
 
@@ -26,7 +26,7 @@
     <link rel="author" title="このドキュメントについて" href="../about.html" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
-    <link rel="next" title="コマンドラインユーティリティの引数文法" href="argument_syntax.html" />
+    <link rel="next" title="Syntax of arguments of command-line utilities" href="argument_syntax.html" />
     <link rel="prev" title="ダウンロード" href="../download.html" /> 
 </head>
 
@@ -52,13 +52,13 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../download.html">ダウンロード</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">プログラム</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#general">一般情報</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="argument_syntax.html">コマンドラインユーティリティの引数文法</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Programs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#general">General</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="argument_syntax.html">Syntax of arguments of command-line utilities</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#raster-programs">ラスタープログラム</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="raster_common_options.html">共通オプション</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#raster-programs">Raster programs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="raster_common_options.html">Common options</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdal-config.html">gdal-config (Unix)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdal2tiles.html">gdal2tiles</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdal2xyz.html">gdal2xyz</a></li>
@@ -96,13 +96,13 @@
 <li class="toctree-l3"><a class="reference internal" href="rgb2pct.html">rgb2pct</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#multidimensional-raster-programs">多次元ラスタープログラム</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#multidimensional-raster-programs">Multidimensional Raster programs</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="gdalmdiminfo.html">gdalmdiminfo</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdalmdimtranslate.html">gdalmdimtranslate</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#vector-programs">ベクタープログラム</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="vector_common_options.html">共通オプション</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#vector-programs">Vector programs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vector_common_options.html">Common options</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ogrinfo.html">ogrinfo</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ogr2ogr.html">ogr2ogr</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ogrtindex.html">ogrtindex</a></li>
@@ -111,26 +111,26 @@
 <li class="toctree-l3"><a class="reference internal" href="ogr_layer_algebra.html">ogr_layer_algebra</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#geographic-network-programs">空間ネットワークプログラム</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#geographic-network-programs">Geographic network programs</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="gnmmanage.html">gnmmanage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gnmanalyse.html">gnmanalyse</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#other-utilities">その他ユーティリティ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#other-utilities">Other utilities</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="sozip.html">sozip</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">ラスタードライバー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">ベクタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">Raster drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">Vector drivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../development/index.html">開発</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">スポンサー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">貢献する方法は?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">Sponsors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">ライセンス</a></li>
 </ul>
@@ -168,7 +168,7 @@
     
       <li><a href="../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-      <li>プログラム</li>
+      <li>Programs</li>
     
 
     
@@ -187,7 +187,7 @@
   
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
-        <a href="argument_syntax.html" class="btn btn-neutral float-right" title="コマンドラインユーティリティの引数文法" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="argument_syntax.html" class="btn btn-neutral float-right" title="Syntax of arguments of command-line utilities" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../download.html" class="btn btn-neutral float-left" title="ダウンロード" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -200,17 +200,17 @@
            <div itemprop="articleBody">
              
   <section id="programs">
-<span id="id1"></span><h1>プログラム<a class="headerlink" href="#programs" title="Link to this heading"></a></h1>
+<span id="id1"></span><h1>Programs<a class="headerlink" href="#programs" title="Link to this heading"></a></h1>
 <section id="general">
-<h2>一般情報<a class="headerlink" href="#general" title="Link to this heading"></a></h2>
+<h2>General<a class="headerlink" href="#general" title="Link to this heading"></a></h2>
 <div class="toctree-wrapper compound">
 </div>
 <ul class="simple">
-<li><p><a class="reference internal" href="argument_syntax.html#argument-syntax"><span class="std std-ref">コマンドラインユーティリティの引数文法</span></a></p></li>
+<li><p><a class="reference internal" href="argument_syntax.html#argument-syntax"><span class="std std-ref">Syntax of arguments of command-line utilities</span></a></p></li>
 </ul>
 </section>
 <section id="raster-programs">
-<h2>ラスタープログラム<a class="headerlink" href="#raster-programs" title="Link to this heading"></a></h2>
+<h2>Raster programs<a class="headerlink" href="#raster-programs" title="Link to this heading"></a></h2>
 <div class="toctree-wrapper compound">
 </div>
 <ul class="simple">
@@ -253,7 +253,7 @@
 </ul>
 </section>
 <section id="multidimensional-raster-programs">
-<h2>多次元ラスタープログラム<a class="headerlink" href="#multidimensional-raster-programs" title="Link to this heading"></a></h2>
+<h2>Multidimensional Raster programs<a class="headerlink" href="#multidimensional-raster-programs" title="Link to this heading"></a></h2>
 <div class="toctree-wrapper compound">
 </div>
 <ul class="simple">
@@ -262,7 +262,7 @@
 </ul>
 </section>
 <section id="vector-programs">
-<h2>ベクタープログラム<a class="headerlink" href="#vector-programs" title="Link to this heading"></a></h2>
+<h2>Vector programs<a class="headerlink" href="#vector-programs" title="Link to this heading"></a></h2>
 <div class="toctree-wrapper compound">
 </div>
 <ul class="simple">
@@ -276,7 +276,7 @@
 </ul>
 </section>
 <section id="geographic-network-programs">
-<h2>空間ネットワークプログラム<a class="headerlink" href="#geographic-network-programs" title="Link to this heading"></a></h2>
+<h2>Geographic network programs<a class="headerlink" href="#geographic-network-programs" title="Link to this heading"></a></h2>
 <div class="toctree-wrapper compound">
 </div>
 <ul class="simple">
@@ -285,7 +285,7 @@
 </ul>
 </section>
 <section id="other-utilities">
-<h2>その他ユーティリティ<a class="headerlink" href="#other-utilities" title="Link to this heading"></a></h2>
+<h2>Other utilities<a class="headerlink" href="#other-utilities" title="Link to this heading"></a></h2>
 <div class="toctree-wrapper compound">
 </div>
 <ul class="simple">
@@ -301,7 +301,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="argument_syntax.html" class="btn btn-neutral float-right" title="コマンドラインユーティリティの引数文法" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="argument_syntax.html" class="btn btn-neutral float-right" title="Syntax of arguments of command-line utilities" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../download.html" class="btn btn-neutral float-left" title="ダウンロード" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

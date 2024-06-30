@@ -51,8 +51,8 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">プログラム</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">ラスタードライバー</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">Programs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Raster drivers</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="aaigrid.html">AAIGrid -- Arc/Info ASCII Grid</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ace2.html">ACE2 -- ACE2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adrg.html">ADRG -- ADRG/ARC Digitized Raster Graphics (.gen/.thf)</a></li>
@@ -223,14 +223,14 @@
 <li class="toctree-l2"><a class="reference internal" href="zmap.html">ZMap -- ZMap Plus Grid</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../vector/index.html">ベクタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vector/index.html">Vector drivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
@@ -268,7 +268,7 @@
     
       <li><a href="../../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">ラスタードライバー</a> &raquo;</li>
+          <li><a href="index.html">Raster drivers</a> &raquo;</li>
       
       <li>S104 -- S-104 Water Level Information for Surface Navigation Product</li>
     
@@ -337,7 +337,7 @@ subdatasets will be reported, one for each timestamp available in the file.</p>
 </section>
 <section id="open-options">
 <h2>Open options<a class="headerlink" href="#open-options" title="Link to this heading"></a></h2>
-<p><a href="#id3"><span class="problematic" id="id4">|about-open-options|</span></a>
+<p>Open options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-oo</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALOpenExPKcjPPCKcPPCKcPPCKc" title="GDALOpenEx"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpenEx()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.OpenEx" title="osgeo.gdal.OpenEx"><code class="xref py py-meth docutils literal notranslate"><span class="pre">gdal.OpenEx</span></code></a> (Python).
 The following open options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/raster/s104-oo-NORTH_UP"><strong>NORTH_UP=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">YES</span></code>. Whether the top line of the dataset should be the northern-most one.<p>This is the default behavior of most GDAL formats, but the native
@@ -352,7 +352,7 @@ exposed by the driver by setting this option to NO (in which case the
 <section id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p>Implemented as <a href="#id1"><span class="problematic" id="id2">:source_file:`frmts/hdf5/s104dataset.cpp`</span></a>.</p></li>
+<li><p>Implemented as <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/frmts/hdf5/s104dataset.cpp">s104dataset.cpp</a>.</p></li>
 <li><p><a class="reference external" href="https://registry.iho.int/productspec/view.do?idx=198&amp;product_ID=S-104&amp;statusS=5&amp;domainS=20&amp;category=product_ID&amp;searchValue=S-104">S-104 Bathymetric Surface Product Specification</a></p></li>
 <li><p><a class="reference internal" href="bag.html#raster-bag"><span class="std std-ref">BAG driver</span></a></p></li>
 <li><p><a class="reference internal" href="s102.html#raster-s102"><span class="std std-ref">S-102 driver</span></a></p></li>

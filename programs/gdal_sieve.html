@@ -51,10 +51,10 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../download.html">ダウンロード</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">プログラム</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="index.html#general">一般情報</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html#raster-programs">ラスタープログラム</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="raster_common_options.html">共通オプション</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Programs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#general">General</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#raster-programs">Raster programs</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="raster_common_options.html">Common options</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdal-config.html">gdal-config (Unix)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdal2tiles.html">gdal2tiles</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdal2xyz.html">gdal2xyz</a></li>
@@ -96,21 +96,21 @@
 <li class="toctree-l3"><a class="reference internal" href="rgb2pct.html">rgb2pct</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#multidimensional-raster-programs">多次元ラスタープログラム</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#vector-programs">ベクタープログラム</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#geographic-network-programs">空間ネットワークプログラム</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#other-utilities">その他ユーティリティ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#multidimensional-raster-programs">Multidimensional Raster programs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#vector-programs">Vector programs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#geographic-network-programs">Geographic network programs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#other-utilities">Other utilities</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">ラスタードライバー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">ベクタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">Raster drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">Vector drivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../development/index.html">開発</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">スポンサー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">貢献する方法は?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">Sponsors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">ライセンス</a></li>
 </ul>
@@ -148,7 +148,7 @@
     
       <li><a href="../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">プログラム</a> &raquo;</li>
+          <li><a href="index.html">Programs</a> &raquo;</li>
       
       <li>gdal_sieve</li>
     
@@ -201,7 +201,7 @@ back to the existing raster band, or copied into a new file.</p>
 <p>The input dataset is read as integer data which means that floating point
 values are rounded to integers. Re-scaling source data may be necessary in
 some cases (e.g. 32-bit floating point data with min=0 and max=1).</p>
-<p>Additional details on the algorithm are available in the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALSieveFilter()</span></code> docs.</p>
+<p>Additional details on the algorithm are available in the <a class="reference internal" href="../api/gdal_alg.html#_CPPv415GDALSieveFilter15GDALRasterBandH15GDALRasterBandH15GDALRasterBandHiiPPc16GDALProgressFuncPv" title="GDALSieveFilter"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALSieveFilter()</span></code></a> docs.</p>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
 <p>gdal_retile is a Python utility, and is only available if GDAL Python bindings are available.</p>

@@ -51,16 +51,16 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../programs/index.html">プログラム</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">ラスタードライバー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">ベクタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programs/index.html">Programs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">Raster drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">Vector drivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../development/index.html">開発</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">スポンサー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">貢献する方法は?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">Sponsors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">ライセンス</a></li>
 </ul>
@@ -133,10 +133,104 @@
              
   <section id="gdaldimension-c-api">
 <span id="gdaldimension-cpp"></span><h1>GDALDimension C++ API<a class="headerlink" href="#gdaldimension-c-api" title="Link to this heading"></a></h1>
-<div class="admonition warning">
-<p class="admonition-title">警告</p>
-<p>doxygenclass: Unable to find project 'api' in breathe_projects dictionary</p>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv413GDALDimension">
+<span id="_CPPv313GDALDimension"></span><span id="_CPPv213GDALDimension"></span><span id="GDALDimension"></span><span class="target" id="classGDALDimension"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GDALDimension</span></span></span><a class="headerlink" href="#_CPPv413GDALDimension" title="Link to this definition"></a><br /></dt>
+<dd><p>Class modeling a a dimension / axis used to index multidimensional arrays. </p>
+<p>It has a name, a size (that is the number of values that can be indexed along the dimension), a type (see <a class="reference internal" href="#classGDALDimension_1a9d5855738631d3b1af632249d1f6ae84"><span class="std std-ref">GDALDimension::GetType()</span></a>), a direction (see <a class="reference internal" href="#classGDALDimension_1a9f4c8b716680cff31b61321a0796f9de"><span class="std std-ref">GDALDimension::GetDirection()</span></a>), a unit and can optionally point to a <a class="reference internal" href="gdalmdarray_cpp.html#classGDALMDArray"><span class="std std-ref">GDALMDArray</span></a> variable, typically one-dimensional, describing the values taken by the dimension. For a georeferenced <a class="reference internal" href="gdalmdarray_cpp.html#classGDALMDArray"><span class="std std-ref">GDALMDArray</span></a> and its X dimension, this will be typically the values of the easting/longitude for each grid point.</p>
+<p><dl class="simple">
+<dt><strong>Since</strong></dt><dd><p>GDAL 3.1 </p>
+</dd>
+</dl>
+</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK13GDALDimension7GetNameEv">
+<span id="_CPPv3NK13GDALDimension7GetNameEv"></span><span id="_CPPv2NK13GDALDimension7GetNameEv"></span><span id="GDALDimension::GetNameC"></span><span class="target" id="classGDALDimension_1a78dc21d7ff7bc25a8a4a06111a9963b7"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">GetName</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK13GDALDimension7GetNameEv" title="Link to this definition"></a><br /></dt>
+<dd><p>Return the name. </p>
+<p>This is the same as the C function <a class="reference internal" href="raster_c_api.html#gdal_8h_1a8955533a2b3adfad1c5fb3e0e920fb59"><span class="std std-ref">GDALDimensionGetName()</span></a></p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK13GDALDimension11GetFullNameEv">
+<span id="_CPPv3NK13GDALDimension11GetFullNameEv"></span><span id="_CPPv2NK13GDALDimension11GetFullNameEv"></span><span id="GDALDimension::GetFullNameC"></span><span class="target" id="classGDALDimension_1af76d4fe0f38fa737a00a36dc420314b1"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">GetFullName</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK13GDALDimension11GetFullNameEv" title="Link to this definition"></a><br /></dt>
+<dd><p>Return the full name. </p>
+<p>This is the same as the C function <a class="reference internal" href="raster_c_api.html#gdal_8h_1a60f479721fefbeabea4fe632f0ac242a"><span class="std std-ref">GDALDimensionGetFullName()</span></a></p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK13GDALDimension7GetTypeEv">
+<span id="_CPPv3NK13GDALDimension7GetTypeEv"></span><span id="_CPPv2NK13GDALDimension7GetTypeEv"></span><span id="GDALDimension::GetTypeC"></span><span class="target" id="classGDALDimension_1a9d5855738631d3b1af632249d1f6ae84"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">GetType</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK13GDALDimension7GetTypeEv" title="Link to this definition"></a><br /></dt>
+<dd><p>Return the axis type. </p>
+<p>Predefined values are: HORIZONTAL_X, HORIZONTAL_Y, VERTICAL, TEMPORAL, PARAMETRIC Other values might be returned. Empty value means unknown.</p>
+<p>This is the same as the C function <a class="reference internal" href="raster_c_api.html#gdal_8h_1aabe768e85fbb77eaaa5b3bdcf45afc4f"><span class="std std-ref">GDALDimensionGetType()</span></a></p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK13GDALDimension12GetDirectionEv">
+<span id="_CPPv3NK13GDALDimension12GetDirectionEv"></span><span id="_CPPv2NK13GDALDimension12GetDirectionEv"></span><span id="GDALDimension::GetDirectionC"></span><span class="target" id="classGDALDimension_1a9f4c8b716680cff31b61321a0796f9de"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">GetDirection</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK13GDALDimension12GetDirectionEv" title="Link to this definition"></a><br /></dt>
+<dd><p>Return the axis direction. </p>
+<p>Predefined values are: EAST, WEST, SOUTH, NORTH, UP, DOWN, FUTURE, PAST Other values might be returned. Empty value means unknown.</p>
+<p>This is the same as the C function <a class="reference internal" href="raster_c_api.html#gdal_8h_1aba94b5595e08e814e975f2e3af8500be"><span class="std std-ref">GDALDimensionGetDirection()</span></a></p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK13GDALDimension7GetSizeEv">
+<span id="_CPPv3NK13GDALDimension7GetSizeEv"></span><span id="_CPPv2NK13GDALDimension7GetSizeEv"></span><span id="GDALDimension::GetSizeC"></span><span class="target" id="classGDALDimension_1ae4eebfda51a0bd79d6d2bc867a2a220a"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><a class="reference internal" href="cpl.html#_CPPv47GUInt64" title="GUInt64"><span class="n"><span class="pre">GUInt64</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetSize</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK13GDALDimension7GetSizeEv" title="Link to this definition"></a><br /></dt>
+<dd><p>Return the size, that is the number of values along the dimension. </p>
+<p>This is the same as the C function <a class="reference internal" href="raster_c_api.html#gdal_8h_1a3e67b6d4a22aa59035793f71a6f136da"><span class="std std-ref">GDALDimensionGetSize()</span></a></p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK13GDALDimension19GetIndexingVariableEv">
+<span id="_CPPv3NK13GDALDimension19GetIndexingVariableEv"></span><span id="_CPPv2NK13GDALDimension19GetIndexingVariableEv"></span><span id="GDALDimension::GetIndexingVariableC"></span><span class="target" id="classGDALDimension_1a8df0ce7dc40f83e727adb976e67b62d2"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">shared_ptr</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="gdalmdarray_cpp.html#_CPPv411GDALMDArray" title="GDALMDArray"><span class="n"><span class="pre">GDALMDArray</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetIndexingVariable</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK13GDALDimension19GetIndexingVariableEv" title="Link to this definition"></a><br /></dt>
+<dd><p>Return the variable that is used to index the dimension (if there is one). </p>
+<p>This is the array, typically one-dimensional, describing the values taken by the dimension. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N13GDALDimension19SetIndexingVariableENSt10shared_ptrI11GDALMDArrayEE">
+<span id="_CPPv3N13GDALDimension19SetIndexingVariableENSt10shared_ptrI11GDALMDArrayEE"></span><span id="_CPPv2N13GDALDimension19SetIndexingVariableENSt10shared_ptrI11GDALMDArrayEE"></span><span id="GDALDimension::SetIndexingVariable__std::shared_ptr:GDALMDArray:"></span><span class="target" id="classGDALDimension_1abb7ed4f85bf0ca6c7f5507e8006bb2f4"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SetIndexingVariable</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">shared_ptr</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="gdalmdarray_cpp.html#_CPPv411GDALMDArray" title="GDALMDArray"><span class="n"><span class="pre">GDALMDArray</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">poIndexingVariable</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13GDALDimension19SetIndexingVariableENSt10shared_ptrI11GDALMDArrayEE" title="Link to this definition"></a><br /></dt>
+<dd><p>Set the variable that is used to index the dimension. </p>
+<p>This is the array, typically one-dimensional, describing the values taken by the dimension.</p>
+<p>Optionally implemented by drivers.</p>
+<p>Drivers known to implement it: MEM.</p>
+<dl class="field-list simple">
+<dt class="field-odd">パラメータ<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>poArray</strong> -- Variable to use to index the dimension. </p>
+</dd>
+<dt class="field-even">戻り値<span class="colon">:</span></dt>
+<dd class="field-even"><p>true in case of success. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N13GDALDimension6RenameERKNSt6stringE">
+<span id="_CPPv3N13GDALDimension6RenameERKNSt6stringE"></span><span id="_CPPv2N13GDALDimension6RenameERKNSt6stringE"></span><span id="GDALDimension::Rename__ssCR"></span><span class="target" id="classGDALDimension_1ad6ded399b4596317d3f81a7a9739f4b2"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Rename</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">osNewName</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13GDALDimension6RenameERKNSt6stringE" title="Link to this definition"></a><br /></dt>
+<dd><p>Rename the dimension. </p>
+<p>This is not implemented by all drivers.</p>
+<p>Drivers known to implement it: MEM, netCDF, ZARR.</p>
+<p>This is the same as the C function <a class="reference internal" href="raster_c_api.html#gdal_8h_1a6dafcb6a406bc41849525b87b83d9cb8"><span class="std std-ref">GDALDimensionRename()</span></a>.</p>
+<p><dl class="simple">
+<dt><strong>Since</strong></dt><dd><p>GDAL 3.8 </p>
+</dd>
+</dl>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">パラメータ<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>osNewName</strong> -- New name.</p>
+</dd>
+<dt class="field-even">戻り値<span class="colon">:</span></dt>
+<dd class="field-even"><p>true in case of success </p>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
+</dd></dl>
+
 </section>
 
 

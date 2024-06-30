@@ -51,9 +51,9 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">プログラム</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../raster/index.html">ラスタードライバー</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">ベクタードライバー</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">Programs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../raster/index.html">Raster drivers</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Vector drivers</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="amigocloud.html">AmigoCloud</a></li>
 <li class="toctree-l2"><a class="reference internal" href="arrow.html">(Geo)Arrow IPC File Format / Stream</a></li>
 <li class="toctree-l2"><a class="reference internal" href="avcbin.html">Arc/Info Binary Coverage</a></li>
@@ -166,11 +166,11 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
@@ -208,7 +208,7 @@
     
       <li><a href="../../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">ベクタードライバー</a> &raquo;</li>
+          <li><a href="index.html">Vector drivers</a> &raquo;</li>
       
       <li>ESRI File Geodatabase vector (OpenFileGDB)</li>
     
@@ -318,7 +318,7 @@ does not involve extent recomputation.</p>
 </section>
 <section id="configuration-options">
 <h2>Configuration options<a class="headerlink" href="#configuration-options" title="Link to this heading"></a></h2>
-<p><a href="#id1"><span class="problematic" id="id2">|about-config-options|</span></a>
+<p><a class="reference internal" href="../../user/configoptions.html#configoptions"><span class="std std-ref">Configuration options</span></a> can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">--config</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or using functions such as <a class="reference internal" href="../../api/cpl.html#_CPPv418CPLSetConfigOptionPKcPKc" title="CPLSetConfigOption"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CPLSetConfigOption()</span></code></a> (C) or <code class="xref py py-func docutils literal notranslate"><span class="pre">gdal.config_options</span></code> (Python).
 The following configuration options are available:</p>
 <ul class="simple">
 <li><p id="config-OPENFILEGDB_IN_MEMORY_SPI"><strong>OPENFILEGDB_IN_MEMORY_SPI=[YES/NO]: </strong>If <code class="docutils literal notranslate"><span class="pre">YES</span></code>, an in-memory spatial index will be built instead of
@@ -331,7 +331,7 @@ CreateField() is the unspecified value 0. This defaults to 65536.</p>
 </section>
 <section id="dataset-open-options">
 <h2>Dataset open options<a class="headerlink" href="#dataset-open-options" title="Link to this heading"></a></h2>
-<p><a href="#id3"><span class="problematic" id="id4">|about-open-options|</span></a>
+<p>Open options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-oo</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALOpenExPKcjPPCKcPPCKcPPCKc" title="GDALOpenEx"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpenEx()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.OpenEx" title="osgeo.gdal.OpenEx"><code class="xref py py-meth docutils literal notranslate"><span class="pre">gdal.OpenEx</span></code></a> (Python).
 The following open options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/vector/openfilegdb-oo-LIST_ALL_TABLES"><strong>LIST_ALL_TABLES=[YES/NO]: </strong> (GDAL &gt;= 3.4) This may be &quot;YES&quot; to force all tables,
@@ -345,7 +345,7 @@ including system and internal tables (such as the GDB_* tables) to be listed</p>
 </section>
 <section id="layer-creation-options">
 <h2>Layer Creation Options<a class="headerlink" href="#layer-creation-options" title="Link to this heading"></a></h2>
-<p><a href="#id5"><span class="problematic" id="id6">|about-layer-creation-options|</span></a>
+<p>Layer creation options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-lco</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv422GDALDatasetCreateLayer12GDALDatasetHPKc20OGRSpatialReferenceH18OGRwkbGeometryType12CSLConstList" title="GDALDatasetCreateLayer"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDatasetCreateLayer()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.Dataset.CreateLayer" title="osgeo.gdal.Dataset.CreateLayer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Dataset.CreateLayer</span></code></a> (Python).
 The following layer creation options are supported:</p>
 <ul>
 <li><p id="drivers/vector/openfilegdb-lco-TARGET_ARCGIS_VERSION"><strong>TARGET_ARCGIS_VERSION=[ALL/ARCGIS_PRO_3_2_OR_LATER]: </strong> (GDAL &gt;= 3.9)  Defaults to <code class="docutils literal notranslate"><span class="pre">ALL</span></code>. ArcGIS version that the dataset must be compatible with.
@@ -460,9 +460,9 @@ warning, and can also read them fine.</p>
 </div>
 <p>The hierarchical organization of tables and feature classes as top-level
 element or within a feature dataset can be explored using the methods
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetRootGroup()</span></code>,
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALGroup::GetGroupNames()</span></code>, <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALGroup::OpenGroup()</span></code>,
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALGroup::GetVectorLayerNames()</span></code> and <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALGroup::OpenVectorLayer()</span></code></p>
+<a class="reference internal" href="../../api/gdaldataset_cpp.html#_CPPv4NK11GDALDataset12GetRootGroupEv" title="GDALDataset::GetRootGroup"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetRootGroup()</span></code></a>,
+<a class="reference internal" href="../../api/gdalgroup_cpp.html#_CPPv4NK9GDALGroup13GetGroupNamesE12CSLConstList" title="GDALGroup::GetGroupNames"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALGroup::GetGroupNames()</span></code></a>, <a class="reference internal" href="../../api/gdalgroup_cpp.html#_CPPv4NK9GDALGroup9OpenGroupERKNSt6stringE12CSLConstList" title="GDALGroup::OpenGroup"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALGroup::OpenGroup()</span></code></a>,
+<a class="reference internal" href="../../api/gdalgroup_cpp.html#_CPPv4NK9GDALGroup19GetVectorLayerNamesE12CSLConstList" title="GDALGroup::GetVectorLayerNames"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALGroup::GetVectorLayerNames()</span></code></a> and <a class="reference internal" href="../../api/gdalgroup_cpp.html#_CPPv4NK9GDALGroup15OpenVectorLayerERKNSt6stringE12CSLConstList" title="GDALGroup::OpenVectorLayer"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALGroup::OpenVectorLayer()</span></code></a></p>
 </section>
 <section id="transaction-support">
 <h2>Transaction support<a class="headerlink" href="#transaction-support" title="Link to this heading"></a></h2>
@@ -484,7 +484,7 @@ process).</p>
 <p>The driver supports reading and writing the geometry coordinate
 precision, using the XYResolution, ZResolution and MResolution members of
 the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRGeomCoordinatePrecision</span></code> settings of the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRGeomFieldDefn</span></code>. <code class="docutils literal notranslate"><span class="pre">XYScale</span></code> is computed as 1.0 / <code class="docutils literal notranslate"><span class="pre">XYResolution</span></code>
+<a class="reference internal" href="../../api/ogrfeature_cpp.html#_CPPv416OGRGeomFieldDefn" title="OGRGeomFieldDefn"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRGeomFieldDefn</span></code></a>. <code class="docutils literal notranslate"><span class="pre">XYScale</span></code> is computed as 1.0 / <code class="docutils literal notranslate"><span class="pre">XYResolution</span></code>
 (and similarly for the Z and M components). The tolerance setting is computed
 as being one tenth of the resolution</p>
 <p>On reading, the coordinate precision grid parameters are returned as format

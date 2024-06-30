@@ -51,9 +51,9 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">プログラム</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../raster/index.html">ラスタードライバー</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">ベクタードライバー</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">Programs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../raster/index.html">Raster drivers</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Vector drivers</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="amigocloud.html">AmigoCloud</a></li>
 <li class="toctree-l2"><a class="reference internal" href="arrow.html">(Geo)Arrow IPC File Format / Stream</a></li>
 <li class="toctree-l2"><a class="reference internal" href="avcbin.html">Arc/Info Binary Coverage</a></li>
@@ -165,11 +165,11 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
@@ -207,7 +207,7 @@
     
       <li><a href="../../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">ベクタードライバー</a> &raquo;</li>
+          <li><a href="index.html">Vector drivers</a> &raquo;</li>
       
       <li>LIBKML Driver (.kml .kmz)</li>
     
@@ -272,7 +272,7 @@ will be flattened to support ogr's internal format.</p>
 <h2>Driver capabilities<a class="headerlink" href="#driver-capabilities" title="Link to this heading"></a></h2>
 <div class="admonition supports_create" id="supports_create-0">
 <p class="admonition-title">Supports Create()</p>
-<p>This driver supports the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::Create()</span></code> operation</p>
+<p>This driver supports the <a class="reference internal" href="../../api/gdaldriver_cpp.html#_CPPv4N10GDALDriver6CreateEPKciii12GDALDataType12CSLConstList" title="GDALDriver::Create"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::Create()</span></code></a> operation</p>
 </div>
 <div class="admonition supports_georeferencing" id="supports_georeferencing-0">
 <p class="admonition-title">Supports Georeferencing</p>
@@ -310,7 +310,7 @@ KML.</p>
 </section>
 <section id="dataset-creation-options">
 <h3>Dataset creation options<a class="headerlink" href="#dataset-creation-options" title="Link to this heading"></a></h3>
-<p><a href="#id2"><span class="problematic" id="id3">|about-dataset-creation-options|</span></a>
+<p>Dataset creation options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-dsco</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALCreate11GDALDriverHPKciii12GDALDataType12CSLConstList" title="GDALCreate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALCreate()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.Driver.Create" title="osgeo.gdal.Driver.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Driver.Create</span></code></a> (Python).
 The following dataset creation options can be
 used to generate a
 <a class="reference external" href="https://developers.google.com/kml/documentation/kmlreference#atomauthor">&lt;atom:Author&gt;</a>
@@ -336,7 +336,7 @@ element at the top Document level.</p>
 element at the top Document level. The value must follow the syntax of
 <a class="reference external" href="http://tools.ietf.org/html/rfc3966">IETF RFC 3966</a>.</p>
 </li>
-<li><p id="drivers/vector/libkml-dsco-DOCUMENT_ID"><strong>DOCUMENT_ID=value: </strong> (GDAL &gt;= 2.2)  Defaults to <code class="docutils literal notranslate"><span class="pre">root_doc</span></code>. Specifies the id of the root &lt;Document&gt; node.</p>
+<li><p id="drivers/vector/libkml-dsco-DOCUMENT_ID"><strong>DOCUMENT_ID=value: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">root_doc</span></code>. Specifies the id of the root &lt;Document&gt; node.</p>
 </li>
 </ul>
 <section id="container-properties">
@@ -449,7 +449,7 @@ element.</p>
 </section>
 <section id="layer">
 <h2>Layer<a class="headerlink" href="#layer" title="Link to this heading"></a></h2>
-<p><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRLayer</span></code> are mapped
+<p><a class="reference internal" href="../../api/ogrlayer_cpp.html#_CPPv48OGRLayer" title="OGRLayer"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRLayer</span></code></a> are mapped
 to kml files as a
 <a class="reference external" href="https://developers.google.com/kml/documentation/kmlreference#document">&lt;Document&gt;</a>
 or
@@ -472,7 +472,7 @@ is supported for .kml files, .kmz files, and directories.</p>
 </section>
 <section id="layer-creation-options">
 <h3>Layer creation options<a class="headerlink" href="#layer-creation-options" title="Link to this heading"></a></h3>
-<p><a href="#id4"><span class="problematic" id="id5">|about-layer-creation-options|</span></a>
+<p>Layer creation options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-lco</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv422GDALDatasetCreateLayer12GDALDatasetHPKc20OGRSpatialReferenceH18OGRwkbGeometryType12CSLConstList" title="GDALDatasetCreateLayer"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDatasetCreateLayer()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.Dataset.CreateLayer" title="osgeo.gdal.Dataset.CreateLayer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Dataset.CreateLayer</span></code></a> (Python).
 The following layer creation options can be used
 to generate a
 <a class="reference external" href="https://developers.google.com/kml/documentation/kmlreference#lookat">&lt;LookAt&gt;</a>
@@ -626,7 +626,7 @@ element.</p>
 </section>
 <section id="feature">
 <h2>Feature<a class="headerlink" href="#feature" title="Link to this heading"></a></h2>
-<p>An <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRFeature</span></code>
+<p>An <a class="reference internal" href="../../api/ogrfeature_cpp.html#_CPPv410OGRFeature" title="OGRFeature"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRFeature</span></code></a>
 generally translates to kml as a
 <a class="reference external" href="https://developers.google.com/kml/documentation/kmlreference#placemark">&lt;Placemark&gt;</a>,
 and vice-versa.</p>
@@ -903,7 +903,7 @@ field if there is no style string set on the feature.</p>
 </section>
 <section id="geometry">
 <h2>Geometry<a class="headerlink" href="#geometry" title="Link to this heading"></a></h2>
-<p>Translation of <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRGeometry</span></code> to
+<p>Translation of <a class="reference internal" href="../../api/ogrgeometry_cpp.html#_CPPv411OGRGeometry" title="OGRGeometry"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRGeometry</span></code></a> to
 KML Geometry is pretty straightforward with only a couple of exceptions.
 Point to
 <a class="reference external" href="https://developers.google.com/kml/documentation/kmlreference#point">&lt;Point&gt;</a>

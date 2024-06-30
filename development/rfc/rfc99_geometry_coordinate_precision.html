@@ -51,15 +51,15 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">プログラム</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">Programs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../drivers/raster/index.html">Raster drivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../drivers/vector/index.html">Vector drivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Development</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../dev_environment.html">Setting up a development environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../building_from_source.html">Building GDAL from source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev_environment.html">Setting up a development environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dev_practices.html">Development practices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../testing.html">Automated testing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dev_documentation.html">Building documentation</a></li>
@@ -100,7 +100,7 @@
 <li class="toctree-l3"><a class="reference internal" href="rfc33_gtiff_pixelispoint.html">RFC 33: GTiff - Fixing PixelIsPoint Interpretation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="rfc34_license_policy.html">RFC 34: License Policy Enforcement</a></li>
 <li class="toctree-l3"><a class="reference internal" href="rfc35_deletereorderalterfielddefn.html">RFC 35: Delete, reorder and alter field definitions of OGR layers</a></li>
-<li class="toctree-l3"><a class="reference internal" href="rfc36_open_by_drivername.html">RFC 36: Allow specification of intended driver on GDALOpen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rfc36_open_by_drivername.html">RFC 36: Allow specification of intended driver on GDALOpen (withdrawn)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="rfc37_cplerror_userdata.html">RFC 37: User data callbacks in CPLError</a></li>
 <li class="toctree-l3"><a class="reference internal" href="rfc38_ogr_faster_open.html">RFC 38: OGR Faster Open (withdrawn)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="rfc39_ogr_layer_algebra.html">RFC 39: OGR Layer Algebra</a></li>
@@ -186,7 +186,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -457,7 +457,7 @@ If only a 1 meter precision is wished, this increases to 26 useless least-signif
 </section>
 <section id="ogrgeomfielddefn-class">
 <h3>OGRGeomFieldDefn class<a class="headerlink" href="#ogrgeomfielddefn-class" title="Link to this heading"></a></h3>
-<p>The existing <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRGeomFieldDefn</span></code> is extended with a new
+<p>The existing <a class="reference internal" href="../../api/ogrfeature_cpp.html#_CPPv416OGRGeomFieldDefn" title="OGRGeomFieldDefn"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRGeomFieldDefn</span></code></a> is extended with a new
 OGRGeomCoordinatePrecision member, and associated getter and setter methods.</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">OGRGeomFieldDefn</span>
 <span class="p">{</span>
@@ -481,7 +481,7 @@ OGRGeomCoordinatePrecision member, and associated getter and setter methods.</p>
 </section>
 <section id="ogrgeometry-class">
 <h3>OGRGeometry class<a class="headerlink" href="#ogrgeometry-class" title="Link to this heading"></a></h3>
-<p>The existing <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRGeometry</span></code> is extended with the following new
+<p>The existing <a class="reference internal" href="../../api/ogrgeometry_cpp.html#_CPPv411OGRGeometry" title="OGRGeometry"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRGeometry</span></code></a> is extended with the following new
 <code class="docutils literal notranslate"><span class="pre">SetPrecision</span></code> method which is a wrapper of the <code class="docutils literal notranslate"><span class="pre">GEOSGeom_setPrecision_r</span></code> function:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cm">/** Set the geometry&#39;s precision, rounding all its coordinates to the precision</span>
 <span class="cm"> * grid, and making sure the geometry is still valid.</span>
@@ -522,7 +522,7 @@ coordinate precision metadata.</p>
 <p>However it is invoked when the <cite>-xyRes</cite> switch of ogr2ogr is passed.</p>
 <p>It may also be triggered by setting the new <code class="docutils literal notranslate"><span class="pre">OGR_APPLY_GEOM_SET_PRECISION</span></code>
 configuration option to <code class="docutils literal notranslate"><span class="pre">YES</span></code>, for geometries passed to
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::CreateFeature()</span></code> and <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::SetFeature()</span></code> before
+<a class="reference internal" href="../../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer13CreateFeatureEP10OGRFeature" title="OGRLayer::CreateFeature"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::CreateFeature()</span></code></a> and <a class="reference internal" href="../../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer10SetFeatureEP10OGRFeature" title="OGRLayer::SetFeature"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::SetFeature()</span></code></a> before
 they are passed to the driver.</p>
 <p>A closely related <code class="docutils literal notranslate"><span class="pre">roundCoordinates</span></code> method is also introduced:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cm">/** Round coordinates of the geometry to the specified precision.</span>
@@ -640,7 +640,7 @@ when writing geometries. This may be useul for user interfaces that could offer
 an option to the user to specify the coordinate precision. Note however that
 the driver may not be able to store that precision in the dataset metadata.</p>
 <p>There will be <em>no</em> provision to modify the coordinate precision of an
-existing layer geometry field with <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::AlterFieldDefn()</span></code>.</p>
+existing layer geometry field with <a class="reference internal" href="../../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer14AlterFieldDefnEiP12OGRFieldDefni" title="OGRLayer::AlterFieldDefn"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::AlterFieldDefn()</span></code></a>.</p>
 </section>
 </section>
 <section id="driver-changes">

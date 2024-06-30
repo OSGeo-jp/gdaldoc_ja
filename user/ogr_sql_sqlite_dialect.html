@@ -51,9 +51,9 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../programs/index.html">プログラム</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">ラスタードライバー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">ベクタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programs/index.html">Programs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">Raster drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">Vector drivers</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">ユーザー</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="raster_data_model.html">Raster Data Model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="multidim_raster_data_model.html">Multidimensional Raster Data Model</a></li>
@@ -69,19 +69,19 @@
 <li class="toctree-l3"><a class="reference internal" href="#executesql">ExecuteSQL()</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ogr_feature_style.html">Feature Style Specification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="coordinate_epoch.html">Coordinate epoch support</a></li>
-<li class="toctree-l2"><a class="reference internal" href="configoptions.html">設定オプション</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configoptions.html">Configuration options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gdal_python_utilities.html">GDAL Python Utilities</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../development/index.html">開発</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">スポンサー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">貢献する方法は?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">Sponsors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">ライセンス</a></li>
 </ul>
@@ -119,7 +119,7 @@
     
       <li><a href="../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">ユーザー向け文書</a> &raquo;</li>
+          <li><a href="index.html">User oriented documentation</a> &raquo;</li>
       
       <li>OGR SQL dialect and SQLITE SQL dialect</li>
     
@@ -155,7 +155,7 @@
   <section id="ogr-sql-dialect-and-sqlite-sql-dialect">
 <span id="ogr-sql-sqlite-dialect"></span><h1>OGR SQL dialect and SQLITE SQL dialect<a class="headerlink" href="#ogr-sql-dialect-and-sqlite-sql-dialect" title="Link to this heading"></a></h1>
 <p>The GDALDataset supports executing commands against a datasource via the
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::ExecuteSQL()</span></code> method. How such commands are evaluated
+<a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4N11GDALDataset10ExecuteSQLEPKcP11OGRGeometryPKc" title="GDALDataset::ExecuteSQL"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::ExecuteSQL()</span></code></a> method. How such commands are evaluated
 is dependent on the datasets.</p>
 <ul class="simple">
 <li><p>For most file formats (e.g. Shapefiles, GeoJSON, MapInfo files), the built-in
@@ -165,7 +165,7 @@ will use the SQLite engine to evaluate commands on GDAL datasets.</p></li>
 <li><p>All OGR drivers for database systems: <a class="reference internal" href="../drivers/vector/mysql.html#vector-mysql"><span class="std std-ref">MySQL</span></a>, <a class="reference internal" href="../drivers/vector/pg.html#vector-pg"><span class="std std-ref">PostgreSQL / PostGIS</span></a>,
 <a class="reference internal" href="../drivers/vector/oci.html#vector-oci"><span class="std std-ref">Oracle Spatial</span></a>, <a class="reference internal" href="../drivers/vector/sqlite.html#vector-sqlite"><span class="std std-ref">SQLite / Spatialite RDBMS</span></a>, <a class="reference internal" href="../drivers/vector/gpkg.html#vector-gpkg"><span class="std std-ref">GPKG -- GeoPackage vector</span></a>,
 <a class="reference internal" href="../drivers/vector/odbc.html#vector-odbc"><span class="std std-ref">ODBC RDBMS</span></a>, <a class="reference internal" href="../drivers/vector/pgeo.html#vector-pgeo"><span class="std std-ref">ESRI Personal GeoDatabase</span></a>, <a class="reference internal" href="../drivers/vector/hana.html#vector-hana"><span class="std std-ref">SAP HANA</span></a> and <a class="reference internal" href="../drivers/vector/mssqlspatial.html#vector-mssqlspatial"><span class="std std-ref">MSSQLSpatial - Microsoft SQL Server Spatial Database</span></a>,
-override the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::ExecuteSQL()</span></code> function with dedicated implementation
+override the <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4N11GDALDataset10ExecuteSQLEPKcP11OGRGeometryPKc" title="GDALDataset::ExecuteSQL"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::ExecuteSQL()</span></code></a> function with dedicated implementation
 and, by default, pass the SQL statements directly to the underlying RDBMS.
 In these cases the SQL syntax varies in some particulars from OGR SQL.
 Also, anything possible in SQL can then be accomplished for these particular
@@ -197,7 +197,7 @@ different command languages against a provider, but for now applications
 should always pass an empty (not NULL) string to get the default dialect.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">poSpatialFilter</span></code> argument is a geometry used to select a bounding rectangle
 for features to be returned in a manner similar to the
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::SetSpatialFilter()</span></code> method.  It may be NULL for no special spatial
+<a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer16SetSpatialFilterEP11OGRGeometry" title="OGRLayer::SetSpatialFilter"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::SetSpatialFilter()</span></code></a> method.  It may be NULL for no special spatial
 restriction.</p>
 <p>The result of an ExecuteSQL() call is usually a temporary OGRLayer representing
 the results set from the statement.  This is the case for a SELECT statement

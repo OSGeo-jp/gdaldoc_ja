@@ -51,9 +51,9 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">プログラム</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../raster/index.html">ラスタードライバー</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">ベクタードライバー</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">Programs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../raster/index.html">Raster drivers</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Vector drivers</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="amigocloud.html">AmigoCloud</a></li>
 <li class="toctree-l2"><a class="reference internal" href="arrow.html">(Geo)Arrow IPC File Format / Stream</a></li>
 <li class="toctree-l2"><a class="reference internal" href="avcbin.html">Arc/Info Binary Coverage</a></li>
@@ -158,11 +158,11 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
@@ -200,7 +200,7 @@
     
       <li><a href="../../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">ベクタードライバー</a> &raquo;</li>
+          <li><a href="index.html">Vector drivers</a> &raquo;</li>
       
       <li>Carto</li>
     
@@ -250,7 +250,7 @@ must be built with Curl support in order for the Carto driver to be compiled.</p
 <h2>Driver capabilities<a class="headerlink" href="#driver-capabilities" title="Link to this heading"></a></h2>
 <div class="admonition supports_create" id="supports_create-0">
 <p class="admonition-title">Supports Create()</p>
-<p>This driver supports the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::Create()</span></code> operation</p>
+<p>This driver supports the <a class="reference internal" href="../../api/gdaldriver_cpp.html#_CPPv4N10GDALDriver6CreateEPKciii12GDALDataType12CSLConstList" title="GDALDriver::Create"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::Create()</span></code></a> operation</p>
 </div>
 <div class="admonition supports_georeferencing" id="supports_georeferencing-0">
 <p class="admonition-title">Supports Georeferencing</p>
@@ -289,7 +289,7 @@ CARTO_API_KEY configuration option.</p>
 <section id="filtering">
 <h2>Filtering<a class="headerlink" href="#filtering" title="Link to this heading"></a></h2>
 <p>The driver will forward any spatial filter set with
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::SetSpatialFilter()</span></code> to the server.
+<a class="reference internal" href="../../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer16SetSpatialFilterEP11OGRGeometry" title="OGRLayer::SetSpatialFilter"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::SetSpatialFilter()</span></code></a> to the server.
 It also makes the same for attribute filters set with
 <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetAttributeFilter()</span></code>.</p>
 </section>
@@ -306,20 +306,20 @@ mode.</p>
 <p>The mapping between the operations of the Carto service and the OGR
 concepts is the following :</p>
 <ul class="simple">
-<li><p><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeature::CreateFeature()</span></code> &lt;==&gt; <code class="docutils literal notranslate"><span class="pre">INSERT</span></code> operation</p></li>
+<li><p><a class="reference internal" href="../../api/ogrfeature_cpp.html#_CPPv4N10OGRFeature13CreateFeatureEP14OGRFeatureDefn" title="OGRFeature::CreateFeature"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeature::CreateFeature()</span></code></a> &lt;==&gt; <code class="docutils literal notranslate"><span class="pre">INSERT</span></code> operation</p></li>
 <li><p><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeature::SetFeature()</span></code> &lt;==&gt; <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code> operation</p></li>
 <li><p><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeature::DeleteFeature()</span></code> &lt;==&gt; <code class="docutils literal notranslate"><span class="pre">DELETE</span></code> operation</p></li>
 <li><p><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRDataSource::CreateLayer()</span></code> &lt;==&gt; <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span></code> operation</p></li>
 <li><p><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRDataSource::DeleteLayer()</span></code> &lt;==&gt; <code class="docutils literal notranslate"><span class="pre">DROP</span> <span class="pre">TABLE</span></code> operation</p></li>
 </ul>
-<p>When inserting a new feature with <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeature::CreateFeature()</span></code>,
+<p>When inserting a new feature with <a class="reference internal" href="../../api/ogrfeature_cpp.html#_CPPv4N10OGRFeature13CreateFeatureEP14OGRFeatureDefn" title="OGRFeature::CreateFeature"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeature::CreateFeature()</span></code></a>,
 and if the command is successful, OGR will fetch the returned rowid and use it
 as the OGR FID.</p>
 <p>The above operations are by default issued to the server synchronously with the
 OGR API call. This however can cause performance penalties when issuing a lot
 of commands due to many client/server exchanges.</p>
 <p>So, on a newly created layer, the <code class="docutils literal notranslate"><span class="pre">INSERT</span></code> of
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeature::CreateFeature()</span></code> operations are grouped together in chunks
+<a class="reference internal" href="../../api/ogrfeature_cpp.html#_CPPv4N10OGRFeature13CreateFeatureEP14OGRFeatureDefn" title="OGRFeature::CreateFeature"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeature::CreateFeature()</span></code></a> operations are grouped together in chunks
 until they reach 15 MB (can be changed with the <a class="reference internal" href="#config-CARTO_MAX_CHUNK_SIZE"><code class="docutils literal notranslate"><span class="pre">CARTO_MAX_CHUNK_SIZE</span></code></a>
 configuration option, with a value in MB), at which point they are transferred
 to the server. By setting <a class="reference internal" href="#config-CARTO_MAX_CHUNK_SIZE"><code class="docutils literal notranslate"><span class="pre">CARTO_MAX_CHUNK_SIZE</span></code></a> to 0, immediate transfer occurs.</p>
@@ -340,7 +340,7 @@ You can use the full power of PostgreSQL + PostGIS SQL capabilities.</p>
 <section id="open-options">
 <h2>Open options<a class="headerlink" href="#open-options" title="Link to this heading"></a></h2>
 <p>The following open options are available:
-<a href="#id1"><span class="problematic" id="id2">|about-open-options|</span></a></p>
+Open options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-oo</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALOpenExPKcjPPCKcPPCKcPPCKc" title="GDALOpenEx"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpenEx()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.OpenEx" title="osgeo.gdal.OpenEx"><code class="xref py py-meth docutils literal notranslate"><span class="pre">gdal.OpenEx</span></code></a> (Python).</p>
 <ul class="simple">
 <li><p id="drivers/vector/carto-oo-BATCH_INSERT"><strong>BATCH_INSERT=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">YES</span></code>. Whether to group feature insertions in a
 batch. Only apply in creation or update mode.</p>
@@ -352,7 +352,7 @@ result in a performance improvement.</p>
 </section>
 <section id="layer-creation-options">
 <h2>Layer creation options<a class="headerlink" href="#layer-creation-options" title="Link to this heading"></a></h2>
-<p><a href="#id3"><span class="problematic" id="id4">|about-layer-creation-options|</span></a>
+<p>Layer creation options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-lco</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv422GDALDatasetCreateLayer12GDALDatasetHPKc20OGRSpatialReferenceH18OGRwkbGeometryType12CSLConstList" title="GDALDatasetCreateLayer"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDatasetCreateLayer()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.Dataset.CreateLayer" title="osgeo.gdal.Dataset.CreateLayer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Dataset.CreateLayer</span></code></a> (Python).
 The following layer creation options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/vector/carto-lco-OVERWRITE"><strong>OVERWRITE=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. Whether to overwrite an existing table with
@@ -380,7 +380,7 @@ are preserved. If enabled the table (layer) name will also be laundered.</p>
 </section>
 <section id="configuration-options">
 <h2>Configuration options<a class="headerlink" href="#configuration-options" title="Link to this heading"></a></h2>
-<p><a href="#id5"><span class="problematic" id="id6">|about-config-options|</span></a>
+<p><a class="reference internal" href="../../user/configoptions.html#configoptions"><span class="std std-ref">Configuration options</span></a> can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">--config</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or using functions such as <a class="reference internal" href="../../api/cpl.html#_CPPv418CPLSetConfigOptionPKcPKc" title="CPLSetConfigOption"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CPLSetConfigOption()</span></code></a> (C) or <code class="xref py py-func docutils literal notranslate"><span class="pre">gdal.config_options</span></code> (Python).
 The following configuration options are available:</p>
 <ul class="simple">
 <li><p id="config-CARTO_API_URL"><strong>CARTO_API_URL=value: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">https://[account_name].carto.com/api/v2/sql</span></code>. Can be used to point to another server.</p>

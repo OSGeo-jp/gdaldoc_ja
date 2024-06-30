@@ -51,9 +51,9 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">プログラム</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../raster/index.html">ラスタードライバー</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">ベクタードライバー</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">Programs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../raster/index.html">Raster drivers</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Vector drivers</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="amigocloud.html">AmigoCloud</a></li>
 <li class="toctree-l2"><a class="reference internal" href="arrow.html">(Geo)Arrow IPC File Format / Stream</a></li>
 <li class="toctree-l2"><a class="reference internal" href="avcbin.html">Arc/Info Binary Coverage</a></li>
@@ -168,11 +168,11 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
@@ -210,7 +210,7 @@
     
       <li><a href="../../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">ベクタードライバー</a> &raquo;</li>
+          <li><a href="index.html">Vector drivers</a> &raquo;</li>
       
       <li>SQLite / Spatialite RDBMS</li>
     
@@ -297,7 +297,7 @@ documentation</a>.</p>
 <h2>Driver capabilities<a class="headerlink" href="#driver-capabilities" title="Link to this heading"></a></h2>
 <div class="admonition supports_create" id="supports_create-0">
 <p class="admonition-title">Supports Create()</p>
-<p>This driver supports the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::Create()</span></code> operation</p>
+<p>This driver supports the <a class="reference internal" href="../../api/gdaldriver_cpp.html#_CPPv4N10GDALDriver6CreateEPKciii12GDALDataType12CSLConstList" title="GDALDriver::Create"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::Create()</span></code></a> operation</p>
 </div>
 <div class="admonition supports_georeferencing" id="supports_georeferencing-0">
 <p class="admonition-title">Supports Georeferencing</p>
@@ -454,7 +454,7 @@ constraints.</p>
 <p>Relationship creation is supported since GDAL 3.7, for one-to-many relationships only.</p>
 <section id="dataset-open-options">
 <h3>Dataset open options<a class="headerlink" href="#dataset-open-options" title="Link to this heading"></a></h3>
-<p><a href="#id1"><span class="problematic" id="id2">|about-open-options|</span></a>
+<p>Open options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-oo</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALOpenExPKcjPPCKcPPCKcPPCKc" title="GDALOpenEx"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpenEx()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.OpenEx" title="osgeo.gdal.OpenEx"><code class="xref py py-meth docutils literal notranslate"><span class="pre">gdal.OpenEx</span></code></a> (Python).
 The following open options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/vector/sqlite-oo-LIST_ALL_TABLES"><strong>LIST_ALL_TABLES=[YES/NO]: </strong>This may be &quot;YES&quot; to force all tables,
@@ -480,7 +480,7 @@ its geometry blobs are properly recognized (so typically not a GeoPackage one)</
 </section>
 <section id="database-creation-options">
 <h3>Database creation options<a class="headerlink" href="#database-creation-options" title="Link to this heading"></a></h3>
-<p><a href="#id3"><span class="problematic" id="id4">|about-dataset-creation-options|</span></a>
+<p>Dataset creation options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-dsco</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALCreate11GDALDriverHPKciii12GDALDataType12CSLConstList" title="GDALCreate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALCreate()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.Driver.Create" title="osgeo.gdal.Driver.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Driver.Create</span></code></a> (Python).
 The following dataset creation options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/vector/sqlite-dsco-METADATA"><strong>METADATA=[YES/NO]: </strong>This can be used to avoid creating the
@@ -518,7 +518,7 @@ into the spatial_ref_sys table when creating a new DB
 </section>
 <section id="layer-creation-options">
 <h3>Layer creation options<a class="headerlink" href="#layer-creation-options" title="Link to this heading"></a></h3>
-<p><a href="#id5"><span class="problematic" id="id6">|about-layer-creation-options|</span></a>
+<p>Layer creation options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-lco</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv422GDALDatasetCreateLayer12GDALDatasetHPKc20OGRSpatialReferenceH18OGRwkbGeometryType12CSLConstList" title="GDALDatasetCreateLayer"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDatasetCreateLayer()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.Dataset.CreateLayer" title="osgeo.gdal.Dataset.CreateLayer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Dataset.CreateLayer</span></code></a> (Python).
 The following layer creation options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/vector/sqlite-lco-FORMAT"><strong>FORMAT=[WKB/WKT/SPATIALITE]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">WKB</span></code>. Controls the format used for the
@@ -591,7 +591,7 @@ strict mode.</p>
 </section>
 <section id="configuration-options">
 <h2>Configuration options<a class="headerlink" href="#configuration-options" title="Link to this heading"></a></h2>
-<p><a href="#id7"><span class="problematic" id="id8">|about-config-options|</span></a>
+<p><a class="reference internal" href="../../user/configoptions.html#configoptions"><span class="std std-ref">Configuration options</span></a> can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">--config</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or using functions such as <a class="reference internal" href="../../api/cpl.html#_CPPv418CPLSetConfigOptionPKcPKc" title="CPLSetConfigOption"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CPLSetConfigOption()</span></code></a> (C) or <code class="xref py py-func docutils literal notranslate"><span class="pre">gdal.config_options</span></code> (Python).
 The following configuration options are available:</p>
 <ul class="simple">
 <li><p id="config-SQLITE_LIST_ALL_TABLES"><strong>SQLITE_LIST_ALL_TABLES=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. Set to &quot;YES&quot; to list

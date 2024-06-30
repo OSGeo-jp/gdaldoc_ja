@@ -51,7 +51,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../programs/index.html">プログラム</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programs/index.html">Programs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">Raster drivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">Vector drivers</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">ユーザー</a><ul class="current">
@@ -61,7 +61,7 @@
 <li class="toctree-l2"><a class="reference internal" href="gnm_data_model.html">Geographic Networks Data Model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="multithreading.html">Multi-threading</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ogr_sql_sqlite_dialect.html">OGR SQL dialect and SQLITE SQL dialect</a></li>
-<li class="toctree-l2"><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Feature Style Specification</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#overview">1. Overview</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#style-is-a-property-of-feature-object">1.1 Style is a property of Feature object</a></li>
@@ -87,18 +87,18 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="coordinate_epoch.html">Coordinate epoch support</a></li>
-<li class="toctree-l2"><a class="reference internal" href="configoptions.html">設定オプション</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configoptions.html">Configuration options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gdal_python_utilities.html">GDAL Python Utilities</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">チュートリアル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">Sponsors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -134,7 +134,7 @@
     
       <li><a href="../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">ユーザー向け文書</a> &raquo;</li>
+          <li><a href="index.html">User oriented documentation</a> &raquo;</li>
       
       <li>Feature Style Specification</li>
     
@@ -841,25 +841,25 @@ style string has been specified programmatically.</p>
 <hr class="docutils" />
 <section id="ogr-support-classes">
 <h2>3. OGR Support Classes<a class="headerlink" href="#ogr-support-classes" title="Link to this heading"></a></h2>
-<p>The <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRFeature</span></code> class has member functions
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeature::GetStyleString()</span></code>, <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeature::SetStyleString()</span></code> and <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeature::SetStyleStringDirectly()</span></code>
+<p>The <a class="reference internal" href="../api/ogrfeature_cpp.html#_CPPv410OGRFeature" title="OGRFeature"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRFeature</span></code></a> class has member functions
+<a class="reference internal" href="../api/ogrfeature_cpp.html#_CPPv4NK10OGRFeature14GetStyleStringEv" title="OGRFeature::GetStyleString"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeature::GetStyleString()</span></code></a>, <a class="reference internal" href="../api/ogrfeature_cpp.html#_CPPv4N10OGRFeature14SetStyleStringEPKc" title="OGRFeature::SetStyleString"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeature::SetStyleString()</span></code></a> and <a class="reference internal" href="../api/ogrfeature_cpp.html#_CPPv4N10OGRFeature22SetStyleStringDirectlyEPc" title="OGRFeature::SetStyleStringDirectly"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeature::SetStyleStringDirectly()</span></code></a>
 which may be used to interact with a feature's style string as a C-style
-string. Additionally, there are <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeature::GetStyleTable()</span></code>, <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeature::SetStyleTable()</span></code> and
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeature::SetStyleTableDirectly()</span></code> for managing style tables as instances of the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRStyleTable</span></code> class.</p>
-<p>The <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRLayer</span></code> and <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALDataset</span></code> classes also have <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::GetStyleTable()</span></code>,
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::SetStyleTable()</span></code> and <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::SetStyleTableDirectly()</span></code> member functions.</p>
-<p>To parse style strings, the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRStyleMgr</span></code> class is used. Each style tool in the string
-is accessed as an instance of the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRStyleTool</span></code> class. Lastly, four helper classes exist,
+string. Additionally, there are <a class="reference internal" href="../api/ogrfeature_cpp.html#_CPPv4NK10OGRFeature13GetStyleTableEv" title="OGRFeature::GetStyleTable"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeature::GetStyleTable()</span></code></a>, <a class="reference internal" href="../api/ogrfeature_cpp.html#_CPPv4N10OGRFeature13SetStyleTableEP13OGRStyleTable" title="OGRFeature::SetStyleTable"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeature::SetStyleTable()</span></code></a> and
+<a class="reference internal" href="../api/ogrfeature_cpp.html#_CPPv4N10OGRFeature21SetStyleTableDirectlyEP13OGRStyleTable" title="OGRFeature::SetStyleTableDirectly"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeature::SetStyleTableDirectly()</span></code></a> for managing style tables as instances of the
+<a class="reference internal" href="../api/ogrfeaturestyle_cpp.html#_CPPv413OGRStyleTable" title="OGRStyleTable"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRStyleTable</span></code></a> class.</p>
+<p>The <a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv48OGRLayer" title="OGRLayer"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRLayer</span></code></a> and <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv411GDALDataset" title="GDALDataset"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALDataset</span></code></a> classes also have <a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer13GetStyleTableEv" title="OGRLayer::GetStyleTable"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::GetStyleTable()</span></code></a>,
+<a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer13SetStyleTableEP13OGRStyleTable" title="OGRLayer::SetStyleTable"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::SetStyleTable()</span></code></a> and <a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer21SetStyleTableDirectlyEP13OGRStyleTable" title="OGRLayer::SetStyleTableDirectly"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::SetStyleTableDirectly()</span></code></a> member functions.</p>
+<p>To parse style strings, the <a class="reference internal" href="../api/ogrfeaturestyle_cpp.html#_CPPv411OGRStyleMgr" title="OGRStyleMgr"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRStyleMgr</span></code></a> class is used. Each style tool in the string
+is accessed as an instance of the <a class="reference internal" href="../api/ogrfeaturestyle_cpp.html#_CPPv412OGRStyleTool" title="OGRStyleTool"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRStyleTool</span></code></a> class. Lastly, four helper classes exist,
 one for each tool (<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRStylePen</span></code>,
 <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRStyleBrush</span></code>,
 <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRStyleSymbol</span></code>,
 <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRStyleLabel</span></code>), with each available
 parameter represented by a getter and setter member function. To
 understand these classes better, it may be useful to read the
-<a href="#id1"><span class="problematic" id="id2">:source_file:`ogr/ogr_featurestyle.h`</span></a>
+<a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/ogr/ogr_featurestyle.h">ogr_featurestyle.h</a>
 and
-<a href="#id3"><span class="problematic" id="id4">:source_file:`ogr/ogrfeaturestyle.cpp`</span></a>
+<a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/ogr/ogrfeaturestyle.cpp">ogrfeaturestyle.cpp</a>
 code files.</p>
 <p>Here is some example C++ code:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">OGRStyleTable</span><span class="w"> </span><span class="n">oStyleTable</span><span class="p">;</span>

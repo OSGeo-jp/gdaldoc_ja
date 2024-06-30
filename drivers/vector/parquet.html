@@ -51,9 +51,9 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">プログラム</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../raster/index.html">ラスタードライバー</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">ベクタードライバー</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">Programs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../raster/index.html">Raster drivers</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Vector drivers</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="amigocloud.html">AmigoCloud</a></li>
 <li class="toctree-l2"><a class="reference internal" href="arrow.html">(Geo)Arrow IPC File Format / Stream</a></li>
 <li class="toctree-l2"><a class="reference internal" href="avcbin.html">Arc/Info Binary Coverage</a></li>
@@ -156,11 +156,11 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
@@ -198,7 +198,7 @@
     
       <li><a href="../../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">ベクタードライバー</a> &raquo;</li>
+          <li><a href="index.html">Vector drivers</a> &raquo;</li>
       
       <li>(Geo)Parquet</li>
     
@@ -255,7 +255,7 @@ The GeoParquet 1.1.0 specification is supported since GDAL 3.9.0.</p>
 <h2>Driver capabilities<a class="headerlink" href="#driver-capabilities" title="Link to this heading"></a></h2>
 <div class="admonition supports_create" id="supports_create-0">
 <p class="admonition-title">Supports Create()</p>
-<p>This driver supports the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::Create()</span></code> operation</p>
+<p>This driver supports the <a class="reference internal" href="../../api/gdaldriver_cpp.html#_CPPv4N10GDALDriver6CreateEPKciii12GDALDataType12CSLConstList" title="GDALDriver::Create"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::Create()</span></code></a> operation</p>
 </div>
 <div class="admonition supports_georeferencing" id="supports_georeferencing-0">
 <p class="admonition-title">Supports Georeferencing</p>
@@ -268,7 +268,7 @@ The GeoParquet 1.1.0 specification is supported since GDAL 3.9.0.</p>
 </section>
 <section id="open-options">
 <h2>Open options<a class="headerlink" href="#open-options" title="Link to this heading"></a></h2>
-<p><a href="#id3"><span class="problematic" id="id4">|about-open-options|</span></a>
+<p>Open options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-oo</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALOpenExPKcjPPCKcPPCKcPPCKc" title="GDALOpenEx"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpenEx()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.OpenEx" title="osgeo.gdal.OpenEx"><code class="xref py py-meth docutils literal notranslate"><span class="pre">gdal.OpenEx</span></code></a> (Python).
 The following open options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/vector/parquet-oo-GEOM_POSSIBLE_NAMES"><strong>GEOM_POSSIBLE_NAMES=value: </strong> (GDAL &gt;= 3.8)  Defaults to <code class="docutils literal notranslate"><span class="pre">geometry,wkb_geometry,wkt_geometry</span></code>. Comma separated list of possible names for geometry column(s). Only used
@@ -291,7 +291,7 @@ be a PROJ.4 or WKT CRS string.</p>
 </section>
 <section id="layer-creation-options">
 <h2>Layer creation options<a class="headerlink" href="#layer-creation-options" title="Link to this heading"></a></h2>
-<p><a href="#id5"><span class="problematic" id="id6">|about-layer-creation-options|</span></a>
+<p>Layer creation options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-lco</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv422GDALDatasetCreateLayer12GDALDatasetHPKc20OGRSpatialReferenceH18OGRwkbGeometryType12CSLConstList" title="GDALDatasetCreateLayer"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDatasetCreateLayer()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.Dataset.CreateLayer" title="osgeo.gdal.Dataset.CreateLayer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Dataset.CreateLayer</span></code></a> (Python).
 The following layer creation options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/vector/parquet-lco-COMPRESSION"><strong>COMPRESSION=[NONE/UNCOMPRESSED/SNAPPY/GZIP/BROTLI/ZSTD/LZ4_RAW/LZ4_HADOOP]: </strong><p>Compression method.
@@ -386,14 +386,14 @@ GDAL 3.10.</p>
 <section id="multithreading">
 <h2>Multithreading<a class="headerlink" href="#multithreading" title="Link to this heading"></a></h2>
 <p>Starting with GDAL 3.6.0, the driver will use up to 4 threads for reading (or the
-maximum number of available CPUs returned by <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CPLGetNumCPUs()</span></code> if
+maximum number of available CPUs returned by <a class="reference internal" href="../../api/cpl.html#_CPPv413CPLGetNumCPUsv" title="CPLGetNumCPUs"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CPLGetNumCPUs()</span></code></a> if
 it is lower by 4). This number can be configured with the configuration option
 <a class="reference internal" href="../../user/configoptions.html#config-GDAL_NUM_THREADS"><code class="docutils literal notranslate"><span class="pre">GDAL_NUM_THREADS</span></code></a>, which can be set to an integer value or
 <code class="docutils literal notranslate"><span class="pre">ALL_CPUS</span></code>.</p>
 </section>
 <section id="validation-script">
 <h2>Validation script<a class="headerlink" href="#validation-script" title="Link to this heading"></a></h2>
-<p>The <a href="#id1"><span class="problematic" id="id2">:source_file:`swig/python/gdal-utils/osgeo_utils/samples/validate_geoparquet.py`</span></a>
+<p>The <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/swig/python/gdal-utils/osgeo_utils/samples/validate_geoparquet.py">validate_geoparquet.py</a>
 Python script can be used to check compliance of a Parquet file against the
 GeoParquet specification.</p>
 <p>To validate only metadata:</p>

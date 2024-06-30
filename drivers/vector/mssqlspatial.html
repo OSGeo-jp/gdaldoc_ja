@@ -51,9 +51,9 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">プログラム</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../raster/index.html">ラスタードライバー</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">ベクタードライバー</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">Programs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../raster/index.html">Raster drivers</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Vector drivers</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="amigocloud.html">AmigoCloud</a></li>
 <li class="toctree-l2"><a class="reference internal" href="arrow.html">(Geo)Arrow IPC File Format / Stream</a></li>
 <li class="toctree-l2"><a class="reference internal" href="avcbin.html">Arc/Info Binary Coverage</a></li>
@@ -156,11 +156,11 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
@@ -198,7 +198,7 @@
     
       <li><a href="../../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">ベクタードライバー</a> &raquo;</li>
+          <li><a href="index.html">Vector drivers</a> &raquo;</li>
       
       <li>MSSQLSpatial - Microsoft SQL Server Spatial Database</li>
     
@@ -248,7 +248,7 @@ represent the geometry columns.</p>
 <h2>Driver capabilities<a class="headerlink" href="#driver-capabilities" title="Link to this heading"></a></h2>
 <div class="admonition supports_create" id="supports_create-0">
 <p class="admonition-title">Supports Create()</p>
-<p>This driver supports the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::Create()</span></code> operation</p>
+<p>This driver supports the <a class="reference internal" href="../../api/gdaldriver_cpp.html#_CPPv4N10GDALDriver6CreateEPKciii12GDALDataType12CSLConstList" title="GDALDriver::Create"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::Create()</span></code></a> operation</p>
 </div>
 <div class="admonition supports_georeferencing" id="supports_georeferencing-0">
 <p class="admonition-title">Supports Georeferencing</p>
@@ -333,7 +333,7 @@ use the <em>Microsoft SQL Server Client Tools</em> for this purpose, but it
 does allow creation of new layers within an existing database.</p>
 <section id="layer-creation-options">
 <h3>Layer Creation Options<a class="headerlink" href="#layer-creation-options" title="Link to this heading"></a></h3>
-<p><a href="#id1"><span class="problematic" id="id2">|about-layer-creation-options|</span></a>
+<p>Layer creation options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-lco</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv422GDALDatasetCreateLayer12GDALDatasetHPKc20OGRSpatialReferenceH18OGRwkbGeometryType12CSLConstList" title="GDALDatasetCreateLayer"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDatasetCreateLayer()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.Dataset.CreateLayer" title="osgeo.gdal.Dataset.CreateLayer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Dataset.CreateLayer</span></code></a> (Python).
 The following layer creation options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/vector/mssqlspatial-lco-GEOM_TYPE"><strong>GEOM_TYPE=[geometry/geography]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">geometry</span></code>. The GEOM_TYPE layer creation option can be set to one
@@ -387,7 +387,7 @@ column with bigint type to handle 64bit wide ids.</p>
 <li><p id="drivers/vector/mssqlspatial-lco-GEOMETRY_NULLABLE"><strong>GEOMETRY_NULLABLE=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">YES</span></code>. Specifies whether the values
 of the geometry column can be NULL.</p>
 </li>
-<li><p id="drivers/vector/mssqlspatial-lco-EXTRACT_SCHEMA_FROM_LAYER_NAME"><strong>EXTRACT_SCHEMA_FROM_LAYER_NAME=[YES/NO]: </strong> (GDAL &gt;= 2.3.0)  Defaults to <code class="docutils literal notranslate"><span class="pre">YES</span></code>. Can be set to
+<li><p id="drivers/vector/mssqlspatial-lco-EXTRACT_SCHEMA_FROM_LAYER_NAME"><strong>EXTRACT_SCHEMA_FROM_LAYER_NAME=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">YES</span></code>. Can be set to
 NO to avoid considering the dot character as the separator between
 the schema and the table name.</p>
 </li>
@@ -396,10 +396,10 @@ the schema and the table name.</p>
 </section>
 <section id="configuration-options">
 <h2>Configuration options<a class="headerlink" href="#configuration-options" title="Link to this heading"></a></h2>
-<p><a href="#id3"><span class="problematic" id="id4">|about-config-options|</span></a>
+<p><a class="reference internal" href="../../user/configoptions.html#configoptions"><span class="std std-ref">Configuration options</span></a> can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">--config</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or using functions such as <a class="reference internal" href="../../api/cpl.html#_CPPv418CPLSetConfigOptionPKcPKc" title="CPLSetConfigOption"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CPLSetConfigOption()</span></code></a> (C) or <code class="xref py py-func docutils literal notranslate"><span class="pre">gdal.config_options</span></code> (Python).
 The following configuration options are available:</p>
 <ul class="simple">
-<li><p id="config-MSSQLSPATIAL_USE_BCP"><strong>MSSQLSPATIAL_USE_BCP=value: </strong> (GDAL &gt;= 2.1.0) Enable bulk insert when
+<li><p id="config-MSSQLSPATIAL_USE_BCP"><strong>MSSQLSPATIAL_USE_BCP=value: </strong>Enable bulk insert when
 adding features. This option requires to to compile GDAL against a
 bulk copy enabled ODBC driver like SQL Server Native Client 11.0. To
 specify a BCP supported driver in the connection string, use the
@@ -410,7 +410,7 @@ connection string. If GDAL is compiled against SQL Server Native
 Client 10.0 or 11.0 the default setting of this parameter is TRUE,
 otherwise the parameter is ignored by the driver.</p>
 </li>
-<li><p id="config-MSSQLSPATIAL_BCP_SIZE"><strong>MSSQLSPATIAL_BCP_SIZE=value: </strong> (GDAL &gt;= 2.1.0)  Defaults to <code class="docutils literal notranslate"><span class="pre">1000</span></code>. Specifies the bulk
+<li><p id="config-MSSQLSPATIAL_BCP_SIZE"><strong>MSSQLSPATIAL_BCP_SIZE=value: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">1000</span></code>. Specifies the bulk
 insert batch size. The larger value makes the insert faster, but
 consumes more memory.</p>
 </li>

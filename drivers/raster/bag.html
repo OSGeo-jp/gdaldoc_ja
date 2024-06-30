@@ -51,8 +51,8 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">プログラム</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">ラスタードライバー</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">Programs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Raster drivers</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="aaigrid.html">AAIGrid -- Arc/Info ASCII Grid</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ace2.html">ACE2 -- ACE2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adrg.html">ADRG -- ADRG/ARC Digitized Raster Graphics (.gen/.thf)</a></li>
@@ -228,14 +228,14 @@
 <li class="toctree-l2"><a class="reference internal" href="zmap.html">ZMap -- ZMap Plus Grid</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../vector/index.html">ベクタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vector/index.html">Vector drivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
@@ -273,7 +273,7 @@
     
       <li><a href="../../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">ラスタードライバー</a> &raquo;</li>
+          <li><a href="index.html">Raster drivers</a> &raquo;</li>
       
       <li>BAG -- Bathymetry Attributed Grid</li>
     
@@ -336,11 +336,11 @@ encoding the spatial reference system.</p>
 <h2>Driver capabilities<a class="headerlink" href="#driver-capabilities" title="Link to this heading"></a></h2>
 <div class="admonition supports_createcopy" id="supports_createcopy-0">
 <p class="admonition-title">Supports CreateCopy()</p>
-<p>This driver supports the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::CreateCopy()</span></code> operation</p>
+<p>This driver supports the <a class="reference internal" href="../../api/gdaldriver_cpp.html#_CPPv4N10GDALDriver10CreateCopyEPKcP11GDALDataseti12CSLConstList16GDALProgressFuncPv" title="GDALDriver::CreateCopy"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::CreateCopy()</span></code></a> operation</p>
 </div>
 <div class="admonition supports_create" id="supports_create-0">
 <p class="admonition-title">Supports Create()</p>
-<p>This driver supports the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::Create()</span></code> operation</p>
+<p>This driver supports the <a class="reference internal" href="../../api/gdaldriver_cpp.html#_CPPv4N10GDALDriver6CreateEPKciii12GDALDataType12CSLConstList" title="GDALDriver::Create"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::Create()</span></code></a> operation</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.2.</span></p>
 </div>
@@ -356,7 +356,7 @@ encoding the spatial reference system.</p>
 </section>
 <section id="open-options">
 <h2>Open options<a class="headerlink" href="#open-options" title="Link to this heading"></a></h2>
-<p><a href="#id3"><span class="problematic" id="id4">|about-open-options|</span></a>
+<p>Open options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-oo</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALOpenExPKcjPPCKcPPCKcPPCKc" title="GDALOpenEx"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpenEx()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.OpenEx" title="osgeo.gdal.OpenEx"><code class="xref py py-meth docutils literal notranslate"><span class="pre">gdal.OpenEx</span></code></a> (Python).
 For open options specific to variable resolution, see following chapter.</p>
 <p>Other open options are:</p>
 <ul class="simple">
@@ -546,7 +546,7 @@ found in the GDAL data definition files. This template contains
 variables, present as ${KEYNAME} or ${KEYNAME:default_value} in the XML
 file, that can be substituted by providing a creation option whose name
 is the VAR_ string prefixed to the key name.</p>
-<p><a href="#id5"><span class="problematic" id="id6">|about-creation-options|</span></a>
+<p>Creation options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-co</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALCreate11GDALDriverHPKciii12GDALDataType12CSLConstList" title="GDALCreate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALCreate()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.Driver.Create" title="osgeo.gdal.Driver.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Driver.Create</span></code></a> (Python).
 The following creation options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/raster/bag-co-VAR_INDIVIDUAL_NAME"><strong>VAR_INDIVIDUAL_NAME=value: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">unknown</span></code>. String to fill contact/CI_ResponsibleParty/individualName.</p>
@@ -692,7 +692,7 @@ extension), and provide a custom value for the ABSTRACT metadata:</p>
 <section id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p>Implemented as <a href="#id1"><span class="problematic" id="id2">:source_file:`frmts/hdf5/bagdataset.cpp`</span></a>.</p></li>
+<li><p>Implemented as <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/frmts/hdf5/bagdataset.cpp">bagdataset.cpp</a>.</p></li>
 <li><p><a class="reference external" href="http://www.opennavsurf.org">The Open Navigation Surface Project</a></p></li>
 <li><p><a class="reference external" href="https://github.com/OpenNavigationSurface/BAG/raw/master/docs/BAG_FSD_Release_1.6.3.doc">Description of Bathymetric Attributed Grid Object (BAG) Version
 1.6</a></p></li>

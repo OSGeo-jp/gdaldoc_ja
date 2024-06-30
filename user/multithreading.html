@@ -51,9 +51,9 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../programs/index.html">プログラム</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">ラスタードライバー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">ベクタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programs/index.html">Programs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">Raster drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">Vector drivers</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">ユーザー</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="raster_data_model.html">Raster Data Model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="multidim_raster_data_model.html">Multidimensional Raster Data Model</a></li>
@@ -67,19 +67,19 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="ogr_sql_sqlite_dialect.html">OGR SQL dialect and SQLITE SQL dialect</a></li>
-<li class="toctree-l2"><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ogr_feature_style.html">Feature Style Specification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="coordinate_epoch.html">Coordinate epoch support</a></li>
-<li class="toctree-l2"><a class="reference internal" href="configoptions.html">設定オプション</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configoptions.html">Configuration options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gdal_python_utilities.html">GDAL Python Utilities</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../development/index.html">開発</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">スポンサー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">貢献する方法は?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">Sponsors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">ライセンス</a></li>
 </ul>
@@ -117,7 +117,7 @@
     
       <li><a href="../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">ユーザー向け文書</a> &raquo;</li>
+          <li><a href="index.html">User oriented documentation</a> &raquo;</li>
       
       <li>Multi-threading</li>
     
@@ -161,8 +161,8 @@ be called simultaneously from multiple threads, <em>but</em> only if each invoca
 uses its own data.</p>
 <p>All GDAL public C functions and C++ methods are re-entrant, except:</p>
 <ul class="simple">
-<li><p>the general initialization functions, like <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALAllRegister()</span></code>.</p></li>
-<li><p>the general cleanup functions like <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDestroy()</span></code> or <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OSRCleanup()</span></code>.</p></li>
+<li><p>the general initialization functions, like <a class="reference internal" href="../api/raster_c_api.html#_CPPv415GDALAllRegisterv" title="GDALAllRegister"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALAllRegister()</span></code></a>.</p></li>
+<li><p>the general cleanup functions like <a class="reference internal" href="../api/raster_c_api.html#_CPPv411GDALDestroyv" title="GDALDestroy"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDestroy()</span></code></a> or <a class="reference internal" href="../api/ogr_srs_api.html#_CPPv410OSRCleanupv" title="OSRCleanup"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OSRCleanup()</span></code></a>.</p></li>
 </ul>
 <p>Those functions should not be called concurrently from several threads, and it
 is general best practice to call them from the main thread of the program at
@@ -172,9 +172,9 @@ assumed to be thread-safe. That is you should not call simultaneously GDAL
 functions from multiple threads on the same data instance, or even instances
 that are closely related through ownership relationships. For example, for a
 multi-band raster dataset, it is not safe to call concurrently GDAL functions
-on different <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALRasterBand</span></code> instances owned by the same
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALDataset</span></code> instance (each thread should instead manipulate a
-distinct GDALDataset). Similarly for a GDALDataset owning several <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRLayer</span></code>.</p>
+on different <a class="reference internal" href="../api/gdalrasterband_cpp.html#_CPPv414GDALRasterBand" title="GDALRasterBand"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALRasterBand</span></code></a> instances owned by the same
+<a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv411GDALDataset" title="GDALDataset"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALDataset</span></code></a> instance (each thread should instead manipulate a
+distinct GDALDataset). Similarly for a GDALDataset owning several <a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv48OGRLayer" title="OGRLayer"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRLayer</span></code></a>.</p>
 <p>The reason is that most implementations of GDALDataset or GDALRasterBand
 are stateful. A GDALDataset typically owns a file handle,
 and performs seek/read operations on it, thus not allowing concurrent access.

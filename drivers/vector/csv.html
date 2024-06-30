@@ -51,9 +51,9 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">プログラム</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../raster/index.html">ラスタードライバー</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">ベクタードライバー</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">Programs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../raster/index.html">Raster drivers</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Vector drivers</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="amigocloud.html">AmigoCloud</a></li>
 <li class="toctree-l2"><a class="reference internal" href="arrow.html">(Geo)Arrow IPC File Format / Stream</a></li>
 <li class="toctree-l2"><a class="reference internal" href="avcbin.html">Arc/Info Binary Coverage</a></li>
@@ -162,11 +162,11 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
@@ -204,7 +204,7 @@
     
       <li><a href="../../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">ベクタードライバー</a> &raquo;</li>
+          <li><a href="index.html">Vector drivers</a> &raquo;</li>
       
       <li>Comma Separated Value (.csv)</li>
     
@@ -264,7 +264,7 @@ with the &quot;.csv&quot; extension, the 'CSV:' prefix can be added before the f
 to force loading by the CSV driver.</p>
 <p>Starting with GDAL 3.10, specifying the <code class="docutils literal notranslate"><span class="pre">-if</span> <span class="pre">CSV</span></code> option to command line utilities
 accepting it, or <code class="docutils literal notranslate"><span class="pre">CSV</span></code> as the only value of the <code class="docutils literal notranslate"><span class="pre">papszAllowedDrivers</span></code> of
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpenEx()</span></code>, also forces the driver to recognize the passed
+<a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALOpenExPKcjPPCKcPPCKcPPCKc" title="GDALOpenEx"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpenEx()</span></code></a>, also forces the driver to recognize the passed
 filename, without the <code class="docutils literal notranslate"><span class="pre">CSV:</span></code> prefix.</p>
 <p>The OGR CSV driver supports reading and writing. Because the CSV format
 has variable length text lines, reading is done sequentially. Reading
@@ -302,7 +302,7 @@ section.</p>
 <h2>Driver capabilities<a class="headerlink" href="#driver-capabilities" title="Link to this heading"></a></h2>
 <div class="admonition supports_create" id="supports_create-0">
 <p class="admonition-title">Supports Create()</p>
-<p>This driver supports the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::Create()</span></code> operation</p>
+<p>This driver supports the <a class="reference internal" href="../../api/gdaldriver_cpp.html#_CPPv4N10GDALDriver6CreateEPKciii12GDALDataType12CSLConstList" title="GDALDriver::Create"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::Create()</span></code></a> operation</p>
 </div>
 <div class="admonition supports_georeferencing" id="supports_georeferencing-0">
 <p class="admonition-title">Supports Georeferencing</p>
@@ -474,7 +474,7 @@ is used.</p>
 </section>
 <section id="open-options">
 <h2>Open options<a class="headerlink" href="#open-options" title="Link to this heading"></a></h2>
-<p><a href="#id1"><span class="problematic" id="id2">|about-open-options|</span></a>
+<p>Open options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-oo</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALOpenExPKcjPPCKcPPCKcPPCKc" title="GDALOpenEx"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpenEx()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.OpenEx" title="osgeo.gdal.OpenEx"><code class="xref py py-meth docutils literal notranslate"><span class="pre">gdal.OpenEx</span></code></a> (Python).
 The following open options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/vector/csv-oo-SEPARATOR"><strong>SEPARATOR=[AUTO/COMMA/SEMICOLON/TAB/SPACE/PIPE]: </strong> (GDAL &gt;= 3.8)  Defaults to <code class="docutils literal notranslate"><span class="pre">AUTO</span></code>. Field separator character. Default value is AUTO for autodetection.</p>
@@ -515,7 +515,7 @@ how /vsistdin/ is implemented..</p>
 fields when set to YES. Otherwise, by default, the content of quoted
 fields will be tested for real, integer, etc... data types.</p>
 </li>
-<li><p id="drivers/vector/csv-oo-X_POSSIBLE_NAMES"><strong>X_POSSIBLE_NAMES=&lt;list_of_names&gt;: </strong> (GDAL &gt;= 2.1) Comma separated
+<li><p id="drivers/vector/csv-oo-X_POSSIBLE_NAMES"><strong>X_POSSIBLE_NAMES=&lt;list_of_names&gt;: </strong>Comma separated
 list of possible names for X/longitude coordinate of a point. Each
 name might be a pattern using the star character in starting and/or
 ending position. E.g.: prefix*, *suffix or *middle*. The values in
@@ -524,7 +524,7 @@ Y_POSSIBLE_NAMES must be both specified and a matching for each must
 be found in the columns of the CSV file. Only one geometry column per
 layer might be built when using <a class="reference internal" href="#drivers/vector/csv-oo-X_POSSIBLE_NAMES"><code class="docutils literal notranslate"><span class="pre">X_POSSIBLE_NAMES</span></code></a>/<a class="reference internal" href="#drivers/vector/csv-oo-Y_POSSIBLE_NAMES"><code class="docutils literal notranslate"><span class="pre">Y_POSSIBLE_NAMES</span></code></a>.</p>
 </li>
-<li><p id="drivers/vector/csv-oo-Y_POSSIBLE_NAMES"><strong>Y_POSSIBLE_NAMES=&lt;list_of_names&gt;: </strong> (GDAL &gt;= 2.1) Comma separated
+<li><p id="drivers/vector/csv-oo-Y_POSSIBLE_NAMES"><strong>Y_POSSIBLE_NAMES=&lt;list_of_names&gt;: </strong>Comma separated
 list of possible names for Y/latitude coordinate of a point. Each
 name might be a pattern using the star character in starting and/or
 ending position. E.g.: prefix*, *suffix or *middle*. The values in
@@ -532,14 +532,14 @@ the column must be floating point values. <a class="reference internal" href="#d
 <a class="reference internal" href="#drivers/vector/csv-oo-Y_POSSIBLE_NAMES"><code class="docutils literal notranslate"><span class="pre">Y_POSSIBLE_NAMES</span></code></a> must be both specified and a matching for each must
 be found in the columns of the CSV file.</p>
 </li>
-<li><p id="drivers/vector/csv-oo-Z_POSSIBLE_NAMES"><strong>Z_POSSIBLE_NAMES=&lt;list_of_names&gt;: </strong> (GDAL &gt;= 2.1) Comma separated
+<li><p id="drivers/vector/csv-oo-Z_POSSIBLE_NAMES"><strong>Z_POSSIBLE_NAMES=&lt;list_of_names&gt;: </strong>Comma separated
 list of possible names for Z/elevation coordinate of a point. Each
 name might be a pattern using the star character in starting and/or
 ending position. E.g.: prefix*, *suffix or *middle*. The values in
 the column must be floating point values. Only taken into account in
 combination with <a class="reference internal" href="#drivers/vector/csv-oo-X_POSSIBLE_NAMES"><code class="docutils literal notranslate"><span class="pre">X_POSSIBLE_NAMES</span></code></a> and <a class="reference internal" href="#drivers/vector/csv-oo-Y_POSSIBLE_NAMES"><code class="docutils literal notranslate"><span class="pre">Y_POSSIBLE_NAMES</span></code></a>.</p>
 </li>
-<li><p id="drivers/vector/csv-oo-GEOM_POSSIBLE_NAMES"><strong>GEOM_POSSIBLE_NAMES=&lt;list_of_names&gt;: </strong> (GDAL &gt;= 2.1) Comma
+<li><p id="drivers/vector/csv-oo-GEOM_POSSIBLE_NAMES"><strong>GEOM_POSSIBLE_NAMES=&lt;list_of_names&gt;: </strong>Comma
 separated list of possible names for geometry columns that contain
 geometry definitions encoded as WKT, WKB (in hexadecimal form,
 potentially in PostGIS 2.0 extended WKB) or GeoJSON. Each name might
@@ -549,12 +549,12 @@ position. E.g.: prefix*, *suffix or *middle*</p>
 <li><p id="drivers/vector/csv-oo-KEEP_GEOM_COLUMNS"><strong>KEEP_GEOM_COLUMNS=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">YES</span></code>. Expose the detected
 X,Y,Z or geometry columns as regular attribute fields.</p>
 </li>
-<li><p id="drivers/vector/csv-oo-HEADERS"><strong>HEADERS=[YES/NO/AUTO]: </strong> (GDAL &gt;= 2.1)  Defaults to <code class="docutils literal notranslate"><span class="pre">AUTO</span></code>. Whether the
+<li><p id="drivers/vector/csv-oo-HEADERS"><strong>HEADERS=[YES/NO/AUTO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">AUTO</span></code>. Whether the
 first line of the file contains column names or not. When set to
 AUTO, GDAL will assume the first line is column names if none of the
 values are strictly numeric.</p>
 </li>
-<li><p id="drivers/vector/csv-oo-EMPTY_STRING_AS_NULL"><strong>EMPTY_STRING_AS_NULL=[YES/NO]: </strong> (GDAL &gt;= 2.1)  Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. Whether to consider empty strings as null fields on reading'.</p>
+<li><p id="drivers/vector/csv-oo-EMPTY_STRING_AS_NULL"><strong>EMPTY_STRING_AS_NULL=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. Whether to consider empty strings as null fields on reading'.</p>
 </li>
 <li><p id="drivers/vector/csv-oo-MAX_LINE_SIZE"><strong>MAX_LINE_SIZE=&lt;integer&gt;: </strong> (GDAL &gt;= 3.5.3)  Defaults to <code class="docutils literal notranslate"><span class="pre">10000000</span></code>. Maximum number of bytes for a line (-1=unlimited).</p>
 </li>
@@ -571,7 +571,7 @@ be stored in RAM temporarily before flushing to disk.</p>
 </section>
 <section id="layer-creation-options">
 <h2>Layer Creation options<a class="headerlink" href="#layer-creation-options" title="Link to this heading"></a></h2>
-<p><a href="#id3"><span class="problematic" id="id4">|about-layer-creation-options|</span></a>
+<p>Layer creation options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-lco</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv422GDALDatasetCreateLayer12GDALDatasetHPKc20OGRSpatialReferenceH18OGRwkbGeometryType12CSLConstList" title="GDALDatasetCreateLayer"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDatasetCreateLayer()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.Dataset.CreateLayer" title="osgeo.gdal.Dataset.CreateLayer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Dataset.CreateLayer</span></code></a> (Python).
 The following layer creation options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/vector/csv-lco-LINEFORMAT"><strong>LINEFORMAT=[CRLF/LF]: </strong>By default when creating new .csv files they are
@@ -599,10 +599,10 @@ each column of the layer and its optional width and precision.</p>
 </li>
 <li><p id="drivers/vector/csv-lco-WRITE_BOM"><strong>WRITE_BOM=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. Write a UTF-8 Byte Order Mark (BOM) at the start of the file.</p>
 </li>
-<li><p id="drivers/vector/csv-lco-GEOMETRY_NAME"><strong>GEOMETRY_NAME=value: </strong> (GDAL &gt;= 2.1)  Defaults to <code class="docutils literal notranslate"><span class="pre">WKT</span></code>. Name of geometry column. Only used if <a class="reference internal" href="#drivers/vector/csv-lco-GEOMETRY"><code class="docutils literal notranslate"><span class="pre">GEOMETRY=AS_WKT</span></code></a> (and
+<li><p id="drivers/vector/csv-lco-GEOMETRY_NAME"><strong>GEOMETRY_NAME=value: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">WKT</span></code>. Name of geometry column. Only used if <a class="reference internal" href="#drivers/vector/csv-lco-GEOMETRY"><code class="docutils literal notranslate"><span class="pre">GEOMETRY=AS_WKT</span></code></a> (and
 <a class="reference internal" href="#drivers/vector/csv-lco-CREATE_CSVT"><code class="docutils literal notranslate"><span class="pre">CREATE_CSVT=YES</span></code></a> before GDAL 3.7.1).</p>
 </li>
-<li><p id="drivers/vector/csv-lco-STRING_QUOTING"><strong>STRING_QUOTING=[IF_NEEDED/IF_AMBIGUOUS/ALWAYS]: </strong> (GDAL &gt;= 2.3)  Defaults to <code class="docutils literal notranslate"><span class="pre">IF_AMBIGUOUS</span></code>. whether to double-quote strings. IF_AMBIGUOUS means that
+<li><p id="drivers/vector/csv-lco-STRING_QUOTING"><strong>STRING_QUOTING=[IF_NEEDED/IF_AMBIGUOUS/ALWAYS]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">IF_AMBIGUOUS</span></code>. whether to double-quote strings. IF_AMBIGUOUS means that
 string values that look like numbers will be quoted (it also implies
 IF_NEEDED). Defaults to IF_AMBIGUOUS (behavior in older versions was
 IF_NEEDED)</p>
@@ -611,7 +611,7 @@ IF_NEEDED)</p>
 </section>
 <section id="configuration-options">
 <h2>Configuration options<a class="headerlink" href="#configuration-options" title="Link to this heading"></a></h2>
-<p><a href="#id5"><span class="problematic" id="id6">|about-config-options|</span></a>
+<p><a class="reference internal" href="../../user/configoptions.html#configoptions"><span class="std std-ref">Configuration options</span></a> can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">--config</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or using functions such as <a class="reference internal" href="../../api/cpl.html#_CPPv418CPLSetConfigOptionPKcPKc" title="CPLSetConfigOption"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CPLSetConfigOption()</span></code></a> (C) or <code class="xref py py-func docutils literal notranslate"><span class="pre">gdal.config_options</span></code> (Python).
 The following configuration options are available:</p>
 <ul class="simple">
 <li><p id="config-OGR_WKT_PRECISION"><strong>OGR_WKT_PRECISION=&lt;integer&gt;: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">15</span></code>. Number of decimals for coordinate
@@ -619,7 +619,7 @@ values. A heuristic is used to remove insignificant
 trailing 00000x or 99999x that can appear when formatting decimal
 numbers.</p>
 </li>
-<li><p id="config-OGR_WKT_ROUND"><strong>OGR_WKT_ROUND=[YES/NO]: </strong> (GDAL &gt;= 2.3)  Defaults to <code class="docutils literal notranslate"><span class="pre">YES</span></code>. Whether to enable the above
+<li><p id="config-OGR_WKT_ROUND"><strong>OGR_WKT_ROUND=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">YES</span></code>. Whether to enable the above
 mentioned heuristics to remove insignificant trailing 00000x or
 99999x.</p>
 </li>

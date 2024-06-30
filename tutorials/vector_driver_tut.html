@@ -51,15 +51,15 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../programs/index.html">プログラム</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programs/index.html">Programs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">Raster drivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">Vector drivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">チュートリアル</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="index.html#raster">ラスター</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#multidimensional-raster">多次元ラスター</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html#vector">ベクター</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#raster">Raster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#multidimensional-raster">Multidimensional raster</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#vector">Vector</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="vector_api_tut.html">Vector API tutorial</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Vector driver implementation tutorial</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#overall-approach">Overall Approach</a></li>
@@ -71,8 +71,8 @@
 <li class="toctree-l3"><a class="reference internal" href="vector_python_driver.html">Vector driver in Python implementation tutorial</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#geographic-network-model">空間ネットワークモデル</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#projections-and-spatial-reference-systems-tutorial-osr-ogrspatialreference">投影法と空間参照システムチュートリアル (OSR - OGRSpatialReference)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#geographic-network-model">Geographic Network Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#projections-and-spatial-reference-systems-tutorial-osr-ogrspatialreference">Projections and Spatial Reference Systems tutorial (OSR - OGRSpatialReference)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development</a></li>
@@ -80,7 +80,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">Sponsors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -116,7 +116,7 @@
     
       <li><a href="../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">チュートリアル</a> &raquo;</li>
+          <li><a href="index.html">Tutorials</a> &raquo;</li>
       
       <li>Vector driver implementation tutorial</li>
     
@@ -154,9 +154,9 @@
 <section id="overall-approach">
 <h2>Overall Approach<a class="headerlink" href="#overall-approach" title="Link to this heading"></a></h2>
 <p>In general new formats are added to OGR by implementing format
-specific drivers with instantiating a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALDriver</span></code> and subclasses of
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALDataset</span></code> and <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRLayer</span></code>.  The GDALDriver instance is registered with
-the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALDriverManager</span></code> at runtime.</p>
+specific drivers with instantiating a <a class="reference internal" href="../api/gdaldriver_cpp.html#_CPPv410GDALDriver" title="GDALDriver"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALDriver</span></code></a> and subclasses of
+<a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv411GDALDataset" title="GDALDataset"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALDataset</span></code></a> and <a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv48OGRLayer" title="OGRLayer"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRLayer</span></code></a>.  The GDALDriver instance is registered with
+the <a class="reference internal" href="../api/gdaldriver_cpp.html#_CPPv417GDALDriverManager" title="GDALDriverManager"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALDriverManager</span></code></a> at runtime.</p>
 <p>Before following this tutorial to implement an OGR driver, please review
 the <a class="reference internal" href="../user/vector_data_model.html#vector-data-model"><span class="std std-ref">Vector Data Model</span></a> document carefully.</p>
 <p>The tutorial will be based on implementing a simple ascii point format.</p>
@@ -199,7 +199,7 @@ will handle vector data.</p>
 <p>SetMetadataItem( GDAL_DCAP_VIRTUALIO, &quot;YES&quot; ) is specified to indicate that the
 driver can deal with files opened with the VSI*L GDAL API.
 Otherwise this metadata item should not be defined.</p>
-<p>For a driver that can be built as a plugin (that is to say a standalone shared object, loaded at runtime by GDAL), since GDAL 3.9 and <a class="reference internal" href="../development/rfc/rfc96_deferred_plugin_loading.html#rfc-96"><span class="std std-ref">RFC 96: Deferred C++ plugin loading</span></a>, there is a way to implement the driver in a way where the plugin will be loaded only when necessary, and not immediately at <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALAllRegister()</span></code> time. Consult <a class="reference internal" href="../development/rfc/rfc96_deferred_plugin_loading.html#rfc96-example-driver"><span class="std std-ref">Example of changes to do on a simplified driver</span></a> for the changes needed to make the driver compatible of deferred plugin loading.</p>
+<p>For a driver that can be built as a plugin (that is to say a standalone shared object, loaded at runtime by GDAL), since GDAL 3.9 and <a class="reference internal" href="../development/rfc/rfc96_deferred_plugin_loading.html#rfc-96"><span class="std std-ref">RFC 96: Deferred C++ plugin loading</span></a>, there is a way to implement the driver in a way where the plugin will be loaded only when necessary, and not immediately at <a class="reference internal" href="../api/raster_c_api.html#_CPPv415GDALAllRegisterv" title="GDALAllRegister"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALAllRegister()</span></code></a> time. Consult <a class="reference internal" href="../development/rfc/rfc96_deferred_plugin_loading.html#rfc96-example-driver"><span class="std std-ref">Example of changes to do on a simplified driver</span></a> for the changes needed to make the driver compatible of deferred plugin loading.</p>
 <p>The driver declaration generally looks something like this for a
 format with read or read and update access (the Open() method) and creation
 support (the Create() method).</p>
@@ -209,7 +209,7 @@ support (the Create() method).</p>
 <span class="w">                                    </span><span class="kt">int</span><span class="w"> </span><span class="n">nBands</span><span class="p">,</span><span class="w"> </span><span class="n">GDALDataType</span><span class="w"> </span><span class="n">eDT</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">papszOptions</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>The Open() method is called by <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpenEx()</span></code>. It should quietly return NULL if
+<p>The Open() method is called by <a class="reference internal" href="../api/raster_c_api.html#_CPPv410GDALOpenExPKcjPPCKcPPCKcPPCKc" title="GDALOpenEx"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpenEx()</span></code></a>. It should quietly return NULL if
 the passed filename is not of the format supported by the driver.  If it is the
 target format, then a new GDALDataset object for the dataset should be returned.</p>
 <p>It is common for the Open() method to be delegated to an Open() method on
@@ -251,7 +251,7 @@ layer so there is at most one layer.  The &quot;name&quot; of a datasource shoul
 generally be the name passed to the Open() method.</p>
 <p>The Open() method below is not overriding a base class method, but we have
 it to implement the open operation delegated by the driver class.</p>
-<p>For this simple case we provide a stub <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::TestCapability()</span></code> that returns FALSE
+<p>For this simple case we provide a stub <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4N11GDALDataset14TestCapabilityEPKc" title="GDALDataset::TestCapability"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::TestCapability()</span></code></a> that returns FALSE
 for all extended capabilities.  The TestCapability() method is pure virtual,
 so it does need to be implemented.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">OGRSPFDataSource</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">GDALDataset</span>
@@ -359,7 +359,7 @@ this:</p>
 </pre></div>
 </div>
 <p>The layer constructor is responsible for initialization.  The most important
-initialization is setting up the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRFeatureDefn</span></code> for the layer.  This defines
+initialization is setting up the <a class="reference internal" href="../api/ogrfeature_cpp.html#_CPPv414OGRFeatureDefn" title="OGRFeatureDefn"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRFeatureDefn</span></code></a> for the layer.  This defines
 the list of fields and their types, the geometry type and the coordinate
 system for the layer.  In the SPF format the set of fields is fixed - a
 single string field and we have no coordinate system info to set.</p>
@@ -386,7 +386,7 @@ itself.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Note that the destructor uses <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeatureDefn::Release()</span></code> on the OGRFeatureDefn.  This will
+<p>Note that the destructor uses <a class="reference internal" href="../api/ogrfeature_cpp.html#_CPPv4N14OGRFeatureDefn7ReleaseEv" title="OGRFeatureDefn::Release"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeatureDefn::Release()</span></code></a> on the OGRFeatureDefn.  This will
 destroy the feature definition if the reference count drops to zero, but if
 the application is still holding onto a feature from this layer, then that
 feature will hold a reference to the feature definition and it will not
@@ -399,7 +399,7 @@ be destroyed here (which is good!).</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::GetNextFeature()</span></code> method is usually the work horse of OGRLayer
+<p>The <a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer14GetNextFeatureEv" title="OGRLayer::GetNextFeature"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::GetNextFeature()</span></code></a> method is usually the work horse of OGRLayer
 implementations.  It is responsible for reading the next feature according
 to the current spatial and attribute filters installed.</p>
 <p>The while() loop is present to loop until we find a satisfactory
@@ -466,7 +466,7 @@ and return to the top of the loop to fetch another to try.</p>
 </pre></div>
 </div>
 <p>While in the middle of reading a feature set from a layer, or at any other
-time the application can call <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::ResetReading()</span></code> which is intended to restart
+time the application can call <a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer12ResetReadingEv" title="OGRLayer::ResetReading"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::ResetReading()</span></code></a> which is intended to restart
 reading at the beginning of the feature set.  We implement this by seeking
 back to the beginning of the file, and resetting our feature id counter.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">OGRSPFLayer::ResetReading</span><span class="p">()</span>

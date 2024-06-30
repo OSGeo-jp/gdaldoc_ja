@@ -51,8 +51,8 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">プログラム</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">ラスタードライバー</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">Programs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Raster drivers</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="aaigrid.html">AAIGrid -- Arc/Info ASCII Grid</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ace2.html">ACE2 -- ACE2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adrg.html">ADRG -- ADRG/ARC Digitized Raster Graphics (.gen/.thf)</a></li>
@@ -236,14 +236,14 @@
 <li class="toctree-l2"><a class="reference internal" href="zmap.html">ZMap -- ZMap Plus Grid</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../vector/index.html">ベクタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vector/index.html">Vector drivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
@@ -281,7 +281,7 @@
     
       <li><a href="../../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">ラスタードライバー</a> &raquo;</li>
+          <li><a href="index.html">Raster drivers</a> &raquo;</li>
       
       <li>COG -- Cloud Optimized GeoTIFF generator</li>
     
@@ -339,7 +339,7 @@ converted to a RGB+mask dataset when selecting JPEG compression)</p>
 <h2>Driver capabilities<a class="headerlink" href="#driver-capabilities" title="Link to this heading"></a></h2>
 <div class="admonition supports_createcopy" id="supports_createcopy-0">
 <p class="admonition-title">Supports CreateCopy()</p>
-<p>This driver supports the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::CreateCopy()</span></code> operation</p>
+<p>This driver supports the <a class="reference internal" href="../../api/gdaldriver_cpp.html#_CPPv4N10GDALDriver10CreateCopyEPKcP11GDALDataseti12CSLConstList16GDALProgressFuncPv" title="GDALDriver::CreateCopy"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::CreateCopy()</span></code></a> operation</p>
 </div>
 <div class="admonition supports_georeferencing" id="supports_georeferencing-0">
 <p class="admonition-title">Supports Georeferencing</p>
@@ -352,7 +352,7 @@ converted to a RGB+mask dataset when selecting JPEG compression)</p>
 </section>
 <section id="creation-options">
 <h2>Creation Options<a class="headerlink" href="#creation-options" title="Link to this heading"></a></h2>
-<p><a href="#id1"><span class="problematic" id="id2">|about-creation-options|</span></a></p>
+<p>Creation options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-co</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALCreate11GDALDriverHPKciii12GDALDataType12CSLConstList" title="GDALCreate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALCreate()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.Driver.Create" title="osgeo.gdal.Driver.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Driver.Create</span></code></a> (Python).</p>
 <section id="general-creation-options">
 <h3>General creation options<a class="headerlink" href="#general-creation-options" title="Link to this heading"></a></h3>
 <ul class="simple">

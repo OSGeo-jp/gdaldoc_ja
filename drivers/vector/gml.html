@@ -51,9 +51,9 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">プログラム</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../raster/index.html">ラスタードライバー</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">ベクタードライバー</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">Programs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../raster/index.html">Raster drivers</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Vector drivers</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="amigocloud.html">AmigoCloud</a></li>
 <li class="toctree-l2"><a class="reference internal" href="arrow.html">(Geo)Arrow IPC File Format / Stream</a></li>
 <li class="toctree-l2"><a class="reference internal" href="avcbin.html">Arc/Info Binary Coverage</a></li>
@@ -175,11 +175,11 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
@@ -217,7 +217,7 @@
     
       <li><a href="../../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">ベクタードライバー</a> &raquo;</li>
+          <li><a href="index.html">Vector drivers</a> &raquo;</li>
       
       <li>GML - Geography Markup Language</li>
     
@@ -285,7 +285,7 @@ drivers have their use cases.</p>
 <h2>Driver capabilities<a class="headerlink" href="#driver-capabilities" title="Link to this heading"></a></h2>
 <div class="admonition supports_create" id="supports_create-0">
 <p class="admonition-title">Supports Create()</p>
-<p>This driver supports the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::Create()</span></code> operation</p>
+<p>This driver supports the <a class="reference internal" href="../../api/gdaldriver_cpp.html#_CPPv4N10GDALDriver6CreateEPKciii12GDALDataType12CSLConstList" title="GDALDriver::Create"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::Create()</span></code></a> operation</p>
 </div>
 <div class="admonition supports_georeferencing" id="supports_georeferencing-0">
 <p class="admonition-title">Supports Georeferencing</p>
@@ -298,7 +298,7 @@ drivers have their use cases.</p>
 </section>
 <section id="configuration-options">
 <h2>Configuration options<a class="headerlink" href="#configuration-options" title="Link to this heading"></a></h2>
-<p><a href="#id3"><span class="problematic" id="id4">|about-config-options|</span></a>
+<p><a class="reference internal" href="../../user/configoptions.html#configoptions"><span class="std std-ref">Configuration options</span></a> can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">--config</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or using functions such as <a class="reference internal" href="../../api/cpl.html#_CPPv418CPLSetConfigOptionPKcPKc" title="CPLSetConfigOption"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CPLSetConfigOption()</span></code></a> (C) or <code class="xref py py-func docutils literal notranslate"><span class="pre">gdal.config_options</span></code> (Python).
 The following configuration options are available:</p>
 <ul class="simple">
 <li><p id="config-GML_PARSER"><strong>GML_PARSER=[EXPAT/XERCES]: </strong>Select the XML parser. See <a class="reference internal" href="#parsers">Parsers</a>.</p>
@@ -307,7 +307,7 @@ The following configuration options are available:</p>
 </li>
 <li><p id="config-GML_CONSIDER_EPSG_AS_URN"><strong>GML_CONSIDER_EPSG_AS_URN=[YES/NO]: </strong>See <a class="reference internal" href="#crs-support">CRS support</a>. Equivalent of <a class="reference internal" href="#drivers/vector/gml-oo-CONSIDER_EPSG_AS_URN"><code class="docutils literal notranslate"><span class="pre">CONSIDER_EPSG_AS_URN</span></code></a> open option.</p>
 </li>
-<li><p id="config-GML_SWAP_COORDINATES"><strong>GML_SWAP_COORDINATES=[AUTO/YES/NO]: </strong> (GDAL &gt;= 2.1.2)  Defaults to <code class="docutils literal notranslate"><span class="pre">AUTO</span></code>. See <a class="reference internal" href="#crs-support">CRS support</a>. Equivalent of <a class="reference internal" href="#drivers/vector/gml-oo-SWAP_COORDINATES"><code class="docutils literal notranslate"><span class="pre">SWAP_COORDINATES</span></code></a> open option.</p>
+<li><p id="config-GML_SWAP_COORDINATES"><strong>GML_SWAP_COORDINATES=[AUTO/YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">AUTO</span></code>. See <a class="reference internal" href="#crs-support">CRS support</a>. Equivalent of <a class="reference internal" href="#drivers/vector/gml-oo-SWAP_COORDINATES"><code class="docutils literal notranslate"><span class="pre">SWAP_COORDINATES</span></code></a> open option.</p>
 </li>
 <li><p id="config-GML_FIELDTYPES"><strong>GML_FIELDTYPES=ALWAYS_STRING: </strong>If set to <code class="docutils literal notranslate"><span class="pre">ALWAYS_STRING</span></code>, treat all fields as strings instead of
 scanning values to detect field types. See <a class="reference internal" href="#schema">Schema</a>.</p>
@@ -676,7 +676,7 @@ with code similar to the following one :</p>
 </section>
 <section id="open-options">
 <h2>Open options<a class="headerlink" href="#open-options" title="Link to this heading"></a></h2>
-<p><a href="#id5"><span class="problematic" id="id6">|about-open-options|</span></a>
+<p>Open options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-oo</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALOpenExPKcjPPCKcPPCKcPPCKc" title="GDALOpenEx"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpenEx()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.OpenEx" title="osgeo.gdal.OpenEx"><code class="xref py py-meth docutils literal notranslate"><span class="pre">gdal.OpenEx</span></code></a> (Python).
 The following open options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/vector/gml-oo-XSD"><strong>XSD=&lt;filename&gt;: </strong>to specify an explicit filename for the XSD application schema to use.</p>
@@ -720,7 +720,7 @@ present SRS and coordinate ordering in traditional GIS order.</p>
 consider srsName like EPSG:XXXX as respecting EPSG axis order.</p>
 </p>
 </li>
-<li><p id="drivers/vector/gml-oo-SWAP_COORDINATES"><strong>SWAP_COORDINATES=[AUTO/YES/NO]: </strong> (GDAL &gt;= 2.1.2)  Defaults to <code class="docutils literal notranslate"><span class="pre">AUTO</span></code>. Whether the order
+<li><p id="drivers/vector/gml-oo-SWAP_COORDINATES"><strong>SWAP_COORDINATES=[AUTO/YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">AUTO</span></code>. Whether the order
 of the x/y or long/lat coordinates should be swapped. In AUTO mode,
 the driver will determine if swapping must be done from the srsName
 and value of other options like <a class="reference internal" href="#drivers/vector/gml-oo-CONSIDER_EPSG_AS_URN"><code class="docutils literal notranslate"><span class="pre">CONSIDER_EPSG_AS_URN</span></code></a> and
@@ -759,7 +759,7 @@ ogr:geometryProperty element on the feature.</p>
 </section>
 <section id="dataset-creation-options">
 <h2>Dataset creation options<a class="headerlink" href="#dataset-creation-options" title="Link to this heading"></a></h2>
-<p><a href="#id7"><span class="problematic" id="id8">|about-dataset-creation-options|</span></a>
+<p>Dataset creation options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-dsco</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALCreate11GDALDriverHPKciii12GDALDataType12CSLConstList" title="GDALCreate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALCreate()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.Driver.Create" title="osgeo.gdal.Driver.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Driver.Create</span></code></a> (Python).
 The following dataset creation options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/vector/gml-dsco-XSISCHEMAURI"><strong>XSISCHEMAURI=value: </strong>If provided, this URI will be inserted as the
@@ -801,7 +801,7 @@ IntegerList can be written. This will cause to advertise the SF-1
 profile in the .XSD schema (such types are not supported by SF-0).</p>
 </p>
 </li>
-<li><p id="drivers/vector/gml-dsco-GML_FEATURE_COLLECTION"><strong>GML_FEATURE_COLLECTION=[YES/NO]: </strong> (GDAL &gt;= 2.3) <p>Whether to use the
+<li><p id="drivers/vector/gml-dsco-GML_FEATURE_COLLECTION"><strong>GML_FEATURE_COLLECTION=[YES/NO]: </strong><p>Whether to use the
 gml:FeatureCollection, instead of creating a dedicated container
 element in the target namespace. Only valid for FORMAT=GML3/GML3.2.
 Note that gml:FeatureCollection has been deprecated in GML 3.2, and
@@ -1225,7 +1225,7 @@ the value is found in the first bytes of the GML file (e.g.
 <section id="building-junction-tables">
 <h2>Building junction tables<a class="headerlink" href="#building-junction-tables" title="Link to this heading"></a></h2>
 <p>The
-<a href="#id1"><span class="problematic" id="id2">:source_file:`swig/python/gdal-utils/osgeo_utils/samples/ogr_build_junction_table.py`</span></a>
+<a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/swig/python/gdal-utils/osgeo_utils/samples/ogr_build_junction_table.py">ogr_build_junction_table.py</a>
 script can be used to build a <a class="reference external" href="http://en.wikipedia.org/wiki/Junction_table">junction
 table</a> from OGR layers
 that contain &quot;XXXX_href&quot; fields. Let's considering the following output
@@ -1352,7 +1352,7 @@ will be read as the following:</p>
 </div>
 <p>The GML driver supports reading and writing the geometry coordinate
 precision, using the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRGeomCoordinatePrecision</span></code> settings of the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRGeomFieldDefn</span></code>. Those settings are used to round the coordinates
+<a class="reference internal" href="../../api/ogrfeature_cpp.html#_CPPv416OGRGeomFieldDefn" title="OGRGeomFieldDefn"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRGeomFieldDefn</span></code></a>. Those settings are used to round the coordinates
 of the geometry of the features to an appropriate decimal precision.</p>
 <p>Implementation details: the coordinate precision is stored in the XML schema
 as <code class="docutils literal notranslate"><span class="pre">xs:annotation/xs:appinfo[source=&quot;http://ogr.maptools.org/&quot;]/ogr:xy_coordinate_resolution</span></code>

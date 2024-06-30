@@ -51,9 +51,9 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../programs/index.html">プログラム</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">ラスタードライバー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">ベクタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programs/index.html">Programs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">Raster drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">Vector drivers</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">ユーザー</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="raster_data_model.html">Raster Data Model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="multidim_raster_data_model.html">Multidimensional Raster Data Model</a></li>
@@ -69,19 +69,19 @@
 <li class="toctree-l3"><a class="reference internal" href="ogr_sql_sqlite_dialect.html#executesql">ExecuteSQL()</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ogr_feature_style.html">Feature Style Specification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="coordinate_epoch.html">Coordinate epoch support</a></li>
-<li class="toctree-l2"><a class="reference internal" href="configoptions.html">設定オプション</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configoptions.html">Configuration options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gdal_python_utilities.html">GDAL Python Utilities</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../development/index.html">開発</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">スポンサー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">貢献する方法は?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">Sponsors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">ライセンス</a></li>
 </ul>
@@ -119,7 +119,7 @@
     
       <li><a href="../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">ユーザー向け文書</a> &raquo;</li>
+          <li><a href="index.html">User oriented documentation</a> &raquo;</li>
       
           <li><a href="ogr_sql_sqlite_dialect.html">OGR SQL dialect and SQLITE SQL dialect</a> &raquo;</li>
       
@@ -157,18 +157,18 @@
   <section id="ogr-sql-dialect">
 <span id="id1"></span><h1>OGR SQL dialect<a class="headerlink" href="#ogr-sql-dialect" title="Link to this heading"></a></h1>
 <p>The GDALDataset supports executing commands against a datasource via the
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::ExecuteSQL()</span></code> method.  While in theory
+<a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4N11GDALDataset10ExecuteSQLEPKcP11OGRGeometryPKc" title="GDALDataset::ExecuteSQL"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::ExecuteSQL()</span></code></a> method.  While in theory
 any sort of command could be handled this way, in practice the mechanism is
 used to provide a subset of SQL SELECT capability to applications.  This
 page discusses the generic SQL implementation implemented within OGR, and
 issues with driver specific SQL support.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">OGRSQL</span></code> dialect can be requested with the <code class="docutils literal notranslate"><span class="pre">OGRSQL</span></code> string passed
-as the dialect parameter of <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::ExecuteSQL()</span></code>, or with the
+as the dialect parameter of <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4N11GDALDataset10ExecuteSQLEPKcP11OGRGeometryPKc" title="GDALDataset::ExecuteSQL"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::ExecuteSQL()</span></code></a>, or with the
 <cite>-dialect</cite> option switch of the <a class="reference internal" href="../programs/ogrinfo.html#ogrinfo"><span class="std std-ref">ogrinfo</span></a> or <a class="reference internal" href="../programs/ogr2ogr.html#ogr2ogr"><span class="std std-ref">ogr2ogr</span></a> utilities.</p>
 <p>An alternate dialect, the <code class="docutils literal notranslate"><span class="pre">SQLite</span></code> dialect, can be used
 instead of the <code class="docutils literal notranslate"><span class="pre">OGRSQL</span></code> dialect. Refer to the <a class="reference internal" href="sql_sqlite_dialect.html#sql-sqlite-dialect"><span class="std std-ref">SQL SQLite dialect</span></a> page for more details.</p>
 <p>The OGRLayer class also supports applying an attribute query filter to
-features returned using the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::SetAttributeFilter()</span></code> method.  The
+features returned using the <a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer18SetAttributeFilterEPKc" title="OGRLayer::SetAttributeFilter"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::SetAttributeFilter()</span></code></a> method.  The
 syntax for the attribute filter is the same as the WHERE clause in the
 OGR SQL SELECT statement.  So everything here with regard to the WHERE
 clause applies in the context of the <code class="docutils literal notranslate"><span class="pre">SetAttributeFilter()</span></code> method.</p>
@@ -354,7 +354,7 @@ be surrounded with double-quote characters. e.g. WHERE &quot;from&quot; = 5.</p>
 <p>The argument to the WHERE clause is a logical expression used select records
 from the source layer.  In addition to its use within the WHERE statement,
 the WHERE clause handling is also used for OGR attribute queries on regular
-layers via <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::SetAttributeFilter()</span></code>.</p>
+layers via <a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer18SetAttributeFilterEPKc" title="OGRLayer::SetAttributeFilter"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::SetAttributeFilter()</span></code></a>.</p>
 <p>In addition to the arithmetic and other functional operators available in
 expressions in the field selection clause of the SELECT statement, in the
 WHERE context logical operators are also available and the evaluated value
@@ -602,7 +602,7 @@ other fields in the data source with the same names.</p>
 as an attribute of the feature.  In some cases it is convenient to be able to
 utilize the feature id in queries and result sets as a regular field.  To do
 so use the name <code class="docutils literal notranslate"><span class="pre">FID</span></code>. If the layer has a named FID column
-(<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::GetFIDColumn()</span></code> != &quot;&quot;),
+(<a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer12GetFIDColumnEv" title="OGRLayer::GetFIDColumn"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::GetFIDColumn()</span></code></a> != &quot;&quot;),
 this name may also be used.</p>
 <p>The field wildcard expansions will not include the feature id, but it may be
 explicitly included using a syntax like:</p>
@@ -616,7 +616,7 @@ explicitly included using a syntax like:</p>
 by default. Users do not need to select the geometry explicitly but it is still
 possible to do so. Common use case is when geometry is the only field that is needed.
 In this case the name of the geometry field to be used in the SQL statement is the
-name returned by <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::GetGeometryColumn()</span></code>, and also
+name returned by <a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer17GetGeometryColumnEv" title="OGRLayer::GetGeometryColumn"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::GetGeometryColumn()</span></code></a>, and also
 &quot;Geometry Column = ...&quot; in <strong class="program">ogrinfo</strong> output. If the method returns
 an empty string then a special name &quot;_ogr_geometry_&quot; must be used. The name begins
 with an underscore and SQL syntax requires that it must appear between double quotes.
@@ -630,7 +630,7 @@ and the final SELECT statement could look like:</p>
 <h3>OGR_GEOMETRY<a class="headerlink" href="#ogr-geometry" title="Link to this heading"></a></h3>
 <p>Some of the data sources (like MapInfo tab) can handle geometries of different
 types within the same layer. The <code class="docutils literal notranslate"><span class="pre">OGR_GEOMETRY</span></code> special field represents
-the geometry type returned by <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRGeometry::getGeometryName()</span></code> and can be used to
+the geometry type returned by <a class="reference internal" href="../api/ogrgeometry_cpp.html#_CPPv4NK11OGRGeometry15getGeometryNameEv" title="OGRGeometry::getGeometryName"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRGeometry::getGeometryName()</span></code></a> and can be used to
 distinguish the various types. By using this field one can select particular
 types of the geometries like:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">nation</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">OGR_GEOMETRY</span><span class="o">=</span><span class="s1">&#39;POINT&#39;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">OGR_GEOMETRY</span><span class="o">=</span><span class="s1">&#39;POLYGON&#39;</span>
@@ -673,7 +673,7 @@ For example we can select the annotation features as:</p>
 </pre></div>
 </div>
 <p>It is possible to use the <code class="docutils literal notranslate"><span class="pre">OGR_STYLE</span></code> field name as a special field name in
-the field selection as an alternate way of setting the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeature::SetStyleString()</span></code>
+the field selection as an alternate way of setting the <a class="reference internal" href="../api/ogrfeature_cpp.html#_CPPv4N10OGRFeature14SetStyleStringEPKc" title="OGRFeature::SetStyleString"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeature::SetStyleString()</span></code></a>
 value, typically by aliasing another field or a string literal.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;BRUSH(fc:#01234567)&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">OGR_STYLE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">source_layer</span>
 </pre></div>

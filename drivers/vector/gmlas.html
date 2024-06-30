@@ -51,9 +51,9 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">プログラム</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../raster/index.html">ラスタードライバー</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">ベクタードライバー</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">Programs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../raster/index.html">Raster drivers</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Vector drivers</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="amigocloud.html">AmigoCloud</a></li>
 <li class="toctree-l2"><a class="reference internal" href="arrow.html">(Geo)Arrow IPC File Format / Stream</a></li>
 <li class="toctree-l2"><a class="reference internal" href="avcbin.html">Arc/Info Binary Coverage</a></li>
@@ -165,11 +165,11 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
@@ -207,7 +207,7 @@
     
       <li><a href="../../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">ベクタードライバー</a> &raquo;</li>
+          <li><a href="index.html">Vector drivers</a> &raquo;</li>
       
       <li>GMLAS - Geography Markup Language (GML) driven by application schemas</li>
     
@@ -270,7 +270,7 @@ usage, due to its working in streaming mode.</p>
 </div>
 <div class="admonition supports_createcopy" id="supports_createcopy-0">
 <p class="admonition-title">Supports CreateCopy()</p>
-<p>This driver supports the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::CreateCopy()</span></code> operation</p>
+<p>This driver supports the <a class="reference internal" href="../../api/gdaldriver_cpp.html#_CPPv4N10GDALDriver10CreateCopyEPKcP11GDALDataseti12CSLConstList16GDALProgressFuncPv" title="GDALDriver::CreateCopy"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::CreateCopy()</span></code></a> operation</p>
 </div>
 <div class="admonition supports_virtualio" id="supports_virtualio-0">
 <p class="admonition-title">Supports VirtualIO</p>
@@ -283,7 +283,7 @@ usage, due to its working in streaming mode.</p>
 If this prefix it is omitted, then the GML driver is likely to be used.</p>
 <p>Alternatively, starting with GDAL 3.10, specifying the <code class="docutils literal notranslate"><span class="pre">-if</span> <span class="pre">GMLAS</span></code> option to command line utilities
 accepting it, or <code class="docutils literal notranslate"><span class="pre">GMLAS</span></code> as the only value of the <code class="docutils literal notranslate"><span class="pre">papszAllowedDrivers</span></code> of
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpenEx()</span></code>, also forces the driver to recognize the passed filename.</p>
+<a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALOpenExPKcjPPCKcPPCKcPPCKc" title="GDALOpenEx"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpenEx()</span></code></a>, also forces the driver to recognize the passed filename.</p>
 <p>It is also possible to only used <code class="docutils literal notranslate"><span class="pre">GMLAS:</span></code> as the connection string, but
 in that case the schemas must be explicitly provided with the <code class="docutils literal notranslate"><span class="pre">XSD</span></code> open
 option.</p>
@@ -338,10 +338,10 @@ page for more details.</p>
 <section id="configuration-file">
 <h2>Configuration file<a class="headerlink" href="#configuration-file" title="Link to this heading"></a></h2>
 <p>A default configuration file
-<a href="#id1"><span class="problematic" id="id2">:source_file:`ogr/ogrsf_frmts/gmlas/data/gmlasconf.xml`</span></a>
+<a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/ogr/ogrsf_frmts/gmlas/data/gmlasconf.xml">gmlasconf.xml</a>
 file is provided in the data directory of the GDAL installation. Its
 structure and content is documented in
-<a href="#id3"><span class="problematic" id="id4">:source_file:`ogr/ogrsf_frmts/gmlas/data/gmlasconf.xsd`</span></a>
+<a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/ogr/ogrsf_frmts/gmlas/data/gmlasconf.xsd">gmlasconf.xsd</a>
 schema.</p>
 <p>This configuration file enables the user to modify the following
 settings:</p>
@@ -413,7 +413,7 @@ nested elements.</p>
 </section>
 <section id="open-options">
 <h2>Open options<a class="headerlink" href="#open-options" title="Link to this heading"></a></h2>
-<p><a href="#id9"><span class="problematic" id="id10">|about-open-options|</span></a>
+<p>Open options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-oo</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALOpenExPKcjPPCKcPPCKcPPCKc" title="GDALOpenEx"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpenEx()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.OpenEx" title="osgeo.gdal.OpenEx"><code class="xref py py-meth docutils literal notranslate"><span class="pre">gdal.OpenEx</span></code></a> (Python).
 The following open options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/vector/gmlas-oo-XSD"><strong>XSD=value: </strong>to specify an explicit XSD application schema
@@ -424,7 +424,7 @@ links in its root element.</p>
 </li>
 <li><p id="drivers/vector/gmlas-oo-CONFIG_FILE"><strong>CONFIG_FILE=[&lt;filename&gt;/&lt;xml&gt;]: </strong>finition: filename of a
 XML configuration file conforming to the
-<a href="#id5"><span class="problematic" id="id6">:source_file:`ogr/ogrsf_frmts/gmlas/data/gmlasconf.xsd`</span></a>
+<a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/ogr/ogrsf_frmts/gmlas/data/gmlasconf.xsd">gmlasconf.xsd</a>
 schema. It is also possible to provide the XML content directly
 inlined provided that the very first characters are &lt;Configuration.</p>
 </li>
@@ -530,7 +530,7 @@ affected by those filters.</p>
 </section>
 <section id="dataset-creation-options">
 <h3>Dataset creation options<a class="headerlink" href="#dataset-creation-options" title="Link to this heading"></a></h3>
-<p><a href="#id11"><span class="problematic" id="id12">|about-dataset-creation-options|</span></a>
+<p>Dataset creation options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-dsco</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALCreate11GDALDriverHPKciii12GDALDataType12CSLConstList" title="GDALCreate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALCreate()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.Driver.Create" title="osgeo.gdal.Driver.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Driver.Create</span></code></a> (Python).
 The supported dataset creation options are:</p>
 <ul class="simple">
 <li><p id="drivers/vector/gmlas-dsco-INPUT_XSD"><strong>INPUT_XSD=value: </strong>to specify an explicit XSD application
@@ -541,7 +541,7 @@ schemas and locations filled.</p>
 </li>
 <li><p id="drivers/vector/gmlas-dsco-CONFIG_FILE"><strong>CONFIG_FILE=[&lt;filename&gt;/&lt;xml&gt;]: </strong>filename of a
 XML configuration file conforming to the
-<a href="#id7"><span class="problematic" id="id8">:source_file:`ogr/ogrsf_frmts/gmlas/data/gmlasconf.xsd`</span></a>
+<a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/ogr/ogrsf_frmts/gmlas/data/gmlasconf.xsd">gmlasconf.xsd</a>
 schema. It is also possible to provide the XML content directly
 inlined provided that the very first characters are &lt;Configuration&gt;.</p>
 </li>

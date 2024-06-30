@@ -51,8 +51,8 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">プログラム</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">ラスタードライバー</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">Programs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Raster drivers</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="aaigrid.html">AAIGrid -- Arc/Info ASCII Grid</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ace2.html">ACE2 -- ACE2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adrg.html">ADRG -- ADRG/ARC Digitized Raster Graphics (.gen/.thf)</a></li>
@@ -126,7 +126,7 @@
 <li class="toctree-l2"><a class="reference internal" href="isis3.html">ISIS3 -- USGS Astrogeology ISIS Cube (Version 3)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jdem.html">JDEM -- Japanese DEM (.mem)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2ecw.html">JP2ECW -- ERDAS JPEG2000 (.jp2)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="jp2kak.html">JP2KAK -- JPEG-2000 (based on Kakadu)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jp2kak.html">JP2KAK -- JPEG 2000 (based on Kakadu SDK)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2lura.html">JP2Lura -- JPEG2000 driver based on Lurawave library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2mrsid.html">JP2MrSID -- JPEG2000 via MrSID SDK</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2openjpeg.html">JP2OpenJPEG -- JPEG2000 driver based on OpenJPEG library</a></li>
@@ -214,6 +214,7 @@
 <li class="toctree-l2"><a class="reference internal" href="wmts.html">WMTS -- OGC Web Map Tile Service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xpm.html">XPM -- X11 Pixmap</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">XYZ -- ASCII Gridded XYZ</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#open-options">Open options</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#creation-options">Creation options</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#driver-capabilities">Driver capabilities</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#see-also">See also</a></li>
@@ -223,16 +224,16 @@
 <li class="toctree-l2"><a class="reference internal" href="zmap.html">ZMap -- ZMap Plus Grid</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../vector/index.html">ベクタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vector/index.html">Vector drivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">Community</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -268,7 +269,7 @@
     
       <li><a href="../../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">ラスタードライバー</a> &raquo;</li>
+          <li><a href="index.html">Raster drivers</a> &raquo;</li>
       
       <li>XYZ -- ASCII Gridded XYZ</li>
     
@@ -337,11 +338,18 @@ memory (thus the driver will limit to 100 million points).</p></li>
 'north' for the Y column and 'z', 'alt' or 'height' for the Z column. If
 no header is present or one of the column could not be identified in the
 header, the X, Y and Z columns (in that order) are assumed to be the
-first 3 columns of each line.</p>
+first 3 columns of each line. The open option <a class="reference internal" href="#drivers/raster/xyz-oo-COLUMN_ORDER"><code class="docutils literal notranslate"><span class="pre">COLUMN_ORDER</span></code></a> overrides
+these assumptions (except on 'AUTO').</p>
 <p>The opening of a big dataset can be slow as the driver must scan the
 whole file to determine the dataset size and spatial resolution. The
 driver will autodetect the data type among Byte, Int16, Int32 or
 Float32.</p>
+<section id="open-options">
+<h2>Open options<a class="headerlink" href="#open-options" title="Link to this heading"></a></h2>
+<p>Open options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-oo</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALOpenExPKcjPPCKcPPCKcPPCKc" title="GDALOpenEx"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpenEx()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.OpenEx" title="osgeo.gdal.OpenEx"><code class="xref py py-meth docutils literal notranslate"><span class="pre">gdal.OpenEx</span></code></a> (Python).
+This driver supports the following open options:</p>
+<p id="drivers/raster/xyz-oo-COLUMN_ORDER"><strong>COLUMN_ORDER=[AUTO/XYZ/YXZ]: </strong> (GDAL &gt;= 3.10)  Defaults to <code class="docutils literal notranslate"><span class="pre">AUTO</span></code>. Specifies the order of the columns. It overrides the header.</p>
+</section>
 <section id="creation-options">
 <h2>Creation options<a class="headerlink" href="#creation-options" title="Link to this heading"></a></h2>
 <ul class="simple">
@@ -364,7 +372,7 @@ format; alternative to <a class="reference internal" href="#drivers/raster/xyz-c
 <h2>Driver capabilities<a class="headerlink" href="#driver-capabilities" title="Link to this heading"></a></h2>
 <div class="admonition supports_createcopy" id="supports_createcopy-0">
 <p class="admonition-title">Supports CreateCopy()</p>
-<p>This driver supports the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::CreateCopy()</span></code> operation</p>
+<p>This driver supports the <a class="reference internal" href="../../api/gdaldriver_cpp.html#_CPPv4N10GDALDriver10CreateCopyEPKcP11GDALDataseti12CSLConstList16GDALProgressFuncPv" title="GDALDriver::CreateCopy"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::CreateCopy()</span></code></a> operation</p>
 </div>
 <div class="admonition supports_georeferencing" id="supports_georeferencing-0">
 <p class="admonition-title">Supports Georeferencing</p>

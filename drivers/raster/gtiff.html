@@ -51,8 +51,8 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">プログラム</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">ラスタードライバー</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">Programs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Raster drivers</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="aaigrid.html">AAIGrid -- Arc/Info ASCII Grid</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ace2.html">ACE2 -- ACE2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adrg.html">ADRG -- ADRG/ARC Digitized Raster Graphics (.gen/.thf)</a></li>
@@ -255,14 +255,14 @@
 <li class="toctree-l2"><a class="reference internal" href="zmap.html">ZMap -- ZMap Plus Grid</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../vector/index.html">ベクタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vector/index.html">Vector drivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
@@ -300,7 +300,7 @@
     
       <li><a href="../../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">ラスタードライバー</a> &raquo;</li>
+          <li><a href="index.html">Raster drivers</a> &raquo;</li>
       
       <li>GTiff -- GeoTIFF File Format</li>
     
@@ -360,11 +360,11 @@ bands.</p>
 <h2>Driver capabilities<a class="headerlink" href="#driver-capabilities" title="Link to this heading"></a></h2>
 <div class="admonition supports_createcopy" id="supports_createcopy-0">
 <p class="admonition-title">Supports CreateCopy()</p>
-<p>This driver supports the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::CreateCopy()</span></code> operation</p>
+<p>This driver supports the <a class="reference internal" href="../../api/gdaldriver_cpp.html#_CPPv4N10GDALDriver10CreateCopyEPKcP11GDALDataseti12CSLConstList16GDALProgressFuncPv" title="GDALDriver::CreateCopy"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::CreateCopy()</span></code></a> operation</p>
 </div>
 <div class="admonition supports_create" id="supports_create-0">
 <p class="admonition-title">Supports Create()</p>
-<p>This driver supports the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::Create()</span></code> operation</p>
+<p>This driver supports the <a class="reference internal" href="../../api/gdaldriver_cpp.html#_CPPv4N10GDALDriver6CreateEPKciii12GDALDataType12CSLConstList" title="GDALDriver::Create"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::Create()</span></code></a> operation</p>
 </div>
 <div class="admonition supports_georeferencing" id="supports_georeferencing-0">
 <p class="admonition-title">Supports Georeferencing</p>
@@ -613,9 +613,9 @@ GTIFF_RAW:</p>
 </section>
 <section id="open-options">
 <h2>Open options<a class="headerlink" href="#open-options" title="Link to this heading"></a></h2>
-<p><a href="#id1"><span class="problematic" id="id2">|about-open-options|</span></a>
+<p>Open options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-oo</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALOpenExPKcjPPCKcPPCKcPPCKc" title="GDALOpenEx"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpenEx()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.OpenEx" title="osgeo.gdal.OpenEx"><code class="xref py py-meth docutils literal notranslate"><span class="pre">gdal.OpenEx</span></code></a> (Python).
 This driver supports the following open options:</p>
-<p id="drivers/raster/gtiff-oo-NUM_THREADS"><strong>NUM_THREADS=[&lt;number_of_threads&gt;/ALL_CPUS]: </strong> (GDAL &gt;= 2.1) Enable
+<p id="drivers/raster/gtiff-oo-NUM_THREADS"><strong>NUM_THREADS=[&lt;number_of_threads&gt;/ALL_CPUS]: </strong>Enable
 multi-threaded compression by specifying the number of worker
 threads. Worth it for slow compression algorithms such as DEFLATE or
 LZMA. Default is compression in the main thread.
@@ -623,10 +623,10 @@ Starting with GDAL 3.6, this option also enables multi-threaded decoding
 when RasterIO() requests intersect several tiles/strips.
 The <a class="reference internal" href="../../user/configoptions.html#config-GDAL_NUM_THREADS"><code class="docutils literal notranslate"><span class="pre">GDAL_NUM_THREADS</span></code></a> configuration option can also
 be used as an alternative to setting the open option.</p>
-<p id="drivers/raster/gtiff-oo-GEOREF_SOURCES"><strong>GEOREF_SOURCES=comma-separated list with one or several of PAM, INTERNAL, TABFILE, WORLDFILE or XML (XML added in 3.7): </strong> (GDAL &gt;= 2.2) Define which georeferencing
+<p id="drivers/raster/gtiff-oo-GEOREF_SOURCES"><strong>GEOREF_SOURCES=comma-separated list with one or several of PAM, INTERNAL, TABFILE, WORLDFILE or XML (XML added in 3.7): </strong>Define which georeferencing
 sources are allowed and their priority order. See
 <a class="reference external" href="#georeferencing">Georeferencing</a> paragraph.</p>
-<p id="drivers/raster/gtiff-oo-SPARSE_OK"><strong>SPARSE_OK=[TRUE/FALSE]: </strong> (GDAL &gt;= 2.2)  Defaults to <code class="docutils literal notranslate"><span class="pre">FALSE</span></code>. Should empty blocks be
+<p id="drivers/raster/gtiff-oo-SPARSE_OK"><strong>SPARSE_OK=[TRUE/FALSE]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">FALSE</span></code>. Should empty blocks be
 omitted on disk? When this option is set, any attempt of writing a
 block whose all pixels are 0 or the nodata value will cause it not to
 be written at all (unless there is a corresponding block already
@@ -663,7 +663,7 @@ discarded.</p>
 files</a></p>
 <section id="creation-options">
 <h3>Creation Options<a class="headerlink" href="#creation-options" title="Link to this heading"></a></h3>
-<p><a href="#id3"><span class="problematic" id="id4">|about-creation-options|</span></a>
+<p>Creation options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-co</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALCreate11GDALDriverHPKciii12GDALDataType12CSLConstList" title="GDALCreate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALCreate()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.Driver.Create" title="osgeo.gdal.Driver.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Driver.Create</span></code></a> (Python).
 This driver supports the following creation options:</p>
 <ul class="simple">
 <li><p id="drivers/raster/gtiff-co-TFW"><strong>TFW=[YES/NO]: </strong>Force the generation of an associated ESRI world file
@@ -732,7 +732,7 @@ datasets with 4 bands or less.</p></li>
 </ul>
 </p>
 </li>
-<li><p id="drivers/raster/gtiff-co-NUM_THREADS"><strong>NUM_THREADS=[&lt;integer&gt;/NUM_CPUS]: </strong> (GDAL &gt;= 2.1)  Defaults to <code class="docutils literal notranslate"><span class="pre">1</span></code>. Enable multi-threaded compression by specifying the number of worker
+<li><p id="drivers/raster/gtiff-co-NUM_THREADS"><strong>NUM_THREADS=[&lt;integer&gt;/NUM_CPUS]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">1</span></code>. Enable multi-threaded compression by specifying the number of worker
 threads. Worthwhile for slow compression algorithms such as DEFLATE or LZMA.
 Will be ignored for JPEG. Default is compression in the main thread.</p>
 </li>
@@ -804,7 +804,7 @@ The default is the value of <a class="reference internal" href="#drivers/raster/
 compression. A value of 100 is best quality (least compression), and
 1 is worst quality (best compression).</p>
 </li>
-<li><p id="drivers/raster/gtiff-co-WEBP_LOSSLESS"><strong>WEBP_LOSSLESS=[TRUE/FALSE]: </strong> (GDAL &gt;= 2.4.0) Requires libwebp &gt;= 0.1.4.
+<li><p id="drivers/raster/gtiff-co-WEBP_LOSSLESS"><strong>WEBP_LOSSLESS=[TRUE/FALSE]: </strong>Requires libwebp &gt;= 0.1.4.
 By default, lossy compression is used. If set to True, lossless
 compression will be used. There is a significant time penalty for each
 tile/strip with lossless WebP compression, so you may want to increase the
@@ -907,7 +907,7 @@ also applied to the output overviews.</p>
 <li><p id="drivers/raster/gtiff-co-STREAMABLE_OUTPUT"><strong>STREAMABLE_OUTPUT=[YES/NO]: </strong>Generate a file with an Image File Directory and block order that allow
 streaming. See <a class="reference internal" href="#streaming-operations">Streaming operations</a>.</p>
 </li>
-<li><p id="drivers/raster/gtiff-co-GEOTIFF_KEYS_FLAVOR"><strong>GEOTIFF_KEYS_FLAVOR=[STANDARD/ESRI_PE]: </strong> (GDAL &gt;= 2.1.0)  Defaults to <code class="docutils literal notranslate"><span class="pre">STANDARD</span></code>. Determine which &quot;flavor&quot; of GeoTIFF keys must be used to write the SRS
+<li><p id="drivers/raster/gtiff-co-GEOTIFF_KEYS_FLAVOR"><strong>GEOTIFF_KEYS_FLAVOR=[STANDARD/ESRI_PE]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">STANDARD</span></code>. Determine which &quot;flavor&quot; of GeoTIFF keys must be used to write the SRS
 information. The STANDARD way (default choice) will use the general
 accepted formulations of GeoTIFF keys, including extensions of the
 values accepted for ProjectedCSTypeGeoKey to new EPSG codes. The
@@ -1049,7 +1049,7 @@ block order of the streamed input.</p>
 </section>
 <section id="configuration-options">
 <h3>Configuration options<a class="headerlink" href="#configuration-options" title="Link to this heading"></a></h3>
-<p><a href="#id5"><span class="problematic" id="id6">|about-config-options|</span></a>
+<p><a class="reference internal" href="../../user/configoptions.html#configoptions"><span class="std std-ref">Configuration options</span></a> can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">--config</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or using functions such as <a class="reference internal" href="../../api/cpl.html#_CPPv418CPLSetConfigOptionPKcPKc" title="CPLSetConfigOption"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CPLSetConfigOption()</span></code></a> (C) or <code class="xref py py-func docutils literal notranslate"><span class="pre">gdal.config_options</span></code> (Python).
 This paragraph lists the configuration options that can be set to alter
 the default behavior of the GTiff driver.</p>
 <ul class="simple">

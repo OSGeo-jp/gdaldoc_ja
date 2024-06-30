@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GDAL のソースからのビルド &mdash; GDAL  ドキュメント</title>
+  <title>Building GDAL from source &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
       <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
 
@@ -26,7 +26,7 @@
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="Setting up a development environment" href="dev_environment.html" />
-    <link rel="prev" title="開発" href="index.html" /> 
+    <link rel="prev" title="Development" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -51,14 +51,14 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../programs/index.html">プログラム</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">ラスタードライバー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">ベクタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programs/index.html">Programs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">Raster drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">Vector drivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">開発</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">GDAL のソースからのビルド</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Development</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Building GDAL from source</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#build-requirements">Build requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#cmake-gdal-versions-3-5-0">CMake (GDAL versions &gt;= 3.5.0)</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#building-on-windows">Building on Windows</a></li>
@@ -88,9 +88,9 @@
 <li class="toctree-l2"><a class="reference internal" href="rfc/index.html">RFC list</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">スポンサー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">貢献する方法は?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">Sponsors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">ライセンス</a></li>
 </ul>
@@ -128,9 +128,9 @@
     
       <li><a href="../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">開発</a> &raquo;</li>
+          <li><a href="index.html">Development</a> &raquo;</li>
       
-      <li>GDAL のソースからのビルド</li>
+      <li>Building GDAL from source</li>
     
 
     
@@ -152,7 +152,7 @@
         <a href="dev_environment.html" class="btn btn-neutral float-right" title="Setting up a development environment" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral float-left" title="開発" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Development" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -162,7 +162,7 @@
            <div itemprop="articleBody">
              
   <section id="building-gdal-from-source">
-<span id="building-from-source"></span><h1>GDAL のソースからのビルド<a class="headerlink" href="#building-gdal-from-source" title="Link to this heading"></a></h1>
+<span id="building-from-source"></span><h1>Building GDAL from source<a class="headerlink" href="#building-gdal-from-source" title="Link to this heading"></a></h1>
 <section id="build-requirements">
 <span id="id1"></span><h2>Build requirements<a class="headerlink" href="#build-requirements" title="Link to this heading"></a></h2>
 <p>The minimum requirements to build GDAL are:</p>
@@ -180,7 +180,7 @@
 </ul>
 <p>A number of optional libraries are also strongly recommended for most builds:
 SQLite3, expat, libcurl, zlib, libtiff, libgeotiff, libpng, libjpeg, etc.
-Consult <a class="reference internal" href="../drivers/raster/index.html#raster-drivers"><span class="std std-ref">ラスタードライバー</span></a> and <a class="reference internal" href="../drivers/vector/index.html#vector-drivers"><span class="std std-ref">ベクタードライバー</span></a> pages for information
+Consult <a class="reference internal" href="../drivers/raster/index.html#raster-drivers"><span class="std std-ref">Raster drivers</span></a> and <a class="reference internal" href="../drivers/vector/index.html#vector-drivers"><span class="std std-ref">Vector drivers</span></a> pages for information
 on dependencies of optional drivers.</p>
 </section>
 <section id="cmake-gdal-versions-3-5-0">
@@ -2634,8 +2634,8 @@ on vector drivers).
 When such dependencies are not met, a CMake error will be emitted with a hint
 for the way to resolve the issue.
 It is also possible to anticipate such errors by looking at files
-<a href="#id42"><span class="problematic" id="id43">:source_file:`frmts/CMakeLists.txt`</span></a> for dependencies of raster drivers
-and <a href="#id44"><span class="problematic" id="id45">:source_file:`ogr/ogrsf_frmts/CMakeLists.txt`</span></a> for dependencies of vector drivers.</p>
+<a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/frmts/CMakeLists.txt">CMakeLists.txt</a> for dependencies of raster drivers
+and <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/ogr/ogrsf_frmts/CMakeLists.txt">CMakeLists.txt</a> for dependencies of vector drivers.</p>
 </div>
 </dd></dl>
 
@@ -2806,7 +2806,7 @@ code for registering a proxy driver.</p>
 
 <p>The pointed file must declare a <code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">DeclareDeferred&lt;driver_name&gt;(void)</span></code>
 method with C linkage that takes care of creating a GDALPluginDriverProxy
-instance and calling <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriverManager::DeclareDeferredPluginDriver()</span></code> on it.</p>
+instance and calling <a class="reference internal" href="../api/gdaldriver_cpp.html#_CPPv4N17GDALDriverManager27DeclareDeferredPluginDriverEP21GDALPluginDriverProxy" title="GDALDriverManager::DeclareDeferredPluginDriver"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriverManager::DeclareDeferredPluginDriver()</span></code></a> on it.</p>
 </section>
 <section id="python-bindings-options">
 <span id="building-python-bindings"></span><h3>Python bindings options<a class="headerlink" href="#python-bindings-options" title="Link to this heading"></a></h3>
@@ -3006,7 +3006,7 @@ into the build tree and build the needed files from it into the driver.</p>
 <section id="cross-compiling-for-android">
 <h3>Cross-compiling for Android<a class="headerlink" href="#cross-compiling-for-android" title="Link to this heading"></a></h3>
 <p>First refer to <a class="reference external" href="https://cmake.org/cmake/help/latest/manual/cmake-toolchains.7.html#cross-compiling-for-android">https://cmake.org/cmake/help/latest/manual/cmake-toolchains.7.html#cross-compiling-for-android</a>
-and to <a href="#id47"><span class="problematic" id="id48">:source_file:`.github/workflows/android_cmake/start.sh`</span></a> for
+and to <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/.github/workflows/android_cmake/start.sh">start.sh</a> for
 an example of a build script to cross-compile from Ubuntu.</p>
 </section>
 <section id="typical-build-issues">
@@ -3053,7 +3053,7 @@ autoconf and nmake build systems.</p>
         <a href="dev_environment.html" class="btn btn-neutral float-right" title="Setting up a development environment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral float-left" title="開発" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Development" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

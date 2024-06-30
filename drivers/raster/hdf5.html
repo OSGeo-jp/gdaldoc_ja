@@ -51,8 +51,8 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">プログラム</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">ラスタードライバー</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">Programs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Raster drivers</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="aaigrid.html">AAIGrid -- Arc/Info ASCII Grid</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ace2.html">ACE2 -- ACE2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adrg.html">ADRG -- ADRG/ARC Digitized Raster Graphics (.gen/.thf)</a></li>
@@ -227,14 +227,14 @@
 <li class="toctree-l2"><a class="reference internal" href="zmap.html">ZMap -- ZMap Plus Grid</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../vector/index.html">ベクタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vector/index.html">Vector drivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
@@ -272,7 +272,7 @@
     
       <li><a href="../../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">ラスタードライバー</a> &raquo;</li>
+          <li><a href="index.html">Raster drivers</a> &raquo;</li>
       
       <li>HDF5 -- Hierarchical Data Format Release 5 (HDF5)</li>
     
@@ -360,7 +360,7 @@ in GDAL).</div>
 </div>
 <p>Starting with GDAL 3.10, specifying the <code class="docutils literal notranslate"><span class="pre">-if</span> <span class="pre">HDF5</span></code> option to command line utilities
 accepting it, or <code class="docutils literal notranslate"><span class="pre">HDF5</span></code> as the only value of the <code class="docutils literal notranslate"><span class="pre">papszAllowedDrivers</span></code> of
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpenEx()</span></code>, also forces the driver to recognize the passed
+<a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALOpenExPKcjPPCKcPPCKcPPCKc" title="GDALOpenEx"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpenEx()</span></code></a>, also forces the driver to recognize the passed
 filename, when it is not using subdataset syntax (it can typically be used to
 force open a netCDF file that would be nominally recognized by the netCDF driver).</p>
 <p>On the second step you should provide this name for <strong>gdalinfo</strong> or
@@ -532,8 +532,8 @@ download source code NCSA HDF Home Page (see links below).</p>
 </section>
 <section id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>
-<p>Implemented as <a href="#id1"><span class="problematic" id="id2">:source_file:`frmts/hdf5/hdf5dataset.cpp`</span></a> and
-<a href="#id3"><span class="problematic" id="id4">:source_file:`frmts/hdf5/hdf5imagedataset.cpp`</span></a>.</p>
+<p>Implemented as <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/frmts/hdf5/hdf5dataset.cpp">hdf5dataset.cpp</a> and
+<a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/frmts/hdf5/hdf5imagedataset.cpp">hdf5imagedataset.cpp</a>.</p>
 <p><a class="reference external" href="http://hdf.ncsa.uiuc.edu/HDF5/release/obtain5.html">The NCSA HDF5 Download
 Page</a> at the
 <a class="reference external" href="http://www.ncsa.uiuc.edu/">National Center for Supercomputing

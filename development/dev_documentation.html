@@ -51,14 +51,14 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../programs/index.html">プログラム</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">ラスタードライバー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">ベクタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programs/index.html">Programs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">Raster drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">Vector drivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">開発</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="building_from_source.html">GDAL のソースからのビルド</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="building_from_source.html">Building GDAL from source</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dev_environment.html">Setting up a development environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dev_practices.html">Development practices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="testing.html">Automated testing</a></li>
@@ -90,9 +90,9 @@
 <li class="toctree-l2"><a class="reference internal" href="rfc/index.html">RFC list</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">スポンサー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">貢献する方法は?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">Sponsors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">ライセンス</a></li>
 </ul>
@@ -130,7 +130,7 @@
     
       <li><a href="../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">開発</a> &raquo;</li>
+          <li><a href="index.html">Development</a> &raquo;</li>
       
       <li>Building documentation</li>
     
@@ -170,8 +170,8 @@
 <p>GDAL's documentation includes C and C++ <a class="reference internal" href="../api/index.html#api"><span class="std std-ref">API documentation</span></a> built
 automatically from source comments using Doxygen and reStructuredText (rst)
 files containing manually-edited content.</p>
-<p><a href="#id7"><span class="problematic" id="id8">|Sphinx|</span></a> is used to combine the above components into a complete set of documentation in HTML, PDF, and other formats.</p>
-<p><a href="#id9"><span class="problematic" id="id10">|Sphinx|</span></a> and extensions used by GDAL can be installed by running <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span></code> from
+<p><a class="reference external" href="https://www.sphinx-doc.org/">Sphinx</a> is used to combine the above components into a complete set of documentation in HTML, PDF, and other formats.</p>
+<p><a class="reference external" href="https://www.sphinx-doc.org/">Sphinx</a> and extensions used by GDAL can be installed by running <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span></code> from
 the <code class="docutils literal notranslate"><span class="pre">doc</span></code> subdirectory.</p>
 </section>
 <section id="id1">
@@ -201,7 +201,7 @@ be invoked.
 Note: those CMake targets are only available if the CMake BUILD_DOCS=ON variable
 is set (it is set by default if build preconditions are met, that is if Doxygen,
 Sphinx and make are available)</p>
-<p>To visualize documentation changes while editing, it may be useful to install the <a href="#id11"><span class="problematic" id="id12">|sphinx-autobuild|</span></a> python package.
+<p>To visualize documentation changes while editing, it may be useful to install the <a class="reference external" href="https://pypi.org/project/sphinx-autobuild/">sphinx-autobuild</a> python package.
 Once installed, running <code class="docutils literal notranslate"><span class="pre">sphinx-autobuild</span> <span class="pre">-b</span> <span class="pre">html</span> <span class="pre">source</span> <span class="pre">build</span></code> from the <code class="docutils literal notranslate"><span class="pre">doc</span></code> subdirectory will build documentation
 and serve it on a local web server at <code class="docutils literal notranslate"><span class="pre">http://127.0.0.1:8000</span></code>. The pages served will be automatically refreshed as changes
 are made to underlying <code class="docutils literal notranslate"><span class="pre">rst</span></code> documentation files.</p>
@@ -214,7 +214,7 @@ Docstrings may be found in two locations. If the function was defined in Python
 (i.e., using a <code class="docutils literal notranslate"><span class="pre">%pythoncode</span></code> SWIG directive), then the docstring must be
 placed within the function definition. If the function is defined in C++ only,
 then the docstring should be placed in a separate file
-containing only docstrings (located in <a href="#id2"><span class="problematic" id="id3">:source_file:`swig/include/python/docs`</span></a>).
+containing only docstrings (located in <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/swig/include/python/docs">docs</a>).
 Sphinx loads the Python bindings when generating documentation, so for it to see any changes
 the following steps must be completed:</p>
 <ul class="simple">
@@ -337,7 +337,7 @@ from the build directory</p></li>
 </div>
 </section>
 <section id="linking">
-<span id="id4"></span><h3>Linking<a class="headerlink" href="#linking" title="Link to this heading"></a></h3>
+<span id="id2"></span><h3>Linking<a class="headerlink" href="#linking" title="Link to this heading"></a></h3>
 <p>Links to other pages should never be titled as &quot;here&quot;.  Sphinx makes this easy by automatically inserting the title of the linked document.</p>
 <dl class="simple">
 <dt>Bad</dt><dd><p>More information about linking can be found <a class="reference internal" href="#linking"><span class="std std-ref">here</span></a>.</p>
@@ -496,7 +496,7 @@ from the build directory</p></li>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:source_file:`gcore/gdaldriver.cpp`
 </pre></div>
 </div>
-<p>This will output a link to the file on GitHub: <a href="#id5"><span class="problematic" id="id6">:source_file:`gcore/gdaldriver.cpp`</span></a></p>
+<p>This will output a link to the file on GitHub: <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/gcore/gdaldriver.cpp">gdaldriver.cpp</a></p>
 </section>
 <section id="reference-code">
 <h3>Reference code<a class="headerlink" href="#reference-code" title="Link to this heading"></a></h3>

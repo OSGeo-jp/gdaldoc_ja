@@ -51,15 +51,15 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">プログラム</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">Programs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../drivers/raster/index.html">Raster drivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../drivers/vector/index.html">Vector drivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Development</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../dev_environment.html">Setting up a development environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../building_from_source.html">Building GDAL from source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev_environment.html">Setting up a development environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dev_practices.html">Development practices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../testing.html">Automated testing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dev_documentation.html">Building documentation</a></li>
@@ -100,7 +100,7 @@
 <li class="toctree-l3"><a class="reference internal" href="rfc33_gtiff_pixelispoint.html">RFC 33: GTiff - Fixing PixelIsPoint Interpretation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="rfc34_license_policy.html">RFC 34: License Policy Enforcement</a></li>
 <li class="toctree-l3"><a class="reference internal" href="rfc35_deletereorderalterfielddefn.html">RFC 35: Delete, reorder and alter field definitions of OGR layers</a></li>
-<li class="toctree-l3"><a class="reference internal" href="rfc36_open_by_drivername.html">RFC 36: Allow specification of intended driver on GDALOpen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rfc36_open_by_drivername.html">RFC 36: Allow specification of intended driver on GDALOpen (withdrawn)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="rfc37_cplerror_userdata.html">RFC 37: User data callbacks in CPLError</a></li>
 <li class="toctree-l3"><a class="reference internal" href="rfc38_ogr_faster_open.html">RFC 38: OGR Faster Open (withdrawn)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="rfc39_ogr_layer_algebra.html">RFC 39: OGR Layer Algebra</a></li>
@@ -187,7 +187,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -310,17 +310,17 @@ capability):</p>
 or <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFieldDefn::DeleteFieldDefn()</span></code> on an instance of OGRLayer::GetLayerDefn(),
 crashes could potentially occur in drivers that are not ready to see the number
 of fields to change behind their back. The correct way of adding or deleting
-fields to a layer is to use <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::CreateField()</span></code> or
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::DeleteField()</span></code></p>
+fields to a layer is to use <a class="reference internal" href="../../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer11CreateFieldEPK12OGRFieldDefni" title="OGRLayer::CreateField"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::CreateField()</span></code></a> or
+<a class="reference internal" href="../../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer11DeleteFieldEi" title="OGRLayer::DeleteField"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::DeleteField()</span></code></a></p>
 </section>
 <section id="details">
 <h2>Details<a class="headerlink" href="#details" title="Link to this heading"></a></h2>
 <p>A <code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">m_bSealed</span></code> member variable is added to the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRFieldDefn</span></code> and <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRGeomFieldDefn</span></code> classes. Its default
+<a class="reference internal" href="../../api/ogrfeature_cpp.html#_CPPv412OGRFieldDefn" title="OGRFieldDefn"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRFieldDefn</span></code></a> and <a class="reference internal" href="../../api/ogrfeature_cpp.html#_CPPv416OGRGeomFieldDefn" title="OGRGeomFieldDefn"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRGeomFieldDefn</span></code></a> classes. Its default
 value is false, meaning that calling setters method on instances of those classes
 is allowed by default.</p>
-<p>The following methods are added on <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRFieldDefn</span></code> (and similarly
-for <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRGeomFieldDefn</span></code>)</p>
+<p>The following methods are added on <a class="reference internal" href="../../api/ogrfeature_cpp.html#_CPPv412OGRFieldDefn" title="OGRFieldDefn"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRFieldDefn</span></code></a> (and similarly
+for <a class="reference internal" href="../../api/ogrfeature_cpp.html#_CPPv416OGRGeomFieldDefn" title="OGRGeomFieldDefn"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRGeomFieldDefn</span></code></a>)</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cm">/** Seal a OGRFieldDefn.</span>
 <span class="cm"> *</span>
 <span class="cm"> * A sealed OGRFieldDefn can not be modified while it is sealed.</span>

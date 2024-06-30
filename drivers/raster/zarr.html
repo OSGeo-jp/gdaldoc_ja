@@ -51,8 +51,8 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">プログラム</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">ラスタードライバー</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">Programs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Raster drivers</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="aaigrid.html">AAIGrid -- Arc/Info ASCII Grid</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ace2.html">ACE2 -- ACE2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adrg.html">ADRG -- ADRG/ARC Digitized Raster Graphics (.gen/.thf)</a></li>
@@ -126,7 +126,7 @@
 <li class="toctree-l2"><a class="reference internal" href="isis3.html">ISIS3 -- USGS Astrogeology ISIS Cube (Version 3)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jdem.html">JDEM -- Japanese DEM (.mem)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2ecw.html">JP2ECW -- ERDAS JPEG2000 (.jp2)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="jp2kak.html">JP2KAK -- JPEG-2000 (based on Kakadu)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jp2kak.html">JP2KAK -- JPEG 2000 (based on Kakadu SDK)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2lura.html">JP2Lura -- JPEG2000 driver based on Lurawave library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2mrsid.html">JP2MrSID -- JPEG2000 via MrSID SDK</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2openjpeg.html">JP2OpenJPEG -- JPEG2000 driver based on OpenJPEG library</a></li>
@@ -233,16 +233,16 @@
 <li class="toctree-l2"><a class="reference internal" href="zmap.html">ZMap -- ZMap Plus Grid</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../vector/index.html">ベクタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vector/index.html">Vector drivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">Community</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -278,7 +278,7 @@
     
       <li><a href="../../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">ラスタードライバー</a> &raquo;</li>
+          <li><a href="index.html">Raster drivers</a> &raquo;</li>
       
       <li>Zarr</li>
     
@@ -343,7 +343,7 @@ versions.</p>
 <h2>Driver capabilities<a class="headerlink" href="#driver-capabilities" title="Link to this heading"></a></h2>
 <div class="admonition supports_create" id="supports_create-0">
 <p class="admonition-title">Supports Create()</p>
-<p>This driver supports the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::Create()</span></code> operation</p>
+<p>This driver supports the <a class="reference internal" href="../../api/gdaldriver_cpp.html#_CPPv4N10GDALDriver6CreateEPKciii12GDALDataType12CSLConstList" title="GDALDriver::Create"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::Create()</span></code></a> operation</p>
 </div>
 <div class="admonition supports_georeferencing" id="supports_georeferencing-0">
 <p class="admonition-title">Supports Georeferencing</p>
@@ -361,7 +361,7 @@ versions.</p>
 <section id="concepts">
 <h2>Concepts<a class="headerlink" href="#concepts" title="Link to this heading"></a></h2>
 <p>A Zarr dataset is made of a hierarchy of nodes, with intermediate nodes being
-groups (<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALGroup</span></code>), and leafs being arrays (<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALMDArray</span></code>).</p>
+groups (<a class="reference internal" href="../../api/gdalgroup_cpp.html#_CPPv49GDALGroup" title="GDALGroup"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALGroup</span></code></a>), and leafs being arrays (<a class="reference internal" href="../../api/gdalmdarray_cpp.html#_CPPv411GDALMDArray" title="GDALMDArray"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALMDArray</span></code></a>).</p>
 </section>
 <section id="dataset-name">
 <h2>Dataset name<a class="headerlink" href="#dataset-name" title="Link to this heading"></a></h2>
@@ -398,7 +398,7 @@ with single-quote characters:</p>
 </pre></div>
 </div>
 <p>For specific uses, it is also possible to register at run-time extra compressors
-and decompressors with <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CPLRegisterCompressor()</span></code> and <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CPLRegisterDecompressor()</span></code>.</p>
+and decompressors with <a class="reference internal" href="../../api/cpl.html#_CPPv421CPLRegisterCompressorPK13CPLCompressor" title="CPLRegisterCompressor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CPLRegisterCompressor()</span></code></a> and <a class="reference internal" href="../../api/cpl.html#_CPPv423CPLRegisterDecompressorPK13CPLCompressor" title="CPLRegisterDecompressor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CPLRegisterDecompressor()</span></code></a>.</p>
 </section>
 <section id="xarray-array-dimensions">
 <h2>XArray _ARRAY_DIMENSIONS<a class="headerlink" href="#xarray-array-dimensions" title="Link to this heading"></a></h2>
@@ -596,7 +596,7 @@ Only used through the classic 2D API.</p>
 </section>
 <section id="multi-threaded-caching">
 <h2>Multi-threaded caching<a class="headerlink" href="#multi-threaded-caching" title="Link to this heading"></a></h2>
-<p>The driver implements the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArray::AdviseRead()</span></code> method. This
+<p>The driver implements the <a class="reference internal" href="../../api/gdalmdarray_cpp.html#_CPPv4NK11GDALMDArray10AdviseReadEPK7GUInt64PK6size_t12CSLConstList" title="GDALMDArray::AdviseRead"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArray::AdviseRead()</span></code></a> method. This
 proceed to multi-threaded decoding of the tiles that intersect the area of
 interest specified. A sufficient cache size must be specified. The call is
 blocking.</p>

@@ -51,15 +51,15 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../programs/index.html">プログラム</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programs/index.html">Programs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">Raster drivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">Vector drivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">チュートリアル</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="index.html#raster">ラスター</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#multidimensional-raster">多次元ラスター</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html#vector">ベクター</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#raster">Raster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#multidimensional-raster">Multidimensional raster</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#vector">Vector</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Vector API tutorial</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#reading-from-ogr">Reading From OGR</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#reading-from-ogr-using-the-arrow-c-stream-data-interface">Reading From OGR using the Arrow C Stream data interface</a></li>
@@ -71,8 +71,8 @@
 <li class="toctree-l3"><a class="reference internal" href="vector_python_driver.html">Vector driver in Python implementation tutorial</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#geographic-network-model">空間ネットワークモデル</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#projections-and-spatial-reference-systems-tutorial-osr-ogrspatialreference">投影法と空間参照システムチュートリアル (OSR - OGRSpatialReference)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#geographic-network-model">Geographic Network Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#projections-and-spatial-reference-systems-tutorial-osr-ogrspatialreference">Projections and Spatial Reference Systems tutorial (OSR - OGRSpatialReference)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development</a></li>
@@ -80,7 +80,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">Sponsors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -116,7 +116,7 @@
     
       <li><a href="../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">チュートリアル</a> &raquo;</li>
+          <li><a href="index.html">Tutorials</a> &raquo;</li>
       
       <li>Vector API tutorial</li>
     
@@ -162,7 +162,7 @@ the key classes and their roles in OGR.</p>
 utility for dumping point layers from an OGR data source to stdout in
 comma-delimited format.</p>
 <p>Initially it is necessary to register all the format drivers that are desired.
-This is normally accomplished by calling <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALAllRegister()</span></code> which registers
+This is normally accomplished by calling <a class="reference internal" href="../api/raster_c_api.html#_CPPv415GDALAllRegisterv" title="GDALAllRegister"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALAllRegister()</span></code></a> which registers
 all format drivers built into GDAL/OGR.</p>
 <p>In C++ :</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;ogrsf_frmts.h&quot;</span>
@@ -186,7 +186,7 @@ all format drivers built into GDAL/OGR.</p>
 RDBMSes, directories full of files, or even remote web services depending on
 the driver being used.  However, the datasource name is always a single
 string.  In this case we are hardcoded to open a particular shapefile.
-The second argument (GDAL_OF_VECTOR) tells the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGROpen()</span></code> method
+The second argument (GDAL_OF_VECTOR) tells the <a class="reference internal" href="../api/vector_c_api.html#_CPPv47OGROpenPKciP12OGRSFDriverH" title="OGROpen"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGROpen()</span></code></a> method
 that we want a vector driver to be use and that don't require update access.
 On failure NULL is returned, and
 we report an error.</p>
@@ -213,8 +213,8 @@ we report an error.</p>
 </pre></div>
 </div>
 <p>A GDALDataset can potentially have many layers associated with it.  The
-number of layers available can be queried with <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetLayerCount()</span></code>
-and individual layers fetched by index using <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetLayer()</span></code>.
+number of layers available can be queried with <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4N11GDALDataset13GetLayerCountEv" title="GDALDataset::GetLayerCount"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetLayerCount()</span></code></a>
+and individual layers fetched by index using <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4N11GDALDataset8GetLayerEi" title="GDALDataset::GetLayer"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetLayer()</span></code></a>.
 However, we will just fetch the layer by name.</p>
 <p>In C++ :</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">OGRLayer</span><span class="w">  </span><span class="o">*</span><span class="n">poLayer</span><span class="p">;</span>
@@ -243,7 +243,7 @@ of feature we get back, but for now we are interested in getting all features.</
 </div>
 <p>If using older GDAL versions, while it isn't strictly necessary in this
 circumstance since we are starting fresh with the layer, it is often wise
-to call <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::ResetReading()</span></code> to ensure we are starting at the beginning of
+to call <a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer12ResetReadingEv" title="OGRLayer::ResetReading"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::ResetReading()</span></code></a> to ensure we are starting at the beginning of
 the layer.  We iterate through all the features in the layer using
 OGRLayer::GetNextFeature().  It will return NULL when we run out of features.</p>
 <p>With GDAL &lt; 2.3 and C++ :</p>
@@ -263,7 +263,7 @@ OGRLayer::GetNextFeature().  It will return NULL when we run out of features.</p
 </pre></div>
 </div>
 <p>In order to dump all the attribute fields of the feature, it is helpful
-to get the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRFeatureDefn</span></code>.  This is an object, associated with the layer,
+to get the <a class="reference internal" href="../api/ogrfeature_cpp.html#_CPPv414OGRFeatureDefn" title="OGRFeatureDefn"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRFeatureDefn</span></code></a>.  This is an object, associated with the layer,
 containing the definitions of all the fields.  We loop over all the fields,
 and fetch and report the attributes based on their type.</p>
 <p>With GDAL 2.3 and C++11:</p>
@@ -383,10 +383,10 @@ and fetch and report the attributes based on their type.</p>
 </div>
 <p>There are a few more field types than those explicitly handled above, but
 a reasonable representation of them can be fetched with the
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeature::GetFieldAsString()</span></code> method.  In fact we could shorten the above
+<a class="reference internal" href="../api/ogrfeature_cpp.html#_CPPv4NK10OGRFeature16GetFieldAsStringEi" title="OGRFeature::GetFieldAsString"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeature::GetFieldAsString()</span></code></a> method.  In fact we could shorten the above
 by using GetFieldAsString() for all the types.</p>
 <p>Next we want to extract the geometry from the feature, and write out the point
-geometry x and y.   Geometries are returned as a generic <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRGeometry</span></code> pointer.
+geometry x and y.   Geometries are returned as a generic <a class="reference internal" href="../api/ogrgeometry_cpp.html#_CPPv411OGRGeometry" title="OGRGeometry"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRGeometry</span></code></a> pointer.
 We then determine the specific geometry type, and if it is a point, we
 cast it to point and operate on it.  If it is something else we write
 placeholders.</p>
@@ -491,7 +491,7 @@ handle 2D or 3D cases properly.</p>
         <span class="nb">print</span> <span class="s2">&quot;no point geometry</span><span class="se">\n</span><span class="s2">&quot;</span>
 </pre></div>
 </div>
-<p>Note that <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeature::GetGeometryRef()</span></code> and <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeature::GetGeomFieldRef()</span></code>
+<p>Note that <a class="reference internal" href="../api/ogrfeature_cpp.html#_CPPv4N10OGRFeature14GetGeometryRefEv" title="OGRFeature::GetGeometryRef"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeature::GetGeometryRef()</span></code></a> and <a class="reference internal" href="../api/ogrfeature_cpp.html#_CPPv4N10OGRFeature15GetGeomFieldRefEi" title="OGRFeature::GetGeomFieldRef"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeature::GetGeomFieldRef()</span></code></a>
 return a pointer to
 the internal geometry owned by the OGRFeature.  There we don't actually
 delete the return geometry.</p>
@@ -506,7 +506,7 @@ the following.</p>
 <span class="n">OGR_FOR_EACH_FEATURE_END</span><span class="p">(</span><span class="n">hFeature</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>For GDAL &lt; 2.3, as the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::GetNextFeature()</span></code> method
+<p>For GDAL &lt; 2.3, as the <a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer14GetNextFeatureEv" title="OGRLayer::GetNextFeature"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::GetNextFeature()</span></code></a> method
 returns a copy of the feature that is now owned by us.  So at the end of
 use we must free the feature.  We could just &quot;delete&quot; it, but this can cause
 problems in windows builds where the GDAL DLL has a different &quot;heap&quot; from the
@@ -522,7 +522,7 @@ feature.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The OGRLayer returned by <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetLayerByName()</span></code> is also a reference
+<p>The OGRLayer returned by <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4N11GDALDataset14GetLayerByNameEPKc" title="GDALDataset::GetLayerByName"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetLayerByName()</span></code></a> is also a reference
 to an internal layer owned by the GDALDataset so we don't need to delete
 it.  But we do need to delete the datasource in order to close the input file.
 Once again we do this with a custom delete method to avoid special win32
@@ -811,8 +811,8 @@ heap issues.</p>
 </div>
 <p>Instead of retrieving features one at a time, it is also possible to retrieve
 them by batches, with a column-oriented memory layout, using the
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::GetArrowStream()</span></code> method. Note that this method is more
-difficult to use than the traditional <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::GetNextFeature()</span></code> approach,
+<a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer14GetArrowStreamEP16ArrowArrayStream12CSLConstList" title="OGRLayer::GetArrowStream"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::GetArrowStream()</span></code></a> method. Note that this method is more
+difficult to use than the traditional <a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer14GetNextFeatureEv" title="OGRLayer::GetNextFeature"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::GetNextFeature()</span></code></a> approach,
 and is only advised when compatibility with the
 <a class="reference external" href="https://arrow.apache.org/docs/format/CStreamInterface.html">Apache Arrow C Stream interface</a>
 is needed, or when column-oriented consumption of layers is required.</p>
@@ -862,7 +862,7 @@ explicitly included when the related array batch API is used.</p>
 </pre></div>
 </div>
 </div></blockquote>
-<p>It is also available in the C API as <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGR_L_GetArrowStream()</span></code>.</p>
+<p>It is also available in the C API as <a class="reference internal" href="../api/vector_c_api.html#_CPPv420OGR_L_GetArrowStream9OGRLayerHP16ArrowArrayStreamPPc" title="OGR_L_GetArrowStream"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGR_L_GetArrowStream()</span></code></a>.</p>
 <p>out_stream is a pointer to a ArrowArrayStream structure, that can be in a uninitialized
 state (the method will ignore any initial content).</p>
 <p>On successful return, and when the stream interfaces is no longer needed, it must must
@@ -935,7 +935,7 @@ array specifications, to know, in which buffer of an array, data is to be read,
 which data type void* buffers should be cast to, how to use buffers that contain
 null/not_null information, how to use offset buffers for data types of type List, etc.
 The study of the gdal_array._RecordBatchAsNumpy() method of the SWIG Python
-bindings (<a href="#id2"><span class="problematic" id="id3">:source_file:`swig/include/gdal_array.i`</span></a>)
+bindings (<a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/swig/include/gdal_array.i">gdal_array.i</a>)
 can give a good hint of how to use an ArrowArray object, in conjunction
 with the associated ArrowSchema.</p>
 <p>The below example illustrates how to read the content of a layer that consists
@@ -1166,12 +1166,12 @@ any coordinate system information or other special layer creation options.</p>
 </div>
 <p>Now that the layer exists, we need to create any attribute fields that should
 appear on the layer.  Fields must be added to the layer before any features
-are written.  To create a field we initialize an <code class="xref cpp cpp-union docutils literal notranslate"><span class="pre">OGRField</span></code> object with the
+are written.  To create a field we initialize an <a class="reference internal" href="../api/vector_c_api.html#_CPPv48OGRField" title="OGRField"><code class="xref cpp cpp-union docutils literal notranslate"><span class="pre">OGRField</span></code></a> object with the
 information about the field.  In the case of Shapefiles, the field width and
 precision is significant in the creation of the output .dbf file, so we
 set it specifically, though generally the defaults are OK.  For this example
 we will just have one attribute, a name string associated with the x,y point.</p>
-<p>Note that the template OGRField we pass to <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::CreateField()</span></code> is copied internally.
+<p>Note that the template OGRField we pass to <a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer11CreateFieldEPK12OGRFieldDefni" title="OGRLayer::CreateField"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::CreateField()</span></code></a> is copied internally.
 We retain ownership of the object.</p>
 <p>In C++:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">OGRFieldDefn</span><span class="w"> </span><span class="n">oField</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;Name&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">OFTString</span><span class="w"> </span><span class="p">);</span>
@@ -1231,7 +1231,7 @@ associated with the layer it will be written to.</p>
 </pre></div>
 </div>
 <p>We create a local geometry object, and assign its copy (indirectly) to the feature.
-The <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeature::SetGeometryDirectly()</span></code> differs from <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeature::SetGeometry()</span></code>
+The <a class="reference internal" href="../api/ogrfeature_cpp.html#_CPPv4N10OGRFeature19SetGeometryDirectlyEP11OGRGeometry" title="OGRFeature::SetGeometryDirectly"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeature::SetGeometryDirectly()</span></code></a> differs from <a class="reference internal" href="../api/ogrfeature_cpp.html#_CPPv4N10OGRFeature11SetGeometryEPK11OGRGeometry" title="OGRFeature::SetGeometry"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeature::SetGeometry()</span></code></a>
 in that the direct method gives ownership of the geometry to the feature.
 This is generally more efficient as it avoids an extra deep object copy
 of the geometry.</p>
@@ -1252,7 +1252,7 @@ of the geometry.</p>
 <span class="n">OGR_G_DestroyGeometry</span><span class="p">(</span><span class="n">hPt</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Now we create a feature in the file.  The <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::CreateFeature()</span></code> does not
+<p>Now we create a feature in the file.  The <a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer13CreateFeatureEP10OGRFeature" title="OGRLayer::CreateFeature"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::CreateFeature()</span></code></a> does not
 take ownership of our feature so we clean it up when done with it.</p>
 <p>In C++ :</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="w">     </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">poLayer</span><span class="o">-&gt;</span><span class="n">CreateFeature</span><span class="p">(</span><span class="w"> </span><span class="n">poFeature</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">OGRERR_NONE</span><span class="w"> </span><span class="p">)</span>
@@ -1632,8 +1632,8 @@ associated with the layer it will be written to.</p>
 </div>
 <p>Instead of writing features one at a time, it is also possible to write
 them by batches, with a column-oriented memory layout, using the
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::WriteArrowBatch()</span></code> method. Note that this method is more
-difficult to use than the traditional <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::CreateFeature()</span></code> approach,
+<a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer15WriteArrowBatchEPK11ArrowSchemaP10ArrowArray12CSLConstList" title="OGRLayer::WriteArrowBatch"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::WriteArrowBatch()</span></code></a> method. Note that this method is more
+difficult to use than the traditional <a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer13CreateFeatureEP10OGRFeature" title="OGRLayer::CreateFeature"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::CreateFeature()</span></code></a> approach,
 and is only advised when compatibility with the
 <a class="reference external" href="https://arrow.apache.org/docs/format/CDataInterface.html">Apache Arrow C Data interface</a>
 is needed, or when column-oriented writing of layers is required.</p>
@@ -1661,16 +1661,16 @@ basic types involved for batch writing.</p>
 </pre></div>
 </div>
 </div></blockquote>
-<p>It is also available in the C API as <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGR_L_WriteArrowBatch()</span></code>.</p>
-<p>This is semantically close to calling <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::CreateFeature()</span></code>
+<p>It is also available in the C API as <a class="reference internal" href="../api/vector_c_api.html#_CPPv421OGR_L_WriteArrowBatch9OGRLayerHPK11ArrowSchemaP10ArrowArrayPPc" title="OGR_L_WriteArrowBatch"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGR_L_WriteArrowBatch()</span></code></a>.</p>
+<p>This is semantically close to calling <a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer13CreateFeatureEP10OGRFeature" title="OGRLayer::CreateFeature"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::CreateFeature()</span></code></a>
 with multiple features at once.</p>
 <p>The ArrowArray must be of type struct (format=+s), and its children generally
 map to a OGR attribute or geometry field (unless they are struct themselves).</p>
-<p>Method <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::IsArrowSchemaSupported()</span></code> can be called to determine
+<p>Method <a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4NK8OGRLayer22IsArrowSchemaSupportedEPK11ArrowSchema12CSLConstListRNSt6stringE" title="OGRLayer::IsArrowSchemaSupported"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::IsArrowSchemaSupported()</span></code></a> can be called to determine
 if the schema will be supported by WriteArrowBatch().</p>
 <p>OGR fields for the corresponding children arrays must exist and be of a
 compatible type. For attribute fields, they should be created with
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::CreateFieldFromArrowSchema()</span></code>.</p>
+<a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer26CreateFieldFromArrowSchemaEPK11ArrowSchema12CSLConstList" title="OGRLayer::CreateFieldFromArrowSchema"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::CreateFieldFromArrowSchema()</span></code></a>.</p>
 <p>Arrays for geometry columns should be of binary or large binary type and
 contain WKB geometry.</p>
 <p>Note that the passed array may be set to a released state

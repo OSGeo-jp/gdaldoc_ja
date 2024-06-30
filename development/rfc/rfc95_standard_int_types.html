@@ -51,15 +51,15 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">プログラム</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">Programs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../drivers/raster/index.html">Raster drivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../drivers/vector/index.html">Vector drivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Development</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../dev_environment.html">Setting up a development environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../building_from_source.html">Building GDAL from source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev_environment.html">Setting up a development environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dev_practices.html">Development practices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../testing.html">Automated testing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dev_documentation.html">Building documentation</a></li>
@@ -100,7 +100,7 @@
 <li class="toctree-l3"><a class="reference internal" href="rfc33_gtiff_pixelispoint.html">RFC 33: GTiff - Fixing PixelIsPoint Interpretation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="rfc34_license_policy.html">RFC 34: License Policy Enforcement</a></li>
 <li class="toctree-l3"><a class="reference internal" href="rfc35_deletereorderalterfielddefn.html">RFC 35: Delete, reorder and alter field definitions of OGR layers</a></li>
-<li class="toctree-l3"><a class="reference internal" href="rfc36_open_by_drivername.html">RFC 36: Allow specification of intended driver on GDALOpen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rfc36_open_by_drivername.html">RFC 36: Allow specification of intended driver on GDALOpen (withdrawn)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="rfc37_cplerror_userdata.html">RFC 37: User data callbacks in CPLError</a></li>
 <li class="toctree-l3"><a class="reference internal" href="rfc38_ogr_faster_open.html">RFC 38: OGR Faster Open (withdrawn)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="rfc39_ogr_layer_algebra.html">RFC 39: OGR Layer Algebra</a></li>
@@ -185,7 +185,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -369,38 +369,38 @@ But for usage of those types as pointers, compilers warn in C
 counterparts).</p>
 <p>C Raster API impacts (and equivalent C++ methods):</p>
 <ul class="simple">
-<li><p><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALGetDefaultHistogramEx()</span></code> (e.g. used by QGIS)</p></li>
-<li><p><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALSetDefaultHistogramEx()</span></code></p></li>
-<li><p><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALGetRasterHistogramEx()</span></code> (e.g. used by QGIS)</p></li>
-<li><p><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALGetVirtualMemAuto()</span></code></p></li>
+<li><p><a class="reference internal" href="../../api/raster_c_api.html#_CPPv425GDALGetDefaultHistogramEx15GDALRasterBandHPdPdPiPP8GUIntBigi16GDALProgressFuncPv" title="GDALGetDefaultHistogramEx"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALGetDefaultHistogramEx()</span></code></a> (e.g. used by QGIS)</p></li>
+<li><p><a class="reference internal" href="../../api/raster_c_api.html#_CPPv425GDALSetDefaultHistogramEx15GDALRasterBandHddiP8GUIntBig" title="GDALSetDefaultHistogramEx"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALSetDefaultHistogramEx()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../api/raster_c_api.html#_CPPv424GDALGetRasterHistogramEx15GDALRasterBandHddiP8GUIntBigii16GDALProgressFuncPv" title="GDALGetRasterHistogramEx"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALGetRasterHistogramEx()</span></code></a> (e.g. used by QGIS)</p></li>
+<li><p><a class="reference internal" href="../../api/raster_c_api.html#_CPPv421GDALGetVirtualMemAuto15GDALRasterBandH10GDALRWFlagPiP7GIntBig12CSLConstList" title="GDALGetVirtualMemAuto"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALGetVirtualMemAuto()</span></code></a></p></li>
 </ul>
 <p>C Vector API impacts (and equivalent C++ methods):</p>
 <ul class="simple">
-<li><p><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGR_F_GetFieldAsInteger64List()</span></code></p></li>
-<li><p><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGR_F_SetFieldInteger64List()</span></code></p></li>
+<li><p><a class="reference internal" href="../../api/vector_c_api.html#_CPPv429OGR_F_GetFieldAsInteger64List11OGRFeatureHiPi" title="OGR_F_GetFieldAsInteger64List"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGR_F_GetFieldAsInteger64List()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../api/vector_c_api.html#_CPPv427OGR_F_SetFieldInteger64List11OGRFeatureHiiPK7GIntBig" title="OGR_F_SetFieldInteger64List"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGR_F_SetFieldInteger64List()</span></code></a></p></li>
 </ul>
 <p>C Multidimension API impacts (and equivalent C++ methods):</p>
 <ul class="simple">
-<li><p><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALGroupCreateDimension()</span></code></p></li>
-<li><p><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALGroupCreateAttribute()</span></code></p></li>
-<li><p><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArrayRead()</span></code></p></li>
-<li><p><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArrayWrite()</span></code></p></li>
-<li><p><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArrayAdviseRead()</span></code></p></li>
-<li><p><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArrayAdviseReadEx()</span></code></p></li>
-<li><p><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArrayCreateAttribute()</span></code></p></li>
-<li><p><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArrayResize()</span></code></p></li>
-<li><p><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArrayGetBlockSize()</span></code></p></li>
-<li><p><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArrayGetStatistics()</span></code></p></li>
-<li><p><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArrayComputeStatistics()</span></code></p></li>
-<li><p><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArrayComputeStatisticsEx()</span></code></p></li>
-<li><p><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALAttributeGetDimensionsSize()</span></code></p></li>
+<li><p><a class="reference internal" href="../../api/raster_c_api.html#_CPPv424GDALGroupCreateDimension10GDALGroupHPKcPKcPKc7GUInt6412CSLConstList" title="GDALGroupCreateDimension"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALGroupCreateDimension()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../api/raster_c_api.html#_CPPv424GDALGroupCreateAttribute10GDALGroupHPKc6size_tPK7GUInt6421GDALExtendedDataTypeH12CSLConstList" title="GDALGroupCreateAttribute"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALGroupCreateAttribute()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../api/raster_c_api.html#_CPPv415GDALMDArrayRead12GDALMDArrayHPK7GUInt64PK6size_tPK6GInt64PK10GPtrDiff_t21GDALExtendedDataTypeHPvPKv6size_t" title="GDALMDArrayRead"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArrayRead()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../api/raster_c_api.html#_CPPv416GDALMDArrayWrite12GDALMDArrayHPK7GUInt64PK6size_tPK6GInt64PK10GPtrDiff_t21GDALExtendedDataTypeHPKvPKv6size_t" title="GDALMDArrayWrite"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArrayWrite()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../api/raster_c_api.html#_CPPv421GDALMDArrayAdviseRead12GDALMDArrayHPK7GUInt64PK6size_t" title="GDALMDArrayAdviseRead"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArrayAdviseRead()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../api/raster_c_api.html#_CPPv423GDALMDArrayAdviseReadEx12GDALMDArrayHPK7GUInt64PK6size_t12CSLConstList" title="GDALMDArrayAdviseReadEx"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArrayAdviseReadEx()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../api/raster_c_api.html#_CPPv426GDALMDArrayCreateAttribute12GDALMDArrayHPKc6size_tPK7GUInt6421GDALExtendedDataTypeH12CSLConstList" title="GDALMDArrayCreateAttribute"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArrayCreateAttribute()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../api/raster_c_api.html#_CPPv417GDALMDArrayResize12GDALMDArrayHPK7GUInt6412CSLConstList" title="GDALMDArrayResize"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArrayResize()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../api/raster_c_api.html#_CPPv423GDALMDArrayGetBlockSize12GDALMDArrayHP6size_t" title="GDALMDArrayGetBlockSize"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArrayGetBlockSize()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../api/raster_c_api.html#_CPPv424GDALMDArrayGetStatistics12GDALMDArrayH12GDALDatasetHiiPdPdPdPdP7GUInt6416GDALProgressFuncPv" title="GDALMDArrayGetStatistics"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArrayGetStatistics()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../api/raster_c_api.html#_CPPv428GDALMDArrayComputeStatistics12GDALMDArrayH12GDALDatasetHiPdPdPdPdP7GUInt6416GDALProgressFuncPv" title="GDALMDArrayComputeStatistics"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArrayComputeStatistics()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../api/raster_c_api.html#_CPPv430GDALMDArrayComputeStatisticsEx12GDALMDArrayH12GDALDatasetHiPdPdPdPdP7GUInt6416GDALProgressFuncPv12CSLConstList" title="GDALMDArrayComputeStatisticsEx"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArrayComputeStatisticsEx()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../api/raster_c_api.html#_CPPv430GDALAttributeGetDimensionsSize14GDALAttributeHP6size_t" title="GDALAttributeGetDimensionsSize"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALAttributeGetDimensionsSize()</span></code></a></p></li>
 </ul>
 </li>
 <li><p>Out-of-tree drivers are also impacted:</p>
 <ul class="simple">
 <li><p>the vector ones that implement <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::ISetFeature()</span></code>,
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::SetNextByIndex()</span></code>, <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::DeleteFeature()</span></code>,
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::GetFeatureCount()</span></code></p></li>
+<a class="reference internal" href="../../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer14SetNextByIndexE7GIntBig" title="OGRLayer::SetNextByIndex"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::SetNextByIndex()</span></code></a>, <a class="reference internal" href="../../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer13DeleteFeatureE7GIntBig" title="OGRLayer::DeleteFeature"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::DeleteFeature()</span></code></a>,
+<a class="reference internal" href="../../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer15GetFeatureCountEi" title="OGRLayer::GetFeatureCount"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::GetFeatureCount()</span></code></a></p></li>
 <li><p>the ones that implement the multidimensional API (no publicly ones known by us)</p></li>
 </ul>
 </li>

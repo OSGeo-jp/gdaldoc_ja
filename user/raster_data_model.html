@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ラスターデータモデル &mdash; GDAL  ドキュメント</title>
+  <title>Raster Data Model &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
       <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
 
@@ -26,7 +26,7 @@
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="Multidimensional Raster Data Model" href="multidim_raster_data_model.html" />
-    <link rel="prev" title="ユーザー向け文書" href="index.html" /> 
+    <link rel="prev" title="User oriented documentation" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -51,12 +51,12 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../programs/index.html">プログラム</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">ラスタードライバー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">ベクタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programs/index.html">Programs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">Raster drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">Vector drivers</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">ユーザー</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">ラスターデータモデル</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#dataset">データセット</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Raster Data Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dataset">Dataset</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#coordinate-system">Coordinate System</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#affine-geotransform">Affine GeoTransform</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#gcps">GCPs</a></li>
@@ -74,23 +74,23 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="multidim_raster_data_model.html">Multidimensional Raster Data Model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vector_data_model.html">ベクターデータモデル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vector_data_model.html">Vector Data Model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gnm_data_model.html">Geographic Networks Data Model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="multithreading.html">Multi-threading</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ogr_sql_sqlite_dialect.html">OGR SQL dialect and SQLITE SQL dialect</a></li>
-<li class="toctree-l2"><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ogr_feature_style.html">Feature Style Specification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="coordinate_epoch.html">Coordinate epoch support</a></li>
-<li class="toctree-l2"><a class="reference internal" href="configoptions.html">設定オプション</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configoptions.html">Configuration options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gdal_python_utilities.html">GDAL Python Utilities</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../development/index.html">開発</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">スポンサー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">貢献する方法は?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">Sponsors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">ライセンス</a></li>
 </ul>
@@ -128,9 +128,9 @@
     
       <li><a href="../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">ユーザー向け文書</a> &raquo;</li>
+          <li><a href="index.html">User oriented documentation</a> &raquo;</li>
       
-      <li>ラスターデータモデル</li>
+      <li>Raster Data Model</li>
     
 
     
@@ -152,7 +152,7 @@
         <a href="multidim_raster_data_model.html" class="btn btn-neutral float-right" title="Multidimensional Raster Data Model" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral float-left" title="ユーザー向け文書" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="User oriented documentation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -162,11 +162,11 @@
            <div itemprop="articleBody">
              
   <section id="raster-data-model">
-<span id="id1"></span><h1>ラスターデータモデル<a class="headerlink" href="#raster-data-model" title="Link to this heading"></a></h1>
+<span id="id1"></span><h1>Raster Data Model<a class="headerlink" href="#raster-data-model" title="Link to this heading"></a></h1>
 <p>This document attempts to describe the GDAL data model. That is the types of information that a GDAL data store can contain, and their semantics.</p>
 <section id="dataset">
-<h2>データセット<a class="headerlink" href="#dataset" title="Link to this heading"></a></h2>
-<p>A dataset (represented by the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALDataset</span></code> class) is an assembly of related raster bands and some information common to them all. In particular the dataset has a concept of the raster size (in pixels and lines) that applies to all the bands. The dataset is also responsible for the georeferencing transform and coordinate system definition of all bands. The dataset itself can also have associated metadata, a list of name/value pairs in string form.</p>
+<h2>Dataset<a class="headerlink" href="#dataset" title="Link to this heading"></a></h2>
+<p>A dataset (represented by the <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv411GDALDataset" title="GDALDataset"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALDataset</span></code></a> class) is an assembly of related raster bands and some information common to them all. In particular the dataset has a concept of the raster size (in pixels and lines) that applies to all the bands. The dataset is also responsible for the georeferencing transform and coordinate system definition of all bands. The dataset itself can also have associated metadata, a list of name/value pairs in string form.</p>
 <p>Note that the GDAL dataset, and raster band data model is loosely based on the OpenGIS Grid Coverages specification.</p>
 </section>
 <section id="coordinate-system">
@@ -185,13 +185,13 @@
 <li><p>Codes for most of the above in terms of predefined coordinate systems from authorities such as EPSG.</p></li>
 </ul>
 <p>For more information on OpenGIS WKT coordinate system definitions, and mechanisms to manipulate them, refer to the osr_tutorial document and/or the OGRSpatialReference class documentation.</p>
-<p>The coordinate system returned by <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetProjectionRef()</span></code> describes the georeferenced coordinates implied by the affine georeferencing transform returned by <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetGeoTransform()</span></code>. The coordinate system returned by <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetGCPProjection()</span></code> describes the georeferenced coordinates of the GCPs returned by <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetGCPs()</span></code>.</p>
+<p>The coordinate system returned by <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4NK11GDALDataset16GetProjectionRefEv" title="GDALDataset::GetProjectionRef"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetProjectionRef()</span></code></a> describes the georeferenced coordinates implied by the affine georeferencing transform returned by <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4N11GDALDataset15GetGeoTransformEPd" title="GDALDataset::GetGeoTransform"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetGeoTransform()</span></code></a>. The coordinate system returned by <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4N11GDALDataset16GetGCPProjectionEv" title="GDALDataset::GetGCPProjection"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetGCPProjection()</span></code></a> describes the georeferenced coordinates of the GCPs returned by <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4N11GDALDataset7GetGCPsEv" title="GDALDataset::GetGCPs"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetGCPs()</span></code></a>.</p>
 <p>Note that a returned coordinate system strings of &quot;&quot; indicates nothing is known about the georeferencing coordinate system.</p>
 </section>
 <section id="affine-geotransform">
 <span id="raster-data-model-geotransform"></span><h2>Affine GeoTransform<a class="headerlink" href="#affine-geotransform" title="Link to this heading"></a></h2>
 <p>GDAL datasets have two ways of describing the relationship between raster positions (in pixel/line coordinates) and georeferenced coordinates. The first, and most commonly used is the affine transform (the other is GCPs).</p>
-<p>The affine transform consists of six coefficients returned by <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetGeoTransform()</span></code> which map pixel/line coordinates into georeferenced space using the following relationship:</p>
+<p>The affine transform consists of six coefficients returned by <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4N11GDALDataset15GetGeoTransformEPd" title="GDALDataset::GetGeoTransform"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetGeoTransform()</span></code></a> which map pixel/line coordinates into georeferenced space using the following relationship:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Xgeo</span> <span class="o">=</span> <span class="n">GT</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">Xpixel</span><span class="o">*</span><span class="n">GT</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">Yline</span><span class="o">*</span><span class="n">GT</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">Ygeo</span> <span class="o">=</span> <span class="n">GT</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="n">Xpixel</span><span class="o">*</span><span class="n">GT</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">+</span> <span class="n">Yline</span><span class="o">*</span><span class="n">GT</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
@@ -201,7 +201,7 @@
 </section>
 <section id="gcps">
 <h2>GCPs<a class="headerlink" href="#gcps" title="Link to this heading"></a></h2>
-<p>A dataset can have a set of control points relating one or more positions on the raster to georeferenced coordinates. All GCPs share a georeferencing coordinate system (returned by <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetGCPProjection()</span></code>). Each GCP (represented as the GDAL_GCP class) contains the following:</p>
+<p>A dataset can have a set of control points relating one or more positions on the raster to georeferenced coordinates. All GCPs share a georeferencing coordinate system (returned by <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4N11GDALDataset16GetGCPProjectionEv" title="GDALDataset::GetGCPProjection"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetGCPProjection()</span></code></a>). Each GCP (represented as the GDAL_GCP class) contains the following:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">typedef</span> <span class="n">struct</span>
 <span class="p">{</span>
     <span class="n">char</span>        <span class="o">*</span><span class="n">pszId</span><span class="p">;</span>
@@ -271,7 +271,7 @@
 <span class="n">SUBDATASET_2_DESC</span><span class="o">=</span><span class="n">Image</span> <span class="mi">2</span> <span class="n">of</span> <span class="n">multi_1b</span><span class="o">.</span><span class="n">ntf</span>
 </pre></div>
 </div>
-<p>The value of the _NAME is the string that can be passed to <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpen()</span></code> to access the file. The _DESC value is intended to be a more user friendly string that can be displayed to the user in a selector.</p>
+<p>The value of the _NAME is the string that can be passed to <a class="reference internal" href="../api/raster_c_api.html#_CPPv48GDALOpenPKc10GDALAccess" title="GDALOpen"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpen()</span></code></a> to access the file. The _DESC value is intended to be a more user friendly string that can be displayed to the user in a selector.</p>
 <p>Drivers which support subdatasets advertise the <code class="docutils literal notranslate"><span class="pre">DMD_SUBDATASETS</span></code> capability. This information is reported when the --format and --formats options are passed to the command line utilities.</p>
 <p>Currently, drivers which support subdatasets are: ADRG, ECRGTOC, GEORASTER, GTiff, HDF4, HDF5, netCDF, NITF, NTv2, OGDI, PDF, PostGISRaster, Rasterlite, RPFTOC, RS2, TileDB, WCS, and WMS.</p>
 </section>
@@ -330,7 +330,7 @@ Starting with GDAL 3.7, this metadata item is no longer used, as the Int8 data t
 </section>
 <section id="raster-band">
 <h2>Raster Band<a class="headerlink" href="#raster-band" title="Link to this heading"></a></h2>
-<p>A raster band is represented in GDAL with the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALRasterBand</span></code> class. It represents a single raster band/channel/layer. It does not necessarily represent a whole image. For instance, a 24bit RGB image would normally be represented as a dataset with three bands, one for red, one for green and one for blue.</p>
+<p>A raster band is represented in GDAL with the <a class="reference internal" href="../api/gdalrasterband_cpp.html#_CPPv414GDALRasterBand" title="GDALRasterBand"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALRasterBand</span></code></a> class. It represents a single raster band/channel/layer. It does not necessarily represent a whole image. For instance, a 24bit RGB image would normally be represented as a dataset with three bands, one for red, one for green and one for blue.</p>
 <p>A raster band has the following properties:</p>
 <ul>
 <li><p>A width and height in pixels and lines. This is the same as that defined for the dataset, if this is a full resolution band.</p></li>
@@ -417,10 +417,10 @@ Starting with GDAL 3.7, this metadata item is no longer used, as the Int8 data t
 </section>
 <section id="overviews">
 <h2>Overviews<a class="headerlink" href="#overviews" title="Link to this heading"></a></h2>
-<p>A band may have zero or more overviews. Each overview is represented as a &quot;free standing&quot; <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALRasterBand</span></code>. The size (in pixels and lines) of the overview will be different than the underlying raster, but the geographic region covered by overviews is the same as the full resolution band.</p>
+<p>A band may have zero or more overviews. Each overview is represented as a &quot;free standing&quot; <a class="reference internal" href="../api/gdalrasterband_cpp.html#_CPPv414GDALRasterBand" title="GDALRasterBand"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALRasterBand</span></code></a>. The size (in pixels and lines) of the overview will be different than the underlying raster, but the geographic region covered by overviews is the same as the full resolution band.</p>
 <p>The overviews are used to display reduced resolution overviews more quickly than could be done by reading all the full resolution data and downsampling.</p>
 <p>Bands also have a HasArbitraryOverviews property which is TRUE if the raster can be read at any resolution efficiently but with no distinct overview levels. This applies to some FFT encoded images, or images pulled through gateways where downsampling can be done efficiently at the remote point.</p>
-<p>How overviews are selected depends on the software logic. The <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALRasterBand::RasterIO()</span></code> or <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::RasterIO()</span></code> methods document their logic.</p>
+<p>How overviews are selected depends on the software logic. The <a class="reference internal" href="../api/gdalrasterband_cpp.html#_CPPv4N14GDALRasterBand8RasterIOE10GDALRWFlagiiiiPvii12GDALDataType8GSpacing8GSpacingP20GDALRasterIOExtraArg" title="GDALRasterBand::RasterIO"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALRasterBand::RasterIO()</span></code></a> or <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4N11GDALDataset8RasterIOE10GDALRWFlagiiiiPvii12GDALDataTypeiPKi8GSpacing8GSpacing8GSpacingP20GDALRasterIOExtraArg" title="GDALDataset::RasterIO"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::RasterIO()</span></code></a> methods document their logic.</p>
 </section>
 </section>
 
@@ -434,7 +434,7 @@ Starting with GDAL 3.7, this metadata item is no longer used, as the Int8 data t
         <a href="multidim_raster_data_model.html" class="btn btn-neutral float-right" title="Multidimensional Raster Data Model" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral float-left" title="ユーザー向け文書" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="User oriented documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

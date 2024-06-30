@@ -51,8 +51,8 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">プログラム</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">ラスタードライバー</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">Programs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Raster drivers</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="aaigrid.html">AAIGrid -- Arc/Info ASCII Grid</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ace2.html">ACE2 -- ACE2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adrg.html">ADRG -- ADRG/ARC Digitized Raster Graphics (.gen/.thf)</a></li>
@@ -126,7 +126,7 @@
 <li class="toctree-l2"><a class="reference internal" href="isis3.html">ISIS3 -- USGS Astrogeology ISIS Cube (Version 3)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jdem.html">JDEM -- Japanese DEM (.mem)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2ecw.html">JP2ECW -- ERDAS JPEG2000 (.jp2)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="jp2kak.html">JP2KAK -- JPEG-2000 (based on Kakadu)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jp2kak.html">JP2KAK -- JPEG 2000 (based on Kakadu SDK)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2lura.html">JP2Lura -- JPEG2000 driver based on Lurawave library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2mrsid.html">JP2MrSID -- JPEG2000 via MrSID SDK</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2openjpeg.html">JP2OpenJPEG -- JPEG2000 driver based on OpenJPEG library</a></li>
@@ -229,16 +229,16 @@
 <li class="toctree-l2"><a class="reference internal" href="zmap.html">ZMap -- ZMap Plus Grid</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../vector/index.html">ベクタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vector/index.html">Vector drivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">Community</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -274,7 +274,7 @@
     
       <li><a href="../../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">ラスタードライバー</a> &raquo;</li>
+          <li><a href="index.html">Raster drivers</a> &raquo;</li>
       
       <li>MSG -- Meteosat Second Generation</li>
     
@@ -346,7 +346,7 @@ driver in your GDAL library.</div>
 <h2>Build Instructions<a class="headerlink" href="#build-instructions" title="Link to this heading"></a></h2>
 <section id="cmake-builds">
 <h3>CMake builds<a class="headerlink" href="#cmake-builds" title="Link to this heading"></a></h3>
-<p>See the <code class="docutils literal notranslate"><span class="pre">GDAL_USE_PUBLICDECOMPWT</span></code> option of <a class="reference internal" href="../../development/building_from_source.html#building-from-source"><span class="std std-ref">GDAL のソースからのビルド</span></a>.</p>
+<p>See the <code class="docutils literal notranslate"><span class="pre">GDAL_USE_PUBLICDECOMPWT</span></code> option of <a class="reference internal" href="../../development/building_from_source.html#building-from-source"><span class="std std-ref">Building GDAL from source</span></a>.</p>
 </section>
 <section id="other-build-systems">
 <h3>Other build systems<a class="headerlink" href="#other-build-systems" title="Link to this heading"></a></h3>
@@ -481,7 +481,7 @@ the images.</p>
 <section id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p>Implemented as <a href="#id1"><span class="problematic" id="id2">:source_file:`frmts/msg/msgdataset.cpp`</span></a>.</p></li>
+<li><p>Implemented as <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/frmts/msg/msgdataset.cpp">msgdataset.cpp</a>.</p></li>
 <li><p><a class="reference external" href="http://www.eumetsat.int">http://www.eumetsat.int</a> - European Organisation for the Exploitation
 of Meteorological Satellites</p></li>
 </ul>

@@ -51,9 +51,9 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">プログラム</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../raster/index.html">ラスタードライバー</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">ベクタードライバー</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">Programs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../raster/index.html">Raster drivers</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Vector drivers</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="amigocloud.html">AmigoCloud</a></li>
 <li class="toctree-l2"><a class="reference internal" href="arrow.html">(Geo)Arrow IPC File Format / Stream</a></li>
 <li class="toctree-l2"><a class="reference internal" href="avcbin.html">Arc/Info Binary Coverage</a></li>
@@ -152,11 +152,11 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
@@ -194,7 +194,7 @@
     
       <li><a href="../../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">ベクタードライバー</a> &raquo;</li>
+          <li><a href="index.html">Vector drivers</a> &raquo;</li>
       
       <li>IHO S-57 (ENC)</li>
     
@@ -259,7 +259,7 @@ the application therefore includes all the updates.</p>
 <h2>Driver capabilities<a class="headerlink" href="#driver-capabilities" title="Link to this heading"></a></h2>
 <div class="admonition supports_create" id="supports_create-0">
 <p class="admonition-title">Supports Create()</p>
-<p>This driver supports the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::Create()</span></code> operation</p>
+<p>This driver supports the <a class="reference internal" href="../../api/gdaldriver_cpp.html#_CPPv4N10GDALDriver6CreateEPKciii12GDALDataType12CSLConstList" title="GDALDriver::Create"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::Create()</span></code></a> operation</p>
 </div>
 <div class="admonition supports_georeferencing" id="supports_georeferencing-0">
 <p class="admonition-title">Supports Georeferencing</p>
@@ -359,7 +359,7 @@ record will have the same AGEN, FIDN, FIDS and LNAM value.</p>
 behavior of the S-57 reader. Users can set these by appending them in
 the OGR_S57_OPTIONS environment variable.</p>
 <p>They can also be specified independently as open options to the driver.
-<a href="#id1"><span class="problematic" id="id2">|about-open-options|</span></a>
+Open options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-oo</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALOpenExPKcjPPCKcPPCKcPPCKc" title="GDALOpenEx"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpenEx()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.OpenEx" title="osgeo.gdal.OpenEx"><code class="xref py py-meth docutils literal notranslate"><span class="pre">gdal.OpenEx</span></code></a> (Python).
 The following open options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/vector/s57-oo-UPDATES"><strong>UPDATES=[APPLY/IGNORE]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">APPLY</span></code>. Should update files be incorporated into
@@ -421,7 +421,7 @@ required to support S-57 to S-57 conversion via OGR.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span> <span class="n">OGR_S57_OPTIONS</span> <span class="o">=</span> <span class="s2">&quot;RETURN_PRIMITIVES=ON,RETURN_LINKAGES=ON,LNAM_REFS=ON&quot;</span>
 </pre></div>
 </div>
-<p><a href="#id3"><span class="problematic" id="id4">|about-dataset-creation-options|</span></a>
+<p>Dataset creation options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-dsco</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALCreate11GDALDriverHPKciii12GDALDataType12CSLConstList" title="GDALCreate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALCreate()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.Driver.Create" title="osgeo.gdal.Driver.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Driver.Create</span></code></a> (Python).
 The following dataset creation options are supported to supply basic
 information for the S-57 data set descriptive records (DSID and DSPM,
 see the S-57 standard for a more detailed description):</p>
@@ -444,9 +444,9 @@ see the S-57 standard for a more detailed description):</p>
 </li>
 <li><p id="drivers/vector/s57-dsco-S57_COMT:"><strong>S57_COMT:=value: </strong>Comment.</p>
 </li>
-<li><p id="drivers/vector/s57-dsco-S57_AALL"><strong>S57_AALL=value: </strong> (GDAL &gt;= 2.4)  Defaults to <code class="docutils literal notranslate"><span class="pre">0</span></code>. Lexical level used for the ATTF fields.</p>
+<li><p id="drivers/vector/s57-dsco-S57_AALL"><strong>S57_AALL=value: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">0</span></code>. Lexical level used for the ATTF fields.</p>
 </li>
-<li><p id="drivers/vector/s57-dsco-S57_NALL"><strong>S57_NALL=value: </strong> (GDAL &gt;= 2.4)  Defaults to <code class="docutils literal notranslate"><span class="pre">0</span></code>. Lexical level used for the NATF fields.</p>
+<li><p id="drivers/vector/s57-dsco-S57_NALL"><strong>S57_NALL=value: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">0</span></code>. Lexical level used for the NATF fields.</p>
 </li>
 <li><p id="drivers/vector/s57-dsco-S57_NOMR"><strong>S57_NOMR=value: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">0</span></code>. Number of meta records (objects with acronym starting
 with &quot;M_&quot;).</p>
@@ -469,10 +469,10 @@ with &quot;M_&quot;).</p>
 </li>
 <li><p id="drivers/vector/s57-dsco-S57_CSCL"><strong>S57_CSCL=value: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">52000</span></code>. Compilation scale of data (1:X).</p>
 </li>
-<li><p id="drivers/vector/s57-dsco-S57_COMF"><strong>S57_COMF=value: </strong> (GDAL &gt;= 2.4)  Defaults to <code class="docutils literal notranslate"><span class="pre">10000000</span></code>. Floating-point to integer multiplication factor for
+<li><p id="drivers/vector/s57-dsco-S57_COMF"><strong>S57_COMF=value: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">10000000</span></code>. Floating-point to integer multiplication factor for
 coordinate values.</p>
 </li>
-<li><p id="drivers/vector/s57-dsco-S57_SOMF"><strong>S57_SOMF=value: </strong> (GDAL &gt;= 2.4)  Defaults to <code class="docutils literal notranslate"><span class="pre">10</span></code>. Floating point to integer multiplication factor for 3-D
+<li><p id="drivers/vector/s57-dsco-S57_SOMF"><strong>S57_SOMF=value: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">10</span></code>. Floating point to integer multiplication factor for 3-D
 (sounding) values.</p>
 </li>
 </ul>

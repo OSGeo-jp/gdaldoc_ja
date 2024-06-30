@@ -51,9 +51,9 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">プログラム</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../raster/index.html">ラスタードライバー</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">ベクタードライバー</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">Programs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../raster/index.html">Raster drivers</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Vector drivers</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="amigocloud.html">AmigoCloud</a></li>
 <li class="toctree-l2"><a class="reference internal" href="arrow.html">(Geo)Arrow IPC File Format / Stream</a></li>
 <li class="toctree-l2"><a class="reference internal" href="avcbin.html">Arc/Info Binary Coverage</a></li>
@@ -165,11 +165,11 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
@@ -207,7 +207,7 @@
     
       <li><a href="../../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">ベクタードライバー</a> &raquo;</li>
+          <li><a href="index.html">Vector drivers</a> &raquo;</li>
       
       <li>Elasticsearch: Geographically Encoded Objects for Elasticsearch</li>
     
@@ -264,7 +264,7 @@ manor using a predefined REST API.</p>
 <h2>Driver capabilities<a class="headerlink" href="#driver-capabilities" title="Link to this heading"></a></h2>
 <div class="admonition supports_create" id="supports_create-0">
 <p class="admonition-title">Supports Create()</p>
-<p>This driver supports the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::Create()</span></code> operation</p>
+<p>This driver supports the <a class="reference internal" href="../../api/gdaldriver_cpp.html#_CPPv4N10GDALDriver6CreateEPKciii12GDALDataType12CSLConstList" title="GDALDriver::Create"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::Create()</span></code></a> operation</p>
 </div>
 <div class="admonition supports_georeferencing" id="supports_georeferencing-0">
 <p class="admonition-title">Supports Georeferencing</p>
@@ -283,16 +283,16 @@ a dataset:</p>
 </section>
 <section id="layer-open-options">
 <h2>Layer open options<a class="headerlink" href="#layer-open-options" title="Link to this heading"></a></h2>
-<p><a href="#id1"><span class="problematic" id="id2">|about-open-options|</span></a>
+<p>Open options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-oo</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALOpenExPKcjPPCKcPPCKcPPCKc" title="GDALOpenEx"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpenEx()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.OpenEx" title="osgeo.gdal.OpenEx"><code class="xref py py-meth docutils literal notranslate"><span class="pre">gdal.OpenEx</span></code></a> (Python).
 The following open options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/vector/elasticsearch-oo-HOST"><strong>HOST=&lt;hostname&gt;: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">localhost</span></code>. Server hostname.</p>
 </li>
 <li><p id="drivers/vector/elasticsearch-oo-PORT"><strong>PORT=&lt;port&gt;: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">9200</span></code>. Server port.</p>
 </li>
-<li><p id="drivers/vector/elasticsearch-oo-USERPWD"><strong>USERPWD=&lt;user:password&gt;: </strong> (GDAL &gt;= 2.4) Basic authentication as username:password.</p>
+<li><p id="drivers/vector/elasticsearch-oo-USERPWD"><strong>USERPWD=&lt;user:password&gt;: </strong>Basic authentication as username:password.</p>
 </li>
-<li><p id="drivers/vector/elasticsearch-oo-LAYER"><strong>LAYER=&lt;name&gt;: </strong> (GDAL &gt;= 2.4) Index name or index_mapping to use for restricting layer listing.</p>
+<li><p id="drivers/vector/elasticsearch-oo-LAYER"><strong>LAYER=&lt;name&gt;: </strong>Index name or index_mapping to use for restricting layer listing.</p>
 </li>
 <li><p id="drivers/vector/elasticsearch-oo-BATCH_SIZE"><strong>BATCH_SIZE=&lt;integer&gt;: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">100</span></code>. Number of features to retrieve per batch.</p>
 </li>
@@ -597,13 +597,13 @@ EPSG:4326.</p>
 </section>
 <section id="layer-creation-options">
 <h2>Layer creation options<a class="headerlink" href="#layer-creation-options" title="Link to this heading"></a></h2>
-<p><a href="#id3"><span class="problematic" id="id4">|about-layer-creation-options|</span></a>
+<p>Layer creation options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-lco</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv422GDALDatasetCreateLayer12GDALDatasetHPKc20OGRSpatialReferenceH18OGRwkbGeometryType12CSLConstList" title="GDALDatasetCreateLayer"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDatasetCreateLayer()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.Dataset.CreateLayer" title="osgeo.gdal.Dataset.CreateLayer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Dataset.CreateLayer</span></code></a> (Python).
 Starting with GDAL 2.1, the driver supports the following layer creation
 options:</p>
 <ul class="simple">
 <li><p id="drivers/vector/elasticsearch-lco-INDEX_NAME"><strong>INDEX_NAME=value: </strong>Name of the index to create (or reuse). By default the index name is the layer name.</p>
 </li>
-<li><p id="drivers/vector/elasticsearch-lco-INDEX_DEFINITION"><strong>INDEX_DEFINITION=[&lt;filename&gt;/&lt;json&gt;]: </strong> (GDAL &gt;= 2.4) Filename from which to read a user-defined index definition, or inlined index
+<li><p id="drivers/vector/elasticsearch-lco-INDEX_DEFINITION"><strong>INDEX_DEFINITION=[&lt;filename&gt;/&lt;json&gt;]: </strong>Filename from which to read a user-defined index definition, or inlined index
 definition as serialized JSON .</p>
 </li>
 <li><p id="drivers/vector/elasticsearch-lco-MAPPING_NAME"><strong>MAPPING_NAME=value: </strong>(Elasticsearch &lt; 7) Name of the mapping type within the index.
@@ -621,7 +621,7 @@ be written. This option is exclusive with <a class="reference internal" href="#d
 </li>
 <li><p id="drivers/vector/elasticsearch-lco-OVERWRITE"><strong>OVERWRITE=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. Whether to overwrite an existing type mapping with the layer name to be created.</p>
 </li>
-<li><p id="drivers/vector/elasticsearch-lco-OVERWRITE_INDEX"><strong>OVERWRITE_INDEX=[YES/NO]: </strong> (GDAL &gt;= 2.2)  Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. Whether to overwrite the whole index to which the layer belongs to. This
+<li><p id="drivers/vector/elasticsearch-lco-OVERWRITE_INDEX"><strong>OVERWRITE_INDEX=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. Whether to overwrite the whole index to which the layer belongs to. This
 option is stronger than <a class="reference internal" href="#drivers/vector/elasticsearch-lco-OVERWRITE"><code class="docutils literal notranslate"><span class="pre">OVERWRITE</span></code></a>. <a class="reference internal" href="#drivers/vector/elasticsearch-lco-OVERWRITE"><code class="docutils literal notranslate"><span class="pre">OVERWRITE</span></code></a> will only proceed if the
 type mapping corresponding to the layer is the single type mapping of
 the index. In case there are several type mappings, the whole index
@@ -681,7 +681,7 @@ of the field mapping set to &quot;no&quot; (the default in Elasticsearch is
 <a class="reference internal" href="#drivers/vector/elasticsearch-lco-NOT_ANALYZED_FIELDS"><code class="docutils literal notranslate"><span class="pre">NOT_ANALYZED_FIELDS</span></code></a> and <a class="reference internal" href="#drivers/vector/elasticsearch-lco-NOT_INDEXED_FIELDS"><code class="docutils literal notranslate"><span class="pre">NOT_INDEXED_FIELDS</span></code></a>. This option is without
 effect if <a class="reference internal" href="#drivers/vector/elasticsearch-lco-MAPPING"><code class="docutils literal notranslate"><span class="pre">MAPPING</span></code></a> is specified.</p>
 </li>
-<li><p id="drivers/vector/elasticsearch-lco-FIELDS_WITH_RAW_VALUE"><strong>FIELDS_WITH_RAW_VALUE=value: </strong> (GDAL &gt;= 2.2) List of comma separated
+<li><p id="drivers/vector/elasticsearch-lco-FIELDS_WITH_RAW_VALUE"><strong>FIELDS_WITH_RAW_VALUE=value: </strong>List of comma separated
 field names (of type string) that should be created with an
 additional raw/not_analyzed sub-field, or {ALL} to designate all
 string analyzed fields. This is needed for sorting on those columns,
@@ -704,7 +704,7 @@ in field name as sub-document.</p>
 </section>
 <section id="configuration-options">
 <h2>Configuration options<a class="headerlink" href="#configuration-options" title="Link to this heading"></a></h2>
-<p><a href="#id5"><span class="problematic" id="id6">|about-config-options|</span></a>
+<p><a class="reference internal" href="../../user/configoptions.html#configoptions"><span class="std std-ref">Configuration options</span></a> can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">--config</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or using functions such as <a class="reference internal" href="../../api/cpl.html#_CPPv418CPLSetConfigOptionPKcPKc" title="CPLSetConfigOption"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CPLSetConfigOption()</span></code></a> (C) or <code class="xref py py-func docutils literal notranslate"><span class="pre">gdal.config_options</span></code> (Python).
 The following (deprecated) configuration options are
 available. Starting with GDAL 2.1, layer creation options are also available
 and should be preferred (see above):</p>

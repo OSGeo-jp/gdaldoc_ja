@@ -51,10 +51,10 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../download.html">ダウンロード</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">プログラム</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="index.html#general">一般情報</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html#raster-programs">ラスタープログラム</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="raster_common_options.html">共通オプション</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Programs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#general">General</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#raster-programs">Raster programs</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="raster_common_options.html">Common options</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdal-config.html">gdal-config (Unix)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdal2tiles.html">gdal2tiles</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdal2xyz.html">gdal2xyz</a></li>
@@ -104,21 +104,21 @@
 <li class="toctree-l3"><a class="reference internal" href="rgb2pct.html">rgb2pct</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#multidimensional-raster-programs">多次元ラスタープログラム</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#vector-programs">ベクタープログラム</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#geographic-network-programs">空間ネットワークプログラム</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#other-utilities">その他ユーティリティ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#multidimensional-raster-programs">Multidimensional Raster programs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#vector-programs">Vector programs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#geographic-network-programs">Geographic network programs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#other-utilities">Other utilities</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">ラスタードライバー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">ベクタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">Raster drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">Vector drivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../development/index.html">開発</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">スポンサー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">貢献する方法は?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">Sponsors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">ライセンス</a></li>
 </ul>
@@ -156,7 +156,7 @@
     
       <li><a href="../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">プログラム</a> &raquo;</li>
+          <li><a href="index.html">Programs</a> &raquo;</li>
       
       <li>gdalwarp</li>
     
@@ -380,8 +380,8 @@ standard transformation.</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-to">
 <span class="sig-name descname"><span class="pre">-to</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></span><a class="headerlink" href="#cmdoption-gdalwarp-to" title="Link to this definition"></a></dt>
-<dd><p>Set a transformer option suitable to pass to <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALCreateGenImgProjTransformer2()</span></code>.
-See <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALCreateRPCTransformerV2()</span></code> for RPC specific options.</p>
+<dd><p>Set a transformer option suitable to pass to <a class="reference internal" href="../api/gdal_alg.html#_CPPv432GDALCreateGenImgProjTransformer212GDALDatasetH12GDALDatasetHPPc" title="GDALCreateGenImgProjTransformer2"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALCreateGenImgProjTransformer2()</span></code></a>.
+See <a class="reference internal" href="../api/gdal_alg.html#_CPPv426GDALCreateRPCTransformerV2PK13GDALRPCInfoV2idPPc" title="GDALCreateRPCTransformerV2"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALCreateRPCTransformerV2()</span></code></a> for RPC specific options.</p>
 </dd></dl>
 
 <dl class="std option">
@@ -522,7 +522,7 @@ higher quality resampling method).</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-wo">
 <span class="sig-name descname"><span class="pre">-wo</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></span><a class="headerlink" href="#cmdoption-gdalwarp-wo" title="Link to this definition"></a></dt>
-<dd><p>Set a warp option.  The <code class="xref cpp cpp-member docutils literal notranslate"><span class="pre">GDALWarpOptions::papszWarpOptions</span></code> docs show all options.
+<dd><p>Set a warp option.  The <a class="reference internal" href="../api/gdalwarp_cpp.html#_CPPv4N15GDALWarpOptions16papszWarpOptionsE" title="GDALWarpOptions::papszWarpOptions"><code class="xref cpp cpp-member docutils literal notranslate"><span class="pre">GDALWarpOptions::papszWarpOptions</span></code></a> docs show all options.
 Multiple <a class="reference internal" href="#cmdoption-gdalwarp-wo"><code class="xref std std-option docutils literal notranslate"><span class="pre">-wo</span></code></a> options may be listed.</p>
 </dd></dl>
 
@@ -583,7 +583,7 @@ to keep them together as a single operating system argument.
 Masked values will not be used in interpolation (details given in <a class="reference internal" href="#gdalwarp-nodata"><span class="std std-ref">Nodata / source validity mask handling</span></a>)</p>
 <p>Use a value of <code class="docutils literal notranslate"><span class="pre">None</span></code> to ignore intrinsic nodata settings on the source dataset.</p>
 <p>When this option is set to a non-<code class="docutils literal notranslate"><span class="pre">None</span></code> value, it causes the <code class="docutils literal notranslate"><span class="pre">UNIFIED_SRC_NODATA</span></code>
-warping option (see <code class="xref cpp cpp-member docutils literal notranslate"><span class="pre">GDALWarpOptions::papszWarpOptions</span></code>) to be
+warping option (see <a class="reference internal" href="../api/gdalwarp_cpp.html#_CPPv4N15GDALWarpOptions16papszWarpOptionsE" title="GDALWarpOptions::papszWarpOptions"><code class="xref cpp cpp-member docutils literal notranslate"><span class="pre">GDALWarpOptions::papszWarpOptions</span></code></a>) to be
 set to <code class="docutils literal notranslate"><span class="pre">YES</span></code>, if it is not explicitly set.</p>
 <p>If <code class="docutils literal notranslate"><span class="pre">-srcnodata</span></code> is not explicitly set, but the source dataset has nodata values,
 they will be taken into account, with <code class="docutils literal notranslate"><span class="pre">UNIFIED_SRC_NODATA</span></code> at <code class="docutils literal notranslate"><span class="pre">PARTIAL</span></code>
@@ -692,7 +692,7 @@ supported for a format can be listed with the
 <a class="reference internal" href="raster_common_options.html#raster-common-options-formats"><span class="std std-ref">--formats</span></a>
 command line option but the documentation for the format is the
 definitive source of information on driver creation options.
-See <a class="reference internal" href="../drivers/raster/index.html#raster-drivers"><span class="std std-ref">ラスタードライバー</span></a> format
+See <a class="reference internal" href="../drivers/raster/index.html#raster-drivers"><span class="std std-ref">Raster drivers</span></a> format
 specific documentation for legal creation options for each format.</p>
 </dd></dl>
 
@@ -892,7 +892,7 @@ geoid grid will be applied. This may require such grid(s) to be installed, or
 PROJ networking capabilities to be enabled. Consult <a class="reference external" href="https://proj.org">PROJ</a>
 documentation for more details. In addition to a shift, the raster values may
 be multiplied by a factor to take into account vertical unit changes.
-In priority, the value returned by <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALRasterBand::GetUnitType()</span></code> is
+In priority, the value returned by <a class="reference internal" href="../api/gdalrasterband_cpp.html#_CPPv4N14GDALRasterBand11GetUnitTypeEv" title="GDALRasterBand::GetUnitType"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALRasterBand::GetUnitType()</span></code></a> is
 used. The following values are currently recognized: <code class="docutils literal notranslate"><span class="pre">m</span></code>, <code class="docutils literal notranslate"><span class="pre">metre</span></code>, <code class="docutils literal notranslate"><span class="pre">metre</span></code>,
 <code class="docutils literal notranslate"><span class="pre">ft</span></code>, <code class="docutils literal notranslate"><span class="pre">foot</span></code>, <code class="docutils literal notranslate"><span class="pre">US</span> <span class="pre">survey</span> <span class="pre">foot</span></code>. If there is no defined unit type at the
 band level, the vertical unit of the source CRS is used. The vertical unit of
@@ -1032,7 +1032,7 @@ projection with a command like this:</p>
 </section>
 <section id="c-api">
 <h2>C API<a class="headerlink" href="#c-api" title="Link to this heading"></a></h2>
-<p>This utility is also callable from C with <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALWarp()</span></code>.</p>
+<p>This utility is also callable from C with <a class="reference internal" href="../api/gdal_utils.html#_CPPv48GDALWarpPKc12GDALDatasetHiP12GDALDatasetHPK18GDALWarpAppOptionsPi" title="GDALWarp"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALWarp()</span></code></a>.</p>
 </section>
 <section id="see-also">
 <h2>See also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>

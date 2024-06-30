@@ -51,7 +51,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">プログラム</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">Programs</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Raster drivers</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="aaigrid.html">AAIGrid -- Arc/Info ASCII Grid</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ace2.html">ACE2 -- ACE2</a></li>
@@ -126,7 +126,7 @@
 <li class="toctree-l2"><a class="reference internal" href="isis3.html">ISIS3 -- USGS Astrogeology ISIS Cube (Version 3)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jdem.html">JDEM -- Japanese DEM (.mem)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2ecw.html">JP2ECW -- ERDAS JPEG2000 (.jp2)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="jp2kak.html">JP2KAK -- JPEG-2000 (based on Kakadu)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jp2kak.html">JP2KAK -- JPEG 2000 (based on Kakadu SDK)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2lura.html">JP2Lura -- JPEG2000 driver based on Lurawave library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2mrsid.html">JP2MrSID -- JPEG2000 via MrSID SDK</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jp2openjpeg.html">JP2OpenJPEG -- JPEG2000 driver based on OpenJPEG library</a></li>
@@ -243,13 +243,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../vector/index.html">Vector drivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../community/index.html">Community</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -362,16 +362,16 @@ name set to &quot;/&quot;</p>
 <span class="w">    </span><span class="nt">&lt;Group</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;/&quot;</span><span class="nt">&gt;</span>
 </pre></div>
 </div>
-<p><strong>Group</strong>: This represents a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALGroup</span></code>. There is at least one root
+<p><strong>Group</strong>: This represents a <a class="reference internal" href="../../api/gdalgroup_cpp.html#_CPPv49GDALGroup" title="GDALGroup"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALGroup</span></code></a>. There is at least one root
 group of name &quot;/&quot; immediately under the VRTDataset element. A Group must have
 a <em>name</em> attribute, and may have the following child elements, with 0:n
 multiplicity: Dimension, Attribute, Array, Group</p>
-<p><strong>Dimension</strong>: This represents a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALDimension</span></code>. It has the following
+<p><strong>Dimension</strong>: This represents a <a class="reference internal" href="../../api/gdaldimension_cpp.html#_CPPv413GDALDimension" title="GDALDimension"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALDimension</span></code></a>. It has the following
 attributes: <em>name</em> (required), <em>size</em> (required), <em>type</em> and <em>direction</em></p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;Dimension</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;X&quot;</span><span class="w"> </span><span class="na">size=</span><span class="s">&quot;30&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;HORIZONTAL_X&quot;</span><span class="w"> </span><span class="na">direction=</span><span class="s">&quot;EAST&quot;</span><span class="nt">/&gt;</span>
 </pre></div>
 </div>
-<p><strong>Attribute</strong>: This represents a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALAttribute</span></code>. It must have a
+<p><strong>Attribute</strong>: This represents a <a class="reference internal" href="../../api/gdalattribute_cpp.html#_CPPv413GDALAttribute" title="GDALAttribute"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALAttribute</span></code></a>. It must have a
 <em>name</em> attribute and a child <em>DataType</em> element. Attribute values are stored in
 one or several child <em>Value</em> element(s)</p>
 <p>The value of <em>DataType</em> may be: String, Byte, UInt16, Int16, UInt32, Int32,
@@ -382,7 +382,7 @@ Float32, Float64, CInt16, CInt32, CFloat32 or CFloat64.</p>
 <span class="nt">&lt;/Attribute&gt;</span>
 </pre></div>
 </div>
-<p><strong>Array</strong>: This represents a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALMDArray</span></code>. It must have a
+<p><strong>Array</strong>: This represents a <a class="reference internal" href="../../api/gdalmdarray_cpp.html#_CPPv411GDALMDArray" title="GDALMDArray"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALMDArray</span></code></a>. It must have a
 <em>name</em> attribute and a child <em>DataType</em> element. It may have 0 or more
 <em>DimensionRef</em> or <em>Dimension</em> child elements to define its dimensions. And
 the following elements may be optionally specified to define its properties.
@@ -428,9 +428,9 @@ or zero, one or several elements among <em>ConstantValue</em>, <em>InlineValues<
 A Source must have a <em>SourceFilename</em>, and either a <em>SourceArray</em> (when the source
 is a Multidimensional dataset), or a <em>SourceBand</em> (when the source is a classic
 2D dataset) child element. It may have a <em>SourceTranspose</em> child element to apply
-a <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArray::Transpose()</span></code> operation and a <em>SourceView</em> to apply
+a <a class="reference internal" href="../../api/gdalmdarray_cpp.html#_CPPv4NK11GDALMDArray9TransposeERKNSt6vectorIiEE" title="GDALMDArray::Transpose"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArray::Transpose()</span></code></a> operation and a <em>SourceView</em> to apply
 slicing/trimming operations or extraction of a component of a compound data
-type (see <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArray::GetView()</span></code>). It may have a <em>SourceSlab</em> element
+type (see <a class="reference internal" href="../../api/gdalmdarray_cpp.html#_CPPv4NK11GDALMDArray7GetViewERKNSt6stringE" title="GDALMDArray::GetView"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArray::GetView()</span></code></a>). It may have a <em>SourceSlab</em> element
 with attributes <em>offset</em>, <em>count</em> and <em>step</em> defining respectively the starting
 offset of the source, the number of values along each dimension and the step
 between source elements. It may have a <em>DestSlab</em> element with an <em>offset</em>

@@ -51,17 +51,17 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../programs/index.html">プログラム</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programs/index.html">Programs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">Raster drivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">Vector drivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">チュートリアル</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="index.html#raster">ラスター</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#multidimensional-raster">多次元ラスター</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#vector">ベクター</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#geographic-network-model">空間ネットワークモデル</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html#projections-and-spatial-reference-systems-tutorial-osr-ogrspatialreference">投影法と空間参照システムチュートリアル (OSR - OGRSpatialReference)</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#raster">Raster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#multidimensional-raster">Multidimensional raster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#vector">Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#geographic-network-model">Geographic Network Model</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#projections-and-spatial-reference-systems-tutorial-osr-ogrspatialreference">Projections and Spatial Reference Systems tutorial (OSR - OGRSpatialReference)</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">OGR Coordinate Reference Systems and Coordinate Transformation tutorial</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="wktproblems.html">OGC WKT Coordinate System Issues</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#introduction">Introduction</a></li>
@@ -85,7 +85,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">Sponsors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -121,7 +121,7 @@
     
       <li><a href="../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">チュートリアル</a> &raquo;</li>
+          <li><a href="index.html">Tutorials</a> &raquo;</li>
       
       <li>OGR Coordinate Reference Systems and Coordinate Transformation tutorial</li>
     
@@ -160,7 +160,7 @@
 </div>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
-<p>The <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRSpatialReference</span></code> and <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRCoordinateTransformation</span></code> classes provide
+<p>The <a class="reference internal" href="../api/ogrspatialref.html#_CPPv419OGRSpatialReference" title="OGRSpatialReference"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRSpatialReference</span></code></a> and <a class="reference internal" href="../api/ogrspatialref.html#_CPPv427OGRCoordinateTransformation" title="OGRCoordinateTransformation"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRCoordinateTransformation</span></code></a> classes provide
 respectively services to represent coordinate reference systems (known as CRS
 or SRS, such as typically a projected CRS associating a map projection with a geodetic
 datums) and to transform between them.  These services are loosely modeled on the
@@ -179,7 +179,7 @@ WKT2:2015 and WKT2:2018) for describing coordinate systems.</p>
 </section>
 <section id="defining-a-geographic-coordinate-reference-system">
 <h2>Defining a Geographic Coordinate Reference System<a class="headerlink" href="#defining-a-geographic-coordinate-reference-system" title="Link to this heading"></a></h2>
-<p>CRS are encapsulated in the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRSpatialReference</span></code> class. There
+<p>CRS are encapsulated in the <a class="reference internal" href="../api/ogrspatialref.html#_CPPv419OGRSpatialReference" title="OGRSpatialReference"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRSpatialReference</span></code></a> class. There
 are a number of ways of initializing an OGRSpatialReference object to a
 valid coordinate reference system.  There are two primary kinds of CRS.
 The first is geographic (positions are measured in long/lat) and the second
@@ -202,7 +202,7 @@ geographic CRS.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
-<p>The abbreviation CS in <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::SetGeogCS()</span></code> is not appropriate according to current
+<p>The abbreviation CS in <a class="reference internal" href="../api/ogrspatialref.html#_CPPv4N19OGRSpatialReference9SetGeogCSEPKcPKcPKcddPKcdPKcd" title="OGRSpatialReference::SetGeogCS"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::SetGeogCS()</span></code></a> is not appropriate according to current
 geodesic terminology, and should be understood as CRS</p>
 </div>
 <p>Of these values, the names &quot;My geographic CRS&quot;, &quot;My WGS84
@@ -220,7 +220,7 @@ And WGS_1984 is used as an alias of &quot;World Geodetic System 1984&quot;</p>
 </div>
 <p>The OGRSpatialReference has built in support for a few well known CRS,
 which include &quot;NAD27&quot;, &quot;NAD83&quot;, &quot;WGS72&quot; and &quot;WGS84&quot; which can be
-defined in a single call to <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::SetWellKnownGeogCS()</span></code>.</p>
+defined in a single call to <a class="reference internal" href="../api/ogrspatialref.html#_CPPv4N19OGRSpatialReference18SetWellKnownGeogCSEPKc" title="OGRSpatialReference::SetWellKnownGeogCS"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::SetWellKnownGeogCS()</span></code></a>.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">oSRS</span><span class="p">.</span><span class="n">SetWellKnownGeogCS</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;WGS84&quot;</span><span class="w"> </span><span class="p">);</span>
 </pre></div>
 </div>
@@ -269,7 +269,7 @@ is still OGC WKT 1.</p>
 <span class="w">    </span><span class="n">AUTHORITY</span><span class="p">[</span><span class="s">&quot;EPSG&quot;</span><span class="p">,</span><span class="s">&quot;4326&quot;</span><span class="p">]]</span>
 </pre></div>
 </div>
-<p>Starting with GDAL 3.0, the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::exportToWkt()</span></code> method accepts options,</p>
+<p>Starting with GDAL 3.0, the <a class="reference internal" href="../api/ogrspatialref.html#_CPPv4NK19OGRSpatialReference11exportToWktEPPc" title="OGRSpatialReference::exportToWkt"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::exportToWkt()</span></code></a> method accepts options,</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">pszWKT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
 <span class="n">oSRS</span><span class="p">.</span><span class="n">SetWellKnownGeogCS</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;WGS84&quot;</span><span class="w"> </span><span class="p">);</span>
 <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">apszOptions</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;FORMAT=WKT2_2018&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MULTILINE=YES&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">nullptr</span><span class="w"> </span><span class="p">};</span>
@@ -294,8 +294,8 @@ is still OGC WKT 1.</p>
 <span class="w">    </span><span class="n">ID</span><span class="p">[</span><span class="s">&quot;EPSG&quot;</span><span class="p">,</span><span class="mi">4326</span><span class="p">]]</span>
 </pre></div>
 </div>
-<p>This method with options is available in C as the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OSRExportToWktEx()</span></code> function.</p>
-<p>The <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::importFromWkt()</span></code> method can be used to set an
+<p>This method with options is available in C as the <a class="reference internal" href="../api/ogr_srs_api.html#_CPPv416OSRExportToWktEx20OGRSpatialReferenceHPPcPPCKc" title="OSRExportToWktEx"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OSRExportToWktEx()</span></code></a> function.</p>
+<p>The <a class="reference internal" href="../api/ogrspatialref.html#_CPPv4N19OGRSpatialReference13importFromWktEPPc" title="OGRSpatialReference::importFromWkt"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::importFromWkt()</span></code></a> method can be used to set an
 OGRSpatialReference from a WKT CRS definition.</p>
 </section>
 <section id="crs-and-axis-order">
@@ -310,7 +310,7 @@ and the values along those axes are expressed generally in degree (ancient Frenc
 or the reverse, is a constant matter of confusion and vary depending on conventions
 used by geodetic authorities, GIS user, file format and protocol specifications, etc.
 This is the source of various interoperability issues.</p>
-<p>Before GDAL 3.0, the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRSpatialReference</span></code> class did not honour the axis order mandated by the authority
+<p>Before GDAL 3.0, the <a class="reference internal" href="../api/ogrspatialref.html#_CPPv419OGRSpatialReference" title="OGRSpatialReference"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRSpatialReference</span></code></a> class did not honour the axis order mandated by the authority
 defining a CRS and consequently stripped axis order information from the WKT string when the
 order was latitude first, longitude second. Coordinate transformations using the
 OGRCoordinateTransformation class also assumed that geographic coordinates
@@ -328,7 +328,7 @@ longitude, latitude. For that, the following must be called</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">oSRS</span><span class="p">.</span><span class="n">SetAxisMappingStrategy</span><span class="p">(</span><span class="n">OAMS_TRADITIONAL_GIS_ORDER</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>The argument passed to <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::SetAxisMappingStrategy()</span></code> is the
+<p>The argument passed to <a class="reference internal" href="../api/ogrspatialref.html#_CPPv4N19OGRSpatialReference22SetAxisMappingStrategyE22OSRAxisMappingStrategy" title="OGRSpatialReference::SetAxisMappingStrategy"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::SetAxisMappingStrategy()</span></code></a> is the
 data axis to CRS axis mapping strategy.</p>
 <ul class="simple">
 <li><p><code class="xref c c-macro docutils literal notranslate"><span class="pre">OAMS_TRADITIONAL_GIS_ORDER</span></code> means that for geographic CRS with lat/long order, the data will still be long/lat ordered. Similarly for a projected CRS with northing/easting order, the data will still be easting/northing ordered.</p></li>
@@ -339,7 +339,7 @@ data axis to CRS axis mapping strategy.</p>
 CRS also applies to Projected CRS. While most of them use Easting first, Northing
 second convention, some defined in the EPSG registry use the reverse convention.</p>
 <p>Another way to keep using the Traditional GIS order for some specific well known CRS is to
-calling to <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::SetWellKnownGeogCS()</span></code> with
+calling to <a class="reference internal" href="../api/ogrspatialref.html#_CPPv4N19OGRSpatialReference18SetWellKnownGeogCSEPKc" title="OGRSpatialReference::SetWellKnownGeogCS"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::SetWellKnownGeogCS()</span></code></a> with
 &quot;CRS27&quot;, &quot;CRS83&quot; or &quot;CRS84&quot; instead of &quot;NAD27&quot;, &quot;NAD83&quot; and &quot;WGS84&quot; respectively.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">oSRS</span><span class="p">.</span><span class="n">SetWellKnownGeogCS</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;CRS84&quot;</span><span class="w"> </span><span class="p">);</span>
 </pre></div>
@@ -360,10 +360,10 @@ geographic CRS (datum) of WGS84.</p>
 <span class="n">oSRS</span><span class="p">.</span><span class="n">SetUTM</span><span class="p">(</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w"> </span><span class="n">TRUE</span><span class="w"> </span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Calling <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::SetProjCS()</span></code> sets a user
+<p>Calling <a class="reference internal" href="../api/ogrspatialref.html#_CPPv4N19OGRSpatialReference9SetProjCSEPKc" title="OGRSpatialReference::SetProjCS"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::SetProjCS()</span></code></a> sets a user
 name for the projected CRS and establishes that the system
-is projected.  The <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::SetWellKnownGeogCS()</span></code> associates a geographic coordinate
-system, and the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::SetUTM()</span></code> call sets detailed projection transformation
+is projected.  The <a class="reference internal" href="../api/ogrspatialref.html#_CPPv4N19OGRSpatialReference18SetWellKnownGeogCSEPKc" title="OGRSpatialReference::SetWellKnownGeogCS"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::SetWellKnownGeogCS()</span></code></a> associates a geographic coordinate
+system, and the <a class="reference internal" href="../api/ogrspatialref.html#_CPPv4N19OGRSpatialReference6SetUTMEii" title="OGRSpatialReference::SetUTM"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::SetUTM()</span></code></a> call sets detailed projection transformation
 parameters.  At this time the above order is important in order to
 create a valid definition, but in the future the object will automatically
 reorder the internal representation as needed to remain valid.</p>
@@ -394,25 +394,25 @@ transverse mercator definition of the UTM zone.</p>
 <span class="w">    </span><span class="n">PARAMETER</span><span class="p">[</span><span class="s">&quot;false_northing&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">]]</span>
 </pre></div>
 </div>
-<p>There are methods for many projection methods including <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::SetTM()</span></code> (Transverse
-Mercator), <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::SetLCC()</span></code> (Lambert Conformal Conic), and <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::SetMercator()</span></code>.</p>
+<p>There are methods for many projection methods including <a class="reference internal" href="../api/ogrspatialref.html#_CPPv4N19OGRSpatialReference5SetTMEddddd" title="OGRSpatialReference::SetTM"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::SetTM()</span></code></a> (Transverse
+Mercator), <a class="reference internal" href="../api/ogrspatialref.html#_CPPv4N19OGRSpatialReference6SetLCCEdddddd" title="OGRSpatialReference::SetLCC"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::SetLCC()</span></code></a> (Lambert Conformal Conic), and <a class="reference internal" href="../api/ogrspatialref.html#_CPPv4N19OGRSpatialReference11SetMercatorEddddd" title="OGRSpatialReference::SetMercator"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::SetMercator()</span></code></a>.</p>
 </section>
 <section id="querying-coordinate-reference-system">
 <h2>Querying Coordinate Reference System<a class="headerlink" href="#querying-coordinate-reference-system" title="Link to this heading"></a></h2>
 <p>Once an OGRSpatialReference has been established, various information about
 it can be queried.  It can be established if it is a projected or
-geographic CRS using the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::IsProjected()</span></code> and
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::IsGeographic()</span></code> methods.  The <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::GetSemiMajor()</span></code>, <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::GetSemiMinor()</span></code> and
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::GetInvFlattening()</span></code> methods can be used to get
-information about the spheroid.  The <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::GetAttrValue()</span></code>
+geographic CRS using the <a class="reference internal" href="../api/ogrspatialref.html#_CPPv4NK19OGRSpatialReference11IsProjectedEv" title="OGRSpatialReference::IsProjected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::IsProjected()</span></code></a> and
+<a class="reference internal" href="../api/ogrspatialref.html#_CPPv4NK19OGRSpatialReference12IsGeographicEv" title="OGRSpatialReference::IsGeographic"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::IsGeographic()</span></code></a> methods.  The <a class="reference internal" href="../api/ogrspatialref.html#_CPPv4NK19OGRSpatialReference12GetSemiMajorEP6OGRErr" title="OGRSpatialReference::GetSemiMajor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::GetSemiMajor()</span></code></a>, <a class="reference internal" href="../api/ogrspatialref.html#_CPPv4NK19OGRSpatialReference12GetSemiMinorEP6OGRErr" title="OGRSpatialReference::GetSemiMinor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::GetSemiMinor()</span></code></a> and
+<a class="reference internal" href="../api/ogrspatialref.html#_CPPv4NK19OGRSpatialReference16GetInvFlatteningEP6OGRErr" title="OGRSpatialReference::GetInvFlattening"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::GetInvFlattening()</span></code></a> methods can be used to get
+information about the spheroid.  The <a class="reference internal" href="../api/ogrspatialref.html#_CPPv4NK19OGRSpatialReference12GetAttrValueEPKci" title="OGRSpatialReference::GetAttrValue"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::GetAttrValue()</span></code></a>
 method can be used to get the PROJCS, GEOGCS, DATUM, SPHEROID, and PROJECTION
-names strings.  The <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::GetProjParm()</span></code> method can be used to
-get the projection parameters.  The <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::GetLinearUnits()</span></code>
+names strings.  The <a class="reference internal" href="../api/ogrspatialref.html#_CPPv4NK19OGRSpatialReference11GetProjParmEPKcdP6OGRErr" title="OGRSpatialReference::GetProjParm"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::GetProjParm()</span></code></a> method can be used to
+get the projection parameters.  The <a class="reference internal" href="../api/ogrspatialref.html#_CPPv4NK19OGRSpatialReference14GetLinearUnitsEPPc" title="OGRSpatialReference::GetLinearUnits"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::GetLinearUnits()</span></code></a>
 method can be used to fetch the linear units type, and translation to meters.</p>
 <p>Note that the names of the projection method and parameters is the one of
 WKT 1.</p>
 <p>The following code demonstrates use
-of <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::GetAttrValue()</span></code> to get the projection, and <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::GetProjParm()</span></code> to get projection
+of <a class="reference internal" href="../api/ogrspatialref.html#_CPPv4NK19OGRSpatialReference12GetAttrValueEPKci" title="OGRSpatialReference::GetAttrValue"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::GetAttrValue()</span></code></a> to get the projection, and <a class="reference internal" href="../api/ogrspatialref.html#_CPPv4NK19OGRSpatialReference11GetProjParmEPKcdP6OGRErr" title="OGRSpatialReference::GetProjParm"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::GetProjParm()</span></code></a> to get projection
 parameters.  The GetAttrValue() method searches for the first &quot;value&quot;
 node associated with the named entry in the WKT text representation.
 The #define'ed constants for projection parameters (such as
@@ -444,10 +444,10 @@ which projections.</p>
 </section>
 <section id="coordinate-transformation">
 <h2>Coordinate Transformation<a class="headerlink" href="#coordinate-transformation" title="Link to this heading"></a></h2>
-<p>The <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRCoordinateTransformation</span></code> class is used for translating positions
+<p>The <a class="reference internal" href="../api/ogrspatialref.html#_CPPv427OGRCoordinateTransformation" title="OGRCoordinateTransformation"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRCoordinateTransformation</span></code></a> class is used for translating positions
 between different CRS.  New transformation objects are
-created using <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRCreateCoordinateTransformation()</span></code>, and then the
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRCoordinateTransformation::Transform()</span></code> method can be used to convert
+created using <a class="reference internal" href="../api/ogrspatialref.html#_CPPv433OGRCreateCoordinateTransformationPK19OGRSpatialReferencePK19OGRSpatialReference" title="OGRCreateCoordinateTransformation"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRCreateCoordinateTransformation()</span></code></a>, and then the
+<a class="reference internal" href="../api/ogrspatialref.html#_CPPv4N27OGRCoordinateTransformation9TransformE6size_tPdPdPdPi" title="OGRCoordinateTransformation::Transform"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRCoordinateTransformation::Transform()</span></code></a> method can be used to convert
 points between CRS.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">OGRSpatialReference</span><span class="w"> </span><span class="n">oSourceSRS</span><span class="p">,</span><span class="w"> </span><span class="n">oTargetSRS</span><span class="p">;</span>
 <span class="n">OGRCoordinateTransformation</span><span class="w"> </span><span class="o">*</span><span class="n">poCT</span><span class="p">;</span>

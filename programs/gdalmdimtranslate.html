@@ -51,10 +51,10 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../download.html">ダウンロード</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">プログラム</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="index.html#general">一般情報</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#raster-programs">ラスタープログラム</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html#multidimensional-raster-programs">多次元ラスタープログラム</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Programs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#general">General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#raster-programs">Raster programs</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#multidimensional-raster-programs">Multidimensional Raster programs</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="gdalmdiminfo.html">gdalmdiminfo</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">gdalmdimtranslate</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#synopsis">Synopsis</a></li>
@@ -65,20 +65,20 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#vector-programs">ベクタープログラム</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#geographic-network-programs">空間ネットワークプログラム</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#other-utilities">その他ユーティリティ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#vector-programs">Vector programs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#geographic-network-programs">Geographic network programs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#other-utilities">Other utilities</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">ラスタードライバー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">ベクタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">Raster drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">Vector drivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../development/index.html">開発</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">スポンサー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">貢献する方法は?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">Sponsors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">ライセンス</a></li>
 </ul>
@@ -116,7 +116,7 @@
     
       <li><a href="../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">プログラム</a> &raquo;</li>
+          <li><a href="index.html">Programs</a> &raquo;</li>
       
       <li>gdalmdimtranslate</li>
     
@@ -224,10 +224,10 @@ supported for a format can be listed with the
 <a class="reference internal" href="raster_common_options.html#raster-common-options-formats"><span class="std std-ref">--formats</span></a>
 command line option but the documentation for the format is the
 definitive source of information on driver creation options.
-See <a class="reference internal" href="../drivers/raster/index.html#raster-drivers"><span class="std std-ref">ラスタードライバー</span></a> format
+See <a class="reference internal" href="../drivers/raster/index.html#raster-drivers"><span class="std std-ref">Raster drivers</span></a> format
 specific documentation for legal creation options for each format.</p>
 <p>Array-level creation options may be passed by prefixing them with <code class="docutils literal notranslate"><span class="pre">ARRAY:</span></code>.
-See <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALGroup::CopyFrom()</span></code> for further details regarding such options.</p>
+See <a class="reference internal" href="../api/gdalgroup_cpp.html#_CPPv4N9GDALGroup8CopyFromERKNSt10shared_ptrI9GDALGroupEEP11GDALDatasetRKNSt10shared_ptrI9GDALGroupEEbR7GUInt64K7GUInt6416GDALProgressFuncPv12CSLConstList" title="GDALGroup::CopyFrom"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALGroup::CopyFrom()</span></code></a> for further details regarding such options.</p>
 </dd></dl>
 
 <dl class="std option">
@@ -242,13 +242,13 @@ with the syntax:
 name={src_array_name}[,dstname={dst_array_name}][,resample=yes][,transpose=[{axis1},{axis2},...][,view={view_expr}]</p>
 <p>The following options are processed in that order:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">resample=yes</span></code> asks for the array to run through <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArray::GetResampled()</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">resample=yes</span></code> asks for the array to run through <a class="reference internal" href="../api/gdalmdarray_cpp.html#_CPPv4NK11GDALMDArray12GetResampledERKNSt6vectorINSt10shared_ptrI13GDALDimensionEEEE18GDALRIOResampleAlgPK19OGRSpatialReference12CSLConstList" title="GDALMDArray::GetResampled"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArray::GetResampled()</span></code></a>.</p></li>
 <li><dl class="simple">
-<dt>[{axis1},{axis2},...] is the argument of  <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArray::Transpose()</span></code>.</dt><dd><p>For example, transpose=[1,0] switches the axis order of a 2D array.</p>
+<dt>[{axis1},{axis2},...] is the argument of  <a class="reference internal" href="../api/gdalmdarray_cpp.html#_CPPv4NK11GDALMDArray9TransposeERKNSt6vectorIiEE" title="GDALMDArray::Transpose"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArray::Transpose()</span></code></a>.</dt><dd><p>For example, transpose=[1,0] switches the axis order of a 2D array.</p>
 </dd>
 </dl>
 </li>
-<li><p>{view_expr} is the value of the <em>viewExpr</em> argument of <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArray::GetView()</span></code></p></li>
+<li><p>{view_expr} is the value of the <em>viewExpr</em> argument of <a class="reference internal" href="../api/gdalmdarray_cpp.html#_CPPv4NK11GDALMDArray7GetViewERKNSt6stringE" title="GDALMDArray::GetView"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArray::GetView()</span></code></a></p></li>
 </ul>
 <p>When specifying a view_expr that performs a slicing or subsetting on a dimension, the
 equivalent operation will be applied to the corresponding indexing variable.</p>
@@ -260,7 +260,7 @@ equivalent operation will be applied to the corresponding indexing variable.</p>
 <dd><div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.9.</span></p>
 </div>
-<p>Option passed to <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALGroup::GetMDArrayNames()</span></code> to filter reported
+<p>Option passed to <a class="reference internal" href="../api/gdalgroup_cpp.html#_CPPv4NK9GDALGroup15GetMDArrayNamesE12CSLConstList" title="GDALGroup::GetMDArrayNames"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALGroup::GetMDArrayNames()</span></code></a> to filter reported
 arrays. Such option is format specific. Consult driver documentation.
 This option may be used several times.</p>
 </dd></dl>
@@ -340,7 +340,7 @@ failures will cause the process to fail.</p>
 </section>
 <section id="c-api">
 <h2>C API<a class="headerlink" href="#c-api" title="Link to this heading"></a></h2>
-<p>This utility is also callable from C with <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMultiDimTranslate()</span></code>.</p>
+<p>This utility is also callable from C with <a class="reference internal" href="../api/gdal_utils.html#_CPPv421GDALMultiDimTranslatePKc12GDALDatasetHiP12GDALDatasetHPK28GDALMultiDimTranslateOptionsPi" title="GDALMultiDimTranslate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMultiDimTranslate()</span></code></a>.</p>
 </section>
 <section id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>

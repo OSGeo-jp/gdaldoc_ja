@@ -51,8 +51,8 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">プログラム</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">ラスタードライバー</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">Programs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Raster drivers</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="aaigrid.html">AAIGrid -- Arc/Info ASCII Grid</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ace2.html">ACE2 -- ACE2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adrg.html">ADRG -- ADRG/ARC Digitized Raster Graphics (.gen/.thf)</a></li>
@@ -239,14 +239,14 @@
 <li class="toctree-l2"><a class="reference internal" href="zmap.html">ZMap -- ZMap Plus Grid</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../vector/index.html">ベクタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vector/index.html">Vector drivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
@@ -284,7 +284,7 @@
     
       <li><a href="../../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">ラスタードライバー</a> &raquo;</li>
+          <li><a href="index.html">Raster drivers</a> &raquo;</li>
       
       <li>GPKG -- GeoPackage raster</li>
     
@@ -366,11 +366,11 @@ not vary with a factor of 2.</p></li>
 <h2>Driver capabilities<a class="headerlink" href="#driver-capabilities" title="Link to this heading"></a></h2>
 <div class="admonition supports_createcopy" id="supports_createcopy-0">
 <p class="admonition-title">Supports CreateCopy()</p>
-<p>This driver supports the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::CreateCopy()</span></code> operation</p>
+<p>This driver supports the <a class="reference internal" href="../../api/gdaldriver_cpp.html#_CPPv4N10GDALDriver10CreateCopyEPKcP11GDALDataseti12CSLConstList16GDALProgressFuncPv" title="GDALDriver::CreateCopy"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::CreateCopy()</span></code></a> operation</p>
 </div>
 <div class="admonition supports_create" id="supports_create-0">
 <p class="admonition-title">Supports Create()</p>
-<p>This driver supports the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::Create()</span></code> operation</p>
+<p>This driver supports the <a class="reference internal" href="../../api/gdaldriver_cpp.html#_CPPv4N10GDALDriver6CreateEPKciii12GDALDataType12CSLConstList" title="GDALDriver::Create"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::Create()</span></code></a> operation</p>
 </div>
 <div class="admonition supports_georeferencing" id="supports_georeferencing-0">
 <p class="admonition-title">Supports Georeferencing</p>
@@ -401,7 +401,7 @@ which covers the extent at all zoom levels. The user can also specify
 the USE_TILE_EXTENT=YES open option to use the actual extent of tiles at
 the maximum zoom level. Or it can specify any of MINX/MINY/MAXX/MAXY to
 have a custom extent.</p>
-<p><a href="#id2"><span class="problematic" id="id3">|about-open-options|</span></a>
+<p>Open options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-oo</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALOpenExPKcjPPCKcPPCKcPPCKc" title="GDALOpenEx"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpenEx()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.OpenEx" title="osgeo.gdal.OpenEx"><code class="xref py py-meth docutils literal notranslate"><span class="pre">gdal.OpenEx</span></code></a> (Python).
 The following open options are available:</p>
 <ul class="simple">
 <li><p id="drivers/raster/gpkg-oo-TABLE"><strong>TABLE=&lt;table_name&gt;: </strong>Name of the table containing the tiles
@@ -719,7 +719,7 @@ the input nodata value to another value.</p>
 </section>
 <section id="creation-options">
 <h3>Creation options<a class="headerlink" href="#creation-options" title="Link to this heading"></a></h3>
-<p><a href="#id4"><span class="problematic" id="id5">|about-creation-options|</span></a>
+<p>Creation options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-co</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALCreate11GDALDriverHPKciii12GDALDataType12CSLConstList" title="GDALCreate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALCreate()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.Driver.Create" title="osgeo.gdal.Driver.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Driver.Create</span></code></a> (Python).
 The following creation options are available:</p>
 <ul class="simple">
 <li><p id="drivers/raster/gpkg-co-RASTER_TABLE"><strong>RASTER_TABLE=value: </strong>Name of tile user table. By default, based
@@ -783,24 +783,24 @@ different from CUSTOM. Defaults to BILINEAR.</p>
 <li><p id="drivers/raster/gpkg-co-PRECISION"><strong>PRECISION=&lt;floating_point_value_in_vertical_units&gt;: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">1.0</span></code>. Smallest
 significant value. Only used for tile gridded coverage datasets.</p>
 </li>
-<li><p id="drivers/raster/gpkg-co-UOM"><strong>UOM=value: </strong> (GDAL &gt;= 2.3) Unit of Measurement. Only used for
+<li><p id="drivers/raster/gpkg-co-UOM"><strong>UOM=value: </strong>Unit of Measurement. Only used for
 tiled gridded coverage datasets. Also set through SetUnitType()</p>
 </li>
-<li><p id="drivers/raster/gpkg-co-FIELD_NAME"><strong>FIELD_NAME=value: </strong> (GDAL &gt;= 2.3)  Defaults to <code class="docutils literal notranslate"><span class="pre">Height</span></code>. Field name. Only used for tiled gridded coverage datasets.</p>
+<li><p id="drivers/raster/gpkg-co-FIELD_NAME"><strong>FIELD_NAME=value: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">Height</span></code>. Field name. Only used for tiled gridded coverage datasets.</p>
 </li>
-<li><p id="drivers/raster/gpkg-co-QUANTITY_DEFINITION"><strong>QUANTITY_DEFINITION=value: </strong> (GDAL &gt;= 2.3)  Defaults to <code class="docutils literal notranslate"><span class="pre">Height</span></code>. Description of the
+<li><p id="drivers/raster/gpkg-co-QUANTITY_DEFINITION"><strong>QUANTITY_DEFINITION=value: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">Height</span></code>. Description of the
 field. Only used for tiled gridded coverage datasets.</p>
 </li>
-<li><p id="drivers/raster/gpkg-co-GRID_CELL_ENCODING"><strong>GRID_CELL_ENCODING=[grid-value-is-center/grid-value-is-area/grid-value-is-corner]: </strong> (GDAL &gt;= 2.3) Grid cell encoding. Only used for
+<li><p id="drivers/raster/gpkg-co-GRID_CELL_ENCODING"><strong>GRID_CELL_ENCODING=[grid-value-is-center/grid-value-is-area/grid-value-is-corner]: </strong>Grid cell encoding. Only used for
 tiled gridded coverage datasets. Defaults to grid-value-is-center,
 when AREA_OR_POINT metadata item is not set.</p>
 </li>
-<li><p id="drivers/raster/gpkg-co-VERSION"><strong>VERSION=[AUTO/1.0/1.1/1.2/1.3]: </strong> (GDAL &gt;= 2.2) Set GeoPackage version
+<li><p id="drivers/raster/gpkg-co-VERSION"><strong>VERSION=[AUTO/1.0/1.1/1.2/1.3]: </strong>Set GeoPackage version
 (for application_id and user_version fields). In AUTO mode, this will
 be equivalent to 1.2 starting with GDAL 2.3.
 1.3 is available starting with GDAL 3.3</p>
 </li>
-<li><p id="drivers/raster/gpkg-co-ADD_GPKG_OGR_CONTENTS"><strong>ADD_GPKG_OGR_CONTENTS=[YES/NO]: </strong> (GDAL &gt;= 2.2)  Defaults to <code class="docutils literal notranslate"><span class="pre">YES</span></code>. Defines whether to
+<li><p id="drivers/raster/gpkg-co-ADD_GPKG_OGR_CONTENTS"><strong>ADD_GPKG_OGR_CONTENTS=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">YES</span></code>. Defines whether to
 add a gpkg_ogr_contents table to keep feature count for vector
 layers, and associated triggers.</p>
 </li>

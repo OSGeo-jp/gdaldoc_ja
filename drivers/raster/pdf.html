@@ -51,8 +51,8 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">プログラム</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">ラスタードライバー</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">Programs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Raster drivers</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="aaigrid.html">AAIGrid -- Arc/Info ASCII Grid</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ace2.html">ACE2 -- ACE2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adrg.html">ADRG -- ADRG/ARC Digitized Raster Graphics (.gen/.thf)</a></li>
@@ -244,14 +244,14 @@
 <li class="toctree-l2"><a class="reference internal" href="zmap.html">ZMap -- ZMap Plus Grid</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../vector/index.html">ベクタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vector/index.html">Vector drivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
@@ -289,7 +289,7 @@
     
       <li><a href="../../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">ラスタードライバー</a> &raquo;</li>
+          <li><a href="index.html">Raster drivers</a> &raquo;</li>
       
       <li>PDF -- Geospatial PDF</li>
     
@@ -348,7 +348,7 @@ of the document.</p>
 <h2>Driver capabilities<a class="headerlink" href="#driver-capabilities" title="Link to this heading"></a></h2>
 <div class="admonition supports_createcopy" id="supports_createcopy-0">
 <p class="admonition-title">Supports CreateCopy()</p>
-<p>This driver supports the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::CreateCopy()</span></code> operation</p>
+<p>This driver supports the <a class="reference internal" href="../../api/gdaldriver_cpp.html#_CPPv4N10GDALDriver10CreateCopyEPKcP11GDALDataseti12CSLConstList16GDALProgressFuncPv" title="GDALDriver::CreateCopy"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::CreateCopy()</span></code></a> operation</p>
 </div>
 <div class="admonition supports_georeferencing" id="supports_georeferencing-0">
 <p class="admonition-title">Supports Georeferencing</p>
@@ -376,7 +376,7 @@ content in the EMBEDDED_METADATA metadata domain.</p>
 </section>
 <section id="configuration-options">
 <h2>Configuration options<a class="headerlink" href="#configuration-options" title="Link to this heading"></a></h2>
-<p><a href="#id1"><span class="problematic" id="id2">|about-config-options|</span></a>
+<p><a class="reference internal" href="../../user/configoptions.html#configoptions"><span class="std std-ref">Configuration options</span></a> can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">--config</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or using functions such as <a class="reference internal" href="../../api/cpl.html#_CPPv418CPLSetConfigOptionPKcPKc" title="CPLSetConfigOption"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CPLSetConfigOption()</span></code></a> (C) or <code class="xref py py-func docutils literal notranslate"><span class="pre">gdal.config_options</span></code> (Python).
 The following configuration options are supported:</p>
 <ul class="simple">
 <li><p id="config-GDAL_PDF_DPI"><strong>GDAL_PDF_DPI=value: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">150</span></code>. To control the dimensions of the raster by
@@ -420,7 +420,7 @@ layers for the vector part to be &quot;laundered&quot;.</p>
 </ul>
 <section id="open-options">
 <h3>Open Options<a class="headerlink" href="#open-options" title="Link to this heading"></a></h3>
-<p><a href="#id3"><span class="problematic" id="id4">|about-open-options|</span></a>
+<p>Open options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-oo</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALOpenExPKcjPPCKcPPCKcPPCKc" title="GDALOpenEx"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpenEx()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.OpenEx" title="osgeo.gdal.OpenEx"><code class="xref py py-meth docutils literal notranslate"><span class="pre">gdal.OpenEx</span></code></a> (Python).
 Above configuration options are also available as open options.</p>
 <ul class="simple">
 <li><p id="drivers/raster/pdf-oo-RENDERING_OPTIONS"><strong>RENDERING_OPTIONS=[RASTER,VECTOR,TEXT/RASTER,VECTOR/RASTER,TEXT/RASTER/VECTOR,TEXT/VECTOR/TEXT]: </strong>Equivalent of <a class="reference internal" href="#config-GDAL_PDF_RENDERING_OPTIONS"><code class="docutils literal notranslate"><span class="pre">GDAL_PDF_RENDERING_OPTIONS</span></code></a> configuration option.</p>
@@ -493,7 +493,7 @@ types).</p>
 <p>Note: PDF write support does not require linking to any backend.</p>
 <section id="creation-options">
 <h3>Creation Options<a class="headerlink" href="#creation-options" title="Link to this heading"></a></h3>
-<p><a href="#id5"><span class="problematic" id="id6">|about-creation-options|</span></a>
+<p>Creation options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-co</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALCreate11GDALDriverHPKciii12GDALDataType12CSLConstList" title="GDALCreate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALCreate()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.Driver.Create" title="osgeo.gdal.Driver.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Driver.Create</span></code></a> (Python).
 The following creation options are available:</p>
 <ul class="simple">
 <li><p id="drivers/raster/pdf-co-COMPRESS"><strong>COMPRESS=[NONE/DEFLATE/JPEG/JPEG2000]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">DEFLATE</span></code>. Set the compression to use for raster data.</p>
@@ -506,7 +506,7 @@ automatically adjusted to higher value so that page dimension does
 not exceed the 14400 maximum value (in user units) allowed by
 Acrobat.</p>
 </li>
-<li><p id="drivers/raster/pdf-co-WRITE_USERUNIT"><strong>WRITE_USERUNIT=[YES/NO]: </strong> (GDAL &gt;= 2.2) Whether the UserUnit setting
+<li><p id="drivers/raster/pdf-co-WRITE_USERUNIT"><strong>WRITE_USERUNIT=[YES/NO]: </strong>Whether the UserUnit setting
 computed from the DPI (UserUnit = DPI / 72.0) should be recorded in
 the file. When UserUnit is recorded, the raster size in pixels
 recognized by GDAL on reading remains identical to the source raster.

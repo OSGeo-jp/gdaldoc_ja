@@ -51,8 +51,8 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">プログラム</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">ラスタードライバー</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">Programs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Raster drivers</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="aaigrid.html">AAIGrid -- Arc/Info ASCII Grid</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ace2.html">ACE2 -- ACE2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adrg.html">ADRG -- ADRG/ARC Digitized Raster Graphics (.gen/.thf)</a></li>
@@ -231,14 +231,14 @@
 <li class="toctree-l2"><a class="reference internal" href="zmap.html">ZMap -- ZMap Plus Grid</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../vector/index.html">ベクタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vector/index.html">Vector drivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
@@ -276,7 +276,7 @@
     
       <li><a href="../../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">ラスタードライバー</a> &raquo;</li>
+          <li><a href="index.html">Raster drivers</a> &raquo;</li>
       
       <li>FITS -- Flexible Image Transport System</li>
     
@@ -345,8 +345,8 @@ keywords in a FITS file, is disabled in GDAL &lt; v3.0. Those header keywords ar
 accessible and updatable via dataset metadata, in the same was as any
 other header keywords, but they do not affect reading/writing of data
 values from/to the file. Starting from version 3.0 BZERO and BSCALE keywords
-are managed via standard <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALRasterBand::GetOffset()</span></code> / <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALRasterBand::SetOffset()</span></code>
-and <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALRasterBand::GetScale()</span></code> / <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALRasterBand::SetScale()</span></code> GDAL functions and no more
+are managed via standard <a class="reference internal" href="../../api/gdalrasterband_cpp.html#_CPPv4N14GDALRasterBand9GetOffsetEPi" title="GDALRasterBand::GetOffset"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALRasterBand::GetOffset()</span></code></a> / <a class="reference internal" href="../../api/gdalrasterband_cpp.html#_CPPv4N14GDALRasterBand9SetOffsetEd" title="GDALRasterBand::SetOffset"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALRasterBand::SetOffset()</span></code></a>
+and <a class="reference internal" href="../../api/gdalrasterband_cpp.html#_CPPv4N14GDALRasterBand8GetScaleEPi" title="GDALRasterBand::GetScale"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALRasterBand::GetScale()</span></code></a> / <a class="reference internal" href="../../api/gdalrasterband_cpp.html#_CPPv4N14GDALRasterBand8SetScaleEd" title="GDALRasterBand::SetScale"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALRasterBand::SetScale()</span></code></a> GDAL functions and no more
 referred as metadata.</p>
 <section id="multiple-image-support">
 <h2>Multiple image support<a class="headerlink" href="#multiple-image-support" title="Link to this heading"></a></h2>
@@ -360,8 +360,8 @@ HDUs are found, they are reported as subdatasets.</p>
 <p>Starting with GDAL 3.2, binary tables will be exposed as vector layers (update
 and creation support from GDAL 3.2.1).</p>
 <p>The FITS data types are mapped to OGR data types as the following:</p>
-<table class="docutils align-default" id="id3">
-<caption><span class="caption-text">Data types</span><a class="headerlink" href="#id3" title="Link to this table"></a></caption>
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-text">Data types</span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>TFORM value</p></th>
 <th class="head"><p>TSCAL, TOFFSET value</p></th>
@@ -584,7 +584,7 @@ field to set a OGR field to NULL.</p>
 </section>
 <section id="layer-creation-options">
 <h2>Layer creation options<a class="headerlink" href="#layer-creation-options" title="Link to this heading"></a></h2>
-<p><a href="#id4"><span class="problematic" id="id5">|about-layer-creation-options|</span></a>
+<p>Layer creation options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-lco</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv422GDALDatasetCreateLayer12GDALDatasetHPKc20OGRSpatialReferenceH18OGRwkbGeometryType12CSLConstList" title="GDALDatasetCreateLayer"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDatasetCreateLayer()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.Dataset.CreateLayer" title="osgeo.gdal.Dataset.CreateLayer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Dataset.CreateLayer</span></code></a> (Python).
 The following layer creation options are available:</p>
 <ul class="simple">
 <li><p id="drivers/raster/fits-lco-REPEAT_{fieldname}"><strong>REPEAT_{fieldname}=&lt;integer&gt;: </strong>For a given field (substitute {fieldname} by its
@@ -602,7 +602,7 @@ elements in the first feature will be taken into account to create fixed-size
 FITS columns.</p>
 </li>
 </ul>
-<p>When using ogr2ogr or <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALVectorTranslate()</span></code> with a FITS source, the
+<p>When using ogr2ogr or <a class="reference internal" href="../../api/gdal_utils.html#_CPPv419GDALVectorTranslatePKc12GDALDatasetHiP12GDALDatasetHPK26GDALVectorTranslateOptionsPi" title="GDALVectorTranslate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALVectorTranslate()</span></code></a> with a FITS source, the
 FITS header will be taken into account, in particular to help to determine the
 FITS data type of target columns.</p>
 </section>
@@ -671,7 +671,7 @@ Band 1 Block=1x1 Type=Byte, ColorInterp=Undefined
 </section>
 <section id="other">
 <h2>Other<a class="headerlink" href="#other" title="Link to this heading"></a></h2>
-<p>NOTE: Implemented as <a href="#id1"><span class="problematic" id="id2">:source_file:`frmts/fits/fitsdataset.cpp`</span></a>.</p>
+<p>NOTE: Implemented as <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/frmts/fits/fitsdataset.cpp">fitsdataset.cpp</a>.</p>
 </section>
 <section id="notes-on-cfitsio-linking-in-gdal">
 <span id="notes-on-cfitsio-linking"></span><h2>Notes on CFITSIO linking in GDAL<a class="headerlink" href="#notes-on-cfitsio-linking-in-gdal" title="Link to this heading"></a></h2>
@@ -696,11 +696,11 @@ Install CFITSIO as described in the <a class="reference external" href="https://
 <h2>Driver capabilities<a class="headerlink" href="#driver-capabilities" title="Link to this heading"></a></h2>
 <div class="admonition supports_createcopy" id="supports_createcopy-0">
 <p class="admonition-title">Supports CreateCopy()</p>
-<p>This driver supports the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::CreateCopy()</span></code> operation</p>
+<p>This driver supports the <a class="reference internal" href="../../api/gdaldriver_cpp.html#_CPPv4N10GDALDriver10CreateCopyEPKcP11GDALDataseti12CSLConstList16GDALProgressFuncPv" title="GDALDriver::CreateCopy"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::CreateCopy()</span></code></a> operation</p>
 </div>
 <div class="admonition supports_create" id="supports_create-0">
 <p class="admonition-title">Supports Create()</p>
-<p>This driver supports the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::Create()</span></code> operation</p>
+<p>This driver supports the <a class="reference internal" href="../../api/gdaldriver_cpp.html#_CPPv4N10GDALDriver6CreateEPKciii12GDALDataType12CSLConstList" title="GDALDriver::Create"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::Create()</span></code></a> operation</p>
 </div>
 <div class="admonition supports_georeferencing" id="supports_georeferencing-0">
 <p class="admonition-title">Supports Georeferencing</p>

@@ -51,8 +51,8 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">プログラム</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">ラスタードライバー</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">Programs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Raster drivers</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="aaigrid.html">AAIGrid -- Arc/Info ASCII Grid</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ace2.html">ACE2 -- ACE2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adrg.html">ADRG -- ADRG/ARC Digitized Raster Graphics (.gen/.thf)</a></li>
@@ -235,14 +235,14 @@
 <li class="toctree-l2"><a class="reference internal" href="zmap.html">ZMap -- ZMap Plus Grid</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../vector/index.html">ベクタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vector/index.html">Vector drivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
@@ -280,7 +280,7 @@
     
       <li><a href="../../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">ラスタードライバー</a> &raquo;</li>
+          <li><a href="index.html">Raster drivers</a> &raquo;</li>
       
       <li>MBTiles</li>
     
@@ -360,11 +360,11 @@ object.</p>
 <h2>Driver capabilities<a class="headerlink" href="#driver-capabilities" title="Link to this heading"></a></h2>
 <div class="admonition supports_createcopy" id="supports_createcopy-0">
 <p class="admonition-title">Supports CreateCopy()</p>
-<p>This driver supports the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::CreateCopy()</span></code> operation</p>
+<p>This driver supports the <a class="reference internal" href="../../api/gdaldriver_cpp.html#_CPPv4N10GDALDriver10CreateCopyEPKcP11GDALDataseti12CSLConstList16GDALProgressFuncPv" title="GDALDriver::CreateCopy"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::CreateCopy()</span></code></a> operation</p>
 </div>
 <div class="admonition supports_create" id="supports_create-0">
 <p class="admonition-title">Supports Create()</p>
-<p>This driver supports the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::Create()</span></code> operation</p>
+<p>This driver supports the <a class="reference internal" href="../../api/gdaldriver_cpp.html#_CPPv4N10GDALDriver6CreateEPKciii12GDALDataType12CSLConstList" title="GDALDriver::Create"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::Create()</span></code></a> operation</p>
 </div>
 <div class="admonition supports_georeferencing" id="supports_georeferencing-0">
 <p class="admonition-title">Supports Georeferencing</p>
@@ -377,7 +377,7 @@ object.</p>
 </section>
 <section id="configuration-options">
 <h2>Configuration options<a class="headerlink" href="#configuration-options" title="Link to this heading"></a></h2>
-<p><a href="#id1"><span class="problematic" id="id2">|about-config-options|</span></a>
+<p><a class="reference internal" href="../../user/configoptions.html#configoptions"><span class="std std-ref">Configuration options</span></a> can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">--config</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or using functions such as <a class="reference internal" href="../../api/cpl.html#_CPPv418CPLSetConfigOptionPKcPKc" title="CPLSetConfigOption"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CPLSetConfigOption()</span></code></a> (C) or <code class="xref py py-func docutils literal notranslate"><span class="pre">gdal.config_options</span></code> (Python).
 The following configuration option is available:</p>
 <ul class="simple">
 <li><p id="config-MBTILES_BAND_COUNT"><strong>MBTILES_BAND_COUNT=value: </strong>Equivalent of <a class="reference internal" href="#drivers/raster/mbtiles-oo-BAND_COUNT"><code class="docutils literal notranslate"><span class="pre">BAND_COUNT</span></code></a> open option.</p>
@@ -386,37 +386,37 @@ The following configuration option is available:</p>
 </section>
 <section id="opening-options">
 <h2>Opening options<a class="headerlink" href="#opening-options" title="Link to this heading"></a></h2>
-<p><a href="#id3"><span class="problematic" id="id4">|about-open-options|</span></a>
+<p>Open options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-oo</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALOpenExPKcjPPCKcPPCKcPPCKc" title="GDALOpenEx"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpenEx()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.OpenEx" title="osgeo.gdal.OpenEx"><code class="xref py py-meth docutils literal notranslate"><span class="pre">gdal.OpenEx</span></code></a> (Python).
 The following open options are available:</p>
 <ul class="simple">
 <li><p>Raster and vector:</p>
 <ul>
-<li><p id="drivers/raster/mbtiles-oo-ZOOM_LEVEL"><strong>ZOOM_LEVEL=value: </strong> (GDAL &gt;= 2.1) Integer value between 0 and the maximum
+<li><p id="drivers/raster/mbtiles-oo-ZOOM_LEVEL"><strong>ZOOM_LEVEL=value: </strong>Integer value between 0 and the maximum
 filled in the <em>tiles</em> table. By default, the driver will select
 the maximum zoom level, such as at least one tile at that zoom
 level is found in the 'tiles' table.</p>
 </li>
-<li><p id="drivers/raster/mbtiles-oo-USE_BOUNDS"><strong>USE_BOUNDS=[YES/NO]: </strong> (GDAL &gt;= 2.1)  Defaults to <code class="docutils literal notranslate"><span class="pre">YES</span></code>. Whether to use the 'bounds' metadata,
+<li><p id="drivers/raster/mbtiles-oo-USE_BOUNDS"><strong>USE_BOUNDS=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">YES</span></code>. Whether to use the 'bounds' metadata,
 when available, to determine the AOI.</p>
 </li>
-<li><p id="drivers/raster/mbtiles-oo-MINX"><strong>MINX=value: </strong> (GDAL &gt;= 2.1) Minimum easting (in EPSG:3857) of the area of interest.</p>
+<li><p id="drivers/raster/mbtiles-oo-MINX"><strong>MINX=value: </strong>Minimum easting (in EPSG:3857) of the area of interest.</p>
 </li>
-<li><p id="drivers/raster/mbtiles-oo-MINY"><strong>MINY=value: </strong> (GDAL &gt;= 2.1) Minimum northing (in EPSG:3857) of the area of interest.</p>
+<li><p id="drivers/raster/mbtiles-oo-MINY"><strong>MINY=value: </strong>Minimum northing (in EPSG:3857) of the area of interest.</p>
 </li>
-<li><p id="drivers/raster/mbtiles-oo-MAXX"><strong>MAXX=value: </strong> (GDAL &gt;= 2.1) Maximum easting (in EPSG:3857) of the area of interest.</p>
+<li><p id="drivers/raster/mbtiles-oo-MAXX"><strong>MAXX=value: </strong>Maximum easting (in EPSG:3857) of the area of interest.</p>
 </li>
-<li><p id="drivers/raster/mbtiles-oo-MAXY"><strong>MAXY=value: </strong> (GDAL &gt;= 2.1) Maximum northing (in EPSG:3857) of the area of interest.</p>
+<li><p id="drivers/raster/mbtiles-oo-MAXY"><strong>MAXY=value: </strong>Maximum northing (in EPSG:3857) of the area of interest.</p>
 </li>
 </ul>
 </li>
 <li><p>Raster only:</p>
 <ul>
-<li><p id="drivers/raster/mbtiles-oo-BAND_COUNT"><strong>BAND_COUNT=[AUTO/1/2/3/4]: </strong> (GDAL &gt;= 2.1)  Defaults to <code class="docutils literal notranslate"><span class="pre">AUTO</span></code>. Number of bands of the dataset
+<li><p id="drivers/raster/mbtiles-oo-BAND_COUNT"><strong>BAND_COUNT=[AUTO/1/2/3/4]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">AUTO</span></code>. Number of bands of the dataset
 exposed after opening. Some conversions will be done when possible
 and implemented, but this might fail in some cases, depending on
 the BAND_COUNT value and the number of bands of the tile.</p>
 </li>
-<li><p id="drivers/raster/mbtiles-oo-TILE_FORMAT"><strong>TILE_FORMAT=[PNG/PNG8/JPEG/WEBP]: </strong> (GDAL &gt;= 2.1)  Defaults to <code class="docutils literal notranslate"><span class="pre">PNG</span></code>. Format used to store tiles. See
+<li><p id="drivers/raster/mbtiles-oo-TILE_FORMAT"><strong>TILE_FORMAT=[PNG/PNG8/JPEG/WEBP]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">PNG</span></code>. Format used to store tiles. See
 <a class="reference external" href="#tile_formats">Tile formats</a> section. Only used in update
 mode.</p>
 </li>
@@ -433,10 +433,10 @@ used in update mode.</p>
 </li>
 <li><p>Vector only:</p>
 <ul>
-<li><p id="drivers/raster/mbtiles-oo-CLIP"><strong>CLIP=[YES/NO]: </strong> (GDAL &gt;= 2.3)  Defaults to <code class="docutils literal notranslate"><span class="pre">YES</span></code>. Whether to clip geometries of vector features
+<li><p id="drivers/raster/mbtiles-oo-CLIP"><strong>CLIP=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">YES</span></code>. Whether to clip geometries of vector features
 to tile extent.</p>
 </li>
-<li><p id="drivers/raster/mbtiles-oo-ZOOM_LEVEL_AUTO"><strong>ZOOM_LEVEL_AUTO=[YES/NO]: </strong> (GDAL &gt;= 2.3)  Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. Whether to auto-select the zoom
+<li><p id="drivers/raster/mbtiles-oo-ZOOM_LEVEL_AUTO"><strong>ZOOM_LEVEL_AUTO=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. Whether to auto-select the zoom
 level for vector layers according to the spatial filter extent.
 Only for display purpose.</p>
 </li>
@@ -511,7 +511,7 @@ with the <a class="reference internal" href="../../user/configoptions.html#confi
 </section>
 <section id="creation-options">
 <h2>Creation options<a class="headerlink" href="#creation-options" title="Link to this heading"></a></h2>
-<p><a href="#id5"><span class="problematic" id="id6">|about-creation-options|</span></a>
+<p>Creation options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-co</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALCreate11GDALDriverHPKciii12GDALDataType12CSLConstList" title="GDALCreate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALCreate()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.Driver.Create" title="osgeo.gdal.Driver.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Driver.Create</span></code></a> (Python).
 The following creation options are available:</p>
 <ul class="simple">
 <li><p>Raster and vector:</p>
@@ -532,7 +532,7 @@ the filename will be used.</p>
 <li><p id="drivers/raster/mbtiles-co-VERSION"><strong>VERSION=value: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">1.1</span></code>. The version of the tileset, as a plain
 number, used to set the 'version' metadata item.</p>
 </li>
-<li><p id="drivers/raster/mbtiles-co-BLOCKSIZE"><strong>BLOCKSIZE=&lt;integer&gt;: </strong> (GDAL &gt;= 2.3)  Defaults to <code class="docutils literal notranslate"><span class="pre">256</span></code>. Block/tile size in width
+<li><p id="drivers/raster/mbtiles-co-BLOCKSIZE"><strong>BLOCKSIZE=&lt;integer&gt;: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">256</span></code>. Block/tile size in width
 and height in pixels. Maximum supported is 4096.</p>
 </li>
 <li><p id="drivers/raster/mbtiles-co-TILE_FORMAT"><strong>TILE_FORMAT=[PNG/PNG8/JPEG/WEBP]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">PNG</span></code>. Format used to store tiles. See
@@ -643,7 +643,7 @@ case.</p>
 </section>
 <section id="layer-creation-options-vector">
 <h2>Layer creation options (vector)<a class="headerlink" href="#layer-creation-options-vector" title="Link to this heading"></a></h2>
-<p><a href="#id7"><span class="problematic" id="id8">|about-layer-creation-options|</span></a>
+<p>Layer creation options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-lco</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv422GDALDatasetCreateLayer12GDALDatasetHPKc20OGRSpatialReferenceH18OGRwkbGeometryType12CSLConstList" title="GDALDatasetCreateLayer"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDatasetCreateLayer()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.Dataset.CreateLayer" title="osgeo.gdal.Dataset.CreateLayer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Dataset.CreateLayer</span></code></a> (Python).
 The following layer creation options are available:</p>
 <ul class="simple">
 <li><p id="drivers/raster/mbtiles-lco-MINZOOM"><strong>MINZOOM=&lt;integer&gt;: </strong>Minimum zoom level at which tiles are

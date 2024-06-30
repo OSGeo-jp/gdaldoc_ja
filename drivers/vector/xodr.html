@@ -25,7 +25,7 @@
     <link rel="author" title="このドキュメントについて" href="../../about.html" />
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="検索" href="../../search.html" />
-    <link rel="next" title="ユーザー向け文書" href="../../user/index.html" />
+    <link rel="next" title="User oriented documentation" href="../../user/index.html" />
     <link rel="prev" title="XLSX - MS Office Open XML spreadsheet" href="xlsx.html" /> 
 </head>
 
@@ -51,9 +51,9 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">プログラム</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../raster/index.html">ラスタードライバー</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">ベクタードライバー</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">Programs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../raster/index.html">Raster drivers</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Vector drivers</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="amigocloud.html">AmigoCloud</a></li>
 <li class="toctree-l2"><a class="reference internal" href="arrow.html">(Geo)Arrow IPC File Format / Stream</a></li>
 <li class="toctree-l2"><a class="reference internal" href="avcbin.html">Arc/Info Binary Coverage</a></li>
@@ -159,11 +159,11 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
@@ -201,7 +201,7 @@
     
       <li><a href="../../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">ベクタードライバー</a> &raquo;</li>
+          <li><a href="index.html">Vector drivers</a> &raquo;</li>
       
       <li>XODR -- OpenDRIVE Road Description Format</li>
     
@@ -222,7 +222,7 @@
   
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
-        <a href="../../user/index.html" class="btn btn-neutral float-right" title="ユーザー向け文書" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../../user/index.html" class="btn btn-neutral float-right" title="User oriented documentation" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="xlsx.html" class="btn btn-neutral float-left" title="XLSX - MS Office Open XML spreadsheet" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -263,12 +263,12 @@
 <h3>Supported OpenDRIVE elements<a class="headerlink" href="#supported-opendrive-elements" title="Link to this heading"></a></h3>
 <p>The XODR driver exposes OpenDRIVE's different road elements as separate layers by converting geometric elements into 3-dimensional OGR geometry types. The following <span class="target" id="layer-types">layer types</span> are currently implemented:</p>
 <ul class="simple">
-<li><p><em>ReferenceLine</em>: Road reference line (<code class="docutils literal notranslate"><span class="pre">&lt;planView&gt;</span></code>) as <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRLineString</span></code>.</p></li>
-<li><p><em>LaneBorder</em>: Outer road lane border as <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRLineString</span></code>.</p></li>
-<li><p><em>Lane</em>: Polygonal surface (TIN) of the lane mesh as <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRTriangulatedSurface</span></code>.</p></li>
-<li><p><em>RoadMark</em>: Polygonal surface (TIN) of the road mark mesh as <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRTriangulatedSurface</span></code>.</p></li>
-<li><p><em>RoadObject</em>: Polygonal surface (TIN) of the road object mesh as <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRTriangulatedSurface</span></code>.</p></li>
-<li><p><em>RoadSignal</em>: Polygonal surface (TIN) of the road signal mesh as <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRTriangulatedSurface</span></code>.</p></li>
+<li><p><em>ReferenceLine</em>: Road reference line (<code class="docutils literal notranslate"><span class="pre">&lt;planView&gt;</span></code>) as <a class="reference internal" href="../../api/ogrgeometry_cpp.html#_CPPv413OGRLineString" title="OGRLineString"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRLineString</span></code></a>.</p></li>
+<li><p><em>LaneBorder</em>: Outer road lane border as <a class="reference internal" href="../../api/ogrgeometry_cpp.html#_CPPv413OGRLineString" title="OGRLineString"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRLineString</span></code></a>.</p></li>
+<li><p><em>Lane</em>: Polygonal surface (TIN) of the lane mesh as <a class="reference internal" href="../../api/ogrgeometry_cpp.html#_CPPv422OGRTriangulatedSurface" title="OGRTriangulatedSurface"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRTriangulatedSurface</span></code></a>.</p></li>
+<li><p><em>RoadMark</em>: Polygonal surface (TIN) of the road mark mesh as <a class="reference internal" href="../../api/ogrgeometry_cpp.html#_CPPv422OGRTriangulatedSurface" title="OGRTriangulatedSurface"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRTriangulatedSurface</span></code></a>.</p></li>
+<li><p><em>RoadObject</em>: Polygonal surface (TIN) of the road object mesh as <a class="reference internal" href="../../api/ogrgeometry_cpp.html#_CPPv422OGRTriangulatedSurface" title="OGRTriangulatedSurface"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRTriangulatedSurface</span></code></a>.</p></li>
+<li><p><em>RoadSignal</em>: Polygonal surface (TIN) of the road signal mesh as <a class="reference internal" href="../../api/ogrgeometry_cpp.html#_CPPv422OGRTriangulatedSurface" title="OGRTriangulatedSurface"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRTriangulatedSurface</span></code></a>.</p></li>
 </ul>
 </section>
 </section>
@@ -293,8 +293,8 @@
 <ul class="simple">
 <li><p id="drivers/vector/xodr-oo-EPSILON"><strong>EPSILON=&lt;float&gt;: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">1.0</span></code>. Epsilon value <code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">0.0</span></code> for linear approximation of continuous OpenDRIVE geometries. A smaller value results in a finer sampling. This parameter corresponds to libOpenDRIVE's <code class="docutils literal notranslate"><span class="pre">eps</span></code> parameter.</p>
 </li>
-<li><p id="drivers/vector/xodr-oo-DISSOLVE_TIN"><strong>DISSOLVE_TIN=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. Whether to dissolve triangulated surfaces. By setting this option to YES, the TIN layers <em>Lane</em> and <em>RoadMark</em> of geometry type <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRTriangulatedSurface</span></code> will be simplified to single, simple <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRPolygon</span></code> geometries. This performs a <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">UnaryUnion()</span></code> which dissolves boundaries of all touching triangle patches and thus yields a slimmer dataset which often suffices for basic GIS usage. Be aware that this dissolving step increases processing time significantly.
-Layer <em>RoadSignal</em> will be dissolved to a simple <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRPoint</span></code>.</p>
+<li><p id="drivers/vector/xodr-oo-DISSOLVE_TIN"><strong>DISSOLVE_TIN=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. Whether to dissolve triangulated surfaces. By setting this option to YES, the TIN layers <em>Lane</em> and <em>RoadMark</em> of geometry type <a class="reference internal" href="../../api/ogrgeometry_cpp.html#_CPPv422OGRTriangulatedSurface" title="OGRTriangulatedSurface"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRTriangulatedSurface</span></code></a> will be simplified to single, simple <a class="reference internal" href="../../api/ogrgeometry_cpp.html#_CPPv410OGRPolygon" title="OGRPolygon"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRPolygon</span></code></a> geometries. This performs a <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">UnaryUnion()</span></code> which dissolves boundaries of all touching triangle patches and thus yields a slimmer dataset which often suffices for basic GIS usage. Be aware that this dissolving step increases processing time significantly.
+Layer <em>RoadSignal</em> will be dissolved to a simple <a class="reference internal" href="../../api/ogrgeometry_cpp.html#_CPPv48OGRPoint" title="OGRPoint"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRPoint</span></code></a>.</p>
 </li>
 </ul>
 </section>
@@ -426,7 +426,7 @@ Layer <em>RoadSignal</em> will be dissolved to a simple <code class="xref cpp cp
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../user/index.html" class="btn btn-neutral float-right" title="ユーザー向け文書" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../../user/index.html" class="btn btn-neutral float-right" title="User oriented documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="xlsx.html" class="btn btn-neutral float-left" title="XLSX - MS Office Open XML spreadsheet" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

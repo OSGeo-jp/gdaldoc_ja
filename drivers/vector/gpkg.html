@@ -51,9 +51,9 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">プログラム</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../raster/index.html">ラスタードライバー</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">ベクタードライバー</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">Programs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../raster/index.html">Raster drivers</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Vector drivers</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="amigocloud.html">AmigoCloud</a></li>
 <li class="toctree-l2"><a class="reference internal" href="arrow.html">(Geo)Arrow IPC File Format / Stream</a></li>
 <li class="toctree-l2"><a class="reference internal" href="avcbin.html">Arc/Info Binary Coverage</a></li>
@@ -176,11 +176,11 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
@@ -218,7 +218,7 @@
     
       <li><a href="../../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">ベクタードライバー</a> &raquo;</li>
+          <li><a href="index.html">Vector drivers</a> &raquo;</li>
       
       <li>GPKG -- GeoPackage vector</li>
     
@@ -287,7 +287,7 @@ CURVEPOLYGON, MULTICURVE and MULTISURFACE</p>
 <h2>Driver capabilities<a class="headerlink" href="#driver-capabilities" title="Link to this heading"></a></h2>
 <div class="admonition supports_create" id="supports_create-0">
 <p class="admonition-title">Supports Create()</p>
-<p>This driver supports the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::Create()</span></code> operation</p>
+<p>This driver supports the <a class="reference internal" href="../../api/gdaldriver_cpp.html#_CPPv4N10GDALDriver6CreateEPKciii12GDALDataType12CSLConstList" title="GDALDriver::Create"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::Create()</span></code></a> operation</p>
 </div>
 <div class="admonition supports_georeferencing" id="supports_georeferencing-0">
 <p class="admonition-title">Supports Georeferencing</p>
@@ -432,10 +432,10 @@ in some other applications (e.g. ESRI software).</p>
 </section>
 <section id="dataset-open-options">
 <h2>Dataset open options<a class="headerlink" href="#dataset-open-options" title="Link to this heading"></a></h2>
-<p><a href="#id2"><span class="problematic" id="id3">|about-open-options|</span></a>
+<p>Open options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-oo</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALOpenExPKcjPPCKcPPCKcPPCKc" title="GDALOpenEx"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpenEx()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.OpenEx" title="osgeo.gdal.OpenEx"><code class="xref py py-meth docutils literal notranslate"><span class="pre">gdal.OpenEx</span></code></a> (Python).
 The following open options are available:</p>
 <ul class="simple">
-<li><p id="drivers/vector/gpkg-oo-LIST_ALL_TABLES"><strong>LIST_ALL_TABLES=[AUTO/YES/NO]: </strong> (GDAL &gt;= 2.2)  Defaults to <code class="docutils literal notranslate"><span class="pre">AUTO</span></code>. Whether all tables,
+<li><p id="drivers/vector/gpkg-oo-LIST_ALL_TABLES"><strong>LIST_ALL_TABLES=[AUTO/YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">AUTO</span></code>. Whether all tables,
 including those not listed in gpkg_contents, should be listed.
 If AUTO, all tables including those not listed in
 gpkg_contents will be listed, except if the aspatial extension is
@@ -492,17 +492,17 @@ requirement of the GeoPackage standard,
 e.g. <a class="reference external" href="https://www.geopackage.org/spec120/#r15">for version 1.2</a>.</p>
 <section id="dataset-creation-options">
 <h3>Dataset creation options<a class="headerlink" href="#dataset-creation-options" title="Link to this heading"></a></h3>
-<p><a href="#id4"><span class="problematic" id="id5">|about-dataset-creation-options|</span></a>
+<p>Dataset creation options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-dsco</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALCreate11GDALDriverHPKciii12GDALDataType12CSLConstList" title="GDALCreate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALCreate()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.Driver.Create" title="osgeo.gdal.Driver.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Driver.Create</span></code></a> (Python).
 The following creation options (specific to vector, or common with
 raster) are available:</p>
 <ul class="simple">
-<li><p id="drivers/vector/gpkg-dsco-VERSION"><strong>VERSION=[AUTO/1.0/1.1/1.2/1.3/1.4]: </strong> (GDAL &gt;= 2.2) Set GeoPackage version
+<li><p id="drivers/vector/gpkg-dsco-VERSION"><strong>VERSION=[AUTO/1.0/1.1/1.2/1.3/1.4]: </strong>Set GeoPackage version
 (for application_id and user_version fields). In AUTO mode, this will
 be equivalent to 1.2 starting with GDAL 2.3.
 1.3 is available starting with GDAL 3.3
 1.4 is available starting with GDAL 3.7.1</p>
 </li>
-<li><p id="drivers/vector/gpkg-dsco-ADD_GPKG_OGR_CONTENTS"><strong>ADD_GPKG_OGR_CONTENTS=[YES/NO]: </strong> (GDAL &gt;= 2.2)  Defaults to <code class="docutils literal notranslate"><span class="pre">YES</span></code>. Defines whether to
+<li><p id="drivers/vector/gpkg-dsco-ADD_GPKG_OGR_CONTENTS"><strong>ADD_GPKG_OGR_CONTENTS=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">YES</span></code>. Defines whether to
 add a gpkg_ogr_contents table to keep feature count, and associated
 triggers.</p>
 </li>
@@ -539,7 +539,7 @@ documentation page.</p>
 </section>
 <section id="layer-creation-options">
 <h3>Layer creation options<a class="headerlink" href="#layer-creation-options" title="Link to this heading"></a></h3>
-<p><a href="#id6"><span class="problematic" id="id7">|about-layer-creation-options|</span></a>
+<p>Layer creation options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-lco</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv422GDALDatasetCreateLayer12GDALDatasetHPKc20OGRSpatialReferenceH18OGRwkbGeometryType12CSLConstList" title="GDALDatasetCreateLayer"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDatasetCreateLayer()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.Dataset.CreateLayer" title="osgeo.gdal.Dataset.CreateLayer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Dataset.CreateLayer</span></code></a> (Python).
 The following layer creation options are available:</p>
 <ul class="simple">
 <li><p id="drivers/vector/gpkg-lco-LAUNDER"><strong>LAUNDER=[YES/NO]: </strong> (GDAL &gt;= 3.9)  Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. Whether layer and field names will be laundered. Laundering makes sure
@@ -596,7 +596,7 @@ in the contents table.</p>
 <li><p id="drivers/vector/gpkg-lco-DESCRIPTION"><strong>DESCRIPTION=value: </strong>Description of the layer, as
 put in the contents table.</p>
 </li>
-<li><p id="drivers/vector/gpkg-lco-ASPATIAL_VARIANT"><strong>ASPATIAL_VARIANT=[GPKG_ATTRIBUTES/NOT_REGISTERED]: </strong> (GDAL &gt;= 2.2)  Defaults to <code class="docutils literal notranslate"><span class="pre">GPKG_ATTRIBUTES</span></code>. How to register non spatial tables. Defaults to
+<li><p id="drivers/vector/gpkg-lco-ASPATIAL_VARIANT"><strong>ASPATIAL_VARIANT=[GPKG_ATTRIBUTES/NOT_REGISTERED]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">GPKG_ATTRIBUTES</span></code>. How to register non spatial tables. Defaults to
 GPKG_ATTRIBUTES in GDAL 2.2 or later (behavior in previous version
 was equivalent to OGR_ASPATIAL). Starting with GeoPackage 1.2, non
 spatial tables are part of the specification. They are recorded with
@@ -623,7 +623,7 @@ Selecting modes <code class="docutils literal notranslate"><span class="pre">MIN
 </section>
 <section id="configuration-options">
 <h2>Configuration options<a class="headerlink" href="#configuration-options" title="Link to this heading"></a></h2>
-<p><a href="#id8"><span class="problematic" id="id9">|about-config-options|</span></a>
+<p><a class="reference internal" href="../../user/configoptions.html#configoptions"><span class="std std-ref">Configuration options</span></a> can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">--config</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or using functions such as <a class="reference internal" href="../../api/cpl.html#_CPPv418CPLSetConfigOptionPKcPKc" title="CPLSetConfigOption"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CPLSetConfigOption()</span></code></a> (C) or <code class="xref py py-func docutils literal notranslate"><span class="pre">gdal.config_options</span></code> (Python).
 The following configuration options are available:</p>
 <ul class="simple">
 <li><p><p id="config-OGR_SQLITE_JOURNAL"><strong>OGR_SQLITE_JOURNAL=value: </strong>can be used to set the journal mode of the SQLite file, see also
@@ -842,13 +842,13 @@ will be automatically compressed using the SOZip optimization.</p>
 </div>
 <p>The GeoPackage driver supports reading and writing the geometry coordinate
 precision, using the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRGeomCoordinatePrecision</span></code> settings of the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRGeomFieldDefn</span></code>. By default, the geometry coordinate precision
+<a class="reference internal" href="../../api/ogrfeature_cpp.html#_CPPv416OGRGeomFieldDefn" title="OGRGeomFieldDefn"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRGeomFieldDefn</span></code></a>. By default, the geometry coordinate precision
 is only noted in metadata, and does not cause geometries that are written to
 be modified to comply with this precision.</p>
 <p>Several settings may be combined to apply further processing:</p>
 <ul class="simple">
 <li><p>if the <a class="reference internal" href="../../user/configoptions.html#config-OGR_APPLY_GEOM_SET_PRECISION"><code class="docutils literal notranslate"><span class="pre">OGR_APPLY_GEOM_SET_PRECISION</span></code></a> configuration option is set to
-<code class="docutils literal notranslate"><span class="pre">YES</span></code>, the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRGeometry::SetPrecision()</span></code> method will be applied
+<code class="docutils literal notranslate"><span class="pre">YES</span></code>, the <a class="reference internal" href="../../api/ogrgeometry_cpp.html#_CPPv4NK11OGRGeometry12SetPrecisionEdi" title="OGRGeometry::SetPrecision"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRGeometry::SetPrecision()</span></code></a> method will be applied
 when calling the CreateFeature() and SetFeature() method of the driver, to
 round X and Y coordinates to the specified precision, and fix potential
 geometry invalidities resulting from the rounding.</p></li>
@@ -865,7 +865,7 @@ the dataset metadata, and will be re-used for later edition sessions.</p></li>
 <li><p>if the <code class="docutils literal notranslate"><span class="pre">UNDO_DISCARD_COORD_LSB_ON_READING</span></code> layer creation option is set to
 YES (only makes sense if the <code class="docutils literal notranslate"><span class="pre">DISCARD_COORD_LSB</span></code> layer creation option is
 also set to YES), when <em>reading</em> back geometries from a dataset, the
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRGeometry::roundCoordinates()</span></code> method will be applied so that
+<a class="reference internal" href="../../api/ogrgeometry_cpp.html#_CPPv4N11OGRGeometry16roundCoordinatesERK26OGRGeomCoordinatePrecision" title="OGRGeometry::roundCoordinates"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRGeometry::roundCoordinates()</span></code></a> method will be applied so that
 the geometry coordinates exactly match the original specified coordinate
 precision. That option will only be honored by GDAL 3.9 or later.</p></li>
 </ul>

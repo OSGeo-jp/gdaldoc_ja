@@ -51,18 +51,18 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">プログラム</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">Programs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../drivers/raster/index.html">Raster drivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../drivers/vector/index.html">Vector drivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../community/index.html">Community</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -294,7 +294,7 @@ that includes the include files and libs - for instance the Conda distribution.<
 </section>
 <section id="signing-of-build-artifacts">
 <h2>Signing of build artifacts<a class="headerlink" href="#signing-of-build-artifacts" title="Link to this heading"></a></h2>
-<p>The CSharp assemblies are strong name signed by default with the provided key file in <a href="#id1"><span class="problematic" id="id2">:source_file:`swig/csharp/gdal.snk`</span></a>.
+<p>The CSharp assemblies are strong name signed by default with the provided key file in <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/swig/csharp/gdal.snk">gdal.snk</a>.
 If authenticode signing of the assemblies is wished, it should be done in a post-build
 manual step, for example with:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">signtool</span> <span class="n">sign</span> <span class="o">/</span><span class="n">f</span> <span class="s2">&quot;path</span><span class="se">\t</span><span class="s2">o\your\certificate.pfx&quot;</span> <span class="o">/</span><span class="n">p</span> <span class="s2">&quot;password&quot;</span> <span class="o">/</span><span class="n">tr</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">timestamp</span><span class="o">.</span><span class="n">digicert</span><span class="o">.</span><span class="n">com</span> <span class="o">/</span><span class="n">td</span> <span class="n">sha256</span> <span class="s2">&quot;path</span><span class="se">\t</span><span class="s2">o\your\gdal_csharp.dll&quot;</span>

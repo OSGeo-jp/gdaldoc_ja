@@ -51,13 +51,13 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../programs/index.html">プログラム</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programs/index.html">Programs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">Raster drivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">Vector drivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">チュートリアル</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="index.html#raster">ラスター</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#raster">Raster</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="raster_api_tut.html">Raster API tutorial</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Raster driver implementation tutorial</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#overall-approach">Overall Approach</a></li>
@@ -77,10 +77,10 @@
 <li class="toctree-l3"><a class="reference internal" href="geotransforms_tut.html">Geotransform Tutorial</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#multidimensional-raster">多次元ラスター</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#vector">ベクター</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#geographic-network-model">空間ネットワークモデル</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#projections-and-spatial-reference-systems-tutorial-osr-ogrspatialreference">投影法と空間参照システムチュートリアル (OSR - OGRSpatialReference)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#multidimensional-raster">Multidimensional raster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#vector">Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#geographic-network-model">Geographic Network Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#projections-and-spatial-reference-systems-tutorial-osr-ogrspatialreference">Projections and Spatial Reference Systems tutorial (OSR - OGRSpatialReference)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development</a></li>
@@ -88,7 +88,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">Sponsors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -124,7 +124,7 @@
     
       <li><a href="../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">チュートリアル</a> &raquo;</li>
+          <li><a href="index.html">Tutorials</a> &raquo;</li>
       
       <li>Raster driver implementation tutorial</li>
     
@@ -161,13 +161,13 @@
 <span id="raster-driver-tut"></span><h1>Raster driver implementation tutorial<a class="headerlink" href="#raster-driver-implementation-tutorial" title="Link to this heading"></a></h1>
 <section id="overall-approach">
 <h2>Overall Approach<a class="headerlink" href="#overall-approach" title="Link to this heading"></a></h2>
-<p>In general new formats are added to GDAL by implementing format specific drivers as subclasses of <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALDataset</span></code>, and band accessors as subclasses of <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALRasterBand</span></code>. As well, a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALDriver</span></code> instance is created for the format, and registered with the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALDriverManager</span></code>, to ensure that the system knows about the format.</p>
+<p>In general new formats are added to GDAL by implementing format specific drivers as subclasses of <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv411GDALDataset" title="GDALDataset"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALDataset</span></code></a>, and band accessors as subclasses of <a class="reference internal" href="../api/gdalrasterband_cpp.html#_CPPv414GDALRasterBand" title="GDALRasterBand"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALRasterBand</span></code></a>. As well, a <a class="reference internal" href="../api/gdaldriver_cpp.html#_CPPv410GDALDriver" title="GDALDriver"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALDriver</span></code></a> instance is created for the format, and registered with the <a class="reference internal" href="../api/gdaldriver_cpp.html#_CPPv417GDALDriverManager" title="GDALDriverManager"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALDriverManager</span></code></a>, to ensure that the system knows about the format.</p>
 <p>This tutorial will start with implementing a simple read-only driver (based on the JDEM driver), and then proceed to utilizing the RawRasterBand helper class, implementing creatable and updatable formats, and some esoteric issues.</p>
 <p>It is strongly advised that the <a class="reference internal" href="../user/raster_data_model.html#raster-data-model"><span class="std std-ref">Raster Data Model</span></a> be reviewed and understood before attempting to implement a GDAL driver.</p>
 </section>
 <section id="implementing-the-dataset">
 <h2>Implementing the Dataset<a class="headerlink" href="#implementing-the-dataset" title="Link to this heading"></a></h2>
-<p>We will start showing minimal implementation of a read-only driver for the Japanese DEM format (<a href="#id1"><span class="problematic" id="id2">:source_file:`frmts/jdem/jdemdataset.cpp`</span></a>). First we declare a format specific dataset class, JDEMDataset in this case.</p>
+<p>We will start showing minimal implementation of a read-only driver for the Japanese DEM format (<a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/frmts/jdem/jdemdataset.cpp">jdemdataset.cpp</a>). First we declare a format specific dataset class, JDEMDataset in this case.</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">JDEMDataset</span><span class="w"> </span><span class="k">final</span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">GDALPamDataset</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">JDEMRasterBand</span><span class="p">;</span>
@@ -378,7 +378,7 @@ side car file). For more details on these services review the GDALPamDataset and
 </section>
 <section id="implementing-the-rasterband">
 <h2>Implementing the RasterBand<a class="headerlink" href="#implementing-the-rasterband" title="Link to this heading"></a></h2>
-<p>Similar to the customized JDEMDataset class subclassed from GDALDataset, we also need to declare and implement a customized JDEMRasterBand derived from <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALRasterBand</span></code> for access to the band(s) of the JDEM file. For JDEMRasterBand the declaration looks like this:</p>
+<p>Similar to the customized JDEMDataset class subclassed from GDALDataset, we also need to declare and implement a customized JDEMRasterBand derived from <a class="reference internal" href="../api/gdalrasterband_cpp.html#_CPPv414GDALRasterBand" title="GDALRasterBand"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALRasterBand</span></code></a> for access to the band(s) of the JDEM file. For JDEMRasterBand the declaration looks like this:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">JDEMRasterBand</span><span class="w"> </span><span class="k">final</span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">GDALPamRasterBand</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">JDEMDataset</span><span class="p">;</span>
@@ -395,7 +395,7 @@ side car file). For more details on these services review the GDALPamDataset and
 <span class="p">};</span>
 </pre></div>
 </div>
-<p>The constructor may have any signature, and is only called from the Open() method. Other virtual methods, such as <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALRasterBand::IReadBlock()</span></code> must be exactly matched to the method signature in gdal_priv.h.</p>
+<p>The constructor may have any signature, and is only called from the Open() method. Other virtual methods, such as <a class="reference internal" href="../api/gdalrasterband_cpp.html#_CPPv4N14GDALRasterBand10IReadBlockEiiPv" title="GDALRasterBand::IReadBlock"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALRasterBand::IReadBlock()</span></code></a> must be exactly matched to the method signature in gdal_priv.h.</p>
 <p>The constructor implementation looks like this:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">JDEMRasterBand</span><span class="o">::</span><span class="n">JDEMRasterBand</span><span class="p">(</span><span class="w"> </span><span class="n">JDEMDataset</span><span class="w"> </span><span class="o">*</span><span class="n">poDSIn</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">nBandIn</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">:</span>
 <span class="w">    </span><span class="c1">// Cannot overflow as nBlockXSize &lt;= 999.</span>
@@ -485,7 +485,7 @@ side car file). For more details on these services review the GDALPamDataset and
 </section>
 <section id="the-driver">
 <h2>The Driver<a class="headerlink" href="#the-driver" title="Link to this heading"></a></h2>
-<p>While the JDEMDataset and JDEMRasterBand are now ready to use to read image data, it still isn't clear how the GDAL system knows about the new driver. This is accomplished via the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALDriverManager</span></code>. To register our format we implement a registration function. The declaration goes in gcore/gdal_frmts.h:
+<p>While the JDEMDataset and JDEMRasterBand are now ready to use to read image data, it still isn't clear how the GDAL system knows about the new driver. This is accomplished via the <a class="reference internal" href="../api/gdaldriver_cpp.html#_CPPv417GDALDriverManager" title="GDALDriverManager"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALDriverManager</span></code></a>. To register our format we implement a registration function. The declaration goes in gcore/gdal_frmts.h:
 void CPL_DLL GDALRegister_JDEM(void);</p>
 <p>The definition in the driver file is:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">GDALRegister_JDEM</span><span class="p">()</span>
@@ -532,7 +532,7 @@ void CPL_DLL GDALRegister_JDEM(void);</p>
 <li><p>pfnDelete: The function to call to delete a dataset of this format. (optional)</p></li>
 <li><p>pfnUnloadDriver: A function called only when the driver is destroyed. Could be used to cleanup data at the driver level. Rarely used. (optional)</p></li>
 </ul>
-<p>For a driver that can be built as a plugin (that is to say a standalone shared object, loaded at runtime by GDAL), since GDAL 3.9 and <a class="reference internal" href="../development/rfc/rfc96_deferred_plugin_loading.html#rfc-96"><span class="std std-ref">RFC 96: Deferred C++ plugin loading</span></a>, there is a way to implement the driver in a way where the plugin will be loaded only when necessary, and not immediately at <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALAllRegister()</span></code> time. Consult <a class="reference internal" href="../development/rfc/rfc96_deferred_plugin_loading.html#rfc96-example-driver"><span class="std std-ref">Example of changes to do on a simplified driver</span></a> for the changes needed to make the driver compatible of deferred plugin loading.</p>
+<p>For a driver that can be built as a plugin (that is to say a standalone shared object, loaded at runtime by GDAL), since GDAL 3.9 and <a class="reference internal" href="../development/rfc/rfc96_deferred_plugin_loading.html#rfc-96"><span class="std std-ref">RFC 96: Deferred C++ plugin loading</span></a>, there is a way to implement the driver in a way where the plugin will be loaded only when necessary, and not immediately at <a class="reference internal" href="../api/raster_c_api.html#_CPPv415GDALAllRegisterv" title="GDALAllRegister"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALAllRegister()</span></code></a> time. Consult <a class="reference internal" href="../development/rfc/rfc96_deferred_plugin_loading.html#rfc96-example-driver"><span class="std std-ref">Example of changes to do on a simplified driver</span></a> for the changes needed to make the driver compatible of deferred plugin loading.</p>
 </section>
 <section id="adding-driver-to-gdal-tree">
 <h2>Adding Driver to GDAL Tree<a class="headerlink" href="#adding-driver-to-gdal-tree" title="Link to this heading"></a></h2>
@@ -554,7 +554,7 @@ void CPL_DLL GDALRegister_JDEM(void);</p>
 <span class="k">const</span><span class="w"> </span><span class="n">OGRSpatialReference</span><span class="o">*</span><span class="w"> </span><span class="nf">GetSpatialRef</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>The implementation of <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetGeoTransform()</span></code> just copies the usual geotransform matrix into the supplied buffer. Note that <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetGeoTransform()</span></code> may be called a lot, so it isn't generally wise to do a lot of computation in it. In many cases the Open() will collect the geotransform, and this method will just copy it over. Also note that the geotransform return is based on an anchor point at the top left corner of the top left pixel, not the center of pixel approach used in some packages.</p>
+<p>The implementation of <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4N11GDALDataset15GetGeoTransformEPd" title="GDALDataset::GetGeoTransform"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetGeoTransform()</span></code></a> just copies the usual geotransform matrix into the supplied buffer. Note that <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4N11GDALDataset15GetGeoTransformEPd" title="GDALDataset::GetGeoTransform"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetGeoTransform()</span></code></a> may be called a lot, so it isn't generally wise to do a lot of computation in it. In many cases the Open() will collect the geotransform, and this method will just copy it over. Also note that the geotransform return is based on an anchor point at the top left corner of the top left pixel, not the center of pixel approach used in some packages.</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">CPLErr</span><span class="w"> </span><span class="nf">JDEMDataset::GetGeoTransform</span><span class="p">(</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="n">padfTransform</span><span class="w"> </span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">psHeader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">m_abyHeader</span><span class="p">);</span>
@@ -576,7 +576,7 @@ void CPL_DLL GDALRegister_JDEM(void);</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetSpatialRef()</span></code> method returns a pointer to an internal OGRSpatialReference object.</p>
+<p>The <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4NK11GDALDataset13GetSpatialRefEv" title="GDALDataset::GetSpatialRef"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetSpatialRef()</span></code></a> method returns a pointer to an internal OGRSpatialReference object.</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">const</span><span class="w"> </span><span class="n">OGRSpatialReference</span><span class="w"> </span><span class="o">*</span><span class="nf">JDEMDataset::GetSpatialRef</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">m_oSRS</span><span class="p">;</span>
@@ -586,7 +586,7 @@ void CPL_DLL GDALRegister_JDEM(void);</p>
 <p>In this case the coordinate system is fixed for all files of this format, and
 has been initialized in the JDEMDataset constructor. But in more complex cases,
 a definition may need to be composed on the fly, in which case it may be
-helpful to use the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRSpatialReference</span></code> class to help build the definition.</p>
+helpful to use the <a class="reference internal" href="../api/ogrspatialref.html#_CPPv419OGRSpatialReference" title="OGRSpatialReference"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRSpatialReference</span></code></a> class to help build the definition.</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">JDEMDataset</span><span class="o">::</span><span class="n">JDEMDataset</span><span class="p">()</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">fill_n</span><span class="p">(</span><span class="n">m_abyHeader</span><span class="p">,</span><span class="w"> </span><span class="n">CPL_ARRAYSIZE</span><span class="p">(</span><span class="n">m_abyHeader</span><span class="p">),</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="n">GByte</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span>
@@ -599,8 +599,8 @@ helpful to use the <code class="xref cpp cpp-class docutils literal notranslate"
 </section>
 <section id="overviews">
 <h2>Overviews<a class="headerlink" href="#overviews" title="Link to this heading"></a></h2>
-<p>GDAL allows file formats to make pre-built overviews available to applications via the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALRasterBand::GetOverview()</span></code> and related methods. However, implementing this is pretty involved, and goes beyond the scope of this document for now. The GeoTIFF driver (gdal/frmts/gtiff/geotiff.cpp) and related source can be reviewed for an example of a file format implementing overview reporting and creation support.</p>
-<p>Formats can also report that they have arbitrary overviews, by overriding the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALRasterBand::HasArbitraryOverviews()</span></code> method on the GDALRasterBand, returning TRUE. In this case the raster band object is expected to override the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALRasterBand::RasterIO()</span></code> method itself, to implement efficient access to imagery with resampling. This is also involved, and there are a lot of requirements for correct implementation of the RasterIO() method. An example of this can be found in the OGDI and ECW formats.</p>
+<p>GDAL allows file formats to make pre-built overviews available to applications via the <a class="reference internal" href="../api/gdalrasterband_cpp.html#_CPPv4N14GDALRasterBand11GetOverviewEi" title="GDALRasterBand::GetOverview"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALRasterBand::GetOverview()</span></code></a> and related methods. However, implementing this is pretty involved, and goes beyond the scope of this document for now. The GeoTIFF driver (gdal/frmts/gtiff/geotiff.cpp) and related source can be reviewed for an example of a file format implementing overview reporting and creation support.</p>
+<p>Formats can also report that they have arbitrary overviews, by overriding the <a class="reference internal" href="../api/gdalrasterband_cpp.html#_CPPv4N14GDALRasterBand21HasArbitraryOverviewsEv" title="GDALRasterBand::HasArbitraryOverviews"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALRasterBand::HasArbitraryOverviews()</span></code></a> method on the GDALRasterBand, returning TRUE. In this case the raster band object is expected to override the <a class="reference internal" href="../api/gdalrasterband_cpp.html#_CPPv4N14GDALRasterBand8RasterIOE10GDALRWFlagiiiiPvii12GDALDataType8GSpacing8GSpacingP20GDALRasterIOExtraArg" title="GDALRasterBand::RasterIO"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALRasterBand::RasterIO()</span></code></a> method itself, to implement efficient access to imagery with resampling. This is also involved, and there are a lot of requirements for correct implementation of the RasterIO() method. An example of this can be found in the OGDI and ECW formats.</p>
 <p>However, by far the most common approach to implementing overviews is to use the default support in GDAL for external overviews stored in TIFF files with the same name as the dataset, but the extension .ovr appended. In order to enable reading and creation of this style of overviews it is necessary for the GDALDataset to initialize the <cite>oOvManager</cite> object within itself. This is typically accomplished with a call like the following near the end of the Open() method (after the PAM <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::TryLoadXML()</span></code>).</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">poDS</span><span class="o">-&gt;</span><span class="n">oOvManager</span><span class="p">.</span><span class="n">Initialize</span><span class="p">(</span><span class="n">poDS</span><span class="p">.</span><span class="n">get</span><span class="p">(),</span><span class="w"> </span><span class="n">poOpenInfo</span><span class="o">-&gt;</span><span class="n">pszFilename</span><span class="p">);</span>
 </pre></div>
@@ -609,7 +609,7 @@ helpful to use the <code class="xref cpp cpp-class docutils literal notranslate"
 </section>
 <section id="file-creation">
 <h2>File Creation<a class="headerlink" href="#file-creation" title="Link to this heading"></a></h2>
-<p>There are two approaches to file creation. The first method is called the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::CreateCopy()</span></code> method, and involves implementing a function that can write a file in the output format, pulling all imagery and other information needed from a source GDALDataset. The second method, the dynamic creation method, involves implementing a Create method to create the shell of the file, and then the application writes various information by calls to set methods.</p>
+<p>There are two approaches to file creation. The first method is called the <a class="reference internal" href="../api/gdaldriver_cpp.html#_CPPv4N10GDALDriver10CreateCopyEPKcP11GDALDataseti12CSLConstList16GDALProgressFuncPv" title="GDALDriver::CreateCopy"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::CreateCopy()</span></code></a> method, and involves implementing a function that can write a file in the output format, pulling all imagery and other information needed from a source GDALDataset. The second method, the dynamic creation method, involves implementing a Create method to create the shell of the file, and then the application writes various information by calls to set methods.</p>
 <p>The benefits of the first method are that that all the information is available at the point the output file is being created. This can be especially important when implementing file formats using external libraries which require information like color maps, and georeferencing information at the point the file is created. The other advantage of this method is that the CreateCopy() method can read some kinds of information, such as min/max, scaling, description and GCPs for which there are no equivalent set methods.</p>
 <p>The benefits of the second method are that applications can create an empty new file, and write results to it as they become available. A complete image of the desired data does not have to be available in advance.</p>
 <p>For very important formats both methods may be implemented, otherwise do whichever is simpler, or provides the required capabilities.</p>

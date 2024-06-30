@@ -51,15 +51,15 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">プログラム</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">Programs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../drivers/raster/index.html">Raster drivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../drivers/vector/index.html">Vector drivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Development</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../dev_environment.html">Setting up a development environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../building_from_source.html">Building GDAL from source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev_environment.html">Setting up a development environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dev_practices.html">Development practices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../testing.html">Automated testing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dev_documentation.html">Building documentation</a></li>
@@ -100,7 +100,7 @@
 <li class="toctree-l3"><a class="reference internal" href="rfc33_gtiff_pixelispoint.html">RFC 33: GTiff - Fixing PixelIsPoint Interpretation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="rfc34_license_policy.html">RFC 34: License Policy Enforcement</a></li>
 <li class="toctree-l3"><a class="reference internal" href="rfc35_deletereorderalterfielddefn.html">RFC 35: Delete, reorder and alter field definitions of OGR layers</a></li>
-<li class="toctree-l3"><a class="reference internal" href="rfc36_open_by_drivername.html">RFC 36: Allow specification of intended driver on GDALOpen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rfc36_open_by_drivername.html">RFC 36: Allow specification of intended driver on GDALOpen (withdrawn)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="rfc37_cplerror_userdata.html">RFC 37: User data callbacks in CPLError</a></li>
 <li class="toctree-l3"><a class="reference internal" href="rfc38_ogr_faster_open.html">RFC 38: OGR Faster Open (withdrawn)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="rfc39_ogr_layer_algebra.html">RFC 39: OGR Layer Algebra</a></li>
@@ -183,7 +183,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -307,7 +307,7 @@ the range [128,255].</p></li>
 </section>
 <section id="details">
 <h2>Details<a class="headerlink" href="#details" title="Link to this heading"></a></h2>
-<p>A new <code class="docutils literal notranslate"><span class="pre">GDT_Int8</span></code> = 14 item is added to the <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">GDALDataType</span></code> enumeration.</p>
+<p>A new <code class="docutils literal notranslate"><span class="pre">GDT_Int8</span></code> = 14 item is added to the <a class="reference internal" href="../../api/raster_c_api.html#_CPPv412GDALDataType" title="GDALDataType"><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">GDALDataType</span></code></a> enumeration.</p>
 <p>It is taken into account in all places in gcore/ and alg/ that have specific
 behavior depending on the value of GDALDataType. All places that only dealt
 specifically with a subset of types (e.g Byte, Float32) and promoted other
@@ -347,8 +347,8 @@ with GDAL 3.7.0, PIXELTYPE=SIGNEDBYTE is no longer the technical solution.</p>
 <section id="testing">
 <h2>Testing<a class="headerlink" href="#testing" title="Link to this heading"></a></h2>
 <p>The test_gdal.cpp and testcopywords.cpp test files are extended to test functions
-like <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataTypeIsInteger()</span></code>, <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataTypeIsFloating()</span></code>,
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataTypeIsComplex()</span></code>, etc. and all data type conversion combinations
+like <a class="reference internal" href="../../api/raster_c_api.html#_CPPv421GDALDataTypeIsInteger12GDALDataType" title="GDALDataTypeIsInteger"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataTypeIsInteger()</span></code></a>, <a class="reference internal" href="../../api/raster_c_api.html#_CPPv422GDALDataTypeIsFloating12GDALDataType" title="GDALDataTypeIsFloating"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataTypeIsFloating()</span></code></a>,
+<a class="reference internal" href="../../api/raster_c_api.html#_CPPv421GDALDataTypeIsComplex12GDALDataType" title="GDALDataTypeIsComplex"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataTypeIsComplex()</span></code></a>, etc. and all data type conversion combinations
 from/into GInt8.</p>
 <p>Parts of autotest, in driver specific tests, that were testing GByte +
 PIXELTYPE=SIGNEDBYTE on reading or writing are adapted to the new technical solution.</p>

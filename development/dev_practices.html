@@ -51,14 +51,14 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../programs/index.html">プログラム</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">ラスタードライバー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">ベクタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programs/index.html">Programs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">Raster drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">Vector drivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">開発</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="building_from_source.html">GDAL のソースからのビルド</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="building_from_source.html">Building GDAL from source</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dev_environment.html">Setting up a development environment</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Development practices</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#making-changes-to-gdal">Making changes to GDAL</a></li>
@@ -89,9 +89,9 @@
 <li class="toctree-l2"><a class="reference internal" href="rfc/index.html">RFC list</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">スポンサー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">貢献する方法は?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">Sponsors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">ライセンス</a></li>
 </ul>
@@ -129,7 +129,7 @@
     
       <li><a href="../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">開発</a> &raquo;</li>
+          <li><a href="index.html">Development</a> &raquo;</li>
       
       <li>Development practices</li>
     
@@ -167,7 +167,7 @@
 <section id="making-changes-to-gdal">
 <h2>Making changes to GDAL<a class="headerlink" href="#making-changes-to-gdal" title="Link to this heading"></a></h2>
 <p>Minor changes to GDAL, such as bug fixes, may be made by opening a GitHub pull request.</p>
-<p>Major changes should be discussed on the <a href="#id5"><span class="problematic" id="id6">|gdal-dev|</span></a> listserv and may require the drafting
+<p>Major changes should be discussed on the <a class="reference external" href="https://lists.osgeo.org/mailman/listinfo/gdal-dev">gdal-dev</a> listserv and may require the drafting
 of a RFC (request for comment) document.</p>
 <p>GDAL's policy on substantial code additions is documented at <a class="reference internal" href="rfc/rfc85_policy_code_additions.html#rfc-85"><span class="std std-ref">RFC 85: Policy regarding substantial code additions</span></a>.</p>
 </section>
@@ -241,15 +241,15 @@ to capitalize each word in a variable name.</p>
 <li><p>All source files (.h, .c, .cpp, .py, etc.) should have a header with copyright attribution and the text of the GDAL X/MIT license.</p></li>
 <li><p>Use lower case filenames.</p></li>
 <li><p>Use .cpp extension for C++ files (not .cc).</p></li>
-<li><p>C/C++ code formatting rules are defined in <a href="#id2"><span class="problematic" id="id3">:source_file:`.clang-format`</span></a>. Python code formatting
+<li><p>C/C++ code formatting rules are defined in <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/.clang-format">.clang-format</a>. Python code formatting
 is enforced by Black. The pre-commit utility should be used to enforce them automatically. See <a class="reference internal" href="#commit-hooks"><span class="std std-ref">Commit hooks</span></a>.</p></li>
 </ul>
 </section>
 <section id="memory-allocation">
 <h2>Memory allocation<a class="headerlink" href="#memory-allocation" title="Link to this heading"></a></h2>
-<p>Large memory allocations should be performed using the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIMalloc()</span></code> family of functions, which will return <code class="docutils literal notranslate"><span class="pre">nullptr</span></code> on allocation failure.
+<p>Large memory allocations should be performed using the <a class="reference internal" href="../api/cpl.html#_CPPv49VSIMalloc6size_t" title="VSIMalloc"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIMalloc()</span></code></a> family of functions, which will return <code class="docutils literal notranslate"><span class="pre">nullptr</span></code> on allocation failure.
 As per <a class="reference internal" href="rfc/rfc19_safememalloc.html#rfc-19"><span class="std std-ref">RFC 19: Safer memory allocation in GDAL</span></a>, you can use <code class="docutils literal notranslate"><span class="pre">VSIMalloc2(x,</span> <span class="pre">y)</span></code> instead of
-doing <code class="docutils literal notranslate"><span class="pre">CPLMalloc(x</span> <span class="pre">*</span> <span class="pre">y)</span></code> or <code class="docutils literal notranslate"><span class="pre">VSIMalloc(x</span> <span class="pre">*</span> <span class="pre">y)</span></code>. <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIMalloc2()</span></code> will detect
+doing <code class="docutils literal notranslate"><span class="pre">CPLMalloc(x</span> <span class="pre">*</span> <span class="pre">y)</span></code> or <code class="docutils literal notranslate"><span class="pre">VSIMalloc(x</span> <span class="pre">*</span> <span class="pre">y)</span></code>. <a class="reference internal" href="../api/cpl.html#_CPPv410VSIMalloc26size_t6size_t" title="VSIMalloc2"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIMalloc2()</span></code></a> will detect
 potential overflows in the multiplication and return a NULL pointer if
 it happens. This can be useful in GDAL raster drivers where x and y are
 related to the raster dimensions or raster block sizes. Similarly,
@@ -274,7 +274,7 @@ related to the raster dimensions or raster block sizes. Similarly,
 <p>This section collects a few best practices for git usage for GDAL development.</p>
 <section id="initiating-your-work-repository">
 <h3>Initiating your work repository<a class="headerlink" href="#initiating-your-work-repository" title="Link to this heading"></a></h3>
-<p>Fork <a href="#id7"><span class="problematic" id="id8">|OSGeo/gdal|</span></a> from the GitHub UI, and then run:</p>
+<p>Fork <a class="reference external" href="https://github.com/OSGeo/gdal">OSGeo/gdal</a> from the GitHub UI, and then run:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/OSGeo/gdal
 <span class="nb">cd</span><span class="w"> </span>gdal
 git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>my_user_name<span class="w"> </span>git@github.com:my_user_name/gdal.git
@@ -343,7 +343,7 @@ actually fixes it)</p>
 </div>
 </section>
 <section id="commit-hooks">
-<span id="id4"></span><h3>Commit hooks<a class="headerlink" href="#commit-hooks" title="Link to this heading"></a></h3>
+<span id="id2"></span><h3>Commit hooks<a class="headerlink" href="#commit-hooks" title="Link to this heading"></a></h3>
 <p>GDAL provides pre-commit hooks to run code formatters and linters before a commit is made. The
 hooks are cloned with the repository and can be installed using
 <a class="reference external" href="https://pre-commit.com">pre-commit</a>:</p>
@@ -378,7 +378,7 @@ git<span class="w"> </span>push<span class="w"> </span>...
 </section>
 <section id="things-you-should-not-do">
 <h3>Things you should NOT do<a class="headerlink" href="#things-you-should-not-do" title="Link to this heading"></a></h3>
-<p>(For anyone with push rights to <a href="#id9"><span class="problematic" id="id10">|OSGeo/gdal|</span></a>) Never modify a commit or
+<p>(For anyone with push rights to <a class="reference external" href="https://github.com/OSGeo/gdal">OSGeo/gdal</a>) Never modify a commit or
 the history of anything that has been
 committed to <a class="reference external" href="https://github.com/OSGeo/gdal">https://github.com/OSGeo/gdal</a></p>
 <p>Committing symbolic links is allowed only under the .github directory in order to

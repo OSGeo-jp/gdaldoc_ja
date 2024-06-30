@@ -51,12 +51,12 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../download.html">ダウンロード</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">プログラム</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="index.html#general">一般情報</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#raster-programs">ラスタープログラム</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#multidimensional-raster-programs">多次元ラスタープログラム</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html#vector-programs">ベクタープログラム</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="vector_common_options.html">共通オプション</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Programs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#general">General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#raster-programs">Raster programs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#multidimensional-raster-programs">Multidimensional Raster programs</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#vector-programs">Vector programs</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="vector_common_options.html">Common options</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">ogrinfo</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#synopsis">Synopsis</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#description">Description</a></li>
@@ -71,19 +71,19 @@
 <li class="toctree-l3"><a class="reference internal" href="ogr_layer_algebra.html">ogr_layer_algebra</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#geographic-network-programs">空間ネットワークプログラム</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#other-utilities">その他ユーティリティ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#geographic-network-programs">Geographic network programs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#other-utilities">Other utilities</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">ラスタードライバー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">ベクタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">Raster drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">Vector drivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../development/index.html">開発</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">スポンサー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">貢献する方法は?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">Sponsors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">ライセンス</a></li>
 </ul>
@@ -121,7 +121,7 @@
     
       <li><a href="../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">プログラム</a> &raquo;</li>
+          <li><a href="index.html">Programs</a> &raquo;</li>
       
       <li>ogrinfo</li>
     
@@ -257,7 +257,7 @@ summary information like projection, schema, feature count and extents.</p>
 <span class="sig-name descname"><span class="pre">-features</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-ogrinfo-features" title="Link to this definition"></a></dt>
 <dd><p>Enable listing of features. This has the opposite effect of <a class="reference internal" href="#cmdoption-ogrinfo-so"><code class="xref std std-option docutils literal notranslate"><span class="pre">-so</span></code></a>.</p>
 <p>This option should be used with caution if using the library function
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALVectorInfo()</span></code> and/or <a class="reference internal" href="#cmdoption-ogrinfo-json"><code class="xref std std-option docutils literal notranslate"><span class="pre">-json</span></code></a>, as the whole output of
+<a class="reference internal" href="../api/gdal_utils.html#_CPPv414GDALVectorInfo12GDALDatasetHPK21GDALVectorInfoOptions" title="GDALVectorInfo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALVectorInfo()</span></code></a> and/or <a class="reference internal" href="#cmdoption-ogrinfo-json"><code class="xref std std-option docutils literal notranslate"><span class="pre">-json</span></code></a>, as the whole output of
 ogrinfo will be built in memory. Consequently, when used on a large
 collection of features, RAM may be exhausted.</p>
 <div class="versionadded">
@@ -428,8 +428,8 @@ and driver capabilities.</p>
 read-write) and exit. The format support is indicated as follows:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">ro</span></code> is read-only driver</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">rw</span></code> is read or write (i.e. supports <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::CreateCopy()</span></code>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">rw+</span></code> is read, write and update (i.e. supports <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::Create()</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rw</span></code> is read or write (i.e. supports <a class="reference internal" href="../api/gdaldriver_cpp.html#_CPPv4N10GDALDriver10CreateCopyEPKcP11GDALDataseti12CSLConstList16GDALProgressFuncPv" title="GDALDriver::CreateCopy"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::CreateCopy()</span></code></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rw+</span></code> is read, write and update (i.e. supports <a class="reference internal" href="../api/gdaldriver_cpp.html#_CPPv4N10GDALDriver6CreateEPKciii12GDALDataType12CSLConstList" title="GDALDriver::Create"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::Create()</span></code></a>)</p></li>
 <li><p>A <code class="docutils literal notranslate"><span class="pre">v</span></code> is appended for formats supporting virtual IO (<code class="docutils literal notranslate"><span class="pre">/vsimem</span></code>, <code class="docutils literal notranslate"><span class="pre">/vsigzip</span></code>, <code class="docutils literal notranslate"><span class="pre">/vsizip</span></code>, etc).</p></li>
 <li><p>A <code class="docutils literal notranslate"><span class="pre">s</span></code> is appended for formats supporting subdatasets.</p></li>
 </ul>
@@ -480,7 +480,7 @@ are provided, all features are reported.</p>
 </section>
 <section id="c-api">
 <h2>C API<a class="headerlink" href="#c-api" title="Link to this heading"></a></h2>
-<p>This utility is also callable from C with <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALVectorInfo()</span></code>.</p>
+<p>This utility is also callable from C with <a class="reference internal" href="../api/gdal_utils.html#_CPPv414GDALVectorInfo12GDALDatasetHPK21GDALVectorInfoOptions" title="GDALVectorInfo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALVectorInfo()</span></code></a>.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.7.</span></p>
 </div>

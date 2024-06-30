@@ -51,9 +51,9 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">プログラム</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../raster/index.html">ラスタードライバー</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">ベクタードライバー</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">Programs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../raster/index.html">Raster drivers</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Vector drivers</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="amigocloud.html">AmigoCloud</a></li>
 <li class="toctree-l2"><a class="reference internal" href="arrow.html">(Geo)Arrow IPC File Format / Stream</a></li>
 <li class="toctree-l2"><a class="reference internal" href="avcbin.html">Arc/Info Binary Coverage</a></li>
@@ -161,11 +161,11 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
@@ -203,7 +203,7 @@
     
       <li><a href="../../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">ベクタードライバー</a> &raquo;</li>
+          <li><a href="index.html">Vector drivers</a> &raquo;</li>
       
       <li>AutoCAD DXF</li>
     
@@ -256,7 +256,7 @@ OGR.</p>
 <h2>Driver capabilities<a class="headerlink" href="#driver-capabilities" title="Link to this heading"></a></h2>
 <div class="admonition supports_create" id="supports_create-0">
 <p class="admonition-title">Supports Create()</p>
-<p>This driver supports the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::Create()</span></code> operation</p>
+<p>This driver supports the <a class="reference internal" href="../../api/gdaldriver_cpp.html#_CPPv4N10GDALDriver6CreateEPKciii12GDALDataType12CSLConstList" title="GDALDriver::Create"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::Create()</span></code></a> operation</p>
 </div>
 <div class="admonition supports_virtualio" id="supports_virtualio-0">
 <p class="admonition-title">Supports VirtualIO</p>
@@ -338,7 +338,7 @@ the block.</p>
 </li>
 <li><p id="config-DXF_INLINE_BLOCKS"><strong>DXF_INLINE_BLOCKS=value: </strong>See below.</p>
 </li>
-<li><p id="config-DXF_FEATURE_LIMIT_PER_BLOCK"><strong>DXF_FEATURE_LIMIT_PER_BLOCK=value: </strong> (GDAL &gt;= 2.3.0)  Defaults to <code class="docutils literal notranslate"><span class="pre">10000</span></code>. Maximum number of
+<li><p id="config-DXF_FEATURE_LIMIT_PER_BLOCK"><strong>DXF_FEATURE_LIMIT_PER_BLOCK=value: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">10000</span></code>. Maximum number of
 features inserted from a single block. Set to -1 for no limit.</p>
 </li>
 </ul>
@@ -356,7 +356,7 @@ entities are not supported.</p></li>
 but no effort is currently made to represent the fill style of HATCH
 entities. Behavior is affected by the following configuration option:</p>
 <ul class="simple">
-<li><p id="config-DXF_HATCH_TOLERANCE"><strong>DXF_HATCH_TOLERANCE=value: </strong> (GDAL &gt;= 2.3.0) Determines the
+<li><p id="config-DXF_HATCH_TOLERANCE"><strong>DXF_HATCH_TOLERANCE=value: </strong>Determines the
 tolerance used when looking for the next component to add to the
 hatch boundary.</p>
 </li>
@@ -459,7 +459,7 @@ a broadly compatible fork of the ACIS format. GDAL cannot transform these
 entities into OGR geometries, so they are skipped by default.</p>
 <p>This behavior can be controlled with the following configuration option:</p>
 <ul class="simple">
-<li><p id="config-DXF_3D_EXTENSIBLE_MODE"><strong>DXF_3D_EXTENSIBLE_MODE=[TRUE/FALSE]: </strong> (GDAL &gt;= 2.3.0) If TRUE, include ASM entities with the raw ASM
+<li><p id="config-DXF_3D_EXTENSIBLE_MODE"><strong>DXF_3D_EXTENSIBLE_MODE=[TRUE/FALSE]: </strong>If TRUE, include ASM entities with the raw ASM
 data stored in a field, allowing for interoperability with commercial conversion
 tools. This option adds two new fields:<ul>
 <li><p>ASMData: A binary field that contains the ASM data.</p></li>
@@ -486,7 +486,7 @@ unrecognised by OGR. In this case, <a class="reference internal" href="#config-D
 override what id will be used by OGR in transcoding:</p>
 <ul class="simple">
 <li><p id="config-DXF_ENCODING"><strong>DXF_ENCODING=value: </strong>An encoding name
-supported by <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CPLRecode()</span></code> (i.e. an iconv name), not a DXF $DWGCODEPAGE
+supported by <a class="reference internal" href="../../api/cpl.html#_CPPv49CPLRecodePKcPKcPKc" title="CPLRecode"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CPLRecode()</span></code></a> (i.e. an iconv name), not a DXF $DWGCODEPAGE
 name. Using a value &quot;UTF-8&quot; will avoid any attempt to
 recode the text as it is read.</p>
 </li>
@@ -557,7 +557,7 @@ following style string parameters are understood:</p>
 </tr>
 </tbody>
 </table>
-<p><a href="#id1"><span class="problematic" id="id2">|about-dataset-creation-options|</span></a>
+<p>Dataset creation options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-dsco</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALCreate11GDALDriverHPKciii12GDALDataType12CSLConstList" title="GDALCreate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALCreate()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.Driver.Create" title="osgeo.gdal.Driver.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Driver.Create</span></code></a> (Python).
 The driver supports the following dataset creation options:</p>
 <ul class="simple">
 <li><p id="drivers/vector/dxf-dsco-HEADER"><strong>HEADER=&lt;filename&gt;: </strong>Override the header file used - in place of

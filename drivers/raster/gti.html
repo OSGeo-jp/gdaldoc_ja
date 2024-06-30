@@ -51,8 +51,8 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">プログラム</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">ラスタードライバー</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">Programs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Raster drivers</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="aaigrid.html">AAIGrid -- Arc/Info ASCII Grid</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ace2.html">ACE2 -- ACE2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adrg.html">ADRG -- ADRG/ARC Digitized Raster Graphics (.gen/.thf)</a></li>
@@ -226,14 +226,14 @@
 <li class="toctree-l2"><a class="reference internal" href="zmap.html">ZMap -- ZMap Plus Grid</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../vector/index.html">ベクタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vector/index.html">Vector drivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">貢献する方法は?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
@@ -271,7 +271,7 @@
     
       <li><a href="../../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">ラスタードライバー</a> &raquo;</li>
+          <li><a href="index.html">Raster drivers</a> &raquo;</li>
       
       <li>GTI -- GDAL Raster Tile Index</li>
     
@@ -356,7 +356,7 @@ for a GTI compatible tile index, detailed later.</p>
 <p>For example: <code class="docutils literal notranslate"><span class="pre">tileindex.gti.gpkg</span></code></p>
 <p>Starting with GDAL 3.10, specifying the <code class="docutils literal notranslate"><span class="pre">-if</span> <span class="pre">GTI</span></code> option to command line utilities
 accepting it, or <code class="docutils literal notranslate"><span class="pre">GTI</span></code> as the only value of the <code class="docutils literal notranslate"><span class="pre">papszAllowedDrivers</span></code> of
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpenEx()</span></code>, also forces the driver to recognize the passed filename
+<a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALOpenExPKcjPPCKcPPCKcPPCKc" title="GDALOpenEx"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpenEx()</span></code></a>, also forces the driver to recognize the passed filename
 if its extension is just <code class="docutils literal notranslate"><span class="pre">.gpkg</span></code> or <code class="docutils literal notranslate"><span class="pre">.fgb</span></code>.</p>
 </li>
 <li><p>any vector file in a GDAL supported format, with its filename (or connection
@@ -432,7 +432,7 @@ defining the extent and resolution os the virtual mosaic.</p>
 of the mosaic. Possible values are <code class="docutils literal notranslate"><span class="pre">red</span></code>, <code class="docutils literal notranslate"><span class="pre">green</span></code>, <code class="docutils literal notranslate"><span class="pre">blue</span></code>, <code class="docutils literal notranslate"><span class="pre">alpha</span></code>,
 <code class="docutils literal notranslate"><span class="pre">undefined</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">SRS=&lt;string&gt;</span></code>: defines the SRS of the virtual mosaic, using any value
-supported by the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::SetFromUserInput()</span></code> call, which
+supported by the <a class="reference internal" href="../../api/ogrspatialref.html#_CPPv4N19OGRSpatialReference16SetFromUserInputEPKc" title="OGRSpatialReference::SetFromUserInput"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::SetFromUserInput()</span></code></a> call, which
 includes EPSG Projected, Geographic or Compound CRS (i.e. EPSG:4296), a
 well known text (WKT) CRS definition, PROJ.4 declarations, etc.</p>
 <p>It is not necessary to define this element if the virtual mosaic SRS is
@@ -620,7 +620,7 @@ the above format specifications are met.</p>
 </section>
 <section id="open-options">
 <h2>Open options<a class="headerlink" href="#open-options" title="Link to this heading"></a></h2>
-<p><a href="#id1"><span class="problematic" id="id2">|about-open-options|</span></a>
+<p>Open options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-oo</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALOpenExPKcjPPCKcPPCKcPPCKc" title="GDALOpenEx"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpenEx()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.OpenEx" title="osgeo.gdal.OpenEx"><code class="xref py py-meth docutils literal notranslate"><span class="pre">gdal.OpenEx</span></code></a> (Python).
 The following open options are available. Most of them can be
 also defined as layer metadata items or in the .gti XML file</p>
 <ul class="simple">

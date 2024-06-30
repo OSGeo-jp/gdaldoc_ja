@@ -51,7 +51,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../programs/index.html">プログラム</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programs/index.html">Programs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">Raster drivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">Vector drivers</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">ユーザー</a><ul class="current">
@@ -71,21 +71,21 @@
 <li class="toctree-l2"><a class="reference internal" href="gnm_data_model.html">Geographic Networks Data Model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="multithreading.html">Multi-threading</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ogr_sql_sqlite_dialect.html">OGR SQL dialect and SQLITE SQL dialect</a></li>
-<li class="toctree-l2"><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ogr_feature_style.html">Feature Style Specification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="coordinate_epoch.html">Coordinate epoch support</a></li>
-<li class="toctree-l2"><a class="reference internal" href="configoptions.html">設定オプション</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configoptions.html">Configuration options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gdal_python_utilities.html">GDAL Python Utilities</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">チュートリアル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">Sponsors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">How to contribute?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">ライセンス</a></li>
 </ul>
 
         </div>
@@ -121,7 +121,7 @@
     
       <li><a href="../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">ユーザー向け文書</a> &raquo;</li>
+          <li><a href="index.html">User oriented documentation</a> &raquo;</li>
       
       <li>Multidimensional Raster Data Model</li>
     
@@ -166,24 +166,24 @@ limited to basic read/write API, and is not that much plugged into other higher
 level utilities.</p>
 <p>It is strongly inspired from the netCDF and HDF5 API and data models.
 See <a class="reference external" href="https://portal.opengeospatial.org/files/81716">HDF5 format and data model</a>.</p>
-<p>A <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALDataset</span></code> with multidimensional content contains a root
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALGroup</span></code>.</p>
+<p>A <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv411GDALDataset" title="GDALDataset"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALDataset</span></code></a> with multidimensional content contains a root
+<a class="reference internal" href="../api/gdalgroup_cpp.html#_CPPv49GDALGroup" title="GDALGroup"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALGroup</span></code></a>.</p>
 <section id="group">
 <h2>Group<a class="headerlink" href="#group" title="Link to this heading"></a></h2>
-<p>A <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALGroup</span></code> (modelling a <a class="reference external" href="https://portal.opengeospatial.org/files/81716#_hdf5_group">HDF5 Group</a>)
+<p>A <a class="reference internal" href="../api/gdalgroup_cpp.html#_CPPv49GDALGroup" title="GDALGroup"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALGroup</span></code></a> (modelling a <a class="reference external" href="https://portal.opengeospatial.org/files/81716#_hdf5_group">HDF5 Group</a>)
 is a named container of GDALAttribute, GDALMDArray or
 other GDALGroup. Hence GDALGroup can describe a hierarchy of objects.</p>
 </section>
 <section id="attribute">
 <h2>Attribute<a class="headerlink" href="#attribute" title="Link to this heading"></a></h2>
-<p>A <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALAttribute</span></code> (modelling a <a class="reference external" href="https://portal.opengeospatial.org/files/81716#_hdf5_attribute">HDF5 Attribute</a>)
+<p>A <a class="reference internal" href="../api/gdalattribute_cpp.html#_CPPv413GDALAttribute" title="GDALAttribute"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALAttribute</span></code></a> (modelling a <a class="reference external" href="https://portal.opengeospatial.org/files/81716#_hdf5_attribute">HDF5 Attribute</a>)
 has a name and a value, and is typically used to describe a metadata item.
 The value can be (for the HDF5 format) in the general case a multidimensional array
 of &quot;any&quot; type (in most cases, this will be a single value of string or numeric type)</p>
 </section>
 <section id="multidimensional-array">
 <h2>Multidimensional array<a class="headerlink" href="#multidimensional-array" title="Link to this heading"></a></h2>
-<p>A <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALMDArray</span></code> (modelling a <a class="reference external" href="https://portal.opengeospatial.org/files/81716#_hdf5_dataset">HDF5 Dataset</a>)
+<p>A <a class="reference internal" href="../api/gdalmdarray_cpp.html#_CPPv411GDALMDArray" title="GDALMDArray"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALMDArray</span></code></a> (modelling a <a class="reference external" href="https://portal.opengeospatial.org/files/81716#_hdf5_dataset">HDF5 Dataset</a>)
 has a name, a multidimensional array, references a number of GDALDimension, and
 has a list of GDALAttribute.</p>
 <p>Most drivers use the row-major convention for dimensions: that is, when considering
@@ -193,12 +193,12 @@ fastest varying one (in a 2D image, the column). That convention is the default
 convention used for NumPy arrays, the MEM driver and the HDF5 and netCDF APIs.
 The GDAL API is mostly agnostic
 about that convention, except when passing a NULL array as the <em>stride</em> parameter
-for the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALAbstractMDArray::Read()</span></code> and  <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALAbstractMDArray::Write()</span></code> methods.
+for the <a class="reference internal" href="../api/gdalabstractmdarray_cpp.html#_CPPv4NK19GDALAbstractMDArray4ReadEPK7GUInt64PK6size_tPK6GInt64PK10GPtrDiff_tRK20GDALExtendedDataTypePvPKv6size_t" title="GDALAbstractMDArray::Read"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALAbstractMDArray::Read()</span></code></a> and  <a class="reference internal" href="../api/gdalabstractmdarray_cpp.html#_CPPv4N19GDALAbstractMDArray5WriteEPK7GUInt64PK6size_tPK6GInt64PK10GPtrDiff_tRK20GDALExtendedDataTypePKvPKv6size_t" title="GDALAbstractMDArray::Write"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALAbstractMDArray::Write()</span></code></a> methods.
 You can refer to <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/internals.html#multidimensional-array-indexing-order-issues">NumPy documentation about multidimensional array indexing order issues</a></p>
 <p>a GDALMDArray has also optional properties:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Coordinate reference system: <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRSpatialReference</span></code></p></li>
+<li><p>Coordinate reference system: <a class="reference internal" href="../api/ogrspatialref.html#_CPPv419OGRSpatialReference" title="OGRSpatialReference"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRSpatialReference</span></code></a></p></li>
 <li><p>No data value:</p></li>
 <li><p>Unit</p></li>
 <li><p>Offset, such that unscaled_value = offset + scale * raw_value</p></li>
@@ -206,13 +206,13 @@ You can refer to <a class="reference external" href="https://docs.scipy.org/doc/
 </ul>
 </div></blockquote>
 <p>Number of operations can be applied on an array to get modified views of it:
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArray::Transpose()</span></code>, <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArray::GetView()</span></code>, etc.</p>
-<p>The <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArray::Cache()</span></code> method can be used to cache the value of
+<a class="reference internal" href="../api/gdalmdarray_cpp.html#_CPPv4NK11GDALMDArray9TransposeERKNSt6vectorIiEE" title="GDALMDArray::Transpose"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArray::Transpose()</span></code></a>, <a class="reference internal" href="../api/gdalmdarray_cpp.html#_CPPv4NK11GDALMDArray7GetViewERKNSt6stringE" title="GDALMDArray::GetView"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArray::GetView()</span></code></a>, etc.</p>
+<p>The <a class="reference internal" href="../api/gdalmdarray_cpp.html#_CPPv4NK11GDALMDArray5CacheE12CSLConstList" title="GDALMDArray::Cache"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArray::Cache()</span></code></a> method can be used to cache the value of
 a view array into a sidecar file.</p>
 </section>
 <section id="dimension">
 <h2>Dimension<a class="headerlink" href="#dimension" title="Link to this heading"></a></h2>
-<p>A <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALDimension</span></code> describes a dimension / axis used to index multidimensional arrays.
+<p>A <a class="reference internal" href="../api/gdaldimension_cpp.html#_CPPv413GDALDimension" title="GDALDimension"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALDimension</span></code></a> describes a dimension / axis used to index multidimensional arrays.
 It has the following properties:</p>
 <blockquote>
 <div><ul class="simple">
@@ -234,11 +234,11 @@ the values of the easting/longitude for each grid point.</p></li>
 </section>
 <section id="data-type">
 <h2>Data Type<a class="headerlink" href="#data-type" title="Link to this heading"></a></h2>
-<p>A <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALExtendedDataType</span></code> (modelling a
+<p>A <a class="reference internal" href="../api/gdalextendeddatatype_cpp.html#_CPPv420GDALExtendedDataType" title="GDALExtendedDataType"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALExtendedDataType</span></code></a> (modelling a
 <a class="reference external" href="https://portal.opengeospatial.org/files/81716#_hdf5_datatype">HDF5 datatype</a>)
 describes the type taken by an individual value of
 a GDALAttribute or GDALMDArray. Its class can be NUMERIC,
-STRING or COMPOUND. For NUMERIC, the existing <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">GDALDataType</span></code> enumerated
+STRING or COMPOUND. For NUMERIC, the existing <a class="reference internal" href="../api/raster_c_api.html#_CPPv412GDALDataType" title="GDALDataType"><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">GDALDataType</span></code></a> enumerated
 values are supported. For COMPOUND, the data type is a list of members, each
 member being described by a name, a offset in byte in the compound structure and
 a GDALExtendedDataType.</p>
@@ -263,7 +263,7 @@ data type.</p></li>
 </section>
 <section id="bridges-between-gdal-2d-classic-raster-data-model-and-multidimensional-data-model">
 <h2>Bridges between GDAL 2D classic raster data model and multidimensional data model<a class="headerlink" href="#bridges-between-gdal-2d-classic-raster-data-model-and-multidimensional-data-model" title="Link to this heading"></a></h2>
-<p>The <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALRasterBand::AsMDArray()</span></code> and <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArray::AsClassicDataset()</span></code>
+<p>The <a class="reference internal" href="../api/gdalrasterband_cpp.html#_CPPv4NK14GDALRasterBand9AsMDArrayEv" title="GDALRasterBand::AsMDArray"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALRasterBand::AsMDArray()</span></code></a> and <a class="reference internal" href="../api/gdalmdarray_cpp.html#_CPPv4NK11GDALMDArray16AsClassicDatasetE6size_t6size_tRKNSt10shared_ptrI9GDALGroupEE12CSLConstList" title="GDALMDArray::AsClassicDataset"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArray::AsClassicDataset()</span></code></a>
 can be used to respectively convert a raster band to a MD array or a 2D dataset
 to a MD array.</p>
 </section>

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Raster API tutorial &mdash; GDAL  ドキュメント</title>
+  <title>ラスターAPIチュートリアル &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
       <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
 
@@ -26,7 +26,7 @@
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="Raster driver implementation tutorial" href="raster_driver_tut.html" />
-    <link rel="prev" title="Tutorials" href="index.html" /> 
+    <link rel="prev" title="チュートリアル" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -51,15 +51,15 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../programs/index.html">Programs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">Raster drivers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">Vector drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programs/index.html">プログラム</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">ラスタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">ベクタードライバー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="index.html#raster">Raster</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Raster API tutorial</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#opening-the-file">Opening the File</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">チュートリアル</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#raster">ラスター</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">ラスターAPIチュートリアル</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#opening-the-file">ファイルを開きます</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#getting-dataset-information">Getting Dataset Information</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#fetching-a-raster-band">Fetching a Raster Band</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#reading-raster-data">Reading Raster Data</a></li>
@@ -75,16 +75,16 @@
 <li class="toctree-l3"><a class="reference internal" href="geotransforms_tut.html">Geotransform Tutorial</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#multidimensional-raster">Multidimensional raster</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#vector">Vector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#geographic-network-model">Geographic Network Model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#projections-and-spatial-reference-systems-tutorial-osr-ogrspatialreference">Projections and Spatial Reference Systems tutorial (OSR - OGRSpatialReference)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#multidimensional-raster">多次元ラスター</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#vector">ベクター</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#geographic-network-model">ジオグラフィックネットワークモデル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#projections-and-spatial-reference-systems-tutorial-osr-ogrspatialreference">投影と空間参照システムチュートリアル (OSR - OGRSpatialReference)</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">開発</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">コミュニティ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">どのように貢献できますか?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">ライセンス</a></li>
 </ul>
@@ -122,9 +122,9 @@
     
       <li><a href="../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">Tutorials</a> &raquo;</li>
+          <li><a href="index.html">チュートリアル</a> &raquo;</li>
       
-      <li>Raster API tutorial</li>
+      <li>ラスターAPIチュートリアル</li>
     
 
     
@@ -146,7 +146,7 @@
         <a href="raster_driver_tut.html" class="btn btn-neutral float-right" title="Raster driver implementation tutorial" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral float-left" title="Tutorials" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="チュートリアル" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -156,9 +156,9 @@
            <div itemprop="articleBody">
              
   <section id="raster-api-tutorial">
-<span id="raster-api-tut"></span><h1>Raster API tutorial<a class="headerlink" href="#raster-api-tutorial" title="Link to this heading"></a></h1>
+<span id="raster-api-tut"></span><h1>ラスターAPIチュートリアル<a class="headerlink" href="#raster-api-tutorial" title="Link to this heading"></a></h1>
 <section id="opening-the-file">
-<h2>Opening the File<a class="headerlink" href="#opening-the-file" title="Link to this heading"></a></h2>
+<h2>ファイルを開きます<a class="headerlink" href="#opening-the-file" title="Link to this heading"></a></h2>
 <p>Before opening a GDAL supported raster datastore it is necessary to register drivers. There is a driver for each supported format. Normally this is accomplished with the <a class="reference internal" href="../api/raster_c_api.html#_CPPv415GDALAllRegisterv" title="GDALAllRegister"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALAllRegister()</span></code></a> function which attempts to register all known drivers, including those auto-loaded from .so files using <a class="reference internal" href="../api/gdaldriver_cpp.html#_CPPv4N17GDALDriverManager15AutoLoadDriversEv" title="GDALDriverManager::AutoLoadDrivers"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriverManager::AutoLoadDrivers()</span></code></a>. If for some applications it is necessary to limit the set of drivers it may be helpful to review the code from gdalallregister.cpp. Python automatically calls GDALAllRegister() when the gdal module is imported.</p>
 <p>Once the drivers are registered, the application should call the free standing <a class="reference internal" href="../api/raster_c_api.html#_CPPv48GDALOpenPKc10GDALAccess" title="GDALOpen"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpen()</span></code></a> function to open a dataset, passing the name of the dataset and the access desired (GA_ReadOnly or GA_Update).</p>
 <p>In C++:</p>
@@ -623,7 +623,7 @@
         <a href="raster_driver_tut.html" class="btn btn-neutral float-right" title="Raster driver implementation tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral float-left" title="Tutorials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="チュートリアル" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

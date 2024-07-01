@@ -67,18 +67,18 @@
 <li class="toctree-l2"><a class="reference internal" href="#what-does-ogr-stand-for">OGRとは何の略ですか？</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#what-does-cpl-stand-for">CPLとは何の略ですか？</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#when-was-the-gdal-project-started">GDALプロジェクトはいつ始まりましたか？</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#is-gdal-ogr-proprietary-software">GDAL/OGRはどのライセンスを使用していますか？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#is-gdal-ogr-proprietary-software">GDAL/OGRはプロプライエタリライセンスのソフトウェアですか？</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#what-license-does-gdal-ogr-use">GDAL/OGRはどのライセンスを使用していますか？</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#what-operating-systems-does-gdal-ogr-run-on">GDAL-OGRはどのオペレーティングシステムで動作しますか？</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#is-there-a-graphical-user-interface-to-gdal-ogr">GDL/OGRにはグラフィカルユーザーインターフェースがありますか？</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="software_using_gdal.html">GDALを利用しているソフトウェア</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#what-compiler-can-i-use-to-build-gdal-ogr">What compiler can I use to build GDAL/OGR?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#i-have-a-question-that-s-not-answered-here-where-can-i-get-more-information">I have a question that's not answered here. Where can I get more information?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#how-do-i-add-support-for-a-new-format">How do I add support for a new format?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#is-gdal-thread-safe">Is GDAL thread-safe ?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#how-do-i-cite-gdal">How do I cite GDAL ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-compiler-can-i-use-to-build-gdal-ogr">GDAL/OGRをビルドするためにどのコンパイラを使用できますか？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#i-have-a-question-that-s-not-answered-here-where-can-i-get-more-information">ここで回答がされていない質問があります。 そのような場合私はどこで情報を得ることができますか?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-do-i-add-support-for-a-new-format">新しいフォーマットのサポートを追加するにはどうすればよいですか？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#is-gdal-thread-safe">GDALはスレッドセーフですか？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-do-i-cite-gdal">GDALをどのように引用すればよいですか？</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">ライセンス</a></li>
@@ -160,15 +160,15 @@
 <li><p><a class="reference internal" href="#what-does-ogr-stand-for" id="id6">OGRとは何の略ですか？</a></p></li>
 <li><p><a class="reference internal" href="#what-does-cpl-stand-for" id="id7">CPLとは何の略ですか？</a></p></li>
 <li><p><a class="reference internal" href="#when-was-the-gdal-project-started" id="id8">GDALプロジェクトはいつ始まりましたか？</a></p></li>
-<li><p><a class="reference internal" href="#is-gdal-ogr-proprietary-software" id="id9">GDAL/OGRはどのライセンスを使用していますか？</a></p></li>
+<li><p><a class="reference internal" href="#is-gdal-ogr-proprietary-software" id="id9">GDAL/OGRはプロプライエタリライセンスのソフトウェアですか？</a></p></li>
 <li><p><a class="reference internal" href="#what-license-does-gdal-ogr-use" id="id10">GDAL/OGRはどのライセンスを使用していますか？</a></p></li>
 <li><p><a class="reference internal" href="#what-operating-systems-does-gdal-ogr-run-on" id="id11">GDAL-OGRはどのオペレーティングシステムで動作しますか？</a></p></li>
 <li><p><a class="reference internal" href="#is-there-a-graphical-user-interface-to-gdal-ogr" id="id12">GDL/OGRにはグラフィカルユーザーインターフェースがありますか？</a></p></li>
-<li><p><a class="reference internal" href="#what-compiler-can-i-use-to-build-gdal-ogr" id="id13">What compiler can I use to build GDAL/OGR?</a></p></li>
-<li><p><a class="reference internal" href="#i-have-a-question-that-s-not-answered-here-where-can-i-get-more-information" id="id14">I have a question that's not answered here. Where can I get more information?</a></p></li>
-<li><p><a class="reference internal" href="#how-do-i-add-support-for-a-new-format" id="id15">How do I add support for a new format?</a></p></li>
-<li><p><a class="reference internal" href="#is-gdal-thread-safe" id="id16">Is GDAL thread-safe ?</a></p></li>
-<li><p><a class="reference internal" href="#how-do-i-cite-gdal" id="id17">How do I cite GDAL ?</a></p></li>
+<li><p><a class="reference internal" href="#what-compiler-can-i-use-to-build-gdal-ogr" id="id13">GDAL/OGRをビルドするためにどのコンパイラを使用できますか？</a></p></li>
+<li><p><a class="reference internal" href="#i-have-a-question-that-s-not-answered-here-where-can-i-get-more-information" id="id14">ここで回答がされていない質問があります。 そのような場合私はどこで情報を得ることができますか?</a></p></li>
+<li><p><a class="reference internal" href="#how-do-i-add-support-for-a-new-format" id="id15">新しいフォーマットのサポートを追加するにはどうすればよいですか？</a></p></li>
+<li><p><a class="reference internal" href="#is-gdal-thread-safe" id="id16">GDALはスレッドセーフですか？</a></p></li>
+<li><p><a class="reference internal" href="#how-do-i-cite-gdal" id="id17">GDALをどのように引用すればよいですか？</a></p></li>
 </ul>
 </li>
 </ul>
@@ -181,11 +181,11 @@
 </section>
 <section id="what-is-this-ogr-stuff">
 <h2>OGRとは何ですか？<a class="headerlink" href="#what-is-this-ogr-stuff" title="Link to this heading"></a></h2>
-<p>OGR used to be a separate vector IO library inspired by OpenGIS Simple Features which was separated from GDAL. With the GDAL 2.0 release, the GDAL and OGR components were integrated together.</p>
+<p>OGR は OpenGIS Simple Features にインスパイアされたベクタIOライブラリでGDALとは別のものでした。GDAL 2.0 のリリース時に、GDAL と OGR のコンポーネントは統合されました。</p>
 </section>
 <section id="what-does-ogr-stand-for">
 <h2>OGRとは何の略ですか？<a class="headerlink" href="#what-does-ogr-stand-for" title="Link to this heading"></a></h2>
-<p>OGR used to stand for OpenGIS Simple Features Reference Implementation. However, since OGR is not fully compliant with the OpenGIS Simple Feature specification and is not approved as a reference implementation of the spec the name was changed to OGR Simple Features Library. The only meaning of OGR in this name is historical. OGR is also the prefix used everywhere in the source of the library for class names, filenames, etc.</p>
+<p>OGR は OpenGIS Simple Features Reference Implementationの略称でした。 ただしOGR はOpenGIS Simple Feature specificationに完全に準拠しておらず、  仕様の実装としては承認されていないためこの名前は OGR Simple Features Libraryに変更していました。この名前におけるOGR は歴史的な意味しかありません。また OGRはライブラリのソースのあらゆる場所でクラス名,ファイル名等に利用される接頭語でもあります。</p>
 </section>
 <section id="what-does-cpl-stand-for">
 <h2>CPLとは何の略ですか？<a class="headerlink" href="#what-does-cpl-stand-for" title="Link to this heading"></a></h2>
@@ -194,10 +194,10 @@
 </section>
 <section id="when-was-the-gdal-project-started">
 <h2>GDALプロジェクトはいつ始まりましたか？<a class="headerlink" href="#when-was-the-gdal-project-started" title="Link to this heading"></a></h2>
-<p>In late 1998, Frank Warmerdam started to work as independent professional on the GDAL/OGR library.</p>
+<p>1998年後半, Frank Warmerdam は独立した専門家としてGDAL/OGR libraryライブラリの仕事を開始しました。</p>
 </section>
 <section id="is-gdal-ogr-proprietary-software">
-<h2>GDAL/OGRはどのライセンスを使用していますか？<a class="headerlink" href="#is-gdal-ogr-proprietary-software" title="Link to this heading"></a></h2>
+<h2>GDAL/OGRはプロプライエタリライセンスのソフトウェアですか？<a class="headerlink" href="#is-gdal-ogr-proprietary-software" title="Link to this heading"></a></h2>
 <p>No, GDAL/OGR is a Free and Open Source Software.</p>
 </section>
 <section id="what-license-does-gdal-ogr-use">
@@ -215,26 +215,26 @@
 </div>
 </section>
 <section id="what-compiler-can-i-use-to-build-gdal-ogr">
-<h2>What compiler can I use to build GDAL/OGR?<a class="headerlink" href="#what-compiler-can-i-use-to-build-gdal-ogr" title="Link to this heading"></a></h2>
+<h2>GDAL/OGRをビルドするためにどのコンパイラを使用できますか？<a class="headerlink" href="#what-compiler-can-i-use-to-build-gdal-ogr" title="Link to this heading"></a></h2>
 <p>GDAL/OGR must be compiled with a C++17 capable compiler since GDAL 3.9 (C++11 in previous versions)</p>
 <p>Build requirements are described in <a class="reference internal" href="development/building_from_source.html#build-requirements"><span class="std std-ref">Build requirements</span></a>.</p>
 </section>
 <section id="i-have-a-question-that-s-not-answered-here-where-can-i-get-more-information">
-<h2>I have a question that's not answered here. Where can I get more information?<a class="headerlink" href="#i-have-a-question-that-s-not-answered-here-where-can-i-get-more-information" title="Link to this heading"></a></h2>
-<p>参照 <a class="reference internal" href="software_using_gdal.html#software-using-gdal"><span class="std std-ref">GDALを利用しているソフトウェア</span></a>:</p>
+<h2>ここで回答がされていない質問があります。 そのような場合私はどこで情報を得ることができますか?<a class="headerlink" href="#i-have-a-question-that-s-not-answered-here-where-can-i-get-more-information" title="Link to this heading"></a></h2>
+<p>参照 <a class="reference internal" href="community/index.html#community"><span class="std std-ref">Community</span></a></p>
 <p>Keep in mind, the quality of the answer you get does bear some relation to the quality of the question. If you need more detailed explanation of this, you can find it in essay <a class="reference external" href="http://www.catb.org/~esr/faqs/smart-questions.html">How To Ask Questions The Smart Way</a> by Eric S. Raymond.</p>
 </section>
 <section id="how-do-i-add-support-for-a-new-format">
-<h2>How do I add support for a new format?<a class="headerlink" href="#how-do-i-add-support-for-a-new-format" title="Link to this heading"></a></h2>
+<h2>新しいフォーマットのサポートを追加するにはどうすればよいですか？<a class="headerlink" href="#how-do-i-add-support-for-a-new-format" title="Link to this heading"></a></h2>
 <p>To some extent this is now covered by the <a class="reference internal" href="tutorials/raster_driver_tut.html#raster-driver-tut"><span class="std std-ref">Raster driver implementation tutorial</span></a> and <a class="reference internal" href="tutorials/vector_driver_tut.html#vector-driver-tut"><span class="std std-ref">Vector driver implementation tutorial</span></a></p>
 </section>
 <section id="is-gdal-thread-safe">
-<h2>Is GDAL thread-safe ?<a class="headerlink" href="#is-gdal-thread-safe" title="Link to this heading"></a></h2>
-<p>See <a class="reference internal" href="user/multithreading.html#multithreading"><span class="std std-ref">Multi-threading</span></a></p>
+<h2>GDALはスレッドセーフですか？<a class="headerlink" href="#is-gdal-thread-safe" title="Link to this heading"></a></h2>
+<p>参照 <a class="reference internal" href="user/multithreading.html#multithreading"><span class="std std-ref">Multi-threading</span></a></p>
 </section>
 <section id="how-do-i-cite-gdal">
-<h2>How do I cite GDAL ?<a class="headerlink" href="#how-do-i-cite-gdal" title="Link to this heading"></a></h2>
-<p>See <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/CITATION">CITATION</a></p>
+<h2>GDALをどのように引用すればよいですか？<a class="headerlink" href="#how-do-i-cite-gdal" title="Link to this heading"></a></h2>
+<p>参照 <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/CITATION">CITATION</a></p>
 </section>
 </section>
 

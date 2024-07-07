@@ -51,12 +51,12 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../download.html">ダウンロード</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Programs</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="index.html#general">General</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#raster-programs">Raster programs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#multidimensional-raster-programs">Multidimensional Raster programs</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html#vector-programs">Vector programs</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="vector_common_options.html">Common options</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">プログラム</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#general">一般情報</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#raster-programs">ラスタープログラム</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#multidimensional-raster-programs">多次元ラスタープログラム</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#vector-programs">ベクタープログラム</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="vector_common_options.html">共通オプション</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ogrinfo.html">ogrinfo</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">ogr2ogr</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#synopsis">Synopsis</a></li>
@@ -78,15 +78,15 @@
 <li class="toctree-l2"><a class="reference internal" href="index.html#other-utilities">Other utilities</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">Raster drivers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">Vector drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">ラスタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">ベクタードライバー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">チュートリアル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">開発</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">コミュニティ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">どのように貢献できますか?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">ライセンス</a></li>
 </ul>
@@ -124,7 +124,7 @@
     
       <li><a href="../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">Programs</a> &raquo;</li>
+          <li><a href="index.html">プログラム</a> &raquo;</li>
       
       <li>ogr2ogr</li>
     
@@ -190,7 +190,8 @@
        <span class="p">[</span><span class="o">-</span><span class="n">t_coord_epoch</span> <span class="o">&lt;</span><span class="n">epoch</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">ct</span> <span class="o">&lt;</span><span class="n">pipeline_def</span><span class="o">&gt;</span><span class="p">]</span>
        <span class="p">[</span><span class="o">-</span><span class="n">spat_srs</span> <span class="o">&lt;</span><span class="n">srs_def</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">geomfield</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="p">]</span>
        <span class="p">[</span><span class="o">-</span><span class="n">segmentize</span> <span class="o">&lt;</span><span class="n">max_dist</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">simplify</span> <span class="o">&lt;</span><span class="n">tolerance</span><span class="o">&gt;</span><span class="p">]</span>
-       <span class="p">[</span><span class="o">-</span><span class="n">makevalid</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">wrapdateline</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">datelineoffset</span> <span class="o">&lt;</span><span class="n">val_in_degree</span><span class="o">&gt;</span><span class="p">]</span>
+       <span class="p">[</span><span class="o">-</span><span class="n">makevalid</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">skipinvalid</span><span class="p">]</span>
+       <span class="p">[</span><span class="o">-</span><span class="n">wrapdateline</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">datelineoffset</span> <span class="o">&lt;</span><span class="n">val_in_degree</span><span class="o">&gt;</span><span class="p">]</span>
        <span class="p">[</span><span class="o">-</span><span class="n">clipsrc</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">xmin</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">ymin</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">xmax</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">ymax</span><span class="o">&gt;</span><span class="p">]</span><span class="o">|&lt;</span><span class="n">WKT</span><span class="o">&gt;|&lt;</span><span class="n">datasource</span><span class="o">&gt;|</span><span class="n">spat_extent</span><span class="p">]</span>
        <span class="p">[</span><span class="o">-</span><span class="n">clipsrcsql</span> <span class="o">&lt;</span><span class="n">sql_statement</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">clipsrclayer</span> <span class="o">&lt;</span><span class="n">layername</span><span class="o">&gt;</span><span class="p">]</span>
        <span class="p">[</span><span class="o">-</span><span class="n">clipsrcwhere</span> <span class="o">&lt;</span><span class="n">expression</span><span class="o">&gt;</span><span class="p">]</span>
@@ -736,6 +737,15 @@ This option is applied before the reprojection implied by <a class="reference in
 <dd><p>Run the <a class="reference internal" href="../api/ogrgeometry_cpp.html#_CPPv4NK11OGRGeometry9MakeValidE12CSLConstList" title="OGRGeometry::MakeValid"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRGeometry::MakeValid()</span></code></a> operation, followed by
 <a class="reference internal" href="../api/ogrgeometry_cpp.html#_CPPv4N18OGRGeometryFactory28removeLowerDimensionSubGeomsEPK11OGRGeometry" title="OGRGeometryFactory::removeLowerDimensionSubGeoms"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRGeometryFactory::removeLowerDimensionSubGeoms()</span></code></a>, on geometries
 to ensure they are valid regarding the rules of the Simple Features specification.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-ogr2ogr-skipinvalid">
+<span class="sig-name descname"><span class="pre">-skipinvalid</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-ogr2ogr-skipinvalid" title="Link to this definition"></a></dt>
+<dd><p>Run the <a class="reference internal" href="../api/ogrgeometry_cpp.html#_CPPv4NK11OGRGeometry7IsValidEv" title="OGRGeometry::IsValid"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRGeometry::IsValid()</span></code></a> operation on geometries to check if
+they are valid regarding the rules of the Simple Features specification.
+If they are not, the feature is skipped. This check is done after all other
+geometry operations.</p>
 </dd></dl>
 
 <dl class="std option">

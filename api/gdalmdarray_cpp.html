@@ -51,16 +51,16 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../programs/index.html">Programs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">Raster drivers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">Vector drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programs/index.html">プログラム</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">ラスタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">ベクタードライバー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">チュートリアル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">開発</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">コミュニティ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">どのように貢献できますか?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">ライセンス</a></li>
 </ul>
@@ -462,7 +462,7 @@ This is the same as the C function <a class="reference internal" href="raster_c_
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N11GDALMDArray9SetOffsetEd12GDALDataType">
-<span id="_CPPv3N11GDALMDArray9SetOffsetEd12GDALDataType"></span><span id="_CPPv2N11GDALMDArray9SetOffsetEd12GDALDataType"></span><span id="GDALMDArray::SetOffset__double.GDALDataType"></span><span class="target" id="classGDALMDArray_1aee99810d3b702c1b2827a6097ded2c49"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SetOffset</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dfOffset</span></span>, <a class="reference internal" href="raster_c_api.html#_CPPv412GDALDataType" title="GDALDataType"><span class="n"><span class="pre">GDALDataType</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">eStorageType</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">GDT_Unknown</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11GDALMDArray9SetOffsetEd12GDALDataType" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N11GDALMDArray9SetOffsetEd12GDALDataType"></span><span id="_CPPv2N11GDALMDArray9SetOffsetEd12GDALDataType"></span><span id="GDALMDArray::SetOffset__double.GDALDataType"></span><span class="target" id="classGDALMDArray_1aee99810d3b702c1b2827a6097ded2c49"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SetOffset</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dfOffset</span></span>, <a class="reference internal" href="raster_c_api.html#_CPPv412GDALDataType" title="GDALDataType"><span class="n"><span class="pre">GDALDataType</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">eStorageType</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="raster_c_api.html#_CPPv4N12GDALDataType11GDT_UnknownE" title="GDT_Unknown"><span class="n"><span class="pre">GDT_Unknown</span></span></a><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11GDALMDArray9SetOffsetEd12GDALDataType" title="Link to this definition"></a><br /></dt>
 <dd><p>Set the offset value to apply to raw values. </p>
 <p>unscaled_value = raw_value * <a class="reference internal" href="#classGDALMDArray_1a6a6898f31b8eae2294f4735469fc8b45"><span class="std std-ref">GetScale()</span></a> + <a class="reference internal" href="#classGDALMDArray_1a59e687a08461bbe1320f3a81b0089675"><span class="std std-ref">GetOffset()</span></a></p>
 <p>This is the same as the C function <a class="reference internal" href="raster_c_api.html#gdal_8h_1af37c50656c28be8412112799c8eb9620"><span class="std std-ref">GDALMDArraySetOffset()</span></a> / <a class="reference internal" href="raster_c_api.html#gdal_8h_1a3f9e5b4ddc2769cbf2b25a2c559a5311"><span class="std std-ref">GDALMDArraySetOffsetEx()</span></a>.</p>
@@ -485,7 +485,7 @@ This is the same as the C function <a class="reference internal" href="raster_c_
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N11GDALMDArray8SetScaleEd12GDALDataType">
-<span id="_CPPv3N11GDALMDArray8SetScaleEd12GDALDataType"></span><span id="_CPPv2N11GDALMDArray8SetScaleEd12GDALDataType"></span><span id="GDALMDArray::SetScale__double.GDALDataType"></span><span class="target" id="classGDALMDArray_1a49f70c7bc5d68bcf14b829fc3ba0d27c"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SetScale</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dfScale</span></span>, <a class="reference internal" href="raster_c_api.html#_CPPv412GDALDataType" title="GDALDataType"><span class="n"><span class="pre">GDALDataType</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">eStorageType</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">GDT_Unknown</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11GDALMDArray8SetScaleEd12GDALDataType" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N11GDALMDArray8SetScaleEd12GDALDataType"></span><span id="_CPPv2N11GDALMDArray8SetScaleEd12GDALDataType"></span><span id="GDALMDArray::SetScale__double.GDALDataType"></span><span class="target" id="classGDALMDArray_1a49f70c7bc5d68bcf14b829fc3ba0d27c"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SetScale</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dfScale</span></span>, <a class="reference internal" href="raster_c_api.html#_CPPv412GDALDataType" title="GDALDataType"><span class="n"><span class="pre">GDALDataType</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">eStorageType</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="raster_c_api.html#_CPPv4N12GDALDataType11GDT_UnknownE" title="GDT_Unknown"><span class="n"><span class="pre">GDT_Unknown</span></span></a><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11GDALMDArray8SetScaleEd12GDALDataType" title="Link to this definition"></a><br /></dt>
 <dd><p>Set the scale value to apply to raw values. </p>
 <p>unscaled_value = raw_value * <a class="reference internal" href="#classGDALMDArray_1a6a6898f31b8eae2294f4735469fc8b45"><span class="std std-ref">GetScale()</span></a> + <a class="reference internal" href="#classGDALMDArray_1a59e687a08461bbe1320f3a81b0089675"><span class="std std-ref">GetOffset()</span></a></p>
 <p>This is the same as the C function <a class="reference internal" href="raster_c_api.html#gdal_8h_1a7a3dc343fdd18e5177593a5d66f1f545"><span class="std std-ref">GDALMDArraySetScale()</span></a> / <a class="reference internal" href="raster_c_api.html#gdal_8h_1ab79e443d322d81623738a21a21f9468d"><span class="std std-ref">GDALMDArraySetScaleEx()</span></a>.</p>
@@ -648,7 +648,12 @@ The returned array holds a reference to the original one, and thus is a view of 
 <dd><p>Return an array that is a resampled / reprojected view of the current array. </p>
 <p>This is the same as the C function <a class="reference internal" href="raster_c_api.html#gdal_8h_1a1450876e93f5baa386f625c17b81e3b6"><span class="std std-ref">GDALMDArrayGetResampled()</span></a>.</p>
 <p>Currently this method can only resample along the last 2 dimensions, unless orthorectifying a NASA EMIT dataset.</p>
-<p>For NASA EMIT datasets, if apoNewDims[] and poTargetSRS is NULL, the geometry lookup table (GLT) is used for fast orthorectification.</p>
+<p>For NASA EMIT datasets, if apoNewDims[] and poTargetSRS is NULL, the geometry lookup table (GLT) is used by default for fast orthorectification.</p>
+<p>Options available are: <ul class="simple">
+<li><p>EMIT_ORTHORECTIFICATION=YES/NO: defaults to YES for a NASA EMIT dataset. Can be set to NO to use generic reprojection method.  </p></li>
+<li><p>USE_GOOD_WAVELENGTHS=YES/NO: defaults to YES. Only used for EMIT orthorectification to take into account the value of the /sensor_band_parameters/good_wavelengths array to decide if slices of the current array along the band dimension are valid. </p></li>
+</ul>
+</p>
 <p><dl class="simple">
 <dt><strong>Since</strong></dt><dd><p>3.4 </p>
 </dd>

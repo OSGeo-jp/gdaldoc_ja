@@ -51,9 +51,9 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">Programs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../raster/index.html">Raster drivers</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Vector drivers</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">プログラム</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../raster/index.html">ラスタードライバー</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">ベクタードライバー</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="amigocloud.html">AmigoCloud</a></li>
 <li class="toctree-l2"><a class="reference internal" href="arrow.html">(Geo)Arrow IPC File Format / Stream</a></li>
 <li class="toctree-l2"><a class="reference internal" href="avcbin.html">Arc/Info Binary Coverage</a></li>
@@ -115,6 +115,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#layer-creation-options">Layer Creation Options</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#layer-open-options">Layer Open Options</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#example">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#standalone-plugin-compilation">Standalone plugin compilation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#credits">Credits</a></li>
 </ul>
 </li>
@@ -156,11 +157,11 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">Community</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">どのように貢献できますか?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
@@ -198,7 +199,7 @@
     
       <li><a href="../../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">Vector drivers</a> &raquo;</li>
+          <li><a href="index.html">ベクタードライバー</a> &raquo;</li>
       
       <li>Oracle Spatial</li>
     
@@ -515,10 +516,30 @@ coordinate reference system, and converting timestamps to UTC.</p>
 </pre></div>
 </div>
 </section>
+<section id="standalone-plugin-compilation">
+<h3>Standalone plugin compilation<a class="headerlink" href="#standalone-plugin-compilation" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.10.</span></p>
+</div>
+<p>While this driver may be built as part of a whole GDAL build, either in libgdal
+itself, or as a plugin, it is also possible to only build this driver as a plugin,
+against an already built libgdal.</p>
+<p>The version of the GDAL sources used to build the driver must match the version
+of the libgdal it is built against.</p>
+<p>For example, from a &quot;build_oci&quot; directory under the root of the GDAL source tree:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">-</span><span class="n">S</span> <span class="o">../</span><span class="n">ogr</span><span class="o">/</span><span class="n">ogrsf_frmts</span><span class="o">/</span><span class="n">oci</span> <span class="o">-</span><span class="n">DCMAKE_PREFIX_PATH</span><span class="o">=/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">GDAL_installation_prefix</span> <span class="o">-</span><span class="n">DOracle_ROOT</span><span class="o">=/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">instantclient_sdk_root</span>
+<span class="n">cmake</span> <span class="o">--</span><span class="n">build</span> <span class="o">.</span>
+</pre></div>
+</div>
+<p>Note that such a plugin, when used against a libgdal not aware of it, will be
+systematically loaded at GDAL driver initialization time, and will not benefit from
+<cite>deferred plugin loading capabilities &lt;rfc-96&gt;</cite>. For that, libgdal itself must be built with the
+CMake variable OGR_REGISTER_DRIVER_OCI_FOR_LATER_PLUGIN=ON set.</p>
+</section>
 <section id="credits">
 <h3>Credits<a class="headerlink" href="#credits" title="Link to this heading"></a></h3>
-<p>I would like to thank <a class="reference external" href="http://www.extendthereach.com/">SRC, LLC</a> for
-its financial support of the development of this driver.</p>
+<p><a class="reference external" href="http://www.extendthereach.com/">SRC, LLC</a> for its financial support of
+the initial development of this driver.</p>
 </section>
 </section>
 </section>

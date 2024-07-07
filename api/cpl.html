@@ -51,16 +51,16 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../programs/index.html">Programs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">Raster drivers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">Vector drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programs/index.html">プログラム</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">ラスタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">ベクタードライバー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">チュートリアル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">開発</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">コミュニティ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">どのように貢献できますか?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">ライセンス</a></li>
 </ul>
@@ -2941,7 +2941,7 @@
 <li><p>RETRY_CODES=val, where val is &quot;ALL&quot; or a comma-separated list of HTTP codes that are considered for retry. By default, 429, 500, 502, 503 or 504 HTTP errors are considered, as well as other situations with a particular HTTP or Curl error message. (GDAL &gt;= 3.10). Corresponding configuration option: GDAL_HTTP_RETRY_CODES.  </p></li>
 <li><p>MAX_FILE_SIZE=val, where val is a number of bytes (GDAL &gt;= 2.2) No corresponding configuration option.  </p></li>
 <li><p>CAINFO=/path/to/bundle.crt. This is path to Certificate Authority (CA) bundle file. By default, it will be looked for in a system location. If the CAINFO option is not defined, GDAL will also look in the CURL_CA_BUNDLE and SSL_CERT_FILE environment variables respectively and use the first one found as the CAINFO value (GDAL &gt;= 2.1.3). The GDAL_CURL_CA_BUNDLE environment variable may also be used to set the CAINFO value in GDAL &gt;= 3.2. </p></li>
-<li><p>HTTP_VERSION=1.0/1.1/2/2TLS (GDAL &gt;= 2.3). Specify HTTP version to use. Will default to 1.1 generally (except on some controlled environments, like Google Compute Engine VMs, where 2TLS will be the default). Support for HTTP/2 requires curl 7.33 or later, built against nghttp2. &quot;2TLS&quot; means that HTTP/2 will be attempted for HTTPS connections only. Whereas &quot;2&quot; means that HTTP/2 will be attempted for HTTP or HTTPS. Corresponding configuration option: GDAL_HTTP_VERSION.  </p></li>
+<li><p>HTTP_VERSION=1.0/1.1/2/2TLS (GDAL &gt;= 2.3)/2PRIOR_KNOWLEDGE (GDAL &gt;= 3.10). Specify HTTP version to use. Will default to 1.1 generally (except on some controlled environments, like Google Compute Engine VMs, where 2TLS will be the default). Support for HTTP/2 requires curl 7.33 or later, built against nghttp2. &quot;2TLS&quot; means that HTTP/2 will be attempted for HTTPS connections only. Whereas &quot;2&quot; means that HTTP/2 will be attempted for HTTP or HTTPS. &quot;2PRIOR_KNOWLEDGE&quot; means that the server will be assumed to support HTTP/2. Corresponding configuration option: GDAL_HTTP_VERSION.  </p></li>
 <li><p>SSL_VERIFYSTATUS=YES/NO (GDAL &gt;= 2.3, and curl &gt;= 7.41): determines whether the status of the server cert using the &quot;Certificate Status Request&quot; TLS extension (aka. OCSP stapling) should be checked. If this option is enabled but the server does not support the TLS extension, the verification will fail. Default to NO. Corresponding configuration option: GDAL_HTTP_SSL_VERIFYSTATUS.  </p></li>
 <li><p>USE_CAPI_STORE=YES/NO (GDAL &gt;= 2.3, Windows only): whether CA certificates from the Windows certificate store. Defaults to NO. Corresponding configuration option: GDAL_HTTP_USE_CAPI_STORE.  </p></li>
 <li><p>TCP_KEEPALIVE=YES/NO (GDAL &gt;= 3.6): whether to enable TCP keep-alive. Defaults to NO. Corresponding configuration option: GDAL_HTTP_TCP_KEEPALIVE.  </p></li>
@@ -3532,7 +3532,7 @@
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N11GOA2Manager9m_eMethodE">
-<span id="_CPPv3N11GOA2Manager9m_eMethodE"></span><span id="_CPPv2N11GOA2Manager9m_eMethodE"></span><span id="GOA2Manager::m_eMethod__AuthMethod"></span><span class="target" id="classGOA2Manager_1a80ea27a7b732107565026da7b5629cd1"></span><a class="reference internal" href="#_CPPv4N11GOA2Manager10AuthMethodE" title="GOA2Manager::AuthMethod"><span class="n"><span class="pre">AuthMethod</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">m_eMethod</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">NONE</span></span><a class="headerlink" href="#_CPPv4N11GOA2Manager9m_eMethodE" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N11GOA2Manager9m_eMethodE"></span><span id="_CPPv2N11GOA2Manager9m_eMethodE"></span><span id="GOA2Manager::m_eMethod__AuthMethod"></span><span class="target" id="classGOA2Manager_1a80ea27a7b732107565026da7b5629cd1"></span><a class="reference internal" href="#_CPPv4N11GOA2Manager10AuthMethodE" title="GOA2Manager::AuthMethod"><span class="n"><span class="pre">AuthMethod</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">m_eMethod</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N11GOA2Manager10AuthMethod4NONEE" title="GOA2Manager::NONE"><span class="n"><span class="pre">NONE</span></span></a><a class="headerlink" href="#_CPPv4N11GOA2Manager9m_eMethodE" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp var">

@@ -51,8 +51,8 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">Programs</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Raster drivers</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../programs/index.html">プログラム</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">ラスタードライバー</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="aaigrid.html">AAIGrid -- Arc/Info ASCII Grid</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ace2.html">ACE2 -- ACE2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adrg.html">ADRG -- ADRG/ARC Digitized Raster Graphics (.gen/.thf)</a></li>
@@ -244,14 +244,14 @@
 <li class="toctree-l2"><a class="reference internal" href="zmap.html">ZMap -- ZMap Plus Grid</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../vector/index.html">Vector drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vector/index.html">ベクタードライバー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">Community</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">チュートリアル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">開発</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/index.html">コミュニティ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">どのように貢献できますか?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
 </ul>
@@ -289,7 +289,7 @@
     
       <li><a href="../../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">Raster drivers</a> &raquo;</li>
+          <li><a href="index.html">ラスタードライバー</a> &raquo;</li>
       
       <li>PDF -- Geospatial PDF</li>
     
@@ -711,7 +711,7 @@ composition of the PDF:</p>
 datatype = GDT_Unknown and <a class="reference internal" href="#drivers/raster/pdf-co-COMPOSITION_FILE"><code class="docutils literal notranslate"><span class="pre">COMPOSITION_FILE</span></code></a> must be the single creation
 option.</p>
 <p>The XML schema against which the composition file must validate is
-<a class="reference external" href="https://raw.githubusercontent.com/OSGeo/gdal/master/data/pdfcomposition.xsd">pdfcomposition.xsd</a></p>
+<a class="reference external" href="https://raw.githubusercontent.com/OSGeo/gdal/master/frmts/pdf/data/pdfcomposition.xsd">pdfcomposition.xsd</a></p>
 <p>Example on how to use the API:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">papszOptions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CSLSetNameValue</span><span class="p">(</span><span class="k">nullptr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;COMPOSITION_FILE&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;the.xml&quot;</span><span class="p">);</span>
 <span class="n">GDALDataset</span><span class="o">*</span><span class="w"> </span><span class="n">ds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GDALCreate</span><span class="p">(</span><span class="s">&quot;the.pdf&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">GDT_Unknown</span><span class="p">,</span><span class="w"> </span><span class="n">papszOptions</span><span class="p">);</span>

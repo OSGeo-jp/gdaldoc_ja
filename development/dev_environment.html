@@ -51,13 +51,13 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../programs/index.html">Programs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">Raster drivers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">Vector drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programs/index.html">プログラム</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">ラスタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">ベクタードライバー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/index.html">ユーザー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Development</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">チュートリアル</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">開発</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="building_from_source.html">Building GDAL from source</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Setting up a development environment</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#build-requirements">Build requirements</a></li>
@@ -66,6 +66,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#building-on-windows-with-conda-dependencies-and-visual-studio">Building on Windows with Conda dependencies and Visual Studio</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#install-git">Install git</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#install-miniconda">Install miniconda</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#install-visual-studio">Install Visual Studio</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#install-gdal-dependencies">Install GDAL dependencies</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#checkout-gdal-sources">Checkout GDAL sources</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#build-gdal">Build GDAL</a></li>
@@ -81,9 +82,9 @@
 <li class="toctree-l2"><a class="reference internal" href="rfc/index.html">RFC list</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../community/index.html">Community</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">Sponsors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">How to contribute?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">コミュニティ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">どのように貢献できますか?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">ライセンス</a></li>
 </ul>
@@ -121,7 +122,7 @@
     
       <li><a href="../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">Development</a> &raquo;</li>
+          <li><a href="index.html">開発</a> &raquo;</li>
       
       <li>Setting up a development environment</li>
     
@@ -219,14 +220,20 @@ mkdir<span class="w"> </span>build-asan
 <h3>Install miniconda<a class="headerlink" href="#install-miniconda" title="Link to this heading"></a></h3>
 <p>Install <a class="reference external" href="https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe">miniconda</a></p>
 </section>
+<section id="install-visual-studio">
+<h3>Install Visual Studio<a class="headerlink" href="#install-visual-studio" title="Link to this heading"></a></h3>
+<p>Install <a class="reference external" href="https://visualstudio.microsoft.com/vs/community/">Visual Studio</a>
+In Visual Studio Installer Workloads tab check Desktop development with C++.
+Only the latest Community Edition (2022) is available.</p>
+</section>
 <section id="install-gdal-dependencies">
 <h3>Install GDAL dependencies<a class="headerlink" href="#install-gdal-dependencies" title="Link to this heading"></a></h3>
 <p>Start a Conda enabled console and assuming there is a c:\dev directory</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd c:\dev</span>
 <span class="go">conda create --name gdal</span>
 <span class="go">conda activate gdal</span>
-<span class="go">conda install --yes --quiet curl libiconv icu git python=3.7 swig numpy pytest zlib clcache</span>
-<span class="go">conda install --yes --quiet -c conda-forge compilers</span>
+<span class="go">conda install --yes --quiet curl libiconv icu git python swig numpy pytest zlib</span>
+<span class="go">conda install --yes --quiet -c conda-forge compilers clcache</span>
 <span class="go">conda install --yes --quiet -c conda-forge \</span>
 <span class="go">    cmake proj geos hdf4 hdf5 \</span>
 <span class="go">    libnetcdf openjpeg poppler libtiff libpng xerces-c expat libxml2 kealib json-c \</span>
@@ -236,9 +243,9 @@ mkdir<span class="w"> </span>build-asan
 </div>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">compilers</span></code> package will install <code class="docutils literal notranslate"><span class="pre">vs2017_win-64</span></code> (at time of writing)
-to set the appropriate environment for cmake to pick up. It is also possible
-to use the <code class="docutils literal notranslate"><span class="pre">vs2019_win-64</span></code> package if Visual Studio 2019 is to be used.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">compilers</span></code> package will install <code class="docutils literal notranslate"><span class="pre">vs2019_win-64</span></code> (at time of writing)
+to set the appropriate environment for cmake to pick up. It also finds and works
+with Visual Studio 2022 if that is installed.</p>
 </div>
 </section>
 <section id="checkout-gdal-sources">
@@ -271,6 +278,10 @@ able to execute C++ or Python utilities of the build directory, or run tests.</p
 </div>
 <p>(with adjustments to the above path if the build directory is not a subdirectory of the GDAL source root).</p>
 <p>For Windows, a similar <code class="docutils literal notranslate"><span class="pre">scripts/setdevenv.bat</span></code> script exists (it currently assumes a Release build).</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd c:\dev\gdal\build</span>
+<span class="go">..\scripts\setdevenv.bat</span>
+</pre></div>
+</div>
 <p>To verify that environment variables have been set correctly, you can check the version of a GDAL binary:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdalinfo<span class="w"> </span>--version
 <span class="c1"># GDAL 3.7.0dev-5327c149f5-dirty, released 2018/99/99 (debug build)</span>

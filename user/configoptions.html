@@ -651,13 +651,12 @@ well as other situations with a particular HTTP or Curl error message.</p>
 </li>
 <li><p id="config-GDAL_HTTP_KEYPASSWD"><strong>GDAL_HTTP_KEYPASSWD=value: </strong> (GDAL &gt;= 3.7) Passphrase to private key. See <a class="reference external" href="https://curl.se/libcurl/c/CURLOPT_KEYPASSWD.html">https://curl.se/libcurl/c/CURLOPT_KEYPASSWD.html</a></p>
 </li>
-<li><p id="config-GDAL_HTTP_VERSION"><strong>GDAL_HTTP_VERSION=[1.0/1.1/2/2TLS/2PRIOR_KNOWLEDGE]: </strong>Specifies which HTTP version to use. Will default to 1.1 generally (except on
+<li><p id="config-GDAL_HTTP_VERSION"><strong>GDAL_HTTP_VERSION=[1.0/1.1/2/2TLS]: </strong>Specifies which HTTP version to use. Will default to 1.1 generally (except on
 some controlled environments, like Google Compute Engine VMs, where 2TLS will
 be the default). Support for HTTP/2 requires curl 7.33 or later, built
 against nghttp2. &quot;2TLS&quot; means that HTTP/2 will be attempted for HTTPS
 connections only. Whereas &quot;2&quot; means that HTTP/2 will be attempted for HTTP or
-HTTPS. &quot;2PRIOR_KNOWLEDGE&quot; means that the server will be assumed to support
-HTTP/2. The interest of enabling HTTP/2 is the use of HTTP/2 multiplexing when
+HTTPS. The interest of enabling HTTP/2 is the use of HTTP/2 multiplexing when
 reading GeoTIFFs stored on /vsicurl/ and related virtual file systems.</p>
 </li>
 <li><p id="config-GDAL_HTTP_MULTIPLEX"><strong>GDAL_HTTP_MULTIPLEX=[YES/NO]: </strong>Defaults to YES. Only applies on a HTTP/2 connection. If set to YES, HTTP/2
@@ -943,10 +942,8 @@ horizontal datum.</p>
 <li><p><a class="reference internal" href="../drivers/raster/dted.html#config-DTED_VERIFY_CHECKSUM"><code class="docutils literal notranslate"><span class="pre">DTED_VERIFY_CHECKSUM</span></code></a>: <a class="reference internal" href="../drivers/raster/dted.html">DTED -- Military Elevation Data</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/dwg.html#config-DWG_ALL_ATTRIBUTES"><code class="docutils literal notranslate"><span class="pre">DWG_ALL_ATTRIBUTES</span></code></a>: <a class="reference internal" href="../drivers/vector/dwg.html">AutoCAD DWG</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/dwg.html#config-DWG_ATTRIBUTES"><code class="docutils literal notranslate"><span class="pre">DWG_ATTRIBUTES</span></code></a>: <a class="reference internal" href="../drivers/vector/dwg.html">AutoCAD DWG</a></p></li>
-<li><p><a class="reference internal" href="../drivers/vector/dwg.html#config-DWG_CLOSED_LINE_AS_POLYGON"><code class="docutils literal notranslate"><span class="pre">DWG_CLOSED_LINE_AS_POLYGON</span></code></a>: <a class="reference internal" href="../drivers/vector/dwg.html">AutoCAD DWG</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/dwg.html#config-DWG_INLINE_BLOCKS"><code class="docutils literal notranslate"><span class="pre">DWG_INLINE_BLOCKS</span></code></a>: <a class="reference internal" href="../drivers/vector/dwg.html">AutoCAD DWG</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/dxf.html#config-DXF_3D_EXTENSIBLE_MODE"><code class="docutils literal notranslate"><span class="pre">DXF_3D_EXTENSIBLE_MODE</span></code></a>: <a class="reference internal" href="../drivers/vector/dxf.html">AutoCAD DXF</a></p></li>
-<li><p><a class="reference internal" href="../drivers/vector/dxf.html#config-DXF_CLOSED_LINE_AS_POLYGON"><code class="docutils literal notranslate"><span class="pre">DXF_CLOSED_LINE_AS_POLYGON</span></code></a>: <a class="reference internal" href="../drivers/vector/dxf.html">AutoCAD DXF</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/dxf.html#config-DXF_ENCODING"><code class="docutils literal notranslate"><span class="pre">DXF_ENCODING</span></code></a>: <a class="reference internal" href="../drivers/vector/dxf.html">AutoCAD DXF</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/dxf.html#config-DXF_FEATURE_LIMIT_PER_BLOCK"><code class="docutils literal notranslate"><span class="pre">DXF_FEATURE_LIMIT_PER_BLOCK</span></code></a>: <a class="reference internal" href="../drivers/vector/dxf.html">AutoCAD DXF</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/dxf.html#config-DXF_HATCH_TOLERANCE"><code class="docutils literal notranslate"><span class="pre">DXF_HATCH_TOLERANCE</span></code></a>: <a class="reference internal" href="../drivers/vector/dxf.html">AutoCAD DXF</a></p></li>

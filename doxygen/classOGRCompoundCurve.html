@@ -195,6 +195,9 @@ const <a class="el" href="classOGRCurve.html#a503ba6a7ef7db7c1db3cf61fc26c5cbd">
 <tr class="memitem:a702b23c287499fc075d2837b3c82d5df"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classOGRPointIterator.html">OGRPointIterator</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOGRCompoundCurve.html#a702b23c287499fc075d2837b3c82d5df">getPointIterator</a> () const override</td></tr>
 <tr class="memdesc:a702b23c287499fc075d2837b3c82d5df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a point iterator over the curve.  <a href="classOGRCompoundCurve.html#a702b23c287499fc075d2837b3c82d5df">More...</a><br /></td></tr>
 <tr class="separator:a702b23c287499fc075d2837b3c82d5df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf8df0106deb01155562f1a492b1a63e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOGRCompoundCurve.html#aaf8df0106deb01155562f1a492b1a63e">reversePoints</a> () override</td></tr>
+<tr class="memdesc:aaf8df0106deb01155562f1a492b1a63e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reverse point order.  <a href="classOGRCompoundCurve.html#aaf8df0106deb01155562f1a492b1a63e">More...</a><br /></td></tr>
+<tr class="separator:aaf8df0106deb01155562f1a492b1a63e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0c737a27f323cf7fdd92c62c973d9dc"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="ogr__core_8h.html#a800236a0d460ef66e687b7b65610f12a">OGRwkbGeometryType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOGRCompoundCurve.html#af0c737a27f323cf7fdd92c62c973d9dc">getGeometryType</a> () const override</td></tr>
 <tr class="memdesc:af0c737a27f323cf7fdd92c62c973d9dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetch geometry type.  <a href="classOGRCompoundCurve.html#af0c737a27f323cf7fdd92c62c973d9dc">More...</a><br /></td></tr>
 <tr class="separator:af0c737a27f323cf7fdd92c62c973d9dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -3967,6 +3970,37 @@ KEEP_COLLAPSED=YES/NO. Only for METHOD=STRUCTURE. NO (default): collapses are co
 <dl class="section since"><dt>Since</dt><dd>GDAL 3.10 </dd></dl>
 
 <p>Reimplemented from <a class="el" href="classOGRGeometry.html#ad660b4366042e85a96f450777d43197e">OGRGeometry</a>.</p>
+
+</div>
+</div>
+<a id="aaf8df0106deb01155562f1a492b1a63e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf8df0106deb01155562f1a492b1a63e">&#9670;&nbsp;</a></span>reversePoints()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OGRCompoundCurve::reversePoints </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reverse point order. </p>
+<p>This method updates the points in this curve in place reversing the point ordering (first for last, etc) and component ordering.</p>
+<dl class="section since"><dt>Since</dt><dd>3.10 </dd></dl>
+
+<p>Implements <a class="el" href="classOGRCurve.html#ac6be30d1c8f9392ac992ec8173763198">OGRCurve</a>.</p>
 
 </div>
 </div>

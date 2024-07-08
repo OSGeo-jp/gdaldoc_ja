@@ -1494,7 +1494,13 @@ l2p_flags:flag_masks = 1s, 2s, 4s, 8s, 16s, 32s, 64s, 128s, 256s ;
 <p>Return an array that is a resampled / reprojected view of the current array. </p>
 <p>This is the same as the C function <a class="el" href="gdal_8h.html#a1450876e93f5baa386f625c17b81e3b6" title="Return an array that is a resampled / reprojected view of the current array.">GDALMDArrayGetResampled()</a>.</p>
 <p>Currently this method can only resample along the last 2 dimensions, unless orthorectifying a NASA EMIT dataset.</p>
-<p>For NASA EMIT datasets, if apoNewDims[] and poTargetSRS is NULL, the geometry lookup table (GLT) is used for fast orthorectification.</p>
+<p>For NASA EMIT datasets, if apoNewDims[] and poTargetSRS is NULL, the geometry lookup table (GLT) is used by default for fast orthorectification.</p>
+<p>Options available are: </p><ul>
+<li>
+EMIT_ORTHORECTIFICATION=YES/NO: defaults to YES for a NASA EMIT dataset. Can be set to NO to use generic reprojection method.  </li>
+<li>
+USE_GOOD_WAVELENGTHS=YES/NO: defaults to YES. Only used for EMIT orthorectification to take into account the value of the /sensor_band_parameters/good_wavelengths array to decide if slices of the current array along the band dimension are valid. </li>
+</ul>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">apoNewDims</td><td>New dimensions. Its size should be <a class="el" href="classGDALAbstractMDArray.html#ad187a612ebbf1369954af77ad57f7ade" title="Return the number of dimensions.">GetDimensionCount()</a>. apoNewDims[i] can be NULL to let the method automatically determine it. </td></tr>

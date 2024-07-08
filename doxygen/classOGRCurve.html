@@ -128,6 +128,9 @@ ConstIterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
 <tr class="memitem:abda3c4627b8de0b9066e0133e6a65cb1"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOGRCurve.html#abda3c4627b8de0b9066e0133e6a65cb1">isClockwise</a> () const</td></tr>
 <tr class="memdesc:abda3c4627b8de0b9066e0133e6a65cb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns TRUE if the ring has clockwise winding (or less than 2 points)  <a href="classOGRCurve.html#abda3c4627b8de0b9066e0133e6a65cb1">More...</a><br /></td></tr>
 <tr class="separator:abda3c4627b8de0b9066e0133e6a65cb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6be30d1c8f9392ac992ec8173763198"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOGRCurve.html#ac6be30d1c8f9392ac992ec8173763198">reversePoints</a> ()=0</td></tr>
+<tr class="memdesc:ac6be30d1c8f9392ac992ec8173763198"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reverse point order.  <a href="classOGRCurve.html#ac6be30d1c8f9392ac992ec8173763198">More...</a><br /></td></tr>
+<tr class="separator:ac6be30d1c8f9392ac992ec8173763198"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac7e3b0fc468d61eb3b7516154fe648e8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classOGRSimpleCurve.html">OGRSimpleCurve</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOGRCurve.html#ac7e3b0fc468d61eb3b7516154fe648e8">toSimpleCurve</a> ()</td></tr>
 <tr class="memdesc:ac7e3b0fc468d61eb3b7516154fe648e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Down-cast to OGRSimpleCurve*.  <a href="classOGRCurve.html#ac7e3b0fc468d61eb3b7516154fe648e8">More...</a><br /></td></tr>
 <tr class="separator:ac7e3b0fc468d61eb3b7516154fe648e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -3566,6 +3569,37 @@ KEEP_COLLAPSED=YES/NO. Only for METHOD=STRUCTURE. NO (default): collapses are co
 <dl class="section since"><dt>Since</dt><dd>GDAL 3.10 </dd></dl>
 
 <p>Reimplemented in <a class="el" href="classOGRPolyhedralSurface.html#a70fb35c751777e47c590c3fdb3c038a4">OGRPolyhedralSurface</a>, <a class="el" href="classOGRGeometryCollection.html#a915a2701666b542b8be121b850e902e5">OGRGeometryCollection</a>, <a class="el" href="classOGRCurvePolygon.html#afb504bdf32f5da406f0de9021cc18ab9">OGRCurvePolygon</a>, and <a class="el" href="classOGRCompoundCurve.html#a98d063b1fdcafdb567be096b8026a08f">OGRCompoundCurve</a>.</p>
+
+</div>
+</div>
+<a id="ac6be30d1c8f9392ac992ec8173763198"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6be30d1c8f9392ac992ec8173763198">&#9670;&nbsp;</a></span>reversePoints()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OGRCurve::reversePoints </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reverse point order. </p>
+<p>This method updates the points in this curve in place reversing the point ordering (first for last, etc) and component ordering for a compound curve.</p>
+<dl class="section since"><dt>Since</dt><dd>3.10 </dd></dl>
+
+<p>Implemented in <a class="el" href="classOGRCompoundCurve.html#aaf8df0106deb01155562f1a492b1a63e">OGRCompoundCurve</a>, and <a class="el" href="classOGRSimpleCurve.html#a63efcc6a3494e49956872fb741d7c0df">OGRSimpleCurve</a>.</p>
 
 </div>
 </div>

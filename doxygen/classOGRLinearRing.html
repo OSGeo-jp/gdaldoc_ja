@@ -95,10 +95,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1dc0ad4099e35743988e7b22d3363800"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classOGRLinearRing.html">OGRLinearRing</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOGRLinearRing.html#a1dc0ad4099e35743988e7b22d3363800">clone</a> () const override</td></tr>
 <tr class="memdesc:a1dc0ad4099e35743988e7b22d3363800"><td class="mdescLeft">&#160;</td><td class="mdescRight">Make a copy of this object.  <a href="classOGRLinearRing.html#a1dc0ad4099e35743988e7b22d3363800">More...</a><br /></td></tr>
 <tr class="separator:a1dc0ad4099e35743988e7b22d3363800"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a348fa1c7aac7b12a242aace5d7aee714"><td class="memItemLeft" align="right" valign="top"><a id="a348fa1c7aac7b12a242aace5d7aee714"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOGRLinearRing.html#a348fa1c7aac7b12a242aace5d7aee714">reverseWindingOrder</a> ()</td></tr>
-<tr class="memdesc:a348fa1c7aac7b12a242aace5d7aee714"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reverse order of points. <br /></td></tr>
-<tr class="separator:a348fa1c7aac7b12a242aace5d7aee714"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa094e3579479b77a9dfbcafd91a3f366"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOGRLinearRing.html#aa094e3579479b77a9dfbcafd91a3f366">closeRings</a> () override</td></tr>
 <tr class="memdesc:aa094e3579479b77a9dfbcafd91a3f366"><td class="mdescLeft">&#160;</td><td class="mdescRight">Force rings to be closed.  <a href="classOGRLinearRing.html#aa094e3579479b77a9dfbcafd91a3f366">More...</a><br /></td></tr>
 <tr class="separator:aa094e3579479b77a9dfbcafd91a3f366"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -319,9 +315,9 @@ ConstIterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
 <tr class="memitem:aad57eb14caca5d5921fea66acb48d614"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOGRSimpleCurve.html#aad57eb14caca5d5921fea66acb48d614">addSubLineString</a> (const <a class="el" href="classOGRLineString.html">OGRLineString</a> *, int nStartVertex=0, int nEndVertex=-1)</td></tr>
 <tr class="memdesc:aad57eb14caca5d5921fea66acb48d614"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a segment of another linestring to this one.  <a href="classOGRSimpleCurve.html#aad57eb14caca5d5921fea66acb48d614">More...</a><br /></td></tr>
 <tr class="separator:aad57eb14caca5d5921fea66acb48d614"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5028aa59be406435cb9332822e7e47cf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOGRSimpleCurve.html#a5028aa59be406435cb9332822e7e47cf">reversePoints</a> (void)</td></tr>
-<tr class="memdesc:a5028aa59be406435cb9332822e7e47cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reverse point order.  <a href="classOGRSimpleCurve.html#a5028aa59be406435cb9332822e7e47cf">More...</a><br /></td></tr>
-<tr class="separator:a5028aa59be406435cb9332822e7e47cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63efcc6a3494e49956872fb741d7c0df"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOGRSimpleCurve.html#a63efcc6a3494e49956872fb741d7c0df">reversePoints</a> () override</td></tr>
+<tr class="memdesc:a63efcc6a3494e49956872fb741d7c0df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reverse point order.  <a href="classOGRSimpleCurve.html#a63efcc6a3494e49956872fb741d7c0df">More...</a><br /></td></tr>
+<tr class="separator:a63efcc6a3494e49956872fb741d7c0df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae97040bc2869a945f516517bffc7a328"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classOGRPointIterator.html">OGRPointIterator</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOGRSimpleCurve.html#ae97040bc2869a945f516517bffc7a328">getPointIterator</a> () const override</td></tr>
 <tr class="memdesc:ae97040bc2869a945f516517bffc7a328"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a point iterator over the curve.  <a href="classOGRSimpleCurve.html#ae97040bc2869a945f516517bffc7a328">More...</a><br /></td></tr>
 <tr class="separator:ae97040bc2869a945f516517bffc7a328"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -4741,8 +4737,8 @@ KEEP_COLLAPSED=YES/NO. Only for METHOD=STRUCTURE. NO (default): collapses are co
 
 </div>
 </div>
-<a id="a5028aa59be406435cb9332822e7e47cf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5028aa59be406435cb9332822e7e47cf">&#9670;&nbsp;</a></span>reversePoints()</h2>
+<a id="a63efcc6a3494e49956872fb741d7c0df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63efcc6a3494e49956872fb741d7c0df">&#9670;&nbsp;</a></span>reversePoints()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -4753,20 +4749,21 @@ KEEP_COLLAPSED=YES/NO. Only for METHOD=STRUCTURE. NO (default): collapses are co
         <tr>
           <td class="memname">void OGRSimpleCurve::reversePoints </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">inherited</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>Reverse point order. </p>
 <p>This method updates the points in this line string in place reversing the point ordering (first for last, etc). </p>
+
+<p>Implements <a class="el" href="classOGRCurve.html#ac6be30d1c8f9392ac992ec8173763198">OGRCurve</a>.</p>
 
 </div>
 </div>

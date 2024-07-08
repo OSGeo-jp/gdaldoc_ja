@@ -137,6 +137,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#kdu-get-num-processors-always-returns-0-for-some-platforms">kdu_get_num_processors always returns 0 for some platforms</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#standalone-plugin-compilation">Standalone plugin compilation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
@@ -535,6 +536,26 @@ _SC_NPROCESSORS_CONF are not defined and kdu_get_num_processors will
 always return 0. Therefore the jp2kak driver might not default to
 creating worker threads.</p>
 </section>
+</section>
+<section id="standalone-plugin-compilation">
+<h2>Standalone plugin compilation<a class="headerlink" href="#standalone-plugin-compilation" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.10.</span></p>
+</div>
+<p>While this driver may be built as part of a whole GDAL build, either in libgdal
+itself, or as a plugin, it is also possible to only build this driver as a plugin,
+against an already built libgdal.</p>
+<p>The version of the GDAL sources used to build the driver must match the version
+of the libgdal it is built against.</p>
+<p>For example, from a &quot;build_jp2kak&quot; directory under the root of the GDAL source tree:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cmake</span> <span class="o">-</span><span class="n">S</span> <span class="o">../</span><span class="n">frmts</span><span class="o">/</span><span class="n">jp2kak</span> <span class="o">-</span><span class="n">DCMAKE_PREFIX_PATH</span><span class="o">=/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">GDAL_installation_prefix</span> <span class="o">-</span><span class="n">DKDU_ROOT</span><span class="o">=/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">kakadu_root</span>
+<span class="n">cmake</span> <span class="o">--</span><span class="n">build</span> <span class="o">.</span>
+</pre></div>
+</div>
+<p>Note that such a plugin, when used against a libgdal not aware of it, will be
+systematically loaded at GDAL driver initialization time, and will not benefit from
+<cite>deferred plugin loading capabilities &lt;rfc-96&gt;</cite>. For that, libgdal itself must be built with the
+CMake variable GDAL_REGISTER_DRIVER_JP2KAK_FOR_LATER_PLUGIN=ON set.</p>
 </section>
 <section id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>

@@ -415,7 +415,9 @@ Alignment means that xmin / resx, ymin / resy, xmax / resx and ymax / resy are i
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_rasterize-ot">
 <span class="sig-name descname"><span class="pre">-ot</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;type&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_rasterize-ot" title="Link to this definition"></a></dt>
-<dd><p>Force the output bands to be of the indicated data type. Defaults to <code class="docutils literal notranslate"><span class="pre">Float64</span></code></p>
+<dd><p>Force the output bands to be of the indicated data type. Defaults to <code class="docutils literal notranslate"><span class="pre">Float64</span></code>,
+unless the attribute field to burn is of type <code class="docutils literal notranslate"><span class="pre">Int64</span></code>, in which case <code class="docutils literal notranslate"><span class="pre">Int64</span></code>
+is used for the output raster data type if the output driver supports it.</p>
 </dd></dl>
 
 <dl class="std option">

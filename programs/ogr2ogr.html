@@ -190,7 +190,8 @@
        <span class="p">[</span><span class="o">-</span><span class="n">t_coord_epoch</span> <span class="o">&lt;</span><span class="n">epoch</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">ct</span> <span class="o">&lt;</span><span class="n">pipeline_def</span><span class="o">&gt;</span><span class="p">]</span>
        <span class="p">[</span><span class="o">-</span><span class="n">spat_srs</span> <span class="o">&lt;</span><span class="n">srs_def</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">geomfield</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="p">]</span>
        <span class="p">[</span><span class="o">-</span><span class="n">segmentize</span> <span class="o">&lt;</span><span class="n">max_dist</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">simplify</span> <span class="o">&lt;</span><span class="n">tolerance</span><span class="o">&gt;</span><span class="p">]</span>
-       <span class="p">[</span><span class="o">-</span><span class="n">makevalid</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">wrapdateline</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">datelineoffset</span> <span class="o">&lt;</span><span class="n">val_in_degree</span><span class="o">&gt;</span><span class="p">]</span>
+       <span class="p">[</span><span class="o">-</span><span class="n">makevalid</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">skipinvalid</span><span class="p">]</span>
+       <span class="p">[</span><span class="o">-</span><span class="n">wrapdateline</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">datelineoffset</span> <span class="o">&lt;</span><span class="n">val_in_degree</span><span class="o">&gt;</span><span class="p">]</span>
        <span class="p">[</span><span class="o">-</span><span class="n">clipsrc</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">xmin</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">ymin</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">xmax</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">ymax</span><span class="o">&gt;</span><span class="p">]</span><span class="o">|&lt;</span><span class="n">WKT</span><span class="o">&gt;|&lt;</span><span class="n">datasource</span><span class="o">&gt;|</span><span class="n">spat_extent</span><span class="p">]</span>
        <span class="p">[</span><span class="o">-</span><span class="n">clipsrcsql</span> <span class="o">&lt;</span><span class="n">sql_statement</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">clipsrclayer</span> <span class="o">&lt;</span><span class="n">layername</span><span class="o">&gt;</span><span class="p">]</span>
        <span class="p">[</span><span class="o">-</span><span class="n">clipsrcwhere</span> <span class="o">&lt;</span><span class="n">expression</span><span class="o">&gt;</span><span class="p">]</span>
@@ -736,6 +737,15 @@ This option is applied before the reprojection implied by <a class="reference in
 <dd><p>Run the <a class="reference internal" href="../api/ogrgeometry_cpp.html#_CPPv4NK11OGRGeometry9MakeValidE12CSLConstList" title="OGRGeometry::MakeValid"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRGeometry::MakeValid()</span></code></a> operation, followed by
 <a class="reference internal" href="../api/ogrgeometry_cpp.html#_CPPv4N18OGRGeometryFactory28removeLowerDimensionSubGeomsEPK11OGRGeometry" title="OGRGeometryFactory::removeLowerDimensionSubGeoms"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRGeometryFactory::removeLowerDimensionSubGeoms()</span></code></a>, on geometries
 to ensure they are valid regarding the rules of the Simple Features specification.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-ogr2ogr-skipinvalid">
+<span class="sig-name descname"><span class="pre">-skipinvalid</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-ogr2ogr-skipinvalid" title="Link to this definition"></a></dt>
+<dd><p>Run the <a class="reference internal" href="../api/ogrgeometry_cpp.html#_CPPv4NK11OGRGeometry7IsValidEv" title="OGRGeometry::IsValid"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRGeometry::IsValid()</span></code></a> operation on geometries to check if
+they are valid regarding the rules of the Simple Features specification.
+If they are not, the feature is skipped. This check is done after all other
+geometry operations.</p>
 </dd></dl>
 
 <dl class="std option">

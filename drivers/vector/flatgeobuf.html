@@ -72,8 +72,8 @@
 <li class="toctree-l2"><a class="reference internal" href="esrijson.html">ESRIJSON / FeatureService driver</a></li>
 <li class="toctree-l2"><a class="reference internal" href="filegdb.html">ESRI File Geodatabase (FileGDB)</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">FlatGeobuf</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#driver-capabilities">Driver capabilities</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#multi-layer-support">Multi layer support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#driver-capabilities">ドライバーの機能</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#multi-layer-support">マルチレイヤーサポート</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#open-options">Open options</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dataset-creation-options">Dataset Creation Options</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#layer-creation-options">Layer Creation Options</a></li>
@@ -234,7 +234,7 @@
 <p><span class="versionmodified added">Added in version 3.1.</span></p>
 </div>
 <div class="admonition shortname" id="shortname-0">
-<p class="admonition-title">Driver short name</p>
+<p class="admonition-title">ドライバー短縮名</p>
 <p>FlatGeobuf</p>
 </div>
 <div class="admonition built_in_by_default" id="built_in_by_default-0">
@@ -246,7 +246,7 @@ in <a class="reference external" href="https://github.com/bjornharrtell/flatgeob
 performant binary encoding for geographic data based on flatbuffers that
 can hold a collection of Simple Features.</p>
 <section id="driver-capabilities">
-<h2>Driver capabilities<a class="headerlink" href="#driver-capabilities" title="Link to this heading"></a></h2>
+<h2>ドライバーの機能<a class="headerlink" href="#driver-capabilities" title="Link to this heading"></a></h2>
 <div class="admonition supports_create" id="supports_create-0">
 <p class="admonition-title">Supports Create()</p>
 <p>This driver supports the <a class="reference internal" href="../../api/gdaldriver_cpp.html#_CPPv4N10GDALDriver6CreateEPKciii12GDALDataType12CSLConstList" title="GDALDriver::Create"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::Create()</span></code></a> operation</p>
@@ -261,7 +261,7 @@ can hold a collection of Simple Features.</p>
 </div>
 </section>
 <section id="multi-layer-support">
-<h2>Multi layer support<a class="headerlink" href="#multi-layer-support" title="Link to this heading"></a></h2>
+<h2>マルチレイヤーサポート<a class="headerlink" href="#multi-layer-support" title="Link to this heading"></a></h2>
 <p>A single .fgb file only contains one single layer. For multiple layer support,
 it is possible to put several .fgb files in a directory, and use that directory
 name as the connection string.</p>

@@ -217,24 +217,19 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalinfo-json">
 <span class="sig-name descname"><span class="pre">-json</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalinfo-json" title="Link to this definition"></a></dt>
-<dd><p>Display the output in json format. Since GDAL 3.6, this includes key-value
-pairs useful for building a <a class="reference external" href="https://github.com/radiantearth/stac-spec/blob/v1.0.0/item-spec/item-spec.md">STAC item</a>
-, including statistics and histograms if <code class="docutils literal notranslate"><span class="pre">-stats</span></code> or <code class="docutils literal notranslate"><span class="pre">-hist</span></code> flags are
-passed, respectively.</p>
+<dd><p>json 形式で出力を表示します。GDAL 3.6以降, <a class="reference external" href="https://github.com/radiantearth/stac-spec/blob/v1.0.0/item-spec/item-spec.md">STAC item</a>  を生成するために便利なkey-valueペアを作成する機能を含みます。さらに <code class="docutils literal notranslate"><span class="pre">-stats</span></code> または <code class="docutils literal notranslate"><span class="pre">-hist</span></code> フラグが渡された場合はそれぞれ統計とヒストグラムが作成されます。</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalinfo-mm">
 <span class="sig-name descname"><span class="pre">-mm</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalinfo-mm" title="Link to this definition"></a></dt>
-<dd><p>Force computation of the actual min/max values for each band in the
-dataset.</p>
+<dd><p>データセット内の各バンドの正確な最小値/最大値を強制的に計算します。</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalinfo-stats">
 <span class="sig-name descname"><span class="pre">-stats</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalinfo-stats" title="Link to this definition"></a></dt>
-<dd><p>Read and display image statistics. Force computation if no
-statistics are stored in an image.</p>
+<dd><p>画像の統計情報を読み取って表示します. 統計情報が画像に保存されていない場合は 計算を強制します。</p>
 </dd></dl>
 
 <dl class="std option">
@@ -249,7 +244,7 @@ hurry and don't want precise stats.</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalinfo-hist">
 <span class="sig-name descname"><span class="pre">-hist</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalinfo-hist" title="Link to this definition"></a></dt>
-<dd><p>Report histogram information for all bands.</p>
+<dd><p>すべてのバンドのヒストグラム情報をレポートします。</p>
 </dd></dl>
 
 <dl class="std option">

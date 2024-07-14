@@ -337,25 +337,23 @@
 
 <p>gdalinfo は以下のすべての情報を表示します (既知の場合):</p>
 <ul class="simple">
-<li><p>The format driver used to access the file.</p></li>
-<li><p>Raster size (in pixels and lines).</p></li>
-<li><p>The coordinate system for the file (in OGC WKT).</p></li>
-<li><p>The geotransform associated with the file (rotational coefficients
-are currently not reported).</p></li>
-<li><p>Corner coordinates in georeferenced, and if possible lat/long based
-on the full geotransform (but not GCPs).</p></li>
-<li><p>Ground control points.</p></li>
-<li><p>File wide (including subdatasets) metadata.</p></li>
-<li><p>Band data types.</p></li>
-<li><p>Band color interpretations.</p></li>
-<li><p>Band block size.</p></li>
-<li><p>Band descriptions.</p></li>
-<li><p>Band min/max values (internally known and possibly computed).</p></li>
-<li><p>Band checksum (if computation asked).</p></li>
-<li><p>Band NODATA value.</p></li>
-<li><p>Band overview resolutions available.</p></li>
-<li><p>Band unit type (i.e.. &quot;meters&quot; or &quot;feet&quot; for elevation bands).</p></li>
-<li><p>Band pseudo-color tables.</p></li>
+<li><p>ファイルアクセスに利用したフォーマットドライバー</p></li>
+<li><p>ラスターサイズ(ピクセル数と行数)</p></li>
+<li><p>ファイルの座標系 (OGC WKT形式)</p></li>
+<li><p>ファイルに関連つけられた地理変換(回転係数は 現在報告されません)。</p></li>
+<li><p>角の座標はジオリファレンスされ、可能な場合は完全な地理変換に基づいた 経度/緯度が (しかしGCPではない)表示されます。</p></li>
+<li><p>グランドコントロールポイント。</p></li>
+<li><p>ファイル全体 (サブデータセットを含む)のメタデータ。</p></li>
+<li><p>バンドデータタイプ</p></li>
+<li><p>バンド色の解釈。</p></li>
+<li><p>バンドブロックサイズ。</p></li>
+<li><p>バンドの説明。</p></li>
+<li><p>バンドの最小値/最大値(内部的に既知のデータまたは計算されたもの)。</p></li>
+<li><p>バンドチェックサム (計算が要求された場合)。</p></li>
+<li><p>バンドのNODATA値。</p></li>
+<li><p>バンドの縮小画像の解像度。</p></li>
+<li><p>バンドの単位タイプ(例. 標高バンドの場合  &quot;meters&quot; または  &quot;feet&quot; )。</p></li>
+<li><p>バンド疑似カラーテーブル</p></li>
 </ul>
 </section>
 <section id="c-api">
@@ -395,7 +393,7 @@ on the full geotransform (but not GCPs).</p></li>
 <span class="n">Band</span> <span class="mi">1</span> <span class="n">Block</span><span class="o">=</span><span class="mi">512</span><span class="n">x16</span> <span class="n">Type</span><span class="o">=</span><span class="n">Byte</span><span class="p">,</span> <span class="n">ColorInterp</span><span class="o">=</span><span class="n">Gray</span>
 </pre></div>
 </div>
-<p>For corner coordinates formatted as decimal degree instead of the above degree, minute, second, inspect the <code class="docutils literal notranslate"><span class="pre">wgs84Extent</span></code> member of gdalinfo -json:</p>
+<p>上記の度、分、秒で表された角の座標を10進数で表したい場合は ｇdalinfo -jsonのメンバー <code class="docutils literal notranslate"><span class="pre">wgs84Extent</span></code> について調べてください:</p>
 <p><code class="docutils literal notranslate"><span class="pre">gdalinfo</span> <span class="pre">-json</span> <span class="pre">byte.tif</span></code> を利用してJSON出力を行った例</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="s2">&quot;byte.tif&quot;</span><span class="p">,</span>

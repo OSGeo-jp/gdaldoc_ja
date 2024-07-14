@@ -277,28 +277,27 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalinfo-listmdd">
 <span class="sig-name descname"><span class="pre">-listmdd</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalinfo-listmdd" title="Link to this definition"></a></dt>
-<dd><p>List all metadata domains available for the dataset.</p>
+<dd><p>データセットで利用可能なメタデータ ドメインを一覧表示します。</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalinfo-mdd">
 <span class="sig-name descname"><span class="pre">-mdd</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;domain&gt;|all</span></span><a class="headerlink" href="#cmdoption-gdalinfo-mdd" title="Link to this definition"></a></dt>
-<dd><p>adds metadata using:</p>
-<p><code class="docutils literal notranslate"><span class="pre">domain</span></code> Report metadata for the specified domain.</p>
-<p><code class="docutils literal notranslate"><span class="pre">all</span></code> Report metadata for all domains.</p>
+<dd><p>以下を利用してメタデータを追加します:</p>
+<p><code class="docutils literal notranslate"><span class="pre">domain</span></code> 指定されたドメインのメタデータをレポートします。</p>
+<p><code class="docutils literal notranslate"><span class="pre">all</span></code> すべてのドメインのメタデータをレポートします。</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalinfo-nofl">
 <span class="sig-name descname"><span class="pre">-nofl</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalinfo-nofl" title="Link to this definition"></a></dt>
-<dd><p>Only display the first file of the file list.</p>
+<dd><p>ファイルリストの先頭のファイルのみ表示します。</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalinfo-wkt_format">
 <span class="sig-name descname"><span class="pre">-wkt_format</span></span><span class="sig-prename descclassname"> <span class="pre">WKT1|WKT2|WKT2_2015|WKT2_2018|WKT2_2019</span></span><a class="headerlink" href="#cmdoption-gdalinfo-wkt_format" title="Link to this definition"></a></dt>
-<dd><p>WKT format used to display the SRS.
-Currently the supported values are:</p>
+<dd><p>SRSを表示するために使用されるWKT形式。現在サポートされている値は次のとおりです:</p>
 <p><code class="docutils literal notranslate"><span class="pre">WKT1</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">WKT2</span></code> (latest WKT version, currently <em>WKT2_2019</em>)</p>
 <p><code class="docutils literal notranslate"><span class="pre">WKT2_2015</span></code></p>
@@ -312,38 +311,31 @@ Currently the supported values are:</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalinfo-sd">
 <span class="sig-name descname"><span class="pre">-sd</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;n&gt;</span></span><a class="headerlink" href="#cmdoption-gdalinfo-sd" title="Link to this definition"></a></dt>
-<dd><p>If the input dataset contains several subdatasets read and display
-a subdataset with specified <code class="docutils literal notranslate"><span class="pre">n</span></code> number (starting from 1).
-This is an alternative of giving the full subdataset name.</p>
+<dd><p>入力データセットに多くのサブデータセットが含まれる場合は 指定された番号 <code class="docutils literal notranslate"><span class="pre">n</span></code>  (１から始まる)のサブデータセットを読んで表示します。 これは完全なサブセット名称を指定する方法の代替として利用できます。</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalinfo-proj4">
 <span class="sig-name descname"><span class="pre">-proj4</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalinfo-proj4" title="Link to this definition"></a></dt>
-<dd><p>Report a PROJ.4 string corresponding to the file's coordinate system.</p>
+<dd><p>指定ファイルの座標系に対応するPROJ.4文字列をレポートします。</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalinfo-oo">
 <span class="sig-name descname"><span class="pre">-oo</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></span><a class="headerlink" href="#cmdoption-gdalinfo-oo" title="Link to this definition"></a></dt>
-<dd><p>Dataset open option (format specific).</p>
+<dd><p>データセットオープンオプション (フォーマット固有)。</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalinfo-if">
 <span class="sig-name descname"><span class="pre">-if</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;format&gt;</span></span><a class="headerlink" href="#cmdoption-gdalinfo-if" title="Link to this definition"></a></dt>
-<dd><p>Format/driver name to be attempted to open the input file(s). It is generally
-not necessary to specify it, but it can be used to skip automatic driver
-detection, when it fails to select the appropriate driver.
-This option can be repeated several times to specify several candidate drivers.
-Note that it does not force those drivers to open the dataset. In particular,
-some drivers have requirements on file extensions.</p>
+<dd><p>入力ファイルを開くために試行する Format/driver 名。 通常は指定する必要はありませんが、適切なドライバーを選択できなかった場合に自動ドライバー検出をスキップするために使用できます。 このオプションは候補となるドライバーを複数回指定するために複数回繰り返すことができます。これらのドライバーにデータセットを開くように強制するものでないことに注意して下さい。特に一部のドライバーにはファイル拡張子に関する要件があります。</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.2.</span></p>
 </div>
 </dd></dl>
 
-<p>The gdalinfo will report all of the following (if known):</p>
+<p>gdalinfo は以下のすべての情報を表示します (既知の場合):</p>
 <ul class="simple">
 <li><p>The format driver used to access the file.</p></li>
 <li><p>Raster size (in pixels and lines).</p></li>

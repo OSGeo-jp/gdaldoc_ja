@@ -18,7 +18,7 @@
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="../_static/documentation_options.js?v=c033477b"></script>
-        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../_static/translations.js?v=4dbe4bdc"></script>
     <script src="../_static/js/theme.js"></script>
@@ -326,7 +326,7 @@ uncompressed file size.</p>
 <section id="vsi7z-7z-archives">
 <span id="vsi7z"></span><h2>/vsi7z/ (.7z archives)<a class="headerlink" href="#vsi7z-7z-archives" title="Link to this heading"></a></h2>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.7.</span></p>
+<p><span class="versionmodified added">バージョン 3.7 で追加.</span></p>
 </div>
 <p>/vsi7z/ is a file handler that allows reading <a class="reference external" href="https://en.wikipedia.org/wiki/7z">7z</a>
 archives on-the-fly without decompressing them beforehand. This file system is
@@ -351,7 +351,7 @@ file). Performance will be the best in sequential reading.</p>
 <section id="vsirar-rar-archives">
 <span id="vsirar"></span><h2>/vsirar/ (.rar archives)<a class="headerlink" href="#vsirar-rar-archives" title="Link to this heading"></a></h2>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.7.</span></p>
+<p><span class="versionmodified added">バージョン 3.7 で追加.</span></p>
 </div>
 <p>/vsirar/ is a file handler that allows reading <a class="reference external" href="https://en.wikipedia.org/wiki/RAR_(file_format)">RAR</a>
 archives on-the-fly without decompressing them beforehand. This file system is
@@ -645,7 +645,7 @@ retrieved).</p>
 <p>Recognized filenames are of the form <code class="file docutils literal notranslate"><span class="pre">/vsis3_streaming/bucket/key</span></code> where <code class="docutils literal notranslate"><span class="pre">bucket</span></code> is the name of the S3 bucket and <code class="docutils literal notranslate"><span class="pre">key</span></code> is the S3 object &quot;key&quot;, i.e. a filename potentially containing subdirectories.</p>
 <p>Authentication options, and read-only features, are identical to <a class="reference internal" href="#vsis3"><span class="std std-ref">/vsis3/</span></a></p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 2.1.</span></p>
+<p><span class="versionmodified added">バージョン 2.1 で追加.</span></p>
 </div>
 </section>
 <section id="vsigs-google-cloud-storage-files">
@@ -705,7 +705,7 @@ to charge for requests against Requester Pays buckets.</p>
 </ol>
 <p>Since GDAL 3.1, the Rename() operation is supported (first doing a copy of the original file and then deleting it).</p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 2.2.</span></p>
+<p><span class="versionmodified added">バージョン 2.2 で追加.</span></p>
 </div>
 </section>
 <section id="vsigs-streaming-google-cloud-storage-files-streaming">
@@ -714,7 +714,7 @@ to charge for requests against Requester Pays buckets.</p>
 <p>Recognized filenames are of the form <code class="file docutils literal notranslate"><span class="pre">/vsigs_streaming/bucket/key</span></code> where <code class="docutils literal notranslate"><span class="pre">bucket</span></code> is the name of the bucket and <code class="docutils literal notranslate"><span class="pre">key</span></code> is the object &quot;key&quot;, i.e. a filename potentially containing subdirectories.</p>
 <p>Authentication options, and read-only features, are identical to <a class="reference internal" href="#vsigs"><span class="std std-ref">/vsigs/</span></a></p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 2.2.</span></p>
+<p><span class="versionmodified added">バージョン 2.2 で追加.</span></p>
 </div>
 </section>
 <section id="vsiaz-microsoft-azure-blob-files">
@@ -777,7 +777,7 @@ This option may be set as a path-specific option with <a class="reference intern
 <p>Since GDAL 3.1, the <a class="reference internal" href="../api/cpl.html#_CPPv49VSIRenamePKcPKc" title="VSIRename"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIRename()</span></code></a> operation is supported (first doing a copy of the original file and then deleting it)</p>
 <p>Since GDAL 3.3, the <a class="reference internal" href="../api/cpl.html#_CPPv418VSIGetFileMetadataPKcPKc12CSLConstList" title="VSIGetFileMetadata"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIGetFileMetadata()</span></code></a> and <a class="reference internal" href="../api/cpl.html#_CPPv418VSISetFileMetadataPKc12CSLConstListPKc12CSLConstList" title="VSISetFileMetadata"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSISetFileMetadata()</span></code></a> operations are supported.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 2.3.</span></p>
+<p><span class="versionmodified added">バージョン 2.3 で追加.</span></p>
 </div>
 </section>
 <section id="vsiaz-streaming-microsoft-azure-blob-files-streaming">
@@ -786,7 +786,7 @@ This option may be set as a path-specific option with <a class="reference intern
 <p>Recognized filenames are of the form <code class="file docutils literal notranslate"><span class="pre">/vsiaz_streaming/container/key</span></code> where <code class="docutils literal notranslate"><span class="pre">container</span></code> is the name of the container and <code class="docutils literal notranslate"><span class="pre">key</span></code> is the object &quot;key&quot;, i.e. a filename potentially containing subdirectories.</p>
 <p>Authentication options, and read-only features, are identical to <a class="reference internal" href="#vsiaz"><span class="std std-ref">/vsiaz/</span></a></p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 2.3.</span></p>
+<p><span class="versionmodified added">バージョン 2.3 で追加.</span></p>
 </div>
 </section>
 <section id="vsiadls-microsoft-azure-data-lake-storage-gen2">
@@ -812,7 +812,7 @@ empty file that is used for /vsiaz/ to have empty directories)</p></li>
 </ul>
 </div></blockquote>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.3.</span></p>
+<p><span class="versionmodified added">バージョン 3.3 で追加.</span></p>
 </div>
 </section>
 <section id="vsioss-alibaba-cloud-oss-files">
@@ -836,7 +836,7 @@ Deletion of files with <a class="reference internal" href="../api/cpl.html#_CPPv
 <p>The <a class="reference internal" href="#config-OSS_SECRET_ACCESS_KEY"><code class="docutils literal notranslate"><span class="pre">OSS_SECRET_ACCESS_KEY</span></code></a> and <a class="reference internal" href="#config-OSS_ACCESS_KEY_ID"><code class="docutils literal notranslate"><span class="pre">OSS_ACCESS_KEY_ID</span></code></a> configuration options must be set. The <a class="reference internal" href="#config-OSS_ENDPOINT"><code class="docutils literal notranslate"><span class="pre">OSS_ENDPOINT</span></code></a> configuration option should normally be set to the appropriate value, which reflects the region attached to the bucket. If the bucket is stored in another region than oss-us-east-1, the code logic will redirect to the appropriate endpoint.</p>
 <p>On writing, the file is uploaded using the OSS multipart upload API. The size of chunks is set to 50 MB by default, allowing creating files up to 500 GB (10000 parts of 50 MB each). If larger files are needed, then increase the value of the <a class="reference internal" href="#config-VSIOSS_CHUNK_SIZE"><code class="docutils literal notranslate"><span class="pre">VSIOSS_CHUNK_SIZE</span></code></a> config option to a larger value (expressed in MB). In case the process is killed and the file not properly closed, the multipart upload will remain open, causing Alibaba to charge you for the parts storage. You'll have to abort yourself with other means. For files smaller than the chunk size, a simple PUT request is used instead of the multipart upload API.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 2.3.</span></p>
+<p><span class="versionmodified added">バージョン 2.3 で追加.</span></p>
 </div>
 </section>
 <section id="vsioss-streaming-alibaba-cloud-oss-files-streaming">
@@ -845,7 +845,7 @@ Deletion of files with <a class="reference internal" href="../api/cpl.html#_CPPv
 <p>Recognized filenames are of the form <code class="file docutils literal notranslate"><span class="pre">/vsioss_streaming/bucket/key</span></code> where <code class="docutils literal notranslate"><span class="pre">bucket</span></code> is the name of the bucket and <code class="docutils literal notranslate"><span class="pre">key</span></code> is the object &quot;key&quot;, i.e. a filename potentially containing subdirectories.</p>
 <p>Authentication options, and read-only features, are identical to <a class="reference internal" href="#vsioss"><span class="std std-ref">/vsioss/</span></a></p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 2.3.</span></p>
+<p><span class="versionmodified added">バージョン 2.3 で追加.</span></p>
 </div>
 </section>
 <section id="vsiswift-openstack-swift-object-storage">
@@ -898,7 +898,7 @@ Deletion of files with <a class="reference internal" href="../api/cpl.html#_CPPv
 <p>This file system handler also allows sequential writing of files (no seeks or read operations are then allowed).</p>
 <p>In some versions of OpenStack Swift, the access to large (segmented) files fails unless they are explicitly marked as static large objects, instead of being dynamic large objects which is the default. Using the python-swiftclient this can be achieved when uploading the file by passing the <code class="docutils literal notranslate"><span class="pre">--use-slo</span></code> flag (see <a class="reference external" href="https://docs.openstack.org/python-swiftclient/latest/cli/index.html#swift-upload">https://docs.openstack.org/python-swiftclient/latest/cli/index.html#swift-upload</a> for all options). For more information about large objects see <a class="reference external" href="https://docs.openstack.org/swift/latest/api/large_objects.html">https://docs.openstack.org/swift/latest/api/large_objects.html</a>.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 2.3.</span></p>
+<p><span class="versionmodified added">バージョン 2.3 で追加.</span></p>
 </div>
 </section>
 <section id="vsiswift-streaming-openstack-swift-object-storage-streaming">
@@ -907,7 +907,7 @@ Deletion of files with <a class="reference internal" href="../api/cpl.html#_CPPv
 <p>Recognized filenames are of the form <code class="file docutils literal notranslate"><span class="pre">/vsiswift_streaming/bucket/key</span></code> where <code class="docutils literal notranslate"><span class="pre">bucket</span></code> is the name of the bucket and <code class="docutils literal notranslate"><span class="pre">key</span></code> is the object &quot;key&quot;, i.e. a filename potentially containing subdirectories.</p>
 <p>Authentication options, and read-only features, are identical to <a class="reference internal" href="#vsiswift"><span class="std std-ref">/vsiswift/</span></a></p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 2.3.</span></p>
+<p><span class="versionmodified added">バージョン 2.3 で追加.</span></p>
 </div>
 </section>
 <section id="vsihdfs-hadoop-file-system">
@@ -940,7 +940,7 @@ native libhdfs.</p>
 </pre></div>
 </div>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 2.4.</span></p>
+<p><span class="versionmodified added">バージョン 2.4 で追加.</span></p>
 </div>
 </section>
 <section id="vsiwebhdfs-web-hadoop-file-system-rest-api">
@@ -969,7 +969,7 @@ Deletion of files with <a class="reference internal" href="../api/cpl.html#_CPPv
 </ul>
 <p>This file system handler also allows sequential writing of files (no seeks or read operations are then allowed)</p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 2.4.</span></p>
+<p><span class="versionmodified added">バージョン 2.4 で追加.</span></p>
 </div>
 </section>
 </section>

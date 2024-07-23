@@ -18,7 +18,7 @@
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="../_static/documentation_options.js?v=c033477b"></script>
-        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../_static/translations.js?v=4dbe4bdc"></script>
     <script src="../_static/js/theme.js"></script>
@@ -275,7 +275,7 @@ of input bands to generate overviews.</p>
 <dd><p>Maximum width or height of the smallest overview level. Only taken into
 account if explicit levels are not specified. Defaults to 256.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 2.3.</span></p>
+<p><span class="versionmodified added">バージョン 2.3 で追加.</span></p>
 </div>
 </dd></dl>
 
@@ -283,7 +283,7 @@ account if explicit levels are not specified. Defaults to 256.</p>
 <dt class="sig sig-object std" id="cmdoption-gdaladdo-partial-refresh-from-source-timestamp">
 <span class="sig-name descname"><span class="pre">--partial-refresh-from-source-timestamp</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdaladdo-partial-refresh-from-source-timestamp" title="Link to this definition"></a></dt>
 <dd><div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.8.</span></p>
+<p><span class="versionmodified added">バージョン 3.8 で追加.</span></p>
 </div>
 <p>This option performs a partial refresh of existing overviews, when &lt;filename&gt;
 is a VRT file with an external overview.
@@ -298,7 +298,7 @@ levels are specified.</p>
 <dt class="sig sig-object std" id="cmdoption-gdaladdo-partial-refresh-from-projwin">
 <span class="sig-name descname"><span class="pre">--partial-refresh-from-projwin</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;ulx&gt;</span> <span class="pre">&lt;uly&gt;</span> <span class="pre">&lt;lrx&gt;</span> <span class="pre">&lt;lry&gt;</span></span><a class="headerlink" href="#cmdoption-gdaladdo-partial-refresh-from-projwin" title="Link to this definition"></a></dt>
 <dd><div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.8.</span></p>
+<p><span class="versionmodified added">バージョン 3.8 で追加.</span></p>
 </div>
 <p>This option performs a partial refresh of existing overviews, in the region
 of interest specified by georeference coordinates where &lt;ulx&gt; is the X value
@@ -313,7 +313,7 @@ levels are specified.</p>
 <dt class="sig sig-object std" id="cmdoption-gdaladdo-partial-refresh-from-source-extent">
 <span class="sig-name descname"><span class="pre">--partial-refresh-from-source-extent</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;filename1&gt;[,&lt;filenameN&gt;]...</span></span><a class="headerlink" href="#cmdoption-gdaladdo-partial-refresh-from-source-extent" title="Link to this definition"></a></dt>
 <dd><div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.8.</span></p>
+<p><span class="versionmodified added">バージョン 3.8 で追加.</span></p>
 </div>
 <p>This option performs a partial refresh of existing overviews, in the region
 of interest specified by one or several filenames (names separated by comma).
@@ -334,7 +334,7 @@ levels are specified.</p>
 <span class="sig-name descname"><span class="pre">&lt;levels&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdaladdo-arg-levels" title="Link to this definition"></a></dt>
 <dd><p>A list of integral overview levels to build. Ignored with <a class="reference internal" href="#cmdoption-gdaladdo-clean"><code class="xref std std-option docutils literal notranslate"><span class="pre">-clean</span></code></a> option.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 2.3: </span>Levels are no longer required to build overviews.
+<p><span class="versionmodified added">バージョン 2.3 で追加: </span>Levels are no longer required to build overviews.
 In which case, appropriate overview power-of-two factors will be selected
 until the smallest overview is smaller than the value of the -minsize switch.</p>
 <p>Starting with GDAL 3.9, if there are already existing overviews, the
@@ -450,7 +450,7 @@ none, the target pixel is considered as nodata.</p></li>
 <section id="multithreading">
 <h2>Multithreading<a class="headerlink" href="#multithreading" title="Link to this heading"></a></h2>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.2.</span></p>
+<p><span class="versionmodified added">バージョン 3.2 で追加.</span></p>
 </div>
 <p>The <a class="reference internal" href="../user/configoptions.html#config-GDAL_NUM_THREADS"><code class="docutils literal notranslate"><span class="pre">GDAL_NUM_THREADS</span></code></a> configuration option can be set to
 <code class="docutils literal notranslate"><span class="pre">ALL_CPUS</span></code> or a integer value to specify the number of threads to use for

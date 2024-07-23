@@ -18,7 +18,7 @@
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="../_static/documentation_options.js?v=c033477b"></script>
-        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../_static/translations.js?v=4dbe4bdc"></script>
     <script src="../_static/js/theme.js"></script>
@@ -184,7 +184,7 @@
              
   <section id="gdal2tiles">
 <span id="id1"></span><h1>gdal2tiles<a class="headerlink" href="#gdal2tiles" title="Link to this heading"></a></h1>
-<p>Generates directory with TMS tiles, KMLs and simple web viewers.</p>
+<p>TMSタイルが格納されたディレクトリ、KML、簡易ウェブビューアを生成します。</p>
 <section id="synopsis">
 <span id="index-0"></span><h2>Synopsis<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdal2tiles</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="o">-</span><span class="n">general</span><span class="p">]</span>
@@ -202,14 +202,8 @@
 </section>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
-<p>This utility generates a directory with small tiles and metadata, following
-the OSGeo Tile Map Service Specification. Simple web pages with viewers based on
-Google Maps, OpenLayers and Leaflet are generated as well - so anybody can comfortably
-explore your maps on-line and you do not need to install or configure any
-special software (like MapServer) and the map displays very fast in the
-web browser. You only need to upload the generated directory onto a web server.</p>
-<p>GDAL2Tiles also creates the necessary metadata for Google Earth (KML
-SuperOverlay), in case the supplied map uses EPSG:4326 projection.</p>
+<p>このユーティリティは、小さなタイルとメタデータを含むディレクトリを生成し、OSGeoタイルマップサービス仕様に従います。Google Maps、OpenLayers、Leafletをベースにした簡単なウェブページとビューアも生成されるため、誰でも快適にオンラインで地図を探索でき、特別なソフトウェア(例えばMapServer)をインストールしたり設定したりする必要がなく、ウェブブラウザで地図が非常に速く表示されます。生成されたディレクトリをウェブサーバーにアップロードするだけです。</p>
+<p>GDAL2Tilesは、提供された地図がEPSG:4326投影法を使用している場合、Google Earth用の必要なメタデータ(KML SuperOverlay)も作成します。</p>
 <p>World files and embedded georeferencing is used during tile generation, but you
 can publish a picture without proper georeferencing too.</p>
 <div class="admonition note">
@@ -266,7 +260,7 @@ and resolution between consecutive zoom levels vary by a factor of two).</p>
 In the default mode (TMS), tiles at y=0 are the southern-most tiles, whereas
 in XYZ mode (used by OGC WMTS too), tiles at y=0 are the northern-most tiles.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.1.</span></p>
+<p><span class="versionmodified added">バージョン 3.1 で追加.</span></p>
 </div>
 </dd></dl>
 
@@ -315,7 +309,7 @@ had already an associate nodata value, it is overridden by the specified value.<
 <span id="cmdoption-gdal2tiles-quiet"></span><span class="sig-name descname"><span class="pre">-q</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--quiet</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal2tiles-q" title="Link to this definition"></a></dt>
 <dd><p>Disable messages and status to stdout</p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 2.1.</span></p>
+<p><span class="versionmodified added">バージョン 2.1 で追加.</span></p>
 </div>
 </dd></dl>
 
@@ -324,7 +318,7 @@ had already an associate nodata value, it is overridden by the specified value.<
 <span class="sig-name descname"><span class="pre">--processes</span></span><span class="sig-prename descclassname"><span class="pre">=&lt;NB_PROCESSES&gt;</span></span><a class="headerlink" href="#cmdoption-gdal2tiles-processes" title="Link to this definition"></a></dt>
 <dd><p>Number of parallel processes to use for tiling, to speed-up the computation.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 2.3.</span></p>
+<p><span class="versionmodified added">バージョン 2.3 で追加.</span></p>
 </div>
 </dd></dl>
 
@@ -336,7 +330,7 @@ Requires working MPI environment and the MPI for Python (mpi4py) package.
 User should set GDAL_CACHEMAX to an appropriate cache size per process
 based on memory per node and the number of processes launched per node.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.5.</span></p>
+<p><span class="versionmodified added">バージョン 3.5 で追加.</span></p>
 </div>
 </dd></dl>
 
@@ -345,7 +339,7 @@ based on memory per node and the number of processes launched per node.</p>
 <span class="sig-name descname"><span class="pre">--tilesize</span></span><span class="sig-prename descclassname"><span class="pre">=&lt;PIXELS&gt;</span></span><a class="headerlink" href="#cmdoption-gdal2tiles-tilesize" title="Link to this definition"></a></dt>
 <dd><p>Width and height in pixel of a tile. Default is 256.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.1.</span></p>
+<p><span class="versionmodified added">バージョン 3.1 で追加.</span></p>
 </div>
 </dd></dl>
 
@@ -356,7 +350,7 @@ based on memory per node and the number of processes launched per node.</p>
 Currently PNG, WEBP and JPEG (JPEG added in GDAL 3.9) are supported. Default is PNG.
 Additional configuration for the WEBP and JPEG drivers are documented below.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.6.</span></p>
+<p><span class="versionmodified added">バージョン 3.6 で追加.</span></p>
 </div>
 </dd></dl>
 
@@ -372,7 +366,7 @@ This concept is a bit similar to nodata/alpha, but the main difference is
 that pixels matching one of the excluded value tuples are still considered
 as valid, when determining the target pixel validity/density.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.9.</span></p>
+<p><span class="versionmodified added">バージョン 3.9 で追加.</span></p>
 </div>
 </dd></dl>
 
@@ -382,7 +376,7 @@ as valid, when determining the target pixel validity/density.</p>
 <dd><p>Minimum percentage of source pixels that must be set at one of the --excluded-values to cause the excluded
 value, that is in majority among source pixels, to be used as the target pixel value. Default value is 50(%)</p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.9.</span></p>
+<p><span class="versionmodified added">バージョン 3.9 で追加.</span></p>
 </div>
 </dd></dl>
 
@@ -395,7 +389,7 @@ be transparent. Default value is 100 (%), which means that a target pixel is
 transparent only if all contributing source pixels are transparent.
 Only taken into account for average resampling.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.9.</span></p>
+<p><span class="versionmodified added">バージョン 3.9 で追加.</span></p>
 </div>
 </dd></dl>
 

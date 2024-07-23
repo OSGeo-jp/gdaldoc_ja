@@ -18,7 +18,7 @@
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="_static/documentation_options.js?v=c033477b"></script>
-        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="_static/translations.js?v=4dbe4bdc"></script>
     <script src="_static/js/theme.js"></script>
@@ -236,7 +236,31 @@ available through <a class="reference external" href="https://anaconda.org/conda
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="p">[</span><span class="o">-</span><span class="n">c</span> <span class="n">channel</span><span class="p">]</span> <span class="p">[</span><span class="n">package</span><span class="o">...</span><span class="p">]</span>
 </pre></div>
 </div>
+<p>GDAL is available as several subpackages:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">gdal</span></code>: Python bindings and Python utilities (depends on libgdal-core)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">libgdal</span></code>: meta-package gathering all below libgdal-* packages (except libgdal-arrow-parquet)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">libgdal-arrow-parquet</span></code>: <a class="reference internal" href="drivers/vector/arrow.html#vector-arrow"><span class="std std-ref">(Geo)Arrow IPC File Format / Stream</span></a> and <a class="reference internal" href="drivers/vector/parquet.html#vector-parquet"><span class="std std-ref">(Geo)Parquet</span></a> drivers as a plugin (depends on libgdal-core)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">libgdal-core</span></code>: core library and C++ utilities, with a number of builtin drivers (available since GDAL 3.9.1)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">libgdal-fits</span></code>: <a class="reference internal" href="drivers/raster/fits.html#raster-fits"><span class="std std-ref">FITS -- Flexible Image Transport System</span></a> driver as a plugin (depends on libgdal-core, available since GDAL 3.9.1)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">libgdal-grib</span></code>: <a class="reference internal" href="drivers/raster/grib.html#raster-grib"><span class="std std-ref">GRIB -- WMO General Regularly-distributed Information in Binary form</span></a> driver as a plugin (depends on libgdal-core, available since GDAL 3.9.1)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">libgdal-hdf4</span></code>: <a class="reference internal" href="drivers/raster/hdf4.html#raster-hdf4"><span class="std std-ref">HDF4 -- Hierarchical Data Format Release 4 (HDF4)</span></a> driver as a plugin (depends on libgdal-core, available since GDAL 3.9.1)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">libgdal-hdf5</span></code>: <a class="reference internal" href="drivers/raster/hdf5.html#raster-hdf5"><span class="std std-ref">HDF5 -- Hierarchical Data Format Release 5 (HDF5)</span></a> driver as a plugin (depends on libgdal-core, available since GDAL 3.9.1)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">libgdal-jp2openjpeg</span></code>: <a class="reference internal" href="drivers/raster/jp2openjpeg.html#raster-jp2openjpeg"><span class="std std-ref">JP2OpenJPEG -- JPEG2000 driver based on OpenJPEG library</span></a> driver as a plugin (depends on libgdal-core, available since GDAL 3.9.1)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">libgdal-kea</span></code>: <a class="reference internal" href="drivers/raster/kea.html#raster-kea"><span class="std std-ref">KEA</span></a> driver as a plugin (depends on libgdal-core, available since GDAL 3.9.1)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">libgdal-netcdf</span></code>: <a class="reference internal" href="drivers/raster/netcdf.html#raster-netcdf"><span class="std std-ref">NetCDF: Network Common Data Form</span></a> driver as a plugin (depends on libgdal-core, available since GDAL 3.9.1)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">libgdal-pdf</span></code>: <a class="reference internal" href="drivers/raster/pdf.html#raster-pdf"><span class="std std-ref">PDF -- Geospatial PDF</span></a> driver as a plugin (depends on libgdal-core, available since GDAL 3.9.1)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">libgdal-postgisraster</span></code>: <a class="reference internal" href="drivers/raster/postgisraster.html#raster-postgisraster"><span class="std std-ref">PostGISRaster -- PostGIS Raster driver</span></a> driver as a plugin (depends on libgdal-core, available since GDAL 3.9.1)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">libgdal-pg</span></code>: <a class="reference internal" href="drivers/vector/pg.html#vector-pg"><span class="std std-ref">PostgreSQL / PostGIS</span></a> driver as a plugin (depends on libgdal-core, available since GDAL 3.9.1)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">libgdal-tiledb</span></code>: <a class="reference internal" href="drivers/raster/tiledb.html#raster-tiledb"><span class="std std-ref">TileDB - TileDB raster</span></a> driver as a plugin (depends on libgdal-core, available since GDAL 3.9.1)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">libgdal-xls</span></code>: <a class="reference internal" href="drivers/vector/xls.html#vector-xls"><span class="std std-ref">XLS - MS Excel format</span></a> driver as a plugin (depends on libgdal-core, available since GDAL 3.9.1)</p></li>
+</ul>
+<p>To install the <code class="docutils literal notranslate"><span class="pre">gdal</span></code> package (Python bindings and utilities), and <code class="docutils literal notranslate"><span class="pre">libgdal-core</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">gdal</span>
+</pre></div>
+</div>
+<p>To install the <code class="docutils literal notranslate"><span class="pre">libgdal</span></code> meta-package with all available drivers, but libgdal-arrow-parquet:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">libgdal</span>
 </pre></div>
 </div>
 <p>To install the Arrow and Parquet drivers as plugins:</p>

@@ -18,7 +18,7 @@
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="../_static/documentation_options.js?v=c033477b"></script>
-        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../_static/translations.js?v=4dbe4bdc"></script>
     <script src="../_static/js/theme.js"></script>
@@ -204,7 +204,8 @@
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
 <p>This utility will retile a set of input tile(s). All the input tile(s) must
-be georeferenced in the same coordinate system and have a matching number of bands.</p>
+be georeferenced in the same coordinate system and have a matching number of bands.
+The geotransform matrix of input tiles must not contain rotation terms.</p>
 <p>Optionally pyramid levels are generated. All pyramid levels are generated from the
 input tiles (not from previous levels).</p>
 <p>It is possible to generate shape file(s) for the tiled output.</p>
@@ -280,7 +281,7 @@ output file.  If not specified, 256 x 256 is the default</p>
 <span class="sig-name descname"><span class="pre">-overlap</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;val_in_pixel&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_retile-overlap" title="Link to this definition"></a></dt>
 <dd><p>Overlap in pixels between consecutive tiles. If not specified, 0 is the default</p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 2.2.</span></p>
+<p><span class="versionmodified added">バージョン 2.2 で追加.</span></p>
 </div>
 </dd></dl>
 

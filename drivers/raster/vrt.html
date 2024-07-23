@@ -18,7 +18,7 @@
         <script src="../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="../../_static/documentation_options.js?v=c033477b"></script>
-        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
         <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../../_static/translations.js?v=4dbe4bdc"></script>
     <script src="../../_static/js/theme.js"></script>
@@ -794,7 +794,7 @@ For example, a Gaussian blur:</p>
 <section id="nodatafrommasksource">
 <h5>NoDataFromMaskSource<a class="headerlink" href="#nodatafrommasksource" title="Link to this heading"></a></h5>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.9.</span></p>
+<p><span class="versionmodified added">バージョン 3.9 で追加.</span></p>
 </div>
 <p>The NoDataFromMaskSource is derived from the SimpleSource and shares the same properties except that it replaces the value of the source with the value of the NODATA child element when the value of the mask band of the source is less or equal to the MaskValueThreshold child element.
 This is typically used to transform a R,G,B,A image into a R,G,B one with a NoData value.
@@ -812,7 +812,7 @@ An optional RemappedValue element can be set to specify the value onto which val
 <section id="arraysource">
 <h5>ArraySource<a class="headerlink" href="#arraysource" title="Link to this heading"></a></h5>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.8.</span></p>
+<p><span class="versionmodified added">バージョン 3.8 で追加.</span></p>
 </div>
 <p>The <a class="reference internal" href="#arraysource">ArraySource</a> indicates that raster data should be read from a 2D array using
 the multidimensional API. If the original array is not a 3D array, a DerivedArray
@@ -1993,7 +1993,7 @@ GDALWarpOptions element which describe the warping options.</p>
 <section id="pansharpened-vrt">
 <span id="gdal-vrttut-pansharpen"></span><h2>Pansharpened VRT<a class="headerlink" href="#pansharpened-vrt" title="Link to this heading"></a></h2>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 2.1.</span></p>
+<p><span class="versionmodified added">バージョン 2.1 で追加.</span></p>
 </div>
 <p>A VRT can describe a dataset resulting from a
 <a class="reference external" href="https://en.wikipedia.org/wiki/Pansharpened_image">pansharpening operation</a>
@@ -2157,7 +2157,7 @@ pseudo panchromatic intensity, but not bound to an output band.</p>
 <section id="multidimensional-vrt">
 <h2>Multidimensional VRT<a class="headerlink" href="#multidimensional-vrt" title="Link to this heading"></a></h2>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.1.</span></p>
+<p><span class="versionmodified added">バージョン 3.1 で追加.</span></p>
 </div>
 <p>See the dedicated <a class="reference internal" href="vrt_multidimensional.html#vrt-multidimensional"><span class="std std-ref">Multidimensional VRT</span></a> page.</p>
 <div class="toctree-wrapper compound">
@@ -2166,7 +2166,7 @@ pseudo panchromatic intensity, but not bound to an output band.</p>
 <section id="processed-dataset-vrt">
 <h2>Processed dataset VRT<a class="headerlink" href="#processed-dataset-vrt" title="Link to this heading"></a></h2>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.9.</span></p>
+<p><span class="versionmodified added">バージョン 3.9 で追加.</span></p>
 </div>
 <p>A VRT processed dataset is a specific variant of the <a class="reference internal" href="#raster-vrt"><span class="std std-ref">VRT -- GDAL Virtual Format</span></a> format,
 to apply chained processing steps that may apply to several bands at the same time.</p>
@@ -2177,7 +2177,7 @@ to apply chained processing steps that may apply to several bands at the same ti
 <section id="vrt-connection-string">
 <h2>vrt:// connection string<a class="headerlink" href="#vrt-connection-string" title="Link to this heading"></a></h2>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.1.</span></p>
+<p><span class="versionmodified added">バージョン 3.1 で追加.</span></p>
 </div>
 <p>In some contexts, it might be useful to benefit from features of VRT without
 having to create a file or to provide the rather verbose VRT XML content as
@@ -2292,6 +2292,31 @@ the ampersand).</p>
 multi-threading if the sources are not overlapping and belong to different
 datasets. This can be enabled by setting the <a class="reference internal" href="../../user/configoptions.html#config-GDAL_NUM_THREADS"><code class="docutils literal notranslate"><span class="pre">GDAL_NUM_THREADS</span></code></a>
 configuration option to an integer or <code class="docutils literal notranslate"><span class="pre">ALL_CPUS</span></code>.</p>
+<p>Starting with GDAL 3.10, the <a class="reference internal" href="#drivers/raster/vrt-oo-NUM_THREADS"><code class="docutils literal notranslate"><span class="pre">NUM_THREADS</span></code></a> open option can
+be set to control specifically the multi-threading of VRT datasets.
+It defaults to <code class="docutils literal notranslate"><span class="pre">ALL_CPUS</span></code>, and when set, overrides <a class="reference internal" href="../../user/configoptions.html#config-GDAL_NUM_THREADS"><code class="docutils literal notranslate"><span class="pre">GDAL_NUM_THREADS</span></code></a>
+or <a class="reference internal" href="#config-VRT_NUM_THREADS"><code class="docutils literal notranslate"><span class="pre">VRT_NUM_THREADS</span></code></a>. It applies to
+ComputeStatistics() and band-level and dataset-level RasterIO().
+For band-level RasterIO(), multi-threading is only available if more than 1
+million pixels are requested and if the VRT is made of only non-overlapping
+SimpleSource or ComplexSource belonging to different datasets.
+For dataset-level RasterIO(), multi-threading is only available if more than 1
+million pixels are requested and if the VRT is made of only non-overlapping
+SimpleSource belonging to different datasets.</p>
+<ul class="simple">
+<li><p id="drivers/raster/vrt-oo-NUM_THREADS"><strong>NUM_THREADS=[integer/ALL_CPUS]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">ALL_CPUS</span></code>. Determines the number of threads used when an operation reads from
+multiple sources.</p>
+</li>
+</ul>
+<p>This can also be specified globally with the <a class="reference internal" href="#config-VRT_NUM_THREADS"><code class="docutils literal notranslate"><span class="pre">VRT_NUM_THREADS</span></code></a>
+configuration option.</p>
+<ul class="simple">
+<li><p id="config-VRT_NUM_THREADS"><strong>VRT_NUM_THREADS=[integer/ALL_CPUS]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">ALL_CPUS</span></code>. Determines the number of threads used when an operation reads from
+multiple sources.</p>
+</li>
+</ul>
+<p>Note that the number of threads actually used is also limited by the
+<a class="reference internal" href="../../user/configoptions.html#config-GDAL_MAX_DATASET_POOL_SIZE"><code class="docutils literal notranslate"><span class="pre">GDAL_MAX_DATASET_POOL_SIZE</span></code></a> configuration option.</p>
 </section>
 <section id="multi-threading-issues">
 <h2>Multi-threading issues<a class="headerlink" href="#multi-threading-issues" title="Link to this heading"></a></h2>

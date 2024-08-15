@@ -18,9 +18,9 @@
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="../_static/documentation_options.js?v=c033477b"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../_static/translations.js?v=4dbe4bdc"></script>
+        <script src="../_static/translations.js?v=91613774"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="author" title="このドキュメントについて" href="../about.html" />
     <link rel="index" title="索引" href="../genindex.html" />
@@ -405,7 +405,7 @@ a value associate to a key from a HSTORE string, formatted like &quot;key=&gt;va
 <p>The <code class="docutils literal notranslate"><span class="pre">gdal_get_pixel_value()</span></code> function (added in GDAL 3.7) can be used to extract the value
 of a pixel in a GDAL dataset. It requires the configuration option OGR_SQLITE_ALLOW_EXTERNAL_ACCESS
 to be set to YES (for security reasons).</p>
-<p>It takes 5 arguments:</p>
+<p>It takes 5 or 6 arguments:</p>
 <ul class="simple">
 <li><p>a string with the dataset name</p></li>
 <li><p>a band number (numbering starting at 1)</p></li>
@@ -414,9 +414,11 @@ coordinates, or &quot;pixel&quot; to indicate that subsequent values will be in 
 pixel space</p></li>
 <li><p>georeferenced X value or column number</p></li>
 <li><p>georeferenced Y value or line number</p></li>
+<li><p>resampling method among <code class="docutils literal notranslate"><span class="pre">nearest</span></code> (default), <code class="docutils literal notranslate"><span class="pre">bilinear</span></code>, <code class="docutils literal notranslate"><span class="pre">cubic</span></code>, <code class="docutils literal notranslate"><span class="pre">cubicspline</span></code>. Optional, added in GDAL 3.10</p></li>
 </ul>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">gdal_get_pixel_value</span><span class="p">(</span><span class="s1">&#39;../gcore/data/byte.tif&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;georef&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">440720</span><span class="p">,</span><span class="w"> </span><span class="mi">3751320</span><span class="p">)</span>
 <span class="k">SELECT</span><span class="w"> </span><span class="n">gdal_get_pixel_value</span><span class="p">(</span><span class="s1">&#39;../gcore/data/byte.tif&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;pixel&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">gdal_get_pixel_value</span><span class="p">(</span><span class="s1">&#39;../gcore/data/byte.tif&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;pixel&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;bilinear&#39;</span><span class="p">)</span><span class="w">  </span><span class="c1">-- GDAL &gt;= 3.10</span>
 </pre></div>
 </div>
 </section>

@@ -18,9 +18,9 @@
         <script src="../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="../../_static/documentation_options.js?v=c033477b"></script>
-        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
         <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../../_static/translations.js?v=4dbe4bdc"></script>
+        <script src="../../_static/translations.js?v=91613774"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="author" title="このドキュメントについて" href="../../about.html" />
     <link rel="index" title="索引" href="../../genindex.html" />
@@ -228,7 +228,7 @@
 <li class="toctree-l2"><a class="reference internal" href="tsx.html">TSX --  TerraSAR-X Product</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usgsdem.html">USGSDEM -- USGS ASCII DEM (and CDED)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vicar.html">VICAR -- VICAR</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vrt.html">VRT -- GDAL Virtual Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vrt.html">VRT -- GDAL 仮想形式</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wcs.html">WCS -- OGC Web Coverage Service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="webp.html">WEBP - WEBP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wms.html">WMS -- Web Map Services</a></li>
@@ -986,7 +986,7 @@ are also available.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">gdal_get_layer_pixel_value()</span></code> function (added in GDAL 3.7), variant of the
 generic <code class="docutils literal notranslate"><span class="pre">gdal_get_pixel_value()</span></code>, can be used to extract the value of a pixel
 in a raster layer of the current dataset.</p>
-<p>It takes 5 arguments:</p>
+<p>It takes 5 or 6 arguments:</p>
 <ul class="simple">
 <li><p>a string with the layer/table name</p></li>
 <li><p>a band number (numbering starting at 1)</p></li>
@@ -995,9 +995,11 @@ coordinates, or &quot;pixel&quot; to indicate that subsequent values will be in 
 pixel space</p></li>
 <li><p>georeferenced X value or column number</p></li>
 <li><p>georeferenced Y value or line number</p></li>
+<li><p>resampling method among <code class="docutils literal notranslate"><span class="pre">nearest</span></code> (default), <code class="docutils literal notranslate"><span class="pre">bilinear</span></code>, <code class="docutils literal notranslate"><span class="pre">cubic</span></code>, <code class="docutils literal notranslate"><span class="pre">cubicspline</span></code>. Optional, added in GDAL 3.10</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">gdal_get_layer_pixel_value</span><span class="p">(</span><span class="s1">&#39;my_raster_table&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;georef&#39;</span><span class="p">,</span> <span class="mi">440720</span><span class="p">,</span> <span class="mi">3751320</span><span class="p">)</span>
 <span class="n">SELECT</span> <span class="n">gdal_get_layer_pixel_value</span><span class="p">(</span><span class="s1">&#39;my_raster_table&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;pixel&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">SELECT</span> <span class="n">gdal_get_pixel_value</span><span class="p">(</span><span class="s1">&#39;my_raster_table&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;pixel&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;bilinear&#39;</span><span class="p">)</span>  <span class="o">--</span> <span class="n">GDAL</span> <span class="o">&gt;=</span> <span class="mf">3.10</span>
 </pre></div>
 </div>
 </section>

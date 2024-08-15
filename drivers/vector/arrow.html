@@ -18,9 +18,9 @@
         <script src="../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="../../_static/documentation_options.js?v=c033477b"></script>
-        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
         <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../../_static/translations.js?v=4dbe4bdc"></script>
+        <script src="../../_static/translations.js?v=91613774"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="author" title="このドキュメントについて" href="../../about.html" />
     <link rel="index" title="索引" href="../../genindex.html" />
@@ -59,10 +59,9 @@
 <li class="toctree-l3"><a class="reference internal" href="#driver-capabilities">Driver capabilities</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#creation-issues">Creation issues</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#layer-creation-options">Layer creation options</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#conda-forge-package">Conda-forge package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#standalone-plugin-compilation">Standalone plugin compilation</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="#conda-forge-package">Conda-forge package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#standalone-plugin-compilation">Standalone plugin compilation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#arrow-vsi-file-system">Arrow VSI file system</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#links">Links</a></li>
 </ul>
 </li>
@@ -231,7 +230,7 @@
   <section id="geo-arrow-ipc-file-format-stream">
 <span id="vector-arrow"></span><h1>(Geo)Arrow IPC File Format / Stream<a class="headerlink" href="#geo-arrow-ipc-file-format-stream" title="Link to this heading"></a></h1>
 <div class="versionadded">
-<p><span class="versionmodified added">バージョン 3.5 で追加.</span></p>
+<p><span class="versionmodified added">Added in version 3.5.</span></p>
 </div>
 <div class="admonition shortname" id="shortname-0">
 <p class="admonition-title">Driver short name</p>
@@ -330,10 +329,11 @@ set an empty name)</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">libgdal</span><span class="o">-</span><span class="n">arrow</span><span class="o">-</span><span class="n">parquet</span>
 </pre></div>
 </div>
+</section>
 <section id="standalone-plugin-compilation">
-<h3>Standalone plugin compilation<a class="headerlink" href="#standalone-plugin-compilation" title="Link to this heading"></a></h3>
+<h2>Standalone plugin compilation<a class="headerlink" href="#standalone-plugin-compilation" title="Link to this heading"></a></h2>
 <div class="versionadded">
-<p><span class="versionmodified added">バージョン 3.10 で追加.</span></p>
+<p><span class="versionmodified added">Added in version 3.10.</span></p>
 </div>
 <p>While this driver may be built as part of a whole GDAL build, either in libgdal
 itself, or as a plugin, it is also possible to only build this driver as a plugin,
@@ -350,6 +350,25 @@ systematically loaded at GDAL driver initialization time, and will not benefit f
 <cite>deferred plugin loading capabilities &lt;rfc-96&gt;</cite>. For that, libgdal itself must be built with the
 CMake variable OGR_REGISTER_DRIVER_ARROW_FOR_LATER_PLUGIN=ON set.</p>
 </section>
+<section id="arrow-vsi-file-system">
+<h2>Arrow VSI file system<a class="headerlink" href="#arrow-vsi-file-system" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.10.</span></p>
+</div>
+<p>Starting with GDAL 3.10 and Arrow 16.0, any GDAL Virtual File System can be
+used (in a read-only context) wherever the Arrow C++ library expects a URI, in
+particular outside of the context of the OGR Arrow driver, by:</p>
+<ul class="simple">
+<li><p>loading the libgdal.so/dll library (or the ogr_Arrow.so/dll plugin library if
+the Arrow driver is built as a library) with the arrow::fs::LoadFileSystemFactories()
+function (cf <a class="reference external" href="https://arrow.apache.org/docs/cpp/io.html#defining-new-filesystems">Defining new filesystems</a>)
+Note: if the Arrow driver is fully loaded, e.g. by querying
+GetGDALDriverManager()-&gt;GetDriverByName(&quot;ARROW&quot;)-&gt;GetMetadata(), the Arrow VSI
+file system will be also registered.</p></li>
+<li><p>Prefixing any GDAL file name with the <code class="docutils literal notranslate"><span class="pre">vsi://</span></code> URI scheme prefix. In addition
+to any potential vsi prefix in the GDAL file name. So the <code class="docutils literal notranslate"><span class="pre">/vsicurl/http://example.com</span></code>
+GDAL file name becomes the <code class="docutils literal notranslate"><span class="pre">vsi:///vsicurl/http://example.com</span></code> Arrow URI.</p></li>
+</ul>
 </section>
 <section id="links">
 <h2>Links<a class="headerlink" href="#links" title="Link to this heading"></a></h2>

@@ -18,9 +18,9 @@
         <script src="../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="../../_static/documentation_options.js?v=c033477b"></script>
-        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
         <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../../_static/translations.js?v=4dbe4bdc"></script>
+        <script src="../../_static/translations.js?v=91613774"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="author" title="このドキュメントについて" href="../../about.html" />
     <link rel="index" title="索引" href="../../genindex.html" />
@@ -228,7 +228,7 @@
 <li class="toctree-l2"><a class="reference internal" href="tsx.html">TSX --  TerraSAR-X Product</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usgsdem.html">USGSDEM -- USGS ASCII DEM (and CDED)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vicar.html">VICAR -- VICAR</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vrt.html">VRT -- GDAL Virtual Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vrt.html">VRT -- GDAL 仮想形式</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wcs.html">WCS -- OGC Web Coverage Service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="webp.html">WEBP - WEBP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wms.html">WMS -- Web Map Services</a></li>
@@ -327,7 +327,7 @@ a number of advanced, and somewhat esoteric options not suitable for the
 information is collected here, and is primarily aimed at developers and
 advanced users.</p>
 <section id="cgm-segments">
-<h2>CGM Segments<a class="headerlink" href="#cgm-segments" title="Link to this heading"></a></h2>
+<span id="raster-nitf-advanced-cgm"></span><h2>CGM Segments<a class="headerlink" href="#cgm-segments" title="Link to this heading"></a></h2>
 <p>NITF files that have CGM data (that is segment type GR - graphics, or SY
 with an STYPE value of 'C') will make that information available as
 metadata in the CGM domain. The returned metadata will look something
@@ -388,7 +388,7 @@ the corresponding subdataset names. The Subdataset mechanism is generic
 GDAL concept discussed in the <a class="reference internal" href="../../user/raster_data_model.html#raster-data-model"><span class="std std-ref">Raster Data Model</span></a> document.</p>
 </section>
 <section id="text-segments">
-<h2>Text Segments<a class="headerlink" href="#text-segments" title="Link to this heading"></a></h2>
+<span id="raster-nitf-advanced-text"></span><h2>Text Segments<a class="headerlink" href="#text-segments" title="Link to this heading"></a></h2>
 <p>NITF files that have text segments (that is segment type TX) will make
 that information available as metadata in the TEXT domain. The returned
 metadata will look something like:</p>
@@ -587,7 +587,7 @@ metadata in base64 encoded format. Something like:</p>
 header is the length (decoded) in bytes, followed by one space.</p>
 </section>
 <section id="writing-multiple-image-segments">
-<h2>Writing multiple Image Segments<a class="headerlink" href="#writing-multiple-image-segments" title="Link to this heading"></a></h2>
+<span id="raster-nitf-advanced-write-multiple-image-segments"></span><h2>Writing multiple Image Segments<a class="headerlink" href="#writing-multiple-image-segments" title="Link to this heading"></a></h2>
 <p>(GDAL &gt;= 3.4)</p>
 <p>Writing a NITF file with several image segments is done with the <code class="docutils literal notranslate"><span class="pre">APPEND_SUBDATASET=YES</span></code>
 creation option but requires some care.</p>

@@ -18,9 +18,9 @@
         <script src="../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="../../_static/documentation_options.js?v=c033477b"></script>
-        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
         <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../../_static/translations.js?v=4dbe4bdc"></script>
+        <script src="../../_static/translations.js?v=91613774"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="author" title="このドキュメントについて" href="../../about.html" />
     <link rel="index" title="索引" href="../../genindex.html" />
@@ -116,6 +116,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#gti-xml-format">GTI XML format</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#how-to-build-a-gti-comptatible-index">How to build a GTI comptatible index ?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#open-options">Open options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#multi-threading-optimizations">Multi-threading optimizations</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="gtiff.html">GTiff -- GeoTIFF File Format</a></li>
@@ -215,7 +216,7 @@
 <li class="toctree-l2"><a class="reference internal" href="tsx.html">TSX --  TerraSAR-X Product</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usgsdem.html">USGSDEM -- USGS ASCII DEM (and CDED)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vicar.html">VICAR -- VICAR</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vrt.html">VRT -- GDAL Virtual Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vrt.html">VRT -- GDAL 仮想形式</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wcs.html">WCS -- OGC Web Coverage Service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="webp.html">WEBP - WEBP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wms.html">WMS -- Web Map Services</a></li>
@@ -307,7 +308,7 @@
   <section id="gti-gdal-raster-tile-index">
 <span id="raster-gti"></span><h1>GTI -- GDAL Raster Tile Index<a class="headerlink" href="#gti-gdal-raster-tile-index" title="Link to this heading"></a></h1>
 <div class="versionadded">
-<p><span class="versionmodified added">バージョン 3.9 で追加.</span></p>
+<p><span class="versionmodified added">Added in version 3.9.</span></p>
 </div>
 <div class="admonition shortname" id="shortname-0">
 <p class="admonition-title">Driver short name</p>
@@ -468,24 +469,35 @@ the default nearest resampling mode.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">BAND_&lt;number&gt;_UNITTYPE=&lt;val&gt;</span></code> where number is an integer index starting at 1.</p>
 <p>Unit of the band.</p>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">OVERVIEW_&lt;idx&gt;_DATASET=&lt;string&gt;</span></code> where idx is an integer index starting at 0.</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">OVERVIEW_&lt;idx&gt;_DATASET=&lt;string&gt;</span></code> where idx is an integer index (starting at 0
+since GDAL 3.9.2, starting at 1 in GDAL 3.9.0 and 3.9.1)</p>
 <p>Name of the dataset to use as the first overview level. This may be a
 raster dataset (for example a GeoTIFF file, or another GTI dataset).
 This may also be a vector dataset with a GTI compatible layer, potentially
 specified with <code class="docutils literal notranslate"><span class="pre">OVERVIEW_&lt;idx&gt;_LAYER</span></code>.</p>
+<p>Starting with GDAL 3.9.2, overviews of <code class="docutils literal notranslate"><span class="pre">OVERVIEW_&lt;idx&gt;_DATASET=&lt;string&gt;</span></code>
+are also automatically added, unless <code class="docutils literal notranslate"><span class="pre">OVERVIEW_&lt;idx&gt;_OPEN_OPTIONS=OVERVIEW_LEVEL=NONE</span></code>
+is specified.</p>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">OVERVIEW_&lt;idx&gt;_OPEN_OPTIONS=&lt;key1=value1&gt;[,key2=value2]...</span></code> where idx is an integer index starting at 0.</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">OVERVIEW_&lt;idx&gt;_OPEN_OPTIONS=&lt;key1=value1&gt;[,key2=value2]...</span></code> where idx is an integer index (starting at 0
+since GDAL 3.9.2, starting at 1 in GDAL 3.9.0 and 3.9.1)</p>
 <p>Open options(s) to use to open <code class="docutils literal notranslate"><span class="pre">OVERVIEW_&lt;idx&gt;_DATASET</span></code>.</p>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">OVERVIEW_&lt;idx&gt;_LAYER=&lt;string&gt;</span></code> where idx is an integer index starting at 0.</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">OVERVIEW_&lt;idx&gt;_LAYER=&lt;string&gt;</span></code> where idx is an integer index (starting at 0
+since GDAL 3.9.2, starting at 1 in GDAL 3.9.0 and 3.9.1)</p>
+<p>Only taken into account if <code class="docutils literal notranslate"><span class="pre">OVERVIEW_&lt;idx&gt;_DATASET=&lt;string&gt;</span></code> is not specified,
+or points to a GTI dataset.</p>
 <p>Name of the vector layer to use as the first overview level, assuming
 <code class="docutils literal notranslate"><span class="pre">OVERVIEW_&lt;idx&gt;_DATASET</span></code> points to a vector dataset. <code class="docutils literal notranslate"><span class="pre">OVERVIEW_&lt;idx&gt;_DATASET</span></code>
 may also not be specified, in which case the vector dataset of the full
 resolution virtual mosaic is used.</p>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">OVERVIEW_&lt;idx&gt;_FACTOR=&lt;int&gt;</span></code> where idx is an integer index starting at 0.</p>
-<p>Sub-sampling factor, strictly greater than 1. If <code class="docutils literal notranslate"><span class="pre">OVERVIEW_&lt;idx&gt;_DATASET</span></code>
-and <code class="docutils literal notranslate"><span class="pre">OVERVIEW_&lt;idx&gt;_LAYER</span></code> are not specified, then all tiles of the full
+<li><p><code class="docutils literal notranslate"><span class="pre">OVERVIEW_&lt;idx&gt;_FACTOR=&lt;int&gt;</span></code> where idx is an integer index (starting at 0
+since GDAL 3.9.2, starting at 1 in GDAL 3.9.0 and 3.9.1)</p>
+<p>Sub-sampling factor, strictly greater than 1.</p>
+<p>Only taken into account if <code class="docutils literal notranslate"><span class="pre">OVERVIEW_&lt;idx&gt;_DATASET=&lt;string&gt;</span></code> is not specified,
+or points to a GTI dataset.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">OVERVIEW_&lt;idx&gt;_DATASET</span></code> and <code class="docutils literal notranslate"><span class="pre">OVERVIEW_&lt;idx&gt;_LAYER</span></code> are not specified, then all tiles of the full
 resolution virtual mosaic are used, with the specified sub-sampling factor
 (it is recommended, but not required, that those tiles do have a corresponding overview).
 <code class="docutils literal notranslate"><span class="pre">OVERVIEW_&lt;idx&gt;_DATASET</span></code> and/or <code class="docutils literal notranslate"><span class="pre">OVERVIEW_&lt;idx&gt;_LAYER</span></code> may also be
@@ -495,6 +507,7 @@ specified to point to another tile index.</p>
 <p>All overviews <em>must</em> have exactly the same extent as the full resolution
 virtual mosaic. The GTI driver does not check that, and if that condition is
 not met, subsampled pixel request will lead to incorrect result.</p>
+<p>They also must be listed by decreasing size with increasing overview index.</p>
 <p>In addition to those layer metadata items, the dataset-level metadata item
 <code class="docutils literal notranslate"><span class="pre">TILE_INDEX_LAYER</span></code> may be set to indicate, for dataset with multiple layers,
 which one should be used as the tile index layer.</p>
@@ -577,7 +590,8 @@ mentioned in the previous section.</p>
 <span class="w">    </span><span class="nt">&lt;/Overview&gt;</span>
 <span class="w">    </span><span class="nt">&lt;Overview&gt;</span><span class="w">                                     </span><span class="cm">&lt;!-- optional --&gt;</span>
 <span class="w">        </span><span class="cm">&lt;!-- 3rd overview level (and potentially 4th, 5th... depending on</span>
-<span class="cm">             the number of overview levels in the pointed GeoTIFF file)</span>
+<span class="cm">             the number of overview levels in the pointed GeoTIFF file.</span>
+<span class="cm">             Only since GDAL 3.9.2)</span>
 <span class="cm">        --&gt;</span>
 <span class="w">        </span><span class="nt">&lt;Dataset&gt;</span>some.tif<span class="nt">&lt;/Dataset&gt;</span>
 <span class="w">    </span><span class="nt">&lt;/Overview&gt;</span>
@@ -653,6 +667,29 @@ virtual mosaic (unless SORT_FIELD_ASC=NO is set)</p>
 <li><p id="drivers/raster/gti-oo-MAXY"><strong>MAXY=&lt;float&gt;: </strong>Maximum Y value for the virtual mosaic extent</p>
 </li>
 </ul>
+</section>
+<section id="multi-threading-optimizations">
+<h2>Multi-threading optimizations<a class="headerlink" href="#multi-threading-optimizations" title="Link to this heading"></a></h2>
+<p>Starting with GDAL 3.10, the <a class="reference internal" href="#drivers/raster/gti-oo-NUM_THREADS"><code class="docutils literal notranslate"><span class="pre">NUM_THREADS</span></code></a> open option can
+be set to control specifically the multi-threading of GTI datasets.
+It defaults to <code class="docutils literal notranslate"><span class="pre">ALL_CPUS</span></code>, and when set, overrides <a class="reference internal" href="../../user/configoptions.html#config-GDAL_NUM_THREADS"><code class="docutils literal notranslate"><span class="pre">GDAL_NUM_THREADS</span></code></a>
+or <a class="reference internal" href="#config-GTI_NUM_THREADS"><code class="docutils literal notranslate"><span class="pre">GTI_NUM_THREADS</span></code></a>. It applies to band-level and dataset-level
+RasterIO(), if more than 1 million pixels are requested and if the mosaic is
+made of only non-overlapping tiles.</p>
+<ul class="simple">
+<li><p id="drivers/raster/gti-oo-NUM_THREADS"><strong>NUM_THREADS=[integer/ALL_CPUS]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">ALL_CPUS</span></code>. Determines the number of threads used when an operation reads from
+multiple sources.</p>
+</li>
+</ul>
+<p>This can also be specified globally with the <a class="reference internal" href="#config-GTI_NUM_THREADS"><code class="docutils literal notranslate"><span class="pre">GTI_NUM_THREADS</span></code></a>
+configuration option.</p>
+<ul class="simple">
+<li><p id="config-GTI_NUM_THREADS"><strong>GTI_NUM_THREADS=[integer/ALL_CPUS]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">ALL_CPUS</span></code>. Determines the number of threads used when an operation reads from
+multiple sources.</p>
+</li>
+</ul>
+<p>Note that the number of threads actually used is also limited by the
+<a class="reference internal" href="../../user/configoptions.html#config-GDAL_MAX_DATASET_POOL_SIZE"><code class="docutils literal notranslate"><span class="pre">GDAL_MAX_DATASET_POOL_SIZE</span></code></a> configuration option.</p>
 </section>
 </section>
 

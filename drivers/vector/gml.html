@@ -18,9 +18,9 @@
         <script src="../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="../../_static/documentation_options.js?v=c033477b"></script>
-        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
         <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../../_static/translations.js?v=4dbe4bdc"></script>
+        <script src="../../_static/translations.js?v=91613774"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="author" title="このドキュメントについて" href="../../about.html" />
     <link rel="index" title="索引" href="../../genindex.html" />
@@ -303,7 +303,7 @@ The following configuration options are available:</p>
 <ul class="simple">
 <li><p id="config-GML_PARSER"><strong>GML_PARSER=[EXPAT/XERCES]: </strong>Select the XML parser. See <a class="reference internal" href="#parsers">Parsers</a>.</p>
 </li>
-<li><p id="config-GML_INVERT_AXIS_ORDER_IF_LAT_LONG"><strong>GML_INVERT_AXIS_ORDER_IF_LAT_LONG=[YES/NO]: </strong>See <a class="reference internal" href="#crs-support">CRS support</a>. Equivalent of <a class="reference internal" href="gml.html#drivers/vector/gml-oo-INVERT_AXIS_ORDER_IF_LAT_LONG"><code class="docutils literal notranslate"><span class="pre">INVERT_AXIS_ORDER_IF_LAT_LONG</span></code></a> open option.</p>
+<li><p id="config-GML_INVERT_AXIS_ORDER_IF_LAT_LONG"><strong>GML_INVERT_AXIS_ORDER_IF_LAT_LONG=[YES/NO]: </strong>See <a class="reference internal" href="#crs-support">CRS support</a>. Equivalent of <a class="reference internal" href="#drivers/vector/gml-oo-INVERT_AXIS_ORDER_IF_LAT_LONG"><code class="docutils literal notranslate"><span class="pre">INVERT_AXIS_ORDER_IF_LAT_LONG</span></code></a> open option.</p>
 </li>
 <li><p id="config-GML_CONSIDER_EPSG_AS_URN"><strong>GML_CONSIDER_EPSG_AS_URN=[YES/NO]: </strong>See <a class="reference internal" href="#crs-support">CRS support</a>. Equivalent of <a class="reference internal" href="#drivers/vector/gml-oo-CONSIDER_EPSG_AS_URN"><code class="docutils literal notranslate"><span class="pre">CONSIDER_EPSG_AS_URN</span></code></a> open option.</p>
 </li>
@@ -331,6 +331,8 @@ See <a class="reference internal" href="#geometry-reading">Geometry reading</a>.
 <li><p id="config-GML_EXPOSE_GML_ID"><strong>GML_EXPOSE_GML_ID=[YES/NO]: </strong>Equivalent of <a class="reference internal" href="#drivers/vector/gml-oo-EXPOSE_GML_ID"><code class="docutils literal notranslate"><span class="pre">EXPOSE_GML_ID</span></code></a>.</p>
 </li>
 <li><p id="config-GML_READ_MODE"><strong>GML_READ_MODE=[AUTO/STANDARD/SEQUENTIAL_LAYERS/INTERLEAVED_LAYERS]: </strong>Equivalent of <a class="reference internal" href="#drivers/vector/gml-oo-READ_MODE"><code class="docutils literal notranslate"><span class="pre">READ_MODE</span></code></a>. See <a class="reference internal" href="#gml-performance"><span class="std std-ref">Performance issues with large multi-layer GML files.</span></a>.</p>
+</li>
+<li><p id="config-GML_USE_SCHEMA_IMPORT"><strong>GML_USE_SCHEMA_IMPORT=[YES/NO]: </strong>Equivalent of <a class="reference internal" href="#drivers/vector/gml-oo-USE_SCHEMA_IMPORT"><code class="docutils literal notranslate"><span class="pre">USE_SCHEMA_IMPORT</span></code></a>.</p>
 </li>
 </ul>
 </section>
@@ -741,6 +743,9 @@ remote application schema if needed (only for WFS currently).</p>
 </li>
 <li><p id="drivers/vector/gml-oo-USE_BBOX"><strong>USE_BBOX=[YES/NO]: </strong> (GDAL &gt;= 3.7.1)  Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. Whether to use gml:boundedBy at feature level as feature geometry,
 if there are no other geometry.</p>
+</li>
+<li><p id="drivers/vector/gml-oo-USE_SCHEMA_IMPORT"><strong>USE_SCHEMA_IMPORT=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. Whether to use schema imports in XSD files so that
+the feature types corresponding to imported schema can be detected.</p>
 </li>
 </ul>
 <div class="admonition note">
@@ -1348,7 +1353,7 @@ will be read as the following:</p>
 <section id="geometry-coordinate-precision">
 <h2>Geometry coordinate precision<a class="headerlink" href="#geometry-coordinate-precision" title="Link to this heading"></a></h2>
 <div class="versionadded">
-<p><span class="versionmodified added">バージョン GDAL で追加: </span>3.9</p>
+<p><span class="versionmodified added">Added in version GDAL: </span>3.9</p>
 </div>
 <p>The GML driver supports reading and writing the geometry coordinate
 precision, using the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRGeomCoordinatePrecision</span></code> settings of the

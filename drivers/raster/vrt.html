@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VRT -- GDAL Virtual Format &mdash; GDAL  ドキュメント</title>
+  <title>VRT -- GDAL 仮想形式 &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d10597a4" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/gdal.css?v=e152ac3b" />
 
@@ -18,9 +18,9 @@
         <script src="../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="../../_static/documentation_options.js?v=c033477b"></script>
-        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
         <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../../_static/translations.js?v=4dbe4bdc"></script>
+        <script src="../../_static/translations.js?v=91613774"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="author" title="このドキュメントについて" href="../../about.html" />
     <link rel="index" title="索引" href="../../genindex.html" />
@@ -207,8 +207,8 @@
 <li class="toctree-l2"><a class="reference internal" href="tsx.html">TSX --  TerraSAR-X Product</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usgsdem.html">USGSDEM -- USGS ASCII DEM (and CDED)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vicar.html">VICAR -- VICAR</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">VRT -- GDAL Virtual Format</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">VRT -- GDAL 仮想形式</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">概論</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#creation-options">Creation options</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#vrt-format">.vrt Format</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#vrtdataset">VRTDataset</a></li>
@@ -303,7 +303,7 @@
       
           <li><a href="index.html">ラスタードライバー</a> &raquo;</li>
       
-      <li>VRT -- GDAL Virtual Format</li>
+      <li>VRT -- GDAL 仮想形式</li>
     
 
     
@@ -335,9 +335,9 @@
            <div itemprop="articleBody">
              
   <section id="vrt-gdal-virtual-format">
-<span id="raster-vrt"></span><h1>VRT -- GDAL Virtual Format<a class="headerlink" href="#vrt-gdal-virtual-format" title="Link to this heading"></a></h1>
+<span id="raster-vrt"></span><h1>VRT -- GDAL 仮想形式<a class="headerlink" href="#vrt-gdal-virtual-format" title="Link to this heading"></a></h1>
 <div class="admonition shortname" id="shortname-0">
-<p class="admonition-title">Driver short name</p>
+<p class="admonition-title">ドライバー短縮名</p>
 <p>VRT</p>
 </div>
 <div class="admonition built_in_by_default" id="built_in_by_default-0">
@@ -345,7 +345,7 @@
 <p>This driver is built-in by default</p>
 </div>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<h2>概論<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
 <p>The VRT driver is a format driver for GDAL that allows a virtual GDAL dataset
 to be composed from other GDAL datasets with repositioning, and algorithms
 potentially applied as well as various kinds of metadata altered or added.
@@ -794,7 +794,7 @@ For example, a Gaussian blur:</p>
 <section id="nodatafrommasksource">
 <h5>NoDataFromMaskSource<a class="headerlink" href="#nodatafrommasksource" title="Link to this heading"></a></h5>
 <div class="versionadded">
-<p><span class="versionmodified added">バージョン 3.9 で追加.</span></p>
+<p><span class="versionmodified added">Added in version 3.9.</span></p>
 </div>
 <p>The NoDataFromMaskSource is derived from the SimpleSource and shares the same properties except that it replaces the value of the source with the value of the NODATA child element when the value of the mask band of the source is less or equal to the MaskValueThreshold child element.
 This is typically used to transform a R,G,B,A image into a R,G,B one with a NoData value.
@@ -812,7 +812,7 @@ An optional RemappedValue element can be set to specify the value onto which val
 <section id="arraysource">
 <h5>ArraySource<a class="headerlink" href="#arraysource" title="Link to this heading"></a></h5>
 <div class="versionadded">
-<p><span class="versionmodified added">バージョン 3.8 で追加.</span></p>
+<p><span class="versionmodified added">Added in version 3.8.</span></p>
 </div>
 <p>The <a class="reference internal" href="#arraysource">ArraySource</a> indicates that raster data should be read from a 2D array using
 the multidimensional API. If the original array is not a 3D array, a DerivedArray
@@ -1993,7 +1993,7 @@ GDALWarpOptions element which describe the warping options.</p>
 <section id="pansharpened-vrt">
 <span id="gdal-vrttut-pansharpen"></span><h2>Pansharpened VRT<a class="headerlink" href="#pansharpened-vrt" title="Link to this heading"></a></h2>
 <div class="versionadded">
-<p><span class="versionmodified added">バージョン 2.1 で追加.</span></p>
+<p><span class="versionmodified added">Added in version 2.1.</span></p>
 </div>
 <p>A VRT can describe a dataset resulting from a
 <a class="reference external" href="https://en.wikipedia.org/wiki/Pansharpened_image">pansharpening operation</a>
@@ -2157,7 +2157,7 @@ pseudo panchromatic intensity, but not bound to an output band.</p>
 <section id="multidimensional-vrt">
 <h2>Multidimensional VRT<a class="headerlink" href="#multidimensional-vrt" title="Link to this heading"></a></h2>
 <div class="versionadded">
-<p><span class="versionmodified added">バージョン 3.1 で追加.</span></p>
+<p><span class="versionmodified added">Added in version 3.1.</span></p>
 </div>
 <p>See the dedicated <a class="reference internal" href="vrt_multidimensional.html#vrt-multidimensional"><span class="std std-ref">Multidimensional VRT</span></a> page.</p>
 <div class="toctree-wrapper compound">
@@ -2166,9 +2166,9 @@ pseudo panchromatic intensity, but not bound to an output band.</p>
 <section id="processed-dataset-vrt">
 <h2>Processed dataset VRT<a class="headerlink" href="#processed-dataset-vrt" title="Link to this heading"></a></h2>
 <div class="versionadded">
-<p><span class="versionmodified added">バージョン 3.9 で追加.</span></p>
+<p><span class="versionmodified added">Added in version 3.9.</span></p>
 </div>
-<p>A VRT processed dataset is a specific variant of the <a class="reference internal" href="#raster-vrt"><span class="std std-ref">VRT -- GDAL Virtual Format</span></a> format,
+<p>A VRT processed dataset is a specific variant of the <a class="reference internal" href="#raster-vrt"><span class="std std-ref">VRT -- GDAL 仮想形式</span></a> format,
 to apply chained processing steps that may apply to several bands at the same time.</p>
 <p>See the dedicated <a class="reference internal" href="vrt_processed_dataset.html#vrt-processed-dataset"><span class="std std-ref">VRT processed dataset</span></a> page.</p>
 <div class="toctree-wrapper compound">
@@ -2177,7 +2177,7 @@ to apply chained processing steps that may apply to several bands at the same ti
 <section id="vrt-connection-string">
 <h2>vrt:// connection string<a class="headerlink" href="#vrt-connection-string" title="Link to this heading"></a></h2>
 <div class="versionadded">
-<p><span class="versionmodified added">バージョン 3.1 で追加.</span></p>
+<p><span class="versionmodified added">Added in version 3.1.</span></p>
 </div>
 <p>In some contexts, it might be useful to benefit from features of VRT without
 having to create a file or to provide the rather verbose VRT XML content as

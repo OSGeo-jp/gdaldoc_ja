@@ -18,9 +18,9 @@
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="../_static/documentation_options.js?v=c033477b"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../_static/translations.js?v=4dbe4bdc"></script>
+        <script src="../_static/translations.js?v=91613774"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="author" title="このドキュメントについて" href="../about.html" />
     <link rel="index" title="索引" href="../genindex.html" />
@@ -237,7 +237,7 @@ Ignored in polygonal contouring (<a class="reference internal" href="#cmdoption-
 of contour polygon. If not provided no minimum elevation attribute
 is attached. Ignored in default line contouring mode.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">バージョン 2.4.0 で追加.</span></p>
+<p><span class="versionmodified added">Added in version 2.4.0.</span></p>
 </div>
 </dd></dl>
 
@@ -248,7 +248,7 @@ is attached. Ignored in default line contouring mode.</p>
 contour polygon. If not provided no maximum elevation attribute is attached.
 Ignored in default line contouring mode.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">バージョン 2.4.0 で追加.</span></p>
+<p><span class="versionmodified added">Added in version 2.4.0.</span></p>
 </div>
 </dd></dl>
 
@@ -276,7 +276,7 @@ Includes elevation at every vertex.</p>
 <span class="sig-name descname"><span class="pre">-f</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;format&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_contour-f" title="Link to this definition"></a></dt>
 <dd><p>Create output in a particular format.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">バージョン 2.3.0 で追加: </span>If not specified, the format is guessed from the extension (previously was ESRI Shapefile).</p>
+<p><span class="versionmodified added">Added in version 2.3.0: </span>If not specified, the format is guessed from the extension (previously was ESRI Shapefile).</p>
 </div>
 </dd></dl>
 
@@ -295,14 +295,14 @@ Includes elevation at every vertex.</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_contour-i">
 <span class="sig-name descname"><span class="pre">-i</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;interval&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_contour-i" title="Link to this definition"></a></dt>
-<dd><p>Elevation interval between contours. Ignored if -fl is used.
+<dd><p>Elevation interval between contours.
 Must specify either -i or -fl or -e.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_contour-off">
 <span class="sig-name descname"><span class="pre">-off</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;offset&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_contour-off" title="Link to this definition"></a></dt>
-<dd><p>Offset from zero relative to which to interpret intervals. Ignored if -fl is used.</p>
+<dd><p>Offset from zero relative to which to interpret intervals.</p>
 <p>For example, <cite>-i 100</cite> requests contours at ...-100, 0, 100...
 Further adding <cite>-off 25</cite> makes that request instead ...-75, 25, 125...</p>
 </dd></dl>
@@ -310,8 +310,7 @@ Further adding <cite>-off 25</cite> makes that request instead ...-75, 25, 125..
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_contour-fl">
 <span class="sig-name descname"><span class="pre">-fl</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;level&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_contour-fl" title="Link to this definition"></a></dt>
-<dd><p>Name one or more &quot;fixed levels&quot; to extract.
-Must specify either -i or -fl or -e.</p>
+<dd><p>Name one or more &quot;fixed levels&quot; to extract.</p>
 </dd></dl>
 
 <dl class="std option">
@@ -320,7 +319,7 @@ Must specify either -i or -fl or -e.</p>
 <dd><p>Generate levels on an exponential scale: <cite>base ^ k</cite>, for <cite>k</cite> an integer.
 Must specify either -i or -fl or -e.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">バージョン 2.4.0 で追加.</span></p>
+<p><span class="versionmodified added">Added in version 2.4.0.</span></p>
 </div>
 </dd></dl>
 
@@ -335,7 +334,7 @@ Must specify either -i or -fl or -e.</p>
 <span class="sig-name descname"><span class="pre">-p</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal_contour-p" title="Link to this definition"></a></dt>
 <dd><p>Generate contour polygons rather than contour lines.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">バージョン 2.4.0 で追加.</span></p>
+<p><span class="versionmodified added">Added in version 2.4.0.</span></p>
 </div>
 </dd></dl>
 

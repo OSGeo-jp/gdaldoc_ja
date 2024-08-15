@@ -18,9 +18,9 @@
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="../_static/documentation_options.js?v=c033477b"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../_static/translations.js?v=4dbe4bdc"></script>
+        <script src="../_static/translations.js?v=91613774"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="author" title="このドキュメントについて" href="../about.html" />
     <link rel="index" title="索引" href="../genindex.html" />
@@ -62,6 +62,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#multidimensional-array">Multidimensional array</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dimension">Dimension</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#data-type">Data Type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#objects-lifetime">Objects lifetime</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#differences-with-the-gdal-2d-raster-data-model">Differences with the GDAL 2D raster data model</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#bridges-between-gdal-2d-classic-raster-data-model-and-multidimensional-data-model">Bridges between GDAL 2D classic raster data model and multidimensional data model</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#applications">Applications</a></li>
@@ -253,12 +254,114 @@ GDALDataType does. So a driver may decide to expose a GDT_Cxxxx datatype
 from a HDF5 Compound data type representing a complex value.</p>
 </div>
 </section>
+<section id="objects-lifetime">
+<h2>Objects lifetime<a class="headerlink" href="#objects-lifetime" title="Link to this heading"></a></h2>
+<p>Driver implementations of the multidimensional API are such that instances of
+GDALGroup, GDALMDArray, GDALAttribute and GDALDimension can be used independently
+of the objects from which they have been obtained from. So:</p>
+<ul class="simple">
+<li><p>the GDALGroup instance returned by <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4NK11GDALDataset12GetRootGroupEv" title="GDALDataset::GetRootGroup"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetRootGroup()</span></code></a> can
+be used after the dataset has been closed.</p></li>
+<li><p>Sub-groups obtained from <a class="reference internal" href="../api/gdalgroup_cpp.html#_CPPv4NK9GDALGroup9OpenGroupERKNSt6stringE12CSLConstList" title="GDALGroup::OpenGroup"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALGroup::OpenGroup()</span></code></a>
+or arrays obtained from <a class="reference internal" href="../api/gdalgroup_cpp.html#_CPPv4NK9GDALGroup11OpenMDArrayERKNSt6stringE12CSLConstList" title="GDALGroup::OpenMDArray"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALGroup::OpenMDArray()</span></code></a> can be used after
+the owning group has been released.</p></li>
+<li><p>Similarly for attributes or dimensions obtained from a group or an array.</p></li>
+</ul>
+<p>So the following is perfectly legal:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;gdal_priv.h&quot;</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">GDALMDArray</span><span class="o">&gt;</span><span class="w"> </span><span class="n">GetArray</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">poDataset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">GDALDataset</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">        </span><span class="n">GDALDataset</span><span class="o">::</span><span class="n">Open</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;in.nc&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">GDAL_OF_MULTIDIM_RASTER</span><span class="w"> </span><span class="p">));</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="o">!</span><span class="n">poDataset</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="o">:</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">poRootGroup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">poDataset</span><span class="o">-&gt;</span><span class="n">GetRootGroup</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="o">!</span><span class="n">poRootGroup</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="o">:</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">poVar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">poRootGroup</span><span class="o">-&gt;</span><span class="n">OpenMDArray</span><span class="p">(</span><span class="s">&quot;temperature&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="o">!</span><span class="n">poVar</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="o">:</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">poVar</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">GDALAllRegister</span><span class="p">();</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">poVar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetArray</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="o">!</span><span class="n">poVar</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Do something with poVar</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>A potential point of attention is that, when creating / editing a dataset, all
+those objects keep alive the underlying file descriptors, so changes are only
+guaranteed to be serialized when all objects related to a dataset have been released.</p>
+<p>Example in C++:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">GDALAllRegister</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">poDataset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">GDALDataset</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">        </span><span class="n">GetGDALDriverManager</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">GetDriverByName</span><span class="p">(</span><span class="s">&quot;netCDF&quot;</span><span class="p">)</span><span class="o">-&gt;</span>
+<span class="w">            </span><span class="n">CreateMultiDimensional</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;new.nc&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">nullptr</span><span class="p">,</span><span class="w"> </span><span class="k">nullptr</span><span class="w"> </span><span class="p">));</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">poRootGroup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">poDataset</span><span class="o">-&gt;</span><span class="n">GetRootGroup</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// Could be closed a bit later too</span>
+<span class="w">    </span><span class="n">poDataset</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">poDim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">poRootGroup</span><span class="o">-&gt;</span><span class="n">CreateDimension</span><span class="p">(</span>
+<span class="w">        </span><span class="s">&quot;my_dim&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(),</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(),</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">poArray</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">poRootGroup</span><span class="o">-&gt;</span><span class="n">CreateMDArray</span><span class="p">(</span>
+<span class="w">        </span><span class="s">&quot;my_var&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="n">poDim</span><span class="p">},</span><span class="w"> </span><span class="n">GDALExtendedDataType</span><span class="o">::</span><span class="n">Create</span><span class="p">(</span><span class="n">GDT_Byte</span><span class="p">),</span><span class="w"> </span><span class="k">nullptr</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Can be closed in any order</span>
+<span class="w">    </span><span class="n">poArray</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
+<span class="w">    </span><span class="n">poDim</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
+<span class="w">    </span><span class="n">poRootGroup</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// new.nc is fully valid just now</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Example in Python:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">gdal</span>
+
+<span class="k">with</span> <span class="n">gdal</span><span class="o">.</span><span class="n">GetDriverByName</span><span class="p">(</span><span class="s2">&quot;netCDF&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">CreateMultiDimensional</span><span class="p">(</span><span class="s2">&quot;new.nc&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">ds</span><span class="p">:</span>
+    <span class="n">rg</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">GetRootGroup</span><span class="p">()</span>
+    <span class="n">dim</span> <span class="o">=</span> <span class="n">rg</span><span class="o">.</span><span class="n">CreateDimension</span><span class="p">(</span><span class="s2">&quot;my_dim&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">array</span> <span class="o">=</span> <span class="n">rg</span><span class="o">.</span><span class="n">CreateMDArray</span><span class="p">(</span><span class="s2">&quot;my_var&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">dim</span><span class="p">],</span> <span class="n">gdal</span><span class="o">.</span><span class="n">ExtendedDataType</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span><span class="n">gdal</span><span class="o">.</span><span class="n">GDT_Byte</span><span class="p">))</span>
+
+    <span class="k">del</span> <span class="n">array</span>
+    <span class="k">del</span> <span class="n">dim</span>
+    <span class="k">del</span> <span class="n">rg</span>
+
+<span class="c1"># new.nc is fully valid just now</span>
+</pre></div>
+</div>
+</section>
 <section id="differences-with-the-gdal-2d-raster-data-model">
 <h2>Differences with the GDAL 2D raster data model<a class="headerlink" href="#differences-with-the-gdal-2d-raster-data-model" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>The concept of GDALRasterBand is no longer used for multidimensional.
 This can be modelled as either different GDALMDArray, or using a compound
 data type.</p></li>
+<li><p>There is not yet a standardized concept multi-resolution arrays/overviews in
+the multidimensional API</p></li>
 </ul>
 </section>
 <section id="bridges-between-gdal-2d-classic-raster-data-model-and-multidimensional-data-model">

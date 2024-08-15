@@ -18,9 +18,9 @@
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="../_static/documentation_options.js?v=c033477b"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../_static/translations.js?v=4dbe4bdc"></script>
+        <script src="../_static/translations.js?v=91613774"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="author" title="このドキュメントについて" href="../about.html" />
@@ -247,7 +247,7 @@
 <span class="sig-name descname"><span class="pre">-if</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;format&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_translate-if" title="Link to this definition"></a></dt>
 <dd><p>入力ファイルを開くために試みるフォーマット/ドライバー名。通常は指定する必要はありませんが、適切なドライバーを選択できない場合に、自動ドライバー検出をスキップするために使用できます。このオプションは複数回繰り返して、いくつかの候補ドライバーを指定することができます。これらのドライバーがデータセットを開くことを強制するものではないことに注意してください。特に、いくつかのドライバーにはファイル拡張子に関する要件があります。</p>
 <div class="versionadded">
-<p><span class="versionmodified added">バージョン 3.2 で追加.</span></p>
+<p><span class="versionmodified added">Added in version 3.2.</span></p>
 </div>
 </dd></dl>
 
@@ -291,9 +291,9 @@
 <dt class="sig sig-object std" id="cmdoption-gdal_translate-ovr">
 <span class="sig-name descname"><span class="pre">-ovr</span></span><span class="sig-prename descclassname"> <span class="pre">{&lt;level&gt;|AUTO|AUTO-&lt;n&gt;|NONE}</span></span><a class="headerlink" href="#cmdoption-gdal_translate-ovr" title="Link to this definition"></a></dt>
 <dd><div class="versionadded">
-<p><span class="versionmodified added">バージョン 3.6 で追加.</span></p>
+<p><span class="versionmodified added">Added in version 3.6.</span></p>
 </div>
-<p>ソースファイルのどの概要レベルを使用するかを指定します。デフォルトの選択はAUTOで、ターゲット解像度に最も近い解像度の概要レベルが選択されます。特定のレベルを選択するには整数値(0ベース、すなわち0=1番目の概要レベル)を指定します。 AUTO-n を指定すると、n は1以上の整数であり、AUTOの1つ下の概要レベルを選択します。または、NONEを指定してベース解像度を強制的に使用させます(低品質の再サンプリング方法で概要が生成された場合に役立ちます。この場合、より高品質の再サンプリング方法を <a class="reference internal" href="#cmdoption-gdal_translate-r"><code class="xref std std-option docutils literal notranslate"><span class="pre">-r</span></code></a> で指定します。</p>
+<p>ソースファイルのどの概要表示レベルを使用するかを指定します。デフォルトの選択はAUTOで、ターゲット解像度に最も近い解像度の概要表示レベルが選択されます。特定のレベルを選択するには整数値(0ベース、すなわち0=1番目の概要表示レベル)を指定します。 AUTO-n を指定すると、n は1以上の整数であり、AUTOの1つ下の概要表示レベルを選択します。または、NONEを指定してベース解像度を強制的に使用させます(低品質の再サンプリング方法で概要表示が生成された場合に役立ちます。この場合、より高品質の再サンプリング方法を <a class="reference internal" href="#cmdoption-gdal_translate-r"><code class="xref std std-option docutils literal notranslate"><span class="pre">-r</span></code></a> で指定します。</p>
 <p>When <a class="reference internal" href="#cmdoption-gdal_translate-ovr"><code class="xref std std-option docutils literal notranslate"><span class="pre">-ovr</span></code></a> is specified to an integer value,
 and none of <a class="reference internal" href="#cmdoption-gdal_translate-outsize"><code class="xref std std-option docutils literal notranslate"><span class="pre">-outsize</span></code></a> and <a class="reference internal" href="#cmdoption-gdal_translate-tr"><code class="xref std std-option docutils literal notranslate"><span class="pre">-tr</span></code></a> is specified, the size of
 the overview will be used as the output size.</p>
@@ -392,7 +392,7 @@ complete WKT, PROJ.4, EPSG:n or a file containing the WKT.</p>
 <dt class="sig sig-object std" id="cmdoption-gdal_translate-a_coord_epoch">
 <span class="sig-name descname"><span class="pre">-a_coord_epoch</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;epoch&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_translate-a_coord_epoch" title="Link to this definition"></a></dt>
 <dd><div class="versionadded">
-<p><span class="versionmodified added">バージョン 3.4 で追加.</span></p>
+<p><span class="versionmodified added">Added in version 3.4.</span></p>
 </div>
 <p>出力SRSにリンクされた座標エポックを割り当てます。出力SRSが動的CRSである場合に役立ちます。</p>
 </dd></dl>
@@ -402,7 +402,7 @@ complete WKT, PROJ.4, EPSG:n or a file containing the WKT.</p>
 <span class="sig-name descname"><span class="pre">-a_scale</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;value&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_translate-a_scale" title="Link to this definition"></a></dt>
 <dd><p>バンドスケーリング値を設定します。ピクセル値の変更は行われません。  <a class="reference internal" href="#cmdoption-gdal_translate-unscale"><code class="xref std std-option docutils literal notranslate"><span class="pre">-unscale</span></code></a> は <a class="reference internal" href="#cmdoption-gdal_translate-a_scale"><code class="xref std std-option docutils literal notranslate"><span class="pre">-a_scale</span></code></a> を考慮しないことに注意してください。例えば、<code class="docutils literal notranslate"><span class="pre">-scale</span> <span class="pre">0</span> <span class="pre">1</span> <span class="pre">&lt;offset&gt;</span> <span class="pre">&lt;offset+scale&gt;</span></code> を指定して(オフセット、スケール)のタプルを適用し、次の2ステップに相当します: <code class="docutils literal notranslate"><span class="pre">gdal_translate</span> <span class="pre">input.tif</span> <span class="pre">tmp.vrt</span> <span class="pre">-a_scale</span> <span class="pre">scale</span> <span class="pre">-a_offset</span> <span class="pre">offset</span></code> の後に <code class="docutils literal notranslate"><span class="pre">gdal_translate</span> <span class="pre">tmp.vrt</span> <span class="pre">output.tif</span> <span class="pre">-unscale</span></code> を実行します。</p>
 <div class="versionadded">
-<p><span class="versionmodified added">バージョン 2.3 で追加.</span></p>
+<p><span class="versionmodified added">Added in version 2.3.</span></p>
 </div>
 </dd></dl>
 
@@ -411,7 +411,7 @@ complete WKT, PROJ.4, EPSG:n or a file containing the WKT.</p>
 <span class="sig-name descname"><span class="pre">-a_offset</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;value&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_translate-a_offset" title="Link to this definition"></a></dt>
 <dd><p>バンドオフセット値を設定します。ピクセル値の変更は行われません。<a class="reference internal" href="#cmdoption-gdal_translate-unscale"><code class="xref std std-option docutils literal notranslate"><span class="pre">-unscale</span></code></a> は <a class="reference internal" href="#cmdoption-gdal_translate-a_offset"><code class="xref std std-option docutils literal notranslate"><span class="pre">-a_offset</span></code></a> を考慮しないことに注意してください。例えば、<code class="docutils literal notranslate"><span class="pre">-scale</span> <span class="pre">0</span> <span class="pre">1</span> <span class="pre">&lt;offset&gt;</span> <span class="pre">&lt;offset+scale&gt;</span></code> を指定して(オフセット、スケール)のタプルを適用し、次の2ステップに相当します: <code class="docutils literal notranslate"><span class="pre">gdal_translate</span> <span class="pre">input.tif</span> <span class="pre">tmp.vrt</span> <span class="pre">-a_scale</span> <span class="pre">scale</span> <span class="pre">-a_offset</span> <span class="pre">offset</span></code> の後に <code class="docutils literal notranslate"><span class="pre">gdal_translate</span> <span class="pre">tmp.vrt</span> <span class="pre">output.tif</span> <span class="pre">-unscale</span></code> を実行します。</p>
 <div class="versionadded">
-<p><span class="versionmodified added">バージョン 2.3 で追加.</span></p>
+<p><span class="versionmodified added">Added in version 2.3.</span></p>
 </div>
 </dd></dl>
 
@@ -426,7 +426,7 @@ complete WKT, PROJ.4, EPSG:n or a file containing the WKT.</p>
 <span class="sig-name descname"><span class="pre">-a_gt</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;gt(0)&gt;</span> <span class="pre">&lt;gt(1)&gt;</span> <span class="pre">&lt;gt(2)&gt;</span> <span class="pre">&lt;gt(3)&gt;</span> <span class="pre">&lt;gt(4)&gt;</span> <span class="pre">&lt;gt(5)&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_translate-a_gt" title="Link to this definition"></a></dt>
 <dd><p>出力ファイルのジオトランスフォームを割り当て/オーバーライドします。これにより、ソースファイルから派生するはずのものを無視して、出力ファイルにジオトランスフォームが割り当てられます。したがって、指定されたSRSへの再投影は発生しません。<a class="reference internal" href="../tutorials/geotransforms_tut.html#geotransforms-tut"><span class="std std-ref">Geotransform Tutorial</span></a> を参照してください。これは <a class="reference internal" href="#cmdoption-gdal_translate-a_ullr"><code class="xref std std-option docutils literal notranslate"><span class="pre">-a_ullr</span></code></a> と相互排他です。</p>
 <div class="versionadded">
-<p><span class="versionmodified added">バージョン 3.8 で追加.</span></p>
+<p><span class="versionmodified added">Added in version 3.8.</span></p>
 </div>
 </dd></dl>
 
@@ -441,7 +441,7 @@ complete WKT, PROJ.4, EPSG:n or a file containing the WKT.</p>
 <span class="sig-name descname"><span class="pre">-colorinterp_X</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;red|green|blue|alpha|gray|undefined&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_translate-colorinterp_X" title="Link to this definition"></a></dt>
 <dd><p>バンドX(Xは1から始まる有効なバンド番号)のカラー解釈をオーバーライドします。</p>
 <div class="versionadded">
-<p><span class="versionmodified added">バージョン 2.3 で追加.</span></p>
+<p><span class="versionmodified added">Added in version 2.3.</span></p>
 </div>
 </dd></dl>
 
@@ -450,7 +450,7 @@ complete WKT, PROJ.4, EPSG:n or a file containing the WKT.</p>
 <span class="sig-name descname"><span class="pre">-colorinterp</span></span><span class="sig-prename descclassname"> <span class="pre">{red|green|blue|alpha|gray|undefined},...</span></span><a class="headerlink" href="#cmdoption-gdal_translate-colorinterp" title="Link to this definition"></a></dt>
 <dd><p>すべての指定されたバンドのカラー解釈をオーバーライドします。たとえば、4バンド出力データセットの場合は-colorinterp red,green,blue,alphaです。</p>
 <div class="versionadded">
-<p><span class="versionmodified added">バージョン 2.3 で追加.</span></p>
+<p><span class="versionmodified added">Added in version 2.3.</span></p>
 </div>
 </dd></dl>
 
@@ -465,7 +465,7 @@ complete WKT, PROJ.4, EPSG:n or a file containing the WKT.</p>
 <span class="sig-name descname"><span class="pre">-dmo</span></span><span class="sig-prename descclassname"> <span class="pre">DOMAIN:META-TAG=VALUE</span></span><a class="headerlink" href="#cmdoption-gdal_translate-dmo" title="Link to this definition"></a></dt>
 <dd><p>可能であれば、指定されたドメインのメタデータキーと値を出力データセットに設定するために渡します。</p>
 <div class="versionadded">
-<p><span class="versionmodified added">バージョン 3.9 で追加.</span></p>
+<p><span class="versionmodified added">Added in version 3.9.</span></p>
 </div>
 </dd></dl>
 
@@ -530,7 +530,7 @@ complete WKT, PROJ.4, EPSG:n or a file containing the WKT.</p>
 <span class="sig-name descname"><span class="pre">-noxmp</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal_translate-noxmp" title="Link to this definition"></a></dt>
 <dd><p>ドライバがコピーできる場合、ソースデータセットのXMPメタデータを出力データセットにコピーしないでください。</p>
 <div class="versionadded">
-<p><span class="versionmodified added">バージョン 3.2 で追加.</span></p>
+<p><span class="versionmodified added">Added in version 3.2.</span></p>
 </div>
 </dd></dl>
 
@@ -567,7 +567,7 @@ complete WKT, PROJ.4, EPSG:n or a file containing the WKT.</p>
 <h2>C API<a class="headerlink" href="#c-api" title="Link to this heading"></a></h2>
 <p>このユーティリティは、<a class="reference internal" href="../api/gdal_utils.html#_CPPv413GDALTranslatePKc12GDALDatasetHPK20GDALTranslateOptionsPi" title="GDALTranslate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALTranslate()</span></code></a> を使用してC言語からも呼び出すことができます。</p>
 <div class="versionadded">
-<p><span class="versionmodified added">バージョン 2.1 で追加.</span></p>
+<p><span class="versionmodified added">Added in version 2.1.</span></p>
 </div>
 </section>
 <section id="examples">

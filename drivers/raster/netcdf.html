@@ -18,9 +18,9 @@
         <script src="../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="../../_static/documentation_options.js?v=c033477b"></script>
-        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
         <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../../_static/translations.js?v=4dbe4bdc"></script>
+        <script src="../../_static/translations.js?v=91613774"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="author" title="このドキュメントについて" href="../../about.html" />
     <link rel="index" title="索引" href="../../genindex.html" />
@@ -228,7 +228,7 @@
 <li class="toctree-l2"><a class="reference internal" href="tsx.html">TSX --  TerraSAR-X Product</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usgsdem.html">USGSDEM -- USGS ASCII DEM (and CDED)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vicar.html">VICAR -- VICAR</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vrt.html">VRT -- GDAL Virtual Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vrt.html">VRT -- GDAL 仮想形式</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wcs.html">WCS -- OGC Web Coverage Service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="webp.html">WEBP - WEBP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wms.html">WMS -- Web Map Services</a></li>
@@ -550,7 +550,7 @@ the driver will try to find an lat/lon grid array to set geotransform
 array. The NetCDF driver verifies that the Lat/Lon array is equally
 spaced.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">バージョン 3.4 で追加: </span>crs_wkt attribute support</p>
+<p><span class="versionmodified added">Added in version 3.4: </span>crs_wkt attribute support</p>
 </div>
 <p>If those 2 methods fail, NetCDF driver will try to read the following
 metadata directly and set up georeferencing.</p>
@@ -672,7 +672,7 @@ key=value will also be used to write variable attributes.</p>
 <section id="sentinel-5">
 <h3>Sentinel 5<a class="headerlink" href="#sentinel-5" title="Link to this heading"></a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">バージョン 3.4 で追加.</span></p>
+<p><span class="versionmodified added">Added in version 3.4.</span></p>
 </div>
 <p>The most verbose metadata is reported in the <code class="docutils literal notranslate"><span class="pre">json:ISO_METADATA</span></code>,
 <code class="docutils literal notranslate"><span class="pre">json:ESA_METADATA</span></code>, <code class="docutils literal notranslate"><span class="pre">json:EOP_METADATA</span></code>, <code class="docutils literal notranslate"><span class="pre">json:QA_STATISTICS</span></code>,
@@ -853,7 +853,7 @@ CF</a></p></li>
 <section id="multidimensional-api-support">
 <h2>Multidimensional API support<a class="headerlink" href="#multidimensional-api-support" title="Link to this heading"></a></h2>
 <div class="versionadded">
-<p><span class="versionmodified added">バージョン 3.1 で追加.</span></p>
+<p><span class="versionmodified added">Added in version 3.1.</span></p>
 </div>
 <p>The netCDF driver supports the <a class="reference internal" href="../../user/multidim_raster_data_model.html#multidim-raster-data-model"><span class="std std-ref">Multidimensional Raster Data Model</span></a> for reading and
 creation operations.</p>
@@ -891,7 +891,25 @@ will not be listed.</p></li>
 <li><p>USE_DEFAULT_FILL_AS_NODATA=YES/NO. (GDAL &gt;= 3.6) Defaults to NO. If set to YES, the default
 fill value will be used as nodata when there is no _FillValue or missing_value
 attribute (except on variables of type Byte, UByte, Char)</p></li>
+<li><p>RAW_DATA_CHUNK_CACHE_SIZE=&lt;integer&gt;. (GDAL &gt;= 3.10, advanced libnetcdf parameter)
+The total size of the libnetcdf raw data chunk cache, in bytes. Default value
+(at least for some versions of libnetcdf) is 1 MB. Only for netCDF4/HDF5 files.</p></li>
+<li><p>CHUNK_SLOTS=&lt;integer&gt;. (GDAL &gt;= 3.10, advanced libnetcdf parameter)
+The total size of the libnetcdf raw data chunk cache, in bytes.
+Default value (at least for some versions of libnetcdf) is 521.
+Only for netCDF4/HDF5 files.</p></li>
+<li><p>PREEMPTION=&lt;float&gt; between 0 and 1. (GDAL &gt;= 3.10, advanced libnetcdf parameter)
+Indicates how much chunks from libnetcdf chunk cache that have been fully read
+are favored for preemption.
+A value of zero means fully read chunks are treated no differently than other
+chunks (the preemption is strictly least-recently used) while a value of one
+means fully read chunks are always preempted before other chunks.
+Default value (at least for some versions of libnetcdf) is 0.75.
+Only for netCDF4/HDF5 files.</p></li>
 </ul>
+<p>For RAW_DATA_CHUNK_CACHE_SIZE, CHUNK_SLOTS and PREEMPTION, consult
+<a class="reference external" href="https://docs.unidata.ucar.edu/netcdf-c/current/group__variables.html#ga2788cbfc6880ec70c304292af2bc7546">nc_set_var_chunk_cache</a> and
+<a class="reference external" href="https://docs.unidata.ucar.edu/nug/current/netcdf_perf_chunking.html">documentation about netCDF chunk cacke</a></p>
 <p>The <a class="reference internal" href="../../api/gdalgroup_cpp.html#_CPPv4N9GDALGroup13CreateMDArrayERKNSt6stringERKNSt6vectorINSt10shared_ptrI13GDALDimensionEEEERK20GDALExtendedDataType12CSLConstList" title="GDALGroup::CreateMDArray"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALGroup::CreateMDArray()</span></code></a> method supports the following options:</p>
 <ul class="simple">
 <li><p>NC_TYPE=NC_CHAR/NC_BYTE/NC_INT64/NC_UINT64: to overload the netCDF data type

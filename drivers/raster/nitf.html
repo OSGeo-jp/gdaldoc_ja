@@ -18,9 +18,9 @@
         <script src="../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="../../_static/documentation_options.js?v=c033477b"></script>
-        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
         <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../../_static/translations.js?v=4dbe4bdc"></script>
+        <script src="../../_static/translations.js?v=91613774"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="author" title="このドキュメントについて" href="../../about.html" />
     <link rel="index" title="索引" href="../../genindex.html" />
@@ -216,7 +216,7 @@
 <li class="toctree-l2"><a class="reference internal" href="tsx.html">TSX --  TerraSAR-X Product</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usgsdem.html">USGSDEM -- USGS ASCII DEM (and CDED)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vicar.html">VICAR -- VICAR</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vrt.html">VRT -- GDAL Virtual Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vrt.html">VRT -- GDAL 仮想形式</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wcs.html">WCS -- OGC Web Coverage Service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="webp.html">WEBP - WEBP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wms.html">WMS -- Web Map Services</a></li>
@@ -368,7 +368,7 @@ metadata.</p>
 <section id="open-options">
 <h2>Open options<a class="headerlink" href="#open-options" title="Link to this heading"></a></h2>
 <div class="versionadded">
-<p><span class="versionmodified added">バージョン 3.7 で追加.</span></p>
+<p><span class="versionmodified added">Added in version 3.7.</span></p>
 </div>
 <ul class="simple">
 <li><p id="drivers/raster/nitf-oo-VALIDATE"><strong>VALIDATE=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. Whether TRE and DES (Data Extension Segment) content should be validated upon
@@ -424,9 +424,19 @@ CreateCopy() and/or Create() methods. See below paragraph for specificities.</p>
 </ul>
 </p>
 </li>
+<li><p id="drivers/raster/nitf-co-QUALITY"><strong>QUALITY=10-100: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">75</span></code>. JPEG quality 10-100</p>
+</li>
+<li><p id="drivers/raster/nitf-co-PROGRESSIVE"><strong>PROGRESSIVE=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. JPEG progressive mode</p>
+</li>
+<li><p id="drivers/raster/nitf-co-RESTART_INTERVAL"><strong>RESTART_INTERVAL=[-1/0/&gt;0]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">-1</span></code>. Restart interval (in MCUs) for JPEG compressoin.
+-1 for auto, 0 for none, &gt; 0 for user specified.</p>
+</li>
 <li><p id="drivers/raster/nitf-co-NUMI"><strong>NUMI=value: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">1</span></code>. Number of images.
-See <a class="reference internal" href="nitf_advanced.html#raster-nitf-advanced"><span class="std std-ref">Advanced GDAL NITF Driver Information</span></a> for
+See <a class="reference internal" href="nitf_advanced.html#raster-nitf-advanced-write-multiple-image-segments"><span class="std std-ref">Writing multiple Image Segments</span></a> for
 the procedure to follow to write several images in a NITF file.</p>
+</li>
+<li><p id="drivers/raster/nitf-co-WRITE_ONLY_FIRST_IMAGE"><strong>WRITE_ONLY_FIRST_IMAGE=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. (Only taken into account if NUMI &gt; 1, and on a new NITF file).
+If YES, only write first image. Subsequent ones must be written with APPEND_SUBDATASET=YES</p>
 </li>
 <li><p id="drivers/raster/nitf-co-WRITE_ALL_IMAGES"><strong>WRITE_ALL_IMAGES=[YES/NO]: </strong> (GDAL &gt;= 3.4)  Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. (Only taken into account if NUMI &gt; 1, and on a new NITF file).
 When set to NO (the default), this causes the driver to only write the first
@@ -475,6 +485,8 @@ for Create() method, not CreateCopy()).</p>
 </li>
 <li><p id="drivers/raster/nitf-co-BLOCKYSIZE"><strong>BLOCKYSIZE=value: </strong>Set the block height.</p>
 </li>
+<li><p id="drivers/raster/nitf-co-BLOCKSIZE"><strong>BLOCKSIZE=value: </strong>Set the block with and height. Overridden by BLOCKXSIZE and BLOCKYSIZE</p>
+</li>
 <li><p id="drivers/raster/nitf-co-BLOCKA_*"><strong>BLOCKA_*=value: </strong>If a complete set of BLOCKA options is provided with
 exactly the same organization as the NITF_BLOCKA metadata reported
 when reading an NITF file with BLOCKA TREs then a file will be
@@ -505,6 +517,10 @@ CreateCopy(), but may be explicitly added as with Create().</p>
 <li><p id="drivers/raster/nitf-co-NUMDES"><strong>NUMDES=value: </strong> (GDAL &gt;= 3.4) Number of DES segments. Only to be used on
 first image segment</p>
 </li>
+<li><p id="drivers/raster/nitf-co-TEXT"><strong>TEXT=value: </strong>TEXT options as text-option-name=text-option-content. Cf <a class="reference internal" href="nitf_advanced.html#raster-nitf-advanced-text"><span class="std std-ref">Text Segments</span></a>.</p>
+</li>
+<li><p id="drivers/raster/nitf-co-CGM"><strong>CGM=value: </strong>CGM options in cgm-option-name=cgm-option-content.  Cf <a class="reference internal" href="nitf_advanced.html#raster-nitf-advanced-cgm"><span class="std std-ref">CGM Segments</span></a>.</p>
+</li>
 <li><p id="drivers/raster/nitf-co-SDE_TRE"><strong>SDE_TRE=[YES/NO]: </strong>Write GEOLOB (Local Geographic (lat/long) Coordinate System) and
 GEOPSB (Geo positioning Information) TREs to
 get more precise georeferencing. This is limited to geographic SRS,
@@ -525,6 +541,117 @@ CreateCopy() for now.</p>
 NITF_xxx metadata items and TRE segments from the input dataset. It
 may needed to set this option to NO if changing the georeferencing of
 the input file.</p>
+</li>
+</ul>
+<p>The following creation options to se fields in the NITF file header are available:</p>
+<ul class="simple">
+<li><p id="drivers/raster/nitf-co-OSTAID"><strong>OSTAID=string of up to 10 characters: </strong>Originating Station ID</p>
+</li>
+<li><p id="drivers/raster/nitf-co-FDT"><strong>FDT=string of up to 14 characters: </strong>File Date and Time</p>
+</li>
+<li><p id="drivers/raster/nitf-co-FTITLE"><strong>FTITLE=string of up to 80 characters: </strong>File Title</p>
+</li>
+<li><p id="drivers/raster/nitf-co-FSCLAS"><strong>FSCLAS=string of 1 character: </strong>File Security Classification</p>
+</li>
+<li><p id="drivers/raster/nitf-co-FSCLSY"><strong>FSCLSY=string of up to 2 characters: </strong>File Classification Security System</p>
+</li>
+<li><p id="drivers/raster/nitf-co-FSCODE"><strong>FSCODE=string of up to 11 characters: </strong>File Codewords</p>
+</li>
+<li><p id="drivers/raster/nitf-co-FSCTLH"><strong>FSCTLH=string of up to 2 characters: </strong>File Control and Handling</p>
+</li>
+<li><p id="drivers/raster/nitf-co-FSREL"><strong>FSREL=string of up to 20 characters: </strong>File Releasing Instructions</p>
+</li>
+<li><p id="drivers/raster/nitf-co-FSDCTP"><strong>FSDCTP=string of up to 2 characters: </strong>File Declassification Type</p>
+</li>
+<li><p id="drivers/raster/nitf-co-FSDCDT"><strong>FSDCDT=string of 8 characters: </strong>File Declassification Date</p>
+</li>
+<li><p id="drivers/raster/nitf-co-FSDCXM"><strong>FSDCXM=string of up to 4 characters: </strong>File Declassification Exemption</p>
+</li>
+<li><p id="drivers/raster/nitf-co-FSDG"><strong>FSDG=string of 1 character: </strong>File Downgrade</p>
+</li>
+<li><p id="drivers/raster/nitf-co-FSDGDT"><strong>FSDGDT=string of 8 characters: </strong>File Downgrade Date</p>
+</li>
+<li><p id="drivers/raster/nitf-co-FSCLTX"><strong>FSCLTX=string of up to 43 characters: </strong>File Classification Text</p>
+</li>
+<li><p id="drivers/raster/nitf-co-FSCATP"><strong>FSCATP=string of 1 character: </strong>File Classification Authority Type</p>
+</li>
+<li><p id="drivers/raster/nitf-co-FSCAUT"><strong>FSCAUT=string of up to 40 characters: </strong>File Classification Authority</p>
+</li>
+<li><p id="drivers/raster/nitf-co-FSCRSN"><strong>FSCRSN=string of 1 character: </strong>File Classification Reason</p>
+</li>
+<li><p id="drivers/raster/nitf-co-FSSRDT"><strong>FSSRDT=string of 8 characters: </strong>File Security Source Date</p>
+</li>
+<li><p id="drivers/raster/nitf-co-FSCTLN"><strong>FSCTLN=string of up to 15 characters: </strong>File Security Control Number</p>
+</li>
+<li><p id="drivers/raster/nitf-co-FSCOP"><strong>FSCOP=string of up to 5 characters: </strong>File Copy Number</p>
+</li>
+<li><p id="drivers/raster/nitf-co-FSCPYS"><strong>FSCPYS=string of up to 5 characters: </strong>File Number of Copies</p>
+</li>
+<li><p id="drivers/raster/nitf-co-ONAME"><strong>ONAME=string of up to 24 characters: </strong>Originator Name</p>
+</li>
+<li><p id="drivers/raster/nitf-co-OPHONE"><strong>OPHONE=string of up to 18 characters: </strong>Originator Phone Number</p>
+</li>
+</ul>
+<p>The following creation options to se fields in the NITF image header are available:</p>
+<ul class="simple">
+<li><p id="drivers/raster/nitf-co-IID1"><strong>IID1=string of up to 10 characters: </strong>Image Identifier 1</p>
+</li>
+<li><p id="drivers/raster/nitf-co-IDATIM"><strong>IDATIM=string of 14 characters: </strong>Image Date and Time</p>
+</li>
+<li><p id="drivers/raster/nitf-co-TGTID"><strong>TGTID=string of up to 17 characters: </strong>Target Identifier</p>
+</li>
+<li><p id="drivers/raster/nitf-co-IID2"><strong>IID2=string of up to 80 characters: </strong>Image Identifier 2</p>
+</li>
+<li><p id="drivers/raster/nitf-co-ISCLAS"><strong>ISCLAS=string of 1 character: </strong>Image Security Classification</p>
+</li>
+<li><p id="drivers/raster/nitf-co-ISCLSY"><strong>ISCLSY=string of up to 2 characters: </strong>Image Classification Security System</p>
+</li>
+<li><p id="drivers/raster/nitf-co-ISCODE"><strong>ISCODE=string of up to 11 characters: </strong>Image Codewords</p>
+</li>
+<li><p id="drivers/raster/nitf-co-ISCTLH"><strong>ISCTLH=string of up to 2 characters: </strong>Image Control and Handling</p>
+</li>
+<li><p id="drivers/raster/nitf-co-ISREL"><strong>ISREL=string of up to 20 characters: </strong>Image Releasing Instructions</p>
+</li>
+<li><p id="drivers/raster/nitf-co-ISDCTP"><strong>ISDCTP=string of up to 2 characters: </strong>Image Declassification Type</p>
+</li>
+<li><p id="drivers/raster/nitf-co-ISDCDT"><strong>ISDCDT=string of 8 characters: </strong>Image Declassification Date</p>
+</li>
+<li><p id="drivers/raster/nitf-co-ISDCXM"><strong>ISDCXM=string of up to 4 characters: </strong>Image Declassification Exemption</p>
+</li>
+<li><p id="drivers/raster/nitf-co-ISDG"><strong>ISDG=string of 1 character: </strong>Image Downgrade</p>
+</li>
+<li><p id="drivers/raster/nitf-co-ISDGDT"><strong>ISDGDT=string of 8 characters: </strong>Image Downgrade Date</p>
+</li>
+<li><p id="drivers/raster/nitf-co-ISCLTX"><strong>ISCLTX=string of up to 43 characters: </strong>Image Classification Text</p>
+</li>
+<li><p id="drivers/raster/nitf-co-ISCATP"><strong>ISCATP=string of 1 character: </strong>Image Classification Authority Type</p>
+</li>
+<li><p id="drivers/raster/nitf-co-ISCAUT"><strong>ISCAUT=string of up to 40 characters: </strong>Image Classification Authority</p>
+</li>
+<li><p id="drivers/raster/nitf-co-ISCRSN"><strong>ISCRSN=string of 1 character: </strong>Image Classification Reason</p>
+</li>
+<li><p id="drivers/raster/nitf-co-ISSRDT"><strong>ISSRDT=string of 8 characters: </strong>Image Security Source Date</p>
+</li>
+<li><p id="drivers/raster/nitf-co-ISCTLN"><strong>ISCTLN=string of up to 15 characters: </strong>Image Security Control Number</p>
+</li>
+<li><p id="drivers/raster/nitf-co-ISORCE"><strong>ISORCE=string of up to 42 characters: </strong>Image Source</p>
+</li>
+<li><p id="drivers/raster/nitf-co-ICAT"><strong>ICAT=string of up to 8 characters: </strong>Image Category</p>
+</li>
+<li><p id="drivers/raster/nitf-co-ABPP"><strong>ABPP=integer: </strong>Actual Bits-Per-Pixel Per Band.
+Starting with GDAL 3.10, also available as the <code class="docutils literal notranslate"><span class="pre">NBITS</span></code> creation option.</p>
+</li>
+<li><p id="drivers/raster/nitf-co-PJUST"><strong>PJUST=string of 1 character: </strong>Pixel Justification</p>
+</li>
+<li><p id="drivers/raster/nitf-co-ICOM"><strong>ICOM=string of up to 720 characters: </strong>Image Comments (organized as up to 9 lines of 80 characters)</p>
+</li>
+<li><p id="drivers/raster/nitf-co-IDLVL"><strong>IDLVL=integer of up to 3 characters: </strong>Image Display Level</p>
+</li>
+<li><p id="drivers/raster/nitf-co-IALVL"><strong>IALVL=integer of up to 3 characters: </strong>Image Attachment Level</p>
+</li>
+<li><p id="drivers/raster/nitf-co-ILOCROW"><strong>ILOCROW=integer of up to 5 characters: </strong>Image Location Row</p>
+</li>
+<li><p id="drivers/raster/nitf-co-ILOCCOL"><strong>ILOCCOL=integer of up to 5 characters: </strong>Image Location Column</p>
 </li>
 </ul>
 </section>
@@ -554,7 +681,9 @@ used. Only CreateCopy() method is available.</p></li>
 <a class="reference internal" href="jp2openjpeg.html#drivers/raster/jp2openjpeg-co-QUALITY"><code class="docutils literal notranslate"><span class="pre">QUALITY</span></code></a>,
 <a class="reference internal" href="jp2openjpeg.html#drivers/raster/jp2openjpeg-co-BLOCKXSIZE"><code class="docutils literal notranslate"><span class="pre">BLOCKXSIZE</span></code></a>
 and
-<a class="reference internal" href="jp2openjpeg.html#drivers/raster/jp2openjpeg-co-BLOCKYSIZE"><code class="docutils literal notranslate"><span class="pre">BLOCKYSIZE</span></code></a> JP2OpenJPEG-specific creation options can be
+<a class="reference internal" href="jp2openjpeg.html#drivers/raster/jp2openjpeg-co-BLOCKYSIZE"><code class="docutils literal notranslate"><span class="pre">BLOCKYSIZE</span></code></a>,
+<a class="reference internal" href="jp2ecw.html#drivers/raster/jp2ecw-co-TARGET"><code class="docutils literal notranslate"><span class="pre">TARGET</span></code></a> (target size reduction as a
+percentage of the original) JP2OpenJPEG-specific creation options can be
 used. By default BLOCKXSIZE=BLOCKYSIZE=1024 will be used.</p>
 <p>Starting with GDAL 3.4.0 and OpenJPEG 2.5, the
 PROFILE=NPJE_VISUALLY_LOSSLESS/NPJE_NUMERICALLY_LOSSLESS

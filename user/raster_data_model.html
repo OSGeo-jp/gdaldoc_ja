@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Raster Data Model &mdash; GDAL  ドキュメント</title>
+  <title>ラスターデータモデル &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
       <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
 
@@ -26,7 +26,7 @@
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="Multidimensional Raster Data Model" href="multidim_raster_data_model.html" />
-    <link rel="prev" title="User oriented documentation" href="index.html" /> 
+    <link rel="prev" title="ユーザー向けドキュメント" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -55,9 +55,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">ラスタードライバー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">ベクタードライバー</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">ユーザー</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Raster Data Model</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#dataset">Dataset</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#coordinate-system">Coordinate System</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ラスターデータモデル</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dataset">データセット</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#coordinate-system">座標系</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#affine-geotransform">Affine GeoTransform</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#gcps">GCPs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#metadata">Metadata</a><ul>
@@ -78,7 +78,7 @@
 <li class="toctree-l2"><a class="reference internal" href="gnm_data_model.html">Geographic Networks Data Model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="multithreading.html">Multi-threading</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ogr_sql_sqlite_dialect.html">OGR SQL dialect and SQLITE SQL dialect</a></li>
-<li class="toctree-l2"><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ogr_feature_style.html">Feature Style Specification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="coordinate_epoch.html">Coordinate epoch support</a></li>
 <li class="toctree-l2"><a class="reference internal" href="configoptions.html">Configuration options</a></li>
@@ -128,9 +128,9 @@
     
       <li><a href="../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">User oriented documentation</a> &raquo;</li>
+          <li><a href="index.html">ユーザー向けドキュメント</a> &raquo;</li>
       
-      <li>Raster Data Model</li>
+      <li>ラスターデータモデル</li>
     
 
     
@@ -152,7 +152,7 @@
         <a href="multidim_raster_data_model.html" class="btn btn-neutral float-right" title="Multidimensional Raster Data Model" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral float-left" title="User oriented documentation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="ユーザー向けドキュメント" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -162,31 +162,31 @@
            <div itemprop="articleBody">
              
   <section id="raster-data-model">
-<span id="id1"></span><h1>Raster Data Model<a class="headerlink" href="#raster-data-model" title="Link to this heading"></a></h1>
-<p>This document attempts to describe the GDAL data model. That is the types of information that a GDAL data store can contain, and their semantics.</p>
+<span id="id1"></span><h1>ラスターデータモデル<a class="headerlink" href="#raster-data-model" title="Link to this heading"></a></h1>
+<p>このドキュメントはGDALデータモデルを記述しようとします.それはGDALデータストアが含むことができる情報のタイプとそれらの意味です.</p>
 <section id="dataset">
-<h2>Dataset<a class="headerlink" href="#dataset" title="Link to this heading"></a></h2>
-<p>A dataset (represented by the <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv411GDALDataset" title="GDALDataset"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALDataset</span></code></a> class) is an assembly of related raster bands and some information common to them all. In particular the dataset has a concept of the raster size (in pixels and lines) that applies to all the bands. The dataset is also responsible for the georeferencing transform and coordinate system definition of all bands. The dataset itself can also have associated metadata, a list of name/value pairs in string form.</p>
-<p>Note that the GDAL dataset, and raster band data model is loosely based on the OpenGIS Grid Coverages specification.</p>
+<h2>データセット<a class="headerlink" href="#dataset" title="Link to this heading"></a></h2>
+<p>データセット(クラス <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv411GDALDataset" title="GDALDataset"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALDataset</span></code></a> で表される)は、関連するラスターバンドの集合と、それら全てに共通する情報です.特にデータセットは,全てのバンドに適用されるラスターサイズ(ピクセルとライン)の概念を持ちます.データセットはまた、全てのバンドの地理参照変換と座標系定義を担当します.データセット自体には、文字列形式の名前/値ペアのリストとして関連するメタデータがあります.</p>
+<p>GDALデータセットとラスターバンドデータモデルは、OpenGIS Grid Coverages仕様に基づいています.</p>
 </section>
 <section id="coordinate-system">
-<h2>Coordinate System<a class="headerlink" href="#coordinate-system" title="Link to this heading"></a></h2>
-<p>Dataset coordinate systems are represented as OpenGIS Well Known Text strings. This can contain:</p>
+<h2>座標系<a class="headerlink" href="#coordinate-system" title="Link to this heading"></a></h2>
+<p>データセットの座標系はOpenGIS Well Known Text文字列として表されます.これは以下を含むことができます:</p>
 <ul class="simple">
-<li><p>An overall coordinate system name.</p></li>
-<li><p>A geographic coordinate system name.</p></li>
-<li><p>A datum identifier.</p></li>
-<li><p>An ellipsoid name, semi-major axis, and inverse flattening.</p></li>
-<li><p>A prime meridian name and offset from Greenwich.</p></li>
-<li><p>A projection method type (e.g., Transverse Mercator).</p></li>
-<li><p>A list of projection parameters (e.g., central_meridian).</p></li>
-<li><p>A units name, and conversion factor to meters or radians.</p></li>
-<li><p>Names and ordering for the axes.</p></li>
-<li><p>Codes for most of the above in terms of predefined coordinate systems from authorities such as EPSG.</p></li>
+<li><p>全体の座標系名</p></li>
+<li><p>地理座標系名</p></li>
+<li><p>測地系識別子</p></li>
+<li><p>楕円体名,軌道長半径,逆扁平率</p></li>
+<li><p>本初子午線名とグリニッジからのオフセット</p></li>
+<li><p>投影法のタイプ(例:Transverse Mercato).</p></li>
+<li><p>投影パラメータのリスト(例: central_meridian).</p></li>
+<li><p>単位名とメートルまたはラジアンへの変換係数</p></li>
+<li><p>軸の名前と順序</p></li>
+<li><p>上記のほとんどコードは,EPSGなどの標準座標系で定義されているコードです.</p></li>
 </ul>
-<p>For more information on OpenGIS WKT coordinate system definitions, and mechanisms to manipulate them, refer to the osr_tutorial document and/or the OGRSpatialReference class documentation.</p>
-<p>The coordinate system returned by <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4NK11GDALDataset16GetProjectionRefEv" title="GDALDataset::GetProjectionRef"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetProjectionRef()</span></code></a> describes the georeferenced coordinates implied by the affine georeferencing transform returned by <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4N11GDALDataset15GetGeoTransformEPd" title="GDALDataset::GetGeoTransform"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetGeoTransform()</span></code></a>. The coordinate system returned by <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4N11GDALDataset16GetGCPProjectionEv" title="GDALDataset::GetGCPProjection"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetGCPProjection()</span></code></a> describes the georeferenced coordinates of the GCPs returned by <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4N11GDALDataset7GetGCPsEv" title="GDALDataset::GetGCPs"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetGCPs()</span></code></a>.</p>
-<p>Note that a returned coordinate system strings of &quot;&quot; indicates nothing is known about the georeferencing coordinate system.</p>
+<p>OpenGIS WKT 座標系システム定義の詳細とそれらを操作するメカニズムについては,osr_tutorial ドキュメントと OGRSpatialReference クラスドキュメントを参照してください.</p>
+<p><a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4NK11GDALDataset16GetProjectionRefEv" title="GDALDataset::GetProjectionRef"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetProjectionRef()</span></code></a> で返される座標系は, <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4N11GDALDataset15GetGeoTransformEPd" title="GDALDataset::GetGeoTransform"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetGeoTransform()</span></code></a> によって返されるアフィン地理変換を前提とした地理参照座標を記述します.  <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4N11GDALDataset16GetGCPProjectionEv" title="GDALDataset::GetGCPProjection"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetGCPProjection()</span></code></a> から返される座標系では  <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4N11GDALDataset7GetGCPsEv" title="GDALDataset::GetGCPs"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetGCPs()</span></code></a> から返されるGCPでジオリファレンスされた座標を記述します.</p>
+<p>返される座標系文字列が &quot;&quot; の場合, ジオリファレンス座標系について何も指定されていないことを表します.</p>
 </section>
 <section id="affine-geotransform">
 <span id="raster-data-model-geotransform"></span><h2>Affine GeoTransform<a class="headerlink" href="#affine-geotransform" title="Link to this heading"></a></h2>
@@ -434,7 +434,7 @@ Starting with GDAL 3.7, this metadata item is no longer used, as the Int8 data t
         <a href="multidim_raster_data_model.html" class="btn btn-neutral float-right" title="Multidimensional Raster Data Model" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral float-left" title="User oriented documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="ユーザー向けドキュメント" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

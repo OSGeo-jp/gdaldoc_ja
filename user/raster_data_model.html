@@ -58,7 +58,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">ラスターデータモデル</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#dataset">データセット</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#coordinate-system">座標系</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#affine-geotransform">Affine GeoTransform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#affine-geotransform">アフィン地理変換</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#gcps">GCPs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#metadata">Metadata</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#subdatasets-domain">SUBDATASETS Domain</a></li>
@@ -189,15 +189,15 @@
 <p>返される座標系文字列が &quot;&quot; の場合, ジオリファレンス座標系について何も指定されていないことを表します.</p>
 </section>
 <section id="affine-geotransform">
-<span id="raster-data-model-geotransform"></span><h2>Affine GeoTransform<a class="headerlink" href="#affine-geotransform" title="Link to this heading"></a></h2>
-<p>GDAL datasets have two ways of describing the relationship between raster positions (in pixel/line coordinates) and georeferenced coordinates. The first, and most commonly used is the affine transform (the other is GCPs).</p>
-<p>The affine transform consists of six coefficients returned by <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4N11GDALDataset15GetGeoTransformEPd" title="GDALDataset::GetGeoTransform"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetGeoTransform()</span></code></a> which map pixel/line coordinates into georeferenced space using the following relationship:</p>
+<span id="raster-data-model-geotransform"></span><h2>アフィン地理変換<a class="headerlink" href="#affine-geotransform" title="Link to this heading"></a></h2>
+<p>GDAL データセットは, ラスタの位置 (ピクセル/行座標) と地理参照座標の関係を2 つの方法で記述します. 最初の最も一般的に使用される方法はアフィン変換です(もう 1 つの方法は GCPs です).</p>
+<p>アフィン変換は, ピクセル/行座標を地理参照空間にマッピングするために <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4N11GDALDataset15GetGeoTransformEPd" title="GDALDataset::GetGeoTransform"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetGeoTransform()</span></code></a> によって返される 6 つの係数で構成されます. これらは以下の関係を使用してピクセル/行座標を地理参照空間にマッピングします:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Xgeo</span> <span class="o">=</span> <span class="n">GT</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">Xpixel</span><span class="o">*</span><span class="n">GT</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">Yline</span><span class="o">*</span><span class="n">GT</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">Ygeo</span> <span class="o">=</span> <span class="n">GT</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="n">Xpixel</span><span class="o">*</span><span class="n">GT</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">+</span> <span class="n">Yline</span><span class="o">*</span><span class="n">GT</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>In case of north up images, the GT(2) and GT(4) coefficients are zero, and the GT(1) is pixel width, and GT(5) is pixel height. The (GT(0),GT(3)) position is the top left corner of the top left pixel of the raster.</p>
-<p>Note that the pixel/line coordinates in the above are from (0.0,0.0) at the top left corner of the top left pixel to (width_in_pixels,height_in_pixels) at the bottom right corner of the bottom right pixel. The pixel/line location of the center of the top left pixel would therefore be (0.5,0.5).</p>
+<p>北向きの画像の場合, GT(2) と GT(4) の係数は 0 で, GT(1) はピクセル幅, GT(5) はピクセル高さです. (GT(0),GT(3)) の位置はラスタの左上隅の最上左側ピクセルの座標です.</p>
+<p>上記のピクセル/行座標は,左上隅の左上ピクセルが (0.0,0.0) で, 右下隅の右下ピクセルの(width_in_pixels,height_in_pixels) までです. 左上ピクセルの中心のピクセル/行の位置は (0.5,0.5) です.</p>
 </section>
 <section id="gcps">
 <h2>GCPs<a class="headerlink" href="#gcps" title="Link to this heading"></a></h2>

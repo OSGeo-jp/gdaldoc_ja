@@ -178,7 +178,7 @@
 <li><p>測地系識別子</p></li>
 <li><p>楕円体名,軌道長半径,逆扁平率</p></li>
 <li><p>本初子午線名とグリニッジからのオフセット</p></li>
-<li><p>投影法のタイプ(例:Transverse Mercato).</p></li>
+<li><p>投影法のタイプ(例:Transverse Mercator).</p></li>
 <li><p>投影パラメータのリスト(例: central_meridian).</p></li>
 <li><p>単位名とメートルまたはラジアンへの変換係数</p></li>
 <li><p>軸の名前と順序</p></li>
@@ -231,8 +231,8 @@
 <p>以下のメタデータ項目は、デフォルトドメインにおいて明確に定義された意味を持ちます：</p>
 <ul>
 <li><p>AREA_OR_POINT: &quot;Area&quot;(デフォルト)または&quot;Point&quot;のいずれかでしょう.ピクセル値がピクセル領域全体のサンプリングを表すのか,ピクセルの中心点でのサンプリングを表すのかを示します.これは地理参照の解釈に影響を与えることを意図したものではなく,地理参照は領域指向のままです.</p></li>
-<li><p>NODATA_VALUES: The value is a list of space separated pixel values matching the number of bands in the dataset that can be collectively used to identify pixels that are nodata in the dataset. With this style of nodata a pixel is considered nodata in all bands if and only if all bands match the corresponding value in the NODATA_VALUES tuple. This metadata is not widely honoured by GDAL drivers, algorithms or utilities at this time.</p></li>
-<li><p>MATRIX_REPRESENTATION: This value, used for Polarimetric SAR datasets, contains the matrix representation that this data is provided in. The following are acceptable values:</p>
+<li><p>NODATA_VALUES: この値はデータセット内のバンド数に一致するスペースで区切られたピクセル値のリストです.これらの値は,データセット内でデータなし(nodata)のピクセルを識別するために集合的に使用されます.このスタイルのnodataでは,すべてのバンドが NODATA_VALUES タプル内の対応する値と一致する場合にのみ,そのピクセルはすべてのバンドでデータなしと見なされます.現時点では,このメタデータは GDAL ドライバ,アルゴリズム,ユーティリティによって広くサポートされているわけではありません.</p></li>
+<li><p>MATRIX_REPRESENTATION: この値は,偏波SARデータセットに使用され,このデータが提供される行列表現を含みます.以下が受け入れ可能な値です：</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>SCATTERING</p></li>
@@ -246,8 +246,8 @@
 </ul>
 </div></blockquote>
 </li>
-<li><p>POLARIMETRIC_INTERP: This metadata item is defined for Raster Bands for polarimetric SAR data. This indicates which entry in the specified matrix representation of the data this band represents. For a dataset provided as a scattering matrix, for example, acceptable values for this metadata item are HH, HV, VH, VV. When the dataset is a covariance matrix, for example, this metadata item will be one of Covariance_11, Covariance_22, Covariance_33, Covariance_12, Covariance_13, Covariance_23 (since the matrix itself is a hermitian matrix, that is all the data that is required to describe the matrix).</p></li>
-<li><p>METADATATYPE: If IMAGERY Domain present, the item consist the reader which processed the metadata. Now present such readers:</p>
+<li><p>POLARIMETRIC_INTERP: このメタデータ項目は,偏波SARデータのラスターバンドに対して定義されています.これは,指定された行列表現のどのエントリをこのバンドが表しているかを示します.例えば,散乱行列として提供されるデータセットの場合,このメタデータ項目の受け入れ可能な値はHH,HV,VH,VVです.データセットが共分散行列の場合,例えば,このメタデータ項目はCovariance_11,Covariance_22,Covariance_33,Covariance_12,Covariance_13,Covariance_23のいずれかになります(行列自体がエルミート行列であるため,これらが行列を記述するために必要なすべてのデータです).</p></li>
+<li><p>METADATATYPE: IMAGERYドメインが存在する場合,この項目はメタデータを処理したリーダーを示します.現在,以下のようなリーダーが存在します：</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>DG: DigitalGlobe imagery metadata</p></li>

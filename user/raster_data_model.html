@@ -61,9 +61,9 @@
 <li class="toctree-l3"><a class="reference internal" href="#affine-geotransform">アフィン地理変換</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#gcps">GCPs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#metadata">メタデータ</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#subdatasets-domain">SUBDATASETS Domain</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#image-structure-domain">IMAGE_STRUCTURE Domain</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rpc-domain">RPC Domain</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#subdatasets-domain">SUBDATASETS ドメイン</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#image-structure-domain">IMAGE_STRUCTURE ドメイン</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rpc-domain">RPC ドメイン</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#imagery-domain-remote-sensing">IMAGERY Domain (remote sensing)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#xml-domains">xml: Domains</a></li>
 </ul>
@@ -163,11 +163,11 @@
              
   <section id="raster-data-model">
 <span id="id1"></span><h1>ラスターデータモデル<a class="headerlink" href="#raster-data-model" title="Link to this heading"></a></h1>
-<p>このドキュメントはGDALデータモデルを記述しようとします.それはGDALデータストアが含むことができる情報のタイプとそれらの意味です.</p>
+<p>このドキュメントはGDALデータモデルを記述しようとします.その内容はGDALデータストアが含むことができる情報のタイプとそれらの意味についてです.</p>
 <section id="dataset">
 <h2>データセット<a class="headerlink" href="#dataset" title="Link to this heading"></a></h2>
-<p>データセット(クラス <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv411GDALDataset" title="GDALDataset"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALDataset</span></code></a> で表される)は、関連するラスターバンドの集合と、それら全てに共通する情報です.特にデータセットは,全てのバンドに適用されるラスターサイズ(ピクセルとライン)の概念を持ちます.データセットはまた、全てのバンドの地理参照変換と座標系定義を担当します.データセット自体には、文字列形式の名前/値ペアのリストとして関連するメタデータがあります.</p>
-<p>GDALデータセットとラスターバンドデータモデルは、OpenGIS Grid Coverages仕様に基づいています.</p>
+<p>データセット(クラス <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv411GDALDataset" title="GDALDataset"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALDataset</span></code></a> で表される)は,関連するラスターバンドの集合と,それら全てに共通する情報です.特にデータセットは,全てのバンドに適用されるラスターサイズ(ピクセルとライン)の概念を持ちます.データセットはまた,全てのバンドの地理参照変換と座標系定義を担当します.データセット自体には,文字列形式の名前/値ペアのリストとして関連するメタデータがあります.</p>
+<p>GDALデータセットとラスターバンドデータモデルは,OpenGIS Grid Coverages仕様に基づいています.</p>
 </section>
 <section id="coordinate-system">
 <h2>座標系<a class="headerlink" href="#coordinate-system" title="Link to this heading"></a></h2>
@@ -250,21 +250,21 @@
 <li><p>METADATATYPE: IMAGERYドメインが存在する場合,この項目はメタデータを処理したリーダーを示します.現在,以下のようなリーダーが存在します：</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>DG: DigitalGlobe imagery metadata</p></li>
-<li><p>GE: GeoEye (or formally SpaceImaging) imagery metadata</p></li>
-<li><p>OV: OrbView imagery metadata</p></li>
-<li><p>DIMAP: Pleiades imagery metadata</p></li>
-<li><p>MSP: Resurs DK-1 imagery metadata</p></li>
-<li><p>ODL: Landsat imagery metadata</p></li>
+<li><p>DG: DigitalGlobe 画像のメタデータ</p></li>
+<li><p>GE: GeoEye (または正式には SpaceImaging) 画像のメタデータ</p></li>
+<li><p>OV: OrbView 画像のメタデータ</p></li>
+<li><p>DIMAP: Pleiades 画像のメタデータ</p></li>
+<li><p>MSP: Resurs DK-1 画像のメタデータ</p></li>
+<li><p>ODL: Landsat 画像のメタデータ</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p>CACHE_PATH: A cache directory path. Now this metadata item sets only by WMS driver. This is useful when dataset deletes with cached data or when external program need to put tiles in cache for some area of interest.</p></li>
+<li><p>CACHE_PATH: キャッシュディレクトリーのパス. 現在このメタデータはWMSドライバーでのみ設定されます. これはデータセットとキャッシュを同時に削除する場合や外部プログラムでインターネットのどこかの場所にタイルを格納するような場合に便利です.</p></li>
 </ul>
 <section id="subdatasets-domain">
-<h3>SUBDATASETS Domain<a class="headerlink" href="#subdatasets-domain" title="Link to this heading"></a></h3>
-<p>The SUBDATASETS domain holds a list of child datasets. Normally this is used to provide pointers to a list of images stored within a single multi image file.</p>
-<p>For example, an NITF with two images might have the following subdataset list.</p>
+<h3>SUBDATASETS ドメイン<a class="headerlink" href="#subdatasets-domain" title="Link to this heading"></a></h3>
+<p>SUBDATASETS ドメインは子データセットのリストを保有します. 通常これは単一のマルチイメージファイル内に格納されているイメージのリストへのポインターを提供するために使用されます.</p>
+<p>たとえば2個の画像を持つNITFは以下のようなサブデータセットを持つでしょう.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SUBDATASET_1_NAME</span><span class="o">=</span><span class="n">NITF_IM</span><span class="p">:</span><span class="mi">0</span><span class="p">:</span><span class="n">multi_1b</span><span class="o">.</span><span class="n">ntf</span>
 <span class="n">SUBDATASET_1_DESC</span><span class="o">=</span><span class="n">Image</span> <span class="mi">1</span> <span class="n">of</span> <span class="n">multi_1b</span><span class="o">.</span><span class="n">ntf</span>
 <span class="n">SUBDATASET_2_NAME</span><span class="o">=</span><span class="n">NITF_IM</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="n">multi_1b</span><span class="o">.</span><span class="n">ntf</span>
@@ -272,26 +272,22 @@
 </pre></div>
 </div>
 <p>The value of the _NAME is the string that can be passed to <a class="reference internal" href="../api/raster_c_api.html#_CPPv48GDALOpenPKc10GDALAccess" title="GDALOpen"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpen()</span></code></a> to access the file. The _DESC value is intended to be a more user friendly string that can be displayed to the user in a selector.</p>
-<p>Drivers which support subdatasets advertise the <code class="docutils literal notranslate"><span class="pre">DMD_SUBDATASETS</span></code> capability. This information is reported when the --format and --formats options are passed to the command line utilities.</p>
-<p>Currently, drivers which support subdatasets are: ADRG, ECRGTOC, GEORASTER, GTiff, HDF4, HDF5, netCDF, NITF, NTv2, OGDI, PDF, PostGISRaster, Rasterlite, RPFTOC, RS2, TileDB, WCS, WMS, and Zarr.</p>
+<p>サブデータセットをサポートするドライバは, <code class="docutils literal notranslate"><span class="pre">DMD_SUBDATASETS</span></code> 機能を公開します.この情報は,コマンドラインユーティリティに --formatおよび --formatsオプションが渡された際に報告されます.</p>
+<p>現在以下のドライバーがサブデータセットをサポートしています: ADRG, ECRGTOC, GEORASTER, GTiff, HDF4, HDF5, netCDF, NITF, NTv2, OGDI, PDF, PostGISRaster, Rasterlite, RPFTOC, RS2, TileDB, WCS, WMS, と Zarr.</p>
 </section>
 <section id="image-structure-domain">
-<h3>IMAGE_STRUCTURE Domain<a class="headerlink" href="#image-structure-domain" title="Link to this heading"></a></h3>
-<p>Metadata in the default domain is intended to be related to the image, and not particularly related to the way the image is stored on disk. That is, it is suitable for copying with the dataset when it is copied to a new format. Some information of interest is closely tied to a particular file format and storage mechanism. In order to prevent this getting copied along with datasets it is placed in a special domain called IMAGE_STRUCTURE that should not normally be copied to new formats.</p>
-<p>Currently the following items are defined by <a class="reference internal" href="../development/rfc/rfc14_imagestructure.html#rfc-14"><span class="std std-ref">RFC 14: Image Structure Metadata</span></a> as having specific semantics in the IMAGE_STRUCTURE domain.</p>
+<h3>IMAGE_STRUCTURE ドメイン<a class="headerlink" href="#image-structure-domain" title="Link to this heading"></a></h3>
+<p>デフォルトドメインのメタデータは,画像に関連するものであり,画像がディスク上にどのように保存されているかという方法には特に関連しません.つまり,データセットが新しいフォーマットにコピーされる際に,一緒にコピーするのに適しています.一方,特定のファイルフォーマットや保存メカニズムに密接に関連する重要な情報もあります.これらの情報がデータセットと一緒にコピーされるのを防ぐため,IMAGE_STRUCTUREと呼ばれる特別なドメインに配置されます.このドメインは通常,新しいフォーマットにコピーされるべきではありません.</p>
+<p>現在以下のアイテムは IMAGE_STRUCTURE ドメインで固有のセマンティックを持つものとして:ref:<cite>rfc-14</cite> で定義されています.</p>
 <ul class="simple">
-<li><p>COMPRESSION: The compression type used for this dataset or band. There is no fixed catalog of compression type names, but where a given format includes a COMPRESSION creation option, the same list of values should be used here as there.</p></li>
-<li><p>NBITS: The actual number of bits used for this band, or the bands of this dataset. Normally only present when the number of bits is non-standard for the datatype, such as when a 1 bit TIFF is represented through GDAL as GDT_Byte.</p></li>
-<li><p>INTERLEAVE: This only applies on datasets, and the value should be one of PIXEL, LINE or BAND. It can be used as a data access hint.</p></li>
-<li><p>PIXELTYPE: This may appear on a GDT_Byte band (or the corresponding dataset)
-and have the value SIGNEDBYTE to indicate the unsigned byte values between
-128 and 255 should be interpreted as being values between -128 and -1 for
-applications that recognise the SIGNEDBYTE type.
-Starting with GDAL 3.7, this metadata item is no longer used, as the Int8 data type is used for signed bytes.</p></li>
+<li><p>COMPRESSION: データセットまたはバンドの圧縮タイプ. 圧縮タイプ名の 確定したカタログはありません. ただし,特定のフォーマットがCOMPRESSION作成オプションを含む場合,そこで使用される値のリストと同じものがここでも使用されるべきです.</p></li>
+<li><p>NBITS: このバンド,またはこのデータセットのバンドに使用される実際のビット数です.通常,ビット数がデータ型の標準と異なる場合にのみ存在します.例えば,1ビットのTIFFファイルがGDALを通じてGDT_Byteとして表されている場合などです.</p></li>
+<li><p>INTERLEAVE: これはデータセットにのみ適用され,その値はPIXEL,LINE,またはBANDのいずれかである必要があります.これはデータアクセスのヒントとして使用されることがあります.</p></li>
+<li><p>PIXELTYPE: これはGDT_Byteバンド(または対応するデータセット)に現れることがあり,値がSIGNEDBYTEである場合,128から255までの符号なしバイト値を,SIGNEDBYTEタイプを認識するアプリケーションにおいては-128から-1として解釈すべきことを示します.GDAL 3.7以降,このメタデータ項目は使用されなくなり,符号付きバイトにはInt8データタイプが使用されるようになりました</p></li>
 </ul>
 </section>
 <section id="rpc-domain">
-<h3>RPC Domain<a class="headerlink" href="#rpc-domain" title="Link to this heading"></a></h3>
+<h3>RPC ドメイン<a class="headerlink" href="#rpc-domain" title="Link to this heading"></a></h3>
 <p>The RPC metadata domain holds metadata describing the Rational Polynomial Coefficient geometry model for the image if present. This geometry model can be used to transform between pixel/line and georeferenced locations. The items defining the model are:</p>
 <ul class="simple">
 <li><p>ERR_BIAS: Error - Bias. The RMS bias error in meters per horizontal axis of all points in the image (-1.0 if unknown)</p></li>

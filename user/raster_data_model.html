@@ -64,7 +64,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#subdatasets-domain">SUBDATASETS ドメイン</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#image-structure-domain">IMAGE_STRUCTURE ドメイン</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rpc-domain">RPC ドメイン</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#imagery-domain-remote-sensing">IMAGERY Domain (remote sensing)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#imagery-domain-remote-sensing">IMAGERY ドメイン (リモートセンシング)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#xml-domains">xml: Domains</a></li>
 </ul>
 </li>
@@ -288,30 +288,30 @@
 </section>
 <section id="rpc-domain">
 <h3>RPC ドメイン<a class="headerlink" href="#rpc-domain" title="Link to this heading"></a></h3>
-<p>The RPC metadata domain holds metadata describing the Rational Polynomial Coefficient geometry model for the image if present. This geometry model can be used to transform between pixel/line and georeferenced locations. The items defining the model are:</p>
+<p>RPCメタデータドメインには,画像の有理多項式係数ジオメトリ モデル (存在する場合) を説明するメタデータが保持されます.このジオメトリモデルは,ピクセル/ラインと地理参照された場所の間の変換に使用できます.モデルを定義する項目は次のとおりです</p>
 <ul class="simple">
-<li><p>ERR_BIAS: Error - Bias. The RMS bias error in meters per horizontal axis of all points in the image (-1.0 if unknown)</p></li>
-<li><p>ERR_RAND: Error - Random. RMS random error in meters per horizontal axis of each point in the image (-1.0 if unknown)</p></li>
-<li><p>LINE_OFF: Line Offset</p></li>
-<li><p>SAMP_OFF: Sample Offset</p></li>
-<li><p>LAT_OFF: Geodetic Latitude Offset</p></li>
-<li><p>LONG_OFF: Geodetic Longitude Offset</p></li>
-<li><p>HEIGHT_OFF: Geodetic Height Offset</p></li>
-<li><p>LINE_SCALE: Line Scale</p></li>
-<li><p>SAMP_SCALE: Sample Scale</p></li>
-<li><p>LAT_SCALE: Geodetic Latitude Scale</p></li>
-<li><p>LONG_SCALE: Geodetic Longitude Scale</p></li>
-<li><p>HEIGHT_SCALE: Geodetic Height Scale</p></li>
-<li><p>LINE_NUM_COEFF (1-20): Line Numerator Coefficients. Twenty coefficients for the polynomial in the Numerator of the rn equation. (space separated)</p></li>
-<li><p>LINE_DEN_COEFF (1-20): Line Denominator Coefficients. Twenty coefficients for the polynomial in the Denominator of the rn equation. (space separated)</p></li>
-<li><p>SAMP_NUM_COEFF (1-20): Sample Numerator Coefficients. Twenty coefficients for the polynomial in the Numerator of the cn equation. (space separated)</p></li>
-<li><p>SAMP_DEN_COEFF (1-20): Sample Denominator Coefficients. Twenty coefficients for the polynomial in the Denominator of the cn equation. (space separated)</p></li>
+<li><p>ERR_BIAS:  エラー - バイアス,画像内のすべての点に対する水平方向の軸ごとのRMS(二乗平均平方根)バイアス誤差をメートル単位で示します(不明な場合は-1.0と表示されます)</p></li>
+<li><p>ERR_RAND:エラー - ランダム.画像内の各点に対する水平方向の軸ごとのRMS(二乗平均平方根)ランダム誤差をメートル単位で示します（不明な場合は-1.0と表示されます）.</p></li>
+<li><p>LINE_OFF: ラインオフセット</p></li>
+<li><p>SAMP_OFF: サンプルオフセット</p></li>
+<li><p>LAT_OFF: 測地学的緯度オフセット</p></li>
+<li><p>LONG_OFF: 測地学的経度オフセット</p></li>
+<li><p>HEIGHT_OFF: 測地学的高さオフセット</p></li>
+<li><p>LINE_SCALE: ラインスケール</p></li>
+<li><p>SAMP_SCALE: サンプルスケール</p></li>
+<li><p>LAT_SCALE: 測地学的緯度スケール</p></li>
+<li><p>LONG_SCALE: 測地学的経度スケール</p></li>
+<li><p>HEIGHT_SCALE: 測地学的高さスケール</p></li>
+<li><p>LINE_NUM_COEFF (1-20): ライン分子係数. rn 方程式の分子の多項式のための20個の係数（スペースで区切られています）.</p></li>
+<li><p>LINE_DEN_COEFF (1-20): ライン分母係数. rn 方程式の分母の多項式のための20個の係数. (スペースで区切られています)</p></li>
+<li><p>SAMP_NUM_COEFF (1-20): サンプル分子係数. cn 方程式の分子の多項式のための20個の係数. (スペースで区切られています)</p></li>
+<li><p>SAMP_DEN_COEFF (1-20): サンプル分母係数. cn 方程式の分母の多項式のための20個の係数. (スペースで区切られています)</p></li>
 </ul>
-<p>These fields are directly derived from the document prospective GeoTIFF RPC document (<a class="reference external" href="http://geotiff.maptools.org/rpc_prop.html">http://geotiff.maptools.org/rpc_prop.html</a>) which in turn is closely modeled on the NITF RPC00B definition.</p>
-<p>The line and pixel offset expressed with LINE_OFF and SAMP_OFF are with respect to the center of the pixel.</p>
+<p>これらのフィールドは,GeoTIFF RPC ドキュメント(<a class="reference external" href="http://geotiff.maptools.org/rpc_prop.html">http://geotiff.maptools.org/rpc_prop.html</a>) から直接派生しており,そのドキュメントはNITF RPC00B 定義を厳密にモデル化したものです.</p>
+<p>LINE_OFF と SAMP_OFF で表されるラインとピクセルオフセットは,ピクセルの中心を基準としています.</p>
 </section>
 <section id="imagery-domain-remote-sensing">
-<h3>IMAGERY Domain (remote sensing)<a class="headerlink" href="#imagery-domain-remote-sensing" title="Link to this heading"></a></h3>
+<h3>IMAGERY ドメイン (リモートセンシング)<a class="headerlink" href="#imagery-domain-remote-sensing" title="Link to this heading"></a></h3>
 <p>For satellite or aerial imagery the IMAGERY Domain may be present. It depends on the existence of special metadata files near the image file. The files at the same directory with image file tested by the set of metadata readers, if files can be processed by the metadata reader, it fill the IMAGERY Domain with the following items:</p>
 <ul class="simple">
 <li><p>SATELLITEID: A satellite or scanner name</p></li>

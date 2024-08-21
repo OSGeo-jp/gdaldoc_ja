@@ -65,10 +65,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#image-structure-domain">IMAGE_STRUCTURE ドメイン</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rpc-domain">RPC ドメイン</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#imagery-domain-remote-sensing">IMAGERY ドメイン (リモートセンシング)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#xml-domains">xml: Domains</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#xml-domains">xml: ドメイン</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#raster-band">Raster Band</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raster-band">ラスターバンド</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#color-table">Color Table</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#overviews">Overviews</a></li>
 </ul>
@@ -312,35 +312,35 @@
 </section>
 <section id="imagery-domain-remote-sensing">
 <h3>IMAGERY ドメイン (リモートセンシング)<a class="headerlink" href="#imagery-domain-remote-sensing" title="Link to this heading"></a></h3>
-<p>For satellite or aerial imagery the IMAGERY Domain may be present. It depends on the existence of special metadata files near the image file. The files at the same directory with image file tested by the set of metadata readers, if files can be processed by the metadata reader, it fill the IMAGERY Domain with the following items:</p>
+<p>衛星画像や航空画像の場合,IMAGERYドメインが存在することがあります.これは,画像ファイルの近くに特別なメタデータファイルが存在するかどうかに依存します.メタデータリーダーのセットが同じディレクトリ内の画像ファイルと一緒に存在するファイルをテストし,ファイルがメタデータリーダーによって処理できる場合,IMAGERYドメインに次の項目が入力されます:</p>
 <ul class="simple">
-<li><p>SATELLITEID: A satellite or scanner name</p></li>
-<li><p>CLOUDCOVER: Cloud coverage. The value between 0 - 100 or 999 if not available</p></li>
-<li><p>ACQUISITIONDATETIME: The image acquisition date time in UTC</p></li>
+<li><p>SATELLITEID: 衛星またはスキャナの名前</p></li>
+<li><p>CLOUDCOVER: 雲の覆い具合. 値は 0 - 100 の範囲でデータが利用できない場合は 999</p></li>
+<li><p>ACQUISITIONDATETIME: 画像の取得日時 (UTC)</p></li>
 </ul>
 </section>
 <section id="xml-domains">
-<h3>xml: Domains<a class="headerlink" href="#xml-domains" title="Link to this heading"></a></h3>
-<p>Any domain name prefixed with &quot;xml:&quot; is not normal name/value metadata. It is a single XML document stored in one big string.</p>
+<h3>xml: ドメイン<a class="headerlink" href="#xml-domains" title="Link to this heading"></a></h3>
+<p>&quot;xml:&quot;で始まるドメイン名は通常の名前/値形式のメタデータではありません.それは,1つの大きな文字列に格納されたXMLドキュメント全体を指します.</p>
 </section>
 </section>
 <section id="raster-band">
-<h2>Raster Band<a class="headerlink" href="#raster-band" title="Link to this heading"></a></h2>
-<p>A raster band is represented in GDAL with the <a class="reference internal" href="../api/gdalrasterband_cpp.html#_CPPv414GDALRasterBand" title="GDALRasterBand"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALRasterBand</span></code></a> class. It represents a single raster band/channel/layer. It does not necessarily represent a whole image. For instance, a 24bit RGB image would normally be represented as a dataset with three bands, one for red, one for green and one for blue.</p>
-<p>A raster band has the following properties:</p>
+<h2>ラスターバンド<a class="headerlink" href="#raster-band" title="Link to this heading"></a></h2>
+<p>ラスターバンドはGDALでは <a class="reference internal" href="../api/gdalrasterband_cpp.html#_CPPv414GDALRasterBand" title="GDALRasterBand"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALRasterBand</span></code></a> クラスで表現されます.これは,単一のラスターバンド/チャンネル/レイヤーを表します.これは必ずしも全画像を表すわけではありません.たとえば,24ビットのRGB画像は通常,赤,緑,青の3つのバンドを持つデータセットとして表されます.</p>
+<p>ラスターバンドには以下のプロパティがあります:</p>
 <ul>
-<li><p>A width and height in pixels and lines. This is the same as that defined for the dataset, if this is a full resolution band.</p></li>
-<li><p>A datatype (GDALDataType). One of Byte, Int8, UInt16, Int16, UInt32, Int32, UInt64, Int64, Float32, Float64, and the complex types CInt16, CInt32, CFloat32, and CFloat64.</p>
-<p>UInt64 and Int64 data types have been added in GDAL 3.5. Beyond reading and write pixel values, their support is limited.  Some algorithms might use 64-bit floating-point internally (warping), as well as some methods returning only double values (GetMinimum(), GetMaximum(), etc.), or even 32-bit floating point (overview, RasterIO resampling). Hence the range where exact values are preserved can be [0, 2^53] (or less if 32-bit floating-point is used).</p>
+<li><p>ピクセルとラインの幅と高さ. これは,これがフル解像度バンドの場合にデータセットで定義されたものと同じです.</p></li>
+<li><p>データ型 (GDALDataType). Byte, Int8, UInt16, Int16, UInt32, Int32, UInt64, Int64, Float32, Float64, および複素数型 CInt16, CInt32, CFloat32, CFloat64 のいずれかです.</p>
+<p>UInt64 および Int64 データ型は GDAL 3.5 で追加されました. ピクセル値の読み取りと書き込みを超えて,そのサポートは限られています. 一部のアルゴリズムは内部で64ビット浮動小数点数を使用する場合があります(ワーピング),また,一部のメソッドは倍精度値のみを返す場合があります(GetMinimum(), GetMaximum() など),または32ビット浮動小数点数(概要, RasterIO リサンプリング)を使用する場合があります.したがって,正確な値が保持される範囲は [0, 2^53] (32ビット浮動小数点数を使用する場合はそれ以下)になります.</p>
 </li>
 </ul>
 <blockquote>
-<div><p>Int8 data type has been added in GDAL 3.7.</p>
+<div><p>Int8 データ型は GDAL 3.7 で追加されました.</p>
 </div></blockquote>
 <ul>
-<li><p>A block size. This is a preferred (efficient) access chunk size. For tiled images this will be one tile. For scanline oriented images this will normally be one scanline.</p></li>
-<li><p>A list of name/value pair metadata in the same format as the dataset, but of information that is potentially specific to this band.</p></li>
-<li><p>An optional description string.</p></li>
+<li><p>ブロックサイズ. これは,好ましい(効率的な)アクセスチャンクサイズです. タイル画像の場合,これは1つのタイルになります. スキャンライン指向の画像の場合,通常は1つのスキャンラインになります.</p></li>
+<li><p>データセットと同じ形式の名前/値ペアメタデータのリストですが,このバンドに特有の情報です.</p></li>
+<li><p>オプションの説明文字列.</p></li>
 <li><p>An optional single nodata pixel value (see also NODATA_VALUES metadata on the dataset for multi-band style nodata values).</p></li>
 <li><p>An optional nodata mask band marking pixels as nodata or in some cases transparency as discussed in RFC 15: Band Masks and documented in GDALRasterBand::GetMaskBand().</p></li>
 <li><p>An optional list of category names (effectively class names in a thematic image).</p></li>

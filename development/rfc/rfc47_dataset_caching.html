@@ -312,7 +312,7 @@ the cache. The current scope of this mutex makes it lock for extended
 periods once the cache is full, and new memory is being initialized in
 GDALRasterBlock::Internalize().</p>
 <p>In order to remove the need for this LRU cache to be locked more often a
-new global config option is introducted &quot;GDAL_DATASET_CACHING&quot;. This
+new global config option is added &quot;GDAL_DATASET_CACHING&quot;. This
 causes the LRU cache to be per dataset when set to &quot;YES&quot;, rather then a
 global cache (&quot;NO&quot; Default). Doing this will also allow threaded
 applications to flush only the cache for a single dataset, improving

@@ -421,7 +421,7 @@ the special fields like:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>In ogrfeaturequery.cpp OGRFeatureQueryEvaluator() should be modifyed
+<p>In ogrfeaturequery.cpp OGRFeatureQueryEvaluator() should be modified
 according to the field specific actions like</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">iSpecialField</span> <span class="o">=</span> <span class="n">op</span><span class="o">-&gt;</span><span class="n">field_index</span> <span class="o">-</span> <span class="n">poFeature</span><span class="o">-&gt;</span><span class="n">GetDefnRef</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">GetFieldCount</span><span class="p">();</span>
 <span class="k">if</span><span class="p">(</span> <span class="n">iSpecialField</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="p">)</span>
@@ -448,7 +448,7 @@ according to the field specific actions like</p>
 </pre></div>
 </div>
 <p>In ogrfeaturequery.cpp OGRFeatureQuery::FieldCollector should be
-modifyed to add the field names like:</p>
+modified to add the field names like:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="p">(</span> <span class="n">op</span><span class="o">-&gt;</span><span class="n">field_index</span> <span class="o">&gt;=</span> <span class="n">poTargetDefn</span><span class="o">-&gt;</span><span class="n">GetFieldCount</span><span class="p">()</span>
         <span class="o">&amp;&amp;</span> <span class="n">op</span><span class="o">-&gt;</span><span class="n">field_index</span> <span class="o">&lt;</span> <span class="n">poTargetDefn</span><span class="o">-&gt;</span><span class="n">GetFieldCount</span><span class="p">()</span> <span class="o">+</span> <span class="n">SPECIAL_FIELD_COUNT</span><span class="p">)</span>
         <span class="n">pszFieldName</span> <span class="o">=</span> <span class="n">SpecialFieldNames</span><span class="p">[</span><span class="n">op</span><span class="o">-&gt;</span><span class="n">field_index</span><span class="p">];</span>
@@ -505,7 +505,7 @@ field values):</p>
 <span class="n">poSrcFeature</span><span class="o">-&gt;</span><span class="n">GetFieldAsString</span><span class="p">(</span> <span class="n">psColDef</span><span class="o">-&gt;</span><span class="n">field_index</span> <span class="p">)</span> <span class="p">);</span>
 </pre></div>
 </div>
-<p>OGRGenSQLResultsLayer::TranslateFeature should also be modifyed when
+<p>OGRGenSQLResultsLayer::TranslateFeature should also be modified when
 copying the fields from primary record to the destination feature</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="k">if</span> <span class="p">(</span> <span class="n">psColDef</span><span class="o">-&gt;</span><span class="n">field_index</span> <span class="o">&gt;=</span> <span class="n">iFIDFieldIndex</span> <span class="o">&amp;&amp;</span>
             <span class="n">psColDef</span><span class="o">-&gt;</span><span class="n">field_index</span> <span class="o">&lt;</span> <span class="n">iFIDFieldIndex</span> <span class="o">+</span> <span class="n">SPECIAL_FIELD_COUNT</span> <span class="p">)</span>
@@ -556,7 +556,7 @@ the same function as:</p>
 </pre></div>
 </div>
 <p>When ordering by the field values the OGRGenSQLResultsLayer::Compare
-should also be modifyed:</p>
+should also be modified:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="p">(</span> <span class="n">psKeyDef</span><span class="o">-&gt;</span><span class="n">field_index</span> <span class="o">&gt;=</span> <span class="n">iFIDFieldIndex</span> <span class="p">)</span>
     <span class="n">poFDefn</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">;</span>
 <span class="k">else</span>
@@ -599,7 +599,7 @@ one.</p></li>
 be added to SpecialFieldNames and SpecialFieldTypes respectively</p></li>
 <li><p>The field value accessors (OGRFeature::GetFieldAsString,
 OGRFeature::GetFieldAsInteger, OGRFeature::GetFieldAsDouble) should
-be modifyed to provide the value of the new special field. All of
+be modified to provide the value of the new special field. All of
 these functions provide const return values so GetFieldAsString
 should retain the value in the m_pszTmpFieldValue member.</p></li>
 <li><p>When adding a new value with a type other than SWQ_INTEGER and

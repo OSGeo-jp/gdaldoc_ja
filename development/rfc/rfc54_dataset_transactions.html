@@ -344,7 +344,7 @@ prepared statement but before first step.</p></li>
 other reading) because of the use of mysql_use_result() that can work
 with one single request at a time. mysql_store_result() would be a
 solution but requires ingesting the whole result set into memory,
-which is inpractical for big layers.</p></li>
+which is impractical for big layers.</p></li>
 <li><p>step does not set row changes once the query has started (if done
 through another connection, because if done through ExecuteSQL() the
 long transaction is interrupted)</p></li>

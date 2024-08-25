@@ -304,7 +304,7 @@ API. This option is only useful when the token is computed by
 external code. The bearer validity is typically one hour from the
 time where it as been requested.</p>
 </p></li>
-<li><p><p id="config-EEDA_BEARER_FILE"><strong>EEDA_BEARER_FILE=&lt;filename&gt;: </strong>Similar to <a class="reference internal" href="../raster/eedai.html#config-EEDA_BEARER"><code class="docutils literal notranslate"><span class="pre">EEDA_BEARER</span></code></a> option,
+<li><p><p id="config-EEDA_BEARER_FILE"><strong>EEDA_BEARER_FILE=&lt;filename&gt;: </strong>Similar to <a class="reference internal" href="#config-EEDA_BEARER"><code class="docutils literal notranslate"><span class="pre">EEDA_BEARER</span></code></a> option,
 except than instead of passing the value directly, it is the filename
 where the value should be read.</p>
 </p></li>
@@ -313,15 +313,15 @@ private key file that contains a private key and client email</p>
 </p></li>
 <li><p><p id="config-EEDA_PRIVATE_KEY"><strong>EEDA_PRIVATE_KEY=value: </strong>RSA private key encoded as a PKCS#8
 PEM file, with its header and footer. Used together with
-<a class="reference internal" href="../raster/eedai.html#config-EEDA_CLIENT_EMAIL"><code class="docutils literal notranslate"><span class="pre">EEDA_CLIENT_EMAIL</span></code></a> to use OAuth2 Service Account authentication.
+<a class="reference internal" href="#config-EEDA_CLIENT_EMAIL"><code class="docutils literal notranslate"><span class="pre">EEDA_CLIENT_EMAIL</span></code></a> to use OAuth2 Service Account authentication.
 Requires GDAL to be built against libcrypto++ or libssl.</p>
 </p></li>
-<li><p><p id="config-EEDA_PRIVATE_KEY_FILE"><strong>EEDA_PRIVATE_KEY_FILE=&lt;filename&gt;: </strong>Similar to <a class="reference internal" href="../raster/eedai.html#config-EEDA_PRIVATE_KEY"><code class="docutils literal notranslate"><span class="pre">EEDA_PRIVATE_KEY</span></code></a>
+<li><p><p id="config-EEDA_PRIVATE_KEY_FILE"><strong>EEDA_PRIVATE_KEY_FILE=&lt;filename&gt;: </strong>Similar to <a class="reference internal" href="#config-EEDA_PRIVATE_KEY"><code class="docutils literal notranslate"><span class="pre">EEDA_PRIVATE_KEY</span></code></a>
 option, except than instead of passing the value directly, it is the
 filename where the key should be read.</p>
 </p></li>
 <li><p><p id="config-EEDA_CLIENT_EMAIL"><strong>EEDA_CLIENT_EMAIL=value: </strong>email to be specified together with
-<a class="reference internal" href="../raster/eedai.html#config-EEDA_PRIVATE_KEY"><code class="docutils literal notranslate"><span class="pre">EEDA_PRIVATE_KEY</span></code></a>/<a class="reference internal" href="../raster/eedai.html#config-EEDA_PRIVATE_KEY_FILE"><code class="docutils literal notranslate"><span class="pre">EEDA_PRIVATE_KEY_FILE</span></code></a> to use OAuth2 Service Account
+<a class="reference internal" href="#config-EEDA_PRIVATE_KEY"><code class="docutils literal notranslate"><span class="pre">EEDA_PRIVATE_KEY</span></code></a>/<a class="reference internal" href="#config-EEDA_PRIVATE_KEY_FILE"><code class="docutils literal notranslate"><span class="pre">EEDA_PRIVATE_KEY_FILE</span></code></a> to use OAuth2 Service Account
 authentication.</p>
 </p></li>
 <li><p id="config-EEDA_PAGE_SIZE"><strong>EEDA_PAGE_SIZE=value: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">1000</span></code>. Features are retrieved from the server by chunks

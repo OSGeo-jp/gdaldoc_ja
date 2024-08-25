@@ -475,9 +475,9 @@ the below described mechanism.</p>
 </div>
 <p>The driver can support issuing aggregation requests to an index. ElasticSearch
 aggregations can potentially be rather complex, so the driver currently limits
-to geohash grid based spatial aggegrations, with additional fields with
+to geohash grid based spatial aggregation, with additional fields with
 statistical indicators (min, max, average, .), which can be used for example
-to generate heatmaps. The specification of the aggegation is done through
+to generate heatmaps. The specification of the aggregation is done through
 the <a class="reference internal" href="#drivers/vector/elasticsearch-oo-AGGREGATION"><code class="docutils literal notranslate"><span class="pre">AGGREGATION</span></code></a> open option, whose value is a JSON serialized object whose
 members are:</p>
 <ul>
@@ -486,7 +486,7 @@ members are:</p>
 <a class="reference external" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-geohashgrid-aggregation.html">geohash grid aggregation</a>. For documents with points encoded as GeoJSON, this will
 be for example <cite>geometry.coordinates</cite>. When this property is not specified,
 the driver will analyze the mapping and use the geometry field definition
-found into it (provided there is a single one). Note that aggegration on
+found into it (provided there is a single one). Note that aggregation on
 geo_shape geometries is only supported since Elasticsearch 7 and may require
 a non-free license.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">geohash_grid</span></code> (optional): a JSON object, describing a few characteristics of
@@ -511,17 +511,17 @@ fields should be added, that can have the following members:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">min</span></code> (optional): array with the paths to index properties on which
-to compute the minimum during aggegation.</p></li>
+to compute the minimum during aggregation.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">max</span></code> (optional): array with the paths to index properties on which
-to compute the maximum  during aggegation.</p></li>
+to compute the maximum  during aggregation.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">avg</span></code> (optional): array with the paths to index properties on which
-to compute the average during aggegation.</p></li>
+to compute the average during aggregation.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">sum</span></code> (optional): array with the paths to index properties on which
-to compute the sum during aggegation.</p></li>
+to compute the sum during aggregation.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">count</span></code> (optional): array with the paths to index properties on which
-to compute the value_count during aggegation.</p></li>
+to compute the value_count during aggregation.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">stats</span></code> (optional): array with the paths to index properties on which
-to compute all the above indicators during aggegation.</p></li>
+to compute all the above indicators during aggregation.</p></li>
 </ul>
 </div></blockquote>
 <p>When using a GeoJSON mapping, the path to an index property is typically

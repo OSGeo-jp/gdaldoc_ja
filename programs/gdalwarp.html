@@ -18,7 +18,7 @@
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="../_static/documentation_options.js?v=c033477b"></script>
-        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../_static/translations.js?v=4dbe4bdc"></script>
     <script src="../_static/js/theme.js"></script>
@@ -106,8 +106,8 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#multidimensional-raster-programs">多次元ラスタープログラム</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#vector-programs">ベクタープログラム</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#geographic-network-programs">Geographic network programs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#other-utilities">Other utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#geographic-network-programs">地理ネットワークプログラム</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#other-utilities">その他のユーティリティ</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">ラスタードライバー</a></li>
@@ -254,7 +254,7 @@ with control information.</p>
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-srcband">
 <span class="sig-name descname"><span class="pre">-srcband</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;n&gt;</span></span><a class="headerlink" href="#cmdoption-gdalwarp-srcband" title="Link to this definition"></a></dt>
 <dd><div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.7.</span></p>
+<p><span class="versionmodified added">バージョン 3.7 で追加.</span></p>
 </div>
 <p>Specify an input band number to warp (between 1 and the number of bands
 of the source dataset).</p>
@@ -277,7 +277,7 @@ Red, Green, Blue.</p>
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-dstband">
 <span class="sig-name descname"><span class="pre">-dstband</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;n&gt;</span></span><a class="headerlink" href="#cmdoption-gdalwarp-dstband" title="Link to this definition"></a></dt>
 <dd><div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.7.</span></p>
+<p><span class="versionmodified added">バージョン 3.7 で追加.</span></p>
 </div>
 <p>Specify the output band number in which to warp. In practice, this option
 is only useful when updating an existing dataset, e.g to warp one band at
@@ -318,7 +318,7 @@ dataset.</p>
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-s_coord_epoch">
 <span class="sig-name descname"><span class="pre">-s_coord_epoch</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;epoch&gt;</span></span><a class="headerlink" href="#cmdoption-gdalwarp-s_coord_epoch" title="Link to this definition"></a></dt>
 <dd><div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.4.</span></p>
+<p><span class="versionmodified added">バージョン 3.4 で追加.</span></p>
 </div>
 <p>Assign a coordinate epoch, linked with the source SRS. Useful when the
 source SRS is a dynamic CRS. Only taken into account if <a class="reference internal" href="#cmdoption-gdalwarp-s_srs"><code class="xref std std-option docutils literal notranslate"><span class="pre">-s_srs</span></code></a>
@@ -348,7 +348,7 @@ dataset.</p>
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-t_coord_epoch">
 <span class="sig-name descname"><span class="pre">-t_coord_epoch</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;epoch&gt;</span></span><a class="headerlink" href="#cmdoption-gdalwarp-t_coord_epoch" title="Link to this definition"></a></dt>
 <dd><div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.4.</span></p>
+<p><span class="versionmodified added">バージョン 3.4 で追加.</span></p>
 </div>
 <p>Assign a coordinate epoch, linked with the target SRS. Useful when the
 target SRS is a dynamic CRS. Only taken into account if <a class="reference internal" href="#cmdoption-gdalwarp-t_srs"><code class="xref std std-option docutils literal notranslate"><span class="pre">-t_srs</span></code></a>
@@ -373,7 +373,7 @@ to have the target CRS written in the metadata of the output file,
 but the parameters of the CoordinateOperation will override those of the
 standard transformation.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.0.</span></p>
+<p><span class="versionmodified added">バージョン 3.0 で追加.</span></p>
 </div>
 </dd></dl>
 
@@ -391,7 +391,7 @@ See <a class="reference internal" href="../api/gdal_alg.html#_CPPv426GDALCreateR
 except when using an explicit coordinate transformation (<a class="reference internal" href="#cmdoption-gdalwarp-ct"><code class="xref std std-option docutils literal notranslate"><span class="pre">-ct</span></code></a>),
 and not specifying an explicit source and target SRS.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.4.</span></p>
+<p><span class="versionmodified added">バージョン 3.4 で追加.</span></p>
 </div>
 </dd></dl>
 
@@ -405,7 +405,7 @@ an explicit vertical datum, and the input dataset is a single band dataset.</p>
 <p>this option was named <code class="docutils literal notranslate"><span class="pre">-novshiftgrid</span></code> in GDAL 2.2 to 3.3.</p>
 </div>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.4.</span></p>
+<p><span class="versionmodified added">バージョン 3.4 で追加.</span></p>
 </div>
 </dd></dl>
 
@@ -615,7 +615,7 @@ considered as a source alpha band.</p>
 <dd><p>Prevent the alpha band of a source image to be
 considered as such (it will be warped as a regular band)</p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 2.2.</span></p>
+<p><span class="versionmodified added">バージョン 2.2 で追加.</span></p>
 </div>
 </dd></dl>
 
@@ -667,7 +667,7 @@ This option can be repeated several times to specify several candidate drivers.
 Note that it does not force those drivers to open the dataset. In particular,
 some drivers have requirements on file extensions.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.2.</span></p>
+<p><span class="versionmodified added">バージョン 3.2 で追加.</span></p>
 </div>
 </dd></dl>
 
@@ -708,7 +708,7 @@ MULTIPOLYGON can also be specified.</p>
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-cutline_srs">
 <span class="sig-name descname"><span class="pre">-cutline_srs</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;srs_def&gt;</span></span><a class="headerlink" href="#cmdoption-gdalwarp-cutline_srs" title="Link to this definition"></a></dt>
 <dd><div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.9.</span></p>
+<p><span class="versionmodified added">バージョン 3.9 で追加.</span></p>
 </div>
 <p>Sets or overrides the SRS of the cutline.</p>
 </dd></dl>
@@ -785,7 +785,7 @@ the source dataset.</p>
 <span class="sig-name descname"><span class="pre">-doo</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></span><a class="headerlink" href="#cmdoption-gdalwarp-doo" title="Link to this definition"></a></dt>
 <dd><p>Output dataset open option (format specific)</p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 2.1.</span></p>
+<p><span class="versionmodified added">バージョン 2.1 で追加.</span></p>
 </div>
 </dd></dl>
 
@@ -996,7 +996,7 @@ control points mapping the corners to lat/long could be warped to a UTM
 projection with a command like this:</p>
 <blockquote>
 <div><div class="versionadded">
-<p><span class="versionmodified added">Added in version 2.2.</span></p>
+<p><span class="versionmodified added">バージョン 2.2 で追加.</span></p>
 </div>
 </div></blockquote>
 </li>
@@ -1021,7 +1021,7 @@ projection with a command like this:</p>
 <li><p>To transform a DEM from geoid elevations (using EGM96) to WGS84 ellipsoidal heights:</p>
 <blockquote>
 <div><div class="versionadded">
-<p><span class="versionmodified added">Added in version 2.2.</span></p>
+<p><span class="versionmodified added">バージョン 2.2 で追加.</span></p>
 </div>
 </div></blockquote>
 </li>

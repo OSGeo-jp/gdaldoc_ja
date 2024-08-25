@@ -18,7 +18,7 @@
         <script src="../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="../../_static/documentation_options.js?v=c033477b"></script>
-        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
         <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../../_static/translations.js?v=4dbe4bdc"></script>
     <script src="../../_static/js/theme.js"></script>
@@ -244,7 +244,7 @@ input is a NAS file and ignores all files without any matches.</p>
 element paths to feature attributes using a GFS file like in the GML
 driver. Multiple geometries per layer are also possible (eg.
 ax_flurstueck.objektkoordinaten next to the regular wkb_geometry).
-Starting with GDAL 3.7, defining the NAS_GFS_TEMPLATE configuration option is
+Starting with GDAL 3.7, defining the <strong>NAS_GFS_TEMPLATE</strong> configuration option is
 required for the NAS driver to open a file. It may be set to the empty string
 to mean that the driver should try to establish the schema of the file from its
 content, but using one of templates mentioned below is recommended.
@@ -267,9 +267,9 @@ population - which was default in ALKIS-Import. The information found there was
 redundant to the relation fields also contained in original elements/tables.
 Enabling the option also made progress reporting available.</p>
 <p>Duplicate data in datasets will usually causes errors.  When importing separate
-datasets into PostgreSQL it is useful to enable &quot;OGR_PG_SKIP_CONFLICTS&quot; to skip
+datasets into PostgreSQL it is useful to enable <a class="reference internal" href="pg.html#config-OGR_PG_SKIP_CONFLICTS"><code class="docutils literal notranslate"><span class="pre">OGR_PG_SKIP_CONFLICTS</span></code></a> to skip
 conflicting features.</p>
-<p>This driver was implemented within the context of the <a class="reference external" href="http://trac.wheregroup.com/PostNAS">PostNAS
+<p>This driver was implemented within the context of the <a class="reference external" href="https://postnas-suite.github.io/postnas-suite/">PostNAS
 project</a>, which has more
 information on its use and other related projects.</p>
 <section id="driver-capabilities">

@@ -18,7 +18,7 @@
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="../_static/documentation_options.js?v=c033477b"></script>
-        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../_static/translations.js?v=4dbe4bdc"></script>
     <script src="../_static/js/theme.js"></script>
@@ -71,8 +71,8 @@
 <li class="toctree-l3"><a class="reference internal" href="ogr_layer_algebra.html">ogr_layer_algebra</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#geographic-network-programs">Geographic network programs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#other-utilities">Other utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#geographic-network-programs">地理ネットワークプログラム</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#other-utilities">その他のユーティリティ</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">ラスタードライバー</a></li>
@@ -201,7 +201,7 @@ This option can be repeated several times to specify several candidate drivers.
 Note that it does not force those drivers to open the dataset. In particular,
 some drivers have requirements on file extensions.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.2.</span></p>
+<p><span class="versionmodified added">バージョン 3.2 で追加.</span></p>
 </div>
 </dd></dl>
 
@@ -212,7 +212,7 @@ some drivers have requirements on file extensions.</p>
 <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/apps/data/ogrinfo_output.schema.json">ogrinfo_output.schema.json</a>
 schema.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.7.</span></p>
+<p><span class="versionmodified added">バージョン 3.7 で追加.</span></p>
 </div>
 </dd></dl>
 
@@ -241,7 +241,7 @@ they are found in the dataset, and not layer per layer. This can be
 significantly faster for some formats (for example OSM, GMLAS).
 -rl cannot be used with -sql.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 2.2.</span></p>
+<p><span class="versionmodified added">バージョン 2.2 で追加.</span></p>
 </div>
 </dd></dl>
 
@@ -263,7 +263,7 @@ with <a class="reference internal" href="#cmdoption-ogrinfo-features"><code clas
 ogrinfo will be built in memory. Consequently, when used on a large
 collection of features, RAM may be exhausted.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.7.</span></p>
+<p><span class="versionmodified added">バージョン 3.7 で追加.</span></p>
 </div>
 </dd></dl>
 
@@ -271,7 +271,7 @@ collection of features, RAM may be exhausted.</p>
 <dt class="sig sig-object std" id="cmdoption-ogrinfo-limit">
 <span class="sig-name descname"><span class="pre">-limit</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;nb_features&gt;</span></span><a class="headerlink" href="#cmdoption-ogrinfo-limit" title="Link to this definition"></a></dt>
 <dd><div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.9.</span></p>
+<p><span class="versionmodified added">バージョン 3.9 で追加.</span></p>
 </div>
 <p>Limit the number of features per layer.</p>
 </dd></dl>
@@ -349,7 +349,7 @@ is <code class="docutils literal notranslate"><span class="pre">YES</span></code
 <dt class="sig sig-object std" id="cmdoption-ogrinfo-fielddomain">
 <span class="sig-name descname"><span class="pre">-fielddomain</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;domain_name&gt;</span></span><a class="headerlink" href="#cmdoption-ogrinfo-fielddomain" title="Link to this definition"></a></dt>
 <dd><div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.3.</span></p>
+<p><span class="versionmodified added">バージョン 3.3 で追加.</span></p>
 </div>
 <p>Display details about a field domain.</p>
 </dd></dl>
@@ -407,7 +407,7 @@ metadata in all domains.</p>
 <dt class="sig sig-object std" id="cmdoption-ogrinfo-extent3D">
 <span class="sig-name descname"><span class="pre">-extent3D</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-ogrinfo-extent3D" title="Link to this definition"></a></dt>
 <dd><div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.9.</span></p>
+<p><span class="versionmodified added">バージョン 3.9 で追加.</span></p>
 </div>
 <p>Request a 3D extent to be reported (the default is 2D only). Note that this
 operation might be slower than requesting the 2D extent, depending on format
@@ -419,7 +419,7 @@ and driver capabilities.</p>
 <span class="sig-name descname"><span class="pre">-nogeomtype</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-ogrinfo-nogeomtype" title="Link to this definition"></a></dt>
 <dd><p>Suppress layer geometry type printing.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.1.</span></p>
+<p><span class="versionmodified added">バージョン 3.1 で追加.</span></p>
 </div>
 </dd></dl>
 
@@ -456,7 +456,7 @@ Currently supported values for the <code class="docutils literal notranslate"><s
 <p><code class="docutils literal notranslate"><span class="pre">WKT2_2015</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">WKT2_2018</span></code></p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.0.0.</span></p>
+<p><span class="versionmodified added">バージョン 3.0.0 で追加.</span></p>
 </div>
 </dd></dl>
 
@@ -484,7 +484,7 @@ are provided, all features are reported.</p>
 <h2>C API<a class="headerlink" href="#c-api" title="Link to this heading"></a></h2>
 <p>This utility is also callable from C with <a class="reference internal" href="../api/gdal_utils.html#_CPPv414GDALVectorInfo12GDALDatasetHPK21GDALVectorInfoOptions" title="GDALVectorInfo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALVectorInfo()</span></code></a>.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.7.</span></p>
+<p><span class="versionmodified added">バージョン 3.7 で追加.</span></p>
 </div>
 </section>
 <section id="examples">

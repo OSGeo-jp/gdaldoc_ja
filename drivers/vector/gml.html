@@ -18,7 +18,7 @@
         <script src="../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="../../_static/documentation_options.js?v=c033477b"></script>
-        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
         <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../../_static/translations.js?v=4dbe4bdc"></script>
     <script src="../../_static/js/theme.js"></script>
@@ -331,6 +331,8 @@ See <a class="reference internal" href="#geometry-reading">Geometry reading</a>.
 <li><p id="config-GML_EXPOSE_GML_ID"><strong>GML_EXPOSE_GML_ID=[YES/NO]: </strong>Equivalent of <a class="reference internal" href="#drivers/vector/gml-oo-EXPOSE_GML_ID"><code class="docutils literal notranslate"><span class="pre">EXPOSE_GML_ID</span></code></a>.</p>
 </li>
 <li><p id="config-GML_READ_MODE"><strong>GML_READ_MODE=[AUTO/STANDARD/SEQUENTIAL_LAYERS/INTERLEAVED_LAYERS]: </strong>Equivalent of <a class="reference internal" href="#drivers/vector/gml-oo-READ_MODE"><code class="docutils literal notranslate"><span class="pre">READ_MODE</span></code></a>. See <a class="reference internal" href="#gml-performance"><span class="std std-ref">Performance issues with large multi-layer GML files.</span></a>.</p>
+</li>
+<li><p id="config-GML_USE_SCHEMA_IMPORT"><strong>GML_USE_SCHEMA_IMPORT=[YES/NO]: </strong>Equivalent of <a class="reference internal" href="#drivers/vector/gml-oo-USE_SCHEMA_IMPORT"><code class="docutils literal notranslate"><span class="pre">USE_SCHEMA_IMPORT</span></code></a>.</p>
 </li>
 </ul>
 </section>
@@ -676,7 +678,7 @@ with code similar to the following one :</p>
 </section>
 <section id="open-options">
 <h2>Open options<a class="headerlink" href="#open-options" title="Link to this heading"></a></h2>
-<p>Open options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-oo</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALOpenExPKcjPPCKcPPCKcPPCKc" title="GDALOpenEx"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpenEx()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.OpenEx" title="osgeo.gdal.OpenEx"><code class="xref py py-meth docutils literal notranslate"><span class="pre">gdal.OpenEx</span></code></a> (Python).
+<p>Open options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-oo</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALOpenExPKcjPPCKcPPCKcPPCKc" title="GDALOpenEx"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpenEx()</span></code></a> (C) or <code class="xref py py-meth docutils literal notranslate"><span class="pre">gdal.OpenEx</span></code> (Python).
 The following open options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/vector/gml-oo-XSD"><strong>XSD=&lt;filename&gt;: </strong>to specify an explicit filename for the XSD application schema to use.</p>
@@ -742,6 +744,9 @@ remote application schema if needed (only for WFS currently).</p>
 <li><p id="drivers/vector/gml-oo-USE_BBOX"><strong>USE_BBOX=[YES/NO]: </strong> (GDAL &gt;= 3.7.1)  Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. Whether to use gml:boundedBy at feature level as feature geometry,
 if there are no other geometry.</p>
 </li>
+<li><p id="drivers/vector/gml-oo-USE_SCHEMA_IMPORT"><strong>USE_SCHEMA_IMPORT=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. Whether to use schema imports in XSD files so that
+the feature types corresponding to imported schema can be detected.</p>
+</li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
@@ -759,7 +764,7 @@ ogr:geometryProperty element on the feature.</p>
 </section>
 <section id="dataset-creation-options">
 <h2>Dataset creation options<a class="headerlink" href="#dataset-creation-options" title="Link to this heading"></a></h2>
-<p>Dataset creation options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-dsco</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALCreate11GDALDriverHPKciii12GDALDataType12CSLConstList" title="GDALCreate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALCreate()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.Driver.Create" title="osgeo.gdal.Driver.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Driver.Create</span></code></a> (Python).
+<p>Dataset creation options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-dsco</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALCreate11GDALDriverHPKciii12GDALDataType12CSLConstList" title="GDALCreate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALCreate()</span></code></a> (C) or <code class="xref py py-meth docutils literal notranslate"><span class="pre">Driver.Create</span></code> (Python).
 The following dataset creation options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/vector/gml-dsco-XSISCHEMAURI"><strong>XSISCHEMAURI=value: </strong>If provided, this URI will be inserted as the
@@ -1348,7 +1353,7 @@ will be read as the following:</p>
 <section id="geometry-coordinate-precision">
 <h2>Geometry coordinate precision<a class="headerlink" href="#geometry-coordinate-precision" title="Link to this heading"></a></h2>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version GDAL: </span>3.9</p>
+<p><span class="versionmodified added">バージョン GDAL で追加: </span>3.9</p>
 </div>
 <p>The GML driver supports reading and writing the geometry coordinate
 precision, using the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRGeomCoordinatePrecision</span></code> settings of the

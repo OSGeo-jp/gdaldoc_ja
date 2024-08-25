@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Raster Data Model &mdash; GDAL  ドキュメント</title>
+  <title>ラスターデータモデル &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
       <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
 
@@ -18,7 +18,7 @@
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="../_static/documentation_options.js?v=c033477b"></script>
-        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../_static/translations.js?v=4dbe4bdc"></script>
     <script src="../_static/js/theme.js"></script>
@@ -26,7 +26,7 @@
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="Multidimensional Raster Data Model" href="multidim_raster_data_model.html" />
-    <link rel="prev" title="User oriented documentation" href="index.html" /> 
+    <link rel="prev" title="ユーザー向けドキュメント" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -55,22 +55,22 @@
 <li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">ラスタードライバー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">ベクタードライバー</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">ユーザー</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Raster Data Model</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#dataset">Dataset</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#coordinate-system">Coordinate System</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#affine-geotransform">Affine GeoTransform</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ラスターデータモデル</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dataset">データセット</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#coordinate-system">座標系</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#affine-geotransform">アフィン地理変換</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#gcps">GCPs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#metadata">Metadata</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#subdatasets-domain">SUBDATASETS Domain</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#image-structure-domain">IMAGE_STRUCTURE Domain</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rpc-domain">RPC Domain</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#imagery-domain-remote-sensing">IMAGERY Domain (remote sensing)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#xml-domains">xml: Domains</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#metadata">メタデータ</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#subdatasets-domain">SUBDATASETS ドメイン</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#image-structure-domain">IMAGE_STRUCTURE ドメイン</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rpc-domain">RPC ドメイン</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#imagery-domain-remote-sensing">IMAGERY ドメイン (リモートセンシング)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#xml-domains">xml: ドメイン</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#raster-band">Raster Band</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#color-table">Color Table</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#overviews">Overviews</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raster-band">ラスターバンド</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#color-table">カラーテーブル</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#overviews">オーバービュー</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="multidim_raster_data_model.html">Multidimensional Raster Data Model</a></li>
@@ -78,7 +78,7 @@
 <li class="toctree-l2"><a class="reference internal" href="gnm_data_model.html">Geographic Networks Data Model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="multithreading.html">Multi-threading</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ogr_sql_sqlite_dialect.html">OGR SQL dialect and SQLITE SQL dialect</a></li>
-<li class="toctree-l2"><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ogr_feature_style.html">Feature Style Specification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="coordinate_epoch.html">Coordinate epoch support</a></li>
 <li class="toctree-l2"><a class="reference internal" href="configoptions.html">Configuration options</a></li>
@@ -128,9 +128,9 @@
     
       <li><a href="../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">User oriented documentation</a> &raquo;</li>
+          <li><a href="index.html">ユーザー向けドキュメント</a> &raquo;</li>
       
-      <li>Raster Data Model</li>
+      <li>ラスターデータモデル</li>
     
 
     
@@ -152,7 +152,7 @@
         <a href="multidim_raster_data_model.html" class="btn btn-neutral float-right" title="Multidimensional Raster Data Model" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral float-left" title="User oriented documentation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="ユーザー向けドキュメント" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -162,46 +162,46 @@
            <div itemprop="articleBody">
              
   <section id="raster-data-model">
-<span id="id1"></span><h1>Raster Data Model<a class="headerlink" href="#raster-data-model" title="Link to this heading"></a></h1>
-<p>This document attempts to describe the GDAL data model. That is the types of information that a GDAL data store can contain, and their semantics.</p>
+<span id="id1"></span><h1>ラスターデータモデル<a class="headerlink" href="#raster-data-model" title="Link to this heading"></a></h1>
+<p>このドキュメントはGDALデータモデルを記述しようとします.その内容はGDALデータストアが含むことができる情報のタイプとそれらの意味についてです.</p>
 <section id="dataset">
-<h2>Dataset<a class="headerlink" href="#dataset" title="Link to this heading"></a></h2>
-<p>A dataset (represented by the <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv411GDALDataset" title="GDALDataset"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALDataset</span></code></a> class) is an assembly of related raster bands and some information common to them all. In particular the dataset has a concept of the raster size (in pixels and lines) that applies to all the bands. The dataset is also responsible for the georeferencing transform and coordinate system definition of all bands. The dataset itself can also have associated metadata, a list of name/value pairs in string form.</p>
-<p>Note that the GDAL dataset, and raster band data model is loosely based on the OpenGIS Grid Coverages specification.</p>
+<h2>データセット<a class="headerlink" href="#dataset" title="Link to this heading"></a></h2>
+<p>データセット(クラス <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv411GDALDataset" title="GDALDataset"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALDataset</span></code></a> で表される)は,関連するラスターバンドの集合と,それら全てに共通する情報です.特にデータセットは,全てのバンドに適用されるラスターサイズ(ピクセルとライン)の概念を持ちます.データセットはまた,全てのバンドの地理参照変換と座標系定義を担当します.データセット自体には,文字列形式の名前/値ペアのリストとして関連するメタデータがあります.</p>
+<p>GDALデータセットとラスターバンドデータモデルは,OpenGIS Grid Coverages仕様に基づいています.</p>
 </section>
 <section id="coordinate-system">
-<h2>Coordinate System<a class="headerlink" href="#coordinate-system" title="Link to this heading"></a></h2>
-<p>Dataset coordinate systems are represented as OpenGIS Well Known Text strings. This can contain:</p>
+<h2>座標系<a class="headerlink" href="#coordinate-system" title="Link to this heading"></a></h2>
+<p>データセットの座標系はOpenGIS Well Known Text文字列として表されます.これは以下を含むことができます:</p>
 <ul class="simple">
-<li><p>An overall coordinate system name.</p></li>
-<li><p>A geographic coordinate system name.</p></li>
-<li><p>A datum identifier.</p></li>
-<li><p>An ellipsoid name, semi-major axis, and inverse flattening.</p></li>
-<li><p>A prime meridian name and offset from Greenwich.</p></li>
-<li><p>A projection method type (e.g., Transverse Mercator).</p></li>
-<li><p>A list of projection parameters (e.g., central_meridian).</p></li>
-<li><p>A units name, and conversion factor to meters or radians.</p></li>
-<li><p>Names and ordering for the axes.</p></li>
-<li><p>Codes for most of the above in terms of predefined coordinate systems from authorities such as EPSG.</p></li>
+<li><p>全体の座標系名</p></li>
+<li><p>地理座標系名</p></li>
+<li><p>測地系識別子</p></li>
+<li><p>楕円体名,軌道長半径,逆扁平率</p></li>
+<li><p>本初子午線名とグリニッジからのオフセット</p></li>
+<li><p>投影法のタイプ(例:Transverse Mercator).</p></li>
+<li><p>投影パラメータのリスト(例: central_meridian).</p></li>
+<li><p>単位名とメートルまたはラジアンへの変換係数</p></li>
+<li><p>軸の名前と順序</p></li>
+<li><p>上記のほとんどコードは,EPSGなどの標準座標系で定義されているコードです.</p></li>
 </ul>
-<p>For more information on OpenGIS WKT coordinate system definitions, and mechanisms to manipulate them, refer to the osr_tutorial document and/or the OGRSpatialReference class documentation.</p>
-<p>The coordinate system returned by <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4NK11GDALDataset16GetProjectionRefEv" title="GDALDataset::GetProjectionRef"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetProjectionRef()</span></code></a> describes the georeferenced coordinates implied by the affine georeferencing transform returned by <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4N11GDALDataset15GetGeoTransformEPd" title="GDALDataset::GetGeoTransform"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetGeoTransform()</span></code></a>. The coordinate system returned by <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4N11GDALDataset16GetGCPProjectionEv" title="GDALDataset::GetGCPProjection"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetGCPProjection()</span></code></a> describes the georeferenced coordinates of the GCPs returned by <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4N11GDALDataset7GetGCPsEv" title="GDALDataset::GetGCPs"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetGCPs()</span></code></a>.</p>
-<p>Note that a returned coordinate system strings of &quot;&quot; indicates nothing is known about the georeferencing coordinate system.</p>
+<p>OpenGIS WKT 座標系システム定義の詳細とそれらを操作するメカニズムについては,osr_tutorial ドキュメントと OGRSpatialReference クラスドキュメントを参照してください.</p>
+<p><a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4NK11GDALDataset16GetProjectionRefEv" title="GDALDataset::GetProjectionRef"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetProjectionRef()</span></code></a> で返される座標系は, <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4N11GDALDataset15GetGeoTransformEPd" title="GDALDataset::GetGeoTransform"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetGeoTransform()</span></code></a> によって返されるアフィン地理変換を前提とした地理参照座標を記述します.  <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4N11GDALDataset16GetGCPProjectionEv" title="GDALDataset::GetGCPProjection"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetGCPProjection()</span></code></a> から返される座標系では  <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4N11GDALDataset7GetGCPsEv" title="GDALDataset::GetGCPs"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetGCPs()</span></code></a> から返されるGCPでジオリファレンスされた座標を記述します.</p>
+<p>返される座標系文字列が &quot;&quot; の場合, ジオリファレンス座標系について何も指定されていないことを表します.</p>
 </section>
 <section id="affine-geotransform">
-<span id="raster-data-model-geotransform"></span><h2>Affine GeoTransform<a class="headerlink" href="#affine-geotransform" title="Link to this heading"></a></h2>
-<p>GDAL datasets have two ways of describing the relationship between raster positions (in pixel/line coordinates) and georeferenced coordinates. The first, and most commonly used is the affine transform (the other is GCPs).</p>
-<p>The affine transform consists of six coefficients returned by <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4N11GDALDataset15GetGeoTransformEPd" title="GDALDataset::GetGeoTransform"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetGeoTransform()</span></code></a> which map pixel/line coordinates into georeferenced space using the following relationship:</p>
+<span id="raster-data-model-geotransform"></span><h2>アフィン地理変換<a class="headerlink" href="#affine-geotransform" title="Link to this heading"></a></h2>
+<p>GDAL データセットは, ラスタの位置 (ピクセル/行座標) と地理参照座標の関係を2 つの方法で記述します. 最初の最も一般的に使用される方法はアフィン変換です(もう 1 つの方法は GCPs です).</p>
+<p>アフィン変換は, ピクセル/行座標を地理参照空間にマッピングするために <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4N11GDALDataset15GetGeoTransformEPd" title="GDALDataset::GetGeoTransform"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetGeoTransform()</span></code></a> によって返される 6 つの係数で構成されます. これらは以下の関係を使用してピクセル/行座標を地理参照空間にマッピングします:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Xgeo</span> <span class="o">=</span> <span class="n">GT</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">Xpixel</span><span class="o">*</span><span class="n">GT</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">Yline</span><span class="o">*</span><span class="n">GT</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">Ygeo</span> <span class="o">=</span> <span class="n">GT</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="n">Xpixel</span><span class="o">*</span><span class="n">GT</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">+</span> <span class="n">Yline</span><span class="o">*</span><span class="n">GT</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>In case of north up images, the GT(2) and GT(4) coefficients are zero, and the GT(1) is pixel width, and GT(5) is pixel height. The (GT(0),GT(3)) position is the top left corner of the top left pixel of the raster.</p>
-<p>Note that the pixel/line coordinates in the above are from (0.0,0.0) at the top left corner of the top left pixel to (width_in_pixels,height_in_pixels) at the bottom right corner of the bottom right pixel. The pixel/line location of the center of the top left pixel would therefore be (0.5,0.5).</p>
+<p>北向きの画像の場合, GT(2) と GT(4) の係数は 0 で, GT(1) はピクセル幅, GT(5) はピクセル高さです. (GT(0),GT(3)) の位置はラスタの左上隅の最上左側ピクセルの座標です.</p>
+<p>上記のピクセル/行座標は,左上隅の左上ピクセルが (0.0,0.0) で, 右下隅の右下ピクセルの(width_in_pixels,height_in_pixels) までです. 左上ピクセルの中心のピクセル/行の位置は (0.5,0.5) です.</p>
 </section>
 <section id="gcps">
 <h2>GCPs<a class="headerlink" href="#gcps" title="Link to this heading"></a></h2>
-<p>A dataset can have a set of control points relating one or more positions on the raster to georeferenced coordinates. All GCPs share a georeferencing coordinate system (returned by <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4N11GDALDataset16GetGCPProjectionEv" title="GDALDataset::GetGCPProjection"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetGCPProjection()</span></code></a>). Each GCP (represented as the GDAL_GCP class) contains the following:</p>
+<p>データセットは, ピクセル/行座標に関連する制御点のセットを持つことができます. すべてのGCPsは, ジオリファレンスする座標系 ( <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4N11GDALDataset16GetGCPProjectionEv" title="GDALDataset::GetGCPProjection"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetGCPProjection()</span></code></a> から返される)を共有します. 各GCP (GDAL_GCPクラスとして表されます) は次のようになります:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">typedef</span> <span class="n">struct</span>
 <span class="p">{</span>
     <span class="n">char</span>        <span class="o">*</span><span class="n">pszId</span><span class="p">;</span>
@@ -214,25 +214,25 @@
 <span class="p">}</span> <span class="n">GDAL_GCP</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>The pszId string is intended to be a unique (and often, but not always numerical) identifier for the GCP within the set of GCPs on this dataset. The pszInfo is usually an empty string, but can contain any user defined text associated with the GCP. Potentially this can also contain machine parsable information on GCP status though that isn't done at this time.</p>
-<p>The (Pixel,Line) position is the GCP location on the raster. The (X,Y,Z) position is the associated georeferenced location with the Z often being zero.</p>
-<p>The GDAL data model does not imply a transformation mechanism that must be generated from the GCPs ... this is left to the application. However 1st to 5th order polynomials are common.</p>
-<p>Normally a dataset will contain either an affine geotransform, GCPs or neither. It is uncommon to have both, and it is undefined which is authoritative.</p>
+<p>pszId文字列は, このデータセット上のGCPsのセット内のGCPの一意の (しばしば, しかし常に) 数値の識別子です. pszInfoは通常空文字列ですが, GCPに関連するユーザ定義のテキストを含めることができます. 現在は通常利用されていませんが, GCPの状態に関する機械可読情報を含めることもできます.</p>
+<p>(ピクセル,行) 位置はラスタ上のGCP位置です. (X,Y,Z) 位置は, Z がよくゼロであるジオリファレンスされた位置です.</p>
+<p>GDAL データモデルは, GCPs から生成される変換メカニズムを実装しません ... これはアプリケーションに任されています. ただし,1 次から 5 次の多項式は一般的に利用されます.</p>
+<p>通常, データセットはアフィン地理変換, GCPs のいずれかを含みます. 両方を含むことは一般的ではありません. どちらが優先されるかは未定義です.</p>
 </section>
 <section id="metadata">
-<h2>Metadata<a class="headerlink" href="#metadata" title="Link to this heading"></a></h2>
-<p>GDAL metadata is auxiliary format and application specific textual data kept as a list of name/value pairs. The names are required to be well behaved tokens (no spaces, or odd characters). The values can be of any length, and contain anything except an embedded null (ASCII zero).</p>
-<p>The metadata handling system is not well tuned to handling very large bodies of metadata. Handling of more than 100K of metadata for a dataset is likely to lead to performance degradation.</p>
-<p>Some formats will support generic (user defined) metadata, while other format drivers will map specific format fields to metadata names. For instance the TIFF driver returns a few information tags as metadata including the date/time field which is returned as:</p>
+<h2>メタデータ<a class="headerlink" href="#metadata" title="Link to this heading"></a></h2>
+<p>GDALメタデータは,名前/値のペアのリストとして保持される補助的なフォーマットおよびアプリケーション固有のテキストデータです.名前は適切な形式のトークン(スペースや特殊文字を含まない)である必要があります.値は任意の長さで,埋め込みヌル(ASCII ゼロ)以外の任意の内容を含むことができます.</p>
+<p>メタデータ取り扱いシステムはとても巨大な本体を持つメタデータを扱うために適切には調整されていません. データセットに対して100Kを超えるメタデータを扱うと,パフォーマンスの低下を引き起こす可能性があります.</p>
+<p>一部のフォーマットは汎用的な(ユーザー定義の)メタデータをサポートしますが,他のフォーマットドライバは特定のフォーマットフィールドをメタデータ名にマッピングします.例えば、TIFFドライバは日付/時刻フィールドを含むいくつかの情報タグをメタデータとして返します。日付/時刻フィールドは次のように返されます:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TIFFTAG_DATETIME</span><span class="o">=</span><span class="mi">1999</span><span class="p">:</span><span class="mi">05</span><span class="p">:</span><span class="mi">11</span> <span class="mi">11</span><span class="p">:</span><span class="mi">29</span><span class="p">:</span><span class="mi">56</span>
 </pre></div>
 </div>
-<p>Metadata is split into named groups called domains, with the default domain having no name (NULL or &quot;&quot;). Some specific domains exist for special purposes. Note that currently there is no way to enumerate all the domains available for a given object, but applications can &quot;test&quot; for any domains they know how to interpret.</p>
-<p>The following metadata items have well defined semantics in the default domain:</p>
+<p>メタデータはドメインと呼ばれる名前付きグループに分割されます,デフォルトドメインには名前がありません(NULLまたは&quot;&quot;). 特別な目的のために存在する特定のドメインもあります.現在,特定のオブジェクトに対して利用可能なすべてのドメインを列挙する方法はありませんが,アプリケーションは解釈方法を知っているドメインに対して &quot;テスト&quot; を行うことができます.</p>
+<p>以下のメタデータ項目は、デフォルトドメインにおいて明確に定義された意味を持ちます：</p>
 <ul>
-<li><p>AREA_OR_POINT: May be either &quot;Area&quot; (the default) or &quot;Point&quot;. Indicates whether a pixel value should be assumed to represent a sampling over the region of the pixel or a point sample at the center of the pixel. This is not intended to influence interpretation of georeferencing which remains area oriented.</p></li>
-<li><p>NODATA_VALUES: The value is a list of space separated pixel values matching the number of bands in the dataset that can be collectively used to identify pixels that are nodata in the dataset. With this style of nodata a pixel is considered nodata in all bands if and only if all bands match the corresponding value in the NODATA_VALUES tuple. This metadata is not widely honoured by GDAL drivers, algorithms or utilities at this time.</p></li>
-<li><p>MATRIX_REPRESENTATION: This value, used for Polarimetric SAR datasets, contains the matrix representation that this data is provided in. The following are acceptable values:</p>
+<li><p>AREA_OR_POINT: &quot;Area&quot;(デフォルト)または&quot;Point&quot;のいずれかでしょう.ピクセル値がピクセル領域全体のサンプリングを表すのか,ピクセルの中心点でのサンプリングを表すのかを示します.これは地理参照の解釈に影響を与えることを意図したものではなく,地理参照は領域指向のままです.</p></li>
+<li><p>NODATA_VALUES: この値はデータセット内のバンド数に一致するスペースで区切られたピクセル値のリストです.これらの値は,データセット内でデータなし(nodata)のピクセルを識別するために集合的に使用されます.このスタイルのnodataでは,すべてのバンドが NODATA_VALUES タプル内の対応する値と一致する場合にのみ,そのピクセルはすべてのバンドでデータなしと見なされます.現時点では,このメタデータは GDAL ドライバ,アルゴリズム,ユーティリティによって広くサポートされているわけではありません.</p></li>
+<li><p>MATRIX_REPRESENTATION: この値は,偏波SARデータセットに使用され,このデータが提供される行列表現を含みます.以下が受け入れ可能な値です：</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>SCATTERING</p></li>
@@ -246,25 +246,25 @@
 </ul>
 </div></blockquote>
 </li>
-<li><p>POLARIMETRIC_INTERP: This metadata item is defined for Raster Bands for polarimetric SAR data. This indicates which entry in the specified matrix representation of the data this band represents. For a dataset provided as a scattering matrix, for example, acceptable values for this metadata item are HH, HV, VH, VV. When the dataset is a covariance matrix, for example, this metadata item will be one of Covariance_11, Covariance_22, Covariance_33, Covariance_12, Covariance_13, Covariance_23 (since the matrix itself is a hermitian matrix, that is all the data that is required to describe the matrix).</p></li>
-<li><p>METADATATYPE: If IMAGERY Domain present, the item consist the reader which processed the metadata. Now present such readers:</p>
+<li><p>POLARIMETRIC_INTERP: このメタデータ項目は,偏波SARデータのラスターバンドに対して定義されています.これは,指定された行列表現のどのエントリをこのバンドが表しているかを示します.例えば,散乱行列として提供されるデータセットの場合,このメタデータ項目の受け入れ可能な値はHH,HV,VH,VVです.データセットが共分散行列の場合,例えば,このメタデータ項目はCovariance_11,Covariance_22,Covariance_33,Covariance_12,Covariance_13,Covariance_23のいずれかになります(行列自体がエルミート行列であるため,これらが行列を記述するために必要なすべてのデータです).</p></li>
+<li><p>METADATATYPE: IMAGERYドメインが存在する場合,この項目はメタデータを処理したリーダーを示します.現在,以下のようなリーダーが存在します：</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>DG: DigitalGlobe imagery metadata</p></li>
-<li><p>GE: GeoEye (or formally SpaceImaging) imagery metadata</p></li>
-<li><p>OV: OrbView imagery metadata</p></li>
-<li><p>DIMAP: Pleiades imagery metadata</p></li>
-<li><p>MSP: Resurs DK-1 imagery metadata</p></li>
-<li><p>ODL: Landsat imagery metadata</p></li>
+<li><p>DG: DigitalGlobe 画像のメタデータ</p></li>
+<li><p>GE: GeoEye (または正式には SpaceImaging) 画像のメタデータ</p></li>
+<li><p>OV: OrbView 画像のメタデータ</p></li>
+<li><p>DIMAP: Pleiades 画像のメタデータ</p></li>
+<li><p>MSP: Resurs DK-1 画像のメタデータ</p></li>
+<li><p>ODL: Landsat 画像のメタデータ</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p>CACHE_PATH: A cache directory path. Now this metadata item sets only by WMS driver. This is useful when dataset deletes with cached data or when external program need to put tiles in cache for some area of interest.</p></li>
+<li><p>CACHE_PATH: キャッシュディレクトリーのパス. 現在このメタデータはWMSドライバーでのみ設定されます. これはデータセットとキャッシュを同時に削除する場合や外部プログラムでインターネットのどこかの場所にタイルを格納するような場合に便利です.</p></li>
 </ul>
 <section id="subdatasets-domain">
-<h3>SUBDATASETS Domain<a class="headerlink" href="#subdatasets-domain" title="Link to this heading"></a></h3>
-<p>The SUBDATASETS domain holds a list of child datasets. Normally this is used to provide pointers to a list of images stored within a single multi image file.</p>
-<p>For example, an NITF with two images might have the following subdataset list.</p>
+<h3>SUBDATASETS ドメイン<a class="headerlink" href="#subdatasets-domain" title="Link to this heading"></a></h3>
+<p>SUBDATASETS ドメインは子データセットのリストを保有します. 通常これは単一のマルチイメージファイル内に格納されているイメージのリストへのポインターを提供するために使用されます.</p>
+<p>たとえば2個の画像を持つNITFは以下のようなサブデータセットを持つでしょう.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SUBDATASET_1_NAME</span><span class="o">=</span><span class="n">NITF_IM</span><span class="p">:</span><span class="mi">0</span><span class="p">:</span><span class="n">multi_1b</span><span class="o">.</span><span class="n">ntf</span>
 <span class="n">SUBDATASET_1_DESC</span><span class="o">=</span><span class="n">Image</span> <span class="mi">1</span> <span class="n">of</span> <span class="n">multi_1b</span><span class="o">.</span><span class="n">ntf</span>
 <span class="n">SUBDATASET_2_NAME</span><span class="o">=</span><span class="n">NITF_IM</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="n">multi_1b</span><span class="o">.</span><span class="n">ntf</span>
@@ -272,124 +272,120 @@
 </pre></div>
 </div>
 <p>The value of the _NAME is the string that can be passed to <a class="reference internal" href="../api/raster_c_api.html#_CPPv48GDALOpenPKc10GDALAccess" title="GDALOpen"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpen()</span></code></a> to access the file. The _DESC value is intended to be a more user friendly string that can be displayed to the user in a selector.</p>
-<p>Drivers which support subdatasets advertise the <code class="docutils literal notranslate"><span class="pre">DMD_SUBDATASETS</span></code> capability. This information is reported when the --format and --formats options are passed to the command line utilities.</p>
-<p>Currently, drivers which support subdatasets are: ADRG, ECRGTOC, GEORASTER, GTiff, HDF4, HDF5, netCDF, NITF, NTv2, OGDI, PDF, PostGISRaster, Rasterlite, RPFTOC, RS2, TileDB, WCS, and WMS.</p>
+<p>サブデータセットをサポートするドライバは, <code class="docutils literal notranslate"><span class="pre">DMD_SUBDATASETS</span></code> 機能を公開します.この情報は,コマンドラインユーティリティに --formatおよび --formatsオプションが渡された際に報告されます.</p>
+<p>現在以下のドライバーがサブデータセットをサポートしています: ADRG, ECRGTOC, GEORASTER, GTiff, HDF4, HDF5, netCDF, NITF, NTv2, OGDI, PDF, PostGISRaster, Rasterlite, RPFTOC, RS2, TileDB, WCS, WMS, と Zarr.</p>
 </section>
 <section id="image-structure-domain">
-<h3>IMAGE_STRUCTURE Domain<a class="headerlink" href="#image-structure-domain" title="Link to this heading"></a></h3>
-<p>Metadata in the default domain is intended to be related to the image, and not particularly related to the way the image is stored on disk. That is, it is suitable for copying with the dataset when it is copied to a new format. Some information of interest is closely tied to a particular file format and storage mechanism. In order to prevent this getting copied along with datasets it is placed in a special domain called IMAGE_STRUCTURE that should not normally be copied to new formats.</p>
-<p>Currently the following items are defined by <a class="reference internal" href="../development/rfc/rfc14_imagestructure.html#rfc-14"><span class="std std-ref">RFC 14: Image Structure Metadata</span></a> as having specific semantics in the IMAGE_STRUCTURE domain.</p>
+<h3>IMAGE_STRUCTURE ドメイン<a class="headerlink" href="#image-structure-domain" title="Link to this heading"></a></h3>
+<p>デフォルトドメインのメタデータは,画像に関連するものであり,画像がディスク上にどのように保存されているかという方法には特に関連しません.つまり,データセットが新しいフォーマットにコピーされる際に,一緒にコピーするのに適しています.一方,特定のファイルフォーマットや保存メカニズムに密接に関連する重要な情報もあります.これらの情報がデータセットと一緒にコピーされるのを防ぐため,IMAGE_STRUCTUREと呼ばれる特別なドメインに配置されます.このドメインは通常,新しいフォーマットにコピーされるべきではありません.</p>
+<p>現在以下のアイテムは IMAGE_STRUCTURE ドメインで固有のセマンティックを持つものとして:ref:<cite>rfc-14</cite> で定義されています.</p>
 <ul class="simple">
-<li><p>COMPRESSION: The compression type used for this dataset or band. There is no fixed catalog of compression type names, but where a given format includes a COMPRESSION creation option, the same list of values should be used here as there.</p></li>
-<li><p>NBITS: The actual number of bits used for this band, or the bands of this dataset. Normally only present when the number of bits is non-standard for the datatype, such as when a 1 bit TIFF is represented through GDAL as GDT_Byte.</p></li>
-<li><p>INTERLEAVE: This only applies on datasets, and the value should be one of PIXEL, LINE or BAND. It can be used as a data access hint.</p></li>
-<li><p>PIXELTYPE: This may appear on a GDT_Byte band (or the corresponding dataset)
-and have the value SIGNEDBYTE to indicate the unsigned byte values between
-128 and 255 should be interpreted as being values between -128 and -1 for
-applications that recognise the SIGNEDBYTE type.
-Starting with GDAL 3.7, this metadata item is no longer used, as the Int8 data type is used for signed bytes.</p></li>
+<li><p>COMPRESSION: データセットまたはバンドの圧縮タイプ. 圧縮タイプ名の 確定したカタログはありません. ただし,特定のフォーマットがCOMPRESSION作成オプションを含む場合,そこで使用される値のリストと同じものがここでも使用されるべきです.</p></li>
+<li><p>NBITS: このバンド,またはこのデータセットのバンドに使用される実際のビット数です.通常,ビット数がデータ型の標準と異なる場合にのみ存在します.例えば,1ビットのTIFFファイルがGDALを通じてGDT_Byteとして表されている場合などです.</p></li>
+<li><p>INTERLEAVE: これはデータセットにのみ適用され,その値はPIXEL,LINE,またはBANDのいずれかである必要があります.これはデータアクセスのヒントとして使用されることがあります.</p></li>
+<li><p>PIXELTYPE: これはGDT_Byteバンド(または対応するデータセット)に現れることがあり,値がSIGNEDBYTEである場合,128から255までの符号なしバイト値を,SIGNEDBYTEタイプを認識するアプリケーションにおいては-128から-1として解釈すべきことを示します.GDAL 3.7以降,このメタデータ項目は使用されなくなり,符号付きバイトにはInt8データタイプが使用されるようになりました</p></li>
 </ul>
 </section>
 <section id="rpc-domain">
-<h3>RPC Domain<a class="headerlink" href="#rpc-domain" title="Link to this heading"></a></h3>
-<p>The RPC metadata domain holds metadata describing the Rational Polynomial Coefficient geometry model for the image if present. This geometry model can be used to transform between pixel/line and georeferenced locations. The items defining the model are:</p>
+<h3>RPC ドメイン<a class="headerlink" href="#rpc-domain" title="Link to this heading"></a></h3>
+<p>RPCメタデータドメインには,画像の有理多項式係数ジオメトリ モデル (存在する場合) を説明するメタデータが保持されます.このジオメトリモデルは,ピクセル/ラインと地理参照された場所の間の変換に使用できます.モデルを定義する項目は次のとおりです</p>
 <ul class="simple">
-<li><p>ERR_BIAS: Error - Bias. The RMS bias error in meters per horizontal axis of all points in the image (-1.0 if unknown)</p></li>
-<li><p>ERR_RAND: Error - Random. RMS random error in meters per horizontal axis of each point in the image (-1.0 if unknown)</p></li>
-<li><p>LINE_OFF: Line Offset</p></li>
-<li><p>SAMP_OFF: Sample Offset</p></li>
-<li><p>LAT_OFF: Geodetic Latitude Offset</p></li>
-<li><p>LONG_OFF: Geodetic Longitude Offset</p></li>
-<li><p>HEIGHT_OFF: Geodetic Height Offset</p></li>
-<li><p>LINE_SCALE: Line Scale</p></li>
-<li><p>SAMP_SCALE: Sample Scale</p></li>
-<li><p>LAT_SCALE: Geodetic Latitude Scale</p></li>
-<li><p>LONG_SCALE: Geodetic Longitude Scale</p></li>
-<li><p>HEIGHT_SCALE: Geodetic Height Scale</p></li>
-<li><p>LINE_NUM_COEFF (1-20): Line Numerator Coefficients. Twenty coefficients for the polynomial in the Numerator of the rn equation. (space separated)</p></li>
-<li><p>LINE_DEN_COEFF (1-20): Line Denominator Coefficients. Twenty coefficients for the polynomial in the Denominator of the rn equation. (space separated)</p></li>
-<li><p>SAMP_NUM_COEFF (1-20): Sample Numerator Coefficients. Twenty coefficients for the polynomial in the Numerator of the cn equation. (space separated)</p></li>
-<li><p>SAMP_DEN_COEFF (1-20): Sample Denominator Coefficients. Twenty coefficients for the polynomial in the Denominator of the cn equation. (space separated)</p></li>
+<li><p>ERR_BIAS:  エラー - バイアス,画像内のすべての点に対する水平方向の軸ごとのRMS(二乗平均平方根)バイアス誤差をメートル単位で示します(不明な場合は-1.0と表示されます)</p></li>
+<li><p>ERR_RAND:エラー - ランダム.画像内の各点に対する水平方向の軸ごとのRMS(二乗平均平方根)ランダム誤差をメートル単位で示します（不明な場合は-1.0と表示されます）.</p></li>
+<li><p>LINE_OFF: ラインオフセット</p></li>
+<li><p>SAMP_OFF: サンプルオフセット</p></li>
+<li><p>LAT_OFF: 測地学的緯度オフセット</p></li>
+<li><p>LONG_OFF: 測地学的経度オフセット</p></li>
+<li><p>HEIGHT_OFF: 測地学的高さオフセット</p></li>
+<li><p>LINE_SCALE: ラインスケール</p></li>
+<li><p>SAMP_SCALE: サンプルスケール</p></li>
+<li><p>LAT_SCALE: 測地学的緯度スケール</p></li>
+<li><p>LONG_SCALE: 測地学的経度スケール</p></li>
+<li><p>HEIGHT_SCALE: 測地学的高さスケール</p></li>
+<li><p>LINE_NUM_COEFF (1-20): ライン分子係数. rn 方程式の分子の多項式のための20個の係数（スペースで区切られています）.</p></li>
+<li><p>LINE_DEN_COEFF (1-20): ライン分母係数. rn 方程式の分母の多項式のための20個の係数. (スペースで区切られています)</p></li>
+<li><p>SAMP_NUM_COEFF (1-20): サンプル分子係数. cn 方程式の分子の多項式のための20個の係数. (スペースで区切られています)</p></li>
+<li><p>SAMP_DEN_COEFF (1-20): サンプル分母係数. cn 方程式の分母の多項式のための20個の係数. (スペースで区切られています)</p></li>
 </ul>
-<p>These fields are directly derived from the document prospective GeoTIFF RPC document (<a class="reference external" href="http://geotiff.maptools.org/rpc_prop.html">http://geotiff.maptools.org/rpc_prop.html</a>) which in turn is closely modeled on the NITF RPC00B definition.</p>
-<p>The line and pixel offset expressed with LINE_OFF and SAMP_OFF are with respect to the center of the pixel.</p>
+<p>これらのフィールドは,GeoTIFF RPC ドキュメント(<a class="reference external" href="http://geotiff.maptools.org/rpc_prop.html">http://geotiff.maptools.org/rpc_prop.html</a>) から直接派生しており,そのドキュメントはNITF RPC00B 定義を厳密にモデル化したものです.</p>
+<p>LINE_OFF と SAMP_OFF で表されるラインとピクセルオフセットは,ピクセルの中心を基準としています.</p>
 </section>
 <section id="imagery-domain-remote-sensing">
-<h3>IMAGERY Domain (remote sensing)<a class="headerlink" href="#imagery-domain-remote-sensing" title="Link to this heading"></a></h3>
-<p>For satellite or aerial imagery the IMAGERY Domain may be present. It depends on the existence of special metadata files near the image file. The files at the same directory with image file tested by the set of metadata readers, if files can be processed by the metadata reader, it fill the IMAGERY Domain with the following items:</p>
+<h3>IMAGERY ドメイン (リモートセンシング)<a class="headerlink" href="#imagery-domain-remote-sensing" title="Link to this heading"></a></h3>
+<p>衛星画像や航空画像の場合,IMAGERYドメインが存在することがあります.これは,画像ファイルの近くに特別なメタデータファイルが存在するかどうかに依存します.メタデータリーダーのセットが同じディレクトリ内の画像ファイルと一緒に存在するファイルをテストし,ファイルがメタデータリーダーによって処理できる場合,IMAGERYドメインに次の項目が入力されます:</p>
 <ul class="simple">
-<li><p>SATELLITEID: A satellite or scanner name</p></li>
-<li><p>CLOUDCOVER: Cloud coverage. The value between 0 - 100 or 999 if not available</p></li>
-<li><p>ACQUISITIONDATETIME: The image acquisition date time in UTC</p></li>
+<li><p>SATELLITEID: 衛星またはスキャナの名前</p></li>
+<li><p>CLOUDCOVER: 雲の覆い具合. 値は 0 - 100 の範囲でデータが利用できない場合は 999</p></li>
+<li><p>ACQUISITIONDATETIME: 画像の取得日時 (UTC)</p></li>
 </ul>
 </section>
 <section id="xml-domains">
-<h3>xml: Domains<a class="headerlink" href="#xml-domains" title="Link to this heading"></a></h3>
-<p>Any domain name prefixed with &quot;xml:&quot; is not normal name/value metadata. It is a single XML document stored in one big string.</p>
+<h3>xml: ドメイン<a class="headerlink" href="#xml-domains" title="Link to this heading"></a></h3>
+<p>&quot;xml:&quot;で始まるドメイン名は通常の名前/値形式のメタデータではありません.それは,1つの大きな文字列に格納されたXMLドキュメント全体を指します.</p>
 </section>
 </section>
 <section id="raster-band">
-<h2>Raster Band<a class="headerlink" href="#raster-band" title="Link to this heading"></a></h2>
-<p>A raster band is represented in GDAL with the <a class="reference internal" href="../api/gdalrasterband_cpp.html#_CPPv414GDALRasterBand" title="GDALRasterBand"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALRasterBand</span></code></a> class. It represents a single raster band/channel/layer. It does not necessarily represent a whole image. For instance, a 24bit RGB image would normally be represented as a dataset with three bands, one for red, one for green and one for blue.</p>
-<p>A raster band has the following properties:</p>
+<h2>ラスターバンド<a class="headerlink" href="#raster-band" title="Link to this heading"></a></h2>
+<p>ラスターバンドはGDALでは <a class="reference internal" href="../api/gdalrasterband_cpp.html#_CPPv414GDALRasterBand" title="GDALRasterBand"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALRasterBand</span></code></a> クラスで表現されます.これは,単一のラスターバンド/チャンネル/レイヤーを表します.これは必ずしも全画像を表すわけではありません.たとえば,24ビットのRGB画像は通常,赤,緑,青の3つのバンドを持つデータセットとして表されます.</p>
+<p>ラスターバンドには以下のプロパティがあります:</p>
 <ul>
-<li><p>A width and height in pixels and lines. This is the same as that defined for the dataset, if this is a full resolution band.</p></li>
-<li><p>A datatype (GDALDataType). One of Byte, Int8, UInt16, Int16, UInt32, Int32, UInt64, Int64, Float32, Float64, and the complex types CInt16, CInt32, CFloat32, and CFloat64.</p>
-<p>UInt64 and Int64 data types have been added in GDAL 3.5. Beyond reading and write pixel values, their support is limited.  Some algorithms might use 64-bit floating-point internally (warping), as well as some methods returning only double values (GetMinimum(), GetMaximum(), etc.), or even 32-bit floating point (overview, RasterIO resampling). Hence the range where exact values are preserved can be [0, 2^53] (or less if 32-bit floating-point is used).</p>
+<li><p>ピクセルとラインの幅と高さ. これは,これがフル解像度バンドの場合にデータセットで定義されたものと同じです.</p></li>
+<li><p>データ型 (GDALDataType). Byte, Int8, UInt16, Int16, UInt32, Int32, UInt64, Int64, Float32, Float64, および複素数型 CInt16, CInt32, CFloat32, CFloat64 のいずれかです.</p>
+<p>UInt64 および Int64 データ型は GDAL 3.5 で追加されました. ピクセル値の読み取りと書き込みを超えて,そのサポートは限られています. 一部のアルゴリズムは内部で64ビット浮動小数点数を使用する場合があります(ワーピング),また,一部のメソッドは倍精度値のみを返す場合があります(GetMinimum(), GetMaximum() など),または32ビット浮動小数点数(概要, RasterIO リサンプリング)を使用する場合があります.したがって,正確な値が保持される範囲は [0, 2^53] (32ビット浮動小数点数を使用する場合はそれ以下)になります.</p>
 </li>
 </ul>
 <blockquote>
-<div><p>Int8 data type has been added in GDAL 3.7.</p>
+<div><p>Int8 データ型は GDAL 3.7 で追加されました.</p>
 </div></blockquote>
 <ul>
-<li><p>A block size. This is a preferred (efficient) access chunk size. For tiled images this will be one tile. For scanline oriented images this will normally be one scanline.</p></li>
-<li><p>A list of name/value pair metadata in the same format as the dataset, but of information that is potentially specific to this band.</p></li>
-<li><p>An optional description string.</p></li>
-<li><p>An optional single nodata pixel value (see also NODATA_VALUES metadata on the dataset for multi-band style nodata values).</p></li>
-<li><p>An optional nodata mask band marking pixels as nodata or in some cases transparency as discussed in RFC 15: Band Masks and documented in GDALRasterBand::GetMaskBand().</p></li>
-<li><p>An optional list of category names (effectively class names in a thematic image).</p></li>
-<li><p>An optional minimum and maximum value.</p></li>
-<li><p>Optional statistics stored in metadata:</p>
+<li><p>ブロックサイズ. これは,好ましい(効率的な)アクセスチャンクサイズです. タイル画像の場合,これは1つのタイルになります. スキャンライン指向の画像の場合,通常は1つのスキャンラインになります.</p></li>
+<li><p>データセットと同じ形式の名前/値ペアメタデータのリストですが,このバンドに特有の情報です.</p></li>
+<li><p>オプションの説明文字列.</p></li>
+<li><p>オプションの単一のノーデータピクセル値 (データセットの NODATA_VALUES メタデータについても参照してください).</p></li>
+<li><p>ノーデータまたは一部の場合は透過性を示すピクセルをマークするオプションのノーデータマスクバンド. RFC 15: Band Masks で議論され, GDALRasterBand::GetMaskBand() で文書化されています.</p></li>
+<li><p>オプションのカテゴリ名のリスト (テーマ画像のクラス名).</p></li>
+<li><p>オプションの最小値と最大値.</p></li>
+<li><p>メタデータに格納されたオプションの統計情報:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>STATISTICS_MEAN: mean</p></li>
-<li><p>STATISTICS_MINIMUM: minimum</p></li>
-<li><p>STATISTICS_MAXIMUM: maximum</p></li>
-<li><p>STATISTICS_STDDEV: standard deviation</p></li>
-<li><p>STATISTICS_APPROXIMATE: only present if GDAL has computed approximate statistics</p></li>
-<li><p>STATISTICS_VALID_PERCENT: percentage of valid (not nodata) pixel</p></li>
+<li><p>STATISTICS_MEAN: 平均</p></li>
+<li><p>STATISTICS_MINIMUM: 最小値</p></li>
+<li><p>STATISTICS_MAXIMUM: 最大値</p></li>
+<li><p>STATISTICS_STDDEV: 標準偏差</p></li>
+<li><p>STATISTICS_APPROXIMATE: GDALが計算された近似統計を持つときにのみ存在します</p></li>
+<li><p>STATISTICS_VALID_PERCENT: 有効なピクセル (nodataではない) の割合</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p>An optional offset and scale for transforming raster values into meaning full values (e.g., translate height to meters).</p></li>
-<li><p>An optional raster unit name. For instance, this might indicate linear units for elevation data.</p></li>
-<li><p>A color interpretation for the band. This is one of:</p>
+<li><p>ラスター値を意味のある完全な値に変換するためのオプションのオフセットとスケール(例:高さをメートルに変換する).</p></li>
+<li><p>オプションのラスター単位名.例えば標高データの線形単位を示す場合があります.</p></li>
+<li><p>バンドの色解釈. 以下のいずれかです:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>GCI_Undefined: the default, nothing is known.</p></li>
-<li><p>GCI_GrayIndex: this is an independent gray-scale image</p></li>
-<li><p>GCI_PaletteIndex: this raster acts as an index into a color table</p></li>
-<li><p>GCI_RedBand: this raster is the red portion of an RGB or RGBA image</p></li>
-<li><p>GCI_GreenBand: this raster is the green portion of an RGB or RGBA image</p></li>
-<li><p>GCI_BlueBand: this raster is the blue portion of an RGB or RGBA image</p></li>
-<li><p>GCI_AlphaBand: this raster is the alpha portion of an RGBA image</p></li>
-<li><p>GCI_HueBand: this raster is the hue of an HLS image</p></li>
-<li><p>GCI_SaturationBand: this raster is the saturation of an HLS image</p></li>
-<li><p>GCI_LightnessBand: this raster is the hue of an HLS image</p></li>
-<li><p>GCI_CyanBand: this band is the cyan portion of a CMY or CMYK image</p></li>
-<li><p>GCI_MagentaBand: this band is the magenta portion of a CMY or CMYK image</p></li>
-<li><p>GCI_YellowBand: this band is the yellow portion of a CMY or CMYK image</p></li>
-<li><p>GCI_BlackBand: this band is the black portion of a CMYK image.</p></li>
+<li><p>GCI_Undefined: デフォルト, すべて不明.</p></li>
+<li><p>GCI_GrayIndex: これは独立したグレースケール画像です</p></li>
+<li><p>GCI_PaletteIndex: このラスターはカラーテーブルのインデクスとして機能します</p></li>
+<li><p>GCI_RedBand: このラスターはRGBまたはRGBA画像の赤の部分です</p></li>
+<li><p>GCI_GreenBand: このラスターはRGBまたはRGBA画像の緑の部分です</p></li>
+<li><p>GCI_BlueBand: このラスターはRGBまたはRGBA画像の青の部分です</p></li>
+<li><p>GCI_AlphaBand: このラスターはRGBA画像のアルファの部分です</p></li>
+<li><p>GCI_HueBand: このラスターはHLS画像の色相です</p></li>
+<li><p>GCI_SaturationBand: このラスターはHLS画像の彩度です</p></li>
+<li><p>GCI_LightnessBand: このラスターはHLS画像の輝度です</p></li>
+<li><p>GCI_CyanBand: このバンドはCMY または CMYK 画像のシアン部分です</p></li>
+<li><p>GCI_MagentaBand: このバンドはCMY または CMYK 画像のマゼンダ部分です</p></li>
+<li><p>GCI_YellowBand: このバンドはCMY または CMYK 画像のイエロー部分です</p></li>
+<li><p>GCI_BlackBand: このバンドはCMYK 画像のブラック部分です.</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p>A color table, described in more detail later.</p></li>
-<li><p>Knowledge of reduced resolution overviews (pyramids) if available.</p></li>
+<li><p>カラーテーブル, 詳細は後に記述あります.</p></li>
+<li><p>解像度を下げたオーバービュー(ピラミッド)に関する情報（利用可能な場合）.</p></li>
 </ul>
 </section>
 <section id="color-table">
-<h2>Color Table<a class="headerlink" href="#color-table" title="Link to this heading"></a></h2>
-<p>A color table consists of zero or more color entries described in C by the following structure:</p>
+<h2>カラーテーブル<a class="headerlink" href="#color-table" title="Link to this heading"></a></h2>
+<p>カラーテーブルはC言語で記述された0またはそれ以上の色のエントリです.以下の構造で記述されます:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">typedef</span> <span class="n">struct</span>
 <span class="p">{</span>
     <span class="o">/*</span> <span class="n">gray</span><span class="p">,</span> <span class="n">red</span><span class="p">,</span> <span class="n">cyan</span> <span class="ow">or</span> <span class="n">hue</span> <span class="o">*/</span>
@@ -406,21 +402,21 @@ Starting with GDAL 3.7, this metadata item is no longer used, as the Int8 data t
 <span class="p">}</span> <span class="n">GDALColorEntry</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>The color table also has a palette interpretation value (GDALPaletteInterp) which is one of the following values, and indicates how the c1/c2/c3/c4 values of a color entry should be interpreted.</p>
+<p>カラー テーブルには、パレット解釈値 (GDALPaletteInterp) もあります.これは,次のいずれかの値で,カラー エントリの c1/c2/c3/c4 値をどのように解釈するかを示します.</p>
 <ul class="simple">
-<li><p>GPI_Gray: Use c1 as gray scale value.</p></li>
-<li><p>GPI_RGB: Use c1 as red, c2 as green, c3 as blue and c4 as alpha.</p></li>
-<li><p>GPI_CMYK: Use c1 as cyan, c2 as magenta, c3 as yellow and c4 as black.</p></li>
-<li><p>GPI_HLS: Use c1 as hue, c2 as lightness, and c3 as saturation.</p></li>
+<li><p>GPI_Gray: c1をグレイスケール値として使います.</p></li>
+<li><p>GPI_RGB: c1 を赤, c2 を緑, c3を青 c4 をアルファとして使います.</p></li>
+<li><p>GPI_CMYK: c1 をシアン, c2をマゼンタ, c3 をイエロウ c4をブラックとして使います.</p></li>
+<li><p>GPI_HLS: c1 を色相, c2 を明度, c3 を彩度として使います.</p></li>
 </ul>
-<p>To associate a color with a raster pixel, the pixel value is used as a subscript into the color table. That means that the colors are always applied starting at zero and ascending. There is no provision for indicating a pre-scaling mechanism before looking up in the color table.</p>
+<p>ラスターピクセルに色を関連付けるために,ピクセル値はカラーテーブルに対する添字として使用されます.つまり,色は常にゼロから始まり昇順に適用されます.カラーテーブルを参照する前に事前スケーリングメカニズムを示すための規定はありません.</p>
 </section>
 <section id="overviews">
-<h2>Overviews<a class="headerlink" href="#overviews" title="Link to this heading"></a></h2>
-<p>A band may have zero or more overviews. Each overview is represented as a &quot;free standing&quot; <a class="reference internal" href="../api/gdalrasterband_cpp.html#_CPPv414GDALRasterBand" title="GDALRasterBand"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALRasterBand</span></code></a>. The size (in pixels and lines) of the overview will be different than the underlying raster, but the geographic region covered by overviews is the same as the full resolution band.</p>
-<p>The overviews are used to display reduced resolution overviews more quickly than could be done by reading all the full resolution data and downsampling.</p>
-<p>Bands also have a HasArbitraryOverviews property which is TRUE if the raster can be read at any resolution efficiently but with no distinct overview levels. This applies to some FFT encoded images, or images pulled through gateways where downsampling can be done efficiently at the remote point.</p>
-<p>How overviews are selected depends on the software logic. The <a class="reference internal" href="../api/gdalrasterband_cpp.html#_CPPv4N14GDALRasterBand8RasterIOE10GDALRWFlagiiiiPvii12GDALDataType8GSpacing8GSpacingP20GDALRasterIOExtraArg" title="GDALRasterBand::RasterIO"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALRasterBand::RasterIO()</span></code></a> or <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4N11GDALDataset8RasterIOE10GDALRWFlagiiiiPvii12GDALDataTypeiPKi8GSpacing8GSpacing8GSpacingP20GDALRasterIOExtraArg" title="GDALDataset::RasterIO"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::RasterIO()</span></code></a> methods document their logic.</p>
+<h2>オーバービュー<a class="headerlink" href="#overviews" title="Link to this heading"></a></h2>
+<p>バンドには0またはそれ以上のオーバービューが存在する場合があります.各オーバービューは &quot;独立した&quot; <a class="reference internal" href="../api/gdalrasterband_cpp.html#_CPPv414GDALRasterBand" title="GDALRasterBand"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALRasterBand</span></code></a> として表されます. オーバービューのサイズ (ピクセル数と行数) は元となるラスターとは異なりますが,オーバービューでカバーされる地理領域は完全な解像度のバンドと同じです.</p>
+<p>オーバービューは,全解像度データをすべて読み取ってダウンサンプリングするよりも高速に縮小解像度のオーバービューを表示するために使用されます.</p>
+<p>バンドには,HasArbitraryOverviews プロパティもあります.これは,ラスターが任意の解像度で効率的に読み取ることができるが,明確なオーバービューレベルがない場合に TRUE になります.これは,一部のFFTエンコードされた画像や,ダウンサンプリングがリモートポイントで効率的に行われるゲートウェイを通じて取得された画像に適用されます.</p>
+<p>オーバービューが選択される方法は,ソフトウェアのロジックに依存します. <a class="reference internal" href="../api/gdalrasterband_cpp.html#_CPPv4N14GDALRasterBand8RasterIOE10GDALRWFlagiiiiPvii12GDALDataType8GSpacing8GSpacingP20GDALRasterIOExtraArg" title="GDALRasterBand::RasterIO"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALRasterBand::RasterIO()</span></code></a> または <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4N11GDALDataset8RasterIOE10GDALRWFlagiiiiPvii12GDALDataTypeiPKi8GSpacing8GSpacing8GSpacingP20GDALRasterIOExtraArg" title="GDALDataset::RasterIO"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::RasterIO()</span></code></a> メソッドはそのロジックを文書化しています.</p>
 </section>
 </section>
 
@@ -434,7 +430,7 @@ Starting with GDAL 3.7, this metadata item is no longer used, as the Int8 data t
         <a href="multidim_raster_data_model.html" class="btn btn-neutral float-right" title="Multidimensional Raster Data Model" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral float-left" title="User oriented documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="ユーザー向けドキュメント" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

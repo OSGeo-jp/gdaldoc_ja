@@ -200,7 +200,8 @@ const char *const  *&#160;</td><td class="memItemRight" valign="bottom"><a class
 </div><div class="memdoc">
 
 <p>Return sibling files. </p>
-<dl class="section return"><dt>Returns</dt><dd>sibling files. Ownership below to the object. </dd></dl>
+<p>If the list of sibling files has not already been established, it will be, unless the GDAL_DISABLE_READDIR_ON_OPEN configuration option has been set to YES or EMPTY_DIR when this instance was constructed.</p>
+<dl class="section return"><dt>Returns</dt><dd>sibling files. Ownership belongs to "this". </dd></dl>
 
 </div>
 </div>

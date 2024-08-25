@@ -18,7 +18,7 @@
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="../_static/documentation_options.js?v=c033477b"></script>
-        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../_static/translations.js?v=4dbe4bdc"></script>
     <script src="../_static/js/theme.js"></script>
@@ -58,10 +58,10 @@
 <li class="toctree-l3"><a class="reference internal" href="gdal-config.html">gdal-config (Unix)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdal2tiles.html">gdal2tiles</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">gdal2xyz</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#synopsis">Synopsis</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#caveats">Caveats</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#synopsis">概要</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#description">説明</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#examples">例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#caveats">注意事項</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="gdal_calc.html">gdal_calc</a></li>
@@ -100,8 +100,8 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#multidimensional-raster-programs">多次元ラスタープログラム</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#vector-programs">ベクタープログラム</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#geographic-network-programs">Geographic network programs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#other-utilities">Other utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#geographic-network-programs">地理ネットワークプログラム</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#other-utilities">その他のユーティリティ</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">ラスタードライバー</a></li>
@@ -185,9 +185,9 @@
              
   <section id="gdal2xyz">
 <span id="id1"></span><h1>gdal2xyz<a class="headerlink" href="#gdal2xyz" title="Link to this heading"></a></h1>
-<p>Translates a raster file into <cite>xyz</cite> format.</p>
+<p>ラスターファイルを <cite>xyz</cite> フォーマットに変換する。</p>
 <section id="synopsis">
-<span id="index-0"></span><h2>Synopsis<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
+<span id="index-0"></span><h2>概要<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdal2xyz</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="o">-</span><span class="n">general</span><span class="p">]</span>
     <span class="p">[</span><span class="o">-</span><span class="n">skip</span> <span class="o">&lt;</span><span class="n">factor</span><span class="o">&gt;</span><span class="p">]</span>
     <span class="p">[</span><span class="o">-</span><span class="n">srcwin</span> <span class="o">&lt;</span><span class="n">xoff</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">yoff</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">xsize</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">ysize</span><span class="o">&gt;</span><span class="p">]</span>
@@ -200,14 +200,14 @@
 </div>
 </section>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<h2>説明<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
 <p>The <strong class="program">gdal2xyz</strong> utility can be used to translate a raster file into xyz format.
 <cite>gdal2xyz</cite> can be used as an alternative to <cite>gdal_translate of=xyz</cite>. Features include:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Select more then one band</p></li>
-<li><p>Skip or replace nodata value</p></li>
-<li><p>Return the output as numpy arrays.</p></li>
+<li><p>複数のバンドを選択する</p></li>
+<li><p>ノデータの値をスキップまたは置換する</p></li>
+<li><p>出力をnumpy配列で返す。</p></li>
 </ul>
 </div></blockquote>
 <div class="admonition note">
@@ -217,7 +217,7 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal2xyz-help">
 <span class="sig-name descname"><span class="pre">--help</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal2xyz-help" title="Link to this definition"></a></dt>
-<dd><p>Show this help message and exit</p>
+<dd><p>このヘルプメッセージを表示して終了する</p>
 </dd></dl>
 
 <dl class="std option">
@@ -229,7 +229,7 @@
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal2xyz-skip">
 <span class="sig-name descname"><span class="pre">-skip</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal2xyz-skip" title="Link to this definition"></a></dt>
-<dd><p>How many rows/cols to skip in each iteration.</p>
+<dd><p>各反復でスキップする行数/列数。</p>
 </dd></dl>
 
 <dl class="std option">
@@ -251,19 +251,19 @@ In order to use all input bands set <cite>-allbands</cite> or <cite>-b 0</cite>.
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal2xyz-allbands">
 <span class="sig-name descname"><span class="pre">-allbands</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal2xyz-allbands" title="Link to this definition"></a></dt>
-<dd><p>Select all input bands.</p>
+<dd><p>すべての入力バンドを選択する。</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal2xyz-csv">
 <span class="sig-name descname"><span class="pre">-csv</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal2xyz-csv" title="Link to this definition"></a></dt>
-<dd><p>Use comma instead of space as a delimiter.</p>
+<dd><p>区切り文字として、スペースの代わりにカンマを使用する。</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal2xyz-skipnodata">
 <span class="sig-name descname"><span class="pre">-skipnodata</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal2xyz-skipnodata" title="Link to this definition"></a></dt>
-<dd><p>Exclude the output lines with nodata value (as determined by srcnodata)</p>
+<dd><p>(srcnodataによって決定される)nodata値を持つ出力行を除外する</p>
 </dd></dl>
 
 <dl class="std option">
@@ -285,25 +285,24 @@ Default(<cite>None</cite>) - Use <cite>srcnodata</cite>, no replacement;
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal2xyz-h">
 <span id="cmdoption-gdal2xyz-0"></span><span class="sig-name descname"><span class="pre">-h</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--help</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal2xyz-h" title="Link to this definition"></a></dt>
-<dd><p>Show help message and exit.</p>
+<dd><p>ヘルプメッセージを表示して終了する。</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal2xyz-arg-src_dataset">
 <span class="sig-name descname"><span class="pre">&lt;src_dataset&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal2xyz-arg-src_dataset" title="Link to this definition"></a></dt>
-<dd><p>The source dataset name. It can be either file name, URL of data source or
-subdataset name for multi-dataset files.</p>
+<dd><p>ソースデータセット名。ファイル名、データソースのURL、またはマルチデータセットファイルの場合はサブデータセット名のいずれかになります。</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal2xyz-arg-dst_dataset">
 <span class="sig-name descname"><span class="pre">&lt;dst_dataset&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal2xyz-arg-dst_dataset" title="Link to this definition"></a></dt>
-<dd><p>The destination file name.</p>
+<dd><p>保存先のファイル名。</p>
 </dd></dl>
 
 </section>
 <section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
+<h2>例<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdal2xyz</span> <span class="o">-</span><span class="n">b</span> <span class="mi">1</span> <span class="o">-</span><span class="n">b</span> <span class="mi">2</span> <span class="o">-</span><span class="n">dstnodata</span> <span class="mi">0</span> <span class="nb">input</span><span class="o">.</span><span class="n">tif</span> <span class="n">output</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
@@ -313,8 +312,8 @@ The remaining columns represent the first and second bands.
 We also replace the dataset nodata values with zeros.</p>
 </section>
 <section id="caveats">
-<h2>Caveats<a class="headerlink" href="#caveats" title="Link to this heading"></a></h2>
-<p>gdal2xyz output values with a limited precision. Use <code class="docutils literal notranslate"><span class="pre">gdal_translate</span> <span class="pre">-of</span> <span class="pre">XYZ</span></code> if more precision is desired.</p>
+<h2>注意事項<a class="headerlink" href="#caveats" title="Link to this heading"></a></h2>
+<p>gdal2xyz の出力の精度は限定されています。さらに高い精度が必要な場合は <code class="docutils literal notranslate"><span class="pre">gdal_translate</span> <span class="pre">-of</span> <span class="pre">XYZ</span></code> を使用してください。</p>
 </section>
 </section>
 

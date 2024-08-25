@@ -18,7 +18,7 @@
         <script src="../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="../../_static/documentation_options.js?v=c033477b"></script>
-        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
         <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../../_static/translations.js?v=4dbe4bdc"></script>
     <script src="../../_static/js/theme.js"></script>
@@ -228,7 +228,7 @@
 <li class="toctree-l2"><a class="reference internal" href="tsx.html">TSX --  TerraSAR-X Product</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usgsdem.html">USGSDEM -- USGS ASCII DEM (and CDED)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vicar.html">VICAR -- VICAR</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vrt.html">VRT -- GDAL Virtual Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vrt.html">VRT -- GDAL 仮想形式</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wcs.html">WCS -- OGC Web Coverage Service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="webp.html">WEBP - WEBP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wms.html">WMS -- Web Map Services</a></li>
@@ -401,7 +401,7 @@ which covers the extent at all zoom levels. The user can also specify
 the USE_TILE_EXTENT=YES open option to use the actual extent of tiles at
 the maximum zoom level. Or it can specify any of MINX/MINY/MAXX/MAXY to
 have a custom extent.</p>
-<p>Open options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-oo</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALOpenExPKcjPPCKcPPCKcPPCKc" title="GDALOpenEx"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpenEx()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.OpenEx" title="osgeo.gdal.OpenEx"><code class="xref py py-meth docutils literal notranslate"><span class="pre">gdal.OpenEx</span></code></a> (Python).
+<p>Open options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-oo</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALOpenExPKcjPPCKcPPCKcPPCKc" title="GDALOpenEx"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpenEx()</span></code></a> (C) or <code class="xref py py-meth docutils literal notranslate"><span class="pre">gdal.OpenEx</span></code> (Python).
 The following open options are available:</p>
 <ul class="simple">
 <li><p id="drivers/raster/gpkg-oo-TABLE"><strong>TABLE=&lt;table_name&gt;: </strong>Name of the table containing the tiles
@@ -719,7 +719,7 @@ the input nodata value to another value.</p>
 </section>
 <section id="creation-options">
 <h3>Creation options<a class="headerlink" href="#creation-options" title="Link to this heading"></a></h3>
-<p>Creation options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-co</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALCreate11GDALDriverHPKciii12GDALDataType12CSLConstList" title="GDALCreate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALCreate()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.Driver.Create" title="osgeo.gdal.Driver.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Driver.Create</span></code></a> (Python).
+<p>Creation options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-co</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALCreate11GDALDriverHPKciii12GDALDataType12CSLConstList" title="GDALCreate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALCreate()</span></code></a> (C) or <code class="xref py py-meth docutils literal notranslate"><span class="pre">Driver.Create</span></code> (Python).
 The following creation options are available:</p>
 <ul class="simple">
 <li><p id="drivers/raster/gpkg-co-RASTER_TABLE"><strong>RASTER_TABLE=value: </strong>Name of tile user table. By default, based
@@ -986,7 +986,7 @@ are also available.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">gdal_get_layer_pixel_value()</span></code> function (added in GDAL 3.7), variant of the
 generic <code class="docutils literal notranslate"><span class="pre">gdal_get_pixel_value()</span></code>, can be used to extract the value of a pixel
 in a raster layer of the current dataset.</p>
-<p>It takes 5 arguments:</p>
+<p>It takes 5 or 6 arguments:</p>
 <ul class="simple">
 <li><p>a string with the layer/table name</p></li>
 <li><p>a band number (numbering starting at 1)</p></li>
@@ -995,9 +995,11 @@ coordinates, or &quot;pixel&quot; to indicate that subsequent values will be in 
 pixel space</p></li>
 <li><p>georeferenced X value or column number</p></li>
 <li><p>georeferenced Y value or line number</p></li>
+<li><p>resampling method among <code class="docutils literal notranslate"><span class="pre">nearest</span></code> (default), <code class="docutils literal notranslate"><span class="pre">bilinear</span></code>, <code class="docutils literal notranslate"><span class="pre">cubic</span></code>, <code class="docutils literal notranslate"><span class="pre">cubicspline</span></code>. Optional, added in GDAL 3.10</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">gdal_get_layer_pixel_value</span><span class="p">(</span><span class="s1">&#39;my_raster_table&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;georef&#39;</span><span class="p">,</span> <span class="mi">440720</span><span class="p">,</span> <span class="mi">3751320</span><span class="p">)</span>
 <span class="n">SELECT</span> <span class="n">gdal_get_layer_pixel_value</span><span class="p">(</span><span class="s1">&#39;my_raster_table&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;pixel&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">SELECT</span> <span class="n">gdal_get_pixel_value</span><span class="p">(</span><span class="s1">&#39;my_raster_table&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;pixel&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;bilinear&#39;</span><span class="p">)</span>  <span class="o">--</span> <span class="n">GDAL</span> <span class="o">&gt;=</span> <span class="mf">3.10</span>
 </pre></div>
 </div>
 </section>

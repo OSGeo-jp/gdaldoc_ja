@@ -18,7 +18,7 @@
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="../_static/documentation_options.js?v=c033477b"></script>
-        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../_static/translations.js?v=4dbe4bdc"></script>
     <script src="../_static/js/theme.js"></script>
@@ -74,8 +74,8 @@
 <li class="toctree-l3"><a class="reference internal" href="ogr_layer_algebra.html">ogr_layer_algebra</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#geographic-network-programs">Geographic network programs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#other-utilities">Other utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#geographic-network-programs">地理ネットワークプログラム</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#other-utilities">その他のユーティリティ</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">ラスタードライバー</a></li>
@@ -242,7 +242,7 @@ This option can be repeated several times to specify several candidate drivers.
 Note that it does not force those drivers to open the dataset. In particular,
 some drivers have requirements on file extensions.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.2.</span></p>
+<p><span class="versionmodified added">バージョン 3.2 で追加.</span></p>
 </div>
 </dd></dl>
 
@@ -265,7 +265,7 @@ guessed from the extension (previously was ESRI Shapefile).</p>
 <dt class="sig sig-object std" id="cmdoption-ogr2ogr-upsert">
 <span class="sig-name descname"><span class="pre">-upsert</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-ogr2ogr-upsert" title="Link to this definition"></a></dt>
 <dd><div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.6.</span></p>
+<p><span class="versionmodified added">バージョン 3.6 で追加.</span></p>
 </div>
 <p>Variant of <a class="reference internal" href="#cmdoption-ogr2ogr-append"><code class="xref std std-option docutils literal notranslate"><span class="pre">-append</span></code></a> where the <a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer13UpsertFeatureEP10OGRFeature" title="OGRLayer::UpsertFeature"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::UpsertFeature()</span></code></a>
 operation is used to insert or update features instead of appending with
@@ -330,7 +330,7 @@ feature count&quot; capability.</p>
 <span class="sig-name descname"><span class="pre">-sql</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;sql_statement&gt;</span></span><a class="headerlink" href="#cmdoption-ogr2ogr-sql" title="Link to this definition"></a></dt>
 <dd><p>SQL statement to execute. The resulting table/layer will be saved to the
 output. Starting with GDAL 2.1, the <code class="docutils literal notranslate"><span class="pre">&#64;filename</span></code> syntax can be used to
-indicate that the content is in the pointed filename.</p>
+indicate that the content is in the pointed filename. (Cannot be used with <a class="reference internal" href="#cmdoption-ogr2ogr-spat_srs"><code class="xref std std-option docutils literal notranslate"><span class="pre">-spat_srs</span></code></a>.)</p>
 </dd></dl>
 
 <dl class="std option">
@@ -367,7 +367,7 @@ extents will be selected. The geometries will not be clipped unless
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-ogr2ogr-spat_srs">
 <span class="sig-name descname"><span class="pre">-spat_srs</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;srs_def&gt;</span></span><a class="headerlink" href="#cmdoption-ogr2ogr-spat_srs" title="Link to this definition"></a></dt>
-<dd><p>Override spatial filter SRS.</p>
+<dd><p>Override spatial filter SRS. (Cannot be used with <a class="reference internal" href="#cmdoption-ogr2ogr-sql"><code class="xref std std-option docutils literal notranslate"><span class="pre">-sql</span></code></a>.)</p>
 </dd></dl>
 
 <dl class="std option">
@@ -448,7 +448,7 @@ PROJ.4 declarations, or the name of a .prj file containing a WKT CRS definition.
 <dt class="sig sig-object std" id="cmdoption-ogr2ogr-a_coord_epoch">
 <span class="sig-name descname"><span class="pre">-a_coord_epoch</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;epoch&gt;</span></span><a class="headerlink" href="#cmdoption-ogr2ogr-a_coord_epoch" title="Link to this definition"></a></dt>
 <dd><div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.4.</span></p>
+<p><span class="versionmodified added">バージョン 3.4 で追加.</span></p>
 </div>
 <p>Assign a coordinate epoch, linked with the output SRS. Useful when the
 output SRS is a dynamic CRS. Only taken into account if <a class="reference internal" href="#cmdoption-ogr2ogr-a_srs"><code class="xref std std-option docutils literal notranslate"><span class="pre">-a_srs</span></code></a>
@@ -472,7 +472,7 @@ PROJ.4 declarations, or the name of a .prj file containing a WKT CRS definition.
 <dt class="sig sig-object std" id="cmdoption-ogr2ogr-t_coord_epoch">
 <span class="sig-name descname"><span class="pre">-t_coord_epoch</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;epoch&gt;</span></span><a class="headerlink" href="#cmdoption-ogr2ogr-t_coord_epoch" title="Link to this definition"></a></dt>
 <dd><div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.4.</span></p>
+<p><span class="versionmodified added">バージョン 3.4 で追加.</span></p>
 </div>
 <p>Assign a coordinate epoch, linked with the output SRS. Useful when the
 output SRS is a dynamic CRS. Only taken into account if <a class="reference internal" href="#cmdoption-ogr2ogr-t_srs"><code class="xref std std-option docutils literal notranslate"><span class="pre">-t_srs</span></code></a>
@@ -497,7 +497,7 @@ PROJ.4 declarations, or the name of a .prj file containing a WKT CRS definition.
 <dt class="sig sig-object std" id="cmdoption-ogr2ogr-xyRes">
 <span class="sig-name descname"><span class="pre">-xyRes</span></span><span class="sig-prename descclassname"> <span class="pre">&quot;&lt;val&gt;[</span> <span class="pre">m|mm|deg]&quot;</span></span><a class="headerlink" href="#cmdoption-ogr2ogr-xyRes" title="Link to this definition"></a></dt>
 <dd><div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.9.</span></p>
+<p><span class="versionmodified added">バージョン 3.9 で追加.</span></p>
 </div>
 <p>Set/override the geometry X/Y coordinate resolution. If only a numeric value
 is specified, it is assumed to be expressed in the units of the target SRS.
@@ -516,7 +516,7 @@ coordinate resolution of the source layer, if available, is used.</p>
 <dt class="sig sig-object std" id="cmdoption-ogr2ogr-zRes">
 <span class="sig-name descname"><span class="pre">-zRes</span></span><span class="sig-prename descclassname"> <span class="pre">&quot;&lt;val&gt;[</span> <span class="pre">m|mm]&quot;</span></span><a class="headerlink" href="#cmdoption-ogr2ogr-zRes" title="Link to this definition"></a></dt>
 <dd><div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.9.</span></p>
+<p><span class="versionmodified added">バージョン 3.9 で追加.</span></p>
 </div>
 <p>Set/override the geometry Z coordinate resolution. If only a numeric value
 is specified, it is assumed to be expressed in the units of the target SRS.
@@ -530,7 +530,7 @@ coordinate resolution of the source layer, if available, is used.</p>
 <dt class="sig sig-object std" id="cmdoption-ogr2ogr-mRes">
 <span class="sig-name descname"><span class="pre">-mRes</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;val&gt;</span></span><a class="headerlink" href="#cmdoption-ogr2ogr-mRes" title="Link to this definition"></a></dt>
 <dd><div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.9.</span></p>
+<p><span class="versionmodified added">バージョン 3.9 で追加.</span></p>
 </div>
 <p>Set/override the geometry M coordinate resolution.
 If neither this option nor <a class="reference internal" href="#cmdoption-ogr2ogr-unsetCoordPrecision"><code class="xref std std-option docutils literal notranslate"><span class="pre">-unsetCoordPrecision</span></code></a> are specified, the
@@ -541,7 +541,7 @@ coordinate resolution of the source layer, if available, is used.</p>
 <dt class="sig sig-object std" id="cmdoption-ogr2ogr-unsetCoordPrecision">
 <span class="sig-name descname"><span class="pre">-unsetCoordPrecision</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-ogr2ogr-unsetCoordPrecision" title="Link to this definition"></a></dt>
 <dd><div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.9.</span></p>
+<p><span class="versionmodified added">バージョン 3.9 で追加.</span></p>
 </div>
 <p>Prevent the geometry coordinate resolution from being set on target layer(s).</p>
 </dd></dl>
@@ -550,7 +550,7 @@ coordinate resolution of the source layer, if available, is used.</p>
 <dt class="sig sig-object std" id="cmdoption-ogr2ogr-s_coord_epoch">
 <span class="sig-name descname"><span class="pre">-s_coord_epoch</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;epoch&gt;</span></span><a class="headerlink" href="#cmdoption-ogr2ogr-s_coord_epoch" title="Link to this definition"></a></dt>
 <dd><div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.4.</span></p>
+<p><span class="versionmodified added">バージョン 3.4 で追加.</span></p>
 </div>
 <p>Assign a coordinate epoch, linked with the source SRS. Useful when the
 source SRS is a dynamic CRS. Only taken into account if <a class="reference internal" href="#cmdoption-ogr2ogr-s_srs"><code class="xref std std-option docutils literal notranslate"><span class="pre">-s_srs</span></code></a>
@@ -571,7 +571,7 @@ is typically include a <code class="docutils literal notranslate"><span class="p
 the pipeline if the source CRS has northing/easting axis order, and/or at
 the end of the pipeline if the target CRS has northing/easting axis order.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.0.</span></p>
+<p><span class="versionmodified added">バージョン 3.0 で追加.</span></p>
 </div>
 </dd></dl>
 
@@ -906,7 +906,7 @@ example be useful if selecting source features with a ORDER BY clause.</p>
 <dt class="sig sig-object std" id="cmdoption-ogr2ogr-emptyStrAsNull">
 <span class="sig-name descname"><span class="pre">-emptyStrAsNull</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-ogr2ogr-emptyStrAsNull" title="Link to this definition"></a></dt>
 <dd><div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.3.</span></p>
+<p><span class="versionmodified added">バージョン 3.3 で追加.</span></p>
 </div>
 <p>Treat empty string values as null.</p>
 </dd></dl>
@@ -915,7 +915,7 @@ example be useful if selecting source features with a ORDER BY clause.</p>
 <dt class="sig sig-object std" id="cmdoption-ogr2ogr-resolveDomains">
 <span class="sig-name descname"><span class="pre">-resolveDomains</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-ogr2ogr-resolveDomains" title="Link to this definition"></a></dt>
 <dd><div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.3.</span></p>
+<p><span class="versionmodified added">バージョン 3.3 で追加.</span></p>
 </div>
 <p>When this is specified, any selected field that is linked to a coded field
 domain will be accompanied by an additional field (<code class="docutils literal notranslate"><span class="pre">{dstfield}_resolved</span></code>),
@@ -943,7 +943,7 @@ supported by output driver.</p>
 captured by OGR abstraction, that are otherwise preserved by some drivers
 (like GeoJSON) when converting to same format.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 2.1.</span></p>
+<p><span class="versionmodified added">バージョン 2.1 で追加.</span></p>
 </div>
 </dd></dl>
 

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VRT -- GDAL Virtual Format &mdash; GDAL  ドキュメント</title>
+  <title>VRT -- GDAL 仮想形式 &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d10597a4" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/gdal.css?v=e152ac3b" />
 
@@ -18,7 +18,7 @@
         <script src="../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="../../_static/documentation_options.js?v=c033477b"></script>
-        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
         <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../../_static/translations.js?v=4dbe4bdc"></script>
     <script src="../../_static/js/theme.js"></script>
@@ -207,8 +207,8 @@
 <li class="toctree-l2"><a class="reference internal" href="tsx.html">TSX --  TerraSAR-X Product</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usgsdem.html">USGSDEM -- USGS ASCII DEM (and CDED)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vicar.html">VICAR -- VICAR</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">VRT -- GDAL Virtual Format</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">VRT -- GDAL 仮想形式</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">概論</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#creation-options">Creation options</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#vrt-format">.vrt Format</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#vrtdataset">VRTDataset</a></li>
@@ -303,7 +303,7 @@
       
           <li><a href="index.html">ラスタードライバー</a> &raquo;</li>
       
-      <li>VRT -- GDAL Virtual Format</li>
+      <li>VRT -- GDAL 仮想形式</li>
     
 
     
@@ -335,9 +335,9 @@
            <div itemprop="articleBody">
              
   <section id="vrt-gdal-virtual-format">
-<span id="raster-vrt"></span><h1>VRT -- GDAL Virtual Format<a class="headerlink" href="#vrt-gdal-virtual-format" title="Link to this heading"></a></h1>
+<span id="raster-vrt"></span><h1>VRT -- GDAL 仮想形式<a class="headerlink" href="#vrt-gdal-virtual-format" title="Link to this heading"></a></h1>
 <div class="admonition shortname" id="shortname-0">
-<p class="admonition-title">Driver short name</p>
+<p class="admonition-title">ドライバー短縮名</p>
 <p>VRT</p>
 </div>
 <div class="admonition built_in_by_default" id="built_in_by_default-0">
@@ -345,7 +345,7 @@
 <p>This driver is built-in by default</p>
 </div>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<h2>概論<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
 <p>The VRT driver is a format driver for GDAL that allows a virtual GDAL dataset
 to be composed from other GDAL datasets with repositioning, and algorithms
 potentially applied as well as various kinds of metadata altered or added.
@@ -377,7 +377,7 @@ loaded from <code class="file docutils literal notranslate"><span class="pre">ut
 </pre></div>
 </div>
 <p>Many aspects of the VRT file are a direct XML encoding of the
-<a class="reference internal" href="../../user/raster_data_model.html#raster-data-model"><span class="std std-ref">Raster Data Model</span></a> which should be reviewed
+<a class="reference internal" href="../../user/raster_data_model.html#raster-data-model"><span class="std std-ref">ラスターデータモデル</span></a> which should be reviewed
 for understanding of the semantics of various elements.</p>
 <p>VRT files can be produced by translating to VRT format.  The resulting file can
 then be edited to modify mappings, add metadata or other purposes.  VRT files
@@ -388,7 +388,7 @@ for developers.</p>
 </section>
 <section id="creation-options">
 <h2>Creation options<a class="headerlink" href="#creation-options" title="Link to this heading"></a></h2>
-<p>Creation options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-co</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALCreate11GDALDriverHPKciii12GDALDataType12CSLConstList" title="GDALCreate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALCreate()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.Driver.Create" title="osgeo.gdal.Driver.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Driver.Create</span></code></a> (Python).
+<p>Creation options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-co</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALCreate11GDALDriverHPKciii12GDALDataType12CSLConstList" title="GDALCreate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALCreate()</span></code></a> (C) or <code class="xref py py-meth docutils literal notranslate"><span class="pre">Driver.Create</span></code> (Python).
 The following creation options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/raster/vrt-oo-BLOCKXSIZE"><strong>BLOCKXSIZE=value: </strong> (GDAL &gt;= 3.7) Sets block width.</p>
@@ -430,7 +430,7 @@ elements.</p>
 </div>
 <p>The <strong>dataAxisToSRSAxisMapping</strong> attribute is allowed since GDAL 3.0 to describe the relationship between the axis indicated in the CRS definition and the axis of the GeoTransform or GCP metadata. The value of the attribute is a comma separated list of integers. The number of elements of this list must be the number of axis of the CRS. Values start at 1. If m denotes the array values of this attribute, then m[0] is the data axis number for the first axis of the CRS. If the attribute is missing, then the OAMS_TRADITIONAL_GIS_ORDER data axis to CRS axis mapping strategy is implied.</p>
 <ul class="simple">
-<li><p><strong>GeoTransform</strong>: This element contains a six value affine geotransformation for the dataset, mapping between pixel/line coordinates and georeferenced coordinates. Typically (geotransform[0], geotransform[3]) will be the (easting, northing) of the upper-left corner of the raster, geotransform[1] the horizontal resolution in geospatial coordinates/pixel, and geotransform[5] the vertical resolution in geospatial coordinates/pixel, as a negative value if the image is north-up oriented. See <a class="reference internal" href="../../user/raster_data_model.html#raster-data-model-geotransform"><span class="std std-ref">Affine GeoTransform</span></a> for more details about that mapping.</p></li>
+<li><p><strong>GeoTransform</strong>: This element contains a six value affine geotransformation for the dataset, mapping between pixel/line coordinates and georeferenced coordinates. Typically (geotransform[0], geotransform[3]) will be the (easting, northing) of the upper-left corner of the raster, geotransform[1] the horizontal resolution in geospatial coordinates/pixel, and geotransform[5] the vertical resolution in geospatial coordinates/pixel, as a negative value if the image is north-up oriented. See <a class="reference internal" href="../../user/raster_data_model.html#raster-data-model-geotransform"><span class="std std-ref">アフィン地理変換</span></a> for more details about that mapping.</p></li>
 </ul>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;GeoTransform&gt;</span>440720.0,<span class="w">  </span>60,<span class="w">  </span>0.0,<span class="w">  </span>3751320.0,<span class="w">  </span>0.0,<span class="w"> </span>-60.0<span class="nt">&lt;/GeoTransform&gt;</span>
 </pre></div>
@@ -635,7 +635,7 @@ rectangle of source data should be mapped into the VRTRasterBands space.</p>
 relationship with the geospatial coordinate space is given by the geotransform
 matrix of the source for SrcRect, and of the VRT itself (<strong>GeoTransform</strong>
 element) for DstRect.
-See <a class="reference internal" href="../../user/raster_data_model.html#raster-data-model-geotransform"><span class="std std-ref">Affine GeoTransform</span></a> for more details about that mapping.</p>
+See <a class="reference internal" href="../../user/raster_data_model.html#raster-data-model-geotransform"><span class="std std-ref">アフィン地理変換</span></a> for more details about that mapping.</p>
 <p>The relativeToVRT attribute on the SourceFilename indicates whether the
 filename should be interpreted as relative to the .vrt file (value is 1)
 or not relative to the .vrt file (value is 0).  The default is 0.</p>
@@ -794,7 +794,7 @@ For example, a Gaussian blur:</p>
 <section id="nodatafrommasksource">
 <h5>NoDataFromMaskSource<a class="headerlink" href="#nodatafrommasksource" title="Link to this heading"></a></h5>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.9.</span></p>
+<p><span class="versionmodified added">バージョン 3.9 で追加.</span></p>
 </div>
 <p>The NoDataFromMaskSource is derived from the SimpleSource and shares the same properties except that it replaces the value of the source with the value of the NODATA child element when the value of the mask band of the source is less or equal to the MaskValueThreshold child element.
 This is typically used to transform a R,G,B,A image into a R,G,B one with a NoData value.
@@ -812,7 +812,7 @@ An optional RemappedValue element can be set to specify the value onto which val
 <section id="arraysource">
 <h5>ArraySource<a class="headerlink" href="#arraysource" title="Link to this heading"></a></h5>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.8.</span></p>
+<p><span class="versionmodified added">バージョン 3.8 で追加.</span></p>
 </div>
 <p>The <a class="reference internal" href="#arraysource">ArraySource</a> indicates that raster data should be read from a 2D array using
 the multidimensional API. If the original array is not a 3D array, a DerivedArray
@@ -1993,7 +1993,7 @@ GDALWarpOptions element which describe the warping options.</p>
 <section id="pansharpened-vrt">
 <span id="gdal-vrttut-pansharpen"></span><h2>Pansharpened VRT<a class="headerlink" href="#pansharpened-vrt" title="Link to this heading"></a></h2>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 2.1.</span></p>
+<p><span class="versionmodified added">バージョン 2.1 で追加.</span></p>
 </div>
 <p>A VRT can describe a dataset resulting from a
 <a class="reference external" href="https://en.wikipedia.org/wiki/Pansharpened_image">pansharpening operation</a>
@@ -2157,7 +2157,7 @@ pseudo panchromatic intensity, but not bound to an output band.</p>
 <section id="multidimensional-vrt">
 <h2>Multidimensional VRT<a class="headerlink" href="#multidimensional-vrt" title="Link to this heading"></a></h2>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.1.</span></p>
+<p><span class="versionmodified added">バージョン 3.1 で追加.</span></p>
 </div>
 <p>See the dedicated <a class="reference internal" href="vrt_multidimensional.html#vrt-multidimensional"><span class="std std-ref">Multidimensional VRT</span></a> page.</p>
 <div class="toctree-wrapper compound">
@@ -2166,9 +2166,9 @@ pseudo panchromatic intensity, but not bound to an output band.</p>
 <section id="processed-dataset-vrt">
 <h2>Processed dataset VRT<a class="headerlink" href="#processed-dataset-vrt" title="Link to this heading"></a></h2>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.9.</span></p>
+<p><span class="versionmodified added">バージョン 3.9 で追加.</span></p>
 </div>
-<p>A VRT processed dataset is a specific variant of the <a class="reference internal" href="#raster-vrt"><span class="std std-ref">VRT -- GDAL Virtual Format</span></a> format,
+<p>A VRT processed dataset is a specific variant of the <a class="reference internal" href="#raster-vrt"><span class="std std-ref">VRT -- GDAL 仮想形式</span></a> format,
 to apply chained processing steps that may apply to several bands at the same time.</p>
 <p>See the dedicated <a class="reference internal" href="vrt_processed_dataset.html#vrt-processed-dataset"><span class="std std-ref">VRT processed dataset</span></a> page.</p>
 <div class="toctree-wrapper compound">
@@ -2177,7 +2177,7 @@ to apply chained processing steps that may apply to several bands at the same ti
 <section id="vrt-connection-string">
 <h2>vrt:// connection string<a class="headerlink" href="#vrt-connection-string" title="Link to this heading"></a></h2>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.1.</span></p>
+<p><span class="versionmodified added">バージョン 3.1 で追加.</span></p>
 </div>
 <p>In some contexts, it might be useful to benefit from features of VRT without
 having to create a file or to provide the rather verbose VRT XML content as
@@ -2292,6 +2292,31 @@ the ampersand).</p>
 multi-threading if the sources are not overlapping and belong to different
 datasets. This can be enabled by setting the <a class="reference internal" href="../../user/configoptions.html#config-GDAL_NUM_THREADS"><code class="docutils literal notranslate"><span class="pre">GDAL_NUM_THREADS</span></code></a>
 configuration option to an integer or <code class="docutils literal notranslate"><span class="pre">ALL_CPUS</span></code>.</p>
+<p>Starting with GDAL 3.10, the <a class="reference internal" href="#drivers/raster/vrt-oo-NUM_THREADS"><code class="docutils literal notranslate"><span class="pre">NUM_THREADS</span></code></a> open option can
+be set to control specifically the multi-threading of VRT datasets.
+It defaults to <code class="docutils literal notranslate"><span class="pre">ALL_CPUS</span></code>, and when set, overrides <a class="reference internal" href="../../user/configoptions.html#config-GDAL_NUM_THREADS"><code class="docutils literal notranslate"><span class="pre">GDAL_NUM_THREADS</span></code></a>
+or <a class="reference internal" href="#config-VRT_NUM_THREADS"><code class="docutils literal notranslate"><span class="pre">VRT_NUM_THREADS</span></code></a>. It applies to
+ComputeStatistics() and band-level and dataset-level RasterIO().
+For band-level RasterIO(), multi-threading is only available if more than 1
+million pixels are requested and if the VRT is made of only non-overlapping
+SimpleSource or ComplexSource belonging to different datasets.
+For dataset-level RasterIO(), multi-threading is only available if more than 1
+million pixels are requested and if the VRT is made of only non-overlapping
+SimpleSource belonging to different datasets.</p>
+<ul class="simple">
+<li><p id="drivers/raster/vrt-oo-NUM_THREADS"><strong>NUM_THREADS=[integer/ALL_CPUS]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">ALL_CPUS</span></code>. Determines the number of threads used when an operation reads from
+multiple sources.</p>
+</li>
+</ul>
+<p>This can also be specified globally with the <a class="reference internal" href="#config-VRT_NUM_THREADS"><code class="docutils literal notranslate"><span class="pre">VRT_NUM_THREADS</span></code></a>
+configuration option.</p>
+<ul class="simple">
+<li><p id="config-VRT_NUM_THREADS"><strong>VRT_NUM_THREADS=[integer/ALL_CPUS]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">ALL_CPUS</span></code>. Determines the number of threads used when an operation reads from
+multiple sources.</p>
+</li>
+</ul>
+<p>Note that the number of threads actually used is also limited by the
+<a class="reference internal" href="../../user/configoptions.html#config-GDAL_MAX_DATASET_POOL_SIZE"><code class="docutils literal notranslate"><span class="pre">GDAL_MAX_DATASET_POOL_SIZE</span></code></a> configuration option.</p>
 </section>
 <section id="multi-threading-issues">
 <h2>Multi-threading issues<a class="headerlink" href="#multi-threading-issues" title="Link to this heading"></a></h2>

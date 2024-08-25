@@ -18,7 +18,7 @@
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="../_static/documentation_options.js?v=c033477b"></script>
-        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../_static/translations.js?v=4dbe4bdc"></script>
     <script src="../_static/js/theme.js"></script>
@@ -55,13 +55,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">ラスタードライバー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">ベクタードライバー</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">ユーザー</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="raster_data_model.html">Raster Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="raster_data_model.html">ラスターデータモデル</a></li>
 <li class="toctree-l2"><a class="reference internal" href="multidim_raster_data_model.html">Multidimensional Raster Data Model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vector_data_model.html">Vector Data Model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gnm_data_model.html">Geographic Networks Data Model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="multithreading.html">Multi-threading</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ogr_sql_sqlite_dialect.html">OGR SQL dialect and SQLITE SQL dialect</a></li>
-<li class="toctree-l2"><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ogr_feature_style.html">Feature Style Specification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="coordinate_epoch.html">Coordinate epoch support</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Configuration options</a><ul>
@@ -127,7 +127,7 @@
     
       <li><a href="../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">User oriented documentation</a> &raquo;</li>
+          <li><a href="index.html">ユーザー向けドキュメント</a> &raquo;</li>
       
       <li>Configuration options</li>
     
@@ -213,7 +213,7 @@ NO, FALSE or OFF to turn it off.</p>
 <section id="gdal-configuration-file">
 <span id="id1"></span><h2>GDAL configuration file<a class="headerlink" href="#gdal-configuration-file" title="Link to this heading"></a></h2>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 3.3.</span></p>
+<p><span class="versionmodified added">バージョン 3.3 で追加.</span></p>
 </div>
 <p>On driver registration, loading of configuration is attempted from a set of
 predefined files.</p>
@@ -863,7 +863,7 @@ horizontal datum.</p>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="#config-CPL_DEBUG"><code class="docutils literal notranslate"><span class="pre">CPL_DEBUG</span></code></a>: <ul>
-<li><p><a class="reference internal" href="../drivers/raster/vrt.html">VRT -- GDAL Virtual Format</a></p></li>
+<li><p><a class="reference internal" href="../drivers/raster/vrt.html">VRT -- GDAL 仮想形式</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/gml.html">GML - Geography Markup Language</a></p></li>
 <li><p><a class="reference internal" href="#">Configuration options</a></p></li>
 </ul>
@@ -884,6 +884,8 @@ horizontal datum.</p>
 <li><p><a class="reference internal" href="#config-CPL_TMPDIR"><code class="docutils literal notranslate"><span class="pre">CPL_TMPDIR</span></code></a>: <ul>
 <li><p><a class="reference internal" href="../drivers/raster/pdf.html">PDF -- Geospatial PDF</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/wms.html">WMS -- Web Map Services</a></p></li>
+<li><p><a class="reference internal" href="../drivers/raster/wms_wmts_cache.html">&lt;no title&gt;</a></p></li>
+<li><p><a class="reference internal" href="../drivers/raster/wmts.html">WMTS -- OGC Web Map Tile Service</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/osm.html">OSM - OpenStreetMap XML and PBF</a></p></li>
 <li><p><a class="reference internal" href="../programs/vector_common_options.html">Common options for vector programs</a></p></li>
 <li><p><a class="reference internal" href="#">Configuration options</a></p></li>
@@ -1029,7 +1031,12 @@ horizontal datum.</p>
 <li><p><a class="reference internal" href="#">Configuration options</a></p></li>
 </ul>
 </p></li>
-<li><p><a class="reference internal" href="../drivers/raster/wms.html#config-GDAL_DEFAULT_WMS_CACHE_PATH"><code class="docutils literal notranslate"><span class="pre">GDAL_DEFAULT_WMS_CACHE_PATH</span></code></a>: <a class="reference internal" href="../drivers/raster/wms.html">WMS -- Web Map Services</a></p></li>
+<li><p><a class="reference internal" href="../drivers/raster/wms.html#config-GDAL_DEFAULT_WMS_CACHE_PATH"><code class="docutils literal notranslate"><span class="pre">GDAL_DEFAULT_WMS_CACHE_PATH</span></code></a>: <ul>
+<li><p><a class="reference internal" href="../drivers/raster/wms.html">WMS -- Web Map Services</a></p></li>
+<li><p><a class="reference internal" href="../drivers/raster/wms_wmts_cache.html">&lt;no title&gt;</a></p></li>
+<li><p><a class="reference internal" href="../drivers/raster/wmts.html">WMTS -- OGC Web Map Tile Service</a></p></li>
+</ul>
+</p></li>
 <li><p><a class="reference internal" href="#config-GDAL_DISABLE_CPLLOCALEC"><code class="docutils literal notranslate"><span class="pre">GDAL_DISABLE_CPLLOCALEC</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
 <li><p><a class="reference internal" href="#config-GDAL_DISABLE_READDIR_ON_OPEN"><code class="docutils literal notranslate"><span class="pre">GDAL_DISABLE_READDIR_ON_OPEN</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
 <li><p><a class="reference internal" href="#config-GDAL_DRIVER_PATH"><code class="docutils literal notranslate"><span class="pre">GDAL_DRIVER_PATH</span></code></a>: <ul>
@@ -1039,7 +1046,11 @@ horizontal datum.</p>
 </p></li>
 <li><p><a class="reference internal" href="../drivers/raster/dted.html#config-GDAL_DTED_SINGLE_BLOCK"><code class="docutils literal notranslate"><span class="pre">GDAL_DTED_SINGLE_BLOCK</span></code></a>: <a class="reference internal" href="../drivers/raster/dted.html">DTED -- Military Elevation Data</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/gtiff.html#config-GDAL_ENABLE_TIFF_SPLIT"><code class="docutils literal notranslate"><span class="pre">GDAL_ENABLE_TIFF_SPLIT</span></code></a>: <a class="reference internal" href="../drivers/raster/gtiff.html">GTiff -- GeoTIFF File Format</a></p></li>
-<li><p><a class="reference internal" href="../drivers/raster/wms.html#config-GDAL_ENABLE_WMS_CACHE"><code class="docutils literal notranslate"><span class="pre">GDAL_ENABLE_WMS_CACHE</span></code></a>: <a class="reference internal" href="../drivers/raster/wms.html">WMS -- Web Map Services</a></p></li>
+<li><p><a class="reference internal" href="../drivers/raster/wms.html#config-GDAL_ENABLE_WMS_CACHE"><code class="docutils literal notranslate"><span class="pre">GDAL_ENABLE_WMS_CACHE</span></code></a>: <ul>
+<li><p><a class="reference internal" href="../drivers/raster/wms.html">WMS -- Web Map Services</a></p></li>
+<li><p><a class="reference internal" href="../drivers/raster/wmts.html">WMTS -- OGC Web Map Tile Service</a></p></li>
+</ul>
+</p></li>
 <li><p><a class="reference internal" href="../drivers/raster/jpeg.html#config-GDAL_ERROR_ON_LIBJPEG_WARNING"><code class="docutils literal notranslate"><span class="pre">GDAL_ERROR_ON_LIBJPEG_WARNING</span></code></a>: <a class="reference internal" href="../drivers/raster/jpeg.html">JPEG -- JPEG JFIF File Format</a></p></li>
 <li><p><a class="reference internal" href="#config-GDAL_FILENAME_IS_UTF8"><code class="docutils literal notranslate"><span class="pre">GDAL_FILENAME_IS_UTF8</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
 <li><p><a class="reference internal" href="#config-GDAL_FORCE_CACHING"><code class="docutils literal notranslate"><span class="pre">GDAL_FORCE_CACHING</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
@@ -1163,14 +1174,19 @@ horizontal datum.</p>
 </p></li>
 <li><p><a class="reference internal" href="../drivers/raster/jpeg.html#config-GDAL_JPEG_TO_RGB"><code class="docutils literal notranslate"><span class="pre">GDAL_JPEG_TO_RGB</span></code></a>: <a class="reference internal" href="../drivers/raster/jpeg.html">JPEG -- JPEG JFIF File Format</a></p></li>
 <li><p><a class="reference internal" href="#config-GDAL_MAX_BAND_COUNT"><code class="docutils literal notranslate"><span class="pre">GDAL_MAX_BAND_COUNT</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="../drivers/raster/wms.html#config-GDAL_MAX_CONNECTIONS"><code class="docutils literal notranslate"><span class="pre">GDAL_MAX_CONNECTIONS</span></code></a>: <a class="reference internal" href="../drivers/raster/wms.html">WMS -- Web Map Services</a></p></li>
+<li><p><a class="reference internal" href="../drivers/raster/wms.html#config-GDAL_MAX_CONNECTIONS"><code class="docutils literal notranslate"><span class="pre">GDAL_MAX_CONNECTIONS</span></code></a>: <ul>
+<li><p><a class="reference internal" href="../drivers/raster/wms.html">WMS -- Web Map Services</a></p></li>
+<li><p><a class="reference internal" href="../drivers/raster/wmts.html">WMTS -- OGC Web Map Tile Service</a></p></li>
+</ul>
+</p></li>
 <li><p><a class="reference internal" href="#config-GDAL_MAX_DATASET_POOL_RAM_USAGE"><code class="docutils literal notranslate"><span class="pre">GDAL_MAX_DATASET_POOL_RAM_USAGE</span></code></a>: <ul>
-<li><p><a class="reference internal" href="../drivers/raster/vrt.html">VRT -- GDAL Virtual Format</a></p></li>
+<li><p><a class="reference internal" href="../drivers/raster/vrt.html">VRT -- GDAL 仮想形式</a></p></li>
 <li><p><a class="reference internal" href="#">Configuration options</a></p></li>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="#config-GDAL_MAX_DATASET_POOL_SIZE"><code class="docutils literal notranslate"><span class="pre">GDAL_MAX_DATASET_POOL_SIZE</span></code></a>: <ul>
-<li><p><a class="reference internal" href="../drivers/raster/vrt.html">VRT -- GDAL Virtual Format</a></p></li>
+<li><p><a class="reference internal" href="../drivers/raster/gti.html">GTI -- GDAL Raster Tile Index</a></p></li>
+<li><p><a class="reference internal" href="../drivers/raster/vrt.html">VRT -- GDAL 仮想形式</a></p></li>
 <li><p><a class="reference internal" href="#">Configuration options</a></p></li>
 </ul>
 </p></li>
@@ -1180,13 +1196,14 @@ horizontal datum.</p>
 <li><p><a class="reference internal" href="../drivers/raster/netcdf.html#config-GDAL_NETCDF_VERIFY_DIMS"><code class="docutils literal notranslate"><span class="pre">GDAL_NETCDF_VERIFY_DIMS</span></code></a>: <a class="reference internal" href="../drivers/raster/netcdf.html">NetCDF: Network Common Data Form</a></p></li>
 <li><p><a class="reference internal" href="#config-GDAL_NUM_THREADS"><code class="docutils literal notranslate"><span class="pre">GDAL_NUM_THREADS</span></code></a>: <ul>
 <li><p><a class="reference internal" href="../drivers/raster/basisu.html">BASISU -- Basis Universal</a></p></li>
+<li><p><a class="reference internal" href="../drivers/raster/gti.html">GTI -- GDAL Raster Tile Index</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/gtiff.html">GTiff -- GeoTIFF File Format</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/jp2openjpeg.html">JP2OpenJPEG -- JPEG2000 driver based on OpenJPEG library</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/jpegxl.html">JPEGXL -- JPEG-XL File Format</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/ktx2.html">KTX2</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/mbtiles.html">MBTiles</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/sentinel2.html">SENTINEL2 -- Sentinel-2 Products</a></p></li>
-<li><p><a class="reference internal" href="../drivers/raster/vrt.html">VRT -- GDAL Virtual Format</a></p></li>
+<li><p><a class="reference internal" href="../drivers/raster/vrt.html">VRT -- GDAL 仮想形式</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/zarr.html">Zarr</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/mvt.html">MVT: Mapbox Vector Tiles</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/parquet.html">(Geo)Parquet</a></p></li>
@@ -1243,8 +1260,8 @@ horizontal datum.</p>
 <li><p><a class="reference internal" href="../drivers/raster/vicar.html">VICAR -- VICAR</a></p></li>
 </ul>
 </p></li>
-<li><p><a class="reference internal" href="../drivers/raster/vrt.html#config-GDAL_VRT_ENABLE_PYTHON"><code class="docutils literal notranslate"><span class="pre">GDAL_VRT_ENABLE_PYTHON</span></code></a>: <a class="reference internal" href="../drivers/raster/vrt.html">VRT -- GDAL Virtual Format</a></p></li>
-<li><p><a class="reference internal" href="../drivers/raster/vrt.html#config-GDAL_VRT_PYTHON_TRUSTED_MODULES"><code class="docutils literal notranslate"><span class="pre">GDAL_VRT_PYTHON_TRUSTED_MODULES</span></code></a>: <a class="reference internal" href="../drivers/raster/vrt.html">VRT -- GDAL Virtual Format</a></p></li>
+<li><p><a class="reference internal" href="../drivers/raster/vrt.html#config-GDAL_VRT_ENABLE_PYTHON"><code class="docutils literal notranslate"><span class="pre">GDAL_VRT_ENABLE_PYTHON</span></code></a>: <a class="reference internal" href="../drivers/raster/vrt.html">VRT -- GDAL 仮想形式</a></p></li>
+<li><p><a class="reference internal" href="../drivers/raster/vrt.html#config-GDAL_VRT_PYTHON_TRUSTED_MODULES"><code class="docutils literal notranslate"><span class="pre">GDAL_VRT_PYTHON_TRUSTED_MODULES</span></code></a>: <a class="reference internal" href="../drivers/raster/vrt.html">VRT -- GDAL 仮想形式</a></p></li>
 <li><p><a class="reference internal" href="#config-GDAL_XML_VALIDATION"><code class="docutils literal notranslate"><span class="pre">GDAL_XML_VALIDATION</span></code></a>: <ul>
 <li><p><a class="reference internal" href="../drivers/vector/vrt.html">VRT -- Virtual Format</a></p></li>
 <li><p><a class="reference internal" href="#">Configuration options</a></p></li>
@@ -1269,6 +1286,7 @@ horizontal datum.</p>
 <li><p><a class="reference internal" href="../drivers/vector/gml.html#config-GML_SAVE_RESOLVED_TO"><code class="docutils literal notranslate"><span class="pre">GML_SAVE_RESOLVED_TO</span></code></a>: <a class="reference internal" href="../drivers/vector/gml.html">GML - Geography Markup Language</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/gml.html#config-GML_SKIP_RESOLVE_ELEMS"><code class="docutils literal notranslate"><span class="pre">GML_SKIP_RESOLVE_ELEMS</span></code></a>: <a class="reference internal" href="../drivers/vector/gml.html">GML - Geography Markup Language</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/gml.html#config-GML_SWAP_COORDINATES"><code class="docutils literal notranslate"><span class="pre">GML_SWAP_COORDINATES</span></code></a>: <a class="reference internal" href="../drivers/vector/gml.html">GML - Geography Markup Language</a></p></li>
+<li><p><a class="reference internal" href="../drivers/vector/gml.html#config-GML_USE_SCHEMA_IMPORT"><code class="docutils literal notranslate"><span class="pre">GML_USE_SCHEMA_IMPORT</span></code></a>: <a class="reference internal" href="../drivers/vector/gml.html">GML - Geography Markup Language</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/eedai.html#config-GOOGLE_APPLICATION_CREDENTIALS"><code class="docutils literal notranslate"><span class="pre">GOOGLE_APPLICATION_CREDENTIALS</span></code></a>: <ul>
 <li><p><a class="reference internal" href="../drivers/raster/eedai.html">EEDAI - Google Earth Engine Data API Image</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/eeda.html">Google Earth Engine Data API</a></p></li>
@@ -1302,6 +1320,7 @@ horizontal datum.</p>
 <li><p><a class="reference internal" href="../drivers/raster/gtiff.html#config-GTIFF_VIRTUAL_MEM_IO"><code class="docutils literal notranslate"><span class="pre">GTIFF_VIRTUAL_MEM_IO</span></code></a>: <a class="reference internal" href="../drivers/raster/gtiff.html">GTiff -- GeoTIFF File Format</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/gtiff.html#config-GTIFF_WRITE_ANGULAR_PARAMS_IN_DEGREE"><code class="docutils literal notranslate"><span class="pre">GTIFF_WRITE_ANGULAR_PARAMS_IN_DEGREE</span></code></a>: <a class="reference internal" href="../drivers/raster/gtiff.html">GTiff -- GeoTIFF File Format</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/gtiff.html#config-GTIFF_WRITE_TOWGS84"><code class="docutils literal notranslate"><span class="pre">GTIFF_WRITE_TOWGS84</span></code></a>: <a class="reference internal" href="../drivers/raster/gtiff.html">GTiff -- GeoTIFF File Format</a></p></li>
+<li><p><a class="reference internal" href="../drivers/raster/gti.html#config-GTI_NUM_THREADS"><code class="docutils literal notranslate"><span class="pre">GTI_NUM_THREADS</span></code></a>: <a class="reference internal" href="../drivers/raster/gti.html">GTI -- GDAL Raster Tile Index</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/hfa.html#config-HFA_COMPRESS_OVR"><code class="docutils literal notranslate"><span class="pre">HFA_COMPRESS_OVR</span></code></a>: <a class="reference internal" href="../drivers/raster/hfa.html">HFA -- Erdas Imagine .img</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/hfa.html#config-HFA_USE_RRD"><code class="docutils literal notranslate"><span class="pre">HFA_USE_RRD</span></code></a>: <a class="reference internal" href="../drivers/raster/hfa.html">HFA -- Erdas Imagine .img</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/idb.html#config-IDB_OGR_FID"><code class="docutils literal notranslate"><span class="pre">IDB_OGR_FID</span></code></a>: <a class="reference internal" href="../drivers/vector/idb.html">IDB</a></p></li>
@@ -1455,7 +1474,11 @@ horizontal datum.</p>
 <li><p><a class="reference internal" href="../drivers/vector/pg_advanced.html">PostgreSQL / PostGIS - Advanced Driver Information</a></p></li>
 </ul>
 </p></li>
-<li><p><a class="reference internal" href="../drivers/vector/pg.html#config-OGR_PG_SKIP_CONFLICTS"><code class="docutils literal notranslate"><span class="pre">OGR_PG_SKIP_CONFLICTS</span></code></a>: <a class="reference internal" href="../drivers/vector/pg.html">PostgreSQL / PostGIS</a></p></li>
+<li><p><a class="reference internal" href="../drivers/vector/pg.html#config-OGR_PG_SKIP_CONFLICTS"><code class="docutils literal notranslate"><span class="pre">OGR_PG_SKIP_CONFLICTS</span></code></a>: <ul>
+<li><p><a class="reference internal" href="../drivers/vector/nas.html">NAS - ALKIS</a></p></li>
+<li><p><a class="reference internal" href="../drivers/vector/pg.html">PostgreSQL / PostGIS</a></p></li>
+</ul>
+</p></li>
 <li><p><a class="reference internal" href="../drivers/vector/sqlite.html#config-OGR_PROMOTE_TO_INTEGER64"><code class="docutils literal notranslate"><span class="pre">OGR_PROMOTE_TO_INTEGER64</span></code></a>: <ul>
 <li><p><a class="reference internal" href="../development/rfc/rfc31_ogr_64.html">RFC 31: OGR 64bit Integer Fields and FIDs</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/sqlite.html">SQLite / Spatialite RDBMS</a></p></li>
@@ -1560,7 +1583,7 @@ horizontal datum.</p>
 </p></li>
 <li><p><a class="reference internal" href="../drivers/raster/gtiff.html#config-PREDICTOR_OVERVIEW"><code class="docutils literal notranslate"><span class="pre">PREDICTOR_OVERVIEW</span></code></a>: <a class="reference internal" href="../drivers/raster/gtiff.html">GTiff -- GeoTIFF File Format</a></p></li>
 <li><p><a class="reference internal" href="#config-PYTHONSO"><code class="docutils literal notranslate"><span class="pre">PYTHONSO</span></code></a>: <ul>
-<li><p><a class="reference internal" href="../drivers/raster/vrt.html">VRT -- GDAL Virtual Format</a></p></li>
+<li><p><a class="reference internal" href="../drivers/raster/vrt.html">VRT -- GDAL 仮想形式</a></p></li>
 <li><p><a class="reference internal" href="#">Configuration options</a></p></li>
 </ul>
 </p></li>
@@ -1604,8 +1627,9 @@ horizontal datum.</p>
 <li><p><a class="reference internal" href="../drivers/raster/hfa.html#config-USE_SPILL"><code class="docutils literal notranslate"><span class="pre">USE_SPILL</span></code></a>: <a class="reference internal" href="../drivers/raster/hfa.html">HFA -- Erdas Imagine .img</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/gpsbabel.html#config-USE_TEMPFILE"><code class="docutils literal notranslate"><span class="pre">USE_TEMPFILE</span></code></a>: <a class="reference internal" href="../drivers/vector/gpsbabel.html">GPSBabel</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/jp2kak.html#config-USE_TILE_AS_BLOCK"><code class="docutils literal notranslate"><span class="pre">USE_TILE_AS_BLOCK</span></code></a>: <a class="reference internal" href="../drivers/raster/jp2kak.html">JP2KAK -- JPEG 2000 (based on Kakadu SDK)</a></p></li>
-<li><p><a class="reference internal" href="../drivers/raster/vrt.html#config-VRT_SHARED_SOURCE"><code class="docutils literal notranslate"><span class="pre">VRT_SHARED_SOURCE</span></code></a>: <a class="reference internal" href="../drivers/raster/vrt.html">VRT -- GDAL Virtual Format</a></p></li>
-<li><p><a class="reference internal" href="../drivers/raster/vrt.html#config-VRT_VIRTUAL_OVERVIEWS"><code class="docutils literal notranslate"><span class="pre">VRT_VIRTUAL_OVERVIEWS</span></code></a>: <a class="reference internal" href="../drivers/raster/vrt.html">VRT -- GDAL Virtual Format</a></p></li>
+<li><p><a class="reference internal" href="../drivers/raster/vrt.html#config-VRT_NUM_THREADS"><code class="docutils literal notranslate"><span class="pre">VRT_NUM_THREADS</span></code></a>: <a class="reference internal" href="../drivers/raster/vrt.html">VRT -- GDAL 仮想形式</a></p></li>
+<li><p><a class="reference internal" href="../drivers/raster/vrt.html#config-VRT_SHARED_SOURCE"><code class="docutils literal notranslate"><span class="pre">VRT_SHARED_SOURCE</span></code></a>: <a class="reference internal" href="../drivers/raster/vrt.html">VRT -- GDAL 仮想形式</a></p></li>
+<li><p><a class="reference internal" href="../drivers/raster/vrt.html#config-VRT_VIRTUAL_OVERVIEWS"><code class="docutils literal notranslate"><span class="pre">VRT_VIRTUAL_OVERVIEWS</span></code></a>: <a class="reference internal" href="../drivers/raster/vrt.html">VRT -- GDAL 仮想形式</a></p></li>
 <li><p><a class="reference internal" href="virtual_file_systems.html#config-VSIOSS_CHUNK_SIZE"><code class="docutils literal notranslate"><span class="pre">VSIOSS_CHUNK_SIZE</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
 <li><p><a class="reference internal" href="virtual_file_systems.html#config-VSIS3_CHUNK_SIZE"><code class="docutils literal notranslate"><span class="pre">VSIS3_CHUNK_SIZE</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
 <li><p><a class="reference internal" href="#config-VSI_CACHE"><code class="docutils literal notranslate"><span class="pre">VSI_CACHE</span></code></a>: <ul>

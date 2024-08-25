@@ -18,7 +18,7 @@
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="../_static/documentation_options.js?v=c033477b"></script>
-        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../_static/translations.js?v=4dbe4bdc"></script>
     <script src="../_static/js/theme.js"></script>
@@ -133,6 +133,10 @@
              
   <section id="ogrfeature-c-api">
 <span id="ogrfeature-cpp"></span><h1>OGRFeature C++ API<a class="headerlink" href="#ogrfeature-c-api" title="Link to this heading"></a></h1>
+<section id="include-file">
+<h2>Include file<a class="headerlink" href="#include-file" title="Link to this heading"></a></h2>
+<p><code class="file docutils literal notranslate"><span class="pre">ogr_feature.h</span></code></p>
+</section>
 <section id="ogrfeature-class">
 <h2>OGRFeature class<a class="headerlink" href="#ogrfeature-class" title="Link to this heading"></a></h2>
 <dl class="cpp class">
@@ -2793,7 +2797,7 @@
 <dt class="sig sig-object cpp" id="_CPPv4NK14OGRFeatureDefn5CloneEv">
 <span id="_CPPv3NK14OGRFeatureDefn5CloneEv"></span><span id="_CPPv2NK14OGRFeatureDefn5CloneEv"></span><span id="OGRFeatureDefn::CloneC"></span><span class="target" id="classOGRFeatureDefn_1a35888b371f42e5768fd2a41c4484cd62"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414OGRFeatureDefn" title="OGRFeatureDefn"><span class="n"><span class="pre">OGRFeatureDefn</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">Clone</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK14OGRFeatureDefn5CloneEv" title="Link to this definition"></a><br /></dt>
 <dd><p>Create a copy of this feature definition. </p>
-<p>Creates a deep copy of the feature definition.</p>
+<p>Creates a deep copy of the feature definition. The reference counter of the copy is initialized at 0.</p>
 <dl class="field-list simple">
 <dt class="field-odd">戻り値<span class="colon">:</span></dt>
 <dd class="field-odd"><p>the copy. </p>

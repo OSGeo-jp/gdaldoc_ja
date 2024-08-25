@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OGR SQL dialect &mdash; GDAL  ドキュメント</title>
+  <title>OGR SQL 方言 &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
       <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
 
@@ -55,21 +55,21 @@
 <li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">ラスタードライバー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">ベクタードライバー</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">ユーザー</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="raster_data_model.html">Raster Data Model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multidim_raster_data_model.html">Multidimensional Raster Data Model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vector_data_model.html">Vector Data Model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gnm_data_model.html">Geographic Networks Data Model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multithreading.html">Multi-threading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="raster_data_model.html">ラスターデータモデル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multidim_raster_data_model.html">多次元ラスターデータモデル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vector_data_model.html">ベクターデーターモデル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gnm_data_model.html">地理ネットワークデータモデル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multithreading.html">マルチスレッディング</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="ogr_sql_sqlite_dialect.html">OGR SQL dialect and SQLITE SQL dialect</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="ogr_sql_sqlite_dialect.html#dialects">Dialects</a><ul class="current">
-<li class="toctree-l4 current"><a class="current reference internal" href="#">OGR SQL dialect</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">OGR SQL 方言</a></li>
 <li class="toctree-l4"><a class="reference internal" href="sql_sqlite_dialect.html">SQL SQLite dialect</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="ogr_sql_sqlite_dialect.html#executesql">ExecuteSQL()</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ogr_feature_style.html">Feature Style Specification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="coordinate_epoch.html">Coordinate epoch support</a></li>
 <li class="toctree-l2"><a class="reference internal" href="configoptions.html">Configuration options</a></li>
@@ -119,11 +119,11 @@
     
       <li><a href="../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">User oriented documentation</a> &raquo;</li>
+          <li><a href="index.html">ユーザー向けドキュメント</a> &raquo;</li>
       
           <li><a href="ogr_sql_sqlite_dialect.html">OGR SQL dialect and SQLITE SQL dialect</a> &raquo;</li>
       
-      <li>OGR SQL dialect</li>
+      <li>OGR SQL 方言</li>
     
 
     
@@ -155,23 +155,11 @@
            <div itemprop="articleBody">
              
   <section id="ogr-sql-dialect">
-<span id="id1"></span><h1>OGR SQL dialect<a class="headerlink" href="#ogr-sql-dialect" title="Link to this heading"></a></h1>
-<p>The GDALDataset supports executing commands against a datasource via the
-<a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4N11GDALDataset10ExecuteSQLEPKcP11OGRGeometryPKc" title="GDALDataset::ExecuteSQL"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::ExecuteSQL()</span></code></a> method.  While in theory
-any sort of command could be handled this way, in practice the mechanism is
-used to provide a subset of SQL SELECT capability to applications.  This
-page discusses the generic SQL implementation implemented within OGR, and
-issues with driver specific SQL support.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">OGRSQL</span></code> dialect can be requested with the <code class="docutils literal notranslate"><span class="pre">OGRSQL</span></code> string passed
-as the dialect parameter of <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4N11GDALDataset10ExecuteSQLEPKcP11OGRGeometryPKc" title="GDALDataset::ExecuteSQL"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::ExecuteSQL()</span></code></a>, or with the
-<cite>-dialect</cite> option switch of the <a class="reference internal" href="../programs/ogrinfo.html#ogrinfo"><span class="std std-ref">ogrinfo</span></a> or <a class="reference internal" href="../programs/ogr2ogr.html#ogr2ogr"><span class="std std-ref">ogr2ogr</span></a> utilities.</p>
-<p>An alternate dialect, the <code class="docutils literal notranslate"><span class="pre">SQLite</span></code> dialect, can be used
-instead of the <code class="docutils literal notranslate"><span class="pre">OGRSQL</span></code> dialect. Refer to the <a class="reference internal" href="sql_sqlite_dialect.html#sql-sqlite-dialect"><span class="std std-ref">SQL SQLite dialect</span></a> page for more details.</p>
-<p>The OGRLayer class also supports applying an attribute query filter to
-features returned using the <a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer18SetAttributeFilterEPKc" title="OGRLayer::SetAttributeFilter"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::SetAttributeFilter()</span></code></a> method.  The
-syntax for the attribute filter is the same as the WHERE clause in the
-OGR SQL SELECT statement.  So everything here with regard to the WHERE
-clause applies in the context of the <code class="docutils literal notranslate"><span class="pre">SetAttributeFilter()</span></code> method.</p>
+<span id="id1"></span><h1>OGR SQL 方言<a class="headerlink" href="#ogr-sql-dialect" title="Link to this heading"></a></h1>
+<p>GDALDataset は <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4N11GDALDataset10ExecuteSQLEPKcP11OGRGeometryPKc" title="GDALDataset::ExecuteSQL"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::ExecuteSQL()</span></code></a> メソッドを使ってデータソースに対してコマンドを実行することができます. 理論的にはどんな種類のコマンドでもこの方法で処理できますが, 実際にはこのメカニズムはアプリケーションに対して SQL SELECT の機能の一部を提供するために使用されます. このページでは OGR に実装された一般的な SQL 実装と, ドライバー固有の SQL サポートに関する問題について説明します.</p>
+<p><code class="docutils literal notranslate"><span class="pre">OGRSQL</span></code> 方言は, <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4N11GDALDataset10ExecuteSQLEPKcP11OGRGeometryPKc" title="GDALDataset::ExecuteSQL"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::ExecuteSQL()</span></code></a> の方言パラメータとして渡される <code class="docutils literal notranslate"><span class="pre">OGRSQL</span></code> 文字列, または <a class="reference internal" href="../programs/ogrinfo.html#ogrinfo"><span class="std std-ref">ogrinfo</span></a> または <a class="reference internal" href="../programs/ogr2ogr.html#ogr2ogr"><span class="std std-ref">ogr2ogr</span></a> ユーティリティの <cite>-dialect</cite> オプションスイッチでリクエストすることができます.</p>
+<p>代わりの方言である <code class="docutils literal notranslate"><span class="pre">SQLite</span></code> 方言は, <code class="docutils literal notranslate"><span class="pre">OGRSQL</span></code> 方言の代わりに使用することができます. 詳細については <a class="reference internal" href="sql_sqlite_dialect.html#sql-sqlite-dialect"><span class="std std-ref">SQL SQLite dialect</span></a> ページを参照してください.</p>
+<p>OGRLayer クラスは <a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer18SetAttributeFilterEPKc" title="OGRLayer::SetAttributeFilter"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::SetAttributeFilter()</span></code></a> メソッドを使用して返される地物に属性クエリフィルタを適用することもサポートしています. 属性フィルタの構文は OGR SQL SELECT 文の WHERE 句と同じです. したがって, WHERE 句に関するすべてのことは <code class="docutils literal notranslate"><span class="pre">SetAttributeFilter()</span></code> メソッドのコンテキストで適用されます.</p>
 <section id="select">
 <h2>SELECT<a class="headerlink" href="#select" title="Link to this heading"></a></h2>
 <p>The SELECT statement is used to fetch layer features (analogous to table

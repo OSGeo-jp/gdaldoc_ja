@@ -377,7 +377,7 @@ loaded from <code class="file docutils literal notranslate"><span class="pre">ut
 </pre></div>
 </div>
 <p>Many aspects of the VRT file are a direct XML encoding of the
-<a class="reference internal" href="../../user/raster_data_model.html#raster-data-model"><span class="std std-ref">Raster Data Model</span></a> which should be reviewed
+<a class="reference internal" href="../../user/raster_data_model.html#raster-data-model"><span class="std std-ref">ラスターデータモデル</span></a> which should be reviewed
 for understanding of the semantics of various elements.</p>
 <p>VRT files can be produced by translating to VRT format.  The resulting file can
 then be edited to modify mappings, add metadata or other purposes.  VRT files
@@ -430,7 +430,7 @@ elements.</p>
 </div>
 <p>The <strong>dataAxisToSRSAxisMapping</strong> attribute is allowed since GDAL 3.0 to describe the relationship between the axis indicated in the CRS definition and the axis of the GeoTransform or GCP metadata. The value of the attribute is a comma separated list of integers. The number of elements of this list must be the number of axis of the CRS. Values start at 1. If m denotes the array values of this attribute, then m[0] is the data axis number for the first axis of the CRS. If the attribute is missing, then the OAMS_TRADITIONAL_GIS_ORDER data axis to CRS axis mapping strategy is implied.</p>
 <ul class="simple">
-<li><p><strong>GeoTransform</strong>: This element contains a six value affine geotransformation for the dataset, mapping between pixel/line coordinates and georeferenced coordinates. Typically (geotransform[0], geotransform[3]) will be the (easting, northing) of the upper-left corner of the raster, geotransform[1] the horizontal resolution in geospatial coordinates/pixel, and geotransform[5] the vertical resolution in geospatial coordinates/pixel, as a negative value if the image is north-up oriented. See <a class="reference internal" href="../../user/raster_data_model.html#raster-data-model-geotransform"><span class="std std-ref">Affine GeoTransform</span></a> for more details about that mapping.</p></li>
+<li><p><strong>GeoTransform</strong>: This element contains a six value affine geotransformation for the dataset, mapping between pixel/line coordinates and georeferenced coordinates. Typically (geotransform[0], geotransform[3]) will be the (easting, northing) of the upper-left corner of the raster, geotransform[1] the horizontal resolution in geospatial coordinates/pixel, and geotransform[5] the vertical resolution in geospatial coordinates/pixel, as a negative value if the image is north-up oriented. See <a class="reference internal" href="../../user/raster_data_model.html#raster-data-model-geotransform"><span class="std std-ref">アフィン地理変換</span></a> for more details about that mapping.</p></li>
 </ul>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;GeoTransform&gt;</span>440720.0,<span class="w">  </span>60,<span class="w">  </span>0.0,<span class="w">  </span>3751320.0,<span class="w">  </span>0.0,<span class="w"> </span>-60.0<span class="nt">&lt;/GeoTransform&gt;</span>
 </pre></div>
@@ -635,7 +635,7 @@ rectangle of source data should be mapped into the VRTRasterBands space.</p>
 relationship with the geospatial coordinate space is given by the geotransform
 matrix of the source for SrcRect, and of the VRT itself (<strong>GeoTransform</strong>
 element) for DstRect.
-See <a class="reference internal" href="../../user/raster_data_model.html#raster-data-model-geotransform"><span class="std std-ref">Affine GeoTransform</span></a> for more details about that mapping.</p>
+See <a class="reference internal" href="../../user/raster_data_model.html#raster-data-model-geotransform"><span class="std std-ref">アフィン地理変換</span></a> for more details about that mapping.</p>
 <p>The relativeToVRT attribute on the SourceFilename indicates whether the
 filename should be interpreted as relative to the .vrt file (value is 1)
 or not relative to the .vrt file (value is 0).  The default is 0.</p>

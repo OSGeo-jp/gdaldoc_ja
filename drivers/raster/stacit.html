@@ -215,7 +215,7 @@
 <li class="toctree-l2"><a class="reference internal" href="tsx.html">TSX --  TerraSAR-X Product</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usgsdem.html">USGSDEM -- USGS ASCII DEM (and CDED)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vicar.html">VICAR -- VICAR</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vrt.html">VRT -- GDAL Virtual Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vrt.html">VRT -- GDAL 仮想形式</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wcs.html">WCS -- OGC Web Coverage Service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="webp.html">WEBP - WEBP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wms.html">WMS -- Web Map Services</a></li>
@@ -319,7 +319,7 @@
 </div>
 <p>This driver supports opening STAC API ItemCollections, with the input usually being a <a class="reference external" href="https://github.com/radiantearth/stac-api-spec/tree/main/item-search">STAC API search query</a> or the results saved as a JSON file. Items in the response must include projection information following the <a class="reference external" href="https://github.com/stac-extensions/projection/">Projection Extension Specification</a>.
 It builds a virtual mosaic from the items.</p>
-<p>A STACIT dataset which has no subdatasets is actually a <a class="reference internal" href="vrt.html#raster-vrt"><span class="std std-ref">VRT -- GDAL Virtual Format</span></a> dataset.
+<p>A STACIT dataset which has no subdatasets is actually a <a class="reference internal" href="vrt.html#raster-vrt"><span class="std std-ref">VRT -- GDAL 仮想形式</span></a> dataset.
 Thus, translating it into VRT will result in a VRT file that directly references the items.</p>
 <p>Note that <a class="reference external" href="https://github.com/radiantearth/stac-api-spec/blob/main/fragments/itemcollection/README.md">STAC API ItemCollections</a> are not the same as  <a class="reference external" href="https://github.com/radiantearth/stac-spec/tree/master/collection-spec">STAC Collections</a>. STAC API ItemCollections are GeoJSON FeatureCollections enhanced with STAC entities.</p>
 <section id="open-syntax">

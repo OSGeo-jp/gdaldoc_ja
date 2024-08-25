@@ -162,23 +162,7 @@ const Search = {
 
   htmlToText: (htmlString) => {
     const htmlElement = new DOMParser().parseFromString(htmlString, 'text/html');
-<<<<<<< HEAD
     htmlElement.querySelectorAll(".headerlink").forEach((el) => { el.remove() });
-=======
-    for (const removalQuery of [".headerlink", "script", "style"]) {
-      htmlElement.querySelectorAll(removalQuery).forEach((el) => { el.remove() });
-    }
-    if (anchor) {
-      const anchorContent = htmlElement.querySelector(`[role="main"] ${anchor}`);
-      if (anchorContent) return anchorContent.textContent;
-
-      console.warn(
-        `Anchored content block not found. Sphinx search tries to obtain it via DOM query '[role=main] ${anchor}'. Check your theme or template.`
-      );
-    }
-
-    // if anchor not specified or not found, fall back to main content
->>>>>>> b0f77174b01bd067d43c48727e60ab91c762a05b
     const docContent = htmlElement.querySelector('[role="main"]');
     if (docContent !== undefined) return docContent.textContent;
     console.warn(
@@ -308,19 +292,13 @@ const Search = {
     for (const [title, foundTitles] of Object.entries(allTitles)) {
       if (title.toLowerCase().includes(queryLower) && (queryLower.length >= title.length/2)) {
         for (const [file, id] of foundTitles) {
-<<<<<<< HEAD
           let score = Math.round(100 * queryLower.length / title.length)
           results.push([
-=======
-          const score = Math.round(Scorer.title * queryLower.length / title.length);
-          const boost = titles[file] === title ? 1 : 0;  // add a boost for document titles
-          normalResults.push([
->>>>>>> b0f77174b01bd067d43c48727e60ab91c762a05b
             docNames[file],
             titles[file] !== title ? `${titles[file]} > ${title}` : title,
             id !== null ? "#" + id : "",
             null,
-            score + boost,
+            score,
             filenames[file],
           ]);
         }

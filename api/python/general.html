@@ -20,7 +20,7 @@
         <script src="../../_static/documentation_options.js?v=c033477b"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
         <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../../_static/translations.js?v=4dbe4bdc"></script>
+        <script src="../../_static/translations.js?v=91613774"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="author" title="このドキュメントについて" href="../../about.html" />
     <link rel="index" title="索引" href="../../genindex.html" />
@@ -135,6 +135,54 @@
 <span id="python-general"></span><h1>Python General API<a class="headerlink" href="#python-general-api" title="Link to this heading"></a></h1>
 <section id="configuration-management">
 <h2>Configuration Management<a class="headerlink" href="#configuration-management" title="Link to this heading"></a></h2>
+<<<<<<< HEAD
+=======
+<dl class="py function">
+<dt class="sig sig-object py" id="osgeo.gdal.GetCacheMax">
+<span class="sig-prename descclassname"><span class="pre">osgeo.gdal.</span></span><span class="sig-name descname"><span class="pre">GetCacheMax</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">GIntBig</span></span></span><a class="headerlink" href="#osgeo.gdal.GetCacheMax" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="osgeo.gdal.GetCacheUsed">
+<span class="sig-prename descclassname"><span class="pre">osgeo.gdal.</span></span><span class="sig-name descname"><span class="pre">GetCacheUsed</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">GIntBig</span></span></span><a class="headerlink" href="#osgeo.gdal.GetCacheUsed" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="osgeo.gdal.GetConfigOption">
+<span class="sig-prename descclassname"><span class="pre">osgeo.gdal.</span></span><span class="sig-name descname"><span class="pre">GetConfigOption</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">char</span> <span class="pre">const</span> <span class="pre">*</span> <span class="pre">pszKey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">char</span> <span class="pre">const</span> <span class="pre">*</span> <span class="pre">pszDefault=None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">char</span> <span class="pre">const</span> <span class="pre">*</span></span></span><a class="headerlink" href="#osgeo.gdal.GetConfigOption" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="osgeo.gdal.GetThreadLocalConfigOption">
+<span class="sig-prename descclassname"><span class="pre">osgeo.gdal.</span></span><span class="sig-name descname"><span class="pre">GetThreadLocalConfigOption</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">char</span> <span class="pre">const</span> <span class="pre">*</span> <span class="pre">pszKey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">char</span> <span class="pre">const</span> <span class="pre">*</span> <span class="pre">pszDefault=None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">char</span> <span class="pre">const</span> <span class="pre">*</span></span></span><a class="headerlink" href="#osgeo.gdal.GetThreadLocalConfigOption" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="osgeo.gdal.HasThreadSupport">
+<span class="sig-prename descclassname"><span class="pre">osgeo.gdal.</span></span><span class="sig-name descname"><span class="pre">HasThreadSupport</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#osgeo.gdal.HasThreadSupport" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="osgeo.gdal.SetCacheMax">
+<span class="sig-prename descclassname"><span class="pre">osgeo.gdal.</span></span><span class="sig-name descname"><span class="pre">SetCacheMax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">GIntBig</span> <span class="pre">nBytes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#osgeo.gdal.SetCacheMax" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="osgeo.gdal.SetConfigOption">
+<span class="sig-prename descclassname"><span class="pre">osgeo.gdal.</span></span><span class="sig-name descname"><span class="pre">SetConfigOption</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">char</span> <span class="pre">const</span> <span class="pre">*</span> <span class="pre">pszKey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">char</span> <span class="pre">const</span> <span class="pre">*</span> <span class="pre">pszValue</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#osgeo.gdal.SetConfigOption" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="osgeo.gdal.SetThreadLocalConfigOption">
+<span class="sig-prename descclassname"><span class="pre">osgeo.gdal.</span></span><span class="sig-name descname"><span class="pre">SetThreadLocalConfigOption</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">char</span> <span class="pre">const</span> <span class="pre">*</span> <span class="pre">pszKey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">char</span> <span class="pre">const</span> <span class="pre">*</span> <span class="pre">pszValue</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#osgeo.gdal.SetThreadLocalConfigOption" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="osgeo.gdal.VersionInfo">
+<span class="sig-prename descclassname"><span class="pre">osgeo.gdal.</span></span><span class="sig-name descname"><span class="pre">VersionInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">char</span> <span class="pre">const</span> <span class="pre">*</span> <span class="pre">request=&quot;VERSION_NUM&quot;</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">char</span> <span class="pre">const</span> <span class="pre">*</span></span></span><a class="headerlink" href="#osgeo.gdal.VersionInfo" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+>>>>>>> b0f77174b01bd067d43c48727e60ab91c762a05b
 </section>
 <section id="error-handling">
 <h2>Error Handling<a class="headerlink" href="#error-handling" title="Link to this heading"></a></h2>

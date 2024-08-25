@@ -60,7 +60,7 @@
 <li class="toctree-l2"><a class="reference internal" href="vector_data_model.html">ベクターデーターモデル</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gnm_data_model.html">地理ネットワークデータモデル</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">マルチスレッディング</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#gdal-api-re-entrant-but-not-thread-safe">GDAL-API: 再入可能だが、スレッドセーフではない</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gdal-api-re-entrant-but-not-thread-safe">GDAL-API: 再入可能だが,スレッドセーフではない</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#gdal-block-cache-and-multi-threading">GDALブロックキャッシュとマルチスレッディング</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ram-fragmentation-and-multi-threading">RAMの断片化とマルチスレッディング</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#gdal-and-multi-processing">GDALとマルチプロセッシング</a></li>
@@ -153,7 +153,7 @@
   <section id="multi-threading">
 <span id="multithreading"></span><h1>マルチスレッディング<a class="headerlink" href="#multi-threading" title="Link to this heading"></a></h1>
 <section id="gdal-api-re-entrant-but-not-thread-safe">
-<h2>GDAL-API: 再入可能だが、スレッドセーフではない<a class="headerlink" href="#gdal-api-re-entrant-but-not-thread-safe" title="Link to this heading"></a></h2>
+<h2>GDAL-API: 再入可能だが,スレッドセーフではない<a class="headerlink" href="#gdal-api-re-entrant-but-not-thread-safe" title="Link to this heading"></a></h2>
 <p>用語  <code class="docutils literal notranslate"><span class="pre">スレッドセーフ</span></code> または <code class="docutils literal notranslate"><span class="pre">再入可能</span></code> の正確な意味は完全に標準化されていません.ここでは, <a class="reference external" href="https://doc.qt.io/qt-5/threads-reentrancy.html">QTの定義</a> を使用します. 特に, C関数またはC++メソッドは, 複数のスレッドから同時に呼び出すことができると言われます. <em>しかし</em> 各呼び出しが独自のデータを使用する場合のみ, 再入可能であるとされます.</p>
 <p>すべてのGDAL公開C関数とC++メソッドは再入可能ですが, 以下の例外があります:</p>
 <ul class="simple">

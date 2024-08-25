@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Multi-threading &mdash; GDAL  ドキュメント</title>
+  <title>マルチスレッディング &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
       <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
 
@@ -26,7 +26,7 @@
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="OGR SQL dialect and SQLITE SQL dialect" href="ogr_sql_sqlite_dialect.html" />
-    <link rel="prev" title="Geographic Networks Data Model" href="gnm_data_model.html" /> 
+    <link rel="prev" title="地理ネットワークデータモデル" href="gnm_data_model.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -55,19 +55,19 @@
 <li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">ラスタードライバー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">ベクタードライバー</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">ユーザー</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="raster_data_model.html">Raster Data Model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multidim_raster_data_model.html">Multidimensional Raster Data Model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vector_data_model.html">Vector Data Model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gnm_data_model.html">Geographic Networks Data Model</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Multi-threading</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#gdal-api-re-entrant-but-not-thread-safe">GDAL API: re-entrant, but not thread-safe</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#gdal-block-cache-and-multi-threading">GDAL block cache and multi-threading</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ram-fragmentation-and-multi-threading">RAM fragmentation and multi-threading</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#gdal-and-multi-processing">GDAL and multi-processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="raster_data_model.html">ラスターデータモデル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multidim_raster_data_model.html">多次元ラスターデータモデル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vector_data_model.html">ベクターデーターモデル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gnm_data_model.html">地理ネットワークデータモデル</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">マルチスレッディング</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#gdal-api-re-entrant-but-not-thread-safe">GDAL-API: 再入可能だが、スレッドセーフではない</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gdal-block-cache-and-multi-threading">GDALブロックキャッシュとマルチスレッディング</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ram-fragmentation-and-multi-threading">RAMの断片化とマルチスレッディング</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gdal-and-multi-processing">GDALとマルチプロセッシング</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="ogr_sql_sqlite_dialect.html">OGR SQL dialect and SQLITE SQL dialect</a></li>
-<li class="toctree-l2"><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ogr_feature_style.html">Feature Style Specification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="coordinate_epoch.html">Coordinate epoch support</a></li>
 <li class="toctree-l2"><a class="reference internal" href="configoptions.html">Configuration options</a></li>
@@ -117,9 +117,9 @@
     
       <li><a href="../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">User oriented documentation</a> &raquo;</li>
+          <li><a href="index.html">ユーザー向けドキュメント</a> &raquo;</li>
       
-      <li>Multi-threading</li>
+      <li>マルチスレッディング</li>
     
 
     
@@ -141,7 +141,7 @@
         <a href="ogr_sql_sqlite_dialect.html" class="btn btn-neutral float-right" title="OGR SQL dialect and SQLITE SQL dialect" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="gnm_data_model.html" class="btn btn-neutral float-left" title="Geographic Networks Data Model" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="gnm_data_model.html" class="btn btn-neutral float-left" title="地理ネットワークデータモデル" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -151,69 +151,35 @@
            <div itemprop="articleBody">
              
   <section id="multi-threading">
-<span id="multithreading"></span><h1>Multi-threading<a class="headerlink" href="#multi-threading" title="Link to this heading"></a></h1>
+<span id="multithreading"></span><h1>マルチスレッディング<a class="headerlink" href="#multi-threading" title="Link to this heading"></a></h1>
 <section id="gdal-api-re-entrant-but-not-thread-safe">
-<h2>GDAL API: re-entrant, but not thread-safe<a class="headerlink" href="#gdal-api-re-entrant-but-not-thread-safe" title="Link to this heading"></a></h2>
-<p>The exact meaning of the terms <code class="docutils literal notranslate"><span class="pre">thread-safe</span></code> or <code class="docutils literal notranslate"><span class="pre">re-entrant</span></code> is not fully
-standardized. We will use here the <a class="reference external" href="https://doc.qt.io/qt-5/threads-reentrancy.html">QT definitions</a>.
-In particular, a C function or C++ method is said to be re-entrant if it can
-be called simultaneously from multiple threads, <em>but</em> only if each invocation
-uses its own data.</p>
-<p>All GDAL public C functions and C++ methods are re-entrant, except:</p>
+<h2>GDAL-API: 再入可能だが、スレッドセーフではない<a class="headerlink" href="#gdal-api-re-entrant-but-not-thread-safe" title="Link to this heading"></a></h2>
+<p>用語  <code class="docutils literal notranslate"><span class="pre">スレッドセーフ</span></code> または <code class="docutils literal notranslate"><span class="pre">再入可能</span></code> の正確な意味は完全に標準化されていません.ここでは, <a class="reference external" href="https://doc.qt.io/qt-5/threads-reentrancy.html">QTの定義</a> を使用します. 特に, C関数またはC++メソッドは, 複数のスレッドから同時に呼び出すことができると言われます. <em>しかし</em> 各呼び出しが独自のデータを使用する場合のみ, 再入可能であるとされます.</p>
+<p>すべてのGDAL公開C関数とC++メソッドは再入可能ですが, 以下の例外があります:</p>
 <ul class="simple">
-<li><p>the general initialization functions, like <a class="reference internal" href="../api/raster_c_api.html#_CPPv415GDALAllRegisterv" title="GDALAllRegister"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALAllRegister()</span></code></a>.</p></li>
-<li><p>the general cleanup functions like <a class="reference internal" href="../api/raster_c_api.html#_CPPv411GDALDestroyv" title="GDALDestroy"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDestroy()</span></code></a> or <a class="reference internal" href="../api/ogr_srs_api.html#_CPPv410OSRCleanupv" title="OSRCleanup"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OSRCleanup()</span></code></a>.</p></li>
+<li><p><a class="reference internal" href="../api/raster_c_api.html#_CPPv415GDALAllRegisterv" title="GDALAllRegister"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALAllRegister()</span></code></a> のような一般的な初期化関数.</p></li>
+<li><p><a class="reference internal" href="../api/raster_c_api.html#_CPPv411GDALDestroyv" title="GDALDestroy"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDestroy()</span></code></a> や <a class="reference internal" href="../api/ogr_srs_api.html#_CPPv410OSRCleanupv" title="OSRCleanup"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OSRCleanup()</span></code></a> のような一般的なクリーンアップ関数.</p></li>
 </ul>
-<p>Those functions should not be called concurrently from several threads, and it
-is general best practice to call them from the main thread of the program at
-program initialization and termination.</p>
-<p>Unless otherwise stated, no GDAL public C functions and C++ methods should be
-assumed to be thread-safe. That is you should not call simultaneously GDAL
-functions from multiple threads on the same data instance, or even instances
-that are closely related through ownership relationships. For example, for a
-multi-band raster dataset, it is not safe to call concurrently GDAL functions
-on different <a class="reference internal" href="../api/gdalrasterband_cpp.html#_CPPv414GDALRasterBand" title="GDALRasterBand"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALRasterBand</span></code></a> instances owned by the same
-<a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv411GDALDataset" title="GDALDataset"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALDataset</span></code></a> instance (each thread should instead manipulate a
-distinct GDALDataset). Similarly for a GDALDataset owning several <a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv48OGRLayer" title="OGRLayer"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRLayer</span></code></a>.</p>
-<p>The reason is that most implementations of GDALDataset or GDALRasterBand
-are stateful. A GDALDataset typically owns a file handle,
-and performs seek/read operations on it, thus not allowing concurrent access.
-Block cache related structures for a given GDALDataset are not thread-safe.
-Drivers also often implement lazy initialization strategies to access various
-metadata which are resolved only the first time the method to access them is
-invoked. Drivers may also rely on third-party libraries that expose objects
-that are not thread-safe.</p>
-<p>Those restrictions apply to the C and C++ ABI, and all languages bindings (unless
-they would take special precautions to serialize calls)</p>
+<p>これらの関数は複数のスレッドから同時に呼び出すべきではありません.また, プログラムの初期化と終了時には, 一般的にこれらの関数をプログラムのメインスレッドから呼び出すのがベストプラクティスです.</p>
+<p>特に指定されていない限り, GDAL公開C関数とC++メソッドはスレッドセーフであると仮定してはいけません. つまり, 同じデータインスタンスに対して複数のスレッドから同時にGDAL関数を呼び出すべきではありません. また, 所有関係を通じて密接に関連しているインスタンスに対しても同様です. たとえば, マルチバンドラスターデータセットの場合,同じ <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv411GDALDataset" title="GDALDataset"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALDataset</span></code></a> インスタンスによって所有されている異なる <a class="reference internal" href="../api/gdalrasterband_cpp.html#_CPPv414GDALRasterBand" title="GDALRasterBand"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALRasterBand</span></code></a> インスタンスに対して同時にGDAL関数を呼び出すことは安全ではありません (各スレッドは代わりに異なるGDALDatasetを操作するべきです). 同様に, 複数の <a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv48OGRLayer" title="OGRLayer"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRLayer</span></code></a> を所有するGDALDatasetの場合も同様です.</p>
+<p>その理由は, GDALDatasetやGDALRasterBandのほとんどの実装が状態を持っているためです.GDALDatasetは通常, ファイルハンドルを所有し, それに対してシーク/読み取り操作を行うため,同時アクセスを許可しません. 特定のGDALDatasetに関連するブロックキャッシュ関連の構造はスレッドセーフではありません. ドライバは, さまざまなメタデータにアクセスするための遅延初期化戦略を実装することがよくあり, これらのメタデータにアクセスするためのメソッドが初めて呼び出されたときにのみ解決されます. ドライバはまた, スレッドセーフでないオブジェクトを公開するサードパーティライブラリに依存することがあります.</p>
+<p>これらの制限は, CおよびC++のABI, およびすべての言語バインディングに適用されます(特別な注意を払って呼び出しを直列化する場合を除く)</p>
 </section>
 <section id="gdal-block-cache-and-multi-threading">
-<h2>GDAL block cache and multi-threading<a class="headerlink" href="#gdal-block-cache-and-multi-threading" title="Link to this heading"></a></h2>
-<p>The current design of the GDAL raster block cache allows concurrent reads of several datasets. However performance issues may
-arise when writing several datasets from several threads, due to lock contention
-in the global structures of the block cache mechanism.</p>
+<h2>GDALブロックキャッシュとマルチスレッディング<a class="headerlink" href="#gdal-block-cache-and-multi-threading" title="Link to this heading"></a></h2>
+<p>現在のGDALラスターブロックキャッシュの設計では, 複数のデータセットの同時読み取りが許可されています. ただし, 複数のスレッドから複数のデータセットに書き込む場合, ブロックキャッシュメカニズムのグローバル構造体でのロック競合によるパフォーマンス問題が発生する可能性があります.</p>
 </section>
 <section id="ram-fragmentation-and-multi-threading">
-<h2>RAM fragmentation and multi-threading<a class="headerlink" href="#ram-fragmentation-and-multi-threading" title="Link to this heading"></a></h2>
-<p>It has been observed that scenarios that involve multi-threading reading or
-writing of raster datasets are prone to cause a high RAM usage, in particular
-when using the default dynamic memory allocator of Linux. Using the alternate
-<a class="reference external" href="https://github.com/google/tcmalloc">tcmalloc</a> memory allocator helps
-reducing the amount of virtual and resident memory used.</p>
-<p>For example, with Debian/Ubuntu distributions, this can be done by
-installing the <code class="docutils literal notranslate"><span class="pre">libtcmalloc-minimal4</span></code> package and running the binary that
-executes GDAL with:</p>
+<h2>RAMの断片化とマルチスレッディング<a class="headerlink" href="#ram-fragmentation-and-multi-threading" title="Link to this heading"></a></h2>
+<p>ラスターデータセットの読み取りまたは書き込みを行うマルチスレッディングを含むシナリオは,Linuxのデフォルトの動的メモリアロケータを使用している場合, 高いRAM使用量を引き起こす傾向があることが観察されています. 代替の <a class="reference external" href="https://github.com/google/tcmalloc">tcmalloc</a> メモリアロケータを使用すると, 使用される仮想メモリと常駐メモリの量を減らすのに役立ちます.</p>
+<p>たとえば, Debian/Ubuntuディストリビューションでは, <code class="docutils literal notranslate"><span class="pre">libtcmalloc-minimal4</span></code> パッケージをインストールし, GDALを実行するバイナリを次のように実行することで, これを行うことができます:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LD_PRELOAD</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gnu</span><span class="o">/</span><span class="n">libtcmalloc_minimal</span><span class="o">.</span><span class="n">so</span><span class="mf">.4</span> <span class="o">./</span><span class="n">binary</span>
 </pre></div>
 </div>
 </section>
 <section id="gdal-and-multi-processing">
-<h2>GDAL and multi-processing<a class="headerlink" href="#gdal-and-multi-processing" title="Link to this heading"></a></h2>
-<p>POSIX fork() API should not be called during the middle of a GDAL operation,
-otherwise some structures like mutexes might appear to be locked forever in the
-forked process. If multi-processing is done, we recommend that processes are
-forked before any GDAL operation is done. Operating on the same GDALDataset
-instance in several sub-processes will generally lead to wrong results due to
-the underlying file descriptors being shared.</p>
+<h2>GDALとマルチプロセッシング<a class="headerlink" href="#gdal-and-multi-processing" title="Link to this heading"></a></h2>
+<p>GDAL操作の途中でPOSIX fork() APIを呼び出すべきではありません. そうしないと, フォークされたプロセスでミューテックスなどの構造体が永遠にロックされたように見える可能性があります. マルチプロセッシングを行う場合, GDAL操作を行う前にプロセスをフォークすることをお勧めします. 複数のサブプロセスで同じGDALDatasetインスタンスに操作を行うと, 基になるファイルディスクリプタが共有されているため, 一般的に誤った結果になります.</p>
 </section>
 </section>
 
@@ -227,7 +193,7 @@ the underlying file descriptors being shared.</p>
         <a href="ogr_sql_sqlite_dialect.html" class="btn btn-neutral float-right" title="OGR SQL dialect and SQLITE SQL dialect" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="gnm_data_model.html" class="btn btn-neutral float-left" title="Geographic Networks Data Model" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="gnm_data_model.html" class="btn btn-neutral float-left" title="地理ネットワークデータモデル" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

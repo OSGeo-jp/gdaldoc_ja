@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Multidimensional Raster Data Model &mdash; GDAL  ドキュメント</title>
+  <title>多次元ラスターデータモデル &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
       <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
 
@@ -25,8 +25,8 @@
     <link rel="author" title="このドキュメントについて" href="../about.html" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
-    <link rel="next" title="Vector Data Model" href="vector_data_model.html" />
-    <link rel="prev" title="Raster Data Model" href="raster_data_model.html" /> 
+    <link rel="next" title="ベクターデーターモデル" href="vector_data_model.html" />
+    <link rel="prev" title="ラスターデータモデル" href="raster_data_model.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -55,24 +55,24 @@
 <li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">ラスタードライバー</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">ベクタードライバー</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">ユーザー</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="raster_data_model.html">Raster Data Model</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Multidimensional Raster Data Model</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#group">Group</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#attribute">Attribute</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#multidimensional-array">Multidimensional array</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#dimension">Dimension</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#data-type">Data Type</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#objects-lifetime">Objects lifetime</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#differences-with-the-gdal-2d-raster-data-model">Differences with the GDAL 2D raster data model</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#bridges-between-gdal-2d-classic-raster-data-model-and-multidimensional-data-model">Bridges between GDAL 2D classic raster data model and multidimensional data model</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#applications">Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="raster_data_model.html">ラスターデータモデル</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">多次元ラスターデータモデル</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#group">グループ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#attribute">属性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#multidimensional-array">多次元配列</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dimension">次元</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-type">データタイプ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#objects-lifetime">オブジェクトライフタイム</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#differences-with-the-gdal-2d-raster-data-model">GDAL 2D ラスターデータモデルとの違い</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bridges-between-gdal-2d-classic-raster-data-model-and-multidimensional-data-model">GDAL 2D クラシックラスターデータモデルと多次元データモデルの間のブリッジ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#applications">アプリケーション</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="vector_data_model.html">Vector Data Model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gnm_data_model.html">Geographic Networks Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vector_data_model.html">ベクターデーターモデル</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gnm_data_model.html">地理ネットワークデータモデル</a></li>
 <li class="toctree-l2"><a class="reference internal" href="multithreading.html">Multi-threading</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ogr_sql_sqlite_dialect.html">OGR SQL dialect and SQLITE SQL dialect</a></li>
-<li class="toctree-l2"><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ogr_feature_style.html">Feature Style Specification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="coordinate_epoch.html">Coordinate epoch support</a></li>
 <li class="toctree-l2"><a class="reference internal" href="configoptions.html">Configuration options</a></li>
@@ -122,9 +122,9 @@
     
       <li><a href="../index.html"> GDAL  ドキュメント </a> &raquo;</li>
       
-          <li><a href="index.html">User oriented documentation</a> &raquo;</li>
+          <li><a href="index.html">ユーザー向けドキュメント</a> &raquo;</li>
       
-      <li>Multidimensional Raster Data Model</li>
+      <li>多次元ラスターデータモデル</li>
     
 
     
@@ -143,10 +143,10 @@
   
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
-        <a href="vector_data_model.html" class="btn btn-neutral float-right" title="Vector Data Model" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="vector_data_model.html" class="btn btn-neutral float-right" title="ベクターデーターモデル" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="raster_data_model.html" class="btn btn-neutral float-left" title="Raster Data Model" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="raster_data_model.html" class="btn btn-neutral float-left" title="ラスターデータモデル" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -156,118 +156,70 @@
            <div itemprop="articleBody">
              
   <section id="multidimensional-raster-data-model">
-<span id="multidim-raster-data-model"></span><h1>Multidimensional Raster Data Model<a class="headerlink" href="#multidimensional-raster-data-model" title="Link to this heading"></a></h1>
-<p>This document attempts to describe the GDAL multidimensional data model,
-that has been added in GDAL 3.1. That is
-the types of information that a GDAL multidimensional dataset can contain, and their semantics.</p>
-<p>The multidimensional raster API is a generalization of the traditional
-<a class="reference internal" href="raster_data_model.html#raster-data-model"><span class="std std-ref">Raster Data Model</span></a>, to address 3D, 4D or
-higher dimension datasets. Currently, it is
-limited to basic read/write API, and is not that much plugged into other higher
-level utilities.</p>
-<p>It is strongly inspired from the netCDF and HDF5 API and data models.
-See <a class="reference external" href="https://portal.opengeospatial.org/files/81716">HDF5 format and data model</a>.</p>
-<p>A <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv411GDALDataset" title="GDALDataset"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALDataset</span></code></a> with multidimensional content contains a root
-<a class="reference internal" href="../api/gdalgroup_cpp.html#_CPPv49GDALGroup" title="GDALGroup"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALGroup</span></code></a>.</p>
+<span id="multidim-raster-data-model"></span><h1>多次元ラスターデータモデル<a class="headerlink" href="#multidimensional-raster-data-model" title="Link to this heading"></a></h1>
+<p>このドキュメントは,GDAL 3.1 で追加された GDAL の多次元データモデルについて説明します. GDAL の多次元データセットが含むことができる情報の種類とその意味についてです.</p>
+<p>多次元ラスター API は,3D、4D またはそれ以上の次元のデータセットを扱うための従来のラスターデータモデルの一般化です. 現在, 基本的な読み書き API に限定されており,他の高レベルのユーティリティにはあまり接続されていません.</p>
+<p>これは、netCDF および HDF5 API およびデータモデルから強くインスパイアされています. <a class="reference external" href="https://portal.opengeospatial.org/files/81716">HDF5 フォーマットとデータモデル</a> を参照してください.</p>
+<p>多次元コンテンツを持つ <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv411GDALDataset" title="GDALDataset"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALDataset</span></code></a> には,ルート <a class="reference internal" href="../api/gdalgroup_cpp.html#_CPPv49GDALGroup" title="GDALGroup"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALGroup</span></code></a> が含まれています.</p>
 <section id="group">
-<h2>Group<a class="headerlink" href="#group" title="Link to this heading"></a></h2>
-<p>A <a class="reference internal" href="../api/gdalgroup_cpp.html#_CPPv49GDALGroup" title="GDALGroup"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALGroup</span></code></a> (modelling a <a class="reference external" href="https://portal.opengeospatial.org/files/81716#_hdf5_group">HDF5 Group</a>)
-is a named container of GDALAttribute, GDALMDArray or
-other GDALGroup. Hence GDALGroup can describe a hierarchy of objects.</p>
+<h2>グループ<a class="headerlink" href="#group" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="../api/gdalgroup_cpp.html#_CPPv49GDALGroup" title="GDALGroup"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALGroup</span></code></a> ( <a class="reference external" href="https://portal.opengeospatial.org/files/81716#_hdf5_group">HDF5 Group</a> をモデル化) は,GDALAttribute, GDALMDArray または他の GDALGroup の名前付きコンテナです. そのため、GDALGroup はオブジェクトの階層を記述できます.</p>
 </section>
 <section id="attribute">
-<h2>Attribute<a class="headerlink" href="#attribute" title="Link to this heading"></a></h2>
-<p>A <a class="reference internal" href="../api/gdalattribute_cpp.html#_CPPv413GDALAttribute" title="GDALAttribute"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALAttribute</span></code></a> (modelling a <a class="reference external" href="https://portal.opengeospatial.org/files/81716#_hdf5_attribute">HDF5 Attribute</a>)
-has a name and a value, and is typically used to describe a metadata item.
-The value can be (for the HDF5 format) in the general case a multidimensional array
-of &quot;any&quot; type (in most cases, this will be a single value of string or numeric type)</p>
+<h2>属性<a class="headerlink" href="#attribute" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="../api/gdalattribute_cpp.html#_CPPv413GDALAttribute" title="GDALAttribute"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALAttribute</span></code></a> ( <a class="reference external" href="https://portal.opengeospatial.org/files/81716#_hdf5_attribute">HDF5 Attribute</a> をモデル化) は,名前と値を持ち、通常はメタデータ項目を記述するために使用されます. 値は (HDF5 フォーマットの場合) 一般的な場合には &quot;any&quot; 型の多次元配列であることがあります(ほとんどの場合,これは文字列または数値型の単一の値になります)</p>
 </section>
 <section id="multidimensional-array">
-<h2>Multidimensional array<a class="headerlink" href="#multidimensional-array" title="Link to this heading"></a></h2>
-<p>A <a class="reference internal" href="../api/gdalmdarray_cpp.html#_CPPv411GDALMDArray" title="GDALMDArray"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALMDArray</span></code></a> (modelling a <a class="reference external" href="https://portal.opengeospatial.org/files/81716#_hdf5_dataset">HDF5 Dataset</a>)
-has a name, a multidimensional array, references a number of GDALDimension, and
-has a list of GDALAttribute.</p>
-<p>Most drivers use the row-major convention for dimensions: that is, when considering
-that the array elements are stored consecutively in memory, the first dimension
-is the slowest varying one (in a 2D image, the row), and the last dimension the
-fastest varying one (in a 2D image, the column). That convention is the default
-convention used for NumPy arrays, the MEM driver and the HDF5 and netCDF APIs.
-The GDAL API is mostly agnostic
-about that convention, except when passing a NULL array as the <em>stride</em> parameter
-for the <a class="reference internal" href="../api/gdalabstractmdarray_cpp.html#_CPPv4NK19GDALAbstractMDArray4ReadEPK7GUInt64PK6size_tPK6GInt64PK10GPtrDiff_tRK20GDALExtendedDataTypePvPKv6size_t" title="GDALAbstractMDArray::Read"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALAbstractMDArray::Read()</span></code></a> and  <a class="reference internal" href="../api/gdalabstractmdarray_cpp.html#_CPPv4N19GDALAbstractMDArray5WriteEPK7GUInt64PK6size_tPK6GInt64PK10GPtrDiff_tRK20GDALExtendedDataTypePKvPKv6size_t" title="GDALAbstractMDArray::Write"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALAbstractMDArray::Write()</span></code></a> methods.
-You can refer to <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/internals.html#multidimensional-array-indexing-order-issues">NumPy documentation about multidimensional array indexing order issues</a></p>
-<p>a GDALMDArray has also optional properties:</p>
+<h2>多次元配列<a class="headerlink" href="#multidimensional-array" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="../api/gdalmdarray_cpp.html#_CPPv411GDALMDArray" title="GDALMDArray"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALMDArray</span></code></a> ( <a class="reference external" href="https://portal.opengeospatial.org/files/81716#_hdf5_dataset">HDF5 Dataset</a> をモデル化) は,名前,多次元配列,GDALDimension の参照,GDALAttribute のリストを持ちます.</p>
+<p>ほとんどのドライバは、次元に対して行優先の規則を使用します: つまり,配列要素が連続してメモリに格納されていると考えると,最初の次元は最も変化が遅いものであり(2D 画像の場合,行), 最後の次元は最も変化が速いものである(2D 画像の場合,列)です. その規則は、NumPy 配列、MEM ドライバ,HDF5 および netCDF API でデフォルトの規則として使用されます. GDAL API は,その規則についてはほとんど無関心ですが,:cpp:func:<cite>GDALAbstractMDArray::Read</cite> および <a class="reference internal" href="../api/gdalabstractmdarray_cpp.html#_CPPv4N19GDALAbstractMDArray5WriteEPK7GUInt64PK6size_tPK6GInt64PK10GPtrDiff_tRK20GDALExtendedDataTypePKvPKv6size_t" title="GDALAbstractMDArray::Write"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALAbstractMDArray::Write()</span></code></a> メソッドの <em>stride</em> パラメータに NULL 配列を渡す場合を除いてです. <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/internals.html#multidimensional-array-indexing-order-issues">NumPy の多次元配列のインデックス順序の問題に関するドキュメント</a> を参照してください.</p>
+<p>GDALMDArray にはオプションのプロパティもあります:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Coordinate reference system: <a class="reference internal" href="../api/ogrspatialref.html#_CPPv419OGRSpatialReference" title="OGRSpatialReference"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRSpatialReference</span></code></a></p></li>
-<li><p>No data value:</p></li>
-<li><p>Unit</p></li>
-<li><p>Offset, such that unscaled_value = offset + scale * raw_value</p></li>
-<li><p>Scale, such that unscaled_value = offset + scale * raw_value</p></li>
+<li><p>空間参照系: <a class="reference internal" href="../api/ogrspatialref.html#_CPPv419OGRSpatialReference" title="OGRSpatialReference"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRSpatialReference</span></code></a></p></li>
+<li><p>データ無しの値:</p></li>
+<li><p>単位</p></li>
+<li><p>オフセット, unscaled_value = offset + scale * raw_value</p></li>
+<li><p>縮尺, unscaled_value = offset + scale * raw_value</p></li>
 </ul>
 </div></blockquote>
-<p>Number of operations can be applied on an array to get modified views of it:
-<a class="reference internal" href="../api/gdalmdarray_cpp.html#_CPPv4NK11GDALMDArray9TransposeERKNSt6vectorIiEE" title="GDALMDArray::Transpose"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArray::Transpose()</span></code></a>, <a class="reference internal" href="../api/gdalmdarray_cpp.html#_CPPv4NK11GDALMDArray7GetViewERKNSt6stringE" title="GDALMDArray::GetView"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArray::GetView()</span></code></a>, etc.</p>
-<p>The <a class="reference internal" href="../api/gdalmdarray_cpp.html#_CPPv4NK11GDALMDArray5CacheE12CSLConstList" title="GDALMDArray::Cache"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArray::Cache()</span></code></a> method can be used to cache the value of
-a view array into a sidecar file.</p>
+<p>配列に対して多くの操作を適用して,それを変更されたビューにすることができます: <a class="reference internal" href="../api/gdalmdarray_cpp.html#_CPPv4NK11GDALMDArray9TransposeERKNSt6vectorIiEE" title="GDALMDArray::Transpose"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArray::Transpose()</span></code></a>, <a class="reference internal" href="../api/gdalmdarray_cpp.html#_CPPv4NK11GDALMDArray7GetViewERKNSt6stringE" title="GDALMDArray::GetView"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArray::GetView()</span></code></a>, など</p>
+<p><a class="reference internal" href="../api/gdalmdarray_cpp.html#_CPPv4NK11GDALMDArray5CacheE12CSLConstList" title="GDALMDArray::Cache"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArray::Cache()</span></code></a> メソッドを使用して,ビュー配列の値をサイドカーファイルにキャッシュすることができます.</p>
 </section>
 <section id="dimension">
-<h2>Dimension<a class="headerlink" href="#dimension" title="Link to this heading"></a></h2>
-<p>A <a class="reference internal" href="../api/gdaldimension_cpp.html#_CPPv413GDALDimension" title="GDALDimension"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALDimension</span></code></a> describes a dimension / axis used to index multidimensional arrays.
-It has the following properties:</p>
+<h2>次元<a class="headerlink" href="#dimension" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="../api/gdaldimension_cpp.html#_CPPv413GDALDimension" title="GDALDimension"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALDimension</span></code></a> は,多次元配列をインデックスするために使用される次元/軸を記述します. 以下のプロパティを持ちます:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>a name</p></li>
-<li><p>a size, that is the number of values that can be indexed along
-the dimension</p></li>
-<li><p>a type, which is a string giving the nature of the dimension.
-Predefined values are: HORIZONTAL_X, HORIZONTAL_Y, VERTICAL, TEMPORAL, PARAMETRIC
-Other values might be used. Empty value means unknown.</p></li>
-<li><p>a direction. Predefined values are:
-EAST, WEST, SOUTH, NORTH, UP, DOWN, FUTURE, PAST
-Other values might be used. Empty value means unknown.</p></li>
-<li><p>a reference to a GDALMDArray variable, typically
-one-dimensional, describing the values taken by the dimension.
-For a georeferenced GDALMDArray and its X dimension, this will be typically
-the values of the easting/longitude for each grid point.</p></li>
+<li><p>名前</p></li>
+<li><p>サイズ, つまり次元に沿ってインデックスできる値の数</p></li>
+<li><p>タイプ, 次元の性質を示す文字列です. 事前定義された値は: HORIZONTAL_X, HORIZONTAL_Y, VERTICAL, TEMPORAL, PARAMETRIC 他の値も使用できます. 空の値は不明を意味します.</p></li>
+<li><p>方向. 事前定義された値は: EAST, WEST, SOUTH, NORTH, UP, DOWN, FUTURE, PAST 他の値も使用できます. 空の値は不明を意味します.</p></li>
+<li><p>GDALMDArray 変数への参照, 通常は次元が取る値を記述する 1 次元のものです. ジオリファレンス付きの GDALMDArray とその X 次元の場合,これは通常,各グリッドポイントの東経/経度の値になります.</p></li>
 </ul>
 </div></blockquote>
 </section>
 <section id="data-type">
-<h2>Data Type<a class="headerlink" href="#data-type" title="Link to this heading"></a></h2>
-<p>A <a class="reference internal" href="../api/gdalextendeddatatype_cpp.html#_CPPv420GDALExtendedDataType" title="GDALExtendedDataType"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALExtendedDataType</span></code></a> (modelling a
-<a class="reference external" href="https://portal.opengeospatial.org/files/81716#_hdf5_datatype">HDF5 datatype</a>)
-describes the type taken by an individual value of
-a GDALAttribute or GDALMDArray. Its class can be NUMERIC,
-STRING or COMPOUND. For NUMERIC, the existing <a class="reference internal" href="../api/raster_c_api.html#_CPPv412GDALDataType" title="GDALDataType"><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">GDALDataType</span></code></a> enumerated
-values are supported. For COMPOUND, the data type is a list of members, each
-member being described by a name, a offset in byte in the compound structure and
-a GDALExtendedDataType.</p>
+<h2>データタイプ<a class="headerlink" href="#data-type" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="../api/gdalextendeddatatype_cpp.html#_CPPv420GDALExtendedDataType" title="GDALExtendedDataType"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALExtendedDataType</span></code></a> ( <a class="reference external" href="https://portal.opengeospatial.org/files/81716#_hdf5_datatype">HDF5 datatype</a> をモデル化) は,GDALAttribute または GDALMDArray の個々の値が取るタイプを記述します. そのクラスは NUMERIC, STRING, COMPOUND です. NUMERIC の場合,既存の <a class="reference internal" href="../api/raster_c_api.html#_CPPv412GDALDataType" title="GDALDataType"><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">GDALDataType</span></code></a> 列挙値がサポートされます. COMPOUND の場合,データタイプはメンバーのリストであり,各メンバーは名前,複合構造内のバイトオフセット,および GDALExtendedDataType で記述されます.</p>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
-<p>The HDF5 modelisation allows for more complex datatypes.</p>
+<p>HDF5 モデリングでは,より複雑なデータタイプが可能です.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
-<p>HDF5 does not have native data types for complex values whereas
-GDALDataType does. So a driver may decide to expose a GDT_Cxxxx datatype
-from a HDF5 Compound data type representing a complex value.</p>
+<p>HDF5 には複素値のためのネイティブデータ型がない一方, GDALDataType にはあります.そのため,ドライバは,複素値を表す HDF5 複合データ型から GDT_Cxxxx データ型を公開することを決定するかもしれません.</p>
 </div>
 </section>
 <section id="objects-lifetime">
-<h2>Objects lifetime<a class="headerlink" href="#objects-lifetime" title="Link to this heading"></a></h2>
-<p>Driver implementations of the multidimensional API are such that instances of
-GDALGroup, GDALMDArray, GDALAttribute and GDALDimension can be used independently
-of the objects from which they have been obtained from. So:</p>
+<h2>オブジェクトライフタイム<a class="headerlink" href="#objects-lifetime" title="Link to this heading"></a></h2>
+<p>多次元 API のドライバ実装は, GDALGroup, GDALMDArray, GDALAttribute, GDALDimension のインスタンスが,それらが取得されたオブジェクトとは独立して使用できるようになっています. つまり:</p>
 <ul class="simple">
-<li><p>the GDALGroup instance returned by <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4NK11GDALDataset12GetRootGroupEv" title="GDALDataset::GetRootGroup"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetRootGroup()</span></code></a> can
-be used after the dataset has been closed.</p></li>
-<li><p>Sub-groups obtained from <a class="reference internal" href="../api/gdalgroup_cpp.html#_CPPv4NK9GDALGroup9OpenGroupERKNSt6stringE12CSLConstList" title="GDALGroup::OpenGroup"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALGroup::OpenGroup()</span></code></a>
-or arrays obtained from <a class="reference internal" href="../api/gdalgroup_cpp.html#_CPPv4NK9GDALGroup11OpenMDArrayERKNSt6stringE12CSLConstList" title="GDALGroup::OpenMDArray"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALGroup::OpenMDArray()</span></code></a> can be used after
-the owning group has been released.</p></li>
-<li><p>Similarly for attributes or dimensions obtained from a group or an array.</p></li>
+<li><p><a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4NK11GDALDataset12GetRootGroupEv" title="GDALDataset::GetRootGroup"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetRootGroup()</span></code></a> で返された GDALGroup インスタンスは,データセットが閉じられた後でも使用できます.</p></li>
+<li><p><a class="reference internal" href="../api/gdalgroup_cpp.html#_CPPv4NK9GDALGroup9OpenGroupERKNSt6stringE12CSLConstList" title="GDALGroup::OpenGroup"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALGroup::OpenGroup()</span></code></a> から取得したサブグループや, <a class="reference internal" href="../api/gdalgroup_cpp.html#_CPPv4NK9GDALGroup11OpenMDArrayERKNSt6stringE12CSLConstList" title="GDALGroup::OpenMDArray"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALGroup::OpenMDArray()</span></code></a> から取得した配列は,所有しているグループが解放された後でも使用できます.</p></li>
+<li><p>同様に,グループや配列から取得した属性や次元についても同様です.</p></li>
 </ul>
-<p>So the following is perfectly legal:</p>
+<p>したがって,次のようなことは完全に合法です:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;gdal_priv.h&quot;</span>
 
 <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">GDALMDArray</span><span class="o">&gt;</span><span class="w"> </span><span class="n">GetArray</span><span class="p">()</span>
@@ -306,10 +258,8 @@ the owning group has been released.</p></li>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>A potential point of attention is that, when creating / editing a dataset, all
-those objects keep alive the underlying file descriptors, so changes are only
-guaranteed to be serialized when all objects related to a dataset have been released.</p>
-<p>Example in C++:</p>
+<p>注意すべきポイントは,データセットを作成/編集する際に,これらのオブジェクトがすべて基になるファイルディスクリプタを保持しているため,データセットに関連するすべてのオブジェクトが解放されたときにのみ,変更がシリアライズされることが保証されるということです.</p>
+<p>C++言語での例</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">GDALAllRegister</span><span class="p">();</span>
@@ -338,7 +288,7 @@ guaranteed to be serialized when all objects related to a dataset have been rele
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Example in Python:</p>
+<p>Python言語での例</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">gdal</span>
 
 <span class="k">with</span> <span class="n">gdal</span><span class="o">.</span><span class="n">GetDriverByName</span><span class="p">(</span><span class="s2">&quot;netCDF&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">CreateMultiDimensional</span><span class="p">(</span><span class="s2">&quot;new.nc&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">ds</span><span class="p">:</span>
@@ -355,25 +305,19 @@ guaranteed to be serialized when all objects related to a dataset have been rele
 </div>
 </section>
 <section id="differences-with-the-gdal-2d-raster-data-model">
-<h2>Differences with the GDAL 2D raster data model<a class="headerlink" href="#differences-with-the-gdal-2d-raster-data-model" title="Link to this heading"></a></h2>
+<h2>GDAL 2D ラスターデータモデルとの違い<a class="headerlink" href="#differences-with-the-gdal-2d-raster-data-model" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p>The concept of GDALRasterBand is no longer used for multidimensional.
-This can be modelled as either different GDALMDArray, or using a compound
-data type.</p></li>
-<li><p>There is not yet a standardized concept multi-resolution arrays/overviews in
-the multidimensional API</p></li>
+<li><p>GDALRasterBand の概念は,もはや多次元には使用されません. これは異なる GDALMDArray としてモデル化するか,複合データ型を使用することができます.</p></li>
+<li><p>多次元 API には,まだ標準化された概念の多解像度配列/概要がありません</p></li>
 </ul>
 </section>
 <section id="bridges-between-gdal-2d-classic-raster-data-model-and-multidimensional-data-model">
-<h2>Bridges between GDAL 2D classic raster data model and multidimensional data model<a class="headerlink" href="#bridges-between-gdal-2d-classic-raster-data-model-and-multidimensional-data-model" title="Link to this heading"></a></h2>
-<p>The <a class="reference internal" href="../api/gdalrasterband_cpp.html#_CPPv4NK14GDALRasterBand9AsMDArrayEv" title="GDALRasterBand::AsMDArray"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALRasterBand::AsMDArray()</span></code></a> and <a class="reference internal" href="../api/gdalmdarray_cpp.html#_CPPv4NK11GDALMDArray16AsClassicDatasetE6size_t6size_tRKNSt10shared_ptrI9GDALGroupEE12CSLConstList" title="GDALMDArray::AsClassicDataset"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArray::AsClassicDataset()</span></code></a>
-can be used to respectively convert a raster band to a MD array or a 2D dataset
-to a MD array.</p>
+<h2>GDAL 2D クラシックラスターデータモデルと多次元データモデルの間のブリッジ<a class="headerlink" href="#bridges-between-gdal-2d-classic-raster-data-model-and-multidimensional-data-model" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="../api/gdalrasterband_cpp.html#_CPPv4NK14GDALRasterBand9AsMDArrayEv" title="GDALRasterBand::AsMDArray"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALRasterBand::AsMDArray()</span></code></a> と <a class="reference internal" href="../api/gdalmdarray_cpp.html#_CPPv4NK11GDALMDArray16AsClassicDatasetE6size_t6size_tRKNSt10shared_ptrI9GDALGroupEE12CSLConstList" title="GDALMDArray::AsClassicDataset"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArray::AsClassicDataset()</span></code></a> は,それぞれラスターバンドを MD 配列に変換したり,2D データセットを MD 配列に変換したりするために使用できます.</p>
 </section>
 <section id="applications">
-<h2>Applications<a class="headerlink" href="#applications" title="Link to this heading"></a></h2>
-<p>The following applications can be used to inspect and manipulate multidimensional
-datasets:</p>
+<h2>アプリケーション<a class="headerlink" href="#applications" title="Link to this heading"></a></h2>
+<p>次のアプリケーションを使用して,多次元データセットを調査および操作できます:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="../programs/gdalmdiminfo.html#gdalmdiminfo"><span class="std std-ref">gdalmdiminfo</span></a></p></li>
 <li><p><a class="reference internal" href="../programs/gdalmdimtranslate.html#gdalmdimtranslate"><span class="std std-ref">gdalmdimtranslate</span></a></p></li>
@@ -388,10 +332,10 @@ datasets:</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="vector_data_model.html" class="btn btn-neutral float-right" title="Vector Data Model" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="vector_data_model.html" class="btn btn-neutral float-right" title="ベクターデーターモデル" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="raster_data_model.html" class="btn btn-neutral float-left" title="Raster Data Model" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="raster_data_model.html" class="btn btn-neutral float-left" title="ラスターデータモデル" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -278,7 +278,7 @@
 <section id="image-structure-domain">
 <h3>IMAGE_STRUCTURE ドメイン<a class="headerlink" href="#image-structure-domain" title="Link to this heading"></a></h3>
 <p>デフォルトドメインのメタデータは,画像に関連するものであり,画像がディスク上にどのように保存されているかという方法には特に関連しません.つまり,データセットが新しいフォーマットにコピーされる際に,一緒にコピーするのに適しています.一方,特定のファイルフォーマットや保存メカニズムに密接に関連する重要な情報もあります.これらの情報がデータセットと一緒にコピーされるのを防ぐため,IMAGE_STRUCTUREと呼ばれる特別なドメインに配置されます.このドメインは通常,新しいフォーマットにコピーされるべきではありません.</p>
-<p>現在以下のアイテムは IMAGE_STRUCTURE ドメインで固有のセマンティックを持つものとして:ref:<cite>rfc-14</cite> で定義されています.</p>
+<p>現在以下のアイテムは IMAGE_STRUCTURE ドメインで固有のセマンティックを持つものとして <a class="reference internal" href="../development/rfc/rfc14_imagestructure.html#rfc-14"><span class="std std-ref">RFC 14: Image Structure Metadata</span></a> で定義されています.</p>
 <ul class="simple">
 <li><p>COMPRESSION: データセットまたはバンドの圧縮タイプ. 圧縮タイプ名の 確定したカタログはありません. ただし,特定のフォーマットがCOMPRESSION作成オプションを含む場合,そこで使用される値のリストと同じものがここでも使用されるべきです.</p></li>
 <li><p>NBITS: このバンド,またはこのデータセットのバンドに使用される実際のビット数です.通常,ビット数がデータ型の標準と異なる場合にのみ存在します.例えば,1ビットのTIFFファイルがGDALを通じてGDT_Byteとして表されている場合などです.</p></li>

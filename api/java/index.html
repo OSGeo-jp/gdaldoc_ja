@@ -134,7 +134,7 @@
   <section id="java-bindings">
 <span id="java"></span><h1>Java bindings<a class="headerlink" href="#java-bindings" title="Link to this heading"></a></h1>
 <p>The GDAL project has SWIG generated Java bindings for GDAL and OGR.</p>
-<p>Generally speaking the classes and methods mostly match those of the GDAL and OGR C++ classes. You can find the <a class="reference external" href="http://gdal.org/java">​Javadoc</a> of the API of the Java bindings.</p>
+<p>Generally speaking the classes and methods mostly match those of the GDAL and OGR C++ classes. You can find the <a class="reference external" href="../../java">Javadoc</a> of the API of the Java bindings.</p>
 <p>Due to the fact the Java garbage collector works in a separate thread from the main thread, it is necessary to configure GDAL with multi-threading support, even if you do not use GDAL API from several Java threads.</p>
 <section id="how-to-build-bindings">
 <h2>How to build bindings<a class="headerlink" href="#how-to-build-bindings" title="Link to this heading"></a></h2>
@@ -169,7 +169,7 @@ java -classpath $PWD/swig/java/gdal.jar:$PWD/swig/java/build/apps gdalinfo
 </section>
 <section id="maven-users">
 <h2>Maven Users<a class="headerlink" href="#maven-users" title="Link to this heading"></a></h2>
-<p>The Java bindings are available from the ​`Maven Central &lt;<a class="reference external" href="http://search.maven.org/">http://search.maven.org/</a>&gt;`__ repository. All that is needed is to declare a dependency.</p>
+<p>The Java bindings are available from the <a class="reference external" href="http://search.maven.org/">Maven Central</a> repository. All that is needed is to declare a dependency.</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;dependency&gt;</span>
 <span class="w">   </span><span class="nt">&lt;groupId&gt;</span>org.gdal<span class="nt">&lt;/groupId&gt;</span>
 <span class="w">   </span><span class="nt">&lt;artifactId&gt;</span>gdal<span class="nt">&lt;/artifactId&gt;</span>
@@ -181,7 +181,7 @@ java -classpath $PWD/swig/java/gdal.jar:$PWD/swig/java/build/apps gdalinfo
 <section id="useful-links">
 <h2>Useful Links<a class="headerlink" href="#useful-links" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p>​`Javadoc &lt;<a class="reference external" href="http://gdal.org/java">http://gdal.org/java</a>&gt;`__ of the API of the Java bindings.</p></li>
+<li><p><a class="reference external" href="../../java">Javadoc</a> of the API of the Java bindings.</p></li>
 <li><p><a class="reference external" href="https://github.com/OSGeo/gdal/tree/master/swig/java/apps/gdalinfo.java">gdalinfo.java</a> Sample Java program similar to gdalinfo utility.</p></li>
 <li><p><a class="reference external" href="https://github.com/OSGeo/gdal/tree/master/swig/java/apps/">All Java sample programs</a></p></li>
 <li><p><a class="reference external" href="http://www.gisinternals.com/sdk">Tamas Szekeres' Windows daily builds</a> : Tamas Szekeres maintains a complete set of Win32 and Win64 binary packages that include the GDAL Java bindings. These packages are based on the current development and stable branches built from the GDAL source repository.</p></li>

@@ -246,28 +246,22 @@
 </section>
 <section id="ogr-style-special-field">
 <h3>OGR_STYLE特殊フィールド<a class="headerlink" href="#ogr-style-special-field" title="Link to this heading"></a></h3>
-<p>The <code class="docutils literal notranslate"><span class="pre">OGR_STYLE</span></code> special field represents the style string of the feature
-returned by OGRFeature::GetStyleString(). By using this field and the
-<code class="docutils literal notranslate"><span class="pre">LIKE</span></code> operator the result of the query can be filtered by the style.
-For example we can select the annotation features as:</p>
+<p><code class="docutils literal notranslate"><span class="pre">OGR_STYLE</span></code> 特殊フィールドは, OGRFeature::GetStyleString() によって返される地物のスタイル文字列を表します. このフィールドと <code class="docutils literal notranslate"><span class="pre">LIKE</span></code> 演算子を使用することで, クエリの結果をスタイルでフィルタリングすることができます. 例えば, アノテーション地物を選択することができます:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">nation</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">OGR_STYLE</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;LABEL%&#39;</span>
 </pre></div>
 </div>
 </section>
 <section id="statistics-functions">
-<h3>Statistics functions<a class="headerlink" href="#statistics-functions" title="Link to this heading"></a></h3>
-<p>In addition to standard COUNT(), SUM(), AVG(), MIN(), MAX(), the following
-aggregate functions are available:</p>
+<h3>統計関数<a class="headerlink" href="#statistics-functions" title="Link to this heading"></a></h3>
+<p>標準の COUNT(), SUM(), AVG(), MIN(), MAX() に加えて, 次の集計関数が利用可能です:</p>
 <ul class="simple">
-<li><p>STDDEV_POP: (GDAL &gt;= 3.10) numerical population standard deviation.</p></li>
-<li><p>STDDEV_SAMP: (GDAL &gt;= 3.10) numerical <a class="reference external" href="https://en.wikipedia.org/wiki/Standard_deviation#Sample_standard_deviation">sample standard deviation</a></p></li>
+<li><p>STDDEV_POP: (GDAL &gt;= 3.10) 数値の母集団標準偏差.</p></li>
+<li><p>STDDEV_SAMP: (GDAL &gt;= 3.10) 数値の <a class="reference external" href="https://en.wikipedia.org/wiki/Standard_deviation#Sample_standard_deviation">標本標準偏差</a></p></li>
 </ul>
 </section>
 <section id="spatialite-sql-functions">
-<h3>Spatialite SQL functions<a class="headerlink" href="#spatialite-sql-functions" title="Link to this heading"></a></h3>
-<p>When GDAL/OGR is build with support for the <a class="reference external" href="https://www.gaia-gis.it/fossil/libspatialite/index">Spatialite</a> library,
-a lot of <a class="reference external" href="http://www.gaia-gis.it/gaia-sins/spatialite-sql-latest.html">extra SQL functions</a>,
-in particular spatial functions, can be used in results column fields, WHERE clauses, etc....</p>
+<h3>Spatialite SQL関数<a class="headerlink" href="#spatialite-sql-functions" title="Link to this heading"></a></h3>
+<p>GDAL/OGRが <a class="reference external" href="https://www.gaia-gis.it/fossil/libspatialite/index">Spatialite</a> ライブラリのサポートでビルドされている場合, 多くの <a class="reference external" href="http://www.gaia-gis.it/gaia-sins/spatialite-sql-latest.html">追加のSQL関数</a> が利用可能になります. 特に空間関数は, 結果の列フィールド, WHERE句などで使用できます.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">EAS_ID</span><span class="p">,</span><span class="w"> </span><span class="n">ST_Area</span><span class="p">(</span><span class="n">GEOMETRY</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">area</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">poly</span><span class="w"> </span><span class="k">WHERE</span>
 <span class="w">    </span><span class="n">ST_Intersects</span><span class="p">(</span><span class="n">GEOMETRY</span><span class="p">,</span><span class="w"> </span><span class="n">BuildCircleMbr</span><span class="p">(</span><span class="mi">479750</span><span class="p">.</span><span class="mi">6875</span><span class="p">,</span><span class="mi">4764702</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">))</span>
 </pre></div>
@@ -286,19 +280,14 @@ in particular spatial functions, can be used in results column fields, WHERE cla
 <span class="n">area</span><span class="w"> </span><span class="p">(</span><span class="nb">Real</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5268</span><span class="p">.</span><span class="mi">8125</span>
 </pre></div>
 </div>
-<p>Note that due to the loose typing mechanism of SQLite, if a geometry expression
-returns a NULL value for the first row, this will generally cause OGR not to
-recognize the column as a geometry column. It might be then useful to sort
-the results by making sure that non-null geometries are returned first:</p>
+<p>SQLiteの緩い型付けメカニズムのため, ジオメトリ式が最初の行でNULL値を返すと, 一般的にOGRはその列をジオメトリ列として認識しません. そのため, 非NULLジオメトリが最初に返されるように結果をソートすることが役立つ場合があります:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">ogrinfo</span><span class="w"> </span><span class="n">test</span><span class="p">.</span><span class="n">shp</span><span class="w"> </span><span class="o">-</span><span class="k">sql</span><span class="w"> </span><span class="ss">&quot;SELECT * FROM (SELECT ST_Buffer(geometry,5) AS geometry FROM test) ORDER BY geometry IS NULL ASC&quot;</span><span class="w"> </span><span class="o">-</span><span class="n">dialect</span><span class="w"> </span><span class="n">sqlite</span>
 </pre></div>
 </div>
 </section>
 <section id="ogr-datasource-sql-functions">
-<h3>OGR datasource SQL functions<a class="headerlink" href="#ogr-datasource-sql-functions" title="Link to this heading"></a></h3>
-<p>The <code class="docutils literal notranslate"><span class="pre">ogr_datasource_load_layers(datasource_name[,</span> <span class="pre">update_mode[,</span> <span class="pre">prefix]])</span></code>
-function can be used to automatically load all the layers of a datasource as
-<a class="reference internal" href="../drivers/vector/sqlite.html#vector-sqlite"><span class="std std-ref">VirtualOGR tables</span></a>.</p>
+<h3>OGRデータソースSQL関数<a class="headerlink" href="#ogr-datasource-sql-functions" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">ogr_datasource_load_layers(datasource_name[,</span> <span class="pre">update_mode[,</span> <span class="pre">prefix]])</span></code> 関数は, データソースのすべてのレイヤーを <a class="reference internal" href="../drivers/vector/sqlite.html#vector-sqlite"><span class="std std-ref">VirtualOGR tables</span></a> として自動的にロードするために使用できます.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">sqlite</span><span class="o">&gt;</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="n">load_extension</span><span class="p">(</span><span class="s1">&#39;libgdal.so&#39;</span><span class="p">);</span>
 
 <span class="n">sqlite</span><span class="o">&gt;</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="n">load_extension</span><span class="p">(</span><span class="s1">&#39;mod_spatialite&#39;</span><span class="p">);</span>
@@ -311,10 +300,8 @@ function can be used to automatically load all the layers of a datasource as
 </div>
 </section>
 <section id="ogr-layer-sql-functions">
-<h3>OGR layer SQL functions<a class="headerlink" href="#ogr-layer-sql-functions" title="Link to this heading"></a></h3>
-<p>The following SQL functions are available and operate on a layer name :
-<code class="docutils literal notranslate"><span class="pre">ogr_layer_Extent()</span></code>, <code class="docutils literal notranslate"><span class="pre">ogr_layer_SRID()</span></code>,
-<code class="docutils literal notranslate"><span class="pre">ogr_layer_GeometryType()</span></code> and <code class="docutils literal notranslate"><span class="pre">ogr_layer_FeatureCount()</span></code></p>
+<h3>OGRレイヤーSQL関数<a class="headerlink" href="#ogr-layer-sql-functions" title="Link to this heading"></a></h3>
+<p>次のSQL関数が利用可能で, レイヤー名に対して動作します: <code class="docutils literal notranslate"><span class="pre">ogr_layer_Extent()</span></code>, <code class="docutils literal notranslate"><span class="pre">ogr_layer_SRID()</span></code>, <code class="docutils literal notranslate"><span class="pre">ogr_layer_GeometryType()</span></code> および <code class="docutils literal notranslate"><span class="pre">ogr_layer_FeatureCount()</span></code></p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">ogr_layer_Extent</span><span class="p">(</span><span class="s1">&#39;poly&#39;</span><span class="p">),</span><span class="w"> </span><span class="n">ogr_layer_SRID</span><span class="p">(</span><span class="s1">&#39;poly&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">srid</span><span class="p">,</span>
 <span class="w">    </span><span class="n">ogr_layer_GeometryType</span><span class="p">(</span><span class="s1">&#39;poly&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">geomtype</span><span class="p">,</span><span class="w"> </span><span class="n">ogr_layer_FeatureCount</span><span class="p">(</span><span class="s1">&#39;poly&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">count</span>
 </pre></div>
@@ -328,37 +315,28 @@ function can be used to automatically load all the layers of a datasource as
 </div>
 </section>
 <section id="ogr-compression-functions">
-<h3>OGR compression functions<a class="headerlink" href="#ogr-compression-functions" title="Link to this heading"></a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">ogr_deflate(text_or_blob[,</span> <span class="pre">compression_level])</span></code> returns a binary blob
-compressed with the ZLib deflate algorithm. See <a class="reference internal" href="../api/cpl.html#_CPPv414CPLZLibDeflatePKv6size_tiPv6size_tP6size_t" title="CPLZLibDeflate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CPLZLibDeflate()</span></code></a></p>
-<p><code class="docutils literal notranslate"><span class="pre">ogr_inflate(compressed_blob)</span></code> returns the decompressed binary blob,
-from a blob compressed with the ZLib deflate algorithm.
-If the decompressed binary is a string, use
-CAST(ogr_inflate(compressed_blob) AS VARCHAR). See CPLZLibInflate().</p>
+<h3>OGR圧縮関数<a class="headerlink" href="#ogr-compression-functions" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">ogr_deflate(text_or_blob[,</span> <span class="pre">compression_level])</span></code> は, ZLib deflateアルゴリズムで圧縮されたバイナリblobを返します. <a class="reference internal" href="../api/cpl.html#_CPPv414CPLZLibDeflatePKv6size_tiPv6size_tP6size_t" title="CPLZLibDeflate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CPLZLibDeflate()</span></code></a> を参照してください.</p>
+<p><code class="docutils literal notranslate"><span class="pre">ogr_inflate(compressed_blob)</span></code> は, ZLib deflateアルゴリズムで圧縮されたblobから解凍されたバイナリblobを返します. 解凍されたバイナリが文字列の場合, CAST(ogr_inflate(compressed_blob) AS VARCHAR) を使用してください. CPLZLibInflate() を参照してください.</p>
 </section>
 <section id="other-functions">
-<h3>Other functions<a class="headerlink" href="#other-functions" title="Link to this heading"></a></h3>
-<p>The <code class="docutils literal notranslate"><span class="pre">hstore_get_value()</span></code> function can be used to extract
-a value associate to a key from a HSTORE string, formatted like &quot;key=&gt;value,other_key=&gt;other_value,...&quot;</p>
+<h3>その他の関数<a class="headerlink" href="#other-functions" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">hstore_get_value()</span></code> 関数は, &quot;key=&gt;value,other_key=&gt;other_value,...&quot; のようにフォーマットされたHSTORE文字列からキーに関連付けられた値を抽出するために使用できます.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">hstore_get_value</span><span class="p">(</span><span class="s1">&#39;a =&gt; b, &quot;key with space&quot;=&gt; &quot;value with space&quot;&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;key with space&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1">--&gt; &#39;value with space&#39;</span>
 </pre></div>
 </div>
 </section>
 <section id="raster-related-functions">
-<span id="sql-sqlite-dialect-raster-functions"></span><h3>Raster related functions<a class="headerlink" href="#raster-related-functions" title="Link to this heading"></a></h3>
-<p>The <code class="docutils literal notranslate"><span class="pre">gdal_get_pixel_value()</span></code> function (added in GDAL 3.7) can be used to extract the value
-of a pixel in a GDAL dataset. It requires the configuration option OGR_SQLITE_ALLOW_EXTERNAL_ACCESS
-to be set to YES (for security reasons).</p>
-<p>It takes 5 or 6 arguments:</p>
+<span id="sql-sqlite-dialect-raster-functions"></span><h3>ラスタ関連関数<a class="headerlink" href="#raster-related-functions" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">gdal_get_pixel_value()</span></code> 関数 (GDAL 3.7で追加) は, GDALデータセットのピクセルの値を抽出するために使用できます. セキュリティ上の理由から, OGR_SQLITE_ALLOW_EXTERNAL_ACCESS設定オプションをYESに設定する必要があります.</p>
+<p>5または6つの引数が必要です:</p>
 <ul class="simple">
-<li><p>a string with the dataset name</p></li>
-<li><p>a band number (numbering starting at 1)</p></li>
-<li><p>a string being &quot;georef&quot; to indicate that subsequent values will be georeferenced
-coordinates, or &quot;pixel&quot; to indicate that subsequent values will be in column, line
-pixel space</p></li>
-<li><p>georeferenced X value or column number</p></li>
-<li><p>georeferenced Y value or line number</p></li>
-<li><p>resampling method among <code class="docutils literal notranslate"><span class="pre">nearest</span></code> (default), <code class="docutils literal notranslate"><span class="pre">bilinear</span></code>, <code class="docutils literal notranslate"><span class="pre">cubic</span></code>, <code class="docutils literal notranslate"><span class="pre">cubicspline</span></code>. Optional, added in GDAL 3.10</p></li>
+<li><p>データセット名の文字列</p></li>
+<li><p>バンド番号 (1から始まる番号)</p></li>
+<li><p>後続の値がジオリファレンス座標であることを示す &quot;georef&quot; または, 後続の値が列, 行ピクセル空間であることを示す &quot;pixel&quot; である文字列</p></li>
+<li><p>ジオリファレンスされたX値または列番号</p></li>
+<li><p>ジオリファレンスされたY値または行番号</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nearest</span></code> (デフォルト), <code class="docutils literal notranslate"><span class="pre">bilinear</span></code>, <code class="docutils literal notranslate"><span class="pre">cubic</span></code>, <code class="docutils literal notranslate"><span class="pre">cubicspline</span></code> の中からのリサンプリング方法. オプション指定, GDAL 3.10で追加</p></li>
 </ul>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">gdal_get_pixel_value</span><span class="p">(</span><span class="s1">&#39;../gcore/data/byte.tif&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;georef&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">440720</span><span class="p">,</span><span class="w"> </span><span class="mi">3751320</span><span class="p">)</span>
 <span class="k">SELECT</span><span class="w"> </span><span class="n">gdal_get_pixel_value</span><span class="p">(</span><span class="s1">&#39;../gcore/data/byte.tif&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;pixel&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
@@ -367,15 +345,10 @@ pixel space</p></li>
 </div>
 </section>
 <section id="ogr-geocoding-functions">
-<h3>OGR geocoding functions<a class="headerlink" href="#ogr-geocoding-functions" title="Link to this heading"></a></h3>
-<p>The following SQL functions are available : <code class="docutils literal notranslate"><span class="pre">ogr_geocode(...)</span></code> and <code class="docutils literal notranslate"><span class="pre">ogr_geocode_reverse(...)</span></code>.</p>
-<p><code class="docutils literal notranslate"><span class="pre">ogr_geocode(name_to_geocode</span> <span class="pre">[,</span> <span class="pre">field_to_return</span> <span class="pre">[,</span> <span class="pre">option1</span> <span class="pre">[,</span> <span class="pre">option2,</span> <span class="pre">...]]])</span></code> where
-name_to_geocode is a literal or a column name that must be geocoded. field_to_return if specified can be &quot;geometry&quot; for
-the geometry (default), or a field name of the layer returned by <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRGeocode()</span></code>. The special field  &quot;raw&quot; can also be used
-to return the raw response (XML string) of the geocoding service.
-option1, option2, etc.. must be of the key=value format, and are options understood
-by <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRGeocodeCreateSession()</span></code> or OGRGeocode().</p>
-<p>This function internally uses the OGRGeocode() API. Refer to it for more details.</p>
+<h3>OGRジオコーディング関数<a class="headerlink" href="#ogr-geocoding-functions" title="Link to this heading"></a></h3>
+<p>次のSQL関数が利用可能です: <code class="docutils literal notranslate"><span class="pre">ogr_geocode(...)</span></code> および <code class="docutils literal notranslate"><span class="pre">ogr_geocode_reverse(...)</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">ogr_geocode(name_to_geocode</span> <span class="pre">[,</span> <span class="pre">field_to_return</span> <span class="pre">[,</span> <span class="pre">option1</span> <span class="pre">[,</span> <span class="pre">option2,</span> <span class="pre">...]]])</span></code> は, ジオコーディングする必要があるリテラルまたは列名です. field_to_return が指定されている場合, ジオコーディングによって返されるレイヤーのフィールド名であることができます. ジオメトリ(デフォルト)の場合は &quot;geometry&quot; になります. ジオコーディングサービスの生の応答(XML文字列)を返すために, 特別なフィールド &quot;raw&quot; も使用できます. option1, option2などは, key=value形式である必要があり, <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRGeocodeCreateSession()</span></code> または OGRGeocode() で理解されるオプションです.</p>
+<p>この関数は内部的にOGRGeocode() APIを使用しています. 詳細については, それを参照してください.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_Centroid</span><span class="p">(</span><span class="n">ogr_geocode</span><span class="p">(</span><span class="s1">&#39;Paris&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -414,24 +387,14 @@ OGRFeature(SELECT):4
   POINT (116.3912972 39.9057136)
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">ogr_geocode_reverse(longitude,</span> <span class="pre">latitude,</span> <span class="pre">field_to_return</span> <span class="pre">[,</span> <span class="pre">option1</span> <span class="pre">[,</span> <span class="pre">option2,</span> <span class="pre">...]])</span></code> where
-longitude, latitude is the coordinate to query. field_to_return must be a field name of the layer
-returned by OGRGeocodeReverse() (for example 'display_name'). The special field  &quot;raw&quot; can also be used
-to return the raw response (XML string) of the geocoding service.
-option1, option2, etc.. must be of the key=value format, and are options understood
-by OGRGeocodeCreateSession() or OGRGeocodeReverse().</p>
-<p><code class="docutils literal notranslate"><span class="pre">ogr_geocode_reverse(geometry,</span> <span class="pre">field_to_return</span> <span class="pre">[,</span> <span class="pre">option1</span> <span class="pre">[,</span> <span class="pre">option2,</span> <span class="pre">...]])</span></code> is also accepted
-as an alternate syntax where geometry is a (Spatialite) point geometry.</p>
-<p>This function internally uses the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRGeocodeReverse()</span></code> API. Refer to it for more details.</p>
+<p><code class="docutils literal notranslate"><span class="pre">ogr_geocode_reverse(longitude,</span> <span class="pre">latitude,</span> <span class="pre">field_to_return</span> <span class="pre">[,</span> <span class="pre">option1</span> <span class="pre">[,</span> <span class="pre">option2,</span> <span class="pre">...]])</span></code> は, longitude, latitude がクエリする座標です. field_to_return は, OGRGeocodeReverse() によって返されるレイヤーのフィールド名である必要があります (例: 'display_name'). ジオコーディングサービスの生の応答(XML文字列)を返すために, 特別なフィールド &quot;raw&quot; も使用できます. option1, option2などは, key=value形式である必要があり, OGRGeocodeCreateSession() または OGRGeocodeReverse() で理解されるオプションです.</p>
+<p><code class="docutils literal notranslate"><span class="pre">ogr_geocode_reverse(geometry,</span> <span class="pre">field_to_return</span> <span class="pre">[,</span> <span class="pre">option1</span> <span class="pre">[,</span> <span class="pre">option2,</span> <span class="pre">...]])</span></code> は, geometryが(Spatialite)ポイントジオメトリである場合の代替構文としても受け入れられます.</p>
+<p>この関数は内部的に <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRGeocodeReverse()</span></code> API を使用しています. 詳細については, それを参照してください.</p>
 </section>
 <section id="spatialite-spatial-index">
-<h3>Spatialite spatial index<a class="headerlink" href="#spatialite-spatial-index" title="Link to this heading"></a></h3>
-<p>Spatialite spatial index mechanism can be triggered by making sure a spatial index
-virtual table is mentioned in the SQL (of the form idx_layername_geometrycolumn), or
-by using the more recent SpatialIndex from the VirtualSpatialIndex extension. In which
-case, a in-memory RTree will be built to be used to speed up the spatial queries.</p>
-<p>For example, a spatial intersection between 2 layers, by using a spatial index on one
-of the layers to limit the number of actual geometry intersection computations :</p>
+<h3>Spatialite空間インデックス<a class="headerlink" href="#spatialite-spatial-index" title="Link to this heading"></a></h3>
+<p>Spatialite空間インデックスメカニズムは, SQLに空間インデックス仮想テーブルが言及されていることを確認するか, より新しいVirtualSpatialIndex拡張機能を使用することでトリガーされます. この場合, 空間クエリの高速化に使用するために, メモリ内のRTreeが構築されます.</p>
+<p>例えば, 1つのレイヤーに空間インデックスを使用して実際のジオメトリ交差計算の数を制限することで, 2つのレイヤー間の空間交差を行う:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">city_name</span><span class="p">,</span><span class="w"> </span><span class="n">region_name</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">cities</span><span class="p">,</span><span class="w"> </span><span class="n">regions</span><span class="w"> </span><span class="k">WHERE</span>
 <span class="w">    </span><span class="n">ST_Area</span><span class="p">(</span><span class="n">ST_Intersection</span><span class="p">(</span><span class="n">cities</span><span class="p">.</span><span class="n">geometry</span><span class="p">,</span><span class="w"> </span><span class="n">regions</span><span class="p">.</span><span class="n">geometry</span><span class="p">))</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">AND</span>
 <span class="w">    </span><span class="n">regions</span><span class="p">.</span><span class="n">rowid</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span>
@@ -440,7 +403,7 @@ of the layers to limit the number of actual geometry intersection computations :
 <span class="w">            </span><span class="n">ymax</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">MbrMinY</span><span class="p">(</span><span class="n">cities</span><span class="p">.</span><span class="n">geometry</span><span class="p">)</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">ymin</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">MbrMaxY</span><span class="p">(</span><span class="n">cities</span><span class="p">.</span><span class="n">geometry</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>or more elegantly :</p>
+<p>またはよりエレガントな方法:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">city_name</span><span class="p">,</span><span class="w"> </span><span class="n">region_name</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">cities</span><span class="p">,</span><span class="w"> </span><span class="n">regions</span><span class="w"> </span><span class="k">WHERE</span>
 <span class="w">    </span><span class="n">ST_Area</span><span class="p">(</span><span class="n">ST_Intersection</span><span class="p">(</span><span class="n">cities</span><span class="p">.</span><span class="n">geometry</span><span class="p">,</span><span class="w"> </span><span class="n">regions</span><span class="p">.</span><span class="n">geometry</span><span class="p">))</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">AND</span>
 <span class="w">    </span><span class="n">regions</span><span class="p">.</span><span class="n">rowid</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span>

@@ -90,20 +90,20 @@
 <li class="toctree-l4"><a class="reference internal" href="#vsiaz-streaming-microsoft-azure-blob-files-streaming">/vsiaz_streaming/ (Microsoft Azure Blob ファイル: ストリーミング)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#vsiadls-microsoft-azure-data-lake-storage-gen2">/vsiadls/ (Microsoft Azure Data Lake Storage Gen2)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#vsioss-alibaba-cloud-oss-files">/vsioss/ (Alibaba Cloud OSS ファイル)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#vsioss-streaming-alibaba-cloud-oss-files-streaming">/vsioss_streaming/ (Alibaba Cloud OSS files: streaming)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vsioss-streaming-alibaba-cloud-oss-files-streaming">/vsioss_streaming/ (Alibaba Cloud OSS ファイル: ストリーミング)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#vsiswift-openstack-swift-object-storage">/vsiswift/ (OpenStack Swift Object Storage)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#vsiswift-streaming-openstack-swift-object-storage-streaming">/vsiswift_streaming/ (OpenStack Swift Object Storage: streaming)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#vsihdfs-hadoop-file-system">/vsihdfs/ (Hadoop File System)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#vsiwebhdfs-web-hadoop-file-system-rest-api">/vsiwebhdfs/ (Web Hadoop File System REST API)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vsiswift-streaming-openstack-swift-object-storage-streaming">/vsiswift_streaming/ (OpenStack Swift Object Storage: ストリーミング)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vsihdfs-hadoop-file-system">/vsihdfs/ (Hadoop ファイルシステム)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vsiwebhdfs-web-hadoop-file-system-rest-api">/vsiwebhdfs/ (Web Hadoop ファイルシステム REST API)</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#vsistdin-standard-input-streaming">/vsistdin/ (standard input streaming)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#vsistdout-standard-output-streaming">/vsistdout/ (standard output streaming)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#vsimem-in-memory-files">/vsimem/ (in-memory files)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#vsisubfile-portions-of-files">/vsisubfile/ (portions of files)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#vsisparse-sparse-files">/vsisparse/ (sparse files)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#vsicached-file-caching">/vsicached/ (File caching)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#vsicrypt-encrypted-files">/vsicrypt/ (encrypted files)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vsistdin-standard-input-streaming">/vsistdin/ (標準入力ストリーミング)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vsistdout-standard-output-streaming">/vsistdout/ (標準出力ストリーミング)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vsimem-in-memory-files">/vsimem/ (インメモリファイル)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vsisubfile-portions-of-files">/vsisubfile/ (ファイルの一部)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vsisparse-sparse-files">/vsisparse/ (スパースファイル)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vsicached-file-caching">/vsicached/ (ファイルキャッシュ)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vsicrypt-encrypted-files">/vsicrypt/ (暗号化ファイル)</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="ogr_feature_style.html">Feature Style Specification</a></li>
@@ -729,12 +729,11 @@ This option may be set as a path-specific option with <a class="reference intern
 </section>
 <section id="vsioss-alibaba-cloud-oss-files">
 <span id="vsioss"></span><h3>/vsioss/ (Alibaba Cloud OSS ファイル)<a class="headerlink" href="#vsioss-alibaba-cloud-oss-files" title="Link to this heading"></a></h3>
-<p>/vsioss/ is a file system handler that allows on-the-fly random reading of (primarily non-public) files available in Alibaba Cloud Object Storage Service (OSS) buckets, without prior download of the entire file. It requires GDAL to be built against libcurl.</p>
-<p>It also allows sequential writing of files. No seeks or read operations are then allowed, so in particular direct writing of GeoTIFF files with the GTiff driver is not supported, unless, if, starting with GDAL 3.2, the <a class="reference internal" href="configoptions.html#config-CPL_VSIL_USE_TEMP_FILE_FOR_RANDOM_WRITE"><code class="docutils literal notranslate"><span class="pre">CPL_VSIL_USE_TEMP_FILE_FOR_RANDOM_WRITE</span></code></a> configuration option is set to <code class="docutils literal notranslate"><span class="pre">YES</span></code>, in which case random-write access is possible (involves the creation of a temporary local file, whose location is controlled by the <a class="reference internal" href="configoptions.html#config-CPL_TMPDIR"><code class="docutils literal notranslate"><span class="pre">CPL_TMPDIR</span></code></a> configuration option).
-Deletion of files with <a class="reference internal" href="../api/cpl.html#_CPPv49VSIUnlinkPKc" title="VSIUnlink"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIUnlink()</span></code></a> is also supported. Creation of directories with <a class="reference internal" href="../api/cpl.html#_CPPv48VSIMkdirPKcl" title="VSIMkdir"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIMkdir()</span></code></a> and deletion of (empty) directories with <a class="reference internal" href="../api/cpl.html#_CPPv48VSIRmdirPKc" title="VSIRmdir"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIRmdir()</span></code></a> are also possible.</p>
-<p>Recognized filenames are of the form <code class="file docutils literal notranslate"><span class="pre">/vsioss/bucket/key</span></code> where <code class="docutils literal notranslate"><span class="pre">bucket</span></code> is the name of the OSS bucket and <code class="docutils literal notranslate"><span class="pre">key</span></code> is the OSS object &quot;key&quot;, i.e. a filename potentially containing subdirectories.</p>
+<p>/vsioss/ は,Alibaba Cloud Object Storage Service (OSS) バケットで利用可能な(主に非公開の)ファイルのランダム読み取りを可能にするファイルシステムハンドラです.これには,libcurlを利用してGDALがビルドされている必要があります.</p>
+<p>ファイルの順次書き込みも可能です.その場合,シークや読み取り操作は許可されません.したがって,GTiffドライバを使用してGeoTIFFファイルに直接書き込むことはサポートされません.ただし,GDAL 3.2以降, <a class="reference internal" href="configoptions.html#config-CPL_VSIL_USE_TEMP_FILE_FOR_RANDOM_WRITE"><code class="docutils literal notranslate"><span class="pre">CPL_VSIL_USE_TEMP_FILE_FOR_RANDOM_WRITE</span></code></a> 設定オプションを <code class="docutils literal notranslate"><span class="pre">YES</span></code> に設定すると,ランダム書き込みアクセスが可能になります( <a class="reference internal" href="configoptions.html#config-CPL_TMPDIR"><code class="docutils literal notranslate"><span class="pre">CPL_TMPDIR</span></code></a> 設定オプションで制御される一時ローカルファイルの作成が含まれます).ファイルの削除は <a class="reference internal" href="../api/cpl.html#_CPPv49VSIUnlinkPKc" title="VSIUnlink"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIUnlink()</span></code></a> でもサポートされます.ディレクトリの作成は <a class="reference internal" href="../api/cpl.html#_CPPv48VSIMkdirPKcl" title="VSIMkdir"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIMkdir()</span></code></a> で,(空の)ディレクトリの削除は <a class="reference internal" href="../api/cpl.html#_CPPv48VSIRmdirPKc" title="VSIRmdir"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIRmdir()</span></code></a> でも可能です.</p>
+<p>認識されるファイル名は, <code class="file docutils literal notranslate"><span class="pre">/vsioss/bucket/key</span></code> の形式です.ここで, <code class="docutils literal notranslate"><span class="pre">bucket</span></code> はOSSバケットの名前であり,``key`` はOSSオブジェクトの&quot;key&quot;であり,サブディレクトリを含む可能性のあるファイル名です.</p>
 <p><a class="reference internal" href="#vsicurl"><span class="std std-ref">/vsicurl/</span></a> の一般的な情報が適用されます.</p>
-<p>The following configuration options are specific to the /vsioss/ handler:</p>
+<p>/vsioss/ ハンドラに固有の以下の設定オプションがあります:</p>
 <ul class="simple">
 <li><p id="config-OSS_SECRET_ACCESS_KEY"><strong>OSS_SECRET_ACCESS_KEY=value: </strong> (required) Secret access key for authentication.</p>
 </li>
@@ -746,28 +745,27 @@ Deletion of files with <a class="reference internal" href="../api/cpl.html#_CPPv
 </li>
 </ul>
 <p>The <a class="reference internal" href="#config-OSS_SECRET_ACCESS_KEY"><code class="docutils literal notranslate"><span class="pre">OSS_SECRET_ACCESS_KEY</span></code></a> and <a class="reference internal" href="#config-OSS_ACCESS_KEY_ID"><code class="docutils literal notranslate"><span class="pre">OSS_ACCESS_KEY_ID</span></code></a> configuration options must be set. The <a class="reference internal" href="#config-OSS_ENDPOINT"><code class="docutils literal notranslate"><span class="pre">OSS_ENDPOINT</span></code></a> configuration option should normally be set to the appropriate value, which reflects the region attached to the bucket. If the bucket is stored in another region than oss-us-east-1, the code logic will redirect to the appropriate endpoint.</p>
-<p>On writing, the file is uploaded using the OSS multipart upload API. The size of chunks is set to 50 MB by default, allowing creating files up to 500 GB (10000 parts of 50 MB each). If larger files are needed, then increase the value of the <a class="reference internal" href="#config-VSIOSS_CHUNK_SIZE"><code class="docutils literal notranslate"><span class="pre">VSIOSS_CHUNK_SIZE</span></code></a> config option to a larger value (expressed in MB). In case the process is killed and the file not properly closed, the multipart upload will remain open, causing Alibaba to charge you for the parts storage. You'll have to abort yourself with other means. For files smaller than the chunk size, a simple PUT request is used instead of the multipart upload API.</p>
+<p>書き込み時には,OSSマルチパートアップロードAPIを使用してファイルがアップロードされます.チャンクのサイズはデフォルトで50 MBに設定されており,50 MBずつの10000パーツで500 GBまでのファイルを作成できます.より大きなファイルが必要な場合は, <a class="reference internal" href="#config-VSIOSS_CHUNK_SIZE"><code class="docutils literal notranslate"><span class="pre">VSIOSS_CHUNK_SIZE</span></code></a> 設定オプションの値を大きな値に増やします(MBで表されます).プロセスが終了し,ファイルが正しく閉じられない場合,マルチパートアップロードは開いたままになり,Alibabaがパーツストレージの料金を請求します.他の手段で自分で中止する必要があります.チャンクサイズより小さいファイルの場合,マルチパートアップロードAPIの代わりに単純なPUTリクエストが使用されます.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 2.3.</span></p>
 </div>
 </section>
 <section id="vsioss-streaming-alibaba-cloud-oss-files-streaming">
-<span id="vsioss-streaming"></span><h3>/vsioss_streaming/ (Alibaba Cloud OSS files: streaming)<a class="headerlink" href="#vsioss-streaming-alibaba-cloud-oss-files-streaming" title="Link to this heading"></a></h3>
-<p>/vsioss_streaming/ is a file system handler that allows on-the-fly sequential reading of files (primarily non-public) files available in Alibaba Cloud Object Storage Service (OSS) buckets, without prior download of the entire file. It requires GDAL to be built against libcurl.</p>
-<p>Recognized filenames are of the form <code class="file docutils literal notranslate"><span class="pre">/vsioss_streaming/bucket/key</span></code> where <code class="docutils literal notranslate"><span class="pre">bucket</span></code> is the name of the bucket and <code class="docutils literal notranslate"><span class="pre">key</span></code> is the object &quot;key&quot;, i.e. a filename potentially containing subdirectories.</p>
-<p>Authentication options, and read-only features, are identical to <a class="reference internal" href="#vsioss"><span class="std std-ref">/vsioss/</span></a></p>
+<span id="vsioss-streaming"></span><h3>/vsioss_streaming/ (Alibaba Cloud OSS ファイル: ストリーミング)<a class="headerlink" href="#vsioss-streaming-alibaba-cloud-oss-files-streaming" title="Link to this heading"></a></h3>
+<p>/vsioss_streaming/ は,Alibaba Cloud Object Storage Service (OSS) バケットで利用可能な(主に非公開の)ファイルのランダム読み取りを可能にするファイルシステムハンドラです.これには,libcurlを利用してGDALがビルドされている必要があります.</p>
+<p>認識されるファイル名は, <code class="file docutils literal notranslate"><span class="pre">/vsioss_streaming/bucket/key</span></code> の形式です.ここで, <code class="docutils literal notranslate"><span class="pre">bucket</span></code> はバケットの名前であり,``key`` はオブジェクトの&quot;key&quot;であり,サブディレクトリを含む可能性のあるファイル名です.</p>
+<p>認証オプションおよび読み取り専用機能は, <a class="reference internal" href="#vsioss"><span class="std std-ref">/vsioss/</span></a> と同じです</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 2.3.</span></p>
 </div>
 </section>
 <section id="vsiswift-openstack-swift-object-storage">
 <span id="vsiswift"></span><h3>/vsiswift/ (OpenStack Swift Object Storage)<a class="headerlink" href="#vsiswift-openstack-swift-object-storage" title="Link to this heading"></a></h3>
-<p>/vsiswift/ is a file system handler that allows on-the-fly random reading of (primarily non-public) files available in OpenStack Swift Object Storage (swift) buckets, without prior download of the entire file. It requires GDAL to be built against libcurl.</p>
-<p>It also allows sequential writing of files. No seeks or read operations are then allowed, so in particular direct writing of GeoTIFF files with the GTiff driver is not supported, unless, if, starting with GDAL 3.2, the <a class="reference internal" href="configoptions.html#config-CPL_VSIL_USE_TEMP_FILE_FOR_RANDOM_WRITE"><code class="docutils literal notranslate"><span class="pre">CPL_VSIL_USE_TEMP_FILE_FOR_RANDOM_WRITE</span></code></a> configuration option is set to <code class="docutils literal notranslate"><span class="pre">YES</span></code>, in which case random-write access is possible (involves the creation of a temporary local file, whose location is controlled by the <a class="reference internal" href="configoptions.html#config-CPL_TMPDIR"><code class="docutils literal notranslate"><span class="pre">CPL_TMPDIR</span></code></a> configuration option).
-Deletion of files with <a class="reference internal" href="../api/cpl.html#_CPPv49VSIUnlinkPKc" title="VSIUnlink"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIUnlink()</span></code></a> is also supported. Creation of directories with <a class="reference internal" href="../api/cpl.html#_CPPv48VSIMkdirPKcl" title="VSIMkdir"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIMkdir()</span></code></a> and deletion of (empty) directories with <a class="reference internal" href="../api/cpl.html#_CPPv48VSIRmdirPKc" title="VSIRmdir"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIRmdir()</span></code></a> are also possible.</p>
-<p>Recognized filenames are of the form <code class="file docutils literal notranslate"><span class="pre">/vsiswift/bucket/key</span></code> where <code class="docutils literal notranslate"><span class="pre">bucket</span></code> is the name of the swift bucket and <code class="docutils literal notranslate"><span class="pre">key</span></code> is the swift object &quot;key&quot;, i.e. a filename potentially containing subdirectories.</p>
+<p>/vsiswift/ は,OpenStack Swift Object Storage (swift) バケットで利用可能な(主に非公開の)ファイルのランダム読み取りを可能にするファイルシステムハンドラです.これには,libcurlを利用してGDALがビルドされている必要があります.</p>
+<p>ファイルの順次書き込みも可能です.その場合,シークや読み取り操作は許可されません.したがって,GTiffドライバを使用してGeoTIFFファイルに直接書き込むことはサポートされません.ただし,GDAL 3.2以降, <a class="reference internal" href="configoptions.html#config-CPL_VSIL_USE_TEMP_FILE_FOR_RANDOM_WRITE"><code class="docutils literal notranslate"><span class="pre">CPL_VSIL_USE_TEMP_FILE_FOR_RANDOM_WRITE</span></code></a> 設定オプションを <code class="docutils literal notranslate"><span class="pre">YES</span></code> に設定すると,ランダム書き込みアクセスが可能になります( <a class="reference internal" href="configoptions.html#config-CPL_TMPDIR"><code class="docutils literal notranslate"><span class="pre">CPL_TMPDIR</span></code></a> 設定オプションで制御される一時ローカルファイルの作成が含まれます).ファイルの削除は <a class="reference internal" href="../api/cpl.html#_CPPv49VSIUnlinkPKc" title="VSIUnlink"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIUnlink()</span></code></a> でもサポートされます.ディレクトリの作成は <a class="reference internal" href="../api/cpl.html#_CPPv48VSIMkdirPKcl" title="VSIMkdir"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIMkdir()</span></code></a> で,(空の)ディレクトリの削除は <a class="reference internal" href="../api/cpl.html#_CPPv48VSIRmdirPKc" title="VSIRmdir"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIRmdir()</span></code></a> でも可能です.</p>
+<p>認識されるファイル名は, <code class="file docutils literal notranslate"><span class="pre">/vsiswift/bucket/key</span></code> の形式です.ここで, <code class="docutils literal notranslate"><span class="pre">bucket</span></code> はswiftバケットの名前であり,``key`` はswiftオブジェクトの&quot;key&quot;であり,サブディレクトリを含む可能性のあるファイル名です.</p>
 <p><a class="reference internal" href="#vsicurl"><span class="std std-ref">/vsicurl/</span></a> の一般的な情報が適用されます.</p>
-<p>The following configuration options are specific to the /vsioss/ handler:</p>
+<p>/vsioss/ ハンドラに固有の以下の設定オプションがあります:</p>
 <ul class="simple">
 <li><p id="config-SWIFT_STORAGE_URL"><strong>SWIFT_STORAGE_URL=value: </strong>Storage URL.</p>
 </li>
@@ -780,11 +778,11 @@ Deletion of files with <a class="reference internal" href="../api/cpl.html#_CPPv
 <li><p id="config-SWIFT_KEY"><strong>SWIFT_KEY=value: </strong>Key for Auth V1 authentication.</p>
 </li>
 </ul>
-<p>Three authentication methods are possible, and are attempted in the following order:</p>
+<p>3つの認証方法が可能であり,以下の順序で試行されます:</p>
 <ol class="arabic simple">
 <li><p>The <a class="reference internal" href="#config-SWIFT_STORAGE_URL"><code class="docutils literal notranslate"><span class="pre">SWIFT_STORAGE_URL</span></code></a> and <a class="reference internal" href="#config-SWIFT_AUTH_TOKEN"><code class="docutils literal notranslate"><span class="pre">SWIFT_AUTH_TOKEN</span></code></a> configuration options are set respectively to the storage URL (e.g <a class="reference external" href="http://127.0.0.1:12345/v1/AUTH_something">http://127.0.0.1:12345/v1/AUTH_something</a>) and the value of the x-auth-token authorization token.</p></li>
-<li><p>The <a class="reference internal" href="#config-SWIFT_AUTH_V1_URL"><code class="docutils literal notranslate"><span class="pre">SWIFT_AUTH_V1_URL</span></code></a>, <a class="reference internal" href="#config-SWIFT_USER"><code class="docutils literal notranslate"><span class="pre">SWIFT_USER</span></code></a> and <a class="reference internal" href="#config-SWIFT_KEY"><code class="docutils literal notranslate"><span class="pre">SWIFT_KEY</span></code></a> configuration options are set respectively to the endpoint of the Auth V1 authentication (e.g <a class="reference external" href="http://127.0.0.1:12345/auth/v1.0">http://127.0.0.1:12345/auth/v1.0</a>), the user name and the key/password. This authentication endpoint will be used to retrieve the storage URL and authorization token mentioned in the first authentication method.</p></li>
-<li><p>Authentication with Keystone v3 is using the same options as python-swiftclient, see <a class="reference external" href="https://docs.openstack.org/python-swiftclient/latest/cli/index.html#authentication">https://docs.openstack.org/python-swiftclient/latest/cli/index.html#authentication</a> for more details. GDAL (&gt;= 3.1) supports the following options:</p>
+<li><p><a class="reference internal" href="#config-SWIFT_AUTH_V1_URL"><code class="docutils literal notranslate"><span class="pre">SWIFT_AUTH_V1_URL</span></code></a>, <a class="reference internal" href="#config-SWIFT_USER"><code class="docutils literal notranslate"><span class="pre">SWIFT_USER</span></code></a> および <a class="reference internal" href="#config-SWIFT_KEY"><code class="docutils literal notranslate"><span class="pre">SWIFT_KEY</span></code></a> 設定オプションは,それぞれ,Auth V1認証のエンドポイント(e.g <a class="reference external" href="http://127.0.0.1:12345/auth/v1.0">http://127.0.0.1:12345/auth/v1.0</a>),ユーザー名およびキー/パスワードに設定されます.この認証エンドポイントは,最初の認証方法で言及されたストレージURLと認証トークンを取得するために使用されます.</p></li>
+<li><p>Keystone v3 での認証は,python-swiftclientと同じオプションを使用します.詳細については,https://docs.openstack.org/python-swiftclient/latest/cli/index.html#authentication を参照してください.GDAL (&gt;= 3.1) は,以下のオプションをサポートしています:</p>
 <ul class="simple">
 <li><p><cite>OS_IDENTITY_API_VERSION=3</cite></p></li>
 <li><p><cite>OS_AUTH_URL</cite></p></li>
@@ -796,7 +794,7 @@ Deletion of files with <a class="reference internal" href="../api/cpl.html#_CPPv
 <li><p><cite>OS_REGION_NAME</cite></p></li>
 </ul>
 </li>
-<li><p>Application Credential Authentication via Keystone v3, GDAL (&gt;= 3.3.1) supports application-credential authentication with the following options:</p>
+<li><p>Keystone v3 を介したアプリケーション資格情報認証, GDAL (&gt;= 3.3.1) は,以下のオプションを使用してアプリケーション資格情報認証をサポートしています:</p>
 <ul class="simple">
 <li><p><cite>OS_IDENTITY_API_VERSION=3</cite></p></li>
 <li><p><cite>OS_AUTH_TYPE=v3applicationcredential</cite></p></li>
@@ -807,45 +805,39 @@ Deletion of files with <a class="reference internal" href="../api/cpl.html#_CPPv
 </ul>
 </li>
 </ol>
-<p>This file system handler also allows sequential writing of files (no seeks or read operations are then allowed).</p>
-<p>In some versions of OpenStack Swift, the access to large (segmented) files fails unless they are explicitly marked as static large objects, instead of being dynamic large objects which is the default. Using the python-swiftclient this can be achieved when uploading the file by passing the <code class="docutils literal notranslate"><span class="pre">--use-slo</span></code> flag (see <a class="reference external" href="https://docs.openstack.org/python-swiftclient/latest/cli/index.html#swift-upload">https://docs.openstack.org/python-swiftclient/latest/cli/index.html#swift-upload</a> for all options). For more information about large objects see <a class="reference external" href="https://docs.openstack.org/swift/latest/api/large_objects.html">https://docs.openstack.org/swift/latest/api/large_objects.html</a>.</p>
+<p>このファイルシステムハンドラは,ファイルの順次書き込みも可能です(その場合,シークや読み取り操作は許可されません).</p>
+<p>一部のOpenStack Swiftのバージョンでは,大きな(セグメント化された)ファイルへのアクセスが,明示的に静的大きなオブジェクトとしてマークされていない場合に失敗します.これは,デフォルトである動的大きなオブジェクトではなく,静的大きなオブジェクトとしてマークされている場合に発生します.python-swiftclientを使用してファイルをアップロードする際に, <code class="docutils literal notranslate"><span class="pre">--use-slo</span></code> フラグを渡すことでこれを達成できます(すべてのオプションについては,https://docs.openstack.org/python-swiftclient/latest/cli/index.html#swift-upload を参照してください).大きなオブジェクトについての詳細は,https://docs.openstack.org/swift/latest/api/large_objects.html を参照してください.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 2.3.</span></p>
 </div>
 </section>
 <section id="vsiswift-streaming-openstack-swift-object-storage-streaming">
-<span id="vsiswift-streaming"></span><h3>/vsiswift_streaming/ (OpenStack Swift Object Storage: streaming)<a class="headerlink" href="#vsiswift-streaming-openstack-swift-object-storage-streaming" title="Link to this heading"></a></h3>
-<p>/vsiswift_streaming/ is a file system handler that allows on-the-fly sequential reading of files (primarily non-public) files available in OpenStack Swift Object Storage (swift) buckets, without prior download of the entire file. It requires GDAL to be built against libcurl.</p>
-<p>Recognized filenames are of the form <code class="file docutils literal notranslate"><span class="pre">/vsiswift_streaming/bucket/key</span></code> where <code class="docutils literal notranslate"><span class="pre">bucket</span></code> is the name of the bucket and <code class="docutils literal notranslate"><span class="pre">key</span></code> is the object &quot;key&quot;, i.e. a filename potentially containing subdirectories.</p>
-<p>Authentication options, and read-only features, are identical to <a class="reference internal" href="#vsiswift"><span class="std std-ref">/vsiswift/</span></a></p>
+<span id="vsiswift-streaming"></span><h3>/vsiswift_streaming/ (OpenStack Swift Object Storage: ストリーミング)<a class="headerlink" href="#vsiswift-streaming-openstack-swift-object-storage-streaming" title="Link to this heading"></a></h3>
+<p>/vsiswift_streaming/ は,OpenStack Swift Object Storage (swift) バケットで利用可能な(主に非公開の)ファイルのランダム読み取りを可能にするファイルシステムハンドラです.これには,libcurlを利用してGDALがビルドされている必要があります.</p>
+<p>認識されるファイル名は, <code class="file docutils literal notranslate"><span class="pre">/vsiswift_streaming/bucket/key</span></code> の形式です.ここで, <code class="docutils literal notranslate"><span class="pre">bucket</span></code> はバケットの名前であり,``key`` はオブジェクトの&quot;key&quot;であり,サブディレクトリを含む可能性のあるファイル名です.</p>
+<p>認証オプションおよび読み取り専用機能は, <a class="reference internal" href="#vsiswift"><span class="std std-ref">/vsiswift/</span></a> と同じです</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 2.3.</span></p>
 </div>
 </section>
 <section id="vsihdfs-hadoop-file-system">
-<span id="vsihdfs"></span><h3>/vsihdfs/ (Hadoop File System)<a class="headerlink" href="#vsihdfs-hadoop-file-system" title="Link to this heading"></a></h3>
-<p>/vsihdfs/ is a file system handler that provides read access to HDFS.
-This handler requires GDAL to have been built with Java support
-(CMake <a class="reference external" href="https://cmake.org/cmake/help/latest/module/FindJNI.html">FindJNI</a>)
-and <a class="reference internal" href="../development/building_from_source.html#building-from-source-hdfs"><span class="std std-ref">HDFS</span></a> support.
-Support for this handler is currently only available on Unix-like systems.</p>
-<p>Note: support for the HTTP REST API (webHdfs) is also available with <a class="reference internal" href="#vsiwebhdfs"><span class="std std-ref">/vsiwebhdfs/ (Web Hadoop File System REST API)</span></a></p>
-<p>The LD_LIBRARY_PATH and CLASSPATH environment variables must be typically
-set up as following.</p>
+<span id="vsihdfs"></span><h3>/vsihdfs/ (Hadoop ファイルシステム)<a class="headerlink" href="#vsihdfs-hadoop-file-system" title="Link to this heading"></a></h3>
+<p>/vsihdfs/ は,HDFSへの読み取りアクセスを提供するファイルシステムハンドラです.このハンドラは,Javaサポートを持つGDALでビルドされていることを必要とします(CMake <a class="reference external" href="https://cmake.org/cmake/help/latest/module/FindJNI.html">FindJNI</a>) および <a class="reference internal" href="../development/building_from_source.html#building-from-source-hdfs"><span class="std std-ref">HDFS</span></a> サポート.このハンドラのサポートは現在,Unix系システムのみで利用可能です.</p>
+<p>注: HTTP REST API (webHdfs) のサポートも <a class="reference internal" href="#vsiwebhdfs"><span class="std std-ref">/vsiwebhdfs/ (Web Hadoop ファイルシステム REST API)</span></a> で利用可能です</p>
+<p>通常,LD_LIBRARY_PATH および CLASSPATH 環境変数は以下のように設定する必要があります.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>HADOOP_HOME=$HOME/hadoop-3.3.5
 LD_LIBRARY_PATH=$HADOOP_HOME/lib/native:$LD_LIBRARY_PATH
 CLASSPATH=$HADOOP_HOME/etc/hadoop:$HADOOP_HOME/share/hadoop/common/*:$HADOOP_HOME/share/hadoop/common/lib/*:$HADOOP_HOME/share/hadoop/hdfs/*
 </pre></div>
 </div>
-<p>Failure to properly define the CLASSPATH will result in hard crashes in the
-native libhdfs.</p>
-<p>Relevant Hadoop documentation links:</p>
+<p>CLASSPATH を適切に定義しないと,ネイティブ libhdfs でハードクラッシュが発生します.</p>
+<p>関連するHadoopドキュメントリンク:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/LibHdfs.html">C API libhdfs</a></p></li>
 <li><p><a class="reference external" href="https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html">HDFS Users Guide</a></p></li>
 <li><p><a class="reference external" href="https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/SingleCluster.html">Hadoop: Setting up a Single Node Cluster</a></p></li>
 </ul>
-<p>Recognized filenames are of the form <code class="file docutils literal notranslate"><span class="pre">/vsihdfs/hdfsUri</span></code> where <code class="docutils literal notranslate"><span class="pre">hdfsUri</span></code> is a valid HDFS URI.</p>
+<p>認識されるファイル名は, <code class="file docutils literal notranslate"><span class="pre">/vsihdfs/hdfsUri</span></code> の形式です.ここで, <code class="docutils literal notranslate"><span class="pre">hdfsUri</span></code> は有効な HDFS URI です.</p>
 <p>例:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">vsihdfs</span><span class="o">/</span><span class="n">file</span><span class="p">:</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">user</span><span class="o">//</span><span class="n">my</span><span class="o">.</span><span class="n">tif</span>  <span class="p">(</span><span class="n">a</span> <span class="n">local</span> <span class="n">file</span> <span class="n">accessed</span> <span class="n">through</span> <span class="n">HDFS</span><span class="p">)</span>
 <span class="o">/</span><span class="n">vsihdfs</span><span class="o">/</span><span class="n">hdfs</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">9000</span><span class="o">/</span><span class="n">my</span><span class="o">.</span><span class="n">tif</span>  <span class="p">(</span><span class="n">a</span> <span class="n">file</span> <span class="n">stored</span> <span class="ow">in</span> <span class="n">HDFS</span><span class="p">)</span>
@@ -856,17 +848,16 @@ native libhdfs.</p>
 </div>
 </section>
 <section id="vsiwebhdfs-web-hadoop-file-system-rest-api">
-<span id="vsiwebhdfs"></span><h3>/vsiwebhdfs/ (Web Hadoop File System REST API)<a class="headerlink" href="#vsiwebhdfs-web-hadoop-file-system-rest-api" title="Link to this heading"></a></h3>
-<p>/vsiwebhdfs/ is a file system handler that provides read and write access to HDFS through its HTTP REST API.</p>
-<p>Recognized filenames are of the form <code class="file docutils literal notranslate"><span class="pre">/vsiwebhdfs/http://hostname:port/webhdfs/v1/path/to/filename</span></code>.</p>
+<span id="vsiwebhdfs"></span><h3>/vsiwebhdfs/ (Web Hadoop ファイルシステム REST API)<a class="headerlink" href="#vsiwebhdfs-web-hadoop-file-system-rest-api" title="Link to this heading"></a></h3>
+<p>/vsiwebhdfs/ は,HDFSへの読み取りおよび書き込みアクセスを提供するファイルシステムハンドラです.これは,HDFSのHTTP REST APIを介して行われます.</p>
+<p>認識されるファイル名は, <code class="file docutils literal notranslate"><span class="pre">/vsiwebhdfs/http://hostname:port/webhdfs/v1/path/to/filename</span></code> の形式です.</p>
 <p>例:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">vsiwebhdfs</span><span class="o">/</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">50070</span><span class="o">/</span><span class="n">webhdfs</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">mydir</span><span class="o">/</span><span class="n">byte</span><span class="o">.</span><span class="n">tif</span>
 </pre></div>
 </div>
-<p>It also allows sequential writing of files. No seeks or read operations are then allowed, so in particular direct writing of GeoTIFF files with the GTiff driver is not supported, unless, if, starting with GDAL 3.2, the <a class="reference internal" href="configoptions.html#config-CPL_VSIL_USE_TEMP_FILE_FOR_RANDOM_WRITE"><code class="docutils literal notranslate"><span class="pre">CPL_VSIL_USE_TEMP_FILE_FOR_RANDOM_WRITE</span></code></a> configuration option is set to <code class="docutils literal notranslate"><span class="pre">YES</span></code>, in which case random-write access is possible (involves the creation of a temporary local file, whose location is controlled by the <a class="reference internal" href="configoptions.html#config-CPL_TMPDIR"><code class="docutils literal notranslate"><span class="pre">CPL_TMPDIR</span></code></a> configuration option).
-Deletion of files with <a class="reference internal" href="../api/cpl.html#_CPPv49VSIUnlinkPKc" title="VSIUnlink"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIUnlink()</span></code></a> is also supported. Creation of directories with <a class="reference internal" href="../api/cpl.html#_CPPv48VSIMkdirPKcl" title="VSIMkdir"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIMkdir()</span></code></a> and deletion of (empty) directories with <a class="reference internal" href="../api/cpl.html#_CPPv48VSIRmdirPKc" title="VSIRmdir"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIRmdir()</span></code></a> are also possible.</p>
+<p>ファイルの順次書き込みも可能です.その場合,シークや読み取り操作は許可されません.したがって,GTiffドライバを使用してGeoTIFFファイルに直接書き込むことはサポートされません.ただし,GDAL 3.2以降, <a class="reference internal" href="configoptions.html#config-CPL_VSIL_USE_TEMP_FILE_FOR_RANDOM_WRITE"><code class="docutils literal notranslate"><span class="pre">CPL_VSIL_USE_TEMP_FILE_FOR_RANDOM_WRITE</span></code></a> 設定オプションを <code class="docutils literal notranslate"><span class="pre">YES</span></code> に設定すると,ランダム書き込みアクセスが可能になります( <a class="reference internal" href="configoptions.html#config-CPL_TMPDIR"><code class="docutils literal notranslate"><span class="pre">CPL_TMPDIR</span></code></a> 設定オプションで制御される一時ローカルファイルの作成が含まれます).ファイルの削除は <a class="reference internal" href="../api/cpl.html#_CPPv49VSIUnlinkPKc" title="VSIUnlink"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIUnlink()</span></code></a> でもサポートされます.ディレクトリの作成は <a class="reference internal" href="../api/cpl.html#_CPPv48VSIMkdirPKcl" title="VSIMkdir"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIMkdir()</span></code></a> で,(空の)ディレクトリの削除は <a class="reference internal" href="../api/cpl.html#_CPPv48VSIRmdirPKc" title="VSIRmdir"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIRmdir()</span></code></a> でも可能です.</p>
 <p><a class="reference internal" href="#vsicurl"><span class="std std-ref">/vsicurl/</span></a> の一般的な情報が適用されます.</p>
-<p>The following configuration options are available:</p>
+<p>以下の設定オプションが利用可能です:</p>
 <ul class="simple">
 <li><p id="config-WEBHDFS_USERNAME"><strong>WEBHDFS_USERNAME=value: </strong>User name (when security is off).</p>
 </li>
@@ -879,65 +870,59 @@ Deletion of files with <a class="reference internal" href="../api/cpl.html#_CPPv
 <li><p id="config-WEBHDFS_PERMISSION"><strong>WEBHDFS_PERMISSION=&lt;integer&gt;: </strong>Permission mask (to provide as decimal number) when creating a file or directory</p>
 </li>
 </ul>
-<p>This file system handler also allows sequential writing of files (no seeks or read operations are then allowed)</p>
+<p>このファイルシステムハンドラは,ファイルの順次書き込みも可能です(その場合,シークや読み取り操作は許可されません)</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 2.4.</span></p>
 </div>
 </section>
 </section>
 <section id="vsistdin-standard-input-streaming">
-<span id="vsistdin"></span><h2>/vsistdin/ (standard input streaming)<a class="headerlink" href="#vsistdin-standard-input-streaming" title="Link to this heading"></a></h2>
-<p>/vsistdin/ is a file handler that allows reading from the standard input stream.</p>
-<p>The filename syntax must be only <code class="file docutils literal notranslate"><span class="pre">/vsistdin/</span></code>, (not e.g.,
-/vsistdin/path/to/f.csv , but &quot;/vsistdin?buffer_limit=value&quot; is OK.)</p>
-<p>The file operations available are of course limited to Read() and forward Seek().
-Full seek in the first MB of a file is possible, and it is cached so that closing,
-re-opening <code class="file docutils literal notranslate"><span class="pre">/vsistdin/</span></code> and reading within this first megabyte is possible
-multiple times in the same process.</p>
-<p>The size of the in-memory cache can be controlled with
-the <a class="reference internal" href="#config-CPL_VSISTDIN_BUFFER_LIMIT"><code class="docutils literal notranslate"><span class="pre">CPL_VSISTDIN_BUFFER_LIMIT</span></code></a> configuration option:</p>
+<span id="vsistdin"></span><h2>/vsistdin/ (標準入力ストリーミング)<a class="headerlink" href="#vsistdin-standard-input-streaming" title="Link to this heading"></a></h2>
+<p>/vsistdin/ は,標準入力ストリームから読み取りを可能にするファイルハンドラです.</p>
+<p>ファイル名構文は <code class="file docutils literal notranslate"><span class="pre">/vsistdin/</span></code> のみである必要があります(例えば, /vsistdin/path/to/f.csv ではなく, &quot;/vsistdin?buffer_limit=value&quot; はOKです.)</p>
+<p>利用可能なファイル操作は,もちろん Read() および forward Seek() に制限されます.ファイルの最初の1MBでの完全なシークが可能であり,これはキャッシュされているため, <code class="file docutils literal notranslate"><span class="pre">/vsistdin/</span></code> を閉じて再度開き,同じプロセス内でこの最初の1MB内での読み取りが複数回可能です.</p>
+<p>インメモリキャッシュのサイズは, <a class="reference internal" href="#config-CPL_VSISTDIN_BUFFER_LIMIT"><code class="docutils literal notranslate"><span class="pre">CPL_VSISTDIN_BUFFER_LIMIT</span></code></a> 設定オプションで制御できます:</p>
 <ul class="simple">
 <li><p id="config-CPL_VSISTDIN_BUFFER_LIMIT"><strong>CPL_VSISTDIN_BUFFER_LIMIT=value: </strong> (GDAL &gt;= 3.6)  Defaults to <code class="docutils literal notranslate"><span class="pre">1MB</span></code>. Specifies the size of the /vsistdin in bytes
 (or using a MB or GB suffix, e.g. &quot;1GB&quot;), or -1 for unlimited.</p>
 </li>
 </ul>
 <p>The &quot;/vsistdin?buffer_limit=value&quot; syntax can also be used.</p>
-<p>/vsistdin filenames can be combined with other file system. For example, to
-read a file within a potentially big ZIP file streamed to gdal_translate:</p>
+<p>/vsistdin ファイル名は他のファイルシステムと組み合わせることができます.例えば,潜在的に大きなZIPファイルをgdal_translateにストリーミングするためにファイルを読み取るには:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cat file.tif.zip | gdal_translate /vsizip/{/vsistdin?buffer_limit=-1}/path/to/some.tif out.tif
 </pre></div>
 </div>
 </section>
 <section id="vsistdout-standard-output-streaming">
-<span id="vsistdout"></span><h2>/vsistdout/ (standard output streaming)<a class="headerlink" href="#vsistdout-standard-output-streaming" title="Link to this heading"></a></h2>
-<p>/vsistdout/ is a file handler that allows writing into the standard output stream.</p>
-<p>The filename syntax must be only <code class="file docutils literal notranslate"><span class="pre">/vsistdout/</span></code>.</p>
-<p>The file operations available are of course limited to Write().</p>
-<p>A variation of this file system exists as the <code class="file docutils literal notranslate"><span class="pre">/vsistdout_redirect/</span></code> file system handler, where the output function can be defined with <a class="reference internal" href="../api/cpl.html#_CPPv423VSIStdoutSetRedirection16VSIWriteFunctionP4FILE" title="VSIStdoutSetRedirection"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIStdoutSetRedirection()</span></code></a>.</p>
+<span id="vsistdout"></span><h2>/vsistdout/ (標準出力ストリーミング)<a class="headerlink" href="#vsistdout-standard-output-streaming" title="Link to this heading"></a></h2>
+<p>/vsistdout/ は,標準出力ストリームへの書き込みを可能にするファイルハンドラです.</p>
+<p>ファイル名構文は <code class="file docutils literal notranslate"><span class="pre">/vsistdout/</span></code> のみである必要があります.</p>
+<p>利用可能なファイル操作は,もちろん Write() に制限されます.</p>
+<p>このファイルシステムの変種として,出力関数を <a class="reference internal" href="../api/cpl.html#_CPPv423VSIStdoutSetRedirection16VSIWriteFunctionP4FILE" title="VSIStdoutSetRedirection"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIStdoutSetRedirection()</span></code></a> で定義できる <code class="file docutils literal notranslate"><span class="pre">/vsistdout_redirect/</span></code> ファイルシステムハンドラが存在します.</p>
 </section>
 <section id="vsimem-in-memory-files">
-<span id="vsimem"></span><h2>/vsimem/ (in-memory files)<a class="headerlink" href="#vsimem-in-memory-files" title="Link to this heading"></a></h2>
-<p>/vsimem/ is a file handler that allows block of memory to be treated as files. All portions of the file system underneath the base path <code class="file docutils literal notranslate"><span class="pre">/vsimem/</span></code> will be handled by this driver.</p>
-<p>Normal VSI*L functions can be used freely to create and destroy memory arrays, treating them as if they were real file system objects. Some additional methods exist to efficiently create memory file system objects without duplicating original copies of the data or to &quot;steal&quot; the block of memory associated with a memory file. See <a class="reference internal" href="../api/cpl.html#_CPPv420VSIFileFromMemBufferPKcP5GByte12vsi_l_offseti" title="VSIFileFromMemBuffer"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIFileFromMemBuffer()</span></code></a> and <a class="reference internal" href="../api/cpl.html#_CPPv419VSIGetMemFileBufferPKcP12vsi_l_offseti" title="VSIGetMemFileBuffer"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIGetMemFileBuffer()</span></code></a>.</p>
-<p>Directory related functions are supported.</p>
-<p>/vsimem/ files are visible within the same process. Multiple threads can access the same underlying file in read mode, provided they used different handles, but concurrent write and read operations on the same underlying file are not supported (locking is left to the responsibility of calling code).</p>
+<span id="vsimem"></span><h2>/vsimem/ (インメモリファイル)<a class="headerlink" href="#vsimem-in-memory-files" title="Link to this heading"></a></h2>
+<p>/vsimem/ は,メモリブロックをファイルとして扱うことを可能にするファイルハンドラです.:file:<cite>/vsimem/</cite> ベースパスの下のファイルシステムのすべての部分は,このドライバによって処理されます.</p>
+<p>通常の VSI*L 関数を自由に使用して,メモリ配列を作成および破棄し,それらを実際のファイルシステムオブジェクトであるかのように扱うことができます.元のデータのコピーを複製せずに効率的にメモリファイルシステムオブジェクトを作成するためのいくつかの追加メソッドが存在し,またはメモリファイルに関連付けられたメモリブロックを&quot;盗む&quot;ためのメソッドが存在します. <a class="reference internal" href="../api/cpl.html#_CPPv420VSIFileFromMemBufferPKcP5GByte12vsi_l_offseti" title="VSIFileFromMemBuffer"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIFileFromMemBuffer()</span></code></a> および <a class="reference internal" href="../api/cpl.html#_CPPv419VSIGetMemFileBufferPKcP12vsi_l_offseti" title="VSIGetMemFileBuffer"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIGetMemFileBuffer()</span></code></a> を参照してください.</p>
+<p>ディレクトリ関連の関数がサポートされています.</p>
+<p>/vsimem/ ファイルは同じプロセス内で見えます.複数のスレッドが同じ基礎ファイルにアクセスできますが,異なるハンドルを使用している場合に限り,読み取りモードで同じ基礎ファイルに対して同時書き込みおよび読み取り操作はサポートされません(ロックは呼び出しコードの責任に任されます).</p>
 </section>
 <section id="vsisubfile-portions-of-files">
-<span id="vsisubfile"></span><h2>/vsisubfile/ (portions of files)<a class="headerlink" href="#vsisubfile-portions-of-files" title="Link to this heading"></a></h2>
-<p>The /vsisubfile/ virtual file system handler allows access to subregions of files, treating them as a file on their own to the virtual file system functions (VSIFOpenL(), etc).</p>
-<p>A special form of the filename is used to indicate a subportion of another file: <code class="file docutils literal notranslate"><span class="pre">/vsisubfile/&lt;offset&gt;[_&lt;size&gt;],&lt;filename&gt;</span></code>.</p>
-<p>The size parameter is optional. Without it the remainder of the file from the start offset as treated as part of the subfile. Otherwise only &lt;size&gt; bytes from &lt;offset&gt; are treated as part of the subfile. The &lt;filename&gt; portion may be a relative or absolute path using normal rules. The &lt;offset&gt; and &lt;size&gt; values are in bytes.</p>
+<span id="vsisubfile"></span><h2>/vsisubfile/ (ファイルの一部)<a class="headerlink" href="#vsisubfile-portions-of-files" title="Link to this heading"></a></h2>
+<p>/vsisubfile/ バーチャルファイルシステムハンドラは,ファイルのサブリージョンにアクセスし,それらを仮想ファイルシステム関数(VSIFOpenL() など)に独自のファイルとして扱うことを可能にします.</p>
+<p>他のファイルのサブポーションを示すために特別なファイル名の形式が使用されます: <code class="file docutils literal notranslate"><span class="pre">/vsisubfile/&lt;offset&gt;[_&lt;size&gt;],&lt;filename&gt;</span></code>.</p>
+<p>サイズパラメータはオプションです.サイズパラメータがない場合,開始オフセットからのファイルの残りはサブファイルの一部として扱われます.それ以外の場合, &lt;offset&gt; から &lt;size&gt; バイトのみがサブファイルの一部として扱われます. &lt;filename&gt; 部分は通常のルールを使用して相対パスまたは絶対パスにすることができます.&lt;offset&gt; および &lt;size&gt; の値はバイト単位です.</p>
 <p>例:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">vsisubfile</span><span class="o">/</span><span class="mi">1000_3000</span><span class="p">,</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">abc</span><span class="o">.</span><span class="n">ntf</span>
 <span class="o">/</span><span class="n">vsisubfile</span><span class="o">/</span><span class="mi">5000</span><span class="p">,</span><span class="o">../</span><span class="n">xyz</span><span class="o">/</span><span class="n">raw</span><span class="o">.</span><span class="n">dat</span>
 </pre></div>
 </div>
-<p>Unlike the /vsimem/ or conventional file system handlers, there is no meaningful support for filesystem operations for creating new files, traversing directories, and deleting files within the /vsisubfile/ area. Only the <a class="reference internal" href="../api/cpl.html#_CPPv48VSIStatLPKcP11VSIStatBufL" title="VSIStatL"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIStatL()</span></code></a>, <a class="reference internal" href="../api/cpl.html#_CPPv49VSIFOpenLPKcPKc" title="VSIFOpenL"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIFOpenL()</span></code></a> and operations based on the file handle returned by <a class="reference internal" href="../api/cpl.html#_CPPv49VSIFOpenLPKcPKc" title="VSIFOpenL"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIFOpenL()</span></code></a> operate properly.</p>
+<p>/vsimem/ や従来のファイルシステムハンドラとは異なり,新しいファイルの作成,ディレクトリのトラバース,および/vsisubfile/ エリア内のファイルの削除に対するファイルシステム操作の意味のあるサポートはありません. <a class="reference internal" href="../api/cpl.html#_CPPv48VSIStatLPKcP11VSIStatBufL" title="VSIStatL"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIStatL()</span></code></a>, <a class="reference internal" href="../api/cpl.html#_CPPv49VSIFOpenLPKcPKc" title="VSIFOpenL"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIFOpenL()</span></code></a> および <a class="reference internal" href="../api/cpl.html#_CPPv49VSIFOpenLPKcPKc" title="VSIFOpenL"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIFOpenL()</span></code></a> によって返されるファイルハンドルに基づく操作のみが正常に動作します.</p>
 </section>
 <section id="vsisparse-sparse-files">
-<span id="vsisparse"></span><h2>/vsisparse/ (sparse files)<a class="headerlink" href="#vsisparse-sparse-files" title="Link to this heading"></a></h2>
-<p>The /vsisparse/ virtual file handler allows a virtual file to be composed from chunks of data in other files, potentially with large spaces in the virtual file set to a constant value. This can make it possible to test some sorts of operations on what seems to be a large file with image data set to a constant value. It is also helpful when wanting to add test files to the test suite that are too large, but for which most of the data can be ignored. It could, in theory, also be used to treat several files on different file systems as one large virtual file.</p>
-<p>The file referenced by /vsisparse/ should be an XML control file formatted something like:</p>
+<span id="vsisparse"></span><h2>/vsisparse/ (スパースファイル)<a class="headerlink" href="#vsisparse-sparse-files" title="Link to this heading"></a></h2>
+<p>/vsisparse/ バーチャルファイルハンドラは,他のファイルのデータチャンクから仮想ファイルを構成することを可能にします.仮想ファイルには,大きなスペースが一定の値に設定されている可能性があります.これにより,画像データが一定の値に設定された大きなファイルのように見えるファイル上でいくつかの操作をテストすることが可能になります.また,テストスイートに追加するテストファイルが大きすぎる場合や,データの大部分を無視できる場合にも便利です.理論的には,異なるファイルシステム上の複数のファイルを1つの大きな仮想ファイルとして扱うためにも使用できます.</p>
+<p>/vsisparse/ で参照されるファイルは,次のような形式のXMLコントロールファイルである必要があります:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;VSISparseFile&gt;
     &lt;Length&gt;87629264&lt;/Length&gt;
     &lt;SubfileRegion&gt;  &lt;!-- Stuff at start of file. --&gt;
@@ -969,23 +954,18 @@ read a file within a potentially big ZIP file streamed to gdal_translate:</p>
 &lt;/VSISparseFile&gt;
 </pre></div>
 </div>
-<p>Hopefully the values and semantics are fairly obvious.</p>
+<p>値と意味がかなり明らかであることを願っています.</p>
 </section>
 <section id="vsicached-file-caching">
-<span id="vsicached"></span><h2>/vsicached/ (File caching)<a class="headerlink" href="#vsicached-file-caching" title="Link to this heading"></a></h2>
-<p>The <a class="reference internal" href="../api/cpl_cpp.html#_CPPv419VSICreateCachedFileP16VSIVirtualHandle6size_t6size_t" title="VSICreateCachedFile"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSICreateCachedFile()</span></code></a> function takes a virtual file handle and returns a new handle that caches read-operations on the input file handle. The cache is RAM based and the content of the cache is discarded when the file handle is closed. The cache is a least-recently used lists of blocks of 32KB each (default size).</p>
-<p>This is mostly useful for files accessible through slow local/operating-system-mounted filesystems.</p>
-<p>That is implicitly used by a number of the above mentioned file systems (namely the default one for standard file system operations, and the /vsicurl/ and other related network file systems) if the <code class="docutils literal notranslate"><span class="pre">VSI_CACHE</span></code> configuration option is set to <code class="docutils literal notranslate"><span class="pre">YES</span></code>.</p>
-<p>The default size of caching for each file is 25 MB (25 MB for each file that is cached), and can be controlled with the <code class="docutils literal notranslate"><span class="pre">VSI_CACHE_SIZE</span></code> configuration option (value in bytes).</p>
+<span id="vsicached"></span><h2>/vsicached/ (ファイルキャッシュ)<a class="headerlink" href="#vsicached-file-caching" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="../api/cpl_cpp.html#_CPPv419VSICreateCachedFileP16VSIVirtualHandle6size_t6size_t" title="VSICreateCachedFile"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSICreateCachedFile()</span></code></a> 関数は,仮想ファイルハンドルを取得し,入力ファイルハンドル上の読み取り操作をキャッシュする新しいハンドルを返します.キャッシュはRAMベースであり,ファイルハンドルが閉じられるとキャッシュの内容が破棄されます.キャッシュは,32KBごとのブロックの最近使用されたリストです(デフォルトサイズ).</p>
+<p>これは,遅いローカル/オペレーティングシステムマウントされたファイルシステムを介してアクセス可能なファイルに対して主に有用です.</p>
+<p>これは,上記で言及されたファイルシステムのいくつか(標準ファイルシステム操作のデフォルトのものと, /vsicurl/ および他の関連するネットワークファイルシステム)で, <code class="docutils literal notranslate"><span class="pre">VSI_CACHE</span></code> 設定オプションが <code class="docutils literal notranslate"><span class="pre">YES</span></code> に設定されている場合に暗黙的に使用されます.</p>
+<p>各ファイルのキャッシュのデフォルトサイズは25 MBです(キャッシュされる各ファイルに対して25 MB), および <code class="docutils literal notranslate"><span class="pre">VSI_CACHE_SIZE</span></code> 設定オプション(バイト単位の値)で制御できます.</p>
 <p>The <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">VSICachedFile</span></code> class only handles read operations at that time, and will error out on write operations.</p>
-<p>Starting with GDAL 3.8, a <code class="docutils literal notranslate"><span class="pre">/vsicached?</span></code> virtual file system also exists to cache a particular file.</p>
-<p>The syntax is the following one: <code class="docutils literal notranslate"><span class="pre">/vsicached?[option_i=val_i&amp;]*file=&lt;filename&gt;</span></code>
-where each option name and value (including the value of <code class="docutils literal notranslate"><span class="pre">file</span></code>) is URL-encoded
-(actually, only required for the ampersand character. It might be desirable to
-have forward slash character uncoded).
-It is important that the <code class="docutils literal notranslate"><span class="pre">file</span></code> option appears at the end, so that code that
-tries to look for side-car files, list directory content, can work properly.</p>
-<p>Currently supported options are:</p>
+<p>GDAL 3.8 から,特定のファイルをキャッシュするための <code class="docutils literal notranslate"><span class="pre">/vsicached?</span></code> バーチャルファイルシステムも存在します.</p>
+<p>構文は次のようになります:  <code class="docutils literal notranslate"><span class="pre">/vsicached?[option_i=val_i&amp;]*file=&lt;filename&gt;</span></code> ここで,各オプション名と値( <code class="docutils literal notranslate"><span class="pre">file</span></code> の値を含む)がURLエンコードされています(実際には,アンパサンド文字に対してのみ必要です.スラッシュ文字をエンコード解除することが望ましいかもしれません). <code class="docutils literal notranslate"><span class="pre">file</span></code> オプションが最後に表示されるようにすることが重要です.これにより,サイドカーファイルを探そうとするコードや,ディレクトリコンテンツをリストアップしようとするコードが正常に動作します.</p>
+<p>現在サポートされているオプションは次のとおりです:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">chunk_size=&lt;value&gt;</span></code> where value is the` size of the chunk size in bytes. <code class="docutils literal notranslate"><span class="pre">KB</span></code> or <code class="docutils literal notranslate"><span class="pre">MB</span></code> suffixes can be also appended (without space after the numeric value). The maximum supported value is 1 GB.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">cache_size=&lt;value&gt;</span></code> where value is the size of the cache size in bytes, for each file. <code class="docutils literal notranslate"><span class="pre">KB</span></code> or <code class="docutils literal notranslate"><span class="pre">MB</span></code> suffixes can be also appended.</p></li>
@@ -997,8 +977,8 @@ tries to look for side-car files, list directory content, can work properly.</p>
 </ul>
 </section>
 <section id="vsicrypt-encrypted-files">
-<span id="vsicrypt"></span><h2>/vsicrypt/ (encrypted files)<a class="headerlink" href="#vsicrypt-encrypted-files" title="Link to this heading"></a></h2>
-<p>/vsicrypt/ is a special file handler is installed that allows reading/creating/update encrypted files on the fly, with random access capabilities.</p>
+<span id="vsicrypt"></span><h2>/vsicrypt/ (暗号化ファイル)<a class="headerlink" href="#vsicrypt-encrypted-files" title="Link to this heading"></a></h2>
+<p>/vsicrypt/ は,ランダムアクセス機能を備えた暗号化ファイルの読み取り/作成/更新を可能にする特別なファイルハンドラがインストールされています.</p>
 <p>Refer to <a class="reference internal" href="../api/cpl.html#_CPPv426VSIInstallCryptFileHandlerv" title="VSIInstallCryptFileHandler"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIInstallCryptFileHandler()</span></code></a> for more details.</p>
 </section>
 </section>

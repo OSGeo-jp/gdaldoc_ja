@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ... &mdash; GDAL  ドキュメント</title>
+  <title>GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ... &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
       <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
 
@@ -62,12 +62,12 @@
 <li class="toctree-l2"><a class="reference internal" href="multithreading.html">マルチスレッディング</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ogr_sql_sqlite_dialect.html">OGR SQL方言とSQLITE SQL方言</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">GDAL仮想ファイルシステム</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#chaining">Chaining</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#drivers-supporting-virtual-file-systems">Drivers supporting virtual file systems</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#vsizip-zip-archives">/vsizip/ (.zip archives)</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#read-capabilities">Read capabilities</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#write-capabilities">Write capabilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">はじめに</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#chaining">連鎖</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#drivers-supporting-virtual-file-systems">仮想ファイルシステムをサポートするドライバ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vsizip-zip-archives">/vsizip/ (.zip アーカイブ)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#read-capabilities">読み取り機能</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#write-capabilities">書き込み機能</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sozip-seek-optimized-zip">SOZip (Seek-Optimized ZIP)</a></li>
 </ul>
 </li>
@@ -157,7 +157,7 @@
       
           <li><a href="index.html">ユーザー向けドキュメント</a> &raquo;</li>
       
-      <li>GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</li>
+      <li>GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</li>
     
 
     
@@ -189,19 +189,19 @@
            <div itemprop="articleBody">
              
   <section id="gdal-virtual-file-systems-compressed-network-hosted-etc-vsimem-vsizip-vsitar-vsicurl">
-<span id="virtual-file-systems"></span><h1>GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...<a class="headerlink" href="#gdal-virtual-file-systems-compressed-network-hosted-etc-vsimem-vsizip-vsitar-vsicurl" title="Link to this heading"></a></h1>
+<span id="virtual-file-systems"></span><h1>GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...<a class="headerlink" href="#gdal-virtual-file-systems-compressed-network-hosted-etc-vsimem-vsizip-vsitar-vsicurl" title="Link to this heading"></a></h1>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
-<p>GDAL can access files located on &quot;standard&quot; file systems, i.e. in the / hierarchy on Unix-like systems or in C:, D:, etc... drives on Windows. But most GDAL raster and vector drivers use a GDAL-specific abstraction to access files. This makes it possible to access less standard types of files, such as in-memory files, compressed files (.zip, .gz, .tar, .tar.gz archives), encrypted files, standard input and output (STDIN, STDOUT), files stored on network (either publicly accessible, or in private buckets of commercial cloud storage services), etc.</p>
-<p>Each special file system has a prefix, and the general syntax to name a file is /vsiPREFIX/...</p>
-<p>Example:</p>
+<h2>はじめに<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<p>GDALは&quot;標準&quot;ファイルシステム上にあるファイルにアクセスできます.つまり,Unix系システムの / 階層やWindowsの C:, D:などのドライブです.しかし,ほとんどのGDALラスターおよびベクタードライバはGDAL固有の抽象化を使用してファイルにアクセスします.これにより,メモリ内ファイル,圧縮ファイル(.zip, .gz, .tar, .tar.gzアーカイブ),暗号化ファイル,標準入力および出力(STDIN, STDOUT),ネットワーク上のファイル(公開アクセス可能なもの,または商用クラウドストレージサービスのプライベートバケット内のもの)など,標準でない種類のファイルにアクセスできます.</p>
+<p>各特殊ファイルシステムにはプレフィックスがあり,ファイルを名前付ける一般的な構文は/vsiPREFIX/...です.</p>
+<p>例:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdalinfo</span> <span class="o">/</span><span class="n">vsizip</span><span class="o">/</span><span class="n">my</span><span class="o">.</span><span class="n">zip</span><span class="o">/</span><span class="n">my</span><span class="o">.</span><span class="n">tif</span>
 </pre></div>
 </div>
 </section>
 <section id="chaining">
-<h2>Chaining<a class="headerlink" href="#chaining" title="Link to this heading"></a></h2>
-<p>It is possible to chain multiple file system handlers.</p>
+<h2>連鎖<a class="headerlink" href="#chaining" title="Link to this heading"></a></h2>
+<p>複数のファイルシステムハンドラを連鎖させることができます.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ogrinfo a shapefile in a zip file on the internet:</span>
 
 <span class="n">ogrinfo</span> <span class="o">-</span><span class="n">ro</span> <span class="o">-</span><span class="n">al</span> <span class="o">-</span><span class="n">so</span> <span class="o">/</span><span class="n">vsizip</span><span class="o">//</span><span class="n">vsicurl</span><span class="o">/</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">OSGeo</span><span class="o">/</span><span class="n">gdal</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">autotest</span><span class="o">/</span><span class="n">ogr</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">shp</span><span class="o">/</span><span class="n">poly</span><span class="o">.</span><span class="n">zip</span>
@@ -211,22 +211,22 @@
 <span class="n">ogrinfo</span> <span class="o">-</span><span class="n">ro</span> <span class="o">-</span><span class="n">al</span> <span class="o">-</span><span class="n">so</span> <span class="o">/</span><span class="n">vsizip</span><span class="o">//</span><span class="n">vsicurl</span><span class="o">/</span><span class="n">ftp</span><span class="p">:</span><span class="o">//</span><span class="n">user</span><span class="p">:</span><span class="n">password</span><span class="nd">@example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">foldername</span><span class="o">/</span><span class="n">file</span><span class="o">.</span><span class="n">zip</span><span class="o">/</span><span class="n">example</span><span class="o">.</span><span class="n">shp</span>
 </pre></div>
 </div>
-<p>(Note is also OK to say /vsizip/vsicurl/... with a single slash. (But when writing documentation please still use two.))</p>
+<p>(/vsizip/vsicurl/... と一つのスラッシュで書いてもよいです. (ただし,ドキュメントを書く際は引き続き二つ使用してください.))</p>
 </section>
 <section id="drivers-supporting-virtual-file-systems">
-<h2>Drivers supporting virtual file systems<a class="headerlink" href="#drivers-supporting-virtual-file-systems" title="Link to this heading"></a></h2>
-<p>Virtual file systems can only be used with GDAL or OGR drivers supporting the &quot;large file API&quot;, which is now the vast majority of file based drivers. The full list of these formats can be obtained by looking at the driver marked with 'v' when running either <code class="docutils literal notranslate"><span class="pre">gdalinfo</span> <span class="pre">--formats</span></code> or <code class="docutils literal notranslate"><span class="pre">ogrinfo</span> <span class="pre">--formats</span></code>.</p>
-<p>A notable exception is the HDF4 driver.</p>
+<h2>仮想ファイルシステムをサポートするドライバ<a class="headerlink" href="#drivers-supporting-virtual-file-systems" title="Link to this heading"></a></h2>
+<p>仮想ファイルシステムは,現在のほとんどのファイルベースのドライバである&quot;大規模ファイルAPI&quot;をサポートするGDALまたはOGRドライバでのみ使用できます.これらのフォーマットの完全なリストは, <code class="docutils literal notranslate"><span class="pre">gdalinfo</span> <span class="pre">--formats</span></code> または <code class="docutils literal notranslate"><span class="pre">ogrinfo</span> <span class="pre">--formats</span></code> を実行するときに'v'でマークされたドライバを見ることで取得できます.</p>
+<p>注目すべき例外はHDF4ドライバです.</p>
 </section>
 <section id="vsizip-zip-archives">
-<span id="vsizip"></span><h2>/vsizip/ (.zip archives)<a class="headerlink" href="#vsizip-zip-archives" title="Link to this heading"></a></h2>
+<span id="vsizip"></span><h2>/vsizip/ (.zip アーカイブ)<a class="headerlink" href="#vsizip-zip-archives" title="Link to this heading"></a></h2>
 <section id="read-capabilities">
-<h3>Read capabilities<a class="headerlink" href="#read-capabilities" title="Link to this heading"></a></h3>
-<p>/vsizip/ is a file handler that allows reading ZIP archives on-the-fly without decompressing them beforehand.</p>
-<p>To point to a file inside a zip file, the filename must be of the form <code class="file docutils literal notranslate"><span class="pre">/vsizip/path/to/the/file.zip/path/inside/the/zip/file</span></code>, where <code class="file docutils literal notranslate"><span class="pre">path/to/the/file.zip</span></code> is relative or absolute and <code class="file docutils literal notranslate"><span class="pre">path/inside/the/zip/file</span></code> is the relative path to the file inside the archive.</p>
-<p>To use the .zip as a directory, you can use <code class="file docutils literal notranslate"><span class="pre">/vsizip/path/to/the/file.zip</span></code> or <code class="file docutils literal notranslate"><span class="pre">/vsizip/path/to/the/file.zip/subdir</span></code>. Directory listing is available with <a class="reference internal" href="../api/cpl.html#_CPPv410VSIReadDirPKc" title="VSIReadDir"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIReadDir()</span></code></a>. A <a class="reference internal" href="../api/cpl.html#_CPPv48VSIStatLPKcP11VSIStatBufL" title="VSIStatL"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIStatL()</span></code></a> (&quot;/vsizip/...&quot;) call will return the uncompressed size of the file. Directories inside the ZIP file can be distinguished from regular files with the VSI_ISDIR(stat.st_mode) macro as for regular file systems. Getting directory listing and file statistics are fast operations.</p>
-<p>Note: in the particular case where the .zip file contains a single file located at its root, just mentioning <code class="file docutils literal notranslate"><span class="pre">/vsizip/path/to/the/file.zip</span></code> will work.</p>
-<p>The following configuration options are specific to the /zip/ handler:</p>
+<h3>読み取り機能<a class="headerlink" href="#read-capabilities" title="Link to this heading"></a></h3>
+<p>/vsizip/ は,事前に解凍せずにZIPアーカイブを読み取ることができるファイルハンドラです.</p>
+<p>ZIPファイル内のファイルを指すには,ファイル名は <code class="file docutils literal notranslate"><span class="pre">/vsizip/path/to/the/file.zip/path/inside/the/zip/file</span></code> の形式である必要があります.ここで <code class="file docutils literal notranslate"><span class="pre">path/to/the/file.zip</span></code> は相対または絶対であり, <code class="file docutils literal notranslate"><span class="pre">path/inside/the/zip/file</span></code> はアーカイブ内のファイルへの相対パスです.</p>
+<p>.zipをディレクトリとして使用するには, <code class="file docutils literal notranslate"><span class="pre">/vsizip/path/to/the/file.zip</span></code> または <code class="file docutils literal notranslate"><span class="pre">/vsizip/path/to/the/file.zip/subdir</span></code> を使用できます.ディレクトリリストは <a class="reference internal" href="../api/cpl.html#_CPPv410VSIReadDirPKc" title="VSIReadDir"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIReadDir()</span></code></a> で利用できます. <a class="reference internal" href="../api/cpl.html#_CPPv48VSIStatLPKcP11VSIStatBufL" title="VSIStatL"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIStatL()</span></code></a> (&quot;/vsizip/...&quot;) 呼び出しはファイルの解凍されたサイズを返します. ZIPファイル内のディレクトリは通常のファイルシステムと同様に,通常のファイルと区別することができます.ディレクトリリストとファイル統計の取得は高速な操作です.</p>
+<p>注: .zipファイルがそのルートにある単一のファイルを含む特定の場合には, <code class="file docutils literal notranslate"><span class="pre">/vsizip/path/to/the/file.zip</span></code> とだけ記述するだけで動作します.</p>
+<p>/zip/ ハンドラに固有の次の設定オプションがあります:</p>
 <ul class="simple">
 <li><p id="config-CPL_SOZIP_ENABLED"><strong>CPL_SOZIP_ENABLED=[YES/NO/AUTO]: </strong> (GDAL &gt;= 3.7)  Defaults to <code class="docutils literal notranslate"><span class="pre">AUTO</span></code>. Determines whether the SOZip optimization should be enabled. If <code class="docutils literal notranslate"><span class="pre">AUTO</span></code>,
 SOZip will be enabled for uncompressed files larger than
@@ -235,20 +235,20 @@ SOZip will be enabled for uncompressed files larger than
 <li><p id="config-CPL_SOZIP_MIN_FILE_SIZE"><strong>CPL_SOZIP_MIN_FILE_SIZE=value: </strong> (GDAL &gt;= 3.7)  Defaults to <code class="docutils literal notranslate"><span class="pre">1M</span></code>. Determines the minimum file size for SOZip to be automatically enabled.</p>
 </li>
 </ul>
-<p>Examples:</p>
+<p>例:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">vsizip</span><span class="o">/</span><span class="n">my</span><span class="o">.</span><span class="n">zip</span><span class="o">/</span><span class="n">my</span><span class="o">.</span><span class="n">tif</span>  <span class="p">(</span><span class="n">relative</span> <span class="n">path</span> <span class="n">to</span> <span class="n">the</span> <span class="o">.</span><span class="n">zip</span><span class="p">)</span>
 <span class="o">/</span><span class="n">vsizip</span><span class="o">//</span><span class="n">home</span><span class="o">/</span><span class="n">even</span><span class="o">/</span><span class="n">my</span><span class="o">.</span><span class="n">zip</span><span class="o">/</span><span class="n">subdir</span><span class="o">/</span><span class="n">my</span><span class="o">.</span><span class="n">tif</span>  <span class="p">(</span><span class="n">absolute</span> <span class="n">path</span> <span class="n">to</span> <span class="n">the</span> <span class="o">.</span><span class="n">zip</span><span class="p">)</span>
 <span class="o">/</span><span class="n">vsizip</span><span class="o">/</span><span class="n">c</span><span class="p">:</span>\<span class="n">users</span>\<span class="n">even</span>\<span class="n">my</span><span class="o">.</span><span class="n">zip</span>\<span class="n">subdir</span>\<span class="n">my</span><span class="o">.</span><span class="n">tif</span>
 <span class="o">/</span><span class="n">vsizip</span><span class="o">/</span><span class="p">{</span><span class="o">/</span><span class="n">vsizip</span><span class="o">/</span><span class="n">my</span><span class="o">.</span><span class="n">zip</span><span class="o">/</span><span class="n">subdir</span><span class="o">/</span><span class="n">subzip</span><span class="o">.</span><span class="n">zip</span><span class="p">}</span><span class="o">/</span><span class="n">subdir_in_subzip</span><span class="o">/</span><span class="n">my</span><span class="o">.</span><span class="n">shp</span>  <span class="p">(</span><span class="n">alternate</span> <span class="n">syntax</span> <span class="k">for</span> <span class="n">a</span> <span class="n">nested</span> <span class="o">.</span><span class="n">zip</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>.kmz, .ods and .xlsx extensions are also detected as valid extensions for zip-compatible archives.</p>
-<p>Starting with GDAL 2.2, an alternate syntax is available so as to enable chaining and not being dependent on .zip extension, e.g.: <code class="docutils literal notranslate"><span class="pre">/vsizip/{/path/to/the/archive}/path/inside/the/zip/file</span></code>. Note that <code class="file docutils literal notranslate"><span class="pre">/path/to/the/archive</span></code> may also itself use this alternate syntax.</p>
+<p>.kmz, .ods, .xlsx 拡張子もzip互換アーカイブの有効な拡張子として検出されます.</p>
+<p>GDAL 2.2以降,連鎖を可能にし,.zip拡張子に依存しないようにするための代替構文が利用可能です.例えば, <code class="docutils literal notranslate"><span class="pre">/vsizip/{/path/to/the/archive}/path/inside/the/zip/file</span></code>. <code class="file docutils literal notranslate"><span class="pre">/path/to/the/archive</span></code>  はこの代替構文を使用することもできます.</p>
 </section>
 <section id="write-capabilities">
-<h3>Write capabilities<a class="headerlink" href="#write-capabilities" title="Link to this heading"></a></h3>
-<p>Write capabilities are also available. They allow creating a new zip file and adding new files to an already existing (or just created) zip file.</p>
-<p>Creation of a new zip file:</p>
+<h3>書き込み機能<a class="headerlink" href="#write-capabilities" title="Link to this heading"></a></h3>
+<p>書き込み機能も利用できます.新しいzipファイルを作成し,既存の(または作成したばかりの)zipファイルに新しいファイルを追加することができます.</p>
+<p>新しいzipファイルの作成:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fmain</span> <span class="o">=</span> <span class="n">VSIFOpenL</span><span class="p">(</span><span class="s2">&quot;/vsizip/my.zip&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">);</span>
 <span class="n">subfile</span> <span class="o">=</span> <span class="n">VSIFOpenL</span><span class="p">(</span><span class="s2">&quot;/vsizip/my.zip/subfile&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">);</span>
 <span class="n">VSIFWriteL</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="s2">&quot;Hello world&quot;</span><span class="p">),</span> <span class="n">subfile</span><span class="p">);</span>
@@ -256,15 +256,14 @@ SOZip will be enabled for uncompressed files larger than
 <span class="n">VSIFCloseL</span><span class="p">(</span><span class="n">fmain</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Addition of a new file to an existing zip:</p>
+<p>既存のzipに新しいファイルを追加:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">newfile</span> <span class="o">=</span> <span class="n">VSIFOpenL</span><span class="p">(</span><span class="s2">&quot;/vsizip/my.zip/newfile&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">);</span>
 <span class="n">VSIFWriteL</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="s2">&quot;Hello world&quot;</span><span class="p">),</span> <span class="n">newfile</span><span class="p">);</span>
 <span class="n">VSIFCloseL</span><span class="p">(</span><span class="n">newfile</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Starting with GDAL 2.4, the <a class="reference internal" href="configoptions.html#config-GDAL_NUM_THREADS"><code class="docutils literal notranslate"><span class="pre">GDAL_NUM_THREADS</span></code></a> configuration option can be set to an integer or <code class="docutils literal notranslate"><span class="pre">ALL_CPUS</span></code> to enable multi-threaded compression of a single file. This is similar to the pigz utility in independent mode. By default the input stream is split into 1 MB chunks (the chunk size can be tuned with the <a class="reference internal" href="configoptions.html#config-CPL_VSIL_DEFLATE_CHUNK_SIZE"><code class="docutils literal notranslate"><span class="pre">CPL_VSIL_DEFLATE_CHUNK_SIZE</span></code></a> configuration option, with values like &quot;x K&quot; or &quot;x M&quot;), and each chunk is independently compressed (and terminated by a nine byte marker 0x00 0x00 0xFF 0xFF 0x00 0x00 0x00 0xFF 0xFF, signaling a full flush of the stream and dictionary, enabling potential independent decoding of each chunk). This slightly reduces the compression rate, so very small chunk sizes should be avoided.
-Starting with GDAL 3.7, this technique is reused to generate .zip files following <a class="reference internal" href="#sozip-intro"><span class="std std-ref">SOZip (Seek-Optimized ZIP)</span></a>.</p>
-<p>Read and write operations cannot be interleaved. The new zip must be closed before being re-opened in read mode.</p>
+<p>GDAL 2.4以降, <a class="reference internal" href="configoptions.html#config-GDAL_NUM_THREADS"><code class="docutils literal notranslate"><span class="pre">GDAL_NUM_THREADS</span></code></a> 設定オプションを整数または <code class="docutils literal notranslate"><span class="pre">ALL_CPUS</span></code> に設定することで,単一ファイルのマルチスレッド圧縮を有効にすることができます.これはpigzユーティリティの独立モードに類似しています.デフォルトでは,入力ストリームは1MBのチャンクに分割されます(チャンクサイズは <a class="reference internal" href="configoptions.html#config-CPL_VSIL_DEFLATE_CHUNK_SIZE"><code class="docutils literal notranslate"><span class="pre">CPL_VSIL_DEFLATE_CHUNK_SIZE</span></code></a> 設定オプションで調整でき, &quot;x K&quot; または &quot;x M&quot; のような値が使用できます),そして各チャンクは独立して圧縮されます(そして9バイトのマーカー 0x00 0x00 0xFF 0xFF 0x00 0x00 0x00 0xFF 0xFF で終了し,ストリームと辞書の完全なフラッシュを示し,各チャンクの独立したデコードを可能にします).これは圧縮率をわずかに低下させるため,非常に小さなチャンクサイズは避けるべきです. GDAL 3.7以降,この技術は <a class="reference internal" href="#sozip-intro"><span class="std std-ref">SOZip (Seek-Optimized ZIP)</span></a> に従って .zip ファイルを生成するために再利用されます.</p>
+<p>読み取りおよび書き込み操作を交互に行うことはできません.新しいzipは,読み取りモードで再オープンする前に閉じる必要があります.</p>
 </section>
 <section id="sozip-seek-optimized-zip">
 <span id="sozip-intro"></span><h3>SOZip (Seek-Optimized ZIP)<a class="headerlink" href="#sozip-seek-optimized-zip" title="Link to this heading"></a></h3>
@@ -300,7 +299,7 @@ extension .gz.properties is created with an indication of the
 uncompressed file size.</p>
 </li>
 </ul>
-<p>Examples:</p>
+<p>例:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">vsigzip</span><span class="o">/</span><span class="n">my</span><span class="o">.</span><span class="n">gz</span> <span class="c1"># (relative path to the .gz)</span>
 <span class="o">/</span><span class="n">vsigzip</span><span class="o">//</span><span class="n">home</span><span class="o">/</span><span class="n">even</span><span class="o">/</span><span class="n">my</span><span class="o">.</span><span class="n">gz</span> <span class="c1"># (absolute path to the .gz)</span>
 <span class="o">/</span><span class="n">vsigzip</span><span class="o">/</span><span class="n">c</span><span class="p">:</span>\<span class="n">users</span>\<span class="n">even</span>\<span class="n">my</span><span class="o">.</span><span class="n">gz</span>
@@ -316,7 +315,7 @@ uncompressed file size.</p>
 <p>To point to a file inside a .tar, .tgz .tar.gz file, the filename must be of the form <code class="file docutils literal notranslate"><span class="pre">/vsitar/path/to/the/file.tar/path/inside/the/tar/file</span></code>, where <code class="file docutils literal notranslate"><span class="pre">path/to/the/file.tar</span></code> is relative or absolute and <code class="file docutils literal notranslate"><span class="pre">path/inside/the/tar/file</span></code> is the relative path to the file inside the archive.</p>
 <p>To use the .tar as a directory, you can use <code class="file docutils literal notranslate"><span class="pre">/vsizip/path/to/the/file.tar</span></code> or <code class="file docutils literal notranslate"><span class="pre">/vsitar/path/to/the/file.tar/subdir</span></code>. Directory listing is available with <a class="reference internal" href="../api/cpl.html#_CPPv410VSIReadDirPKc" title="VSIReadDir"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIReadDir()</span></code></a>. A <a class="reference internal" href="../api/cpl.html#_CPPv48VSIStatLPKcP11VSIStatBufL" title="VSIStatL"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIStatL()</span></code></a> (&quot;/vsitar/...&quot;) call will return the uncompressed size of the file. Directories inside the TAR file can be distinguished from regular files with the VSI_ISDIR(stat.st_mode) macro as for regular file systems. Getting directory listing and file statistics are fast operations.</p>
 <p>Note: in the particular case where the .tar file contains a single file located at its root, just mentioning <code class="file docutils literal notranslate"><span class="pre">/vsitar/path/to/the/file.tar</span></code> will work.</p>
-<p>Examples:</p>
+<p>例:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">vsitar</span><span class="o">/</span><span class="n">my</span><span class="o">.</span><span class="n">tar</span><span class="o">/</span><span class="n">my</span><span class="o">.</span><span class="n">tif</span> <span class="c1"># (relative path to the .tar)</span>
 <span class="o">/</span><span class="n">vsitar</span><span class="o">//</span><span class="n">home</span><span class="o">/</span><span class="n">even</span><span class="o">/</span><span class="n">my</span><span class="o">.</span><span class="n">tar</span><span class="o">/</span><span class="n">subdir</span><span class="o">/</span><span class="n">my</span><span class="o">.</span><span class="n">tif</span> <span class="c1"># (absolute path to the .tar)</span>
 <span class="o">/</span><span class="n">vsitar</span><span class="o">/</span><span class="n">c</span><span class="p">:</span>\<span class="n">users</span>\<span class="n">even</span>\<span class="n">my</span><span class="o">.</span><span class="n">tar</span>\<span class="n">subdir</span>\<span class="n">my</span><span class="o">.</span><span class="n">tif</span>
@@ -935,7 +934,7 @@ native libhdfs.</p>
 <li><p><a class="reference external" href="https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/SingleCluster.html">Hadoop: Setting up a Single Node Cluster</a></p></li>
 </ul>
 <p>Recognized filenames are of the form <code class="file docutils literal notranslate"><span class="pre">/vsihdfs/hdfsUri</span></code> where <code class="docutils literal notranslate"><span class="pre">hdfsUri</span></code> is a valid HDFS URI.</p>
-<p>Examples:</p>
+<p>例:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">vsihdfs</span><span class="o">/</span><span class="n">file</span><span class="p">:</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">user</span><span class="o">//</span><span class="n">my</span><span class="o">.</span><span class="n">tif</span>  <span class="p">(</span><span class="n">a</span> <span class="n">local</span> <span class="n">file</span> <span class="n">accessed</span> <span class="n">through</span> <span class="n">HDFS</span><span class="p">)</span>
 <span class="o">/</span><span class="n">vsihdfs</span><span class="o">/</span><span class="n">hdfs</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">9000</span><span class="o">/</span><span class="n">my</span><span class="o">.</span><span class="n">tif</span>  <span class="p">(</span><span class="n">a</span> <span class="n">file</span> <span class="n">stored</span> <span class="ow">in</span> <span class="n">HDFS</span><span class="p">)</span>
 </pre></div>
@@ -948,7 +947,7 @@ native libhdfs.</p>
 <span id="vsiwebhdfs"></span><h3>/vsiwebhdfs/ (Web Hadoop File System REST API)<a class="headerlink" href="#vsiwebhdfs-web-hadoop-file-system-rest-api" title="Link to this heading"></a></h3>
 <p>/vsiwebhdfs/ is a file system handler that provides read and write access to HDFS through its HTTP REST API.</p>
 <p>Recognized filenames are of the form <code class="file docutils literal notranslate"><span class="pre">/vsiwebhdfs/http://hostname:port/webhdfs/v1/path/to/filename</span></code>.</p>
-<p>Examples:</p>
+<p>例:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">vsiwebhdfs</span><span class="o">/</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">50070</span><span class="o">/</span><span class="n">webhdfs</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">mydir</span><span class="o">/</span><span class="n">byte</span><span class="o">.</span><span class="n">tif</span>
 </pre></div>
 </div>
@@ -1016,7 +1015,7 @@ read a file within a potentially big ZIP file streamed to gdal_translate:</p>
 <p>The /vsisubfile/ virtual file system handler allows access to subregions of files, treating them as a file on their own to the virtual file system functions (VSIFOpenL(), etc).</p>
 <p>A special form of the filename is used to indicate a subportion of another file: <code class="file docutils literal notranslate"><span class="pre">/vsisubfile/&lt;offset&gt;[_&lt;size&gt;],&lt;filename&gt;</span></code>.</p>
 <p>The size parameter is optional. Without it the remainder of the file from the start offset as treated as part of the subfile. Otherwise only &lt;size&gt; bytes from &lt;offset&gt; are treated as part of the subfile. The &lt;filename&gt; portion may be a relative or absolute path using normal rules. The &lt;offset&gt; and &lt;size&gt; values are in bytes.</p>
-<p>Examples:</p>
+<p>例:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">vsisubfile</span><span class="o">/</span><span class="mi">1000_3000</span><span class="p">,</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">abc</span><span class="o">.</span><span class="n">ntf</span>
 <span class="o">/</span><span class="n">vsisubfile</span><span class="o">/</span><span class="mi">5000</span><span class="p">,</span><span class="o">../</span><span class="n">xyz</span><span class="o">/</span><span class="n">raw</span><span class="o">.</span><span class="n">dat</span>
 </pre></div>
@@ -1079,7 +1078,7 @@ tries to look for side-car files, list directory content, can work properly.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">chunk_size=&lt;value&gt;</span></code> where value is the` size of the chunk size in bytes. <code class="docutils literal notranslate"><span class="pre">KB</span></code> or <code class="docutils literal notranslate"><span class="pre">MB</span></code> suffixes can be also appended (without space after the numeric value). The maximum supported value is 1 GB.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">cache_size=&lt;value&gt;</span></code> where value is the size of the cache size in bytes, for each file. <code class="docutils literal notranslate"><span class="pre">KB</span></code> or <code class="docutils literal notranslate"><span class="pre">MB</span></code> suffixes can be also appended.</p></li>
 </ul>
-<p>Examples:</p>
+<p>例:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">/vsicached?chunk_size=1MB&amp;file=/home/even/byte.tif</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">/vsicached?file=./byte.tif</span></code></p></li>

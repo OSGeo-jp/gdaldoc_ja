@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Feature Style Specification &mdash; GDAL  ドキュメント</title>
+  <title>地物スタイル仕様 &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
       <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
 
@@ -26,7 +26,7 @@
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="Coordinate epoch support" href="coordinate_epoch.html" />
-    <link rel="prev" title="GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ..." href="virtual_file_systems.html" /> 
+    <link rel="prev" title="GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ..." href="virtual_file_systems.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -62,28 +62,28 @@
 <li class="toctree-l2"><a class="reference internal" href="multithreading.html">マルチスレッディング</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ogr_sql_sqlite_dialect.html">OGR SQL方言とSQLITE SQL方言</a></li>
 <li class="toctree-l2"><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Feature Style Specification</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#overview">1. Overview</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#style-is-a-property-of-feature-object">1.1 Style is a property of Feature object</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#feature-styles-can-be-stored-at-2-levels">1.2 Feature Styles can be stored at 2 levels</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#drawing-tools">1.3 Drawing Tools</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#feature-attributes-can-be-used-by-style-definitions">1.4 Feature attributes can be used by style definitions</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#tool-parameter-units">1.5 Tool parameter units</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">地物スタイル仕様</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">1. 概要</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#style-is-a-property-of-feature-object">1.1 スタイルは地物オブジェクトのプロパティです</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#feature-styles-can-be-stored-at-2-levels">1.2 地物スタイルは2つのレベルで保存できます</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#drawing-tools">1.3 描画ツール</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#feature-attributes-can-be-used-by-style-definitions">1.4 地物属性はスタイル定義で使用できます</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tool-parameter-units">1.5 ツールパラメータの単位</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#feature-style-string">2. Feature Style String</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#examples">2.1 Examples</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#style-string-syntax">2.2 Style String Syntax</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pen-tool-parameters">2.3 Pen Tool Parameters</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#brush-tool-parameters">2.4 Brush Tool Parameters</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#symbol-tool-parameters">2.5 Symbol Tool Parameters</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#label-tool-parameters">2.6 Label Tool Parameters</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#styles-table-format">2.7 Styles Table Format</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#using-ogr-sql-to-transfer-the-style-between-the-data-sources">2.8 Using OGR SQL to transfer the style between the data sources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#feature-style-string">2. 地物スタイル文字列</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#examples">2.1 例</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#style-string-syntax">2.2 スタイル文字列構文</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pen-tool-parameters">2.3 ペンツールパラメータ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#brush-tool-parameters">2.4 ブラシツールパラメータ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#symbol-tool-parameters">2.5 シンボルツールパラメータ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#label-tool-parameters">2.6 ラベルツールパラメータ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#styles-table-format">2.7 スタイルテーブルフォーマット</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-ogr-sql-to-transfer-the-style-between-the-data-sources">2.8 OGR SQLを使用してデータソース間でスタイルを転送する</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#ogr-support-classes">3. OGR Support Classes</a></li>
-<li><a class="reference internal" href="#revision-history">Revision history</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ogr-support-classes">3. OGRサポートクラス</a></li>
+<li><a class="reference internal" href="#revision-history">リビジョン履歴</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="coordinate_epoch.html">Coordinate epoch support</a></li>
@@ -136,7 +136,7 @@
       
           <li><a href="index.html">ユーザー向けドキュメント</a> &raquo;</li>
       
-      <li>Feature Style Specification</li>
+      <li>地物スタイル仕様</li>
     
 
     
@@ -158,7 +158,7 @@
         <a href="coordinate_epoch.html" class="btn btn-neutral float-right" title="Coordinate epoch support" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="virtual_file_systems.html" class="btn btn-neutral float-left" title="GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ..." accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="virtual_file_systems.html" class="btn btn-neutral float-left" title="GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ..." accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -168,40 +168,22 @@
            <div itemprop="articleBody">
              
   <section id="feature-style-specification">
-<span id="ogr-feature-style"></span><h1>Feature Style Specification<a class="headerlink" href="#feature-style-specification" title="Link to this heading"></a></h1>
+<span id="ogr-feature-style"></span><h1>地物スタイル仕様<a class="headerlink" href="#feature-style-specification" title="Link to this heading"></a></h1>
 <p>Version 0.016 - 2018-12-03</p>
 <section id="overview">
-<h2>1. Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
-<p>This document defines the way feature style information (i.e. colors,
-line width, symbols, etc.) should be handled at the various levels in
-GDAL's vector drivers (OGR).</p>
-<p>The following GDAL vector drivers have varying levels of support for
-feature styles: <a class="reference internal" href="../drivers/vector/cad.html#vector-cad"><span class="std std-ref">DWG (libopencad)</span></a>, <a class="reference internal" href="../drivers/vector/dwg.html#vector-dwg"><span class="std std-ref">DWG
-(Teigha)</span></a>, <a class="reference internal" href="../drivers/vector/dxf.html#vector-dxf"><span class="std std-ref">DXF</span></a>, <a class="reference internal" href="../drivers/vector/libkml.html#vector-libkml"><span class="std std-ref">KML
-(libkml)</span></a>, <a class="reference internal" href="../drivers/vector/mitab.html#vector-mitab"><span class="std std-ref">MapInfo</span></a>,
-<a class="reference internal" href="../drivers/vector/dgn.html#vector-dgn"><span class="std std-ref">MicroStation DGN v7</span></a> and <a class="reference internal" href="../drivers/vector/dgnv8.html#vector-dgnv8"><span class="std std-ref">DGN v8</span></a>,
-<a class="reference internal" href="../drivers/vector/jml.html#vector-jml"><span class="std std-ref">OpenJUMP JML</span></a> and <a class="reference internal" href="../drivers/raster/pdf.html#raster-pdf"><span class="std std-ref">PDF</span></a>.</p>
+<h2>1. 概要<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>この文書は、GDALのベクタードライバ(OGR)のさまざまなレベルで、地物スタイル情報（色、線幅、シンボルなど）をどのように扱うかを定義します。</p>
+<p>以下のGDALベクタードライバは、地物スタイルのサポートレベルが異なります。<a class="reference internal" href="../drivers/vector/cad.html#vector-cad"><span class="std std-ref">DWG (libopencad)</span></a>、<a class="reference internal" href="../drivers/vector/dwg.html#vector-dwg"><span class="std std-ref">DWG (Teigha)</span></a>、<a class="reference internal" href="../drivers/vector/dxf.html#vector-dxf"><span class="std std-ref">DXF</span></a>、<a class="reference internal" href="../drivers/vector/libkml.html#vector-libkml"><span class="std std-ref">KML (libkml)</span></a>、<a class="reference internal" href="../drivers/vector/mitab.html#vector-mitab"><span class="std std-ref">MapInfo</span></a>、<a class="reference internal" href="../drivers/vector/dgn.html#vector-dgn"><span class="std std-ref">MicroStation DGN v7</span></a>、<a class="reference internal" href="../drivers/vector/dgnv8.html#vector-dgnv8"><span class="std std-ref">DGN v8</span></a>、<a class="reference internal" href="../drivers/vector/jml.html#vector-jml"><span class="std std-ref">OpenJUMP JML</span></a>、<a class="reference internal" href="../drivers/raster/pdf.html#raster-pdf"><span class="std std-ref">PDF</span></a>。</p>
 <section id="style-is-a-property-of-feature-object">
-<h3>1.1 Style is a property of Feature object<a class="headerlink" href="#style-is-a-property-of-feature-object" title="Link to this heading"></a></h3>
-<p>Conceptually, the feature style should be seen as a property of a
-feature. Even though some systems store style information in a special
-attribute, in GDAL it is more consistent to see the style as a property,
-just the same way the geometry of a feature is also a property.</p>
-<p>This does not prevent us from storing the style information in an
-attribute when writing to some formats that have no provision for styles
-(e.g. E00). But then at the time such a dataset is opened through GDAL,
-the name of the attribute that contains style information should either
-be specified in some metadata, or be specified by the user.</p>
-<p>Also, in the SFCOM interface, the style information will be stored in an
-attribute just like the geometry is.</p>
+<h3>1.1 スタイルは地物オブジェクトのプロパティです<a class="headerlink" href="#style-is-a-property-of-feature-object" title="Link to this heading"></a></h3>
+<p>概念的に、地物スタイルは地物のプロパティとして見るべきです.一部のシステムはスタイル情報を特別な属性に格納していますが,GDALでは,地物のジオメトリと同じように,スタイルをプロパティとして見ることがより一貫しています.</p>
+<p>これは,スタイルを持たない形式(例:E00)に書き込むときにスタイル情報を属性に格納することを妨げません.ただし,GDALを介してそのようなデータセットが開かれるときには,スタイル情報を含む属性の名前がメタデータに指定されているか,ユーザーによって指定されている必要があります.</p>
+<p>また,SFCOMインターフェースでは,スタイル情報はジオメトリと同様に属性に格納されます.</p>
 </section>
 <section id="feature-styles-can-be-stored-at-2-levels">
-<h3>1.2 Feature Styles can be stored at 2 levels<a class="headerlink" href="#feature-styles-can-be-stored-at-2-levels" title="Link to this heading"></a></h3>
-<p>The style defines the way a feature should be drawn, but it is very
-common to have several features that share the same style. In those
-cases, instead of duplicating the style information on each feature, we
-will provide a more efficient way to share style information.</p>
-<p>There are two levels at which style information can be found:</p>
+<h3>1.2 地物スタイルは2つのレベルで保存できます<a class="headerlink" href="#feature-styles-can-be-stored-at-2-levels" title="Link to this heading"></a></h3>
+<p>スタイルは地物の描画方法を定義しますが,同じスタイルを共有する複数の地物があることは非常に一般的です.そのような場合,各地物にスタイル情報を重複させる代わりに,スタイル情報を共有する効率的な方法を提供します.</p>
+<p>スタイル情報が見つかる2つのレベルがあります:</p>
 <ul class="simple">
 <li><p>A <strong>dataset</strong> can have a table of pre-defined styles that can then be
 referred to by the layers or by the individual features. The
@@ -211,58 +193,30 @@ definition. Alternatively, a feature can be linked to a style in the
 dataset's table of styles. This can save storage space when the same
 styles are reused often.</p></li>
 </ul>
-<p>It should be possible to have style information stored at one or more of
-the various levels while working on a given dataset. The level(s) where
-the style is actually stored will depend on the most efficient approach
-for the format we are dealing with.</p>
+<p>特定のデータセットで作業するときに,さまざまなレベルの1つ以上でスタイル情報を保存できるようにする必要があります.スタイルが実際に保存されるレベルは,取り扱うフォーマットに最も効率的なアプローチに依存します.</p>
 </section>
 <section id="drawing-tools">
-<h3>1.3 Drawing Tools<a class="headerlink" href="#drawing-tools" title="Link to this heading"></a></h3>
-<p>We define a small set of drawing tools that are used to build style
-definitions:</p>
+<h3>1.3 描画ツール<a class="headerlink" href="#drawing-tools" title="Link to this heading"></a></h3>
+<p>スタイル定義を構築するために使用される描画ツールの小さなセットを定義します:</p>
 <ul class="simple">
 <li><p><strong>PEN</strong>: For linear styles</p></li>
 <li><p><strong>BRUSH</strong>: For filling areas</p></li>
 <li><p><strong>SYMBOL</strong>: Point symbols</p></li>
 <li><p><strong>LABEL</strong>: For annotations</p></li>
 </ul>
-<p>Each drawing tool can take a number of parameters, all optional. The
-style syntax is built in a way that a system that cannot support all
-possible parameters can safely skip and ignore the parameters it does
-not support. This will also make it easy to extend the specification in
-the future without breaking existing code or applications.</p>
-<p>A style can use a single tool, or use a combination of one or more
-tools. By combining the use of several tools in a style, one can build
-virtually any type of graphical representation. For instance, the SYMBOL
-tool can be used to place spaced symbols along a line. Also, the LABEL
-tool can be used to place text on a point, stretch it along a line, or
-even, by combining the PEN tool with the LABEL tool, use the line as a
-leader to the text label, and draw the text string on the last vertex of
-the line.</p>
-<p>Of course, few systems can support all that. But the intention here is
-to have a style specification that is powerful and flexible enough to
-allow all types of formats to exchange style information with the least
-possible loss.</p>
+<p>各描画ツールは,いくつかのパラメータを取ることができますが,すべてオプションです.スタイル構文は,すべての可能なパラメータをサポートできないシステムが,サポートしていないパラメータを安全にスキップして無視できるように構築されています.これにより,将来の仕様の拡張が容易になり,既存のコードやアプリケーションを壊すことなく行うことができます.</p>
+<p>スタイルは単一のツールを使用することも,1つ以上のツールを組み合わせて使用することもできます.複数のツールをスタイルで組み合わせることで,ほぼすべての種類のグラフィカル表現を構築することができます.たとえば,SYMBOLツールは,線に沿って間隔を空けてシンボルを配置するために使用できます.また,LABELツールは,ポイントにテキストを配置したり,線に沿って伸ばしたりするために使用できます.さらに,PENツールとLABELツールを組み合わせて,線をテキストラベルのリーダーとして使用し,テキスト文字列を線の最後の頂点に描画することもできます.</p>
+<p>もちろん,ほとんどのシステムはすべてをサポートすることはできません.しかし,ここでの意図は,スタイル仕様を強力で柔軟性があり,できるだけ少ない損失ですべての種類の形式がスタイル情報を交換できるようにすることです.</p>
 </section>
 <section id="feature-attributes-can-be-used-by-style-definitions">
-<h3>1.4 Feature attributes can be used by style definitions<a class="headerlink" href="#feature-attributes-can-be-used-by-style-definitions" title="Link to this heading"></a></h3>
-<p>In some cases, it might be useful for a style definition to refer to an
-attribute field on the feature for a given tool parameter's value
-instead of having a hardcoded value inside the style itself.</p>
-<p>Example of this are text angle, text string, etc... these values change
-for every single text label, but we can share the rest of the label
-style at the layer level if we lookup the angle and text string in an
-attribute on each feature.</p>
-<p>The syntax of the style string provides a way that any parameter value
-can be either a constant value, or a lookup to an attribute field.</p>
+<h3>1.4 地物属性はスタイル定義で使用できます<a class="headerlink" href="#feature-attributes-can-be-used-by-style-definitions" title="Link to this heading"></a></h3>
+<p>場合によっては,スタイル定義が,スタイル自体のハードコードされた値の代わりに,地物の属性フィールドを参照することが有用な場合があります.</p>
+<p>これには,テキスト角度,テキスト文字列などが含まれます.これらの値は各テキストラベルで変更されますが,各地物の属性で角度とテキスト文字列を検索すると,ラベルスタイルの残りをレイヤーレベルで共有できます.</p>
+<p>スタイル文字列の構文は,任意のパラメータ値が定数値であるか,属性フィールドへのルックアップであるかを指定する方法を提供します.</p>
 </section>
 <section id="tool-parameter-units">
-<h3>1.5 Tool parameter units<a class="headerlink" href="#tool-parameter-units" title="Link to this heading"></a></h3>
-<p>Several parameter values can be expressed in different measurement units
-depending on the file format you are dealing with. For instance, some
-systems express line width, or text height in points, other in pixels,
-and others use ground units. In order to accommodate all that, all
-parameters can be specified in one of the following units systems:</p>
+<h3>1.5 ツールパラメータの単位<a class="headerlink" href="#tool-parameter-units" title="Link to this heading"></a></h3>
+<p>いくつかのパラメータ値は,取り扱うファイル形式によって異なる計測単位で表現できます.たとえば,一部のシステムは線幅やテキストの高さをポイントで表現し,他のシステムはピクセルで表現し,他のシステムは地物単位を使用します.これらすべてを収容するために,すべてのパラメータは次の単位系のいずれかで指定できます:</p>
 <ul class="simple">
 <li><p><strong>g</strong>: Map Ground Units (whatever the map coordinate units are)</p></li>
 <li><p><strong>px</strong>: Pixels</p></li>
@@ -271,68 +225,48 @@ parameters can be specified in one of the following units systems:</p>
 <li><p><strong>cm</strong>: Centimeters</p></li>
 <li><p><strong>in</strong>: Inches</p></li>
 </ul>
-<p>Some tools will have to be provided at the GDAL client level to simplify
-the conversion of any value from one units system to another. This would
-imply that the GDAL client has to specify a map scale so that
-conversions from ground units to paper/pixel units can be performed.</p>
+<p>いくつかのツールは,任意の値を1つの単位系から別の単位系に変換するためのGDALクライアントレベルで提供される必要があります.これは,地物単位から紙/ピクセル単位への変換が行われるために,GDALクライアントがマップスケールを指定する必要があることを意味します.</p>
 </section>
 </section>
 <hr class="docutils" />
 <section id="feature-style-string">
-<h2>2. Feature Style String<a class="headerlink" href="#feature-style-string" title="Link to this heading"></a></h2>
-<p>As was mentioned earlier, styles definitions will usually be stored as
-strings, either in a per-layer (or per-dataset) table, or directly in
-the features.</p>
+<h2>2. 地物スタイル文字列<a class="headerlink" href="#feature-style-string" title="Link to this heading"></a></h2>
+<p>前述のように,スタイル定義は通常,文字列として保存されます.レイヤーごと（またはデータセットごと）のテーブルに,または地物に直接保存できます.</p>
 <section id="examples">
-<h3>2.1 Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h3>
-<p>Here are some example style definition strings:</p>
+<h3>2.1 例<a class="headerlink" href="#examples" title="Link to this heading"></a></h3>
+<p>以下にいくつかのスタイル定義文字列の例を示します:</p>
 <ul class="simple">
-<li><p>A 5 pixels wide red line:
-<code class="docutils literal notranslate"><span class="pre">PEN(c:#FF0000,w:5px)</span></code></p></li>
-<li><p>A polygon filled in blue, with a black outline:
-<code class="docutils literal notranslate"><span class="pre">BRUSH(fc:#0000FF);PEN(c:#000000)</span></code></p></li>
-<li><p>A point symbol:
-<code class="docutils literal notranslate"><span class="pre">SYMBOL(c:#00FF00,id:&quot;points.sym-45,ogr-sym-7&quot;)</span></code></p></li>
-<li><p>A text label, taking the text string from the &quot;text_attribute&quot;
-attribute field:
-<code class="docutils literal notranslate"><span class="pre">LABEL(f:&quot;Times</span> <span class="pre">New</span> <span class="pre">Roman&quot;,s:12pt,t:{text_attribute})&quot;</span></code></p></li>
+<li><p>5ピクセル幅の赤い線: <code class="docutils literal notranslate"><span class="pre">PEN(c:#FF0000,w:5px)</span></code></p></li>
+<li><p>青で塗りつぶされたポリゴン,黒い輪郭: <code class="docutils literal notranslate"><span class="pre">BRUSH(fc:#0000FF);PEN(c:#000000)</span></code></p></li>
+<li><p>ポイントシンボル: <code class="docutils literal notranslate"><span class="pre">SYMBOL(c:#00FF00,id:&quot;points.sym-45,ogr-sym-7&quot;)</span></code></p></li>
+<li><p>テキストラベル,テキスト文字列を&quot;text_attribute&quot;属性フィールドから取得: <code class="docutils literal notranslate"><span class="pre">LABEL(f:&quot;Times</span> <span class="pre">New</span> <span class="pre">Roman&quot;,s:12pt,t:{text_attribute})&quot;</span></code></p></li>
 </ul>
-<p>Here is what a style table that contains all the above styles could look
-like:</p>
+<p>上記のすべてのスタイルを含むスタイルテーブルは次のようになります:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">road</span><span class="p">:</span>      <span class="n">PEN</span><span class="p">(</span><span class="n">c</span><span class="p">:</span><span class="c1">#FF0000,w:5px)</span>
 <span class="n">lake</span><span class="p">:</span>      <span class="n">BRUSH</span><span class="p">(</span><span class="n">fc</span><span class="p">:</span><span class="c1">#0000FF);PEN(c:#000000)</span>
 <span class="n">campsite</span><span class="p">:</span>  <span class="n">SYMBOL</span><span class="p">(</span><span class="n">c</span><span class="p">:</span><span class="c1">#00FF00,id:&quot;points.sym-45,ogr-sym-7&quot;)</span>
 <span class="n">label</span><span class="p">:</span>     <span class="n">LABEL</span><span class="p">(</span><span class="n">f</span><span class="p">:</span><span class="s2">&quot;Times New Roman&quot;</span><span class="p">,</span><span class="n">s</span><span class="p">:</span><span class="mi">12</span><span class="n">pt</span><span class="p">,</span><span class="n">t</span><span class="p">:{</span><span class="n">text_attribute</span><span class="p">})</span>
 </pre></div>
 </div>
-<p>Then individual features can refer to styles from the table above using
-the &quot;&#64;&quot; character followed by the style name in their style property.</p>
-<p>For instance, a feature with its style set to &quot;&#64;road&quot; would be drawn as
-a red line.</p>
+<p>その後,個々の地物は,スタイルプロパティで&quot;&#64;&quot;文字に続いてスタイル名を指定して,上記のテーブルからスタイルを参照できます.</p>
+<p>たとえば,スタイルが&quot;&#64;road&quot;に設定された地物は,赤い線として描画されます.</p>
 </section>
 <section id="style-string-syntax">
-<h3>2.2 Style String Syntax<a class="headerlink" href="#style-string-syntax" title="Link to this heading"></a></h3>
-<p>Each feature object has a style property (a string):</p>
+<h3>2.2 スタイル文字列構文<a class="headerlink" href="#style-string-syntax" title="Link to this heading"></a></h3>
+<p>各地物オブジェクトにはスタイルプロパティ（文字列）があります:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">style_property</span><span class="o">&gt;</span> <span class="o">=</span> <span class="s2">&quot;&lt;style_def&gt;&quot;</span> <span class="o">|</span> <span class="s2">&quot;&quot;</span> <span class="o">|</span> <span class="s2">&quot;@&lt;style_name&gt;&quot;</span> <span class="o">|</span> <span class="s2">&quot;{&lt;field_name&gt;}&quot;</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">&lt;style_def&gt;</span></code> is defined later in this section.</p></li>
-<li><p>An empty style string means that the feature's style is unspecified.
-It does not indicate that the feature is invisible – an invisible
-feature may be indicated using a fully transparent color, like
-PEN(c:#00000000).</p></li>
+<li><p>空のスタイル文字列は,地物のスタイルが未指定であることを意味します.これは,地物が不可視であることを示すものではありません.不可視な地物は,PEN(c:#00000000)のような完全に透明な色を使用して示すことができます.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">&#64;&lt;style_name&gt;</span></code> is a reference to a predefined style in the layer
 or the dataset's style table. The layer's table is looked up first,
 and if style_name is not found there then the dataset's table will be
 looked up.</p></li>
-<li><p>Finally, <code class="docutils literal notranslate"><span class="pre">{&lt;field_name&gt;}</span></code> means that the style property should be
-read from the specified attribute field.</p></li>
+<li><p>最後に, <code class="docutils literal notranslate"><span class="pre">{&lt;field_name&gt;}</span></code> は,スタイルプロパティが指定された属性フィールドから読み取られるべきであることを意味します.</p></li>
 </ul>
-<p>The &lt;style_def&gt; is the real style definition. It is a combination of 1
-or more style parts separated by semicolons. Each style_part uses a
-drawing tool to define a portion of the complete graphical
-representation:</p>
+<p>&lt;style_def&gt; は実際のスタイル定義です.それは,セミコロンで区切られた1つ以上のスタイルパートの組み合わせです.各style_partは,完全なグラフィカル表現の一部を定義するために描画ツールを使用します:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">style_def</span><span class="o">&gt;</span> <span class="o">=</span>    <span class="o">&lt;</span><span class="n">style_part</span><span class="o">&gt;</span><span class="p">[;</span><span class="o">&lt;</span><span class="n">style_part</span><span class="o">&gt;</span><span class="p">[;</span><span class="o">...</span><span class="p">]]</span>
 
 <span class="o">&lt;</span><span class="n">style_part</span><span class="o">&gt;</span> <span class="o">=</span>   <span class="o">&lt;</span><span class="n">tool_name</span><span class="o">&gt;</span><span class="p">([</span><span class="o">&lt;</span><span class="n">tool_param</span><span class="o">&gt;</span><span class="p">[,</span><span class="o">&lt;</span><span class="n">tool_param</span><span class="o">&gt;</span><span class="p">[,</span><span class="o">...</span><span class="p">]]])</span>
@@ -350,35 +284,17 @@ representation:</p>
 <span class="o">&lt;</span><span class="n">units</span><span class="o">&gt;</span> <span class="o">=</span>        <span class="n">g</span> <span class="o">|</span> <span class="n">px</span> <span class="o">|</span> <span class="n">pt</span> <span class="o">|</span> <span class="n">mm</span> <span class="o">|</span> <span class="n">cm</span> <span class="o">|</span> <span class="ow">in</span>
 </pre></div>
 </div>
-<p>By default, style parts are drawn in the order that they appear in the
-style_def string unless each part is assigned a different level
-parameter value (see the level parameter definition).</p>
-<p>All drawing tool parameters are optional. So it is legal to have a
-style_part with an empty drawing tool parameter list (e.g. &quot;PEN()&quot;). For
-each parameter that does not have any specified value, it is up to the
-client application to use its own default value. This document provides
-advisory default values for most parameters, but it is not mandatory for
-an application to use those default values.</p>
-<p>When {&lt;field_name&gt;} is used for a tool_param value, several options are
-available with respect to the units. The units can be specified after
-the field name as in PEN(c:#FF0000,w:{line_width}pt) or can be left
-unspecified as in PEN(c:#FF0000,w:{line_width}). In the first case, the
-default units will be points (pt), but if the attribute field line_width
-contains a value followed by a units abbreviation (e.g. &quot;5px&quot;) then the
-units specified in the attribute fields have precedence (in this case
-pixels). Note that the attribute field does not have to contain a units
-value and probably won't in most cases; it is just an optional feature
-to be able to override the default units from inside an attribute
-field's value.</p>
+<p>デフォルトでは,style_def文字列に表示される順序でスタイルパートが描画されます.各パートに異なるレベルパラメータ値が割り当てられていない限り（レベルパラメータの定義を参照）.</p>
+<p>すべての描画ツールパラメータはオプションです.そのため,描画ツールパラメータリストが空のスタイルパート（例:&quot;PEN()&quot;）を持つことは合法です.指定された値がない各パラメータについては,クライアントアプリケーションが独自のデフォルト値を使用するかどうかは,クライアントアプリケーションによるものです.この文書は,ほとんどのパラメータに対して助言的なデフォルト値を提供していますが,アプリケーションがこれらのデフォルト値を使用することは義務付けられていません.</p>
+<p>{&lt;field_name&gt;} がtool_param値に使用される場合,単位に関していくつかのオプションが利用可能です.単位は,フィールド名の後に指定できます（例:PEN(c:#FF0000,w:{line_width}pt)）または指定しないで残すことができます（例:PEN(c:#FF0000,w:{line_width})).最初の場合,デフォルトの単位はポイント(pt)になりますが,属性フィールドline_widthに単位略語(例:&quot;5px&quot;）が続く値が含まれている場合,属性フィールドで指定された単位が優先されます（この場合,ピクセル）.属性フィールドに単位値を含める必要はなく,ほとんどの場合は含まれませんが,属性フィールドの値の内部からデフォルトの単位をオーバーライドできるようにするためのオプション機能です.</p>
 </section>
 <section id="pen-tool-parameters">
-<h3>2.3 Pen Tool Parameters<a class="headerlink" href="#pen-tool-parameters" title="Link to this heading"></a></h3>
+<h3>2.3 ペンツールパラメータ<a class="headerlink" href="#pen-tool-parameters" title="Link to this heading"></a></h3>
 <p><strong>Applicable geometry types:</strong></p>
 <ul class="simple">
-<li><p>Point: When applied to a point, a PEN tool can only define the color
-and the size of the point to draw.</p></li>
-<li><p>Polyline: This is the most obvious case.</p></li>
-<li><p>Polygon: Defines the way the outline of a polygon should be drawn.</p></li>
+<li><p>ポイント: ポイントに適用される場合,ペンツールは色と描画するポイントのサイズのみを定義できます.</p></li>
+<li><p>ポリライン: これは最も明らかなケースです.</p></li>
+<li><p>ポリゴン: ポリゴンの輪郭を描画する方法を定義します.</p></li>
 </ul>
 <p>Here is the current list of PEN tool parameters. While this is
 sufficient to cover all the cases that we have encountered so far, new
@@ -387,21 +303,20 @@ representation. Note again that all parameters are optional:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">c</span></code>: <strong>Pen Color</strong>, expressed hexadecimal (#RRGGBB[AA])</p>
 <ul class="simple">
-<li><p>[AA]: the last 2 digits define the alpha channel value, with 0 being
-transparent and FF being opaque. The default is FF (opaque)</p></li>
-<li><p>Suggested default: black (c:#000000)</p></li>
-<li><p>Example: PEN(c:#FF0000), or PEN(C:#FF0000FF)</p></li>
+<li><p>[AA]: 最後の2桁はアルファチャンネル値を定義し,0は透明でFFは不透明です.デフォルトはFF(不透明)です.</p></li>
+<li><p>推奨デフォルト: 黒 (c:#000000)</p></li>
+<li><p>例: PEN(c:#FF0000), または PEN(C:#FF0000FF)</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">w</span></code>: <strong>Pen Width</strong>, expressed as a numeric value with units (g, px, pt, mm,
 cm, in)</p>
 <ul class="simple">
-<li><p>Suggested default: 1 pixel</p></li>
-<li><p>Examples: PEN(c:#FF0000,w:5px), PEN(w:3pt), PEN(w:50g)</p></li>
+<li><p>推奨デフォルト: 1ピクセル</p></li>
+<li><p>例: PEN(c:#FF0000,w:5px), PEN(w:3pt), PEN(w:50g)</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">p</span></code>: <strong>Pattern</strong>. To create dash lines. A list of pen-down/pen-up distances</p>
-<p>Examples:</p>
+<p>例:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="../_images/style_pen1.png"><img alt="style_pen1" src="../_images/style_pen1.png" style="width: 75px; height: 15px;" /></a> = PEN(c:#FF0000,w:2px,p:&quot;4px 5px&quot;). short-dash line</p></li>
 <li><p><a class="reference internal" href="../_images/style_pen2.png"><img alt="style_pen2" src="../_images/style_pen2.png" style="width: 75px; height: 15px;" /></a> = PEN(c:#FF0000,w:2px,p:&quot;10px 5px&quot;). long-dash line</p></li>
@@ -418,212 +333,161 @@ one of the pre-defined OGR pen ids for known line patterns. The id parameter
 should always include one of the OGR ids at the end of the comma-delimited
 list of ids so that an application never has to rely on understanding
 system-specific ids.</p>
-<p>Here is the current list of OGR pen ids (this could grow time):</p>
+<p>現在のOGRペンIDのリストは次のとおりです(時間が経つと増えるかもしれません):</p>
 <ul class="simple">
-<li><p>ogr-pen-0: solid (the default when no id is provided)</p></li>
-<li><p>ogr-pen-1: null pen (invisible)</p></li>
-<li><p>ogr-pen-2: dash</p></li>
-<li><p>ogr-pen-3: short-dash</p></li>
-<li><p>ogr-pen-4: long-dash</p></li>
-<li><p>ogr-pen-5: dot line</p></li>
-<li><p>ogr-pen-6: dash-dot line</p></li>
-<li><p>ogr-pen-7: dash-dot-dot line</p></li>
-<li><p>ogr-pen-8: alternate-line (sets every other pixel)</p></li>
+<li><p>ogr-pen-0: 実線(IDが指定されていない場合のデフォルト)</p></li>
+<li><p>ogr-pen-1: ヌルペン（不可視）</p></li>
+<li><p>ogr-pen-2: 破線</p></li>
+<li><p>ogr-pen-3: 短破線</p></li>
+<li><p>ogr-pen-4: 長破線</p></li>
+<li><p>ogr-pen-5: 点線</p></li>
+<li><p>ogr-pen-6: 破線・点線</p></li>
+<li><p>ogr-pen-7: 破線・点・点線</p></li>
+<li><p>ogr-pen-8: 交互線（ピクセルごとに設定）</p></li>
 </ul>
 </li>
 </ul>
 <blockquote>
-<div><p>System-specific ids are very likely to be meaningful only to that specific
-system that created them. The ids should start with the system's name,
-followed by a dash (-), followed by whatever information is meaningful to that
-system (a number, a name, a filename, etc.).
-e.g. &quot;mapinfo-5&quot;, or &quot;mysoft-lines.sym-123&quot;, or &quot;othersystems-funnyline&quot;</p>
-<p>System-specific ids are allowed in order to prevent loss of information when
-dealing with data from systems that store line patterns in external files or
-that have their own pre-defined set of line styles (for instance, to do a
-MapInfo MIF to TAB translation without any loss.</p>
-<p>Examples:</p>
+<div><p>システム固有のIDは,おそらくそれを作成した特定のシステムにのみ意味がある可能性が高いです.IDは,システムの名前で始まり,ダッシュ(-)が続き,そのシステムにとって意味のある情報（番号,名前,ファイル名など）が続きます.例: &quot;mapinfo-5&quot;, &quot;mysoft-lines.sym-123&quot;, &quot;othersystems-funnyline&quot;</p>
+<p>システム固有のIDは,外部ファイルに線パターンを保存するシステムや,独自の事前定義された線スタイルセットを持つシステムのデータを取り扱う際に情報の損失を防ぐために許可されています.たとえば,損失なしでMapInfo MIFからTABへの変換を行うためです.</p>
+<p>例:</p>
 <ul class="simple">
-<li><p>PEN(c:#00FF00,id:&quot;ogr-pen-0&quot;) - simple solid line</p></li>
-<li><p>PEN(c:#00FF00,id:&quot;mapinfo-5,ogr-pen-7&quot;) - corresponds to MapInfo's Pen #5,
-and a system that can't understand MapInfo pens falls back on the default
-&quot;ogr-pen-7&quot; pen (dot-dot line).</p></li>
+<li><p>PEN(c:#00FF00,id:&quot;ogr-pen-0&quot;) - 単純な実線</p></li>
+<li><p>PEN(c:#00FF00,id:&quot;mapinfo-5,ogr-pen-7&quot;) - MapInfoのペン#5に対応し,MapInfoペンを理解できないシステムは,デフォルトの&quot;ogr-pen-7&quot;ペン（破線・点・点線）にフォールバックします.</p></li>
 </ul>
 </div></blockquote>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">cap</span></code>: <strong>Pen Cap</strong> - Set the shape of  end points of lines.</p>
 <ul class="simple">
-<li><p>&quot;cap:b&quot; - Butt: The ends of the line don't extend beyond the end points.
-This is the default.</p></li>
-<li><p>&quot;cap:r&quot; - Round: Terminate lines with a circle whose diameter is equal to
-the line width.</p></li>
-<li><p>&quot;cap:p&quot; - Projecting: Similar to Butt, but the ends of the line extend by
-half of line width beyond the end points.</p></li>
+<li><p>&quot;cap:b&quot; - バット: 線の端点を超えません. これがデフォルトです.</p></li>
+<li><p>&quot;cap:r&quot; - ラウンド: 線を線幅と同じ直径の円で終了します.</p></li>
+<li><p>&quot;cap:p&quot; - プロジェクション: バットに似ていますが,線の端点を超えて線幅の半分だけ延長します.</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">j</span></code>: <strong>Pen Join</strong> - Set the shape of the join point (vertex) of lines.</p>
 <ul class="simple">
-<li><p>&quot;j:m&quot; - Miter: Extend the outer edge of the lines until they touch.
-This is the default.</p></li>
-<li><p>&quot;j:r&quot; - Rounded: Join lines with an arc whose center is at the join point
-and whose diameter is equal to the line width.</p></li>
-<li><p>&quot;j:b&quot; - Bevel: Join the lines with butt end caps and fill the resulting
-triangular notch at the join position.</p></li>
+<li><p>&quot;j:m&quot; - マイター: 線の外縁を接触するまで延長します. これがデフォルトです.</p></li>
+<li><p>&quot;j:r&quot; - ラウンド: 結合点に中心があり,直径が線幅と等しい円弧で線を結合します.</p></li>
+<li><p>&quot;j:b&quot; - ベベル: バットエンドキャップで線を結合し,結合位置の三角形の切り欠きを埋めます.</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">dp</span></code>: <strong>Perpendicular Offset</strong>, expressed as a numeric value units (g, px,
 pt, mm, cm, in)</p>
-<p>Offset from the line center. If the offset is negative then the pen will be
-drawn left of the main segment and right otherwise.</p>
+<p>線の中心からのオフセット. オフセットが負の場合,ペンはメインセグメントの左側に描画され,それ以外の場合は右側に描画されます.</p>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">l</span></code>: <strong>Priority Level</strong> - Numeric value defining the order in which style
 parts should be drawn.</p>
-<p>Lower priority style parts are drawn first, and higher priority ones are
-drawn on top. If priority level is unspecified, the default is 1.</p>
+<p>優先度が低いスタイルパートが最初に描画され,優先度が高いものが上に描画されます.優先度が指定されていない場合,デフォルトは1です.</p>
 </li>
 </ul>
 </section>
 <section id="brush-tool-parameters">
-<h3>2.4 Brush Tool Parameters<a class="headerlink" href="#brush-tool-parameters" title="Link to this heading"></a></h3>
+<h3>2.4 ブラシツールパラメータ<a class="headerlink" href="#brush-tool-parameters" title="Link to this heading"></a></h3>
 <p><strong>Applicable geometry types:</strong></p>
 <ul class="simple">
-<li><p>Point: Not applicable.</p></li>
-<li><p>Polyline: Not applicable.</p></li>
-<li><p>Polygon: Defines the way the surface of a polygon is filled.</p></li>
+<li><p>Point: 適用されません.</p></li>
+<li><p>Polyline: 適用されません.</p></li>
+<li><p>Polygon: ポリゴンの表面を塗りつぶす方法を定義します.</p></li>
 </ul>
-<p>Here is the current list of BRUSH tool parameters. Note again that that
-this list may be extended in the future, and all parameters are
-optional:</p>
+<p>現在のBRUSHツールパラメータのリストは次のとおりです.このリストは将来拡張される可能性があり,すべてのパラメータはオプションです:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">fc</span></code>: <strong>Brush ForeColor</strong>, expressed in hexadecimal (#RRGGBB[AA]).
 Used for painting the brush pattern itself.</p>
 <ul class="simple">
-<li><p>[AA]: the last 2 digits define the alpha channel value, with 0 being
-transparent and FF being opaque. The default is FF (opaque)</p></li>
-<li><p>Suggested default: 50% grey (c:#808080)</p></li>
-<li><p>Example: BRUSH(fc:#FF0000)</p></li>
+<li><p>[AA]: 最後の2桁はアルファチャンネル値を定義し,0は透明でFFは不透明です.デフォルトはFF(不透明)です.</p></li>
+<li><p>推奨デフォルト: 50%グレー (c:#808080)</p></li>
+<li><p>例: BRUSH(fc:#FF0000)</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">bc</span></code>: <strong>Brush BackColor</strong>, expressed in hexadecimal (#RRGGBB[AA]).
 Used for painting the area behind the brush pattern.</p>
 <ul class="simple">
-<li><p>[AA]: the last 2 digits define the alpha channel value, with 0 being
-transparent and FF being opaque. The default is FF (opaque)</p></li>
-<li><p>Suggested default: transparent (c:#FFFFFF00)</p></li>
-<li><p>Example: BRUSH(fc:#FF0000,bc:#FFEEDD)</p></li>
+<li><p>[AA]: 最後の2桁はアルファチャンネル値を定義し,0は透明でFFは不透明です.デフォルトはFF(不透明)です.</p></li>
+<li><p>推奨デフォルト: 透明 (c:#FFFFFF00)</p></li>
+<li><p>例: BRUSH(fc:#FF0000,bc:#FFEEDD)</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">id</span></code>: <strong>Brush Name or Brush Id</strong> - Comma-delimited list of brush names or
 ids. The names in the comma-delimited list of ids are scanned until one is
 recognized by the target system.</p>
-<p>Brush Ids can be either system-specific ids (see furtherbelow) or be one of
-the pre-defined OGR brush ids for well known brush patterns. The id parameter
-should always include one of the OGR ids at the end of the comma-delimited
-list of ids so that an application never has to rely on understanding
-system-specific ids.</p>
-<p>Here is the current list of OGR brush ids (this could grow over time):</p>
+<p>ブラシIDは,システム固有のID(以下を参照)または既知のブラシパターンのOGRブラシIDのいずれかであることができます.idパラメータは,アプリケーションがシステム固有のIDを理解する必要がないように,IDのコンマ区切りリストの末尾に常にOGR IDの1つを含めるべきです.</p>
+<p>現在のOGRブラシIDのリストは次のとおりです(時間が経つと増えるかもしれません):</p>
 <img alt="../_images/style_ogr_brush.png" src="../_images/style_ogr_brush.png" />
 <ul class="simple">
-<li><p>ogr-brush-0: solid foreground color (the default when no id  is provided)</p></li>
-<li><p>ogr-brush-1: null brush (transparent - no fill, irrespective of fc or bc
-values</p></li>
-<li><p>ogr-brush-2: horizontal hatch</p></li>
-<li><p>ogr-brush-3: vertical hatch</p></li>
-<li><p>ogr-brush-4: top-left to bottom-right diagonal hatch</p></li>
-<li><p>ogr-brush-5: bottom-left to top-right diagonal hatch</p></li>
-<li><p>ogr-brush-6: cross hatch</p></li>
-<li><p>ogr-brush-7: diagonal cross hatch</p></li>
+<li><p>ogr-brush-0: 実線前景色(IDが指定されていない場合のデフォルト)</p></li>
+<li><p>ogr-brush-1: ヌルブラシ（透明 - 塗りつぶしなし,fcまたはbcの値に関係なく</p></li>
+<li><p>ogr-brush-2: 水平ハッチ</p></li>
+<li><p>ogr-brush-3: 垂直ハッチ</p></li>
+<li><p>ogr-brush-4: 左上から右下への対角ハッチ</p></li>
+<li><p>ogr-brush-5: 左下から右上への対角ハッチ</p></li>
+<li><p>ogr-brush-6: クロスハッチ</p></li>
+<li><p>ogr-brush-7: 対角クロスハッチ</p></li>
 </ul>
-<p>Like with Pen Ids, system-specific brush ids are very likely to be meaningful
-only to that specific system that created them. The ids should start with the
-system's name, followed by a dash (-), followed by whatever information is
-meaningful to that system (a number, a name, a filename, etc.).</p>
-<p>The following conventions will be used for common system-specific brush ids:</p>
+<p>ペンIDと同様に,システム固有のブラシIDは,おそらくそれを作成した特定のシステムにのみ意味がある可能性が高いです.IDは,システムの名前で始まり,ダッシュ(-)が続き,そのシステムにとって意味のある情報（番号,名前,ファイル名など）が続きます.</p>
+<p>一般的なシステム固有のブラシIDには,次の規則が使用されます:</p>
 <ul class="simple">
-<li><p>&quot;bmp-filename.bmp&quot; for Windows BMP patterns</p></li>
+<li><p>&quot;bmp-filename.bmp&quot; はWindows BMPパターンです</p></li>
 </ul>
-<p>Other conventions may be added in the future (such as vector symbols, WMF,
-etc).</p>
+<p>将来他の規則が追加されるかもしれません（ベクトルシンボル,WMFなど).</p>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">a</span></code>: <strong>Angle</strong> - Rotation angle (in degrees, counterclockwise) to apply to
 the brush pattern.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">s</span></code>: <strong>Size or Scaling Factor</strong> - Numeric value with or without units.</p>
-<p>If units are specified, then this value is the absolute size to draw the
-brush or symbol. If no units are specified then it is taken as a scaling
-factor relative to the symbol's default size.</p>
+<p>単位が指定されている場合,この値はブラシまたはシンボルを描画する絶対サイズです.単位が指定されていない場合,これはシンボルのデフォルトサイズに対するスケーリングファクタとして取られます.</p>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">dx</span></code>, <code class="docutils literal notranslate"><span class="pre">dy</span></code>: <strong>Spacing</strong>, expressed as a numeric value with units (g, px,
 pt, mm, cm, in)</p>
-<p>If filling an area using point symbols, these values will define the spacing
-to use between them. &quot;dx&quot; is the horizontal distance between the center of
-two adjacent symbols and &quot;dy&quot; is the vertical distance. The default is to use
-the symbol's bounding box width and height for dx and dy respectively.</p>
+<p>ポイントシンボルを使用して領域を塗りつぶす場合,これらの値はそれらの間の間隔を定義します.&quot;dx&quot;は,隣接する2つのシンボルの中心間の水平距離を,&quot;dy&quot;は垂直距離を定義します.デフォルトは,それぞれdxとdyにシンボルの境界ボックスの幅と高さを使用することです.</p>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">l</span></code>: <strong>Priority Level</strong> - Numeric value defining the order in which style
 parts should be drawn.</p>
-<p>Lower priority style parts are drawn first, and higher priority ones are drawn
-on top. If priority level is unspecified, the default is 1.</p>
+<p>優先度が低いスタイルパートが最初に描画され,優先度が高いものが上に描画されます.優先度が指定されていない場合,デフォルトは1です.</p>
 </li>
 </ul>
 </section>
 <section id="symbol-tool-parameters">
-<h3>2.5 Symbol Tool Parameters<a class="headerlink" href="#symbol-tool-parameters" title="Link to this heading"></a></h3>
+<h3>2.5 シンボルツールパラメータ<a class="headerlink" href="#symbol-tool-parameters" title="Link to this heading"></a></h3>
 <p><strong>Applicable geometry types:</strong></p>
 <ul class="simple">
-<li><p>Point: Place a symbol at the point's location</p></li>
-<li><p>Polyline: Place symbols along the polyline, either at each vertex, or
-equally spaced.</p></li>
-<li><p>Polygon: Place the symbols on the outline of the polygon.</p></li>
+<li><p>Point: ポイントの位置にシンボルを配置します</p></li>
+<li><p>Polyline: ポリラインに沿ってシンボルを配置します.各頂点または等間隔で.</p></li>
+<li><p>Polygon: ポリゴンの輪郭にシンボルを配置します.</p></li>
 </ul>
-<p>Here is the current list of SYMBOL tool parameters. Note again that that
-this list may be extended in the future, and all parameters are
-optional:</p>
+<p>現在のSYMBOLツールパラメータのリストは次のとおりです.このリストは将来拡張される可能性があり,すべてのパラメータはオプションです:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">id</span></code>: <strong>Symbol Name or Id</strong> - Comma-delimited list of symbol names or ids.</p>
-<p>The names in the comma-delimited list of ids are scanned until one is
-recognized by the target system.</p>
-<p>Symbol Ids can be either system-specific ids (see further below) or be one of
-the pre-defined OGR symbol ids for well known symbols. The id parameter should
-always include one of the OGR ids at the end of the comma-delimited list of
-ids so that an application never has to rely on understanding system-specific
-ids.</p>
-<p>Here is the current list of OGR symbol ids (this could grow over time):</p>
+<p>IDのコンマ区切りリスト内の名前は,ターゲットシステムによって認識されるまでスキャンされます.</p>
+<p>シンボルIDは,システム固有のID(以下を参照)または既知のシンボルのOGRシンボルIDのいずれかであることができます.idパラメータは,アプリケーションがシステム固有のIDを理解する必要がないように,IDのコンマ区切りリストの末尾に常にOGR IDの1つを含めるべきです.</p>
+<p>現在のOGRシンボルIDのリストは次のとおりです(時間が経つと増えるかもしれません):</p>
 <img alt="../_images/style_ogr_sym.png" src="../_images/style_ogr_sym.png" />
 <ul class="simple">
-<li><p>ogr-sym-0: cross (+)</p></li>
-<li><p>ogr-sym-1: diagcross (X)</p></li>
-<li><p>ogr-sym-2: circle (not filled)</p></li>
-<li><p>ogr-sym-3: circle (filled)</p></li>
-<li><p>ogr-sym-4: square (not filled)</p></li>
-<li><p>ogr-sym-5: square (filled)</p></li>
-<li><p>ogr-sym-6: triangle (not filled)</p></li>
-<li><p>ogr-sym-7: triangle (filled)</p></li>
-<li><p>ogr-sym-8: star (not filled)</p></li>
-<li><p>ogr-sym-9: star (filled)</p></li>
-<li><p>ogr-sym-10: vertical bar (can be rotated using angle attribute to produce
-diagonal bar)</p></li>
+<li><p>ogr-sym-0: 十字(+)</p></li>
+<li><p>ogr-sym-1: 斜め十字(X)</p></li>
+<li><p>ogr-sym-2: 円（塗りつぶしなし）</p></li>
+<li><p>ogr-sym-3: 円（塗りつぶし）</p></li>
+<li><p>ogr-sym-4: 四角形（塗りつぶしなし）</p></li>
+<li><p>ogr-sym-5: 四角形（塗りつぶし）</p></li>
+<li><p>ogr-sym-6: 三角形（塗りつぶしなし）</p></li>
+<li><p>ogr-sym-7: 三角形（塗りつぶし）</p></li>
+<li><p>ogr-sym-8: 星（塗りつぶしなし）</p></li>
+<li><p>ogr-sym-9: 星（塗りつぶし）</p></li>
+<li><p>ogr-sym-10: 垂直バー（角度属性を使用して対角バーを生成することができます）</p></li>
 </ul>
-<p>Like with Pen Ids, system-specific symbol ids are very likely to be meaningful
-only to that specific system that created them. The ids should start with the
-system's name, followed by a dash (-), followed by whatever information is
-meaningful to that system (a number, a name, a filename, etc.).</p>
-<p>The following conventions will be used for common system-specific symbol ids:</p>
+<p>ペンIDと同様に,システム固有のシンボルIDは,おそらくそれを作成した特定のシステムにのみ意味がある可能性が高いです.IDは,システムの名前で始まり,ダッシュ(-)が続き,そのシステムにとって意味のある情報（番号,名前,ファイル名など）が続きます.</p>
+<p>一般的なシステム固有のシンボルIDには,次の規則が使用されます:</p>
 <ul class="simple">
-<li><p>&quot;bmp-filename.bmp&quot; for Windows BMP symbols</p></li>
-<li><p>&quot;font-sym-%d&quot; for a font symbols, where %d is a glyph number inside a font,
-font family is defined by <strong>f</strong> style field.</p></li>
+<li><p>&quot;bmp-filename.bmp&quot; はWindows BMPシンボルです</p></li>
+<li><p>&quot;font-sym-%d&quot; はフォントシンボルです.ここで, %d はフォント内のグリフ番号であり,フォントファミリは <strong>f</strong> スタイルフィールドで定義されます.</p></li>
 </ul>
-<p>Other conventions may be added in the future (such as vector symbols, WMF,
-etc.)</p>
+<p>将来他の規則が追加されるかもしれません（ベクトルシンボル,WMFなど).</p>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">a</span></code>: <strong>Angle</strong> - Rotation angle (in degrees, counterclockwise) to apply to
 the symbol.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">c</span></code>: <strong>Symbol Color</strong>, expressed in hexadecimal (#RRGGBB[AA])</p>
 <ul>
-<li><p>[AA]: the last 2 digits define the alpha channel value, with 0 being
-transparent and FF being opaque. The default is FF (opaque)</p></li>
-<li><p>Suggested default symbol color: black (c:#000000)</p></li>
-<li><p>Example</p>
+<li><p>[AA]: 最後の2桁はアルファチャンネル値を定義し,0は透明でFFは不透明です.デフォルトはFF(不透明)です.</p></li>
+<li><p>推奨デフォルトシンボルカラー: 黒 (c:#000000)</p></li>
+<li><p>例</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SYMBOL</span><span class="p">(</span><span class="n">c</span><span class="p">:</span><span class="c1">#FF0000)</span>
 </pre></div>
 </div>
@@ -631,18 +495,14 @@ transparent and FF being opaque. The default is FF (opaque)</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">o</span></code>: <strong>Symbol Outline Color</strong>, expressed in hexadecimal (#RRGGBB[AA]).</p>
-<p>If this parameter is set, an additional halo or border of this color is drawn
-around the symbol.</p>
+<p>このパラメータが設定されている場合,この色の追加のハローや境界がシンボルの周りに描画されます.</p>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">s</span></code>:  <strong>Size or Scaling Factor</strong> - Numeric value with or without units.</p>
-<p>If units are specified, then this value is the absolute size to draw the
-symbol. If no units are specified then it is taken as a scaling factor
-relative to the symbol's default size.</p>
+<p>単位が指定されている場合,この値はシンボルを描画する絶対サイズです.単位が指定されていない場合,これはシンボルのデフォルトサイズに対するスケーリングファクタとして取られます.</p>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">dx</span></code>, <code class="docutils literal notranslate"><span class="pre">dy</span></code>: <strong>X and Y offset</strong>, of the symbol's insertion point, expressed
 as a numeric value with units (g, px, pt, mm, cm, in)</p>
-<p>Applies to point geometries, and to symbols placed at each vertex of a
-polyline.</p>
+<p>ポイントジオメトリに適用され,ポリラインの各頂点に配置されたシンボルにも適用されます.</p>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ds</span></code>, <code class="docutils literal notranslate"><span class="pre">dp</span></code>, <code class="docutils literal notranslate"><span class="pre">di</span></code>: <strong>Spacing parameters</strong> for symbols spaced along a
 line, expressed as a numeric value with units (g, px, pt, mm, cm, in).</p>
@@ -656,7 +516,7 @@ geometry.</p></li>
 between the symbols' center and the line along which they're placed.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">di</span></code> can be used to specify an initial offset from the beginning of the
 line.</p></li>
-<li><p>Example</p>
+<li><p>例</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SYMBOL</span><span class="p">(</span><span class="nb">id</span><span class="p">:</span><span class="mi">123</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="n">di</span><span class="p">:</span><span class="mi">5</span><span class="n">px</span><span class="p">,</span> <span class="n">ds</span><span class="p">:</span><span class="mi">50</span><span class="n">px</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -665,13 +525,11 @@ line.</p></li>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">l</span></code>: <strong>Priority Level</strong> - Numeric value defining the order in which style
 parts should be drawn.</p>
-<p>Lower priority style parts are drawn first, and higher priority ones are drawn
-on top. If priority level is unspecified, the default is 1.</p>
+<p>優先度が低いスタイルパートが最初に描画され,優先度が高いものが上に描画されます.優先度が指定されていない場合,デフォルトは1です.</p>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">f</span></code>: <strong>Font Name</strong> - Comma-delimited list of fonts names.</p>
-<p>Works like the CSS font-family property: the list of font names is scanned
-until a known font name is encountered.</p>
-<p>Example</p>
+<p>CSSフォントファミリプロパティのように機能します:フォント名のリストは,既知のフォント名が見つかるまでスキャンされます.</p>
+<p>例</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SYMBOL</span><span class="p">(</span><span class="n">c</span><span class="p">:</span><span class="c1">#00FF00,s:12pt,id:&quot;font-sym-75,ogr-sym-9&quot;,f:&quot;MapInfo_Cartographic&quot;)</span>
 </pre></div>
 </div>
@@ -679,45 +537,30 @@ until a known font name is encountered.</p>
 </ul>
 </section>
 <section id="label-tool-parameters">
-<h3>2.6 Label Tool Parameters<a class="headerlink" href="#label-tool-parameters" title="Link to this heading"></a></h3>
+<h3>2.6 ラベルツールパラメータ<a class="headerlink" href="#label-tool-parameters" title="Link to this heading"></a></h3>
 <p><strong>Applicable geometry types:</strong></p>
 <ul class="simple">
-<li><p>Point: Place a text label at the point's location</p></li>
-<li><p>Polyline: Place text along the polyline.</p></li>
-<li><p>Polygon: Place a label at the centroid of the polygon. All parameters
-behave exactly as if the geometry was a point located at the
-polygon's centroid.</p></li>
+<li><p>Point: ポイントの位置にテキストラベルを配置します</p></li>
+<li><p>Polyline: ポリラインに沿ってテキストを配置します.</p></li>
+<li><p>Polygon: ポリゴンの重心にラベルを配置します.すべてのパラメータは,ポリゴンの重心にあるポイントとしてジオメトリがあるかのように振る舞います.</p></li>
 </ul>
-<p>Here is the current list of LABEL tool parameters. Note again that that
-this list may be extended in the future, and all parameters are
-optional:</p>
+<p>現在のLABELツールパラメータのリストは次のとおりです.このリストは将来拡張される可能性があり,すべてのパラメータはオプションです:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">f</span></code>: <strong>Font Name</strong> - Comma-delimited list of fonts names.</p>
-<p>Works like the CSS font-family property: the list of font names is scanned
-until a known font name is encountered.</p>
-<p>Example</p>
+<p>CSSフォントファミリプロパティのように機能します:フォント名のリストは,既知のフォント名が見つかるまでスキャンされます.</p>
+<p>例</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LABEL</span><span class="p">(</span><span class="n">f</span><span class="p">:</span><span class="s2">&quot;Noto Sans, Helvetica&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span><span class="mi">12</span><span class="n">pt</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span><span class="s2">&quot;Hello World!&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">s</span></code>: <strong>Font Size</strong>, expressed as a numeric value with units (g, px, pt,
 mm, cm, in).</p>
-<p>In the CAD world, font size, or &quot;text height&quot;, determines the height of a
-capital letter - what typographers call &quot;cap height&quot;. But in the worlds of
-typesetting, graphics and cartography, font size refers to the &quot;em height&quot;
-of the font, which is taller than the cap height. This means that text
-assigned a height of 1 inch in a DXF file will look larger (often about 45%
-larger) than 72-point text in a PDF file or MapInfo map. At present, GDAL
-vector drivers treat the &quot;s:&quot; style string value as whichever font size
-measurement (cap height or em height) is used natively by that format, which
-may result in incorrect text sizing when using the ogr2ogr tool. This
-parameter could be subject to clearer specification in the future.</p>
+<p>CADの世界では,フォントサイズまたは&quot;テキストの高さ&quot;は,大文字の高さを決定します - タイポグラファーが&quot;キャップの高さ&quot;と呼ぶものです.しかし,タイポグラフィ,グラフィックス,地図作成の世界では,フォントサイズはフォントの&quot;emの高さ&quot;を指します.これは,キャップの高さよりも高いです.これは,DXFファイルで1インチの高さに割り当てられたテキストが,PDFファイルやMapInfoマップの72ポイントのテキストよりも大きく見えることを意味します.現在, GDALベクタードライバは,そのフォーマットでネイティブに使用されるフォントサイズの測定(キャップの高さまたはemの高さ)を&quot;s:&quot;スタイル文字列値として扱います.これは,ogr2ogrツールを使用する際にテキストのサイズが不正確になる可能性があるため,このパラメータは将来的により明確な仕様になる可能性があります.</p>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">t</span></code>: <strong>Text String</strong> - Can be a constant string, or a reference to an
 attribute field's value.</p>
-<p>If a double-quote character or backslash () character is present in the
-string, it is escaped with a backslash character before it.</p>
-<p>Examples</p>
+<p>文字列に二重引用符またはバックスラッシュ()文字が含まれている場合,それはそれの前にバックスラッシュ文字でエスケープされます.</p>
+<p>例</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LABEL</span><span class="p">(</span><span class="n">f</span><span class="p">:</span><span class="s2">&quot;Arial, Helvetica&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span><span class="mi">12</span><span class="n">pt</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span><span class="s2">&quot;Hello World!&quot;</span><span class="p">)</span>
 <span class="n">LABEL</span><span class="p">(</span><span class="n">f</span><span class="p">:</span><span class="s2">&quot;Arial, Helvetica&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span><span class="mi">12</span><span class="n">pt</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span><span class="s2">&quot;Hello World with escaped </span><span class="se">\\</span><span class="s2">&quot;</span><span class="n">quotes</span>\<span class="s2">&quot; and </span><span class="se">\\\b</span><span class="s2">ackslash!&quot;</span><span class="p">)</span>
 <span class="n">LABEL</span><span class="p">(</span><span class="n">f</span><span class="p">:</span><span class="s2">&quot;Arial, Helvetica&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span><span class="mi">12</span><span class="n">pt</span><span class="p">,</span> <span class="n">t</span><span class="p">:{</span><span class="n">text_attribute</span><span class="p">})</span>
@@ -740,42 +583,28 @@ default stretch factor is 100.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">m</span></code>: <strong>Label Placement Mode</strong> - How the text is drawn relative to the
 feature's geometry.</p>
 <ul class="simple">
-<li><p>&quot;m:p&quot; - The default. A simple label is attached to a point or to the first
-vertex of a polyline.</p></li>
-<li><p>&quot;m:l&quot; - Text is attached to the last vertex of a polyline. A PEN tool can
-be combined with this LABEL tool to draw the polyline as a leader to the
-label.</p></li>
-<li><p>&quot;m:s&quot; - Stretch the text string along a polyline, with an equal spacing
-between each character.</p></li>
-<li><p>&quot;m:m&quot; - Place text as a single label at the middle of a polyline (based on
-total line length).</p></li>
-<li><p>&quot;m:w&quot; - One word per line segment in a polyline.</p></li>
-<li><p>&quot;m:h&quot; - Every word of text attached to polyline is placed horizontally in
-its segment, anchor point is a center of segment.</p></li>
-<li><p>&quot;m:a&quot; - Every word of text attached to polyline is stretched to fit the
-segment of polyline and placed along that segment. The anchor point is a
-start of a segment.</p></li>
+<li><p>&quot;m:p&quot; - デフォルト. 単純なラベルがポイントまたはポリラインの最初の頂点にアタッチされます.</p></li>
+<li><p>&quot;m:l&quot; - テキストはポリラインの最後の頂点にアタッチされます.PENツールをこのLABELツールと組み合わせて,ポリラインをラベルにリーダーとして描画することができます.</p></li>
+<li><p>&quot;m:s&quot; - テキスト文字列をポリラインに沿ってストレッチし,各文字の間に等間隔を設定します.</p></li>
+<li><p>&quot;m:m&quot; - ポリラインの中央に単一のラベルとしてテキストを配置します(合計ライン長に基づく).</p></li>
+<li><p>&quot;m:w&quot; - ポリラインの各ラインセグメントに1つの単語.</p></li>
+<li><p>&quot;m:h&quot; - ポリラインにアタッチされたテキストの各単語は,そのセグメント内で水平に配置されます.アンカーポイントはセグメントの中心です.</p></li>
+<li><p>&quot;m:a&quot; - ポリラインにアタッチされたテキストの各単語は,ポリラインのセグメントに合わせてストレッチされ,そのセグメントに沿って配置されます.アンカーポイントはセグメントの開始です.</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">p</span></code>: <strong>Anchor Position</strong> - A value from 1 to 12 defining the label's
 position relative to the point to which it is attached</p>
-<p>There are four vertical alignment modes: <em>baseline</em>, <em>center</em>, <em>top</em> and
-<em>bottom</em>; and three horizontal modes: <em>left</em>, <em>center</em> and <em>right</em>.</p>
+<p>4つの垂直配置モードがあります: <em>baseline</em>, <em>center</em>, <em>top</em> および <em>bottom</em>;および3つの水平モード: <em>left</em>, <em>center</em> および <em>right</em>.</p>
 <img alt="../_images/style_textanchor.png" src="../_images/style_textanchor.png" />
-<p>Currently, the precise interpretation of these values (for example, whether
-accents on uppercase letters sit above or below the alignment point with p:7)
-differs from file format to file format. This parameter could be subject to
-clearer specification in the future.</p>
+<p>現在,これらの値の正確な解釈（たとえば,大文字の文字のアクセントがp:7のアラインメントポイントの上または下にあるかどうか）は,ファイルフォーマットによって異なります.このパラメータは将来的により明確な仕様になる可能性があります.</p>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">dx</span></code>, <code class="docutils literal notranslate"><span class="pre">dy</span></code>: <strong>X and Y offset</strong> of the label's insertion point, expressed
 as a numeric value with units (g, px, pt, mm, cm, in).</p>
-<p>Applies to text placed on a point, or at each vertex of a polyline.</p>
+<p>ポイントに配置されたテキストまたはポリラインの各頂点に適用されます.</p>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">dp</span></code>: <strong>Perpendicular Offset</strong> for labels placed along a line, expressed as
 a numeric value with units (g, px, pt, mm, cm, in).</p>
-<p>&quot;dp&quot; specifies the perpendicular distance between the label and the line along
-which it is placed. If the offset is negative then the label will be shifted
-left of the main segment, and right otherwise.</p>
+<p>&quot;dp&quot;は,ラベルとその配置されたラインの間の垂直距離を指定します.オフセットが負の場合,ラベルはメインセグメントの左にシフトされ,それ以外の場合は右にシフトされます.</p>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">bo</span></code>: <strong>Bold</strong> - Set to 1 for bold text. Set to 0 or omitted otherwise.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">it</span></code>: <strong>Italic</strong> - Set to 1 for italic text. Set to 0 or omitted otherwise.</p></li>
@@ -785,20 +614,15 @@ otherwise.</p></li>
 omitted otherwise.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">l</span></code>: <strong>Priority Level</strong> - Numeric value defining the order in which style
 parts should be drawn.</p>
-<p>Lower priority style parts are drawn first, and higher priority ones are drawn
-on top. If priority level is unspecified, the default is 1.</p>
+<p>優先度が低いスタイルパートが最初に描画され,優先度が高いものが上に描画されます.優先度が指定されていない場合,デフォルトは1です.</p>
 </li>
 </ul>
 </section>
 <section id="styles-table-format">
-<h3>2.7 Styles Table Format<a class="headerlink" href="#styles-table-format" title="Link to this heading"></a></h3>
-<p>For file formats that support tables of styles, then the predefined
-styles would be stored in that format.</p>
-<p>For file formats that do not support tables of styles, then the style
-table could be stored in a text file with a .ofs (OGR Feature Styles)
-extension and the same basename as the dataset. This would apply to
-formats like Esri Shapefile.</p>
-<p>Here is an example of a .ofs file:</p>
+<h3>2.7 スタイルテーブルフォーマット<a class="headerlink" href="#styles-table-format" title="Link to this heading"></a></h3>
+<p>スタイルテーブルをサポートするファイルフォーマットの場合,事前定義されたスタイルはそのフォーマットに保存されます.</p>
+<p>スタイルテーブルをサポートしていないファイルフォーマットの場合,スタイルテーブルは,データセットと同じベース名の .ofs (OGR Feature Styles) 拡張子のテキストファイルに保存されます.これは,Esri Shapefileなどのフォーマットに適用されます.</p>
+<p>以下は, .ofs ファイルの例です:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#OFS-Version: 1.0</span>
 <span class="c1">#StyleField: &quot;style&quot;</span>
 
@@ -809,38 +633,27 @@ formats like Esri Shapefile.</p>
 <span class="n">label</span><span class="p">:</span>     <span class="n">LABEL</span><span class="p">(</span><span class="n">f</span><span class="p">:</span><span class="s2">&quot;Times New Roman&quot;</span><span class="p">,</span><span class="n">s</span><span class="p">:</span><span class="mi">12</span><span class="n">pt</span><span class="p">,</span><span class="n">t</span><span class="p">:{</span><span class="n">text_attribute</span><span class="p">})</span>
 </pre></div>
 </div>
-<p>The first line is a signature with a version number, which must be
-present.</p>
-<p>The second line (StyleField: &quot;style&quot;) is the name of the attribute field
-in which the Feature Style String is stored for each object in the
-corresponding layer. This is optional, if not set, then the objects in
-the layer will all share the same style defined in DefaultStyle.</p>
-<p>The third line (DefaultStyle:...) defines the style that applies by
-default to all objects that have no explicit style.</p>
-<p>Then the list of style definitions follow.</p>
+<p>最初の行は,存在する必要があるバージョン番号を持つシグネチャです.</p>
+<p>2行目 (StyleField: &quot;style&quot;) は,対応するレイヤの各オブジェクトに保存されるFeature Style Stringが格納される属性フィールドの名前です. これはオプションです.設定されていない場合,レイヤ内のオブジェクトはすべて,DefaultStyleで定義された同じスタイルを共有します.</p>
+<p>3行目 (DefaultStyle:...) は,明示的なスタイルを持たないすべてのオブジェクトにデフォルトで適用されるスタイルを定義します.</p>
+<p>次に,スタイル定義のリストが続きます.</p>
 </section>
 <section id="using-ogr-sql-to-transfer-the-style-between-the-data-sources">
-<h3>2.8 Using OGR SQL to transfer the style between the data sources<a class="headerlink" href="#using-ogr-sql-to-transfer-the-style-between-the-data-sources" title="Link to this heading"></a></h3>
-<p>You can use the <strong>OGR_STYLE</strong> special field to extract the feature level
-style, and ogr2ogr can be used to transfer the style string between data
-sources according to the following example:</p>
+<h3>2.8 OGR SQLを使用してデータソース間でスタイルを転送する<a class="headerlink" href="#using-ogr-sql-to-transfer-the-style-between-the-data-sources" title="Link to this heading"></a></h3>
+<p><strong>OGR_STYLE</strong> 特別なフィールドを使用して,地物レベルのスタイルを抽出することができ,ogr2ogrを使用して,以下の例に従ってデータソース間でスタイル文字列を転送することができます:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ogr2ogr</span> <span class="o">-</span><span class="n">f</span> <span class="s2">&quot;ESRI Shapefile&quot;</span> <span class="o">-</span><span class="n">sql</span> <span class="s2">&quot;select *, OGR_STYLE from rivers&quot;</span> <span class="n">rivers</span><span class="o">.</span><span class="n">shp</span> <span class="n">rivers</span><span class="o">.</span><span class="n">tab</span>
 </pre></div>
 </div>
-<p>Without specifying the length of the style field, the output driver may
-truncate the length to a default value. Therefore it may be necessary to
-specify the target length manually, like:</p>
+<p>スタイルフィールドの長さを指定しない場合,出力ドライバは長さをデフォルト値に切り捨てる可能性があります.そのため,次のようにターゲットの長さを手動で指定する必要があるかもしれません:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ogr2ogr</span> <span class="o">-</span><span class="n">f</span> <span class="s2">&quot;ESRI Shapefile&quot;</span> <span class="o">-</span><span class="n">sql</span> <span class="s2">&quot;select *, CAST(OGR_STYLE AS character(255)) from rivers&quot;</span> <span class="n">rivers</span><span class="o">.</span><span class="n">shp</span> <span class="n">rivers</span><span class="o">.</span><span class="n">tab</span>
 </pre></div>
 </div>
-<p>OGR is aware of using the OGR_STYLE field if it exists, and
-OGRFeature::GetStyleString will return the value of this field if no
-style string has been specified programmatically.</p>
+<p>OGRは,OGR_STYLEフィールドが存在する場合にその使用を認識しており,OGRFeature::GetStyleStringは,プログラムでスタイル文字列が指定されていない場合に,このフィールドの値を返します.</p>
 </section>
 </section>
 <hr class="docutils" />
 <section id="ogr-support-classes">
-<h2>3. OGR Support Classes<a class="headerlink" href="#ogr-support-classes" title="Link to this heading"></a></h2>
+<h2>3. OGRサポートクラス<a class="headerlink" href="#ogr-support-classes" title="Link to this heading"></a></h2>
 <p>The <a class="reference internal" href="../api/ogrfeature_cpp.html#_CPPv410OGRFeature" title="OGRFeature"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRFeature</span></code></a> class has member functions
 <a class="reference internal" href="../api/ogrfeature_cpp.html#_CPPv4NK10OGRFeature14GetStyleStringEv" title="OGRFeature::GetStyleString"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeature::GetStyleString()</span></code></a>, <a class="reference internal" href="../api/ogrfeature_cpp.html#_CPPv4N10OGRFeature14SetStyleStringEPKc" title="OGRFeature::SetStyleString"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeature::SetStyleString()</span></code></a> and <a class="reference internal" href="../api/ogrfeature_cpp.html#_CPPv4N10OGRFeature22SetStyleStringDirectlyEPc" title="OGRFeature::SetStyleStringDirectly"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeature::SetStyleStringDirectly()</span></code></a>
 which may be used to interact with a feature's style string as a C-style
@@ -849,19 +662,8 @@ string. Additionally, there are <a class="reference internal" href="../api/ogrfe
 <a class="reference internal" href="../api/ogrfeaturestyle_cpp.html#_CPPv413OGRStyleTable" title="OGRStyleTable"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRStyleTable</span></code></a> class.</p>
 <p>The <a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv48OGRLayer" title="OGRLayer"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRLayer</span></code></a> and <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv411GDALDataset" title="GDALDataset"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALDataset</span></code></a> classes also have <a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer13GetStyleTableEv" title="OGRLayer::GetStyleTable"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::GetStyleTable()</span></code></a>,
 <a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer13SetStyleTableEP13OGRStyleTable" title="OGRLayer::SetStyleTable"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::SetStyleTable()</span></code></a> and <a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer21SetStyleTableDirectlyEP13OGRStyleTable" title="OGRLayer::SetStyleTableDirectly"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::SetStyleTableDirectly()</span></code></a> member functions.</p>
-<p>To parse style strings, the <a class="reference internal" href="../api/ogrfeaturestyle_cpp.html#_CPPv411OGRStyleMgr" title="OGRStyleMgr"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRStyleMgr</span></code></a> class is used. Each style tool in the string
-is accessed as an instance of the <a class="reference internal" href="../api/ogrfeaturestyle_cpp.html#_CPPv412OGRStyleTool" title="OGRStyleTool"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRStyleTool</span></code></a> class. Lastly, four helper classes exist,
-one for each tool (<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRStylePen</span></code>,
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRStyleBrush</span></code>,
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRStyleSymbol</span></code>,
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRStyleLabel</span></code>), with each available
-parameter represented by a getter and setter member function. To
-understand these classes better, it may be useful to read the
-<a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/ogr/ogr_featurestyle.h">ogr_featurestyle.h</a>
-and
-<a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/ogr/ogrfeaturestyle.cpp">ogrfeaturestyle.cpp</a>
-code files.</p>
-<p>Here is some example C++ code:</p>
+<p>スタイル文字列を解析するために, <a class="reference internal" href="../api/ogrfeaturestyle_cpp.html#_CPPv411OGRStyleMgr" title="OGRStyleMgr"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRStyleMgr</span></code></a> クラスが使用されます.文字列内の各スタイルツールは, <a class="reference internal" href="../api/ogrfeaturestyle_cpp.html#_CPPv412OGRStyleTool" title="OGRStyleTool"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRStyleTool</span></code></a> クラスのインスタンスとしてアクセスされます.最後に,各ツールに対して1つのヘルパークラスが存在します(<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRStylePen</span></code>, <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRStyleBrush</span></code>,  <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRStyleSymbol</span></code>, <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRStyleLabel</span></code>), 各利用可能なパラメータは,ゲッターおよびセッターメンバ関数で表されます.これらのクラスをよりよく理解するためには, <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/ogr/ogr_featurestyle.h">ogr_featurestyle.h</a> および  <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/ogr/ogrfeaturestyle.cpp">ogrfeaturestyle.cpp</a> のコードファイルを読むと役立つかもしれません.</p>
+<p>以下は,いくつかのC++コードの例です:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">OGRStyleTable</span><span class="w"> </span><span class="n">oStyleTable</span><span class="p">;</span>
 
 <span class="n">OGRStyleMgr</span><span class="w"> </span><span class="o">*</span><span class="n">poStyleMgr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">OGRStyleMgr</span><span class="p">(</span><span class="o">&amp;</span><span class="n">oStyleTable</span><span class="p">);</span>
@@ -935,7 +737,7 @@ code files.</p>
 </div>
 </section>
 <section id="revision-history">
-<h2>Revision history<a class="headerlink" href="#revision-history" title="Link to this heading"></a></h2>
+<h2>リビジョン履歴<a class="headerlink" href="#revision-history" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p><strong>Version 0.016 - 2018-12-03 - Andrew Sudorgin</strong>
 Restored and documented font property for point symbols</p></li>
@@ -988,7 +790,7 @@ First kind-of-complete version.</p></li>
         <a href="coordinate_epoch.html" class="btn btn-neutral float-right" title="Coordinate epoch support" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="virtual_file_systems.html" class="btn btn-neutral float-left" title="GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ..." accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="virtual_file_systems.html" class="btn btn-neutral float-left" title="GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ..." accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Coordinate epoch support &mdash; GDAL  ドキュメント</title>
+  <title>座標エポックのサポート &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
       <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
 
@@ -26,7 +26,7 @@
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="Configuration options" href="configoptions.html" />
-    <link rel="prev" title="Feature Style Specification" href="ogr_feature_style.html" /> 
+    <link rel="prev" title="地物スタイル仕様" href="ogr_feature_style.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -62,10 +62,10 @@
 <li class="toctree-l2"><a class="reference internal" href="multithreading.html">マルチスレッディング</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ogr_sql_sqlite_dialect.html">OGR SQL方言とSQLITE SQL方言</a></li>
 <li class="toctree-l2"><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ogr_feature_style.html">Feature Style Specification</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Coordinate epoch support</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#dynamic-crs-and-coordinate-epoch">Dynamic CRS and coordinate epoch</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#support-in-raster-and-vector-formats">Support in raster and vector formats</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ogr_feature_style.html">地物スタイル仕様</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">座標エポックのサポート</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dynamic-crs-and-coordinate-epoch">ダイナミックCRSと座標エポック</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#support-in-raster-and-vector-formats">ラスターおよびベクター形式でのサポート</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#flatgeobuf">FlatGeoBuf</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#geopackage-vector-raster">GeoPackage vector/raster</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#geotiff">GeoTIFF</a></li>
@@ -74,8 +74,8 @@
 <li class="toctree-l4"><a class="reference internal" href="#gdal-vrt">GDAL VRT</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#support-in-utilities">Support in utilities</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#support-in-coordinate-transformation">Support in coordinate transformation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#support-in-utilities">ユーティリティでのサポート</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#support-in-coordinate-transformation">座標変換でのサポート</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="configoptions.html">Configuration options</a></li>
@@ -127,7 +127,7 @@
       
           <li><a href="index.html">ユーザー向けドキュメント</a> &raquo;</li>
       
-      <li>Coordinate epoch support</li>
+      <li>座標エポックのサポート</li>
     
 
     
@@ -149,7 +149,7 @@
         <a href="configoptions.html" class="btn btn-neutral float-right" title="Configuration options" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="ogr_feature_style.html" class="btn btn-neutral float-left" title="Feature Style Specification" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="ogr_feature_style.html" class="btn btn-neutral float-left" title="地物スタイル仕様" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -159,54 +159,30 @@
            <div itemprop="articleBody">
              
   <section id="coordinate-epoch-support">
-<span id="coordinate-epoch"></span><h1>Coordinate epoch support<a class="headerlink" href="#coordinate-epoch-support" title="Link to this heading"></a></h1>
+<span id="coordinate-epoch"></span><h1>座標エポックのサポート<a class="headerlink" href="#coordinate-epoch-support" title="Link to this heading"></a></h1>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.4.</span></p>
 </div>
 <section id="dynamic-crs-and-coordinate-epoch">
-<h2>Dynamic CRS and coordinate epoch<a class="headerlink" href="#dynamic-crs-and-coordinate-epoch" title="Link to this heading"></a></h2>
-<p>This document is intended to document the support for coordinate epoch, linked
-to dynamic CRS.</p>
-<p>In a dynamic CRS, coordinates of a point on the surface of the Earth may
-change with time. To be unambiguous the coordinates must always be qualified
-with the epoch at which they are valid. The coordinate epoch is not necessarily
-the epoch at which the observation was collected.</p>
-<p>Examples of dynamic CRS are <code class="docutils literal notranslate"><span class="pre">WGS</span> <span class="pre">84</span> <span class="pre">(G1762)</span></code>, <code class="docutils literal notranslate"><span class="pre">ITRF2014</span></code>, <code class="docutils literal notranslate"><span class="pre">ATRF2014</span></code>.</p>
-<p>The generic EPSG:4326 WGS 84 CRS is also considered dynamic, although it is
-not recommended to use it due to being based on a datum ensemble whose positional
-accuracy is 2 meters, but prefer one of its realizations, such as WGS 84 (G1762)</p>
-<p>The <a class="reference internal" href="../api/ogrspatialref.html#_CPPv4NK19OGRSpatialReference9IsDynamicEv" title="OGRSpatialReference::IsDynamic"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::IsDynamic()</span></code></a> method can be used to test if
-a CRS is a dynamic one.</p>
+<h2>ダイナミックCRSと座標エポック<a class="headerlink" href="#dynamic-crs-and-coordinate-epoch" title="Link to this heading"></a></h2>
+<p>この文書は、ダイナミックCRSに関連する座標エポックのサポートについて説明するものです.</p>
+<p>ダイナミックCRSでは,地球表面上の点の座標は時間とともに変化する可能性があります.座標が明確であるためには,常に有効なエポックで座標を修飾する必要があります.座標エポックは,観測が収集されたエポックである必要はありません.</p>
+<p>ダイナミックCRSの例には, <code class="docutils literal notranslate"><span class="pre">WGS</span> <span class="pre">84</span> <span class="pre">(G1762)</span></code>, <code class="docutils literal notranslate"><span class="pre">ITRF2014</span></code>, <code class="docutils literal notranslate"><span class="pre">ATRF2014</span></code> があります.</p>
+<p>汎用EPSG:4326 WGS 84 CRSもダイナミックと見なされますが,その位置精度が2メートルであるデータムアンサンブルに基づいているため,使用をお勧めしません.代わりに, WGS 84 (G1762)などの実現の1つを使用してください.</p>
+<p><a class="reference internal" href="../api/ogrspatialref.html#_CPPv4NK19OGRSpatialReference9IsDynamicEv" title="OGRSpatialReference::IsDynamic"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::IsDynamic()</span></code></a> メソッドを使用して,CRSがダイナミックかどうかをテストできます.</p>
 <p>The <a class="reference internal" href="../api/ogrspatialref.html#_CPPv4N19OGRSpatialReference18SetCoordinateEpochEd" title="OGRSpatialReference::SetCoordinateEpoch"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::SetCoordinateEpoch()</span></code></a> and
 <a class="reference internal" href="../api/ogrspatialref.html#_CPPv4NK19OGRSpatialReference18GetCoordinateEpochEv" title="OGRSpatialReference::GetCoordinateEpoch"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::GetCoordinateEpoch()</span></code></a> methods can be used to
 set/retrieve a coordinate epoch associated with a CRS. The coordinate epoch is
 expressed as a decimal year (e.g. 2021.3 for April 21, 2021).</p>
-<p>Formally, the coordinate epoch of an observation belongs to the
-observation. However, almost all formats do not allow for storing
-per-observation epoch, and typical usage is a set of observations with
-the same epoch. Therefore we store the epoch as property of the CRS,
-and assume that it is valid for every observation. This choice eases processing,
-storage and format complexity for most usage. For now, this means that a dataset
-containing observations or points with different epochs cannot be handled.</p>
-<p>For vector formats, per-geometry coordinate epoch could also make sense, but as
-most formats only support a per-layer CRS, we also for now limit support of
-coordinate epoch at the layer level. The underlying coordinate transformation mechanics
-can support per-vertex coordinate epoch.</p>
+<p>形式的には,観測の座標エポックは観測に属します.しかし,ほとんどの形式では観測ごとのエポックを保存することはできず,典型的な使用法は同じエポックの観測のセットです.したがって,私たちはエポックをCRSのプロパティとして保存し,それがすべての観測に有効であると仮定します.この選択は,ほとんどの使用法に対して処理,保存,形式の複雑さを緩和します.現時点では,異なるエポックの観測や点を含むデータセットを処理することはできません.</p>
+<p>ベクトル形式の場合,ジオメトリごとの座標エポックも意味をなすことができますが,ほとんどの形式がレイヤーごとのCRSのみをサポートしているため,現時点ではレイヤーレベルでの座標エポックのサポートを制限しています.基本となる座標変換メカニズムは,頂点ごとの座標エポックをサポートできます.</p>
 </section>
 <section id="support-in-raster-and-vector-formats">
-<h2>Support in raster and vector formats<a class="headerlink" href="#support-in-raster-and-vector-formats" title="Link to this heading"></a></h2>
-<p>At time of writing, no formats handled by GDAL/OGR have a standardized way of
-encoding a coordinate epoch. We consequently have made choices how to encode it,
-with the aim of being as much as possible backward compatible with existing
-readers. Those encodings might change if corresponding official specifications
-evolve to take this concept into account.
-The coordinate epoch is only written when attached to the SRS of the layer/dataset
-that is created.</p>
+<h2>ラスターおよびベクター形式でのサポート<a class="headerlink" href="#support-in-raster-and-vector-formats" title="Link to this heading"></a></h2>
+<p>執筆時点では,GDAL/OGRで処理される形式には,座標エポックをエンコードする標準化された方法はありません.そのため,既存のリーダーとできるだけ後方互換性があるようにエンコード方法を選択しました.対応する公式仕様がこの概念を考慮に入れるように進化する場合,これらのエンコーディングは変更される可能性があります.座標エポックは,作成されたレイヤー/データセットのSRSにアタッチされた場合にのみ書き込まれます.</p>
 <section id="flatgeobuf">
 <h3>FlatGeoBuf<a class="headerlink" href="#flatgeobuf" title="Link to this heading"></a></h3>
-<p>The coordinate epoch is encoded as a WKT:2019 string using the <code class="docutils literal notranslate"><span class="pre">EPOCH</span></code> subnode of the
-<a class="reference external" href="http://docs.opengeospatial.org/is/18-010r7/18-010r7.html#130">COORDINATEMETADATA</a>
-construct, set in the <code class="docutils literal notranslate"><span class="pre">Crs.wkt</span></code> header field of the FlatGeoBuf file.</p>
+<p>座標エポックは,FlatGeoBufファイルの <code class="docutils literal notranslate"><span class="pre">Crs.wkt</span></code> ヘッダーフィールドに設定された,`COORDINATEMETADATA &lt;<a class="reference external" href="http://docs.opengeospatial.org/is/18-010r7/18-010r7.html#130">http://docs.opengeospatial.org/is/18-010r7/18-010r7.html#130</a>&gt;`__ 構造の <code class="docutils literal notranslate"><span class="pre">EPOCH</span></code> サブノードを使用して,WKT:2019文字列としてエンコードされます.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">COORDINATEMETADATA</span><span class="p">[</span>
     <span class="n">GEOGCRS</span><span class="p">[</span><span class="s2">&quot;WGS 84 (G1762)&quot;</span><span class="p">,</span>
         <span class="n">DYNAMIC</span><span class="p">[</span><span class="n">FRAMEEPOCH</span><span class="p">[</span><span class="mf">2005.0</span><span class="p">]],</span>
@@ -224,21 +200,16 @@ construct, set in the <code class="docutils literal notranslate"><span class="pr
 </div>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
-<p>Such construct will not be understood by GDAL &lt; 3.4, but if the CRS has
-an associated EPSG code, this will not cause issues in those older
-GDAL versions.</p>
+<p>このような構造は,GDAL &lt; 3.4 では理解されませんが,CRSに関連付けられたEPSGコードがある場合,これは古いGDALバージョンで問題を引き起こしません.</p>
 </div>
 </section>
 <section id="geopackage-vector-raster">
 <h3>GeoPackage vector/raster<a class="headerlink" href="#geopackage-vector-raster" title="Link to this heading"></a></h3>
-<p>Each vector/raster table which has an associated coordinate epoch encodes it
-in the <code class="docutils literal notranslate"><span class="pre">epoch</span></code> column of the <code class="docutils literal notranslate"><span class="pre">gpkg_spatial_ref_sys</span></code> table, using an extended
-version of the CRS WKT extension (<a class="reference external" href="https://github.com/opengeospatial/geopackage/pull/600">https://github.com/opengeospatial/geopackage/pull/600</a>).</p>
+<p>座標エポックが関連付けられている各ベクター/ラスターテーブルは,CRS WKT拡張の拡張バージョンを使用して,``gpkg_spatial_ref_sys`` テーブルの <code class="docutils literal notranslate"><span class="pre">epoch</span></code> 列にエンコードされます(<a class="reference external" href="https://github.com/opengeospatial/geopackage/pull/600">https://github.com/opengeospatial/geopackage/pull/600</a>).</p>
 </section>
 <section id="geotiff">
 <h3>GeoTIFF<a class="headerlink" href="#geotiff" title="Link to this heading"></a></h3>
-<p>The coordinate epoch is encoded as a new GeoTIFF GeoKey, <code class="docutils literal notranslate"><span class="pre">CoordinateEpochGeoKey</span></code>
-of code 5120 and type DOUBLE.</p>
+<p>座標エポックは,新しいGeoTIFF GeoKey, <code class="docutils literal notranslate"><span class="pre">CoordinateEpochGeoKey</span></code> (コード5120,タイプDOUBLE)としてエンコードされます.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Geotiff_Information</span><span class="p">:</span>
    <span class="n">Version</span><span class="p">:</span> <span class="mi">1</span>
    <span class="n">Key_Revision</span><span class="p">:</span> <span class="mf">1.0</span>
@@ -265,12 +236,11 @@ of code 5120 and type DOUBLE.</p>
 </section>
 <section id="jpeg2000">
 <h3>JPEG2000<a class="headerlink" href="#jpeg2000" title="Link to this heading"></a></h3>
-<p>GeoJP2 boxes use the above mentioned GeoTIFF encoding.</p>
+<p>GeoJP2ボックスは上記のGeoTIFFエンコーディングを使用します.</p>
 </section>
 <section id="persistent-auxiliary-metadata-aux-xml">
 <h3>Persistent Auxiliary Metadata (.aux.xml)<a class="headerlink" href="#persistent-auxiliary-metadata-aux-xml" title="Link to this heading"></a></h3>
-<p>The coordinate epoch is encoded as <code class="docutils literal notranslate"><span class="pre">coordinateEpoch</span></code> attribute of the <code class="docutils literal notranslate"><span class="pre">SRS</span></code>
-element.</p>
+<p>座標エポックは, <code class="docutils literal notranslate"><span class="pre">SRS</span></code> 要素の <code class="docutils literal notranslate"><span class="pre">coordinateEpoch</span></code> 属性としてエンコードされます.</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;PAMDataset&gt;</span>
 <span class="w">  </span><span class="nt">&lt;SRS</span><span class="w"> </span><span class="na">dataAxisToSRSAxisMapping=</span><span class="s">&quot;1,2&quot;</span><span class="w"> </span><span class="na">coordinateEpoch=</span><span class="s">&quot;2021.3&quot;</span><span class="nt">&gt;</span>PROJCS[&quot;WGS<span class="w"> </span>84<span class="w"> </span>/<span class="w"> </span>UTM<span class="w"> </span>zone<span class="w"> </span>11N&quot;,GEOGCS[&quot;WGS<span class="w"> </span>84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS<span class="w"> </span>84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]],PROJECTION[&quot;Transverse_Mercator&quot;],PARAMETER[&quot;latitude_of_origin&quot;,0],PARAMETER[&quot;central_meridian&quot;,-117],PARAMETER[&quot;scale_factor&quot;,0.9996],PARAMETER[&quot;false_easting&quot;,500000],PARAMETER[&quot;false_northing&quot;,0],UNIT[&quot;metre&quot;,1,AUTHORITY[&quot;EPSG&quot;,&quot;9001&quot;]],AXIS[&quot;Easting&quot;,EAST],AXIS[&quot;Northing&quot;,NORTH],AUTHORITY[&quot;EPSG&quot;,&quot;32611&quot;]]<span class="nt">&lt;/SRS&gt;</span>
 <span class="w">  </span><span class="cm">&lt;!-- snip --&gt;</span>
@@ -280,8 +250,7 @@ element.</p>
 </section>
 <section id="gdal-vrt">
 <h3>GDAL VRT<a class="headerlink" href="#gdal-vrt" title="Link to this heading"></a></h3>
-<p>The coordinate epoch is encoded as <code class="docutils literal notranslate"><span class="pre">coordinateEpoch</span></code> attribute of the <code class="docutils literal notranslate"><span class="pre">SRS</span></code>
-element.</p>
+<p>座標エポックは, <code class="docutils literal notranslate"><span class="pre">SRS</span></code> 要素の <code class="docutils literal notranslate"><span class="pre">coordinateEpoch</span></code> 属性としてエンコードされます.</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;VRTDataset</span><span class="w"> </span><span class="na">rasterXSize=</span><span class="s">&quot;20&quot;</span><span class="w"> </span><span class="na">rasterYSize=</span><span class="s">&quot;20&quot;</span><span class="nt">&gt;</span>
 <span class="w">  </span><span class="nt">&lt;SRS</span><span class="w"> </span><span class="na">dataAxisToSRSAxisMapping=</span><span class="s">&quot;1,2&quot;</span><span class="w"> </span><span class="na">coordinateEpoch=</span><span class="s">&quot;2021.3&quot;</span><span class="nt">&gt;</span>PROJCS[&quot;WGS<span class="w"> </span>84<span class="w"> </span>/<span class="w"> </span>UTM<span class="w"> </span>zone<span class="w"> </span>11N&quot;,GEOGCS[&quot;WGS<span class="w"> </span>84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS<span class="w"> </span>84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]],PROJECTION[&quot;Transverse_Mercator&quot;],PARAMETER[&quot;latitude_of_origin&quot;,0],PARAMETER[&quot;central_meridian&quot;,-117],PARAMETER[&quot;scale_factor&quot;,0.9996],PARAMETER[&quot;false_easting&quot;,500000],PARAMETER[&quot;false_northing&quot;,0],UNIT[&quot;metre&quot;,1,AUTHORITY[&quot;EPSG&quot;,&quot;9001&quot;]],AXIS[&quot;Easting&quot;,EAST],AXIS[&quot;Northing&quot;,NORTH],AUTHORITY[&quot;EPSG&quot;,&quot;32611&quot;]]<span class="nt">&lt;/SRS&gt;</span>
 <span class="w">  </span><span class="cm">&lt;!-- snip --&gt;</span>
@@ -291,7 +260,7 @@ element.</p>
 </section>
 </section>
 <section id="support-in-utilities">
-<h2>Support in utilities<a class="headerlink" href="#support-in-utilities" title="Link to this heading"></a></h2>
+<h2>ユーティリティでのサポート<a class="headerlink" href="#support-in-utilities" title="Link to this heading"></a></h2>
 <p><strong class="program">gdalinfo</strong> and <strong class="program">ogrinfo</strong> report the coordinate epoch, when
 attached to a dataset/layer SRS.</p>
 <p><strong class="program">gdal_edit.py</strong> has a <code class="docutils literal notranslate"><span class="pre">-a_coord_epoch</span></code> option to define the epoch of a dataset in place.</p>
@@ -301,21 +270,16 @@ from the source SRS when no SRS related options are specified.</p>
 <p><strong class="program">gdalwarp</strong> and <strong class="program">ogr2ogr</strong> have a <code class="docutils literal notranslate"><span class="pre">-s_coord_epoch</span></code> option to be used together with <code class="docutils literal notranslate"><span class="pre">-s_srs</span></code>
 (resp. <code class="docutils literal notranslate"><span class="pre">-t_coord_epoch</span></code> option to be used together with <code class="docutils literal notranslate"><span class="pre">-t_srs</span></code>) to override/set the
 coordinate epoch of the source (resp. target) CRS.</p>
-<p>Before PROJ 9.4, <code class="docutils literal notranslate"><span class="pre">-s_coord_epoch</span></code> and <code class="docutils literal notranslate"><span class="pre">-t_coord_epoch</span></code> were mutually exclusive, due to lack
-of support for transformations between two dynamic CRS.</p>
-<p><strong class="program">gdalwarp</strong> preserves the coordinate epoch in the output SRS when appropriate.</p>
+<p>PROJ 9.4以前では,2つのダイナミックCRS間の変換をサポートしていなかったため, <code class="docutils literal notranslate"><span class="pre">-s_coord_epoch</span></code> と <code class="docutils literal notranslate"><span class="pre">-t_coord_epoch</span></code> は相互に排他的でした.</p>
+<p><strong class="program">gdalwarp</strong> は適切な場合に出力SRSに座標エポックを保持します.</p>
 </section>
 <section id="support-in-coordinate-transformation">
-<h2>Support in coordinate transformation<a class="headerlink" href="#support-in-coordinate-transformation" title="Link to this heading"></a></h2>
+<h2>座標変換でのサポート<a class="headerlink" href="#support-in-coordinate-transformation" title="Link to this heading"></a></h2>
 <p>The <a class="reference internal" href="../api/ogrspatialref.html#_CPPv427OGRCoordinateTransformation" title="OGRCoordinateTransformation"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRCoordinateTransformation</span></code></a> class can perform time-dependent
 transformations between a static and dynamic CRS based on the coordinate epoch
 passed per vertex.</p>
-<p>It can also take into account the coordinate epoch associated with a dynamic
-CRS, when doing time-dependent transformations between a static and dynamic CRS.
-The <a class="reference internal" href="configoptions.html#config-OGR_CT_USE_SRS_COORDINATE_EPOCH"><code class="docutils literal notranslate"><span class="pre">OGR_CT_USE_SRS_COORDINATE_EPOCH</span></code></a> configuration option
-can be set to <code class="docutils literal notranslate"><span class="pre">NO</span></code> to disable using the coordinate epoch associated with the
-source or target CRS.</p>
-<p>If a per-vertex time is specified, it overrides the one associated with the CRS.</p>
+<p>静的CRSとダイナミックCRS間の時間依存変換を行う際に,ダイナミックCRSに関連付けられた座標エポックを考慮することもできます. <a class="reference internal" href="configoptions.html#config-OGR_CT_USE_SRS_COORDINATE_EPOCH"><code class="docutils literal notranslate"><span class="pre">OGR_CT_USE_SRS_COORDINATE_EPOCH</span></code></a> 構成オプションを <code class="docutils literal notranslate"><span class="pre">NO</span></code> に設定して,ソースまたはターゲットCRSに関連付けられた座標エポックを使用しないようにすることができます.</p>
+<p>頂点ごとの時間が指定されている場合,それはCRSに関連付けられた時間を上書きします.</p>
 </section>
 </section>
 
@@ -329,7 +293,7 @@ source or target CRS.</p>
         <a href="configoptions.html" class="btn btn-neutral float-right" title="Configuration options" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="ogr_feature_style.html" class="btn btn-neutral float-left" title="Feature Style Specification" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="ogr_feature_style.html" class="btn btn-neutral float-left" title="地物スタイル仕様" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

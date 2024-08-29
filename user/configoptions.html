@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Configuration options &mdash; GDAL  ドキュメント</title>
+  <title>設定オプション &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
       <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
 
@@ -26,7 +26,7 @@
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="GDAL Python Utilities" href="gdal_python_utilities.html" />
-    <link rel="prev" title="Coordinate epoch support" href="coordinate_epoch.html" /> 
+    <link rel="prev" title="座標元期のサポート" href="coordinate_epoch.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -62,10 +62,10 @@
 <li class="toctree-l2"><a class="reference internal" href="multithreading.html">マルチスレッディング</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ogr_sql_sqlite_dialect.html">OGR SQL方言とSQLITE SQL方言</a></li>
 <li class="toctree-l2"><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ogr_feature_style.html">Feature Style Specification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="coordinate_epoch.html">Coordinate epoch support</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Configuration options</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#how-to-set-configuration-options">How to set configuration options?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ogr_feature_style.html">地物スタイル仕様</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coordinate_epoch.html">座標元期のサポート</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">設定オプション</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-set-configuration-options">設定オプションの設定方法</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#gdal-configuration-file">GDAL configuration file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#global-configuration-options">Global configuration options</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#logging">Logging</a></li>
@@ -129,7 +129,7 @@
       
           <li><a href="index.html">ユーザー向けドキュメント</a> &raquo;</li>
       
-      <li>Configuration options</li>
+      <li>設定オプション</li>
     
 
     
@@ -151,7 +151,7 @@
         <a href="gdal_python_utilities.html" class="btn btn-neutral float-right" title="GDAL Python Utilities" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="coordinate_epoch.html" class="btn btn-neutral float-left" title="Coordinate epoch support" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="coordinate_epoch.html" class="btn btn-neutral float-left" title="座標元期のサポート" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -161,24 +161,16 @@
            <div itemprop="articleBody">
              
   <section id="configuration-options">
-<span id="configoptions"></span><h1>Configuration options<a class="headerlink" href="#configuration-options" title="Link to this heading"></a></h1>
-<p>This page discusses runtime configuration options for GDAL. These are distinct from
-options to the build-time configure script. Runtime configuration options apply
-on all platforms, and are evaluated at runtime. They can be set programmatically,
-by commandline switches or in the environment by the user.</p>
-<p>Configuration options are normally used to alter the default behavior of GDAL/OGR
-drivers and in some cases the GDAL/OGR core. They are essentially global
-variables the user can set.</p>
+<span id="configoptions"></span><h1>設定オプション<a class="headerlink" href="#configuration-options" title="Link to this heading"></a></h1>
+<p>このページでは,GDALの実行時設定オプションについて説明します.これらはビルド時の configure スクリプトのオプションとは異なります.実行時の設定オプションはすべての プラットフォームに適用され,実行時に評価されます.ユーザーは,プログラムで設定したり、コマンドラインスイッチで設定したり,環境変数で設定したりすることができます.</p>
+<p>設定オプションは,通常,GDAL/OGR ドライバーのデフォルトの動作を変更するために使用されます.場合によっては,GDAL/OGR コアも変更されます.これらは,ユーザーが設定できるグローバル変数です.</p>
 <section id="how-to-set-configuration-options">
-<h2>How to set configuration options?<a class="headerlink" href="#how-to-set-configuration-options" title="Link to this heading"></a></h2>
-<p>One example of a configuration option is the <a class="reference internal" href="#config-GDAL_CACHEMAX"><code class="docutils literal notranslate"><span class="pre">GDAL_CACHEMAX</span></code></a>
-option. It controls the size
-of the GDAL block cache, in megabytes. It can be set in the environment on Unix
-(bash/bourne) shell like this:</p>
+<h2>設定オプションの設定方法<a class="headerlink" href="#how-to-set-configuration-options" title="Link to this heading"></a></h2>
+<p>設定オプションの一例は, <a class="reference internal" href="#config-GDAL_CACHEMAX"><code class="docutils literal notranslate"><span class="pre">GDAL_CACHEMAX</span></code></a> オプションです.これは,メガバイト単位で GDAL ブロックキャッシュのサイズを制御します.これは,Unix (bash/bourne) シェルで環境変数としてこのように設定できます:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">GDAL_CACHEMAX</span><span class="o">=</span><span class="mi">64</span>
 </pre></div>
 </div>
-<p>In a DOS/Windows command shell it is done like this:</p>
+<p>DOS/Windows コマンドシェルでは,次のように指定します:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span> <span class="n">GDAL_CACHEMAX</span><span class="o">=</span><span class="mi">64</span>
 </pre></div>
 </div>
@@ -807,30 +799,30 @@ horizontal datum.</p>
 <li><p><a class="reference internal" href="../drivers/vector/amigocloud.html#config-AMIGOCLOUD_API_KEY"><code class="docutils literal notranslate"><span class="pre">AMIGOCLOUD_API_KEY</span></code></a>: <a class="reference internal" href="../drivers/vector/amigocloud.html">AmigoCloud</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/amigocloud.html#config-AMIGOCLOUD_API_URL"><code class="docutils literal notranslate"><span class="pre">AMIGOCLOUD_API_URL</span></code></a>: <a class="reference internal" href="../drivers/vector/amigocloud.html">AmigoCloud</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/geojson.html#config-ATTRIBUTES_SKIP"><code class="docutils literal notranslate"><span class="pre">ATTRIBUTES_SKIP</span></code></a>: <a class="reference internal" href="../drivers/vector/geojson.html">GeoJSON</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-AWS_ACCESS_KEY_ID"><code class="docutils literal notranslate"><span class="pre">AWS_ACCESS_KEY_ID</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-AWS_CONFIG_FILE"><code class="docutils literal notranslate"><span class="pre">AWS_CONFIG_FILE</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-AWS_DEFAULT_PROFILE"><code class="docutils literal notranslate"><span class="pre">AWS_DEFAULT_PROFILE</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-AWS_DEFAULT_REGION"><code class="docutils literal notranslate"><span class="pre">AWS_DEFAULT_REGION</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-AWS_HTTPS"><code class="docutils literal notranslate"><span class="pre">AWS_HTTPS</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-AWS_NO_SIGN_REQUEST"><code class="docutils literal notranslate"><span class="pre">AWS_NO_SIGN_REQUEST</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-AWS_PROFILE"><code class="docutils literal notranslate"><span class="pre">AWS_PROFILE</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-AWS_REGION"><code class="docutils literal notranslate"><span class="pre">AWS_REGION</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-AWS_REQUEST_PAYER"><code class="docutils literal notranslate"><span class="pre">AWS_REQUEST_PAYER</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-AWS_ROLE_ARN"><code class="docutils literal notranslate"><span class="pre">AWS_ROLE_ARN</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-AWS_S3_ENDPOINT"><code class="docutils literal notranslate"><span class="pre">AWS_S3_ENDPOINT</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-AWS_SECRET_ACCESS_KEY"><code class="docutils literal notranslate"><span class="pre">AWS_SECRET_ACCESS_KEY</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-AWS_SESSION_TOKEN"><code class="docutils literal notranslate"><span class="pre">AWS_SESSION_TOKEN</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-AWS_VIRTUAL_HOSTING"><code class="docutils literal notranslate"><span class="pre">AWS_VIRTUAL_HOSTING</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-AWS_WEB_IDENTITY_TOKEN_FILE"><code class="docutils literal notranslate"><span class="pre">AWS_WEB_IDENTITY_TOKEN_FILE</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-AZURE_IMDS_CLIENT_ID"><code class="docutils literal notranslate"><span class="pre">AZURE_IMDS_CLIENT_ID</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-AZURE_IMDS_MSI_RES_ID"><code class="docutils literal notranslate"><span class="pre">AZURE_IMDS_MSI_RES_ID</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-AZURE_IMDS_OBJECT_ID"><code class="docutils literal notranslate"><span class="pre">AZURE_IMDS_OBJECT_ID</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-AZURE_NO_SIGN_REQUEST"><code class="docutils literal notranslate"><span class="pre">AZURE_NO_SIGN_REQUEST</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-AZURE_STORAGE_ACCESS_KEY"><code class="docutils literal notranslate"><span class="pre">AZURE_STORAGE_ACCESS_KEY</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-AZURE_STORAGE_ACCESS_TOKEN"><code class="docutils literal notranslate"><span class="pre">AZURE_STORAGE_ACCESS_TOKEN</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-AZURE_STORAGE_ACCOUNT"><code class="docutils literal notranslate"><span class="pre">AZURE_STORAGE_ACCOUNT</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-AZURE_STORAGE_CONNECTION_STRING"><code class="docutils literal notranslate"><span class="pre">AZURE_STORAGE_CONNECTION_STRING</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-AZURE_STORAGE_SAS_TOKEN"><code class="docutils literal notranslate"><span class="pre">AZURE_STORAGE_SAS_TOKEN</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-AWS_ACCESS_KEY_ID"><code class="docutils literal notranslate"><span class="pre">AWS_ACCESS_KEY_ID</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-AWS_CONFIG_FILE"><code class="docutils literal notranslate"><span class="pre">AWS_CONFIG_FILE</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-AWS_DEFAULT_PROFILE"><code class="docutils literal notranslate"><span class="pre">AWS_DEFAULT_PROFILE</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-AWS_DEFAULT_REGION"><code class="docutils literal notranslate"><span class="pre">AWS_DEFAULT_REGION</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-AWS_HTTPS"><code class="docutils literal notranslate"><span class="pre">AWS_HTTPS</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-AWS_NO_SIGN_REQUEST"><code class="docutils literal notranslate"><span class="pre">AWS_NO_SIGN_REQUEST</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-AWS_PROFILE"><code class="docutils literal notranslate"><span class="pre">AWS_PROFILE</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-AWS_REGION"><code class="docutils literal notranslate"><span class="pre">AWS_REGION</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-AWS_REQUEST_PAYER"><code class="docutils literal notranslate"><span class="pre">AWS_REQUEST_PAYER</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-AWS_ROLE_ARN"><code class="docutils literal notranslate"><span class="pre">AWS_ROLE_ARN</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-AWS_S3_ENDPOINT"><code class="docutils literal notranslate"><span class="pre">AWS_S3_ENDPOINT</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-AWS_SECRET_ACCESS_KEY"><code class="docutils literal notranslate"><span class="pre">AWS_SECRET_ACCESS_KEY</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-AWS_SESSION_TOKEN"><code class="docutils literal notranslate"><span class="pre">AWS_SESSION_TOKEN</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-AWS_VIRTUAL_HOSTING"><code class="docutils literal notranslate"><span class="pre">AWS_VIRTUAL_HOSTING</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-AWS_WEB_IDENTITY_TOKEN_FILE"><code class="docutils literal notranslate"><span class="pre">AWS_WEB_IDENTITY_TOKEN_FILE</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-AZURE_IMDS_CLIENT_ID"><code class="docutils literal notranslate"><span class="pre">AZURE_IMDS_CLIENT_ID</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-AZURE_IMDS_MSI_RES_ID"><code class="docutils literal notranslate"><span class="pre">AZURE_IMDS_MSI_RES_ID</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-AZURE_IMDS_OBJECT_ID"><code class="docutils literal notranslate"><span class="pre">AZURE_IMDS_OBJECT_ID</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-AZURE_NO_SIGN_REQUEST"><code class="docutils literal notranslate"><span class="pre">AZURE_NO_SIGN_REQUEST</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-AZURE_STORAGE_ACCESS_KEY"><code class="docutils literal notranslate"><span class="pre">AZURE_STORAGE_ACCESS_KEY</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-AZURE_STORAGE_ACCESS_TOKEN"><code class="docutils literal notranslate"><span class="pre">AZURE_STORAGE_ACCESS_TOKEN</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-AZURE_STORAGE_ACCOUNT"><code class="docutils literal notranslate"><span class="pre">AZURE_STORAGE_ACCOUNT</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-AZURE_STORAGE_CONNECTION_STRING"><code class="docutils literal notranslate"><span class="pre">AZURE_STORAGE_CONNECTION_STRING</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-AZURE_STORAGE_SAS_TOKEN"><code class="docutils literal notranslate"><span class="pre">AZURE_STORAGE_SAS_TOKEN</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/gtiff.html#config-BIGTIFF_OVERVIEW"><code class="docutils literal notranslate"><span class="pre">BIGTIFF_OVERVIEW</span></code></a>: <ul>
 <li><p><a class="reference internal" href="../drivers/raster/gtiff.html">GTiff -- GeoTIFF File Format</a></p></li>
 <li><p><a class="reference internal" href="../programs/gdaladdo.html">gdaladdo</a></p></li>
@@ -841,46 +833,46 @@ horizontal datum.</p>
 <li><p><a class="reference internal" href="../drivers/vector/carto.html#config-CARTO_HTTPS"><code class="docutils literal notranslate"><span class="pre">CARTO_HTTPS</span></code></a>: <a class="reference internal" href="../drivers/vector/carto.html">Carto</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/carto.html#config-CARTO_MAX_CHUNK_SIZE"><code class="docutils literal notranslate"><span class="pre">CARTO_MAX_CHUNK_SIZE</span></code></a>: <a class="reference internal" href="../drivers/vector/carto.html">Carto</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/carto.html#config-CARTO_PAGE_SIZE"><code class="docutils literal notranslate"><span class="pre">CARTO_PAGE_SIZE</span></code></a>: <a class="reference internal" href="../drivers/vector/carto.html">Carto</a></p></li>
-<li><p><a class="reference internal" href="#config-CENTER_LONG"><code class="docutils literal notranslate"><span class="pre">CENTER_LONG</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
+<li><p><a class="reference internal" href="#config-CENTER_LONG"><code class="docutils literal notranslate"><span class="pre">CENTER_LONG</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/gtiff.html#config-CHECK_DISK_FREE_SPACE"><code class="docutils literal notranslate"><span class="pre">CHECK_DISK_FREE_SPACE</span></code></a>: <a class="reference internal" href="../drivers/raster/gtiff.html">GTiff -- GeoTIFF File Format</a></p></li>
-<li><p><a class="reference internal" href="#config-CHECK_WITH_INVERT_PROJ"><code class="docutils literal notranslate"><span class="pre">CHECK_WITH_INVERT_PROJ</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
+<li><p><a class="reference internal" href="#config-CHECK_WITH_INVERT_PROJ"><code class="docutils literal notranslate"><span class="pre">CHECK_WITH_INVERT_PROJ</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/sqlite.html#config-COMPRESS_GEOM"><code class="docutils literal notranslate"><span class="pre">COMPRESS_GEOM</span></code></a>: <a class="reference internal" href="../drivers/vector/sqlite.html">SQLite / Spatialite RDBMS</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/gtiff.html#config-COMPRESS_OVERVIEW"><code class="docutils literal notranslate"><span class="pre">COMPRESS_OVERVIEW</span></code></a>: <ul>
 <li><p><a class="reference internal" href="../drivers/raster/gtiff.html">GTiff -- GeoTIFF File Format</a></p></li>
 <li><p><a class="reference internal" href="../programs/gdaladdo.html">gdaladdo</a></p></li>
 </ul>
 </p></li>
-<li><p><a class="reference internal" href="#config-CPL_ACCUM_ERROR_MSG"><code class="docutils literal notranslate"><span class="pre">CPL_ACCUM_ERROR_MSG</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-CPL_AWS_CREDENTIALS_FILE"><code class="docutils literal notranslate"><span class="pre">CPL_AWS_CREDENTIALS_FILE</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="#config-CPL_ACCUM_ERROR_MSG"><code class="docutils literal notranslate"><span class="pre">CPL_ACCUM_ERROR_MSG</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-CPL_AWS_CREDENTIALS_FILE"><code class="docutils literal notranslate"><span class="pre">CPL_AWS_CREDENTIALS_FILE</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
 <li><p><a class="reference internal" href="#config-CPL_CURL_GZIP"><code class="docutils literal notranslate"><span class="pre">CPL_CURL_GZIP</span></code></a>: <ul>
 <li><p><a class="reference internal" href="../drivers/vector/wfs.html">WFS - OGC WFS service</a></p></li>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="#config-CPL_CURL_VERBOSE"><code class="docutils literal notranslate"><span class="pre">CPL_CURL_VERBOSE</span></code></a>: <ul>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="#config-CPL_DEBUG"><code class="docutils literal notranslate"><span class="pre">CPL_DEBUG</span></code></a>: <ul>
 <li><p><a class="reference internal" href="../drivers/raster/vrt.html">VRT -- GDAL 仮想形式</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/gml.html">GML - Geography Markup Language</a></p></li>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
 </ul>
 </p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-CPL_GS_CREDENTIALS_FILE"><code class="docutils literal notranslate"><span class="pre">CPL_GS_CREDENTIALS_FILE</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="#config-CPL_LOG"><code class="docutils literal notranslate"><span class="pre">CPL_LOG</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="#config-CPL_LOG_ERRORS"><code class="docutils literal notranslate"><span class="pre">CPL_LOG_ERRORS</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-CPL_GS_CREDENTIALS_FILE"><code class="docutils literal notranslate"><span class="pre">CPL_GS_CREDENTIALS_FILE</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="#config-CPL_LOG"><code class="docutils literal notranslate"><span class="pre">CPL_LOG</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="#config-CPL_LOG_ERRORS"><code class="docutils literal notranslate"><span class="pre">CPL_LOG_ERRORS</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/eedai.html#config-CPL_MACHINE_IS_GCE"><code class="docutils literal notranslate"><span class="pre">CPL_MACHINE_IS_GCE</span></code></a>: <ul>
 <li><p><a class="reference internal" href="../drivers/raster/eedai.html">EEDAI - Google Earth Engine Data API Image</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/eeda.html">Google Earth Engine Data API</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
 </ul>
 </p></li>
-<li><p><a class="reference internal" href="#config-CPL_MAX_ERROR_REPORTS"><code class="docutils literal notranslate"><span class="pre">CPL_MAX_ERROR_REPORTS</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-CPL_SOZIP_ENABLED"><code class="docutils literal notranslate"><span class="pre">CPL_SOZIP_ENABLED</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-CPL_SOZIP_MIN_FILE_SIZE"><code class="docutils literal notranslate"><span class="pre">CPL_SOZIP_MIN_FILE_SIZE</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="#config-CPL_TIMESTAMP"><code class="docutils literal notranslate"><span class="pre">CPL_TIMESTAMP</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
+<li><p><a class="reference internal" href="#config-CPL_MAX_ERROR_REPORTS"><code class="docutils literal notranslate"><span class="pre">CPL_MAX_ERROR_REPORTS</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-CPL_SOZIP_ENABLED"><code class="docutils literal notranslate"><span class="pre">CPL_SOZIP_ENABLED</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-CPL_SOZIP_MIN_FILE_SIZE"><code class="docutils literal notranslate"><span class="pre">CPL_SOZIP_MIN_FILE_SIZE</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="#config-CPL_TIMESTAMP"><code class="docutils literal notranslate"><span class="pre">CPL_TIMESTAMP</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
 <li><p><a class="reference internal" href="#config-CPL_TMPDIR"><code class="docutils literal notranslate"><span class="pre">CPL_TMPDIR</span></code></a>: <ul>
 <li><p><a class="reference internal" href="../drivers/raster/pdf.html">PDF -- Geospatial PDF</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/wms.html">WMS -- Web Map Services</a></p></li>
@@ -888,56 +880,56 @@ horizontal datum.</p>
 <li><p><a class="reference internal" href="../drivers/raster/wmts.html">WMTS -- OGC Web Map Tile Service</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/osm.html">OSM - OpenStreetMap XML and PBF</a></p></li>
 <li><p><a class="reference internal" href="../programs/vector_common_options.html">Common options for vector programs</a></p></li>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
 </ul>
 </p></li>
-<li><p><a class="reference internal" href="#config-CPL_VSIL_CURL_ALLOWED_EXTENSIONS"><code class="docutils literal notranslate"><span class="pre">CPL_VSIL_CURL_ALLOWED_EXTENSIONS</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
+<li><p><a class="reference internal" href="#config-CPL_VSIL_CURL_ALLOWED_EXTENSIONS"><code class="docutils literal notranslate"><span class="pre">CPL_VSIL_CURL_ALLOWED_EXTENSIONS</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
 <li><p><a class="reference internal" href="#config-CPL_VSIL_CURL_CACHE_SIZE"><code class="docutils literal notranslate"><span class="pre">CPL_VSIL_CURL_CACHE_SIZE</span></code></a>: <ul>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="#config-CPL_VSIL_CURL_CHUNK_SIZE"><code class="docutils literal notranslate"><span class="pre">CPL_VSIL_CURL_CHUNK_SIZE</span></code></a>: <ul>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
 </ul>
 </p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-CPL_VSIL_CURL_IGNORE_GLACIER_STORAGE"><code class="docutils literal notranslate"><span class="pre">CPL_VSIL_CURL_IGNORE_GLACIER_STORAGE</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-CPL_VSIL_CURL_IGNORE_STORAGE_CLASSES"><code class="docutils literal notranslate"><span class="pre">CPL_VSIL_CURL_IGNORE_STORAGE_CLASSES</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-CPL_VSIL_CURL_IGNORE_GLACIER_STORAGE"><code class="docutils literal notranslate"><span class="pre">CPL_VSIL_CURL_IGNORE_GLACIER_STORAGE</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-CPL_VSIL_CURL_IGNORE_STORAGE_CLASSES"><code class="docutils literal notranslate"><span class="pre">CPL_VSIL_CURL_IGNORE_STORAGE_CLASSES</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
 <li><p><a class="reference internal" href="#config-CPL_VSIL_CURL_NON_CACHED"><code class="docutils literal notranslate"><span class="pre">CPL_VSIL_CURL_NON_CACHED</span></code></a>: <ul>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="#config-CPL_VSIL_CURL_USE_HEAD"><code class="docutils literal notranslate"><span class="pre">CPL_VSIL_CURL_USE_HEAD</span></code></a>: <ul>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="#config-CPL_VSIL_CURL_USE_S3_REDIRECT"><code class="docutils literal notranslate"><span class="pre">CPL_VSIL_CURL_USE_S3_REDIRECT</span></code></a>: <ul>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="#config-CPL_VSIL_DEFLATE_CHUNK_SIZE"><code class="docutils literal notranslate"><span class="pre">CPL_VSIL_DEFLATE_CHUNK_SIZE</span></code></a>: <ul>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
 </ul>
 </p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-CPL_VSIL_GZIP_WRITE_PROPERTIES"><code class="docutils literal notranslate"><span class="pre">CPL_VSIL_GZIP_WRITE_PROPERTIES</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-CPL_VSIL_GZIP_WRITE_PROPERTIES"><code class="docutils literal notranslate"><span class="pre">CPL_VSIL_GZIP_WRITE_PROPERTIES</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
 <li><p><a class="reference internal" href="#config-CPL_VSIL_USE_TEMP_FILE_FOR_RANDOM_WRITE"><code class="docutils literal notranslate"><span class="pre">CPL_VSIL_USE_TEMP_FILE_FOR_RANDOM_WRITE</span></code></a>: <ul>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
 </ul>
 </p></li>
-<li><p><a class="reference internal" href="#config-CPL_VSIL_ZIP_ALLOWED_EXTENSIONS"><code class="docutils literal notranslate"><span class="pre">CPL_VSIL_ZIP_ALLOWED_EXTENSIONS</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-CPL_VSIS3_CREATE_DIR_OBJECT"><code class="docutils literal notranslate"><span class="pre">CPL_VSIS3_CREATE_DIR_OBJECT</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-CPL_VSIS3_USE_BASE_RMDIR_RECURSIVE"><code class="docutils literal notranslate"><span class="pre">CPL_VSIS3_USE_BASE_RMDIR_RECURSIVE</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-CPL_VSISTDIN_BUFFER_LIMIT"><code class="docutils literal notranslate"><span class="pre">CPL_VSISTDIN_BUFFER_LIMIT</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="#config-CPL_VSIL_ZIP_ALLOWED_EXTENSIONS"><code class="docutils literal notranslate"><span class="pre">CPL_VSIL_ZIP_ALLOWED_EXTENSIONS</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-CPL_VSIS3_CREATE_DIR_OBJECT"><code class="docutils literal notranslate"><span class="pre">CPL_VSIS3_CREATE_DIR_OBJECT</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-CPL_VSIS3_USE_BASE_RMDIR_RECURSIVE"><code class="docutils literal notranslate"><span class="pre">CPL_VSIS3_USE_BASE_RMDIR_RECURSIVE</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-CPL_VSISTDIN_BUFFER_LIMIT"><code class="docutils literal notranslate"><span class="pre">CPL_VSISTDIN_BUFFER_LIMIT</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
 <li><p><a class="reference internal" href="#config-CURL_CA_BUNDLE"><code class="docutils literal notranslate"><span class="pre">CURL_CA_BUNDLE</span></code></a>: <ul>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="../drivers/raster/aaigrid.html#config-DECIMAL_PRECISION"><code class="docutils literal notranslate"><span class="pre">DECIMAL_PRECISION</span></code></a>: <a class="reference internal" href="../drivers/raster/aaigrid.html">AAIGrid -- Arc/Info ASCII Grid</a></p></li>
@@ -1010,17 +1002,17 @@ horizontal datum.</p>
 <li><p><a class="reference internal" href="../drivers/raster/aaigrid.html#config-FORCE_CELLSIZE"><code class="docutils literal notranslate"><span class="pre">FORCE_CELLSIZE</span></code></a>: <a class="reference internal" href="../drivers/raster/aaigrid.html">AAIGrid -- Arc/Info ASCII Grid</a></p></li>
 <li><p><a class="reference internal" href="#config-GDAL_BAND_BLOCK_CACHE"><code class="docutils literal notranslate"><span class="pre">GDAL_BAND_BLOCK_CACHE</span></code></a>: <ul>
 <li><p><a class="reference internal" href="../development/rfc/rfc26_blockcache.html">RFC 26: GDAL Block Cache Improvements</a></p></li>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="#config-GDAL_CACHEMAX"><code class="docutils literal notranslate"><span class="pre">GDAL_CACHEMAX</span></code></a>: <ul>
 <li><p><a class="reference internal" href="../drivers/raster/sentinel2.html">SENTINEL2 -- Sentinel-2 Products</a></p></li>
 <li><p><a class="reference internal" href="../programs/gdalwarp.html">gdalwarp</a></p></li>
 <li><p><a class="reference internal" href="../programs/raster_common_options.html">Common options for raster programs</a></p></li>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
 </ul>
 </p></li>
-<li><p><a class="reference internal" href="#config-GDAL_CONFIG_FILE"><code class="docutils literal notranslate"><span class="pre">GDAL_CONFIG_FILE</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
+<li><p><a class="reference internal" href="#config-GDAL_CONFIG_FILE"><code class="docutils literal notranslate"><span class="pre">GDAL_CONFIG_FILE</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/daas.html#config-GDAL_DAAS_ACCESS_TOKEN"><code class="docutils literal notranslate"><span class="pre">GDAL_DAAS_ACCESS_TOKEN</span></code></a>: <a class="reference internal" href="../drivers/raster/daas.html">DAAS (Airbus DS Intelligence Data As A Service driver)</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/daas.html#config-GDAL_DAAS_API_KEY"><code class="docutils literal notranslate"><span class="pre">GDAL_DAAS_API_KEY</span></code></a>: <a class="reference internal" href="../drivers/raster/daas.html">DAAS (Airbus DS Intelligence Data As A Service driver)</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/daas.html#config-GDAL_DAAS_CLIENT_ID"><code class="docutils literal notranslate"><span class="pre">GDAL_DAAS_CLIENT_ID</span></code></a>: <a class="reference internal" href="../drivers/raster/daas.html">DAAS (Airbus DS Intelligence Data As A Service driver)</a></p></li>
@@ -1028,7 +1020,7 @@ horizontal datum.</p>
 <li><p><a class="reference internal" href="#config-GDAL_DATA"><code class="docutils literal notranslate"><span class="pre">GDAL_DATA</span></code></a>: <ul>
 <li><p><a class="reference internal" href="../drivers/raster/grib.html">GRIB -- WMO General Regularly-distributed Information in Binary form</a></p></li>
 <li><p><a class="reference internal" href="../programs/raster_common_options.html">Common options for raster programs</a></p></li>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="../drivers/raster/wms.html#config-GDAL_DEFAULT_WMS_CACHE_PATH"><code class="docutils literal notranslate"><span class="pre">GDAL_DEFAULT_WMS_CACHE_PATH</span></code></a>: <ul>
@@ -1037,11 +1029,11 @@ horizontal datum.</p>
 <li><p><a class="reference internal" href="../drivers/raster/wmts.html">WMTS -- OGC Web Map Tile Service</a></p></li>
 </ul>
 </p></li>
-<li><p><a class="reference internal" href="#config-GDAL_DISABLE_CPLLOCALEC"><code class="docutils literal notranslate"><span class="pre">GDAL_DISABLE_CPLLOCALEC</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="#config-GDAL_DISABLE_READDIR_ON_OPEN"><code class="docutils literal notranslate"><span class="pre">GDAL_DISABLE_READDIR_ON_OPEN</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
+<li><p><a class="reference internal" href="#config-GDAL_DISABLE_CPLLOCALEC"><code class="docutils literal notranslate"><span class="pre">GDAL_DISABLE_CPLLOCALEC</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="#config-GDAL_DISABLE_READDIR_ON_OPEN"><code class="docutils literal notranslate"><span class="pre">GDAL_DISABLE_READDIR_ON_OPEN</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
 <li><p><a class="reference internal" href="#config-GDAL_DRIVER_PATH"><code class="docutils literal notranslate"><span class="pre">GDAL_DRIVER_PATH</span></code></a>: <ul>
 <li><p><a class="reference internal" href="../development/rfc/rfc76_ogrpythondrivers.html">RFC 76: OGR Python drivers</a></p></li>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="../drivers/raster/dted.html#config-GDAL_DTED_SINGLE_BLOCK"><code class="docutils literal notranslate"><span class="pre">GDAL_DTED_SINGLE_BLOCK</span></code></a>: <a class="reference internal" href="../drivers/raster/dted.html">DTED -- Military Elevation Data</a></p></li>
@@ -1052,8 +1044,8 @@ horizontal datum.</p>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="../drivers/raster/jpeg.html#config-GDAL_ERROR_ON_LIBJPEG_WARNING"><code class="docutils literal notranslate"><span class="pre">GDAL_ERROR_ON_LIBJPEG_WARNING</span></code></a>: <a class="reference internal" href="../drivers/raster/jpeg.html">JPEG -- JPEG JFIF File Format</a></p></li>
-<li><p><a class="reference internal" href="#config-GDAL_FILENAME_IS_UTF8"><code class="docutils literal notranslate"><span class="pre">GDAL_FILENAME_IS_UTF8</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="#config-GDAL_FORCE_CACHING"><code class="docutils literal notranslate"><span class="pre">GDAL_FORCE_CACHING</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
+<li><p><a class="reference internal" href="#config-GDAL_FILENAME_IS_UTF8"><code class="docutils literal notranslate"><span class="pre">GDAL_FILENAME_IS_UTF8</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="#config-GDAL_FORCE_CACHING"><code class="docutils literal notranslate"><span class="pre">GDAL_FORCE_CACHING</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
 <li><p><a class="reference internal" href="#config-GDAL_GEOREF_SOURCES"><code class="docutils literal notranslate"><span class="pre">GDAL_GEOREF_SOURCES</span></code></a>: <ul>
 <li><p><a class="reference internal" href="../drivers/raster/gtiff.html">GTiff -- GeoTIFF File Format</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/jp2ecw.html">JP2ECW -- ERDAS JPEG2000 (.jp2)</a></p></li>
@@ -1061,119 +1053,119 @@ horizontal datum.</p>
 <li><p><a class="reference internal" href="../drivers/raster/jp2lura.html">JP2Lura -- JPEG2000 driver based on Lurawave library</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/jp2mrsid.html">JP2MrSID -- JPEG2000 via MrSID SDK</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/jp2openjpeg.html">JP2OpenJPEG -- JPEG2000 driver based on OpenJPEG library</a></p></li>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
 </ul>
 </p></li>
-<li><p><a class="reference internal" href="#config-GDAL_GSSAPI_DELEGATION"><code class="docutils literal notranslate"><span class="pre">GDAL_GSSAPI_DELEGATION</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
+<li><p><a class="reference internal" href="#config-GDAL_GSSAPI_DELEGATION"><code class="docutils literal notranslate"><span class="pre">GDAL_GSSAPI_DELEGATION</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/hfa.html#config-GDAL_HFA_OVR_BLOCKSIZE"><code class="docutils literal notranslate"><span class="pre">GDAL_HFA_OVR_BLOCKSIZE</span></code></a>: <a class="reference internal" href="../drivers/raster/hfa.html">HFA -- Erdas Imagine .img</a></p></li>
 <li><p><a class="reference internal" href="#config-GDAL_HTTPS_PROXY"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTPS_PROXY</span></code></a>: <ul>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
 </ul>
 </p></li>
-<li><p><a class="reference internal" href="#config-GDAL_HTTP_AUTH"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_AUTH</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="#config-GDAL_HTTP_BEARER"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_BEARER</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="#config-GDAL_HTTP_CONNECTTIMEOUT"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_CONNECTTIMEOUT</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="#config-GDAL_HTTP_COOKIE"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_COOKIE</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="#config-GDAL_HTTP_COOKIEFILE"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_COOKIEFILE</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="#config-GDAL_HTTP_COOKIEJAR"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_COOKIEJAR</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
+<li><p><a class="reference internal" href="#config-GDAL_HTTP_AUTH"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_AUTH</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="#config-GDAL_HTTP_BEARER"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_BEARER</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="#config-GDAL_HTTP_CONNECTTIMEOUT"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_CONNECTTIMEOUT</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="#config-GDAL_HTTP_COOKIE"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_COOKIE</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="#config-GDAL_HTTP_COOKIEFILE"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_COOKIEFILE</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="#config-GDAL_HTTP_COOKIEJAR"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_COOKIEJAR</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
 <li><p><a class="reference internal" href="#config-GDAL_HTTP_HEADERS"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_HEADERS</span></code></a>: <ul>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="#config-GDAL_HTTP_HEADER_FILE"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_HEADER_FILE</span></code></a>: <ul>
 <li><p><a class="reference internal" href="../drivers/raster/wmts.html">WMTS -- OGC Web Map Tile Service</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/wfs.html">WFS - OGC WFS service</a></p></li>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="#config-GDAL_HTTP_KEYPASSWD"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_KEYPASSWD</span></code></a>: <ul>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
 </ul>
 </p></li>
-<li><p><a class="reference internal" href="#config-GDAL_HTTP_LOW_SPEED_LIMIT"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_LOW_SPEED_LIMIT</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="#config-GDAL_HTTP_LOW_SPEED_TIME"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_LOW_SPEED_TIME</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
+<li><p><a class="reference internal" href="#config-GDAL_HTTP_LOW_SPEED_LIMIT"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_LOW_SPEED_LIMIT</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="#config-GDAL_HTTP_LOW_SPEED_TIME"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_LOW_SPEED_TIME</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
 <li><p><a class="reference internal" href="#config-GDAL_HTTP_MAX_RETRY"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_MAX_RETRY</span></code></a>: <ul>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
 </ul>
 </p></li>
-<li><p><a class="reference internal" href="#config-GDAL_HTTP_MERGE_CONSECUTIVE_RANGES"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_MERGE_CONSECUTIVE_RANGES</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="#config-GDAL_HTTP_MULTIPLEX"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_MULTIPLEX</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="#config-GDAL_HTTP_MULTIRANGE"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_MULTIRANGE</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="#config-GDAL_HTTP_NETRC"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_NETRC</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="#config-GDAL_HTTP_NETRC_FILE"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_NETRC_FILE</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
+<li><p><a class="reference internal" href="#config-GDAL_HTTP_MERGE_CONSECUTIVE_RANGES"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_MERGE_CONSECUTIVE_RANGES</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="#config-GDAL_HTTP_MULTIPLEX"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_MULTIPLEX</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="#config-GDAL_HTTP_MULTIRANGE"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_MULTIRANGE</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="#config-GDAL_HTTP_NETRC"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_NETRC</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="#config-GDAL_HTTP_NETRC_FILE"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_NETRC_FILE</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
 <li><p><a class="reference internal" href="#config-GDAL_HTTP_PROXY"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_PROXY</span></code></a>: <ul>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="#config-GDAL_HTTP_PROXYUSERPWD"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_PROXYUSERPWD</span></code></a>: <ul>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="#config-GDAL_HTTP_RETRY_CODES"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_RETRY_CODES</span></code></a>: <ul>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="#config-GDAL_HTTP_RETRY_DELAY"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_RETRY_DELAY</span></code></a>: <ul>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="#config-GDAL_HTTP_SSLCERT"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_SSLCERT</span></code></a>: <ul>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="#config-GDAL_HTTP_SSLCERTTYPE"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_SSLCERTTYPE</span></code></a>: <ul>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="#config-GDAL_HTTP_SSLKEY"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_SSLKEY</span></code></a>: <ul>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
 </ul>
 </p></li>
-<li><p><a class="reference internal" href="#config-GDAL_HTTP_SSL_VERIFYSTATUS"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_SSL_VERIFYSTATUS</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
+<li><p><a class="reference internal" href="#config-GDAL_HTTP_SSL_VERIFYSTATUS"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_SSL_VERIFYSTATUS</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
 <li><p><a class="reference internal" href="#config-GDAL_HTTP_TCP_KEEPALIVE"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_TCP_KEEPALIVE</span></code></a>: <ul>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="#config-GDAL_HTTP_TCP_KEEPIDLE"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_TCP_KEEPIDLE</span></code></a>: <ul>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="#config-GDAL_HTTP_TCP_KEEPINTVL"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_TCP_KEEPINTVL</span></code></a>: <ul>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="#config-GDAL_HTTP_TIMEOUT"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_TIMEOUT</span></code></a>: <ul>
 <li><p><a class="reference internal" href="../drivers/raster/wms.html">WMS -- Web Map Services</a></p></li>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
 </ul>
 </p></li>
-<li><p><a class="reference internal" href="#config-GDAL_HTTP_UNSAFESSL"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_UNSAFESSL</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="#config-GDAL_HTTP_USERAGENT"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_USERAGENT</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="#config-GDAL_HTTP_USERPWD"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_USERPWD</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="#config-GDAL_HTTP_USE_CAPI_STORE"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_USE_CAPI_STORE</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="#config-GDAL_HTTP_VERSION"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_VERSION</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
+<li><p><a class="reference internal" href="#config-GDAL_HTTP_UNSAFESSL"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_UNSAFESSL</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="#config-GDAL_HTTP_USERAGENT"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_USERAGENT</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="#config-GDAL_HTTP_USERPWD"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_USERPWD</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="#config-GDAL_HTTP_USE_CAPI_STORE"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_USE_CAPI_STORE</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="#config-GDAL_HTTP_VERSION"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_VERSION</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
 <li><p><a class="reference internal" href="#config-GDAL_INGESTED_BYTES_AT_OPEN"><code class="docutils literal notranslate"><span class="pre">GDAL_INGESTED_BYTES_AT_OPEN</span></code></a>: <ul>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="../drivers/raster/jpeg.html#config-GDAL_JPEG_TO_RGB"><code class="docutils literal notranslate"><span class="pre">GDAL_JPEG_TO_RGB</span></code></a>: <a class="reference internal" href="../drivers/raster/jpeg.html">JPEG -- JPEG JFIF File Format</a></p></li>
-<li><p><a class="reference internal" href="#config-GDAL_MAX_BAND_COUNT"><code class="docutils literal notranslate"><span class="pre">GDAL_MAX_BAND_COUNT</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
+<li><p><a class="reference internal" href="#config-GDAL_MAX_BAND_COUNT"><code class="docutils literal notranslate"><span class="pre">GDAL_MAX_BAND_COUNT</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/wms.html#config-GDAL_MAX_CONNECTIONS"><code class="docutils literal notranslate"><span class="pre">GDAL_MAX_CONNECTIONS</span></code></a>: <ul>
 <li><p><a class="reference internal" href="../drivers/raster/wms.html">WMS -- Web Map Services</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/wmts.html">WMTS -- OGC Web Map Tile Service</a></p></li>
@@ -1181,13 +1173,13 @@ horizontal datum.</p>
 </p></li>
 <li><p><a class="reference internal" href="#config-GDAL_MAX_DATASET_POOL_RAM_USAGE"><code class="docutils literal notranslate"><span class="pre">GDAL_MAX_DATASET_POOL_RAM_USAGE</span></code></a>: <ul>
 <li><p><a class="reference internal" href="../drivers/raster/vrt.html">VRT -- GDAL 仮想形式</a></p></li>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="#config-GDAL_MAX_DATASET_POOL_SIZE"><code class="docutils literal notranslate"><span class="pre">GDAL_MAX_DATASET_POOL_SIZE</span></code></a>: <ul>
 <li><p><a class="reference internal" href="../drivers/raster/gti.html">GTI -- GDAL Raster Tile Index</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/vrt.html">VRT -- GDAL 仮想形式</a></p></li>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="../drivers/raster/netcdf.html#config-GDAL_NETCDF_ASSUME_LONGLAT"><code class="docutils literal notranslate"><span class="pre">GDAL_NETCDF_ASSUME_LONGLAT</span></code></a>: <a class="reference internal" href="../drivers/raster/netcdf.html">NetCDF: Network Common Data Form</a></p></li>
@@ -1212,15 +1204,15 @@ horizontal datum.</p>
 <li><p><a class="reference internal" href="../programs/gdaladdo.html">gdaladdo</a></p></li>
 <li><p><a class="reference internal" href="../programs/gdalwarp.html">gdalwarp</a></p></li>
 <li><p><a class="reference internal" href="../programs/sozip.html">sozip</a></p></li>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
 </ul>
 </p></li>
-<li><p><a class="reference internal" href="#config-GDAL_OVR_PROPAGATE_NODATA"><code class="docutils literal notranslate"><span class="pre">GDAL_OVR_PROPAGATE_NODATA</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="#config-GDAL_PAM_ENABLED"><code class="docutils literal notranslate"><span class="pre">GDAL_PAM_ENABLED</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
+<li><p><a class="reference internal" href="#config-GDAL_OVR_PROPAGATE_NODATA"><code class="docutils literal notranslate"><span class="pre">GDAL_OVR_PROPAGATE_NODATA</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="#config-GDAL_PAM_ENABLED"><code class="docutils literal notranslate"><span class="pre">GDAL_PAM_ENABLED</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
 <li><p><a class="reference internal" href="#config-GDAL_PAM_PROXY_DIR"><code class="docutils literal notranslate"><span class="pre">GDAL_PAM_PROXY_DIR</span></code></a>: <ul>
 <li><p><a class="reference internal" href="../drivers/raster/zarr.html">Zarr</a></p></li>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="../drivers/raster/pdf.html#config-GDAL_PDF_BANDS"><code class="docutils literal notranslate"><span class="pre">GDAL_PDF_BANDS</span></code></a>: <a class="reference internal" href="../drivers/raster/pdf.html">PDF -- Geospatial PDF</a></p></li>
@@ -1231,27 +1223,27 @@ horizontal datum.</p>
 <li><p><a class="reference internal" href="../drivers/raster/pdf.html#config-GDAL_PDF_NEATLINE"><code class="docutils literal notranslate"><span class="pre">GDAL_PDF_NEATLINE</span></code></a>: <a class="reference internal" href="../drivers/raster/pdf.html">PDF -- Geospatial PDF</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/pdf.html#config-GDAL_PDF_RENDERING_OPTIONS"><code class="docutils literal notranslate"><span class="pre">GDAL_PDF_RENDERING_OPTIONS</span></code></a>: <a class="reference internal" href="../drivers/raster/pdf.html">PDF -- Geospatial PDF</a></p></li>
 <li><p><a class="reference internal" href="#config-GDAL_PROXY_AUTH"><code class="docutils literal notranslate"><span class="pre">GDAL_PROXY_AUTH</span></code></a>: <ul>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="#config-GDAL_PYTHON_DRIVER_PATH"><code class="docutils literal notranslate"><span class="pre">GDAL_PYTHON_DRIVER_PATH</span></code></a>: <ul>
 <li><p><a class="reference internal" href="../development/rfc/rfc76_ogrpythondrivers.html">RFC 76: OGR Python drivers</a></p></li>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
 </ul>
 </p></li>
-<li><p><a class="reference internal" href="#config-GDAL_RASTERIO_RESAMPLING"><code class="docutils literal notranslate"><span class="pre">GDAL_RASTERIO_RESAMPLING</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="#config-GDAL_READDIR_LIMIT_ON_OPEN"><code class="docutils literal notranslate"><span class="pre">GDAL_READDIR_LIMIT_ON_OPEN</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
+<li><p><a class="reference internal" href="#config-GDAL_RASTERIO_RESAMPLING"><code class="docutils literal notranslate"><span class="pre">GDAL_RASTERIO_RESAMPLING</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="#config-GDAL_READDIR_LIMIT_ON_OPEN"><code class="docutils literal notranslate"><span class="pre">GDAL_READDIR_LIMIT_ON_OPEN</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
 <li><p><a class="reference internal" href="#config-GDAL_SKIP"><code class="docutils literal notranslate"><span class="pre">GDAL_SKIP</span></code></a>: <ul>
 <li><p><a class="reference internal" href="../drivers/raster/netcdf.html">NetCDF: Network Common Data Form</a></p></li>
 <li><p><a class="reference internal" href="../programs/ogrinfo.html">ogrinfo</a></p></li>
 <li><p><a class="reference internal" href="../programs/raster_common_options.html">Common options for raster programs</a></p></li>
 <li><p><a class="reference internal" href="../programs/vector_common_options.html">Common options for vector programs</a></p></li>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="../drivers/raster/stacta.html#config-GDAL_STACTA_SKIP_MISSING_METATILE"><code class="docutils literal notranslate"><span class="pre">GDAL_STACTA_SKIP_MISSING_METATILE</span></code></a>: <a class="reference internal" href="../drivers/raster/stacta.html">STACTA - Spatio-Temporal Asset Catalog Tiled Assets</a></p></li>
-<li><p><a class="reference internal" href="#config-GDAL_SWATH_SIZE"><code class="docutils literal notranslate"><span class="pre">GDAL_SWATH_SIZE</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
+<li><p><a class="reference internal" href="#config-GDAL_SWATH_SIZE"><code class="docutils literal notranslate"><span class="pre">GDAL_SWATH_SIZE</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/gtiff.html#config-GDAL_TIFF_INTERNAL_MASK"><code class="docutils literal notranslate"><span class="pre">GDAL_TIFF_INTERNAL_MASK</span></code></a>: <a class="reference internal" href="../drivers/raster/gtiff.html">GTiff -- GeoTIFF File Format</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/gtiff.html#config-GDAL_TIFF_INTERNAL_MASK_TO_8BIT"><code class="docutils literal notranslate"><span class="pre">GDAL_TIFF_INTERNAL_MASK_TO_8BIT</span></code></a>: <a class="reference internal" href="../drivers/raster/gtiff.html">GTiff -- GeoTIFF File Format</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/gtiff.html#config-GDAL_TIFF_OVR_BLOCKSIZE"><code class="docutils literal notranslate"><span class="pre">GDAL_TIFF_OVR_BLOCKSIZE</span></code></a>: <a class="reference internal" href="../drivers/raster/gtiff.html">GTiff -- GeoTIFF File Format</a></p></li>
@@ -1264,7 +1256,7 @@ horizontal datum.</p>
 <li><p><a class="reference internal" href="../drivers/raster/vrt.html#config-GDAL_VRT_PYTHON_TRUSTED_MODULES"><code class="docutils literal notranslate"><span class="pre">GDAL_VRT_PYTHON_TRUSTED_MODULES</span></code></a>: <a class="reference internal" href="../drivers/raster/vrt.html">VRT -- GDAL 仮想形式</a></p></li>
 <li><p><a class="reference internal" href="#config-GDAL_XML_VALIDATION"><code class="docutils literal notranslate"><span class="pre">GDAL_XML_VALIDATION</span></code></a>: <ul>
 <li><p><a class="reference internal" href="../drivers/vector/vrt.html">VRT -- Virtual Format</a></p></li>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="../drivers/vector/geojson.html#config-GEOMETRY_AS_COLLECTION"><code class="docutils literal notranslate"><span class="pre">GEOMETRY_AS_COLLECTION</span></code></a>: <a class="reference internal" href="../drivers/vector/geojson.html">GeoJSON</a></p></li>
@@ -1290,7 +1282,7 @@ horizontal datum.</p>
 <li><p><a class="reference internal" href="../drivers/raster/eedai.html#config-GOOGLE_APPLICATION_CREDENTIALS"><code class="docutils literal notranslate"><span class="pre">GOOGLE_APPLICATION_CREDENTIALS</span></code></a>: <ul>
 <li><p><a class="reference internal" href="../drivers/raster/eedai.html">EEDAI - Google Earth Engine Data API Image</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/eeda.html">Google Earth Engine Data API</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="../drivers/vector/gpx.html#config-GPX_ELE_AS_25D"><code class="docutils literal notranslate"><span class="pre">GPX_ELE_AS_25D</span></code></a>: <a class="reference internal" href="../drivers/vector/gpx.html">GPX - GPS Exchange Format</a></p></li>
@@ -1300,17 +1292,17 @@ horizontal datum.</p>
 <li><p><a class="reference internal" href="../drivers/raster/grib.html#config-GRIB_ADJUST_LONGITUDE_RANGE"><code class="docutils literal notranslate"><span class="pre">GRIB_ADJUST_LONGITUDE_RANGE</span></code></a>: <a class="reference internal" href="../drivers/raster/grib.html">GRIB -- WMO General Regularly-distributed Information in Binary form</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/grib.html#config-GRIB_NORMALIZE_UNITS"><code class="docutils literal notranslate"><span class="pre">GRIB_NORMALIZE_UNITS</span></code></a>: <a class="reference internal" href="../drivers/raster/grib.html">GRIB -- WMO General Regularly-distributed Information in Binary form</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/grib.html#config-GRIB_RESOURCE_DIR"><code class="docutils literal notranslate"><span class="pre">GRIB_RESOURCE_DIR</span></code></a>: <a class="reference internal" href="../drivers/raster/grib.html">GRIB -- WMO General Regularly-distributed Information in Binary form</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-GS_ACCESS_KEY_ID"><code class="docutils literal notranslate"><span class="pre">GS_ACCESS_KEY_ID</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-GS_NO_SIGN_REQUEST"><code class="docutils literal notranslate"><span class="pre">GS_NO_SIGN_REQUEST</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-GS_OAUTH2_CLIENT_EMAIL"><code class="docutils literal notranslate"><span class="pre">GS_OAUTH2_CLIENT_EMAIL</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-GS_OAUTH2_CLIENT_ID"><code class="docutils literal notranslate"><span class="pre">GS_OAUTH2_CLIENT_ID</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-GS_OAUTH2_CLIENT_SECRET"><code class="docutils literal notranslate"><span class="pre">GS_OAUTH2_CLIENT_SECRET</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-GS_OAUTH2_PRIVATE_KEY"><code class="docutils literal notranslate"><span class="pre">GS_OAUTH2_PRIVATE_KEY</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-GS_OAUTH2_PRIVATE_KEY_FILE"><code class="docutils literal notranslate"><span class="pre">GS_OAUTH2_PRIVATE_KEY_FILE</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-GS_OAUTH2_REFRESH_TOKEN"><code class="docutils literal notranslate"><span class="pre">GS_OAUTH2_REFRESH_TOKEN</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-GS_OAUTH2_SCOPE"><code class="docutils literal notranslate"><span class="pre">GS_OAUTH2_SCOPE</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-GS_SECRET_ACCESS_KEY"><code class="docutils literal notranslate"><span class="pre">GS_SECRET_ACCESS_KEY</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-GS_USER_PROJECT"><code class="docutils literal notranslate"><span class="pre">GS_USER_PROJECT</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-GS_ACCESS_KEY_ID"><code class="docutils literal notranslate"><span class="pre">GS_ACCESS_KEY_ID</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-GS_NO_SIGN_REQUEST"><code class="docutils literal notranslate"><span class="pre">GS_NO_SIGN_REQUEST</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-GS_OAUTH2_CLIENT_EMAIL"><code class="docutils literal notranslate"><span class="pre">GS_OAUTH2_CLIENT_EMAIL</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-GS_OAUTH2_CLIENT_ID"><code class="docutils literal notranslate"><span class="pre">GS_OAUTH2_CLIENT_ID</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-GS_OAUTH2_CLIENT_SECRET"><code class="docutils literal notranslate"><span class="pre">GS_OAUTH2_CLIENT_SECRET</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-GS_OAUTH2_PRIVATE_KEY"><code class="docutils literal notranslate"><span class="pre">GS_OAUTH2_PRIVATE_KEY</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-GS_OAUTH2_PRIVATE_KEY_FILE"><code class="docutils literal notranslate"><span class="pre">GS_OAUTH2_PRIVATE_KEY_FILE</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-GS_OAUTH2_REFRESH_TOKEN"><code class="docutils literal notranslate"><span class="pre">GS_OAUTH2_REFRESH_TOKEN</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-GS_OAUTH2_SCOPE"><code class="docutils literal notranslate"><span class="pre">GS_OAUTH2_SCOPE</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-GS_SECRET_ACCESS_KEY"><code class="docutils literal notranslate"><span class="pre">GS_SECRET_ACCESS_KEY</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-GS_USER_PROJECT"><code class="docutils literal notranslate"><span class="pre">GS_USER_PROJECT</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/gtiff.html#config-GTIFF_DIRECT_IO"><code class="docutils literal notranslate"><span class="pre">GTIFF_DIRECT_IO</span></code></a>: <a class="reference internal" href="../drivers/raster/gtiff.html">GTiff -- GeoTIFF File Format</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/gtiff.html#config-GTIFF_IGNORE_READ_ERRORS"><code class="docutils literal notranslate"><span class="pre">GTIFF_IGNORE_READ_ERRORS</span></code></a>: <a class="reference internal" href="../drivers/raster/gtiff.html">GTiff -- GeoTIFF File Format</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/gtiff.html#config-GTIFF_LINEAR_UNITS"><code class="docutils literal notranslate"><span class="pre">GTIFF_LINEAR_UNITS</span></code></a>: <a class="reference internal" href="../drivers/raster/gtiff.html">GTiff -- GeoTIFF File Format</a></p></li>
@@ -1418,25 +1410,25 @@ horizontal datum.</p>
 <li><p><a class="reference internal" href="#config-OGR_APPLY_GEOM_SET_PRECISION"><code class="docutils literal notranslate"><span class="pre">OGR_APPLY_GEOM_SET_PRECISION</span></code></a>: <ul>
 <li><p><a class="reference internal" href="../drivers/vector/gpkg.html">GPKG -- GeoPackage vector</a></p></li>
 <li><p><a class="reference internal" href="../programs/ogr2ogr.html">ogr2ogr</a></p></li>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="#config-OGR_ARC_MAX_GAP"><code class="docutils literal notranslate"><span class="pre">OGR_ARC_MAX_GAP</span></code></a>: <ul>
 <li><p><a class="reference internal" href="../drivers/vector/dwg.html">AutoCAD DWG</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/dxf.html">AutoCAD DXF</a></p></li>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="#config-OGR_ARC_STEPSIZE"><code class="docutils literal notranslate"><span class="pre">OGR_ARC_STEPSIZE</span></code></a>: <ul>
 <li><p><a class="reference internal" href="../drivers/vector/dwg.html">AutoCAD DWG</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/dxf.html">AutoCAD DXF</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/ili.html">&quot;INTERLIS 1&quot; and &quot;INTERLIS 2&quot; drivers</a></p></li>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="#config-OGR_CT_USE_SRS_COORDINATE_EPOCH"><code class="docutils literal notranslate"><span class="pre">OGR_CT_USE_SRS_COORDINATE_EPOCH</span></code></a>: <ul>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="coordinate_epoch.html">Coordinate epoch support</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="coordinate_epoch.html">座標元期のサポート</a></p></li>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="../drivers/vector/gpkg.html#config-OGR_CURRENT_DATE"><code class="docutils literal notranslate"><span class="pre">OGR_CURRENT_DATE</span></code></a>: <ul>
@@ -1446,8 +1438,8 @@ horizontal datum.</p>
 </p></li>
 <li><p><a class="reference internal" href="../drivers/vector/edigeo.html#config-OGR_EDIGEO_CREATE_LABEL_LAYERS"><code class="docutils literal notranslate"><span class="pre">OGR_EDIGEO_CREATE_LABEL_LAYERS</span></code></a>: <a class="reference internal" href="../drivers/vector/edigeo.html">EDIGEO</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/edigeo.html#config-OGR_EDIGEO_FONT_SIZE_FACTOR"><code class="docutils literal notranslate"><span class="pre">OGR_EDIGEO_FONT_SIZE_FACTOR</span></code></a>: <a class="reference internal" href="../drivers/vector/edigeo.html">EDIGEO</a></p></li>
-<li><p><a class="reference internal" href="#config-OGR_ENABLE_PARTIAL_REPROJECTION"><code class="docutils literal notranslate"><span class="pre">OGR_ENABLE_PARTIAL_REPROJECTION</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="#config-OGR_FORCE_ASCII"><code class="docutils literal notranslate"><span class="pre">OGR_FORCE_ASCII</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
+<li><p><a class="reference internal" href="#config-OGR_ENABLE_PARTIAL_REPROJECTION"><code class="docutils literal notranslate"><span class="pre">OGR_ENABLE_PARTIAL_REPROJECTION</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="#config-OGR_FORCE_ASCII"><code class="docutils literal notranslate"><span class="pre">OGR_FORCE_ASCII</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/geojson.html#config-OGR_GEOJSON_ARRAY_AS_STRING"><code class="docutils literal notranslate"><span class="pre">OGR_GEOJSON_ARRAY_AS_STRING</span></code></a>: <a class="reference internal" href="../drivers/vector/geojson.html">GeoJSON</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/geojson.html#config-OGR_GEOJSON_DATE_AS_STRING"><code class="docutils literal notranslate"><span class="pre">OGR_GEOJSON_DATE_AS_STRING</span></code></a>: <a class="reference internal" href="../drivers/vector/geojson.html">GeoJSON</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/geojson.html#config-OGR_GEOJSON_MAX_OBJ_SIZE"><code class="docutils literal notranslate"><span class="pre">OGR_GEOJSON_MAX_OBJ_SIZE</span></code></a>: <ul>
@@ -1463,7 +1455,7 @@ horizontal datum.</p>
 <li><p><a class="reference internal" href="../drivers/vector/ogdi.html#config-OGR_OGDI_LAUNDER_LAYER_NAMES"><code class="docutils literal notranslate"><span class="pre">OGR_OGDI_LAUNDER_LAYER_NAMES</span></code></a>: <a class="reference internal" href="../drivers/vector/ogdi.html">OGDI Vectors</a></p></li>
 <li><p><a class="reference internal" href="#config-OGR_ORGANIZE_POLYGONS"><code class="docutils literal notranslate"><span class="pre">OGR_ORGANIZE_POLYGONS</span></code></a>: <ul>
 <li><p><a class="reference internal" href="../drivers/vector/shapefile.html">ESRI Shapefile / DBF</a></p></li>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="../drivers/vector/pdf.html#config-OGR_PDF_READ_NON_STRUCTURED"><code class="docutils literal notranslate"><span class="pre">OGR_PDF_READ_NON_STRUCTURED</span></code></a>: <a class="reference internal" href="../drivers/vector/pdf.html">PDF -- Geospatial PDF</a></p></li>
@@ -1484,7 +1476,7 @@ horizontal datum.</p>
 <li><p><a class="reference internal" href="../drivers/vector/sqlite.html">SQLite / Spatialite RDBMS</a></p></li>
 </ul>
 </p></li>
-<li><p><a class="reference internal" href="#config-OGR_SKIP"><code class="docutils literal notranslate"><span class="pre">OGR_SKIP</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
+<li><p><a class="reference internal" href="#config-OGR_SKIP"><code class="docutils literal notranslate"><span class="pre">OGR_SKIP</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/sqlite.html#config-OGR_SQLITE_CACHE"><code class="docutils literal notranslate"><span class="pre">OGR_SQLITE_CACHE</span></code></a>: <ul>
 <li><p><a class="reference internal" href="../drivers/vector/gpkg.html">GPKG -- GeoPackage vector</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/sqlite.html">SQLite / Spatialite RDBMS</a></p></li>
@@ -1512,13 +1504,13 @@ horizontal datum.</p>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="#config-OGR_SQL_LIKE_AS_ILIKE"><code class="docutils literal notranslate"><span class="pre">OGR_SQL_LIKE_AS_ILIKE</span></code></a>: <ul>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
 <li><p><a class="reference internal" href="ogr_sql_dialect.html">OGR SQL 方言</a></p></li>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="#config-OGR_STROKE_CURVE"><code class="docutils literal notranslate"><span class="pre">OGR_STROKE_CURVE</span></code></a>: <ul>
 <li><p><a class="reference internal" href="../drivers/vector/ili.html">&quot;INTERLIS 1&quot; and &quot;INTERLIS 2&quot; drivers</a></p></li>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="../drivers/vector/libkml.html#config-OGR_STYLE"><code class="docutils literal notranslate"><span class="pre">OGR_STYLE</span></code></a>: <a class="reference internal" href="../drivers/vector/libkml.html">LIBKML Driver (.kml .kmz)</a></p></li>
@@ -1545,16 +1537,16 @@ horizontal datum.</p>
 <li><p><a class="reference internal" href="../drivers/vector/osm.html#config-OSM_CONFIG_FILE"><code class="docutils literal notranslate"><span class="pre">OSM_CONFIG_FILE</span></code></a>: <a class="reference internal" href="../drivers/vector/osm.html">OSM - OpenStreetMap XML and PBF</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/osm.html#config-OSM_MAX_TMPFILE_SIZE"><code class="docutils literal notranslate"><span class="pre">OSM_MAX_TMPFILE_SIZE</span></code></a>: <a class="reference internal" href="../drivers/vector/osm.html">OSM - OpenStreetMap XML and PBF</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/osm.html#config-OSM_USE_CUSTOM_INDEXING"><code class="docutils literal notranslate"><span class="pre">OSM_USE_CUSTOM_INDEXING</span></code></a>: <a class="reference internal" href="../drivers/vector/osm.html">OSM - OpenStreetMap XML and PBF</a></p></li>
-<li><p><a class="reference internal" href="#config-OSR_ADD_TOWGS84_ON_EXPORT_TO_PROJ4"><code class="docutils literal notranslate"><span class="pre">OSR_ADD_TOWGS84_ON_EXPORT_TO_PROJ4</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="#config-OSR_ADD_TOWGS84_ON_EXPORT_TO_WKT1"><code class="docutils literal notranslate"><span class="pre">OSR_ADD_TOWGS84_ON_EXPORT_TO_WKT1</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="#config-OSR_ADD_TOWGS84_ON_IMPORT_FROM_EPSG"><code class="docutils literal notranslate"><span class="pre">OSR_ADD_TOWGS84_ON_IMPORT_FROM_EPSG</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="#config-OSR_DEFAULT_AXIS_MAPPING_STRATEGY"><code class="docutils literal notranslate"><span class="pre">OSR_DEFAULT_AXIS_MAPPING_STRATEGY</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="#config-OSR_STRIP_TOWGS84"><code class="docutils literal notranslate"><span class="pre">OSR_STRIP_TOWGS84</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="#config-OSR_USE_NON_DEPRECATED"><code class="docutils literal notranslate"><span class="pre">OSR_USE_NON_DEPRECATED</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="#config-OSR_WKT_FORMAT"><code class="docutils literal notranslate"><span class="pre">OSR_WKT_FORMAT</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-OSS_ACCESS_KEY_ID"><code class="docutils literal notranslate"><span class="pre">OSS_ACCESS_KEY_ID</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-OSS_ENDPOINT"><code class="docutils literal notranslate"><span class="pre">OSS_ENDPOINT</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-OSS_SECRET_ACCESS_KEY"><code class="docutils literal notranslate"><span class="pre">OSS_SECRET_ACCESS_KEY</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="#config-OSR_ADD_TOWGS84_ON_EXPORT_TO_PROJ4"><code class="docutils literal notranslate"><span class="pre">OSR_ADD_TOWGS84_ON_EXPORT_TO_PROJ4</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="#config-OSR_ADD_TOWGS84_ON_EXPORT_TO_WKT1"><code class="docutils literal notranslate"><span class="pre">OSR_ADD_TOWGS84_ON_EXPORT_TO_WKT1</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="#config-OSR_ADD_TOWGS84_ON_IMPORT_FROM_EPSG"><code class="docutils literal notranslate"><span class="pre">OSR_ADD_TOWGS84_ON_IMPORT_FROM_EPSG</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="#config-OSR_DEFAULT_AXIS_MAPPING_STRATEGY"><code class="docutils literal notranslate"><span class="pre">OSR_DEFAULT_AXIS_MAPPING_STRATEGY</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="#config-OSR_STRIP_TOWGS84"><code class="docutils literal notranslate"><span class="pre">OSR_STRIP_TOWGS84</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="#config-OSR_USE_NON_DEPRECATED"><code class="docutils literal notranslate"><span class="pre">OSR_USE_NON_DEPRECATED</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="#config-OSR_WKT_FORMAT"><code class="docutils literal notranslate"><span class="pre">OSR_WKT_FORMAT</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-OSS_ACCESS_KEY_ID"><code class="docutils literal notranslate"><span class="pre">OSS_ACCESS_KEY_ID</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-OSS_ENDPOINT"><code class="docutils literal notranslate"><span class="pre">OSS_ENDPOINT</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-OSS_SECRET_ACCESS_KEY"><code class="docutils literal notranslate"><span class="pre">OSS_SECRET_ACCESS_KEY</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/pdf.html#config-PDF_USER_PWD"><code class="docutils literal notranslate"><span class="pre">PDF_USER_PWD</span></code></a>: <a class="reference internal" href="../drivers/raster/pdf.html">PDF -- Geospatial PDF</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/pgeo.html#config-PGEO_DRIVER_TEMPLATE"><code class="docutils literal notranslate"><span class="pre">PGEO_DRIVER_TEMPLATE</span></code></a>: <a class="reference internal" href="../drivers/vector/pgeo.html">ESRI Personal GeoDatabase</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/pg.html#config-PGSQL_OGR_FID"><code class="docutils literal notranslate"><span class="pre">PGSQL_OGR_FID</span></code></a>: <a class="reference internal" href="../drivers/vector/pg.html">PostgreSQL / PostGIS</a></p></li>
@@ -1584,7 +1576,7 @@ horizontal datum.</p>
 <li><p><a class="reference internal" href="../drivers/raster/gtiff.html#config-PREDICTOR_OVERVIEW"><code class="docutils literal notranslate"><span class="pre">PREDICTOR_OVERVIEW</span></code></a>: <a class="reference internal" href="../drivers/raster/gtiff.html">GTiff -- GeoTIFF File Format</a></p></li>
 <li><p><a class="reference internal" href="#config-PYTHONSO"><code class="docutils literal notranslate"><span class="pre">PYTHONSO</span></code></a>: <ul>
 <li><p><a class="reference internal" href="../drivers/raster/vrt.html">VRT -- GDAL 仮想形式</a></p></li>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="../drivers/raster/rasterlite.html#config-RASTERLITE_OVR_OPTIONS"><code class="docutils literal notranslate"><span class="pre">RASTERLITE_OVR_OPTIONS</span></code></a>: <a class="reference internal" href="../drivers/raster/rasterlite.html">Rasterlite - Rasters in SQLite DB</a></p></li>
@@ -1605,23 +1597,23 @@ horizontal datum.</p>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="#config-SSL_CERT_FILE"><code class="docutils literal notranslate"><span class="pre">SSL_CERT_FILE</span></code></a>: <ul>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
 </ul>
 </p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-SWIFT_AUTH_TOKEN"><code class="docutils literal notranslate"><span class="pre">SWIFT_AUTH_TOKEN</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-SWIFT_AUTH_V1_URL"><code class="docutils literal notranslate"><span class="pre">SWIFT_AUTH_V1_URL</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-SWIFT_KEY"><code class="docutils literal notranslate"><span class="pre">SWIFT_KEY</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-SWIFT_STORAGE_URL"><code class="docutils literal notranslate"><span class="pre">SWIFT_STORAGE_URL</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-SWIFT_USER"><code class="docutils literal notranslate"><span class="pre">SWIFT_USER</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-SWIFT_AUTH_TOKEN"><code class="docutils literal notranslate"><span class="pre">SWIFT_AUTH_TOKEN</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-SWIFT_AUTH_V1_URL"><code class="docutils literal notranslate"><span class="pre">SWIFT_AUTH_V1_URL</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-SWIFT_KEY"><code class="docutils literal notranslate"><span class="pre">SWIFT_KEY</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-SWIFT_STORAGE_URL"><code class="docutils literal notranslate"><span class="pre">SWIFT_STORAGE_URL</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-SWIFT_USER"><code class="docutils literal notranslate"><span class="pre">SWIFT_USER</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/gtiff.html#config-TAB_APPROX_GEOTRANSFORM"><code class="docutils literal notranslate"><span class="pre">TAB_APPROX_GEOTRANSFORM</span></code></a>: <a class="reference internal" href="../drivers/raster/gtiff.html">GTiff -- GeoTIFF File Format</a></p></li>
-<li><p><a class="reference internal" href="#config-THRESHOLD"><code class="docutils literal notranslate"><span class="pre">THRESHOLD</span></code></a>: <a class="reference internal" href="#">Configuration options</a></p></li>
+<li><p><a class="reference internal" href="#config-THRESHOLD"><code class="docutils literal notranslate"><span class="pre">THRESHOLD</span></code></a>: <a class="reference internal" href="#">設定オプション</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/gtiff.html#config-TIFF_READ_STREAMING"><code class="docutils literal notranslate"><span class="pre">TIFF_READ_STREAMING</span></code></a>: <a class="reference internal" href="../drivers/raster/gtiff.html">GTiff -- GeoTIFF File Format</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/gtiff.html#config-TIFF_USE_OVR"><code class="docutils literal notranslate"><span class="pre">TIFF_USE_OVR</span></code></a>: <a class="reference internal" href="../drivers/raster/gtiff.html">GTiff -- GeoTIFF File Format</a></p></li>
 <li><p><a class="reference internal" href="#config-USE_RRD"><code class="docutils literal notranslate"><span class="pre">USE_RRD</span></code></a>: <ul>
 <li><p><a class="reference internal" href="../drivers/raster/gtiff.html">GTiff -- GeoTIFF File Format</a></p></li>
 <li><p><a class="reference internal" href="../programs/gdaladdo.html">gdaladdo</a></p></li>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="../drivers/raster/hfa.html#config-USE_SPILL"><code class="docutils literal notranslate"><span class="pre">USE_SPILL</span></code></a>: <a class="reference internal" href="../drivers/raster/hfa.html">HFA -- Erdas Imagine .img</a></p></li>
@@ -1630,16 +1622,16 @@ horizontal datum.</p>
 <li><p><a class="reference internal" href="../drivers/raster/vrt.html#config-VRT_NUM_THREADS"><code class="docutils literal notranslate"><span class="pre">VRT_NUM_THREADS</span></code></a>: <a class="reference internal" href="../drivers/raster/vrt.html">VRT -- GDAL 仮想形式</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/vrt.html#config-VRT_SHARED_SOURCE"><code class="docutils literal notranslate"><span class="pre">VRT_SHARED_SOURCE</span></code></a>: <a class="reference internal" href="../drivers/raster/vrt.html">VRT -- GDAL 仮想形式</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/vrt.html#config-VRT_VIRTUAL_OVERVIEWS"><code class="docutils literal notranslate"><span class="pre">VRT_VIRTUAL_OVERVIEWS</span></code></a>: <a class="reference internal" href="../drivers/raster/vrt.html">VRT -- GDAL 仮想形式</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-VSIOSS_CHUNK_SIZE"><code class="docutils literal notranslate"><span class="pre">VSIOSS_CHUNK_SIZE</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-VSIS3_CHUNK_SIZE"><code class="docutils literal notranslate"><span class="pre">VSIS3_CHUNK_SIZE</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-VSIOSS_CHUNK_SIZE"><code class="docutils literal notranslate"><span class="pre">VSIOSS_CHUNK_SIZE</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-VSIS3_CHUNK_SIZE"><code class="docutils literal notranslate"><span class="pre">VSIS3_CHUNK_SIZE</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
 <li><p><a class="reference internal" href="#config-VSI_CACHE"><code class="docutils literal notranslate"><span class="pre">VSI_CACHE</span></code></a>: <ul>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="#config-VSI_CACHE_SIZE"><code class="docutils literal notranslate"><span class="pre">VSI_CACHE_SIZE</span></code></a>: <ul>
-<li><p><a class="reference internal" href="#">Configuration options</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="#">設定オプション</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
 </ul>
 </p></li>
 <li><p><a class="reference internal" href="../drivers/vector/wasp.html#config-WASP_ADJ_TOLER"><code class="docutils literal notranslate"><span class="pre">WASP_ADJ_TOLER</span></code></a>: <a class="reference internal" href="../drivers/vector/wasp.html">WAsP - WAsP .map format</a></p></li>
@@ -1648,11 +1640,11 @@ horizontal datum.</p>
 <li><p><a class="reference internal" href="../drivers/vector/wasp.html#config-WASP_MERGE"><code class="docutils literal notranslate"><span class="pre">WASP_MERGE</span></code></a>: <a class="reference internal" href="../drivers/vector/wasp.html">WAsP - WAsP .map format</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/wasp.html#config-WASP_POINT_TO_CIRCLE_RADIUS"><code class="docutils literal notranslate"><span class="pre">WASP_POINT_TO_CIRCLE_RADIUS</span></code></a>: <a class="reference internal" href="../drivers/vector/wasp.html">WAsP - WAsP .map format</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/wasp.html#config-WASP_TOLERANCE"><code class="docutils literal notranslate"><span class="pre">WASP_TOLERANCE</span></code></a>: <a class="reference internal" href="../drivers/vector/wasp.html">WAsP - WAsP .map format</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-WEBHDFS_DATANODE_HOST"><code class="docutils literal notranslate"><span class="pre">WEBHDFS_DATANODE_HOST</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-WEBHDFS_DELEGATION"><code class="docutils literal notranslate"><span class="pre">WEBHDFS_DELEGATION</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-WEBHDFS_PERMISSION"><code class="docutils literal notranslate"><span class="pre">WEBHDFS_PERMISSION</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-WEBHDFS_REPLICATION"><code class="docutils literal notranslate"><span class="pre">WEBHDFS_REPLICATION</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
-<li><p><a class="reference internal" href="virtual_file_systems.html#config-WEBHDFS_USERNAME"><code class="docutils literal notranslate"><span class="pre">WEBHDFS_USERNAME</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL Virtual File Systems (compressed, network hosted, etc...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-WEBHDFS_DATANODE_HOST"><code class="docutils literal notranslate"><span class="pre">WEBHDFS_DATANODE_HOST</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-WEBHDFS_DELEGATION"><code class="docutils literal notranslate"><span class="pre">WEBHDFS_DELEGATION</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-WEBHDFS_PERMISSION"><code class="docutils literal notranslate"><span class="pre">WEBHDFS_PERMISSION</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-WEBHDFS_REPLICATION"><code class="docutils literal notranslate"><span class="pre">WEBHDFS_REPLICATION</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
+<li><p><a class="reference internal" href="virtual_file_systems.html#config-WEBHDFS_USERNAME"><code class="docutils literal notranslate"><span class="pre">WEBHDFS_USERNAME</span></code></a>: <a class="reference internal" href="virtual_file_systems.html">GDAL仮想ファイルシステム(圧縮、ネットワークホスト、など...): /vsimem, /vsizip, /vsitar, /vsicurl, ...</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/gtiff.html#config-WEBP_LEVEL_OVERVIEW"><code class="docutils literal notranslate"><span class="pre">WEBP_LEVEL_OVERVIEW</span></code></a>: <a class="reference internal" href="../drivers/raster/gtiff.html">GTiff -- GeoTIFF File Format</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/gtiff.html#config-WEBP_LOSSLESS_OVERVIEW"><code class="docutils literal notranslate"><span class="pre">WEBP_LOSSLESS_OVERVIEW</span></code></a>: <a class="reference internal" href="../drivers/raster/gtiff.html">GTiff -- GeoTIFF File Format</a></p></li>
 <li><p><a class="reference internal" href="../drivers/raster/gtiff.html#config-ZLEVEL_OVERVIEW"><code class="docutils literal notranslate"><span class="pre">ZLEVEL_OVERVIEW</span></code></a>: <a class="reference internal" href="../drivers/raster/gtiff.html">GTiff -- GeoTIFF File Format</a></p></li>
@@ -1671,7 +1663,7 @@ horizontal datum.</p>
         <a href="gdal_python_utilities.html" class="btn btn-neutral float-right" title="GDAL Python Utilities" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="coordinate_epoch.html" class="btn btn-neutral float-left" title="Coordinate epoch support" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="coordinate_epoch.html" class="btn btn-neutral float-left" title="座標元期のサポート" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

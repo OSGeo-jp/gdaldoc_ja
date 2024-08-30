@@ -165,10 +165,10 @@
 </div>
 <section id="dynamic-crs-and-coordinate-epoch">
 <h2>ダイナミックCRSと座標元期<a class="headerlink" href="#dynamic-crs-and-coordinate-epoch" title="Link to this heading"></a></h2>
-<p>この文書は、ダイナミックCRSに関連する座標元期のサポートについて説明するものです.</p>
+<p>この文書は,ダイナミックCRSに関連する座標元期のサポートについて説明するものです.</p>
 <p>ダイナミックCRSでは,地球表面上の点の座標は時間とともに変化する可能性があります.座標が明確であるためには,常に有効な元期で座標を修飾する必要があります.座標元期は,観測が収集された元期である必要はありません.</p>
 <p>ダイナミックCRSの例には, <code class="docutils literal notranslate"><span class="pre">WGS</span> <span class="pre">84</span> <span class="pre">(G1762)</span></code>, <code class="docutils literal notranslate"><span class="pre">ITRF2014</span></code>, <code class="docutils literal notranslate"><span class="pre">ATRF2014</span></code> があります.</p>
-<p>汎用EPSG:4326 WGS 84 CRSもダイナミックと見なされますが,その位置精度が2メートルであるデータムアンサンブルに基づいているため,使用をお勧めしません.代わりに, WGS 84 (G1762)などの実現の1つを使用してください.</p>
+<p>汎用EPSG:4326 WGS 84 CRSもダイナミックと見なされますが,その位置精度が2メートルであるデータムアンサンブルに基づいているため,使用をお勧めしません.代わりに, WGS 84 (G1762)などの実装しているものの1つを使用してください.</p>
 <p><a class="reference internal" href="../api/ogrspatialref.html#_CPPv4NK19OGRSpatialReference9IsDynamicEv" title="OGRSpatialReference::IsDynamic"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::IsDynamic()</span></code></a> メソッドを使用して,CRSがダイナミックかどうかをテストできます.</p>
 <p>The <a class="reference internal" href="../api/ogrspatialref.html#_CPPv4N19OGRSpatialReference18SetCoordinateEpochEd" title="OGRSpatialReference::SetCoordinateEpoch"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::SetCoordinateEpoch()</span></code></a> and
 <a class="reference internal" href="../api/ogrspatialref.html#_CPPv4NK19OGRSpatialReference18GetCoordinateEpochEv" title="OGRSpatialReference::GetCoordinateEpoch"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRSpatialReference::GetCoordinateEpoch()</span></code></a> methods can be used to
@@ -182,7 +182,7 @@ expressed as a decimal year (e.g. 2021.3 for April 21, 2021).</p>
 <p>執筆時点では,GDAL/OGRで処理される形式には,座標元期をエンコードする標準化された方法はありません.そのため,既存のリーダーとできるだけ後方互換性があるようにエンコード方法を選択しました.対応する公式仕様がこの概念を考慮に入れるように進化する場合,これらのエンコーディングは変更される可能性があります.座標元期は,作成されたレイヤー/データセットのSRSにアタッチされた場合にのみ書き込まれます.</p>
 <section id="flatgeobuf">
 <h3>FlatGeoBuf<a class="headerlink" href="#flatgeobuf" title="Link to this heading"></a></h3>
-<p>座標元期は,FlatGeoBufファイルの <code class="docutils literal notranslate"><span class="pre">Crs.wkt</span></code> ヘッダーフィールドに設定された,`COORDINATEMETADATA &lt;<a class="reference external" href="http://docs.opengeospatial.org/is/18-010r7/18-010r7.html#130">http://docs.opengeospatial.org/is/18-010r7/18-010r7.html#130</a>&gt;`__ 構造の <code class="docutils literal notranslate"><span class="pre">EPOCH</span></code> サブノードを使用して,WKT:2019文字列としてエンコードされます.</p>
+<p>座標元期は,FlatGeoBufファイルの <code class="docutils literal notranslate"><span class="pre">Crs.wkt</span></code> ヘッダーフィールドに設定された, <a class="reference external" href="http://docs.opengeospatial.org/is/18-010r7/18-010r7.html#130">COORDINATEMETADATA</a>  構造の <code class="docutils literal notranslate"><span class="pre">EPOCH</span></code> サブノードを使用して,WKT:2019文字列としてエンコードされます.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">COORDINATEMETADATA</span><span class="p">[</span>
     <span class="n">GEOGCRS</span><span class="p">[</span><span class="s2">&quot;WGS 84 (G1762)&quot;</span><span class="p">,</span>
         <span class="n">DYNAMIC</span><span class="p">[</span><span class="n">FRAMEEPOCH</span><span class="p">[</span><span class="mf">2005.0</span><span class="p">]],</span>
@@ -205,7 +205,7 @@ expressed as a decimal year (e.g. 2021.3 for April 21, 2021).</p>
 </section>
 <section id="geopackage-vector-raster">
 <h3>GeoPackage vector/raster<a class="headerlink" href="#geopackage-vector-raster" title="Link to this heading"></a></h3>
-<p>座標元期が関連付けられている各ベクター/ラスターテーブルは,CRS WKT拡張の拡張バージョンを使用して,``gpkg_spatial_ref_sys`` テーブルの <code class="docutils literal notranslate"><span class="pre">epoch</span></code> 列にエンコードされます(<a class="reference external" href="https://github.com/opengeospatial/geopackage/pull/600">https://github.com/opengeospatial/geopackage/pull/600</a>).</p>
+<p>座標元期が関連付けられている各ベクター/ラスターテーブルは,CRS WKT拡張の拡張バージョンを使用して, <code class="docutils literal notranslate"><span class="pre">gpkg_spatial_ref_sys</span></code> テーブルの  <code class="docutils literal notranslate"><span class="pre">epoch</span></code> 列にエンコードされます(<a class="reference external" href="https://github.com/opengeospatial/geopackage/pull/600">https://github.com/opengeospatial/geopackage/pull/600</a>).</p>
 </section>
 <section id="geotiff">
 <h3>GeoTIFF<a class="headerlink" href="#geotiff" title="Link to this heading"></a></h3>

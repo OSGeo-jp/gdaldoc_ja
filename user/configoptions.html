@@ -66,19 +66,19 @@
 <li class="toctree-l2"><a class="reference internal" href="coordinate_epoch.html">座標元期のサポート</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">設定オプション</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#how-to-set-configuration-options">設定オプションの設定方法</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#gdal-configuration-file">GDAL configuration file</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#global-configuration-options">Global configuration options</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#logging">Logging</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#performance-and-caching">Performance and caching</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#driver-management">Driver management</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#general-options">General options</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#vector-related-options">Vector related options</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#networking-options">Networking options</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#persistent-auxiliary-metadata-pam-options">Persistent Auxiliary Metadata (PAM) options</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#proj-options">PROJ options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gdal-configuration-file">GDAL設定ファイル</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#global-configuration-options">グローバル設定オプション</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#logging">ログ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#performance-and-caching">パフォーマンスとキャッシュ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#driver-management">ドライバー管理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#general-options">一般オプション</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vector-related-options">ベクター関連オプション</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#networking-options">ネットワーキングオプション</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#persistent-auxiliary-metadata-pam-options">永続的補助メタデータ (PAM) オプション</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#proj-options">PROJ オプション</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#list-of-configuration-options-and-where-they-are-documented">List of configuration options and where they are documented</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#list-of-configuration-options-and-where-they-are-documented">設定オプションの一覧とそのドキュメントの場所</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="gdal_python_utilities.html">GDAL Python Utilities</a></li>
@@ -174,72 +174,50 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span> <span class="n">GDAL_CACHEMAX</span><span class="o">=</span><span class="mi">64</span>
 </pre></div>
 </div>
-<p>It can also be set on the commandline for most GDAL and OGR utilities with the
-<code class="docutils literal notranslate"><span class="pre">--config</span></code> switch, though in a few cases these switches are not evaluated in
-time to affect behavior.</p>
+<p>ほとんどのGDALとOGRユーティリティでは, <code class="docutils literal notranslate"><span class="pre">--config</span></code> スイッチを使用してコマンドラインで設定することもできますが, これらのスイッチが挙動に影響を与えるように評価されるまでの時間がかかるため,いくつかの場合は評価されません.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdal_translate</span> <span class="o">--</span><span class="n">config</span> <span class="n">GDAL_CACHEMAX</span> <span class="mi">64</span> <span class="ow">in</span><span class="o">.</span><span class="n">tif</span> <span class="n">out</span><span class="o">.</span><span class="n">tif</span>
 </pre></div>
 </div>
-<p>Since GDAL 3.9, it is also possible to set a config option in a more conventional
-way by using a single <code class="docutils literal notranslate"><span class="pre">&lt;NAME&gt;``=``&lt;VALUE&gt;</span></code> command line string instead of having <code class="docutils literal notranslate"><span class="pre">&lt;NAME&gt;</span></code>
-and <code class="docutils literal notranslate"><span class="pre">&lt;VALUE&gt;</span></code> as two space-separated strings.</p>
+<p>GDAL 3.9 以降, <code class="docutils literal notranslate"><span class="pre">&lt;NAME&gt;</span></code> と <code class="docutils literal notranslate"><span class="pre">&lt;VALUE&gt;</span></code> を2つのスペースで区切った文字列ではなく, <code class="docutils literal notranslate"><span class="pre">&lt;NAME&gt;``=``&lt;VALUE&gt;</span></code> の単一のコマンドライン文字列を使用して設定オプションを設定することも可能です.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdal_translate</span> <span class="o">--</span><span class="n">config</span> <span class="n">GDAL_CACHEMAX</span><span class="o">=</span><span class="mi">64</span> <span class="ow">in</span><span class="o">.</span><span class="n">tif</span> <span class="n">out</span><span class="o">.</span><span class="n">tif</span>
 </pre></div>
 </div>
-<p>In C/C++ configuration switches can be set programmatically with
-<a class="reference internal" href="../api/cpl.html#_CPPv418CPLSetConfigOptionPKcPKc" title="CPLSetConfigOption"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CPLSetConfigOption()</span></code></a>:</p>
+<p>C/C++ では, <a class="reference internal" href="../api/cpl.html#_CPPv418CPLSetConfigOptionPKcPKc" title="CPLSetConfigOption"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CPLSetConfigOption()</span></code></a> を使用してプログラムで設定オプションを設定できます:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;cpl_conv.h&quot;</span>
 <span class="p">...</span>
 <span class="w">    </span><span class="n">CPLSetConfigOption</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;GDAL_CACHEMAX&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;64&quot;</span><span class="w"> </span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Normally a configuration option applies to all threads active in a program, but
-they can be limited to only the current thread with
-<a class="reference internal" href="../api/cpl.html#_CPPv429CPLSetThreadLocalConfigOptionPKcPKc" title="CPLSetThreadLocalConfigOption"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CPLSetThreadLocalConfigOption()</span></code></a></p>
+<p>通常,設定オプションはプログラム内でアクティブなすべてのスレッドに適用されますが,  <a class="reference internal" href="../api/cpl.html#_CPPv429CPLSetThreadLocalConfigOptionPKcPKc" title="CPLSetThreadLocalConfigOption"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CPLSetThreadLocalConfigOption()</span></code></a> を使用して,現在のスレッドにのみ制限することもできます.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">CPLSetThreadLocalConfigOption</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;GTIFF_DIRECT_IO&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;YES&quot;</span><span class="w"> </span><span class="p">);</span>
 </pre></div>
 </div>
-<p>For boolean options, the values YES, TRUE or ON can be used to turn the option on;
-NO, FALSE or OFF to turn it off.</p>
+<p>ブールオプションの場合,YES, TRUE, ON はオプションをオンにするために使用できます; NO, FALSE, OFF はオフにするために使用できます.</p>
 </section>
 <section id="gdal-configuration-file">
-<span id="id1"></span><h2>GDAL configuration file<a class="headerlink" href="#gdal-configuration-file" title="Link to this heading"></a></h2>
+<span id="id1"></span><h2>GDAL設定ファイル<a class="headerlink" href="#gdal-configuration-file" title="Link to this heading"></a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.3.</span></p>
 </div>
-<p>On driver registration, loading of configuration is attempted from a set of
-predefined files.</p>
+<p>ドライバー登録時に,事前定義されたファイルセットからの設定の読み込みが試みられます.</p>
 <p>The following locations are tried by <a class="reference internal" href="../api/cpl.html#_CPPv439CPLLoadConfigOptionsFromPredefinedFilesv" title="CPLLoadConfigOptionsFromPredefinedFiles"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CPLLoadConfigOptionsFromPredefinedFiles()</span></code></a>:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>the location pointed by the environment variable (or configuration option)
-<a class="reference internal" href="#config-GDAL_CONFIG_FILE"><code class="docutils literal notranslate"><span class="pre">GDAL_CONFIG_FILE</span></code></a> is attempted first. If it is set, the next steps are not
-attempted</p></li>
-<li><p>for Unix builds, the location pointed by ${sysconfdir}/gdal/gdalrc is first
-attempted (where ${sysconfdir} evaluates to ${prefix}/etc, unless the
-<code class="docutils literal notranslate"><span class="pre">--sysconfdir</span></code> switch of ./configure has been invoked). Then  $(HOME)/.gdal/gdalrc
-is tried, potentially overriding what was loaded with the sysconfdir</p></li>
-<li><p>for Windows builds, the location pointed by $(USERPROFILE)/.gdal/gdalrc
-is attempted.</p></li>
+<li><p>環境変数 (または設定オプション) <a class="reference internal" href="#config-GDAL_CONFIG_FILE"><code class="docutils literal notranslate"><span class="pre">GDAL_CONFIG_FILE</span></code></a> で指定された場所が最初に試されます. 設定されている場合,次のステップは試されません</p></li>
+<li><p>Unix ビルドの場合,最初に ${sysconfdir}/gdal/gdalrc で指定された場所が試されます (${sysconfdir} は ${prefix}/etc に評価されます, <code class="docutils literal notranslate"><span class="pre">./configure</span></code> の <code class="docutils literal notranslate"><span class="pre">--sysconfdir</span></code> スイッチが呼び出されていない限り). 次に $(HOME)/.gdal/gdalrc が試され,sysconfdir で読み込まれたものを上書きする可能性があります</p></li>
+<li><p>Windows ビルドの場合, $(USERPROFILE)/.gdal/gdalrc で指定された場所が試されます.</p></li>
 </ul>
 </div></blockquote>
-<p>A configuration file is a text file in a .ini style format.
-Lines starting with <cite>#</cite> are comment lines.</p>
-<p>The file may contain a <code class="docutils literal notranslate"><span class="pre">[configoptions]</span></code> section, that lists configuration
-options and their values.</p>
-<p>Example:</p>
+<p>設定ファイルは .ini スタイルのテキストファイルです. <cite>#</cite> で始まる行はコメント行です.</p>
+<p>ファイルには,設定オプションとその値をリストする <code class="docutils literal notranslate"><span class="pre">[configoptions]</span></code> セクションが含まれている場合があります.</p>
+<p>例:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">configoptions</span><span class="p">]</span>
 <span class="c1"># set BAR as the value of configuration option FOO</span>
 <span class="n">FOO</span><span class="o">=</span><span class="n">BAR</span>
 </pre></div>
 </div>
-<p>Configuration options set in the configuration file can later be overridden
-by calls to <a class="reference internal" href="../api/cpl.html#_CPPv418CPLSetConfigOptionPKcPKc" title="CPLSetConfigOption"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CPLSetConfigOption()</span></code></a> or  <a class="reference internal" href="../api/cpl.html#_CPPv429CPLSetThreadLocalConfigOptionPKcPKc" title="CPLSetThreadLocalConfigOption"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CPLSetThreadLocalConfigOption()</span></code></a>,
-or through the <code class="docutils literal notranslate"><span class="pre">--config</span></code> command line switch.</p>
-<p>The value of environment variables set before GDAL starts will be used instead
-of the value set in the configuration files, unless, starting with GDAL 3.6,
-the configuration file starts with a <code class="docutils literal notranslate"><span class="pre">[directives]</span></code> section that contains a
-<code class="docutils literal notranslate"><span class="pre">ignore-env-variables=yes</span></code> entry.</p>
+<p>設定ファイルで設定された設定オプションは,後で <a class="reference internal" href="../api/cpl.html#_CPPv418CPLSetConfigOptionPKcPKc" title="CPLSetConfigOption"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CPLSetConfigOption()</span></code></a> または <a class="reference internal" href="../api/cpl.html#_CPPv429CPLSetThreadLocalConfigOptionPKcPKc" title="CPLSetThreadLocalConfigOption"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CPLSetThreadLocalConfigOption()</span></code></a> の呼び出し,または <code class="docutils literal notranslate"><span class="pre">--config</span></code> コマンドラインスイッチを介して上書きできます.</p>
+<p>GDALが開始される前に設定された環境変数の値が,設定ファイルで設定された値の代わりに使用されます. ただし,GDAL 3.6 以降,設定ファイルが <code class="docutils literal notranslate"><span class="pre">[directives]</span></code> セクションで始まり, <code class="docutils literal notranslate"><span class="pre">ignore-env-variables=yes</span></code> エントリが含まれている場合は,環境変数の値は無視されます.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">directives</span><span class="p">]</span>
 <span class="c1"># ignore environment variables. Take only into account the content of the</span>
 <span class="c1"># [configoptions] section, or ones defined programmatically with</span>
@@ -247,13 +225,8 @@ the configuration file starts with a <code class="docutils literal notranslate">
 <span class="n">ignore</span><span class="o">-</span><span class="n">env</span><span class="o">-</span><span class="n">variables</span><span class="o">=</span><span class="n">yes</span>
 </pre></div>
 </div>
-<p>Starting with GDAL 3.5, a configuration file can also contain credentials
-(or more generally options related to a virtual file system) for a given path prefix,
-that can also be set with <a class="reference internal" href="../api/cpl.html#_CPPv424VSISetPathSpecificOptionPKcPKcPKc" title="VSISetPathSpecificOption"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSISetPathSpecificOption()</span></code></a>. Credentials should be put under
-a <code class="docutils literal notranslate"><span class="pre">[credentials]</span></code> section, and for each path prefix, under a relative subsection
-whose name starts with &quot;[.&quot; (e.g. &quot;[.some_arbitrary_name]&quot;), and whose first
-key is &quot;path&quot;.</p>
-<p>Example:</p>
+<p>GDAL 3.5 以降,設定ファイルには,特定のパスプレフィックスに関連する資格情報 (またはより一般的には仮想ファイルシステムに関連するオプション) を含めることもできます. これは, <a class="reference internal" href="../api/cpl.html#_CPPv424VSISetPathSpecificOptionPKcPKcPKc" title="VSISetPathSpecificOption"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSISetPathSpecificOption()</span></code></a> で設定することもできます. 資格情報は <code class="docutils literal notranslate"><span class="pre">[credentials]</span></code> セクションの下に配置し,各パスプレフィックスに対して,名前が &quot;[.&quot; で始まる相対サブセクションの下に配置します (例: &quot;[.some_arbitrary_name]&quot;),最初のキーは &quot;path&quot; です.</p>
+<p>例:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">credentials</span><span class="p">]</span>
 
 <span class="p">[</span><span class="o">.</span><span class="n">private_bucket</span><span class="p">]</span>
@@ -268,9 +241,9 @@ key is &quot;path&quot;.</p>
 </div>
 </section>
 <section id="global-configuration-options">
-<h2>Global configuration options<a class="headerlink" href="#global-configuration-options" title="Link to this heading"></a></h2>
+<h2>グローバル設定オプション<a class="headerlink" href="#global-configuration-options" title="Link to this heading"></a></h2>
 <section id="logging">
-<h3>Logging<a class="headerlink" href="#logging" title="Link to this heading"></a></h3>
+<h3>ログ<a class="headerlink" href="#logging" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p id="config-CPL_CURL_VERBOSE"><strong>CPL_CURL_VERBOSE=[YES/NO]: </strong>Set to &quot;YES&quot; to get the curl library to display a lot of verbose information
 about its operations. Very useful for libcurl and/or protocol debugging and
@@ -280,8 +253,7 @@ understanding.</p>
 messages are reported to stdout. If it is OFF or unset no debug messages are
 reported. If it is set to a particular value, then only debug messages with
 that &quot;type&quot; value will be reported. For instance debug messages from the HFA
-driver are normally reported with type &quot;HFA&quot; (seen in the message).<p>At the commandline this can also be set with --debug &lt;value&gt; as well as with
---config CPL_DEBUG &lt;value&gt;.</p>
+driver are normally reported with type &quot;HFA&quot; (seen in the message).<p>コマンドラインでは, <code class="docutils literal notranslate"><span class="pre">--debug</span> <span class="pre">&lt;value&gt;</span></code> または <code class="docutils literal notranslate"><span class="pre">--config</span> <span class="pre">CPL_DEBUG</span> <span class="pre">&lt;value&gt;</span></code> で設定することもできます.</p>
 </p>
 </li>
 <li><p id="config-CPL_LOG"><strong>CPL_LOG=&lt;path&gt;: </strong>This is used for setting the log file path.</p>
@@ -299,7 +271,7 @@ directing them into a file.</p>
 </ul>
 </section>
 <section id="performance-and-caching">
-<h3>Performance and caching<a class="headerlink" href="#performance-and-caching" title="Link to this heading"></a></h3>
+<h3>パフォーマンスとキャッシュ<a class="headerlink" href="#performance-and-caching" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p id="config-GDAL_NUM_THREADS"><strong>GDAL_NUM_THREADS=[ALL_CPUS/&lt;integer&gt;]: </strong>Sets the number of worker threads to be used by GDAL operations that support
 multithreading. The default value depends on the context in which it is used.</p>
@@ -334,21 +306,13 @@ JP2KAK, NITF, HFA, WCS, ECW, MrSID, and JPEG.</p>
 By default (<code class="docutils literal notranslate"><span class="pre">AUTO</span></code>) the implementation will be selected based on the
 number of blocks in the dataset. See <a class="reference internal" href="../development/rfc/rfc26_blockcache.html#rfc-26"><span class="std std-ref">RFC 26: GDAL Block Cache Improvements</span></a> for more information.</p>
 </li>
-<li><p id="config-GDAL_MAX_DATASET_POOL_SIZE"><strong>GDAL_MAX_DATASET_POOL_SIZE=value: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">100</span></code>. Used by <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/gcore/gdalproxypool.cpp">gdalproxypool.cpp</a><p>Number of datasets that can be opened simultaneously by the GDALProxyPool
-mechanism (used by VRT for example). Can be increased to get better random I/O
-performance with VRT mosaics made of numerous underlying raster files. Be
-careful: on Linux systems, the number of file handles that can be opened by a
-process is generally limited to 1024. This is currently clamped between 2 and
-1000.</p>
+<li><p id="config-GDAL_MAX_DATASET_POOL_SIZE"><strong>GDAL_MAX_DATASET_POOL_SIZE=value: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">100</span></code>. Used by <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/gcore/gdalproxypool.cpp">gdalproxypool.cpp</a><p>GDALProxyPool メカニズム (例: VRT で使用) によって同時に開くことができるデータセットの数です. 多数の基礎ラスタファイルから構成される VRT モザイクでより良いランダムI/Oパフォーマンスを得るために増やすことができます. 注意: Linux システムでは,プロセスが開くことができるファイルハンドルの数は一般的に 1024 に制限されています. 現在,2 から 1000 の間でクランプされています.</p>
 </p>
 </li>
-<li><p id="config-GDAL_MAX_DATASET_POOL_RAM_USAGE"><strong>GDAL_MAX_DATASET_POOL_RAM_USAGE=value: </strong> (GDAL &gt;= 3.7) Limit the RAM usage of opened datasets in the GDALProxyPool.<p>The value can also be suffixed with <code class="docutils literal notranslate"><span class="pre">MB</span></code> or <code class="docutils literal notranslate"><span class="pre">GB</span></code> to
-respectively express it in megabytes or gigabytes. The default value is 25%
-of the usable physical RAM minus the <a class="reference internal" href="#config-GDAL_CACHEMAX"><code class="docutils literal notranslate"><span class="pre">GDAL_CACHEMAX</span></code></a> value.</p>
+<li><p id="config-GDAL_MAX_DATASET_POOL_RAM_USAGE"><strong>GDAL_MAX_DATASET_POOL_RAM_USAGE=value: </strong> (GDAL &gt;= 3.7) Limit the RAM usage of opened datasets in the GDALProxyPool.<p>値の後に <code class="docutils literal notranslate"><span class="pre">MB</span></code> または <code class="docutils literal notranslate"><span class="pre">GB</span></code> を付けることで,それぞれメガバイトまたはギガバイトで表すこともできます. デフォルト値は,使用可能な物理RAMの25%から <a class="reference internal" href="#config-GDAL_CACHEMAX"><code class="docutils literal notranslate"><span class="pre">GDAL_CACHEMAX</span></code></a> の値を引いた値です.</p>
 </p>
 </li>
-<li><p id="config-GDAL_SWATH_SIZE"><strong>GDAL_SWATH_SIZE=value: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">1/4</span></code> of the maximum block cache size (``GDAL_CACHEMAX``). Used by <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/gcore/rasterio.cpp">rasterio.cpp</a><p>Size of the swath when copying raster data from one dataset to another one (in
-bytes). Should not be smaller than <a class="reference internal" href="#config-GDAL_CACHEMAX"><code class="docutils literal notranslate"><span class="pre">GDAL_CACHEMAX</span></code></a>.</p>
+<li><p id="config-GDAL_SWATH_SIZE"><strong>GDAL_SWATH_SIZE=value: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">1/4</span></code> of the maximum block cache size (``GDAL_CACHEMAX``). Used by <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/gcore/rasterio.cpp">rasterio.cpp</a><p>1つのデータセットから別のデータセットにラスタデータをコピーするときのスワスのサイズ (バイト単位) です. <a class="reference internal" href="#config-GDAL_CACHEMAX"><code class="docutils literal notranslate"><span class="pre">GDAL_CACHEMAX</span></code></a> より小さくしてはいけません.</p>
 </p>
 </li>
 <li><p id="config-GDAL_DISABLE_READDIR_ON_OPEN"><strong>GDAL_DISABLE_READDIR_ON_OPEN=[TRUE/FALSE/EMPTY_DIR]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">FALSE</span></code>. By default (FALSE), GDAL establishes a list of all the files in the
@@ -356,9 +320,7 @@ directory of the file passed to <a class="reference internal" href="../api/raste
 speed-ups in some use cases, but also to major slow downswhen the
 directory contains thousands of other files. When set to TRUE, GDAL will
 not try to establish the list of files. The number of files read can
-also be limited by <a class="reference internal" href="#config-GDAL_READDIR_LIMIT_ON_OPEN"><code class="docutils literal notranslate"><span class="pre">GDAL_READDIR_LIMIT_ON_OPEN</span></code></a>.<p>If set to EMPTY_DIR, only the file that is being opened will be seen when a
-GDAL driver will request sibling files, so this is a way to disable loading
-side-car/auxiliary files.</p>
+also be limited by <a class="reference internal" href="#config-GDAL_READDIR_LIMIT_ON_OPEN"><code class="docutils literal notranslate"><span class="pre">GDAL_READDIR_LIMIT_ON_OPEN</span></code></a>.<p>EMPTY_DIR に設定されている場合, GDAL ドライバーが兄弟ファイルを要求するときに開かれているファイルのみが表示されるため, これはサイドカー/補助ファイルの読み込みを無効にする方法です.</p>
 </p>
 </li>
 <li><p id="config-GDAL_READDIR_LIMIT_ON_OPEN"><strong>GDAL_READDIR_LIMIT_ON_OPEN=value: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">1000</span></code>. Sets the maximum number of files to scan when searching for sidecar files
@@ -367,7 +329,7 @@ in <a class="reference internal" href="../api/raster_c_api.html#_CPPv48GDALOpenP
 <li><p id="config-VSI_CACHE"><strong>VSI_CACHE=[TRUE/FALSE]: </strong>When using the VSI interface files can be cached in
 RAM by setting the configuration option <code class="docutils literal notranslate"><span class="pre">VSI_CACHE</span></code> to <code class="docutils literal notranslate"><span class="pre">TRUE</span></code>. The cache size
 defaults to 25 MB, but can be modified by setting the configuration option
-<a class="reference internal" href="#config-VSI_CACHE_SIZE"><code class="docutils literal notranslate"><span class="pre">VSI_CACHE_SIZE</span></code></a>. (in bytes).<p>When enabled, this cache is used for most I/O in GDAL, including local files.</p>
+<a class="reference internal" href="#config-VSI_CACHE_SIZE"><code class="docutils literal notranslate"><span class="pre">VSI_CACHE_SIZE</span></code></a>. (in bytes).<p>有効にすると,このキャッシュはローカルファイルを含むGDALのほとんどのI/Oに使用されます.</p>
 </p>
 </li>
 <li><p id="config-VSI_CACHE_SIZE"><strong>VSI_CACHE_SIZE=&lt;size in bytes&gt;: </strong>Set the size of the VSI cache. Be wary of large values for
@@ -377,17 +339,10 @@ rasters, as this is a per-file cache.</p>
 </ul>
 </section>
 <section id="driver-management">
-<h3>Driver management<a class="headerlink" href="#driver-management" title="Link to this heading"></a></h3>
+<h3>ドライバー管理<a class="headerlink" href="#driver-management" title="Link to this heading"></a></h3>
 <ul class="simple">
-<li><p id="config-GDAL_SKIP"><strong>GDAL_SKIP=space-separated list: </strong>Used by <a class="reference internal" href="../api/gdaldriver_cpp.html#_CPPv4N17GDALDriverManager15AutoSkipDriversEv" title="GDALDriverManager::AutoSkipDrivers"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriverManager::AutoSkipDrivers()</span></code></a><p>This option can be used to unregister one or several GDAL drivers. This can
-be useful when a driver tries to open a dataset that it should not
-recognize, or when several drivers are built-in that can open the same
-datasets (for example JP2MrSID, JP2ECW, JPEG2000 and JP2KAK for JPEG2000
-datasets). The value of this option must be a space delimited list of the
-short name of the GDAL drivers to unregister.</p>
-<p>This option must be set before calling <a class="reference internal" href="../api/raster_c_api.html#_CPPv415GDALAllRegisterv" title="GDALAllRegister"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALAllRegister()</span></code></a>, or an
-explicit call to <a class="reference internal" href="../api/gdaldriver_cpp.html#_CPPv4N17GDALDriverManager15AutoSkipDriversEv" title="GDALDriverManager::AutoSkipDrivers"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriverManager::AutoSkipDrivers()</span></code></a> will be
-required.</p>
+<li><p id="config-GDAL_SKIP"><strong>GDAL_SKIP=space-separated list: </strong>Used by <a class="reference internal" href="../api/gdaldriver_cpp.html#_CPPv4N17GDALDriverManager15AutoSkipDriversEv" title="GDALDriverManager::AutoSkipDrivers"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriverManager::AutoSkipDrivers()</span></code></a><p>このオプションは,1つまたは複数のGDALドライバーを登録解除するために使用できます. これは,ドライバーが認識すべきでないデータセットを開こうとするときや, 同じデータセットを開くことができる組み込みの複数のドライバーがあるときに有用です (例: JPEG2000 データセットのための JP2MrSID, JP2ECW, JPEG2000 および JP2KAK). このオプションの値は,登録解除するGDALドライバーの短い名前のスペース区切りのリストである必要があります.</p>
+<p>このオプションは, <a class="reference internal" href="../api/raster_c_api.html#_CPPv415GDALAllRegisterv" title="GDALAllRegister"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALAllRegister()</span></code></a> を呼び出す前に設定する必要があります. そうでない場合は, <a class="reference internal" href="../api/gdaldriver_cpp.html#_CPPv4N17GDALDriverManager15AutoSkipDriversEv" title="GDALDriverManager::AutoSkipDrivers"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriverManager::AutoSkipDrivers()</span></code></a> を明示的に呼び出す必要があります.</p>
 </p>
 </li>
 <li><p id="config-OGR_SKIP"><strong>OGR_SKIP=comma-separated list: </strong>This option can be used to unregister one or several OGR drivers. This can be
@@ -396,22 +351,11 @@ when several drivers are built-in that can open the same datasets (for example
 KML, LIBKML datasources). The value of this option must be a comma delimited
 list of the short name of the OGR drivers to unregister.</p>
 </li>
-<li><p id="config-GDAL_DRIVER_PATH"><strong>GDAL_DRIVER_PATH=value: </strong>Used by <a class="reference internal" href="../api/gdaldriver_cpp.html#_CPPv4N17GDALDriverManager15AutoLoadDriversEv" title="GDALDriverManager::AutoLoadDrivers"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriverManager::AutoLoadDrivers()</span></code></a>.<p>This function will automatically load drivers from shared libraries. It
-searches the &quot;driver path&quot; for .so (or .dll) files that start with the prefix
-&quot;gdal_X.so&quot;. It then tries to load them and then tries to call a function
-within them called GDALRegister_X() where the 'X' is the same as the
-remainder of the shared library basename ('X' is case sensitive), or failing
-that to call GDALRegisterMe().</p>
-<p>There are a few rules for the driver path. If the <code class="docutils literal notranslate"><span class="pre">GDAL_DRIVER_PATH</span></code>
-environment variable it set, it is taken to be a list of directories to
-search separated by colons on UNIX, or semi-colons on Windows. Otherwise the
-/usr/local/lib/gdalplugins directory, and (if known) the lib/gdalplugins
-subdirectory of the gdal home directory are searched on UNIX and
-$(BINDIR)gdalplugins on Windows.</p>
+<li><p id="config-GDAL_DRIVER_PATH"><strong>GDAL_DRIVER_PATH=value: </strong>Used by <a class="reference internal" href="../api/gdaldriver_cpp.html#_CPPv4N17GDALDriverManager15AutoLoadDriversEv" title="GDALDriverManager::AutoLoadDrivers"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriverManager::AutoLoadDrivers()</span></code></a>.<p>この関数は,共有ライブラリからドライバーを自動的にロードします. &quot;ドライバーパス&quot; で,プレフィックスが &quot;gdal_X.so&quot; で始まる .so (または .dll) ファイルを検索します. それからそれらをロードし,その後,それらの中の GDALRegister_X() という関数を呼び出そうとします. ここでの 'X' は共有ライブラリのベース名の残りと同じです ('X' は大文字小文字を区別します), またはそれが失敗した場合は GDALRegisterMe() を呼び出します.</p>
+<p>ドライバーパスにはいくつかのルールがあります. <code class="docutils literal notranslate"><span class="pre">GDAL_DRIVER_PATH</span></code> 環境変数が設定されている場合, UNIX ではコロンで区切られたディレクトリのリストとして取られ,Windows ではセミコロンで区切られたディレクトリのリストとして取られます. それ以外の場合,UNIX では /usr/local/lib/gdalplugins ディレクトリと (既知の場合) gdal ホームディレクトリの lib/gdalplugins サブディレクトリが検索され, Windows では $(BINDIR)gdalplugins が検索されます.</p>
 <p>Auto loading can be completely disabled by setting the
 <code class="docutils literal notranslate"><span class="pre">GDAL_DRIVER_PATH</span></code> config option to &quot;disable&quot;.</p>
-<p>This option must be set before calling <a class="reference internal" href="../api/raster_c_api.html#_CPPv415GDALAllRegisterv" title="GDALAllRegister"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALAllRegister()</span></code></a>, or an explicit call
-to <a class="reference internal" href="../api/gdaldriver_cpp.html#_CPPv4N17GDALDriverManager15AutoLoadDriversEv" title="GDALDriverManager::AutoLoadDrivers"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriverManager::AutoLoadDrivers()</span></code></a> will be required.</p>
+<p>このオプションは, <a class="reference internal" href="../api/raster_c_api.html#_CPPv415GDALAllRegisterv" title="GDALAllRegister"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALAllRegister()</span></code></a> を呼び出す前に設定する必要があります. そうでない場合は, <a class="reference internal" href="../api/gdaldriver_cpp.html#_CPPv4N17GDALDriverManager15AutoLoadDriversEv" title="GDALDriverManager::AutoLoadDrivers"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriverManager::AutoLoadDrivers()</span></code></a> を明示的に呼び出す必要があります.</p>
 </p>
 </li>
 <li><p id="config-GDAL_PYTHON_DRIVER_PATH"><strong>GDAL_PYTHON_DRIVER_PATH=value: </strong>A list of directories to search for <code class="docutils literal notranslate"><span class="pre">.py</span></code> files implementing GDAL drivers.
@@ -421,18 +365,14 @@ on Unix or semi-colons on Windows. For more information, see <a class="reference
 </ul>
 </section>
 <section id="general-options">
-<h3>General options<a class="headerlink" href="#general-options" title="Link to this heading"></a></h3>
+<h3>一般オプション<a class="headerlink" href="#general-options" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p id="config-GDAL_DATA"><strong>GDAL_DATA=&lt;path&gt;: </strong>Path to directory containing various GDAL data files (EPSG CSV files, S-57
-definition files, DXF header and footer files, ...).<p>This option is read by the GDAL and OGR driver registration functions. It is
-used to expand EPSG codes into their description in the OSR model (WKT
-based).</p>
-<p>On some builds (Unix), the value can be hard-coded at compilation time to
-point to the path after installation (/usr/share/gdal/data for example). On
-Windows platform, this option must be generally declared.</p>
+definition files, DXF header and footer files, ...).<p>このオプションは, GDAL および OGR ドライバー登録関数によって読み込まれます. これは,OSRモデル (WKTベース) でのEPSGコードをその説明に展開するために使用されます.</p>
+<p>一部のビルド (Unix) では,値はコンパイル時にインストール後のパスを指すようにハードコードされている場合があります (例: /usr/share/gdal/data). Windows プラットフォームでは,通常,このオプションを宣言する必要があります.</p>
 </p>
 </li>
-<li><p id="config-GDAL_CONFIG_FILE"><strong>GDAL_CONFIG_FILE=value: </strong> (GDAL &gt;= 3.3) The location of the GDAL config file (see <a class="reference internal" href="#gdal-configuration-file"><span class="std std-ref">GDAL configuration file</span></a>).</p>
+<li><p id="config-GDAL_CONFIG_FILE"><strong>GDAL_CONFIG_FILE=value: </strong> (GDAL &gt;= 3.3) The location of the GDAL config file (see <a class="reference internal" href="#gdal-configuration-file"><span class="std std-ref">GDAL設定ファイル</span></a>).</p>
 </li>
 <li><p id="config-CPL_TMPDIR"><strong>CPL_TMPDIR=&lt;dirname&gt;: </strong>By default, temporary files are written into current working directory.
 Sometimes this is not optimal and it would be better to write temporary files
@@ -477,8 +417,7 @@ single NODATA value should cause the overview pixel to be set to NODATA
 (<code class="docutils literal notranslate"><span class="pre">NO</span></code>).  This configuration option is not supported for all resampling
 algorithms/data types.</p>
 </li>
-<li><p id="config-USE_RRD"><strong>USE_RRD=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. Used by <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/gcore/gdaldefaultoverviews.cpp">gdaldefaultoverviews.cpp</a><p>Can be set to YES to use Erdas Imagine format (.aux) as overview format. See
-<strong class="program">gdaladdo</strong> documentation.</p>
+<li><p id="config-USE_RRD"><strong>USE_RRD=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. Used by <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/gcore/gdaldefaultoverviews.cpp">gdaldefaultoverviews.cpp</a><p>概要フォーマットとしてErdas Imagine形式 (.aux) を使用するためにYESに設定できます.  <strong class="program">gdaladdo</strong> ドキュメントを参照してください.</p>
 </p>
 </li>
 <li><p id="config-PYTHONSO"><strong>PYTHONSO=value: </strong>Location of Python shared library file, e.g. <code class="docutils literal notranslate"><span class="pre">pythonX.Y[...].so/.dll</span></code>.</p>
@@ -486,11 +425,10 @@ algorithms/data types.</p>
 </ul>
 </section>
 <section id="vector-related-options">
-<span id="configoptions-vector"></span><h3>Vector related options<a class="headerlink" href="#vector-related-options" title="Link to this heading"></a></h3>
+<span id="configoptions-vector"></span><h3>ベクター関連オプション<a class="headerlink" href="#vector-related-options" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p id="config-OGR_ARC_STEPSIZE"><strong>OGR_ARC_STEPSIZE=&lt;degrees&gt;: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">4</span></code>. Used by <a class="reference internal" href="../api/vector_c_api.html#_CPPv419OGR_G_CreateFromGMLPKc" title="OGR_G_CreateFromGML"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGR_G_CreateFromGML()</span></code></a> (for gml:Arc and gml:Circle) and
-<a class="reference internal" href="../api/ogrgeometry_cpp.html#_CPPv4N18OGRGeometryFactory20approximateArcAnglesEdddddddddKb" title="OGRGeometryFactory::approximateArcAngles"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRGeometryFactory::approximateArcAngles()</span></code></a> to stroke arc to linestrings.<p>The approximation of arcs as linestrings is done by splitting the arcs into
-subarcs of no more than the angle specified by this option.</p>
+<a class="reference internal" href="../api/ogrgeometry_cpp.html#_CPPv4N18OGRGeometryFactory20approximateArcAnglesEdddddddddKb" title="OGRGeometryFactory::approximateArcAngles"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRGeometryFactory::approximateArcAngles()</span></code></a> to stroke arc to linestrings.<p>円弧の近似をラインストリングとして行うために,このオプションで指定された角度を超えないように円弧をサブアークに分割します.</p>
 </p>
 </li>
 <li><p id="config-OGR_ARC_MAX_GAP"><strong>OGR_ARC_MAX_GAP=value: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">0</span></code>. Arcs will be approximated while enforcing a maximum distance
@@ -504,34 +442,18 @@ Although one of the options is named <code class="docutils literal notranslate">
 to a different method to reduce processing by taking advantage of a
 format's constraints. The following methods are available, in order of
 decreasing expected runtime:<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">DEFAULT</span></code>: perform a full analysis of the topological relationships
-between all rings, classifying them as shells or holes and associating
-them according to the OGC Simple Features convention. If the topological
-analysis determines that a valid geometry cannot be constructed, the
-result will be the same as with <a class="reference internal" href="#config-OGR_ORGANIZE_POLYGONS"><code class="docutils literal notranslate"><span class="pre">OGR_ORGANIZE_POLYGONS=SKIP</span></code></a>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ONLY_CCW</span></code>: assume that rings with clockwise orientation represent
-shells and rings with counterclockwise orientation represent holes.
-Perform a limited topological analysis to determine which shell contains
-each hole. The Shapefile driver defaults to this method.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">CCW_INNER_JUST_AFTER_CW_OUTER</span></code>: assume that rings with clockwise
-orientation represent shells and rings with counterclockwise orientation
-represent holes and immediately follow the outer ring with which they are
-associated.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">SKIP</span></code>: avoid attempting to classify rings as shells or holes. A
-single geometry (Polygon/MultiPolygon/CurvePolygon/MultiSurface) will be
-returned with all polygons as top-level polygons. If non-polygonal elements
-are present, a GeometryCollection will be returned.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DEFAULT</span></code>: すべてのリング間のトポロジック関係の完全な分析を行い,OGC Simple Features の規則に従って, それらをシェルまたはホールとして分類し,それらを関連付けます. トポロジック分析が有効なジオメトリを構築できないと判断した場合, 結果は <a class="reference internal" href="#config-OGR_ORGANIZE_POLYGONS"><code class="docutils literal notranslate"><span class="pre">OGR_ORGANIZE_POLYGONS=SKIP</span></code></a> と同じになります.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ONLY_CCW</span></code>: 時計回りの向きのリングがシェルを表し,反時計回りの向きのリングが穴を表すと仮定します. 各穴を含むシェルを決定するための限定的なトポロジック分析を実行します. Shapefile ドライバーはこの方法をデフォルトとします.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CCW_INNER_JUST_AFTER_CW_OUTER</span></code>: 時計回りの向きのリングがシェルを表し,反時計回りの向きのリングが穴を表し, それらが関連付けられている外側のリングに直接続くと仮定します.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SKIP</span></code>: リングをシェルまたは穴として分類しようとするのを避けます. すべてのポリゴンをトップレベルのポリゴンとして持つ単一のジオメトリ (Polygon/MultiPolygon/CurvePolygon/MultiSurface) が返されます. 非ポリゴナル要素が存在する場合,GeometryCollection が返されます.</p></li>
 </ul>
 </p>
 </li>
 <li><p id="config-OGR_SQL_LIKE_AS_ILIKE"><strong>OGR_SQL_LIKE_AS_ILIKE=[YES/NO]: </strong> (GDAL &gt;= 3.1)  Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. If <code class="docutils literal notranslate"><span class="pre">YES</span></code>, the LIKE operator in the OGR SQL dialect will be case-insensitive (ILIKE), as was the case for GDAL versions prior to 3.1.</p>
 </li>
 <li><p id="config-OGR_FORCE_ASCII"><strong>OGR_FORCE_ASCII=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">YES</span></code>. Used by <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRGetXML_UTF8_EscapedString()</span></code> function and by GPX, KML,
-GeoRSS and GML drivers.<p>Those XML based drivers should write UTF8 content. If they are provided with non
-UTF8 content, they will replace each non-ASCII character by '?' when
-OGR_FORCE_ASCII=YES.</p>
-<p>Set to NO to preserve the content, but beware that the resulting XML file will
-not be valid and will require manual edition of the encoding in the XML header.</p>
+GeoRSS and GML drivers.<p>これらのXMLベースのドライバーはUTF8コンテンツを書き込む必要があります. UTF8でないコンテンツが提供された場合, OGR_FORCE_ASCII=YES の場合,各非ASCII文字が '?' に置き換えられます.</p>
+<p>コンテンツを保持するためにNOに設定しますが,生成されたXMLファイルは有効ではなく,XMLヘッダーのエンコーディングの手動編集が必要になります.</p>
 </p>
 </li>
 <li><p id="config-OGR_APPLY_GEOM_SET_PRECISION"><strong>OGR_APPLY_GEOM_SET_PRECISION=[YES/NO]: </strong> (GDAL &gt;= 3.9)  Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. By default, when a geometry coordinate precision is set on a geometry field
@@ -546,11 +468,11 @@ to force <a class="reference internal" href="../api/ogrgeometry_cpp.html#_CPPv4N
 </ul>
 </section>
 <section id="networking-options">
-<h3>Networking options<a class="headerlink" href="#networking-options" title="Link to this heading"></a></h3>
+<h3>ネットワーキングオプション<a class="headerlink" href="#networking-options" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p id="config-CPL_VSIL_CURL_ALLOWED_EXTENSIONS"><strong>CPL_VSIL_CURL_ALLOWED_EXTENSIONS=&lt;comma-separated list&gt;: </strong>Consider that only the files whose extension ends up with one that is listed
 in <a class="reference internal" href="#config-CPL_VSIL_CURL_ALLOWED_EXTENSIONS"><code class="docutils literal notranslate"><span class="pre">CPL_VSIL_CURL_ALLOWED_EXTENSIONS</span></code></a> exist on the server. This can speed up
-dramatically open experience, in case the server cannot return a file list.<p>For example:</p>
+dramatically open experience, in case the server cannot return a file list.<p>例:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdalinfo</span> <span class="o">--</span><span class="n">config</span> <span class="n">CPL_VSIL_CURL_ALLOWED_EXTENSIONS</span> <span class="s2">&quot;.tif&quot;</span> <span class="o">/</span><span class="n">vsicurl</span><span class="o">/</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">igskmncngs506</span><span class="o">.</span><span class="n">cr</span><span class="o">.</span><span class="n">usgs</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">gmted</span><span class="o">/</span><span class="n">Global_tiles_GMTED</span><span class="o">/</span><span class="mi">075</span><span class="n">darcsec</span><span class="o">/</span><span class="n">bln</span><span class="o">/</span><span class="n">W030</span><span class="o">/</span><span class="mi">30</span><span class="n">N030W_20101117_gmted_bln075</span><span class="o">.</span><span class="n">tif</span>
 </pre></div>
 </div>
@@ -673,10 +595,7 @@ for more information.</p>
 </li>
 <li><p id="config-GDAL_HTTP_USERPWD"><strong>GDAL_HTTP_USERPWD=value: </strong>The HTTP user and password to use for the connection. Must be in the form of
 [user name]:[password]. Use <a class="reference internal" href="#config-GDAL_HTTP_AUTH"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_AUTH</span></code></a> to decide the
-authentication method.<p>When using NTLM, you can set the domain by prepending it to the user name and
-separating the domain and name with a forward (/) or backward slash (). Like
-this: &quot;domain/user:password&quot; or &quot;domainuser:password&quot;. Some HTTP servers (on
-Windows) support this style even for Basic authentication.</p>
+authentication method.<p>NTLMを使用する場合,ユーザー名の前にドメインを付けて,ドメインと名前をスラッシュ (/) またはバックスラッシュ () で区切ります. 次のように: &quot;domain/user:password&quot; または &quot;domainuser:password&quot;. 一部のHTTPサーバー (Windows) は,このスタイルをBasic認証に対してもサポートしています.</p>
 </p>
 </li>
 <li><p id="config-GDAL_GSSAPI_DELEGATION"><strong>GDAL_GSSAPI_DELEGATION=[NONE/POLICY/ALWAYS]: </strong> (GDAL &gt;= 3.3) Set allowed GSS-API delegation. Relevant only with
@@ -690,9 +609,7 @@ address. To specify port number in this string, append :[port] to the end of the
 host name. The proxy string may be prefixed with [protocol]: since any such
 prefix will be ignored. The proxy's port number may optionally be specified with
 the separate option. If not specified, libcurl will default to using port 1080
-for proxies.<p>GDAL respects the environment variables http_proxy, ftp_proxy, all_proxy etc, if
-any of those are set. GDAL_HTTP_PROXY option does however override any possibly
-set environment variables.</p>
+for proxies.<p>GDALは,http_proxy, ftp_proxy, all_proxy などの環境変数を尊重します. ただし,GDAL_HTTP_PROXY オプションは,設定されている環境変数を上書きします.</p>
 </p>
 </li>
 <li><p id="config-GDAL_HTTPS_PROXY"><strong>GDAL_HTTPS_PROXY=value: </strong>Set HTTPS proxy to use. See <a class="reference internal" href="#config-GDAL_HTTP_PROXY"><code class="docutils literal notranslate"><span class="pre">GDAL_HTTP_PROXY</span></code></a>.</p>
@@ -720,7 +637,7 @@ verification.</p>
 </ul>
 </section>
 <section id="persistent-auxiliary-metadata-pam-options">
-<h3>Persistent Auxiliary Metadata (PAM) options<a class="headerlink" href="#persistent-auxiliary-metadata-pam-options" title="Link to this heading"></a></h3>
+<h3>永続的補助メタデータ (PAM) オプション<a class="headerlink" href="#persistent-auxiliary-metadata-pam-options" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p id="config-GDAL_PAM_ENABLED"><strong>GDAL_PAM_ENABLED=[YES/NO]: </strong>PAM support can be enabled (resp. disabled) in GDAL by setting the
 <a class="reference internal" href="#config-GDAL_PAM_ENABLED"><code class="docutils literal notranslate"><span class="pre">GDAL_PAM_ENABLED</span></code></a> configuration option (via CPLSetConfigOption(), or the
@@ -737,33 +654,20 @@ write permissions. Must be set before the first access to PAM.</p>
 </ul>
 </section>
 <section id="proj-options">
-<h3>PROJ options<a class="headerlink" href="#proj-options" title="Link to this heading"></a></h3>
+<h3>PROJ オプション<a class="headerlink" href="#proj-options" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p id="config-CENTER_LONG"><strong>CENTER_LONG=value: </strong></p>
 </li>
-<li><p id="config-CHECK_WITH_INVERT_PROJ"><strong>CHECK_WITH_INVERT_PROJ=value: </strong>Used by <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/ogr/ogrct.cpp">ogrct.cpp</a> and <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/apps/gdalwarp_lib.cpp">gdalwarp_lib.cpp</a>.<p>This option can be used to control the behavior of gdalwarp when warping global
-datasets or when transforming from/to polar projections, which causes
-coordinate discontinuities. See <a class="reference external" href="http://trac.osgeo.org/gdal/ticket/2305">http://trac.osgeo.org/gdal/ticket/2305</a>.</p>
-<p>The background is that PROJ does not guarantee that converting from src_srs to
-dst_srs and then from dst_srs to src_srs will yield to the initial coordinates.
-This can lead to errors in the computation of the target bounding box of
-gdalwarp, or to visual artifacts.</p>
-<p>If CHECK_WITH_INVERT_PROJ option is not set, gdalwarp will check that the the
-computed coordinates of the edges of the target image are in the validity area
-of the target projection. If they are not, it will retry computing them by
-setting <a class="reference internal" href="#config-CHECK_WITH_INVERT_PROJ"><code class="docutils literal notranslate"><span class="pre">CHECK_WITH_INVERT_PROJ=TRUE</span></code></a> that forces ogrct.cpp to check the
-consistency of each requested projection result with the invert projection.</p>
-<p>If set to NO, gdalwarp will not attempt to use the invert projection.</p>
+<li><p id="config-CHECK_WITH_INVERT_PROJ"><strong>CHECK_WITH_INVERT_PROJ=value: </strong>Used by <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/ogr/ogrct.cpp">ogrct.cpp</a> and <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/apps/gdalwarp_lib.cpp">gdalwarp_lib.cpp</a>.<p>このオプションは,gdalwarpがグローバルデータセットを変形するときや,極座標投影から/へ変換するときに,座標の不連続性を引き起こす場合の動作を制御するために使用できます. <a class="reference external" href="http://trac.osgeo.org/gdal/ticket/2305">http://trac.osgeo.org/gdal/ticket/2305</a> を参照してください.</p>
+<p>背景は,PROJが,src_srs から dst_srs への変換,その後 dst_srs から src_srs への変換が初期座標になることを保証しないことです. これは,gdalwarpのターゲットバウンディングボックスの計算のエラーや,視覚的なアーティファクトを引き起こす可能性があります.</p>
+<p>CHECK_WITH_INVERT_PROJ オプションが設定されていない場合,gdalwarp は,ターゲット画像のエッジの計算された座標がターゲット投影の有効領域内にあるかどうかをチェックします. そうでない場合,それらを再計算するために <a class="reference internal" href="#config-CHECK_WITH_INVERT_PROJ"><code class="docutils literal notranslate"><span class="pre">CHECK_WITH_INVERT_PROJ=TRUE</span></code></a> を設定して,ogrct.cpp が逆投影との整合性をチェックするようにします.</p>
+<p>NOに設定すると,gdalwarp は逆投影を使用しようとしません.</p>
 </p>
 </li>
-<li><p id="config-THRESHOLD"><strong>THRESHOLD=value: </strong>Used by <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/ogr/ogrct.cpp">ogrct.cpp</a>.<p>Used in combination with <a class="reference internal" href="#config-CHECK_WITH_INVERT_PROJ"><code class="docutils literal notranslate"><span class="pre">CHECK_WITH_INVERT_PROJ=TRUE</span></code></a>. Define
-the acceptable threshold used to check if the roundtrip from src_srs to
-dst_srs and from dst_srs to srs_srs yield to the initial coordinates. The
-value must be expressed in the units of the source SRS (typically degrees
-for a geographic SRS, meters for a projected SRS)</p>
+<li><p id="config-THRESHOLD"><strong>THRESHOLD=value: </strong>Used by <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/ogr/ogrct.cpp">ogrct.cpp</a>.<p><a class="reference internal" href="#config-CHECK_WITH_INVERT_PROJ"><code class="docutils literal notranslate"><span class="pre">CHECK_WITH_INVERT_PROJ=TRUE</span></code></a> と組み合わせて使用されます. src_srs から dst_srs への往復と dst_srs から srs_srs への往復が初期座標になるかどうかをチェックするために使用される許容しきい値を定義します. 値は,ソースSRSの単位で表される必要があります (地理SRSの場合は通常度,投影SRSの場合はメートル).</p>
 </p>
 </li>
-<li><p id="config-OGR_ENABLE_PARTIAL_REPROJECTION"><strong>OGR_ENABLE_PARTIAL_REPROJECTION=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. Used by <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLineString::transform()</span></code>.<p>Can be set to YES to remove points that cannot be reprojected. This can for example help reproject lines that have an extremity at a pole, when the reprojection does not support coordinates at poles.</p>
+<li><p id="config-OGR_ENABLE_PARTIAL_REPROJECTION"><strong>OGR_ENABLE_PARTIAL_REPROJECTION=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. Used by <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLineString::transform()</span></code>.<p>再投影できない点を削除するためにYESに設定できます. これにより,極に端点がある線を再投影するのに役立ちます. 再投影が極の座標をサポートしていない場合などです.</p>
 </p>
 </li>
 <li><p id="config-OGR_CT_USE_SRS_COORDINATE_EPOCH"><strong>OGR_CT_USE_SRS_COORDINATE_EPOCH=[YES/NO]: </strong>If <code class="docutils literal notranslate"><span class="pre">NO</span></code>, disables the coordinate epoch associated with the target or
@@ -793,7 +697,7 @@ horizontal datum.</p>
 </section>
 </section>
 <section id="list-of-configuration-options-and-where-they-are-documented">
-<span id="list-config-options"></span><h2>List of configuration options and where they are documented<a class="headerlink" href="#list-of-configuration-options-and-where-they-are-documented" title="Link to this heading"></a></h2>
+<span id="list-config-options"></span><h2>設定オプションの一覧とそのドキュメントの場所<a class="headerlink" href="#list-of-configuration-options-and-where-they-are-documented" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="../drivers/raster/aaigrid.html#config-AAIGRID_DATATYPE"><code class="docutils literal notranslate"><span class="pre">AAIGRID_DATATYPE</span></code></a>: <a class="reference internal" href="../drivers/raster/aaigrid.html">AAIGrid -- Arc/Info ASCII Grid</a></p></li>
 <li><p><a class="reference internal" href="../drivers/vector/amigocloud.html#config-AMIGOCLOUD_API_KEY"><code class="docutils literal notranslate"><span class="pre">AMIGOCLOUD_API_KEY</span></code></a>: <a class="reference internal" href="../drivers/vector/amigocloud.html">AmigoCloud</a></p></li>

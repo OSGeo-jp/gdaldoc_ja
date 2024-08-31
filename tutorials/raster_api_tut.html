@@ -60,13 +60,13 @@
 <li class="toctree-l2 current"><a class="reference internal" href="index.html#raster">ラスター</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">ラスターAPIチュートリアル</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#opening-the-file">ファイルを開きます</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#getting-dataset-information">Getting Dataset Information</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#fetching-a-raster-band">Fetching a Raster Band</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#reading-raster-data">Reading Raster Data</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#closing-the-dataset">Closing the Dataset</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#techniques-for-creating-files">Techniques for Creating Files</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#using-createcopy">Using CreateCopy()</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#using-create">Using Create()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#getting-dataset-information">データセット情報の取得</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fetching-a-raster-band">ラスターバンドの取得</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reading-raster-data">ラスターデータの読み込み</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#closing-the-dataset">データセットを閉じる</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#techniques-for-creating-files">ファイルを作成するためのテクニック</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-createcopy">CreateCopy()の使用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-create">Create()の使用</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="raster_driver_tut.html">Raster driver implementation tutorial</a></li>
@@ -159,9 +159,9 @@
 <span id="raster-api-tut"></span><h1>ラスターAPIチュートリアル<a class="headerlink" href="#raster-api-tutorial" title="Link to this heading"></a></h1>
 <section id="opening-the-file">
 <h2>ファイルを開きます<a class="headerlink" href="#opening-the-file" title="Link to this heading"></a></h2>
-<p>Before opening a GDAL supported raster datastore it is necessary to register drivers. There is a driver for each supported format. Normally this is accomplished with the <a class="reference internal" href="../api/raster_c_api.html#_CPPv415GDALAllRegisterv" title="GDALAllRegister"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALAllRegister()</span></code></a> function which attempts to register all known drivers, including those auto-loaded from .so files using <a class="reference internal" href="../api/gdaldriver_cpp.html#_CPPv4N17GDALDriverManager15AutoLoadDriversEv" title="GDALDriverManager::AutoLoadDrivers"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriverManager::AutoLoadDrivers()</span></code></a>. If for some applications it is necessary to limit the set of drivers it may be helpful to review the code from gdalallregister.cpp. Python automatically calls GDALAllRegister() when the gdal module is imported.</p>
-<p>Once the drivers are registered, the application should call the free standing <a class="reference internal" href="../api/raster_c_api.html#_CPPv48GDALOpenPKc10GDALAccess" title="GDALOpen"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpen()</span></code></a> function to open a dataset, passing the name of the dataset and the access desired (GA_ReadOnly or GA_Update).</p>
-<p>In C++:</p>
+<p>GDALでサポートされているラスターデータストアを開く前に,ドライバを登録する必要があります.各サポートされているフォーマットに対してドライバがあります.通常,これは,すべての既知のドライバを登録しようとする <a class="reference internal" href="../api/raster_c_api.html#_CPPv415GDALAllRegisterv" title="GDALAllRegister"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALAllRegister()</span></code></a> 関数で行われます.これには. <a class="reference internal" href="../api/gdaldriver_cpp.html#_CPPv4N17GDALDriverManager15AutoLoadDriversEv" title="GDALDriverManager::AutoLoadDrivers"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriverManager::AutoLoadDrivers()</span></code></a> を使って.soファイルから自動的にロードされるドライバも含まれます.一部のアプリケーションでドライバのセットを制限する必要がある場合は.gdalallregister.cppからのコードを確認すると役立つかもしれません。Pythonは.gdalモジュールがインポートされると自動的にGDALAllRegister()を呼び出します.</p>
+<p>ドライバが登録されたら,アプリケーションは,データセットを開くために独立した <a class="reference internal" href="../api/raster_c_api.html#_CPPv48GDALOpenPKc10GDALAccess" title="GDALOpen"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpen()</span></code></a> 関数を呼び出すべきです.データセットの名前とアクセスしたいもの(GA_ReadOnly または GA_Update)を渡します.</p>
+<p>C++の場合:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;gdal_priv.h&quot;</span>
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;errno.h&gt;</span>
@@ -185,7 +185,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>In C:</p>
+<p>Cの場合:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;gdal.h&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;cpl_conv.h&quot;</span><span class="c1"> /* for CPLMalloc() */</span>
 
@@ -210,7 +210,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>In Python:</p>
+<p>Pythonの場合:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">gdal</span>
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">gdal</span><span class="o">.</span><span class="n">GA_ReadOnly</span><span class="p">)</span>
 <span class="k">if</span> <span class="ow">not</span> <span class="n">dataset</span><span class="p">:</span>
@@ -220,9 +220,9 @@
 <p>Note that if <a class="reference internal" href="../api/raster_c_api.html#_CPPv48GDALOpenPKc10GDALAccess" title="GDALOpen"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpen()</span></code></a> returns NULL it means the open failed, and that an error messages will already have been emitted via <a class="reference internal" href="../api/cpl.html#_CPPv48CPLError6CPLErr11CPLErrorNumPKcz" title="CPLError"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CPLError()</span></code></a>. If you want to control how errors are reported to the user review the <a class="reference internal" href="../api/cpl.html#_CPPv48CPLError6CPLErr11CPLErrorNumPKcz" title="CPLError"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CPLError()</span></code></a> documentation. Generally speaking all of GDAL uses <a class="reference internal" href="../api/cpl.html#_CPPv48CPLError6CPLErr11CPLErrorNumPKcz" title="CPLError"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CPLError()</span></code></a> for error reporting. Also, note that pszFilename need not actually be the name of a physical file (though it usually is). It's interpretation is driver dependent, and it might be an URL, a filename with additional parameters added at the end controlling the open or almost anything. Please try not to limit GDAL file selection dialogs to only selecting physical files.</p>
 </section>
 <section id="getting-dataset-information">
-<h2>Getting Dataset Information<a class="headerlink" href="#getting-dataset-information" title="Link to this heading"></a></h2>
+<h2>データセット情報の取得<a class="headerlink" href="#getting-dataset-information" title="Link to this heading"></a></h2>
 <p>As described in the <a class="reference internal" href="../user/raster_data_model.html#raster-data-model"><span class="std std-ref">ラスターデータモデル</span></a>, a <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv411GDALDataset" title="GDALDataset"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALDataset</span></code></a> contains a list of raster bands, all pertaining to the same area, and having the same resolution. It also has metadata, a coordinate system, a georeferencing transform, size of raster and various other information.</p>
-<p>In the particular, but common, case of a &quot;north up&quot; image without any rotation or shearing, the georeferencing transform <a class="reference internal" href="geotransforms_tut.html#geotransforms-tut"><span class="std std-ref">Geotransform Tutorial</span></a> takes the following form :</p>
+<p>特に,一般的な&quot;北向き&quot;画像で回転やシアリングがない場合,ジオリファレンス変換 <a class="reference internal" href="geotransforms_tut.html#geotransforms-tut"><span class="std std-ref">Geotransform Tutorial</span></a> は以下の形式を取ります:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">adfGeoTransform</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="cm">/* top left x */</span>
 <span class="n">adfGeoTransform</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="cm">/* w-e pixel resolution */</span>
 <span class="n">adfGeoTransform</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="cm">/* 0 */</span>
@@ -231,9 +231,9 @@
 <span class="n">adfGeoTransform</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="w"> </span><span class="cm">/* n-s pixel resolution (negative value) */</span>
 </pre></div>
 </div>
-<p>In the general case, this is an affine transform.</p>
-<p>If we wanted to print some general information about the dataset we might do the following:</p>
-<p>In C++:</p>
+<p>一般的な場合,これはアフィン変換です.</p>
+<p>データセットに関する一般的な情報を表示したい場合は,以下のようにします:</p>
+<p>C++の場合:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span><span class="w">        </span><span class="n">adfGeoTransform</span><span class="p">[</span><span class="mi">6</span><span class="p">];</span>
 <span class="n">printf</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;Driver: %s/%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="n">poDataset</span><span class="o">-&gt;</span><span class="n">GetDriver</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">GetDescription</span><span class="p">(),</span>
@@ -252,7 +252,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>In C:</p>
+<p>Cの場合:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">GDALDriverH</span><span class="w">   </span><span class="n">hDriver</span><span class="p">;</span>
 <span class="kt">double</span><span class="w">        </span><span class="n">adfGeoTransform</span><span class="p">[</span><span class="mi">6</span><span class="p">];</span>
 <span class="n">hDriver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GDALGetDatasetDriver</span><span class="p">(</span><span class="w"> </span><span class="n">hDataset</span><span class="w"> </span><span class="p">);</span>
@@ -274,7 +274,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>In Python:</p>
+<p>Pythonの場合:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Driver: </span><span class="si">{}</span><span class="s2">/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">GetDriver</span><span class="p">()</span><span class="o">.</span><span class="n">ShortName</span><span class="p">,</span>
                             <span class="n">dataset</span><span class="o">.</span><span class="n">GetDriver</span><span class="p">()</span><span class="o">.</span><span class="n">LongName</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Size is </span><span class="si">{}</span><span class="s2"> x </span><span class="si">{}</span><span class="s2"> x </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">RasterXSize</span><span class="p">,</span>
@@ -289,9 +289,9 @@
 </div>
 </section>
 <section id="fetching-a-raster-band">
-<h2>Fetching a Raster Band<a class="headerlink" href="#fetching-a-raster-band" title="Link to this heading"></a></h2>
-<p>At this time access to raster data via GDAL is done one band at a time. Also, there is metadata, block sizes, color tables, and various other information available on a band by band basis. The following codes fetches a <a class="reference internal" href="../api/gdalrasterband_cpp.html#_CPPv414GDALRasterBand" title="GDALRasterBand"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALRasterBand</span></code></a> object from the dataset (numbered 1 through <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALRasterBand::GetRasterCount()</span></code>) and displays a little information about it.</p>
-<p>In C++:</p>
+<h2>ラスターバンドの取得<a class="headerlink" href="#fetching-a-raster-band" title="Link to this heading"></a></h2>
+<p>この時点でGDALを介したラスターデータへのアクセスは,1つのバンドずつ行われます.また,メタデータ,ブロックサイズ,カラーテーブルおよびその他の情報がバンドごとに利用可能です.以下のコードは,データセットから <a class="reference internal" href="../api/gdalrasterband_cpp.html#_CPPv414GDALRasterBand" title="GDALRasterBand"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALRasterBand</span></code></a> オブジェクトを取得し(1から <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALRasterBand::GetRasterCount()</span></code> までの番号),それについて少しの情報を表示します.</p>
+<p>C++の場合:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">GDALRasterBand</span><span class="w">  </span><span class="o">*</span><span class="n">poBand</span><span class="p">;</span>
 <span class="kt">int</span><span class="w">             </span><span class="n">nBlockXSize</span><span class="p">,</span><span class="w"> </span><span class="n">nBlockYSize</span><span class="p">;</span>
 <span class="kt">int</span><span class="w">             </span><span class="n">bGotMin</span><span class="p">,</span><span class="w"> </span><span class="n">bGotMax</span><span class="p">;</span>
@@ -315,7 +315,7 @@
 <span class="w">            </span><span class="n">poBand</span><span class="o">-&gt;</span><span class="n">GetColorTable</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">GetColorEntryCount</span><span class="p">()</span><span class="w"> </span><span class="p">);</span>
 </pre></div>
 </div>
-<p>In C:</p>
+<p>Cの場合:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">GDALRasterBandH</span><span class="w"> </span><span class="n">hBand</span><span class="p">;</span>
 <span class="kt">int</span><span class="w">             </span><span class="n">nBlockXSize</span><span class="p">,</span><span class="w"> </span><span class="n">nBlockYSize</span><span class="p">;</span>
 <span class="kt">int</span><span class="w">             </span><span class="n">bGotMin</span><span class="p">,</span><span class="w"> </span><span class="n">bGotMax</span><span class="p">;</span>
@@ -340,7 +340,7 @@
 <span class="w">                </span><span class="n">GDALGetRasterColorTable</span><span class="p">(</span><span class="w"> </span><span class="n">hBand</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">);</span>
 </pre></div>
 </div>
-<p>In Python:</p>
+<p>Pythonの場合:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">band</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">GetRasterBand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Band Type=</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">gdal</span><span class="o">.</span><span class="n">GetDataTypeName</span><span class="p">(</span><span class="n">band</span><span class="o">.</span><span class="n">DataType</span><span class="p">)))</span>
 
@@ -359,9 +359,9 @@
 </div>
 </section>
 <section id="reading-raster-data">
-<h2>Reading Raster Data<a class="headerlink" href="#reading-raster-data" title="Link to this heading"></a></h2>
-<p>There are a few ways to read raster data, but the most common is via the <a class="reference internal" href="../api/gdalrasterband_cpp.html#_CPPv4N14GDALRasterBand8RasterIOE10GDALRWFlagiiiiPvii12GDALDataType8GSpacing8GSpacingP20GDALRasterIOExtraArg" title="GDALRasterBand::RasterIO"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALRasterBand::RasterIO()</span></code></a> method. This method will automatically take care of data type conversion, up/down sampling and windowing. The following code will read the first scanline of data into a similarly sized buffer, converting it to floating point as part of the operation.</p>
-<p>In C++:</p>
+<h2>ラスターデータの読み込み<a class="headerlink" href="#reading-raster-data" title="Link to this heading"></a></h2>
+<p>ラスターデータを読み込む方法はいくつかありますが,最も一般的なのは <a class="reference internal" href="../api/gdalrasterband_cpp.html#_CPPv4N14GDALRasterBand8RasterIOE10GDALRWFlagiiiiPvii12GDALDataType8GSpacing8GSpacingP20GDALRasterIOExtraArg" title="GDALRasterBand::RasterIO"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALRasterBand::RasterIO()</span></code></a> メソッドを介してです.このメソッドは,データ型の変換,アップ/ダウンサンプリングおよびウィンドウ処理を自動的に処理します.以下のコードは,データの最初のスキャンラインを同じサイズのバッファに読み込み,その操作の一環として浮動小数点に変換します.</p>
+<p>C++の場合:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="n">pafScanline</span><span class="p">;</span>
 <span class="kt">int</span><span class="w">   </span><span class="n">nXSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">poBand</span><span class="o">-&gt;</span><span class="n">GetXSize</span><span class="p">();</span>
 <span class="n">pafScanline</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">CPLMalloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="o">*</span><span class="n">nXSize</span><span class="p">);</span>
@@ -370,8 +370,8 @@
 <span class="w">                </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">);</span>
 </pre></div>
 </div>
-<p>The pafScanline buffer should be freed with CPLFree() when it is no longer used.</p>
-<p>In C:</p>
+<p>pafScanlineバッファは,使用しなくなったときにCPLFree()で解放する必要があります.</p>
+<p>Cの場合:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="n">pafScanline</span><span class="p">;</span>
 <span class="kt">int</span><span class="w">   </span><span class="n">nXSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GDALGetRasterBandXSize</span><span class="p">(</span><span class="w"> </span><span class="n">hBand</span><span class="w"> </span><span class="p">);</span>
 <span class="n">pafScanline</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">CPLMalloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="o">*</span><span class="n">nXSize</span><span class="p">);</span>
@@ -380,20 +380,20 @@
 <span class="w">            </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">);</span>
 </pre></div>
 </div>
-<p>The pafScanline buffer should be freed with CPLFree() when it is no longer used.</p>
-<p>In Python:</p>
+<p>pafScanlineバッファは,使用しなくなったときにCPLFree()で解放する必要があります.</p>
+<p>Pythonの場合:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scanline</span> <span class="o">=</span> <span class="n">band</span><span class="o">.</span><span class="n">ReadRaster</span><span class="p">(</span><span class="n">xoff</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">yoff</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                         <span class="n">xsize</span><span class="o">=</span><span class="n">band</span><span class="o">.</span><span class="n">XSize</span><span class="p">,</span> <span class="n">ysize</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                         <span class="n">buf_xsize</span><span class="o">=</span><span class="n">band</span><span class="o">.</span><span class="n">XSize</span><span class="p">,</span> <span class="n">buf_ysize</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                         <span class="n">buf_type</span><span class="o">=</span><span class="n">gdal</span><span class="o">.</span><span class="n">GDT_Float32</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Note that the returned scanline is of type string, and contains xsize*4 bytes of raw binary floating point data. This can be converted to Python values using the struct module from the standard library:</p>
+<p>返されたスキャンラインは文字列型であり,xsize*4バイトの生のバイナリ浮動小数点データが含まれています.これは,標準ライブラリのstructモジュールを使用してPythonの値に変換できます:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">struct</span>
 <span class="n">tuple_of_floats</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s1">&#39;f&#39;</span> <span class="o">*</span> <span class="n">b2</span><span class="o">.</span><span class="n">XSize</span><span class="p">,</span> <span class="n">scanline</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The RasterIO call takes the following arguments.</p>
+<p>RasterIO呼び出しは以下の引数を取ります.</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">CPLErr</span><span class="w"> </span><span class="n">GDALRasterBand</span><span class="o">::</span><span class="n">RasterIO</span><span class="p">(</span><span class="w"> </span><span class="n">GDALRWFlag</span><span class="w"> </span><span class="n">eRWFlag</span><span class="p">,</span>
 <span class="w">                                </span><span class="kt">int</span><span class="w"> </span><span class="n">nXOff</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">nYOff</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">nXSize</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">nYSize</span><span class="p">,</span>
 <span class="w">                                </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">pData</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">nBufXSize</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">nBufYSize</span><span class="p">,</span>
@@ -402,20 +402,20 @@
 <span class="w">                                </span><span class="kt">int</span><span class="w"> </span><span class="n">nLineSpace</span><span class="w"> </span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Note that the same RasterIO() call is used to read, or write based on the setting of eRWFlag (either GF_Read or GF_Write). The nXOff, nYOff, nXSize, nYSize argument describe the window of raster data on disk to read (or write). It doesn't have to fall on tile boundaries though access may be more efficient if it does.</p>
-<p>The pData is the memory buffer the data is read into, or written from. It's real type must be whatever is passed as eBufType, such as GDT_Float32, or GDT_Byte. The RasterIO() call will take care of converting between the buffer's data type and the data type of the band. Note that when converting floating point data to integer RasterIO() rounds down, and when converting source values outside the legal range of the output the nearest legal value is used. This implies, for instance, that 16bit data read into a GDT_Byte buffer will map all values greater than 255 to 255, the data is not scaled!</p>
-<p>The nBufXSize and nBufYSize values describe the size of the buffer. When loading data at full resolution this would be the same as the window size. However, to load a reduced resolution overview this could be set to smaller than the window on disk. In this case the RasterIO() will utilize overviews to do the IO more efficiently if the overviews are suitable.</p>
-<p>The nPixelSpace, and nLineSpace are normally zero indicating that default values should be used. However, they can be used to control access to the memory data buffer, allowing reading into a buffer containing other pixel interleaved data for instance.</p>
+<p>eRWFlagの設定に基づいて読み込みまたは書き込みに使用する同じRasterIO()呼び出しが使用されることに注意してください(いずれかGF_ReadまたはGF_Write).nXOff, nYOff, nXSize, nYSize引数は,ディスク上のラスターデータのウィンドウを読み取る(または書き込む)ために使用されます.タイルの境界にある必要はありませんが,アクセスが効率的であるかもしれません.</p>
+<p>pDataは,データが読み込まれるまたは書き込まれるメモリバッファです.実際の型は,eBufTypeとして渡されるものである必要があります.例えば,GDT_Float32またはGDT_Byteなどです. RasterIO() 呼び出しは,バッファのデータ型とバンドのデータ型の間の変換を処理します.浮動小数点データを整数に変換する場合,RasterIO()は切り捨てを行い,出力の許容範囲外のソース値を変換する場合,最も近い許容値が使用されます.これは,例えば,GDT_Byteバッファに読み込まれた16ビットデータは,255を超えるすべての値を255にマップし,データはスケーリングされません!</p>
+<p>nBufXSizeとnBufYSizeの値は,バッファのサイズを示します.データを完全な解像度で読み込む場合,これはウィンドウサイズと同じになります.ただし,低解像度の概要を読み込む場合,これはディスク上のウィンドウよりも小さく設定することができます.この場合,RasterIO()は,適切な場合には概要を利用して,IOを効率的に行います.</p>
+<p>通常はゼロであり,デフォルト値を使用することを示すnPixelSpaceとnLineSpaceです.ただし,他のピクセル間データを含むバッファに読み込むことを許可するために,メモリデータバッファへのアクセスを制御するために使用することができます.</p>
 </section>
 <section id="closing-the-dataset">
-<h2>Closing the Dataset<a class="headerlink" href="#closing-the-dataset" title="Link to this heading"></a></h2>
-<p>Please keep in mind that <a class="reference internal" href="../api/gdalrasterband_cpp.html#_CPPv414GDALRasterBand" title="GDALRasterBand"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALRasterBand</span></code></a> objects are owned by their dataset, and they should never be destroyed with the C++ delete operator. <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv411GDALDataset" title="GDALDataset"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALDataset</span></code></a>'s can be closed by calling <a class="reference internal" href="../api/raster_c_api.html#_CPPv49GDALClose12GDALDatasetH" title="GDALClose"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALClose()</span></code></a> (it is NOT recommended to use the delete operator on a GDALDataset for Windows users because of known issues when allocating and freeing memory across module boundaries. See the relevant topic on the FAQ). Calling GDALClose will result in proper cleanup, and flushing of any pending writes. Forgetting to call GDALClose on a dataset opened in update mode in a popular format like GTiff will likely result in being unable to open it afterwards.</p>
+<h2>データセットを閉じる<a class="headerlink" href="#closing-the-dataset" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="../api/gdalrasterband_cpp.html#_CPPv414GDALRasterBand" title="GDALRasterBand"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALRasterBand</span></code></a> オブジェクトはデータセットによって所有されており,決してC++のdelete演算子で破棄してはいけません. <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv411GDALDataset" title="GDALDataset"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALDataset</span></code></a> は, <a class="reference internal" href="../api/raster_c_api.html#_CPPv49GDALClose12GDALDatasetH" title="GDALClose"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALClose()</span></code></a> を呼び出すことで閉じることができます(Windowsユーザーは,モジュール境界を越えてメモリを割り当ておよび解放する際の既知の問題のため,GDALDatasetに対してdelete演算子を使用することは推奨されません.FAQの関連トピックを参照してください).GDALCloseを呼び出すと,適切なクリーンアップと,保留中の書き込みのフラッシュが行われます.人気のあるフォーマットで開いたデータセットを更新モードで開いた場合にGDALCloseを呼び出し忘れると,その後開くことができなくなる可能性が高いです.</p>
 </section>
 <section id="techniques-for-creating-files">
-<h2>Techniques for Creating Files<a class="headerlink" href="#techniques-for-creating-files" title="Link to this heading"></a></h2>
-<p>New files in GDAL supported formats may be created if the format driver supports creation. There are two general techniques for creating files, using CreateCopy() and Create(). The CreateCopy method involves calling the CreateCopy() method on the format driver, and passing in a source dataset that should be copied. The Create method involves calling the Create() method on the driver, and then explicitly writing all the metadata, and raster data with separate calls. All drivers that support creating new files support the CreateCopy() method, but only a few support the Create() method.</p>
-<p>To determine if a particular format supports Create or CreateCopy it is possible to check the DCAP_CREATE and DCAP_CREATECOPY metadata on the format driver object. Ensure that <a class="reference internal" href="../api/raster_c_api.html#_CPPv415GDALAllRegisterv" title="GDALAllRegister"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALAllRegister()</span></code></a> has been called before calling <a class="reference internal" href="../api/gdaldriver_cpp.html#_CPPv4N17GDALDriverManager15GetDriverByNameEPKc" title="GDALDriverManager::GetDriverByName"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriverManager::GetDriverByName()</span></code></a>. In this example we fetch a driver, and determine whether it supports Create() and/or CreateCopy().</p>
-<p>In C++:</p>
+<h2>ファイルを作成するためのテクニック<a class="headerlink" href="#techniques-for-creating-files" title="Link to this heading"></a></h2>
+<p>GDALでサポートされているフォーマットで新しいファイルを作成することができます.フォーマットドライバが作成をサポートしている場合,ファイルを作成するための2つの一般的なテクニックがあります. CreateCopy() と Create() です. CreateCopyメソッドは,フォーマットドライバ上でCreateCopy()メソッドを呼び出し,コピーする必要があるソースデータセットを渡すことを含みます. Createメソッドは,ドライバ上でCreate()メソッドを呼び出し,すべてのメタデータとラスターデータを明示的に別々の呼び出しで書き込むことを含みます.新しいファイルを作成することをサポートするすべてのドライバは,CreateCopy()メソッドをサポートしていますが,Create()メソッドをサポートしているのはわずかです.</p>
+<p>特定のフォーマットがCreateまたはCreateCopyをサポートしているかどうかを判断するには,フォーマットドライバオブジェクトのDCAP_CREATEおよびDCAP_CREATECOPYメタデータを確認することが可能です. <a class="reference internal" href="../api/gdaldriver_cpp.html#_CPPv4N17GDALDriverManager15GetDriverByNameEPKc" title="GDALDriverManager::GetDriverByName"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriverManager::GetDriverByName()</span></code></a> を呼び出す前に, <a class="reference internal" href="../api/raster_c_api.html#_CPPv415GDALAllRegisterv" title="GDALAllRegister"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALAllRegister()</span></code></a> が呼び出されていることを確認してください.この例では,ドライバを取得し,Create()および/またはCreateCopy()をサポートしているかどうかを判断します.</p>
+<p>C++の場合:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;cpl_string.h&quot;</span>
 <span class="p">...</span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">pszFormat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;GTiff&quot;</span><span class="p">;</span>
@@ -431,7 +431,7 @@
 <span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;Driver %s supports CreateCopy() method.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pszFormat</span><span class="w"> </span><span class="p">);</span>
 </pre></div>
 </div>
-<p>In C:</p>
+<p>Cの場合:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;cpl_string.h&quot;</span>
 <span class="p">...</span>
 <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">pszFormat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;GTiff&quot;</span><span class="p">;</span>
@@ -446,7 +446,7 @@
 <span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;Driver %s supports CreateCopy() method.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pszFormat</span><span class="w"> </span><span class="p">);</span>
 </pre></div>
 </div>
-<p>In Python:</p>
+<p>Pythonの場合:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fileformat</span> <span class="o">=</span> <span class="s2">&quot;GTiff&quot;</span>
 <span class="n">driver</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">GetDriverByName</span><span class="p">(</span><span class="n">fileformat</span><span class="p">)</span>
 <span class="n">metadata</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">GetMetadata</span><span class="p">()</span>
@@ -457,12 +457,12 @@
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Driver </span><span class="si">{}</span><span class="s2"> supports CreateCopy() method.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fileformat</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>Note that a number of drivers are read-only and won't support Create() or CreateCopy().</p>
+<p>多くのドライバは読み取り専用であり,Create()またはCreateCopy()をサポートしません.</p>
 </section>
 <section id="using-createcopy">
-<h2>Using CreateCopy()<a class="headerlink" href="#using-createcopy" title="Link to this heading"></a></h2>
+<h2>CreateCopy()の使用<a class="headerlink" href="#using-createcopy" title="Link to this heading"></a></h2>
 <p>The <a class="reference internal" href="../api/gdaldriver_cpp.html#_CPPv4N10GDALDriver10CreateCopyEPKcP11GDALDataseti12CSLConstList16GDALProgressFuncPv" title="GDALDriver::CreateCopy"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::CreateCopy()</span></code></a> method can be used fairly simply as most information is collected from the source dataset. However, it includes options for passing format specific creation options, and for reporting progress to the user as a long dataset copy takes place. A simple copy from the a file named pszSrcFilename, to a new file named pszDstFilename using default options on a format whose driver was previously fetched might look like this:</p>
-<p>In C++:</p>
+<p>C++の場合:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">GDALDataset</span><span class="w"> </span><span class="o">*</span><span class="n">poSrcDS</span><span class="w"> </span><span class="o">=</span>
 <span class="p">(</span><span class="n">GDALDataset</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">GDALOpen</span><span class="p">(</span><span class="w"> </span><span class="n">pszSrcFilename</span><span class="p">,</span><span class="w"> </span><span class="n">GA_ReadOnly</span><span class="w"> </span><span class="p">);</span>
 <span class="n">GDALDataset</span><span class="w"> </span><span class="o">*</span><span class="n">poDstDS</span><span class="p">;</span>
@@ -474,7 +474,7 @@
 <span class="n">GDALClose</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="n">GDALDatasetH</span><span class="p">)</span><span class="w"> </span><span class="n">poSrcDS</span><span class="w"> </span><span class="p">);</span>
 </pre></div>
 </div>
-<p>In C:</p>
+<p>Cの場合:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">GDALDatasetH</span><span class="w"> </span><span class="n">hSrcDS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GDALOpen</span><span class="p">(</span><span class="w"> </span><span class="n">pszSrcFilename</span><span class="p">,</span><span class="w"> </span><span class="n">GA_ReadOnly</span><span class="w"> </span><span class="p">);</span>
 <span class="n">GDALDatasetH</span><span class="w"> </span><span class="n">hDstDS</span><span class="p">;</span>
 <span class="n">hDstDS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GDALCreateCopy</span><span class="p">(</span><span class="w"> </span><span class="n">hDriver</span><span class="p">,</span><span class="w"> </span><span class="n">pszDstFilename</span><span class="p">,</span><span class="w"> </span><span class="n">hSrcDS</span><span class="p">,</span><span class="w"> </span><span class="n">FALSE</span><span class="p">,</span>
@@ -485,7 +485,7 @@
 <span class="n">GDALClose</span><span class="p">(</span><span class="n">hSrcDS</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>In Python:</p>
+<p>Pythonの場合:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">src_ds</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">src_filename</span><span class="p">)</span>
 <span class="n">dst_ds</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">CreateCopy</span><span class="p">(</span><span class="n">dst_filename</span><span class="p">,</span> <span class="n">src_ds</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="c1"># Once we&#39;re done, close properly the dataset</span>
@@ -493,9 +493,9 @@
 <span class="n">src_ds</span> <span class="o">=</span> <span class="kc">None</span>
 </pre></div>
 </div>
-<p>Note that the CreateCopy() method returns a writable dataset, and that it must be closed properly to complete writing and flushing the dataset to disk. In the Python case this occurs automatically when &quot;dst_ds&quot; goes out of scope. The FALSE (or 0) value used for the bStrict option just after the destination filename in the CreateCopy() call indicates that the CreateCopy() call should proceed without a fatal error even if the destination dataset cannot be created to exactly match the input dataset. This might be because the output format does not support the pixel datatype of the input dataset, or because the destination cannot support writing georeferencing for instance.</p>
-<p>A more complex case might involve passing creation options, and using a predefined progress monitor like this:</p>
-<p>In C++:</p>
+<p>CreateCopy()メソッドは書き込み可能なデータセットを返し,データセットを書き込みおよびディスクにフラッシュするために適切に閉じる必要があります. Pythonの場合,これは&quot;dst_ds&quot;がスコープ外になると自動的に発生します. CreateCopy()呼び出しの宛先ファイル名の直後に使用されるbStrictオプションのFALSE(または0)値は,宛先データセットが入力データセットと完全に一致するように作成できない場合でも,CreateCopy()呼び出しが致命的なエラーなしで続行することを示します.これは,出力フォーマットが入力データセットのピクセルデータ型をサポートしていない場合や,宛先がジオリファレンスの書き込みをサポートしていない場合などが考えられます.</p>
+<p>より複雑な場合は,作成オプションを渡し,次のように事前定義された進行モニタを使用することができます:</p>
+<p>C++の場合:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;cpl_string.h&quot;</span>
 <span class="p">...</span>
 <span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">papszOptions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
@@ -509,7 +509,7 @@
 <span class="n">CSLDestroy</span><span class="p">(</span><span class="w"> </span><span class="n">papszOptions</span><span class="w"> </span><span class="p">);</span>
 </pre></div>
 </div>
-<p>In C:</p>
+<p>Cの場合:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;cpl_string.h&quot;</span>
 <span class="p">...</span>
 <span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">papszOptions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
@@ -523,7 +523,7 @@
 <span class="n">CSLDestroy</span><span class="p">(</span><span class="w"> </span><span class="n">papszOptions</span><span class="w"> </span><span class="p">);</span>
 </pre></div>
 </div>
-<p>In Python:</p>
+<p>Pythonの場合:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">src_ds</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">src_filename</span><span class="p">)</span>
 <span class="n">dst_ds</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">CreateCopy</span><span class="p">(</span><span class="n">dst_filename</span><span class="p">,</span> <span class="n">src_ds</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                         <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;TILED=YES&quot;</span><span class="p">,</span> <span class="s2">&quot;COMPRESS=PACKBITS&quot;</span><span class="p">])</span>
@@ -534,29 +534,29 @@
 </div>
 </section>
 <section id="using-create">
-<h2>Using Create()<a class="headerlink" href="#using-create" title="Link to this heading"></a></h2>
-<p>For situations in which you are not just exporting an existing file to a new file, it is generally necessary to use the <a class="reference internal" href="../api/gdaldriver_cpp.html#_CPPv4N10GDALDriver6CreateEPKciii12GDALDataType12CSLConstList" title="GDALDriver::Create"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::Create()</span></code></a> method (though some interesting options are possible through use of virtual files or in-memory files). The Create() method takes an options list much like CreateCopy(), but the image size, number of bands and band type must be provided explicitly.</p>
-<p>In C++:</p>
+<h2>Create()の使用<a class="headerlink" href="#using-create" title="Link to this heading"></a></h2>
+<p>既存のファイルを新しいファイルにエクスポートするだけでない状況では,通常は  <a class="reference internal" href="../api/gdaldriver_cpp.html#_CPPv4N10GDALDriver6CreateEPKciii12GDALDataType12CSLConstList" title="GDALDriver::Create"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::Create()</span></code></a> メソッドを使用する必要があります(ただし,仮想ファイルやインメモリファイルを使用することでいくつかの興味深いオプションが可能です).Create()メソッドは,CreateCopy()と同様のオプションリストを取りますが,画像サイズ,バンド数およびバンドタイプは明示的に指定する必要があります.</p>
+<p>C++の場合:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">GDALDataset</span><span class="w"> </span><span class="o">*</span><span class="n">poDstDS</span><span class="p">;</span>
 <span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">papszOptions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
 <span class="n">poDstDS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">poDriver</span><span class="o">-&gt;</span><span class="n">Create</span><span class="p">(</span><span class="w"> </span><span class="n">pszDstFilename</span><span class="p">,</span><span class="w"> </span><span class="mi">512</span><span class="p">,</span><span class="w"> </span><span class="mi">512</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">GDT_Byte</span><span class="p">,</span>
 <span class="w">                            </span><span class="n">papszOptions</span><span class="w"> </span><span class="p">);</span>
 </pre></div>
 </div>
-<p>In C:</p>
+<p>Cの場合:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">GDALDatasetH</span><span class="w"> </span><span class="n">hDstDS</span><span class="p">;</span>
 <span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">papszOptions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
 <span class="n">hDstDS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GDALCreate</span><span class="p">(</span><span class="w"> </span><span class="n">hDriver</span><span class="p">,</span><span class="w"> </span><span class="n">pszDstFilename</span><span class="p">,</span><span class="w"> </span><span class="mi">512</span><span class="p">,</span><span class="w"> </span><span class="mi">512</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">GDT_Byte</span><span class="p">,</span>
 <span class="w">                    </span><span class="n">papszOptions</span><span class="w"> </span><span class="p">);</span>
 </pre></div>
 </div>
-<p>In Python:</p>
+<p>Pythonの場合:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dst_ds</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span><span class="n">dst_filename</span><span class="p">,</span> <span class="n">xsize</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">ysize</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span>
                     <span class="n">bands</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">eType</span><span class="o">=</span><span class="n">gdal</span><span class="o">.</span><span class="n">GDT_Byte</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Once the dataset is successfully created, all appropriate metadata and raster data must be written to the file. What this is will vary according to usage, but a simple case with a projection, geotransform and raster data is covered here.</p>
-<p>In C++:</p>
+<p>データセットが正常に作成されると,すべての適切なメタデータとラスターデータをファイルに書き込む必要があります.これは使用方法によって異なりますが,投影,ジオリファレンスおよびラスターデータを持つ単純なケースがここで説明されています.</p>
+<p>C++の場合:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span><span class="w"> </span><span class="n">adfGeoTransform</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">444720</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">3751320</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">-30</span><span class="w"> </span><span class="p">};</span>
 <span class="n">OGRSpatialReference</span><span class="w"> </span><span class="n">oSRS</span><span class="p">;</span>
 <span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">pszSRS_WKT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
@@ -575,7 +575,7 @@
 <span class="n">GDALClose</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="n">GDALDatasetH</span><span class="p">)</span><span class="w"> </span><span class="n">poDstDS</span><span class="w"> </span><span class="p">);</span>
 </pre></div>
 </div>
-<p>In C:</p>
+<p>Cの場合:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span><span class="w"> </span><span class="n">adfGeoTransform</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">444720</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">3751320</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">-30</span><span class="w"> </span><span class="p">};</span>
 <span class="n">OGRSpatialReferenceH</span><span class="w"> </span><span class="n">hSRS</span><span class="p">;</span>
 <span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">pszSRS_WKT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
@@ -596,7 +596,7 @@
 <span class="n">GDALClose</span><span class="p">(</span><span class="w"> </span><span class="n">hDstDS</span><span class="w"> </span><span class="p">);</span>
 </pre></div>
 </div>
-<p>In Python:</p>
+<p>Pythonの場合:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">osr</span>
 <span class="kn">import</span> <span class="nn">numpy</span>
 <span class="n">dst_ds</span><span class="o">.</span><span class="n">SetGeoTransform</span><span class="p">([</span><span class="mi">444720</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3751320</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">])</span>

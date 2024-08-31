@@ -309,7 +309,7 @@ of the full resolution source dataset.</p>
 <dd><p>再サンプリング アルゴリズムを選択します。</p>
 <p><code class="docutils literal notranslate"><span class="pre">nearest</span></code> (default) applies a nearest neighbour (simple sampling) resampler</p>
 <p><code class="docutils literal notranslate"><span class="pre">average</span></code> は、すべての非NODATAで構成されたピクセルの平均を計算します。GDAL 3.1以降、これは、ターゲットピクセルとして適用しないソースピクセルの重みを適切に考慮した加重平均です。</p>
-<p><code class="docutils literal notranslate"><span class="pre">rms</span></code>  は、すべての非NODATA適用ピクセルの二乗平均平方根/二乗平均を計算します</p>
+<p><code class="docutils literal notranslate"><span class="pre">rms</span></code>  は、すべての非NODATA適用ピクセルの二乗平均平方根/二乗平均を計算します(GDAL &gt;= 3.3)</p>
 <p><cite>bilinear`</cite>  は、バイリニア畳み込みカーネルを適用します。</p>
 <p><code class="docutils literal notranslate"><span class="pre">cubic</span></code> は、三次畳み込みカーネルを適用します。</p>
 <p><code class="docutils literal notranslate"><span class="pre">cubicspline</span></code> は、Bスプライン畳み込みカーネルを適用します。</p>

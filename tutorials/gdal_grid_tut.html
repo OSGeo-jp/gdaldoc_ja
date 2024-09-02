@@ -65,8 +65,8 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">GDALグリッドチュートリアル</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#introduction-to-gridding">グリッディングの紹介</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#interpolation-of-the-scattered-data">散在データの補間</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#data-metrics-computation">Data Metrics Computation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#search-ellipse">Search Ellipse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#data-metrics-computation">データメトリクスの計算</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#search-ellipse">検索楕円</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="geotransforms_tut.html">Geotransform Tutorial</a></li>
@@ -177,28 +177,19 @@
 <li><p><span class="math notranslate nohighlight">\(p\)</span> is a weighting power,</p></li>
 <li><p><span class="math notranslate nohighlight">\(n\)</span> is a number of points in <a class="reference internal" href="#search-ellipse">Search Ellipse</a>.</p></li>
 </ul>
-<p>The smoothing parameter <span class="math notranslate nohighlight">\(s\)</span> is used as an additive term in the Euclidean distance calculation:</p>
+<p>スムージングパラメータ <span class="math notranslate nohighlight">\(s\)</span> はユークリッド距離計算に加算項として使用されます:</p>
 <div class="math notranslate nohighlight">
 \[{r_i}=\sqrt{{r_{ix}}^2 + {r_{iy}}^2 + s^2}\]</div>
-<p>where <span class="math notranslate nohighlight">\(r_{ix}\)</span> and <span class="math notranslate nohighlight">\(r_{iy}\)</span> are the horizontal and vertical
-distances between the grid node to point <span class="math notranslate nohighlight">\(i\)</span> respectively.</p>
-<p>In this method the weighting factor <span class="math notranslate nohighlight">\(w\)</span> is</p>
+<p>ここで, <span class="math notranslate nohighlight">\(r_{ix}\)</span> と <span class="math notranslate nohighlight">\(r_{iy}\)</span> はそれぞれグリッドノードから点 <span class="math notranslate nohighlight">\(i\)</span> までの水平および垂直距離です.</p>
+<p>このメソッドでは,重み付け係数 <span class="math notranslate nohighlight">\(w\)</span> は</p>
 <div class="math notranslate nohighlight">
 \[w=\frac{1}{r^p}\]</div>
-<p>See <a class="reference internal" href="../api/gdal_alg.html#_CPPv438GDALGridInverseDistanceToAPowerOptions" title="GDALGridInverseDistanceToAPowerOptions"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALGridInverseDistanceToAPowerOptions</span></code></a> for the list of
-<a class="reference internal" href="../api/gdal_alg.html#_CPPv414GDALGridCreate17GDALGridAlgorithmPKv7GUInt32PKdPKdPKddddd7GUInt327GUInt3212GDALDataTypePv16GDALProgressFuncPv" title="GDALGridCreate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALGridCreate()</span></code></a> parameters and <a class="reference internal" href="../programs/gdal_grid.html#gdal-grid-invdist"><span class="std std-ref">invdist</span></a> for the list
-of <a class="reference internal" href="../programs/gdal_grid.html#gdal-grid"><span class="std std-ref">gdal_grid</span></a> options.</p>
+<p><a class="reference internal" href="../api/gdal_alg.html#_CPPv414GDALGridCreate17GDALGridAlgorithmPKv7GUInt32PKdPKdPKddddd7GUInt327GUInt3212GDALDataTypePv16GDALProgressFuncPv" title="GDALGridCreate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALGridCreate()</span></code></a> パラメータのリストについては <a class="reference internal" href="../api/gdal_alg.html#_CPPv438GDALGridInverseDistanceToAPowerOptions" title="GDALGridInverseDistanceToAPowerOptions"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALGridInverseDistanceToAPowerOptions</span></code></a> を参照し, <a class="reference internal" href="../programs/gdal_grid.html#gdal-grid-invdist"><span class="std std-ref">invdist</span></a> については <a class="reference internal" href="../programs/gdal_grid.html#gdal-grid"><span class="std std-ref">gdal_grid</span></a> オプションのリストを参照してください.</p>
 </section>
 <section id="moving-average">
-<h3>Moving Average<a class="headerlink" href="#moving-average" title="Link to this heading"></a></h3>
-<p>The Moving Average is a simple data averaging algorithm. It uses a moving
-window of elliptic form to search values and averages all data points within
-the window. <a class="reference internal" href="#search-ellipse">Search Ellipse</a> can be rotated by
-specified angle, the center of ellipse located at the grid node. Also the
-minimum number of data points to average can be set. If there are not enough
-points in window, the grid node is considered empty and will be filled with
-specified NODATA value.</p>
-<p>Mathematically it can be expressed with the formula:</p>
+<h3>移動平均<a class="headerlink" href="#moving-average" title="Link to this heading"></a></h3>
+<p>移動平均は,単純なデータ平均アルゴリズムです.楕円形の移動ウィンドウを使用して値を検索し,ウィンドウ内のすべてのデータ点の平均を取ります. <a class="reference internal" href="#search-ellipse">Search Ellipse</a> は指定された角度で回転でき,楕円の中心はグリッドノードに配置されます.また,平均するデータ点の最小数を設定できます.ウィンドウ内の点が十分でない場合,グリッドノードは空と見なされ,指定されたNODATA値で埋められます.</p>
+<p>数学的には,次の式で表すことができます:</p>
 <div class="math notranslate nohighlight">
 \[Z=\frac{\sum_{i=1}^n{Z_i}}{n}\]</div>
 <p>where:</p>
@@ -207,27 +198,20 @@ specified NODATA value.</p>
 <li><p><span class="math notranslate nohighlight">\(Z_i\)</span> is a known value at point <span class="math notranslate nohighlight">\(i\)</span>,</p></li>
 <li><p><span class="math notranslate nohighlight">\(n\)</span> is a number of points in search <a class="reference internal" href="#search-ellipse">Search Ellipse</a>.</p></li>
 </ul>
-<p>See <a class="reference internal" href="../api/gdal_alg.html#_CPPv428GDALGridMovingAverageOptions" title="GDALGridMovingAverageOptions"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALGridMovingAverageOptions</span></code></a> for the list of <a class="reference internal" href="../api/gdal_alg.html#_CPPv414GDALGridCreate17GDALGridAlgorithmPKv7GUInt32PKdPKdPKddddd7GUInt327GUInt3212GDALDataTypePv16GDALProgressFuncPv" title="GDALGridCreate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALGridCreate()</span></code></a>
-parameters and  <a class="reference internal" href="../programs/gdal_grid.html#gdal-grid-average"><span class="std std-ref">average</span></a> for the list of <a class="reference internal" href="../programs/gdal_grid.html#gdal-grid"><span class="std std-ref">gdal_grid</span></a> options.</p>
+<p><a class="reference internal" href="../api/gdal_alg.html#_CPPv414GDALGridCreate17GDALGridAlgorithmPKv7GUInt32PKdPKdPKddddd7GUInt327GUInt3212GDALDataTypePv16GDALProgressFuncPv" title="GDALGridCreate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALGridCreate()</span></code></a> パラメータのリストについては <a class="reference internal" href="../api/gdal_alg.html#_CPPv428GDALGridMovingAverageOptions" title="GDALGridMovingAverageOptions"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALGridMovingAverageOptions</span></code></a> を参照し, <a class="reference internal" href="../programs/gdal_grid.html#gdal-grid-average"><span class="std std-ref">average</span></a> については <a class="reference internal" href="../programs/gdal_grid.html#gdal-grid"><span class="std std-ref">gdal_grid</span></a> オプションのリストを参照してください.</p>
 </section>
 <section id="nearest-neighbor">
-<h3>Nearest Neighbor<a class="headerlink" href="#nearest-neighbor" title="Link to this heading"></a></h3>
-<p>The Nearest Neighbor method doesn't perform any interpolation or smoothing, it
-just takes the value of nearest point found in the grid node search ellipse and
-returns it as a result. If there are no points found, the specified NODATA
-value will be returned.</p>
-<p>See <a class="reference internal" href="../api/gdal_alg.html#_CPPv430GDALGridNearestNeighborOptions" title="GDALGridNearestNeighborOptions"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALGridNearestNeighborOptions</span></code></a> for the list of <a class="reference internal" href="../api/gdal_alg.html#_CPPv414GDALGridCreate17GDALGridAlgorithmPKv7GUInt32PKdPKdPKddddd7GUInt327GUInt3212GDALDataTypePv16GDALProgressFuncPv" title="GDALGridCreate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALGridCreate()</span></code></a>
-parameters and <a class="reference internal" href="../programs/gdal_grid.html#gdal-grid-nearest"><span class="std std-ref">nearest</span></a> for the list of <a class="reference internal" href="../programs/gdal_grid.html#gdal-grid"><span class="std std-ref">gdal_grid</span></a> options.</p>
+<h3>最近傍<a class="headerlink" href="#nearest-neighbor" title="Link to this heading"></a></h3>
+<p>最近傍法は,補間や平滑化を行いません.単に,グリッドノード検索楕円内で見つかった最も近い点の値を取得し,結果として返します.点が見つからない場合,指定されたNODATA値が返されます.</p>
+<p><a class="reference internal" href="../api/gdal_alg.html#_CPPv414GDALGridCreate17GDALGridAlgorithmPKv7GUInt32PKdPKdPKddddd7GUInt327GUInt3212GDALDataTypePv16GDALProgressFuncPv" title="GDALGridCreate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALGridCreate()</span></code></a> パラメータのリストについては <a class="reference internal" href="../api/gdal_alg.html#_CPPv430GDALGridNearestNeighborOptions" title="GDALGridNearestNeighborOptions"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALGridNearestNeighborOptions</span></code></a> を参照し, <a class="reference internal" href="../programs/gdal_grid.html#gdal-grid-nearest"><span class="std std-ref">nearest</span></a> については <a class="reference internal" href="../programs/gdal_grid.html#gdal-grid"><span class="std std-ref">gdal_grid</span></a> オプションのリストを参照してください.</p>
 </section>
 </section>
 <section id="data-metrics-computation">
-<h2>Data Metrics Computation<a class="headerlink" href="#data-metrics-computation" title="Link to this heading"></a></h2>
-<p>All the metrics have the same set controlling options. See the
-<a class="reference internal" href="../api/gdal_alg.html#_CPPv426GDALGridDataMetricsOptions" title="GDALGridDataMetricsOptions"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALGridDataMetricsOptions</span></code></a>.</p>
+<h2>データメトリクスの計算<a class="headerlink" href="#data-metrics-computation" title="Link to this heading"></a></h2>
+<p>すべてのメトリクスには同じセットの制御オプションがあります. <a class="reference internal" href="../api/gdal_alg.html#_CPPv426GDALGridDataMetricsOptions" title="GDALGridDataMetricsOptions"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALGridDataMetricsOptions</span></code></a> を参照してください.</p>
 <section id="minimum-data-value">
-<h3>Minimum Data Value<a class="headerlink" href="#minimum-data-value" title="Link to this heading"></a></h3>
-<p>Minimum value found in grid node <a class="reference internal" href="#search-ellipse">Search Ellipse</a>.
-If there are no points found, the specified NODATA value will be returned.</p>
+<h3>データの最小値<a class="headerlink" href="#minimum-data-value" title="Link to this heading"></a></h3>
+<p>グリッドノード <a class="reference internal" href="#search-ellipse">Search Ellipse</a> で見つかった最小値.点が見つからない場合,指定されたNODATA値が返されます.</p>
 <div class="math notranslate nohighlight">
 \[Z=\min{(Z_1,Z_2,\ldots,Z_n)}\]</div>
 <p>where:</p>
@@ -238,9 +222,8 @@ If there are no points found, the specified NODATA value will be returned.</p>
 </ul>
 </section>
 <section id="maximum-data-value">
-<h3>Maximum Data Value<a class="headerlink" href="#maximum-data-value" title="Link to this heading"></a></h3>
-<p>Maximum value found in grid node <a class="reference internal" href="#search-ellipse">Search Ellipse</a>.
-If there are no points found, the specified NODATA value will be returned.</p>
+<h3>データの最大値<a class="headerlink" href="#maximum-data-value" title="Link to this heading"></a></h3>
+<p>グリッドノード <a class="reference internal" href="#search-ellipse">Search Ellipse</a> で見つかった最大値.点が見つからない場合,指定されたNODATA値が返されます.</p>
 <div class="math notranslate nohighlight">
 \[Z=\max{(Z_1,Z_2,\ldots,Z_n)}\]</div>
 <p>where:</p>
@@ -251,10 +234,8 @@ If there are no points found, the specified NODATA value will be returned.</p>
 </ul>
 </section>
 <section id="data-range">
-<h3>Data Range<a class="headerlink" href="#data-range" title="Link to this heading"></a></h3>
-<p>A difference between the minimum and maximum values found in grid <a class="reference internal" href="#search-ellipse">Search Ellipse</a>.
-If there are no points found, the
-specified NODATA value will be returned.</p>
+<h3>データ範囲<a class="headerlink" href="#data-range" title="Link to this heading"></a></h3>
+<p>グリッド <a class="reference internal" href="#search-ellipse">Search Ellipse</a> で見つかった最小値と最大値の差.点が見つからない場合,指定されたNODATA値が返されます.</p>
 <div class="math notranslate nohighlight">
 \[Z=\max{(Z_1,Z_2,\ldots,Z_n)}-\min{(Z_1,Z_2,\ldots,Z_n)}\]</div>
 <p>where:</p>
@@ -266,17 +247,15 @@ specified NODATA value will be returned.</p>
 </section>
 </section>
 <section id="search-ellipse">
-<h2>Search Ellipse<a class="headerlink" href="#search-ellipse" title="Link to this heading"></a></h2>
-<p>Search window in gridding algorithms specified in the form of rotated ellipse.
-It is described by the three parameters:</p>
+<h2>検索楕円<a class="headerlink" href="#search-ellipse" title="Link to this heading"></a></h2>
+<p>グリッディングアルゴリズムで指定された回転楕円形式の検索ウィンドウ.3つのパラメータで記述されます:</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(radius_1\)</span> is the first radius (<span class="math notranslate nohighlight">\(x\)</span> axis if rotation angle is 0),</p></li>
-<li><p><span class="math notranslate nohighlight">\(radius_2\)</span> is the second radius (<span class="math notranslate nohighlight">\(y\)</span> axis if rotation angle is 0),</p></li>
-<li><p><span class="math notranslate nohighlight">\(angle\)</span> is a search ellipse rotation angle (rotated counter clockwise).</p></li>
+<li><p><span class="math notranslate nohighlight">\(radius_1\)</span> は最初の半径です(回転角が0の場合は <span class="math notranslate nohighlight">\(x\)</span> 軸）,</p></li>
+<li><p><span class="math notranslate nohighlight">\(radius_2\)</span> は2番目の半径です(回転角が0の場合は <span class="math notranslate nohighlight">\(y\)</span> 軸）,</p></li>
+<li><p><span class="math notranslate nohighlight">\(angle\)</span> は検索楕円の回転角度です（反時計回りに回転）.</p></li>
 </ul>
-<img alt="Search ellipse" src="../_images/ellipse.png" />
-<p>Only points located inside the search ellipse (including its border line) will
-be used for computation.</p>
+<img alt="検索楕円" src="../_images/ellipse.png" />
+<p>計算には,検索楕円内（境界線を含む）にある点のみが使用されます.</p>
 </section>
 </section>
 

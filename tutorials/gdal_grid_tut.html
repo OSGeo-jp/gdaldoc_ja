@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GDAL Grid Tutorial &mdash; GDAL  ドキュメント</title>
+  <title>GDALグリッドチュートリアル &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
       <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
 
@@ -27,7 +27,7 @@
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="Geotransform Tutorial" href="geotransforms_tut.html" />
-    <link rel="prev" title="GDAL Warp API tutorial (Reprojection, ...)" href="warp_tut.html" /> 
+    <link rel="prev" title="GDAL Warp API チュートリアル (再投影、...)" href="warp_tut.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -60,11 +60,11 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">チュートリアル</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="index.html#raster">ラスター</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="raster_api_tut.html">ラスターAPIチュートリアル</a></li>
-<li class="toctree-l3"><a class="reference internal" href="raster_driver_tut.html">Raster driver implementation tutorial</a></li>
-<li class="toctree-l3"><a class="reference internal" href="warp_tut.html">GDAL Warp API tutorial (Reprojection, ...)</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">GDAL Grid Tutorial</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#introduction-to-gridding">Introduction to Gridding</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#interpolation-of-the-scattered-data">Interpolation of the Scattered Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="raster_driver_tut.html">ラスタードライバー実装チュートリアル</a></li>
+<li class="toctree-l3"><a class="reference internal" href="warp_tut.html">GDAL Warp API チュートリアル (再投影、...)</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">GDALグリッドチュートリアル</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#introduction-to-gridding">グリッディングの紹介</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#interpolation-of-the-scattered-data">散在データの補間</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#data-metrics-computation">Data Metrics Computation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#search-ellipse">Search Ellipse</a></li>
 </ul>
@@ -121,7 +121,7 @@
       
           <li><a href="index.html">チュートリアル</a> &raquo;</li>
       
-      <li>GDAL Grid Tutorial</li>
+      <li>GDALグリッドチュートリアル</li>
     
 
     
@@ -143,7 +143,7 @@
         <a href="geotransforms_tut.html" class="btn btn-neutral float-right" title="Geotransform Tutorial" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="warp_tut.html" class="btn btn-neutral float-left" title="GDAL Warp API tutorial (Reprojection, ...)" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="warp_tut.html" class="btn btn-neutral float-left" title="GDAL Warp API チュートリアル (再投影、...)" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -153,39 +153,21 @@
            <div itemprop="articleBody">
              
   <section id="gdal-grid-tutorial">
-<span id="gdal-grid-tut"></span><h1>GDAL Grid Tutorial<a class="headerlink" href="#gdal-grid-tutorial" title="Link to this heading"></a></h1>
+<span id="gdal-grid-tut"></span><h1>GDALグリッドチュートリアル<a class="headerlink" href="#gdal-grid-tutorial" title="Link to this heading"></a></h1>
 <section id="introduction-to-gridding">
-<h2>Introduction to Gridding<a class="headerlink" href="#introduction-to-gridding" title="Link to this heading"></a></h2>
-<p>Gridding is a process of creating a regular grid (or call it a raster image)
-from the scattered data. Typically you have a set of arbitrary data scattered over
-the region of survey measurements and you would like to convert them into the
-regular grid for further processing and combining with other grids.</p>
-<img alt="Scattered data gridding" src="../_images/gridding.png" />
-<p>This problem can be solved using data interpolation or approximation
-algorithms. But you are not limited by interpolation here. Sometimes you don't
-need to interpolate your data but rather compute some statistics or data
-metrics over the region. Statistics are valuable themselves or could be used for
-better choosing the interpolation algorithm and parameters.</p>
-<p>That is what GDAL Grid API is about. It helps you to interpolate your data
-(see <a class="reference internal" href="#interpolation-of-the-scattered-data">Interpolation of the Scattered Data</a>) or compute data metrics (see
-<a class="reference internal" href="#data-metrics-computation">Data Metrics Computation</a>).</p>
-<p>There are two ways of using this interface. Programmatically it is available
-through the <a class="reference internal" href="../api/gdal_alg.html#_CPPv414GDALGridCreate17GDALGridAlgorithmPKv7GUInt32PKdPKdPKddddd7GUInt327GUInt3212GDALDataTypePv16GDALProgressFuncPv" title="GDALGridCreate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALGridCreate()</span></code></a> C function; for end users there is a
-<a class="reference internal" href="../programs/gdal_grid.html#gdal-grid"><span class="std std-ref">gdal_grid</span></a> utility (which see for an up-to-date list of all current features).
-The rest of this document discusses details on algorithms
-and their parameters implemented in GDAL Grid API.</p>
+<h2>グリッディングの紹介<a class="headerlink" href="#introduction-to-gridding" title="Link to this heading"></a></h2>
+<p>グリッディングは,散在データから正規グリッド（またはラスター画像とも呼びます）を作成するプロセスです.通常,測定地域に散在する任意のデータセットがあり,それらを正規グリッドに変換して,さらなる処理や他のグリッドとの組み合わせに使用したいと考えています.</p>
+<img alt="散在データのグリッディング" src="../_images/gridding.png" />
+<p>この問題は,データ補間または近似アルゴリズムを使用して解決できます.しかし,ここでは補間に限定されません.時にはデータを補間する必要がなく,代わりに領域全体で統計値やデータメトリクスを計算する必要があることがあります.統計値自体が有用であるから,補間アルゴリズムとパラメータをよりよく選択するために使用できます.</p>
+<p>それがGDAL Grid APIの目的です.データを補間するのを支援します（ <a class="reference internal" href="#interpolation-of-the-scattered-data">Interpolation of the Scattered Data</a> を参照）またはデータメトリクスを計算します（ <a class="reference internal" href="#data-metrics-computation">Data Metrics Computation</a> を参照）.</p>
+<p>このインターフェースを使用する方法は2つあります.プログラム的には, <a class="reference internal" href="../api/gdal_alg.html#_CPPv414GDALGridCreate17GDALGridAlgorithmPKv7GUInt32PKdPKdPKddddd7GUInt327GUInt3212GDALDataTypePv16GDALProgressFuncPv" title="GDALGridCreate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALGridCreate()</span></code></a> C関数を使用できます.エンドユーザー向けには, <a class="reference internal" href="../programs/gdal_grid.html#gdal-grid"><span class="std std-ref">gdal_grid</span></a> ユーティリティがあります（現在の機能の最新リストについてはそちらを参照してください）.このドキュメントの残りの部分では,GDAL Grid APIで実装されているアルゴリズムとそのパラメータについて詳しく説明します.</p>
 </section>
 <section id="interpolation-of-the-scattered-data">
-<h2>Interpolation of the Scattered Data<a class="headerlink" href="#interpolation-of-the-scattered-data" title="Link to this heading"></a></h2>
+<h2>散在データの補間<a class="headerlink" href="#interpolation-of-the-scattered-data" title="Link to this heading"></a></h2>
 <section id="inverse-distance-to-a-power">
-<h3>Inverse Distance to a Power<a class="headerlink" href="#inverse-distance-to-a-power" title="Link to this heading"></a></h3>
-<p>The Inverse Distance to a Power gridding method is a weighted average
-interpolator. You should supply the input arrays with the scattered data
-values including coordinates of every data point and output grid geometry. The
-function will compute an interpolated value for the given position in the output
-grid.</p>
-<p>For every grid node the resulting value <span class="math notranslate nohighlight">\(Z\)</span> will be calculated using
-the formula:</p>
+<h3>逆距離法<a class="headerlink" href="#inverse-distance-to-a-power" title="Link to this heading"></a></h3>
+<p>逆距離法グリッディングメソッドは,重み付き平均補間器です.散在データ値を含む入力配列と,各データ点の座標および出力グリッドジオメトリを提供する必要があります.関数は,出力グリッド内の指定された位置に対して補間値を計算します.</p>
+<p>各グリッドノードに対して,次の式を使用して結果値 <span class="math notranslate nohighlight">\(Z\)</span> が計算されます:</p>
 <div class="math notranslate nohighlight">
 \[Z=\frac{\sum_{i=1}^n{\frac{Z_i}{r_i^p}}}{\sum_{i=1}^n{\frac{1}{r_i^p}}}\]</div>
 <p>where:</p>
@@ -308,7 +290,7 @@ be used for computation.</p>
         <a href="geotransforms_tut.html" class="btn btn-neutral float-right" title="Geotransform Tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="warp_tut.html" class="btn btn-neutral float-left" title="GDAL Warp API tutorial (Reprojection, ...)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="warp_tut.html" class="btn btn-neutral float-left" title="GDAL Warp API チュートリアル (再投影、...)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

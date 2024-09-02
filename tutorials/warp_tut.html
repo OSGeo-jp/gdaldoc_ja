@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GDAL Warp API tutorial (Reprojection, ...) &mdash; GDAL  ドキュメント</title>
+  <title>GDAL Warp API チュートリアル (再投影、...) &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
       <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
 
@@ -26,7 +26,7 @@
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="GDAL Grid Tutorial" href="gdal_grid_tut.html" />
-    <link rel="prev" title="Raster driver implementation tutorial" href="raster_driver_tut.html" /> 
+    <link rel="prev" title="ラスタードライバー実装チュートリアル" href="raster_driver_tut.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -59,14 +59,14 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">チュートリアル</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="index.html#raster">ラスター</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="raster_api_tut.html">ラスターAPIチュートリアル</a></li>
-<li class="toctree-l3"><a class="reference internal" href="raster_driver_tut.html">Raster driver implementation tutorial</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">GDAL Warp API tutorial (Reprojection, ...)</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#a-simple-reprojection-case">A Simple Reprojection Case</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#other-warping-options">Other Warping Options</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#creating-the-output-file">Creating the Output File</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#performance-optimization">Performance Optimization</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#other-masking-options">Other Masking Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="raster_driver_tut.html">ラスタードライバー実装チュートリアル</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">GDAL Warp API チュートリアル (再投影、...)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview">概要</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#a-simple-reprojection-case">単純な再投影ケース</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#other-warping-options">その他のワーピングオプション</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-the-output-file">出力ファイルの作成</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#performance-optimization">パフォーマンスの最適化</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#other-masking-options">その他のマスキングオプション</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="gdal_grid_tut.html">GDAL Grid Tutorial</a></li>
@@ -122,7 +122,7 @@
       
           <li><a href="index.html">チュートリアル</a> &raquo;</li>
       
-      <li>GDAL Warp API tutorial (Reprojection, ...)</li>
+      <li>GDAL Warp API チュートリアル (再投影、...)</li>
     
 
     
@@ -144,7 +144,7 @@
         <a href="gdal_grid_tut.html" class="btn btn-neutral float-right" title="GDAL Grid Tutorial" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="raster_driver_tut.html" class="btn btn-neutral float-left" title="Raster driver implementation tutorial" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="raster_driver_tut.html" class="btn btn-neutral float-left" title="ラスタードライバー実装チュートリアル" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -154,16 +154,16 @@
            <div itemprop="articleBody">
              
   <section id="gdal-warp-api-tutorial-reprojection">
-<span id="warp-tut"></span><h1>GDAL Warp API tutorial (Reprojection, ...)<a class="headerlink" href="#gdal-warp-api-tutorial-reprojection" title="Link to this heading"></a></h1>
+<span id="warp-tut"></span><h1>GDAL Warp API チュートリアル (再投影、...)<a class="headerlink" href="#gdal-warp-api-tutorial-reprojection" title="Link to this heading"></a></h1>
 <section id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
-<p>The GDAL Warp API (declared in <a class="reference internal" href="../api/gdalwarp_cpp.html#gdalwarp-cpp"><span class="std std-ref">gdalwarper.h</span></a>) provides services for high performance image warping using application provided geometric transformation functions (GDALTransformerFunc), a variety of resampling kernels, and various masking options. Files much larger than can be held in memory can be warped.</p>
-<p>This tutorial demonstrates how to implement an application using the Warp API. It assumes implementation in C++ as C and Python bindings are incomplete for the Warp API. It also assumes familiarity with the <a class="reference internal" href="../user/raster_data_model.html#raster-data-model"><span class="std std-ref">ラスターデータモデル</span></a>, and the general GDAL API.</p>
-<p>Applications normally perform a warp by initializing a <a class="reference internal" href="../api/gdalwarp_cpp.html#_CPPv415GDALWarpOptions" title="GDALWarpOptions"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALWarpOptions</span></code></a> structure with the options to be utilized, instantiating a GDALWarpOperation based on these options, and then invoking the <a class="reference internal" href="../api/gdalwarp_cpp.html#_CPPv4N17GDALWarpOperation17ChunkAndWarpImageEiiii" title="GDALWarpOperation::ChunkAndWarpImage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALWarpOperation::ChunkAndWarpImage()</span></code></a> method to perform the warp options internally using the <a class="reference internal" href="../api/gdalwarp_cpp.html#_CPPv414GDALWarpKernel" title="GDALWarpKernel"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALWarpKernel</span></code></a> class.</p>
+<h2>概要<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>GDAL Warp API ( <a class="reference internal" href="../api/gdalwarp_cpp.html#gdalwarp-cpp"><span class="std std-ref">gdalwarper.h</span></a> で宣言されています) は,アプリケーションが提供する地理的変換関数 (GDALTransformerFunc),さまざまなリサンプリングカーネル,およびさまざまなマスキングオプションを使用して,高性能の画像ワーピングサービスを提供します.メモリに保持できるよりもはるかに大きなファイルをワープできます.</p>
+<p>このチュートリアルでは,ワープ API を使用したアプリケーションの実装方法を示しています. Warp API に対する C および Python のバインディングが不完全であることを前提としています. また <a class="reference internal" href="../user/raster_data_model.html#raster-data-model"><span class="std std-ref">ラスターデータモデル</span></a> と一般的な GDAL API に精通していることを前提としています.</p>
+<p>通常,アプリケーションは,使用するオプションを持つ <a class="reference internal" href="../api/gdalwarp_cpp.html#_CPPv415GDALWarpOptions" title="GDALWarpOptions"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALWarpOptions</span></code></a> 構造体を初期化し,これらのオプションに基づいて GDALWarpOperation をインスタンス化し,その後,内部で <a class="reference internal" href="../api/gdalwarp_cpp.html#_CPPv414GDALWarpKernel" title="GDALWarpKernel"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALWarpKernel</span></code></a> クラスを使用してワープオプションを実行するために <a class="reference internal" href="../api/gdalwarp_cpp.html#_CPPv4N17GDALWarpOperation17ChunkAndWarpImageEiiii" title="GDALWarpOperation::ChunkAndWarpImage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALWarpOperation::ChunkAndWarpImage()</span></code></a> メソッドを呼び出します.</p>
 </section>
 <section id="a-simple-reprojection-case">
-<h2>A Simple Reprojection Case<a class="headerlink" href="#a-simple-reprojection-case" title="Link to this heading"></a></h2>
-<p>First we will construct a relatively simple example for reprojecting an image, assuming an appropriate output file already exists, and with minimal error checking.</p>
+<h2>単純な再投影ケース<a class="headerlink" href="#a-simple-reprojection-case" title="Link to this heading"></a></h2>
+<p>最初に,適切な出力ファイルが既に存在し,エラーチェックが最小限であると仮定して,画像を再投影するための比較的単純な例を構築します.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;gdalwarper.h&quot;</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
@@ -211,14 +211,14 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>This example opens the existing input and output files (in.tif and out.tif). A <a class="reference internal" href="../api/gdalwarp_cpp.html#_CPPv415GDALWarpOptions" title="GDALWarpOptions"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALWarpOptions</span></code></a> structure is allocated (<a class="reference internal" href="../api/gdalwarp_cpp.html#_CPPv421GDALCreateWarpOptionsv" title="GDALCreateWarpOptions"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALCreateWarpOptions()</span></code></a> sets lots of sensible defaults for stuff, always use it for defaulting things), and the input and output file handles, and band lists are set. The panSrcBands and panDstBands lists are dynamically allocated here and will be free automatically by <a class="reference internal" href="../api/gdalwarp_cpp.html#_CPPv422GDALDestroyWarpOptionsP15GDALWarpOptions" title="GDALDestroyWarpOptions"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDestroyWarpOptions()</span></code></a>. The simple terminal output progress monitor (GDALTermProgress) is installed for reporting completion progress to the user.</p>
+<p>この例では,既存の入力ファイルと出力ファイル (in.tif および out.tif) を開きます. <a class="reference internal" href="../api/gdalwarp_cpp.html#_CPPv415GDALWarpOptions" title="GDALWarpOptions"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALWarpOptions</span></code></a> 構造体が割り当てられます (<a class="reference internal" href="../api/gdalwarp_cpp.html#_CPPv421GDALCreateWarpOptionsv" title="GDALCreateWarpOptions"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALCreateWarpOptions()</span></code></a> は,たくさんのものに対して合理的なデフォルトを設定します,常にデフォルトのものに使用してください),そして,入力ファイルハンドルと出力ファイルハンドル,およびバンドリストが設定されます. panSrcBands と panDstBands リストはここで動的に割り当てられ, <a class="reference internal" href="../api/gdalwarp_cpp.html#_CPPv422GDALDestroyWarpOptionsP15GDALWarpOptions" title="GDALDestroyWarpOptions"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDestroyWarpOptions()</span></code></a> によって自動的に解放されます. シンプルなターミナル出力進行状況モニター (GDALTermProgress) がインストールされ,ユーザーに完了進行状況を報告します.</p>
 <p><a class="reference internal" href="../api/gdal_alg.html#_CPPv431GDALCreateGenImgProjTransformer12GDALDatasetHPKc12GDALDatasetHPKcidi" title="GDALCreateGenImgProjTransformer"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALCreateGenImgProjTransformer()</span></code></a> is used to initialize the reprojection transformation between the source and destination images. We assume that they already have reasonable bounds and coordinate systems set. Use of GCPs is disabled.</p>
-<p>Once the options structure is ready, a GDALWarpOperation is instantiated using them, and the warp actually performed with <a class="reference internal" href="../api/gdalwarp_cpp.html#_CPPv4N17GDALWarpOperation17ChunkAndWarpImageEiiii" title="GDALWarpOperation::ChunkAndWarpImage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALWarpOperation::ChunkAndWarpImage()</span></code></a>. Then the transformer, warp options and datasets are cleaned up.</p>
-<p>Normally error check would be needed after opening files, setting up the reprojection transformer (returns NULL on failure), and initializing the warp.</p>
+<p>オプション構造が準備できたら,それらを使用して GDALWarpOperation をインスタンス化し,実際に <a class="reference internal" href="../api/gdalwarp_cpp.html#_CPPv4N17GDALWarpOperation17ChunkAndWarpImageEiiii" title="GDALWarpOperation::ChunkAndWarpImage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALWarpOperation::ChunkAndWarpImage()</span></code></a> でワープを実行します. その後,変換器,ワープオプション,およびデータセットをクリーンアップします.</p>
+<p>通常,ファイルを開いた後,再投影変換器を設定した後 (失敗した場合は NULL を返す),およびワープを初期化した後にエラーチェックが必要です.</p>
 </section>
 <section id="other-warping-options">
-<h2>Other Warping Options<a class="headerlink" href="#other-warping-options" title="Link to this heading"></a></h2>
-<p>The GDALWarpOptions structures contains a number of items that can be set to control warping behavior. A few of particular interest are:</p>
+<h2>その他のワーピングオプション<a class="headerlink" href="#other-warping-options" title="Link to this heading"></a></h2>
+<p>GDALWarpOptions 構造体には,ワーピング動作を制御するために設定できる項目がいくつか含まれています. 特に興味深いものはいくつかあります:</p>
 <ul>
 <li><p><a class="reference internal" href="../api/gdalwarp_cpp.html#_CPPv4N15GDALWarpOptions17dfWarpMemoryLimitE" title="GDALWarpOptions::dfWarpMemoryLimit"><code class="xref cpp cpp-member docutils literal notranslate"><span class="pre">GDALWarpOptions::dfWarpMemoryLimit</span></code></a> - Set the maximum amount of memory to be used by the GDALWarpOperation when selecting a size of image chunk to operate on. The value is in bytes, and the default is likely to be conservative (small). Increasing the chunk size can help substantially in some situations but care should be taken to ensure that this size, plus the GDAL cache size plus the working set of GDAL, your application and the operating system are less than the size of RAM or else excessive swapping is likely to interfere with performance. On a system with 256MB of RAM, a value of at least 64MB (roughly 64000000 bytes) is reasonable. Note that this value does not include the memory used by GDAL for low level block caching.</p></li>
 <li><p><a class="reference internal" href="../api/gdalwarp_cpp.html#_CPPv4N15GDALWarpOptions12eResampleAlgE" title="GDALWarpOptions::eResampleAlg"><code class="xref cpp cpp-member docutils literal notranslate"><span class="pre">GDALWarpOptions::eResampleAlg</span></code></a> - One of GRA_NearestNeighbour (the default, and fastest), GRA_Bilinear (2x2 bilinear resampling) or GRA_Cubic. The GRA_NearestNeighbour type should generally be used for thematic or color mapped images. The other resampling types may give better results for thematic images, especially when substantially changing resolution.</p></li>
@@ -226,16 +226,16 @@
 <li><p><a class="reference internal" href="../api/gdalwarp_cpp.html#_CPPv4N15GDALWarpOptions16papszWarpOptionsE" title="GDALWarpOptions::papszWarpOptions"><code class="xref cpp cpp-member docutils literal notranslate"><span class="pre">GDALWarpOptions::papszWarpOptions</span></code></a> - This is a string list of NAME=VALUE options passed to the warper. See the <a class="reference internal" href="../api/gdalwarp_cpp.html#_CPPv4N15GDALWarpOptions16papszWarpOptionsE" title="GDALWarpOptions::papszWarpOptions"><code class="xref cpp cpp-member docutils literal notranslate"><span class="pre">GDALWarpOptions::papszWarpOptions</span></code></a> docs for all options. Supported values include:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>INIT_DEST=[value] or INIT_DEST=NO_DATA: This option forces the destination image to be initialized to the indicated value (for all bands) or indicates that it should be initialized to the NO_DATA value in padfDstNoDataReal/padfDstNoDataImag. If this value isn't set the destination image will be read and the source warp overlaid on it.</p></li>
-<li><p>WRITE_FLUSH=YES/NO: This option forces a flush to disk of data after each chunk is processed. In some cases this helps ensure a serial writing of the output data otherwise a block of data may be written to disk each time a block of data is read for the input buffer resulting in a lot of extra seeking around the disk, and reduced IO throughput. The default at this time is NO.</p></li>
+<li><p>INIT_DEST=[value] または INIT_DEST=NO_DATA: このオプションは,宛先画像を指定された値 (すべてのバンドに対して) で初期化するか, padfDstNoDataReal/padfDstNoDataImag の NO_DATA 値で初期化することを示します. この値が設定されていない場合,宛先画像は読み込まれ,ソースワープが重ねられます.</p></li>
+<li><p>WRITE_FLUSH=YES/NO: このオプションは,各チャンクが処理された後にデータをディスクにフラッシュすることを強制します. いくつかの場合,これにより,出力データの直列書き込みが確実になります. そうでない場合,入力バッファのためにデータのブロックが読み込まれるたびにデータのブロックがディスクに書き込まれ,ディスクの周りを多くの余分なシークし,IO スループットが低下します. この時点でのデフォルトは NO です.</p></li>
 </ul>
 </div></blockquote>
 </li>
 </ul>
 </section>
 <section id="creating-the-output-file">
-<h2>Creating the Output File<a class="headerlink" href="#creating-the-output-file" title="Link to this heading"></a></h2>
-<p>In the previous case an appropriate output file was already assumed to exist. Now we will go through a case where a new file with appropriate bounds in a new coordinate system is created. This operation doesn't relate specifically to the warp API. It is just using the transformation API.</p>
+<h2>出力ファイルの作成<a class="headerlink" href="#creating-the-output-file" title="Link to this heading"></a></h2>
+<p>前のケースでは,適切な出力ファイルが既に存在すると仮定されていました. ここでは,新しい座標系の適切な境界を持つ新しいファイルが作成されるケースを説明します. この操作は,ワープ API に特に関連していません. これは単に変換 API を使用しています.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;gdalwarper.h&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;ogr_spatialref.h&quot;</span>
 <span class="p">...</span>
@@ -303,21 +303,21 @@
 <span class="p">...</span><span class="w"> </span><span class="n">proceed</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">warp</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">before</span><span class="w"> </span><span class="p">...</span>
 </pre></div>
 </div>
-<p>Some notes on this logic:</p>
+<p>このロジックに関するいくつかの注意:</p>
 <ul class="simple">
-<li><p>We need to create the transformer to output coordinates such that the output of the transformer is georeferenced, not pixel line coordinates since we use the transformer to map pixels around the source image into destination georeferenced coordinates.</p></li>
+<li><p>出力座標がピクセル行座標ではなく,ジオリファレンスされた出力であるように出力座標を作成する必要があります. なぜなら,ソース画像の周りのピクセルを宛先ジオリファレンス座標にマッピングするために変換器を使用するからです.</p></li>
 <li><p>The <a class="reference internal" href="../api/gdal_alg.html#_CPPv423GDALSuggestedWarpOutput12GDALDatasetH19GDALTransformerFuncPvPdPiPi" title="GDALSuggestedWarpOutput"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALSuggestedWarpOutput()</span></code></a> function will return an adfDstGeoTransform, nPixels and nLines that describes an output image size and georeferenced extents that should hold all pixels from the source image. The resolution is intended to be comparable to the source, but the output pixels are always square regardless of the shape of input pixels.</p></li>
-<li><p>The warper requires an output file in a format that can be &quot;randomly&quot; written to. This generally limits things to uncompressed formats that have an implementation of the Create() method (as opposed to CreateCopy()). To warp to compressed formats, or CreateCopy() style formats it is necessary to produce a full temporary copy of the image in a better behaved format, and then CreateCopy() it to the desired final format.</p></li>
-<li><p>The Warp API copies only pixels. All color maps, georeferencing and other metadata must be copied to the destination by the application.</p></li>
+<li><p>ワーパーは,&quot;ランダム&quot;に書き込むことができる形式の出力ファイルを必要とします. これは,通常,Create() メソッドの実装を持つ非圧縮形式に制限されます (CreateCopy() とは対照的). 圧縮形式にワープするか,CreateCopy() スタイルの形式にワープするには,より適切な形式で画像の完全な一時コピーを作成し,それを望ましい最終形式に CreateCopy() する必要があります.</p></li>
+<li><p>Warp API は,ピクセルのみをコピーします. すべてのカラーマップ,ジオリファレンシング,およびその他のメタデータは,アプリケーションによって宛先にコピーする必要があります.</p></li>
 </ul>
 </section>
 <section id="performance-optimization">
-<h2>Performance Optimization<a class="headerlink" href="#performance-optimization" title="Link to this heading"></a></h2>
-<p>There are a number of things that can be done to optimize the performance of the warp API:</p>
+<h2>パフォーマンスの最適化<a class="headerlink" href="#performance-optimization" title="Link to this heading"></a></h2>
+<p>ワープ API のパフォーマンスを最適化するために行うことができるいくつかのことがあります:</p>
 <ul class="simple">
-<li><p>Increase the amount of memory available for the Warp API chunking so that larger chunks can be operated on at a time. This is the <a class="reference internal" href="../api/gdalwarp_cpp.html#_CPPv4N15GDALWarpOptions17dfWarpMemoryLimitE" title="GDALWarpOptions::dfWarpMemoryLimit"><code class="xref cpp cpp-member docutils literal notranslate"><span class="pre">GDALWarpOptions::dfWarpMemoryLimit</span></code></a> parameter. In theory the larger the chunk size operated on the more efficient the I/O strategy, and the more efficient the approximated transformation will be. However, the sum of the warp memory and the GDAL cache should be less than RAM size, likely around 2/3 of RAM size.</p></li>
-<li><p>Increase the amount of memory for GDAL caching. This is especially important when working with very large input and output images that are scanline oriented. If all the input or output scanlines have to be re-read for each chunk they intersect performance may degrade greatly. Use <a class="reference internal" href="../api/raster_c_api.html#_CPPv415GDALSetCacheMaxi" title="GDALSetCacheMax"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALSetCacheMax()</span></code></a> to control the amount of memory available for caching within GDAL.</p></li>
-<li><p>Use an approximated transformation instead of exact reprojection for each pixel to be transformed. This code illustrates how an approximated transformation could be created based on a reprojection transformation, but with a given error threshold (dfErrorThreshold in output pixels).</p></li>
+<li><p>ワープ API チャンキングに使用可能なメモリ量を増やして,一度により大きなチャンクで操作できるようにします. これは <a class="reference internal" href="../api/gdalwarp_cpp.html#_CPPv4N15GDALWarpOptions17dfWarpMemoryLimitE" title="GDALWarpOptions::dfWarpMemoryLimit"><code class="xref cpp cpp-member docutils literal notranslate"><span class="pre">GDALWarpOptions::dfWarpMemoryLimit</span></code></a> パラメータです. 理論的には,操作されるチャンクサイズが大きいほど,より効率的な I/O 戦略と,より効率的な近似変換になります. ただし,ワープメモリと GDAL キャッシュの合計は RAM サイズよりも小さくなければならず,おそらく RAM サイズの 2/3 ほどでしょう.</p></li>
+<li><p>GDAL キャッシュのメモリ量を増やします. これは,非常に大きな入力および出力画像をスキャンライン指向で処理する場合に特に重要です. 入力または出力のすべてのスキャンラインが各チャンクで交差するたびに再読み込みされる場合,パフォーマンスが大幅に低下する可能性があります. GDAL 内で使用可能なキャッシュのメモリ量を制御するには, <a class="reference internal" href="../api/raster_c_api.html#_CPPv415GDALSetCacheMaxi" title="GDALSetCacheMax"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALSetCacheMax()</span></code></a> を使用します.</p></li>
+<li><p>変換される各ピクセルの正確な再投影の代わりに近似変換を使用します. このコードは,再投影変換に基づいて近似変換が作成される方法を示していますが,指定された誤差しきい値 (出力ピクセルの dfErrorThreshold) で行います.</p></li>
 </ul>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">hTransformArg</span><span class="w"> </span><span class="o">=</span>
 <span class="w">    </span><span class="n">GDALCreateApproxTransformer</span><span class="p">(</span><span class="w"> </span><span class="n">GDALGenImgProjTransform</span><span class="p">,</span>
@@ -326,17 +326,17 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>When writing to a blank output file, use the INIT_DEST option in the <a class="reference internal" href="../api/gdalwarp_cpp.html#_CPPv4N15GDALWarpOptions16papszWarpOptionsE" title="GDALWarpOptions::papszWarpOptions"><code class="xref cpp cpp-member docutils literal notranslate"><span class="pre">GDALWarpOptions::papszWarpOptions</span></code></a> to cause the output chunks to be initialized to a fixed value, instead of being read from the output. This can substantially reduce unnecessary IO work.</p></li>
-<li><p>Use tiled input and output formats. Tiled formats allow a given chunk of source and destination imagery to be accessed without having to touch a great deal of extra image data. Large scanline oriented files can result in a great deal of wasted extra IO.</p></li>
-<li><p>Process all bands in one call. This ensures the transformation calculations don't have to be performed for each band.</p></li>
+<li><p>空の出力ファイルに書き込む場合,出力チャンクを固定値で初期化するために, <a class="reference internal" href="../api/gdalwarp_cpp.html#_CPPv4N15GDALWarpOptions16papszWarpOptionsE" title="GDALWarpOptions::papszWarpOptions"><code class="xref cpp cpp-member docutils literal notranslate"><span class="pre">GDALWarpOptions::papszWarpOptions</span></code></a> の INIT_DEST オプションを使用します. これにより,不要な IO 処理が大幅に削減される可能性があります.</p></li>
+<li><p>タイル形式の入力および出力形式を使用します. タイル形式を使用すると,追加の画像データに触れることなく,指定されたソースおよび宛先画像のチャンクにアクセスできます. 大きなスキャンライン指向のファイルは,多くの余分な IO が発生する可能性があります.</p></li>
+<li><p>すべてのバンドを 1 回の呼び出しで処理します. これにより,変換計算が各バンドごとに実行される必要がなくなります.</p></li>
 <li><p>Use the <a class="reference internal" href="../api/gdalwarp_cpp.html#_CPPv4N17GDALWarpOperation17ChunkAndWarpMultiEiiii" title="GDALWarpOperation::ChunkAndWarpMulti"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALWarpOperation::ChunkAndWarpMulti()</span></code></a> method instead of <a class="reference internal" href="../api/gdalwarp_cpp.html#_CPPv4N17GDALWarpOperation17ChunkAndWarpImageEiiii" title="GDALWarpOperation::ChunkAndWarpImage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALWarpOperation::ChunkAndWarpImage()</span></code></a>. It uses a separate thread for the IO and the actual image warp operation allowing more effective use of CPU and IO bandwidth. For this to work GDAL needs to have been built with multi-threading support (default on Win32, default on Unix, for previous versions -with-threads was required in configure).</p></li>
-<li><p>The resampling kernels vary in work required from nearest neighbour being least complex, to more complex with bilinear and then cubic. Don't use a more complex resampling kernel than needed.</p></li>
-<li><p>Avoid use of esoteric masking options so that special simplified logic case be used for common special cases. For instance, nearest neighbour resampling with no masking on 8bit data is highly optimized compared to the general case.</p></li>
+<li><p>リサンプリングカーネルは,最も単純な最近傍補間から始まり,バイリニアおよび立方体でより複雑になります. 必要以上に複雑なリサンプリングカーネルを使用しないでください.</p></li>
+<li><p>一般的な特殊ケースに対して特別な簡略化されたロジックケースが使用されるように,エソテリックなマスキングオプションの使用を避けます. たとえば,8bit データでマスキングなしの最近傍補間は,一般的なケースと比較して高度に最適化されています.</p></li>
 </ul>
 </section>
 <section id="other-masking-options">
-<h2>Other Masking Options<a class="headerlink" href="#other-masking-options" title="Link to this heading"></a></h2>
-<p>The GDALWarpOptions include a bunch of esoteric masking capabilities, for validity masks, and density masks on input and output. Some of these are not yet implemented and others are implemented but poorly tested. Other than per-band validity masks it is advised that these features be used with caution at this time.</p>
+<h2>その他のマスキングオプション<a class="headerlink" href="#other-masking-options" title="Link to this heading"></a></h2>
+<p>GDALWarpOptions には,入力および出力の有効性マスクおよび密度マスクのためのエソテリックなマスキング機能がいくつか含まれています. これらのうちいくつかはまだ実装されておらず,他のいくつかは実装されていますが,不十分にテストされています.バンドごとの有効性マスク以外の機能は,現時点ではこれらの機能を慎重に使用することが推奨されます.</p>
 </section>
 </section>
 
@@ -350,7 +350,7 @@
         <a href="gdal_grid_tut.html" class="btn btn-neutral float-right" title="GDAL Grid Tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="raster_driver_tut.html" class="btn btn-neutral float-left" title="Raster driver implementation tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="raster_driver_tut.html" class="btn btn-neutral float-left" title="ラスタードライバー実装チュートリアル" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

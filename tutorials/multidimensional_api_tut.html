@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Multidimensional raster API tutorial &mdash; GDAL  ドキュメント</title>
+  <title>多次元ラスタAPIチュートリアル &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
       <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
 
@@ -26,7 +26,7 @@
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="ベクターAPIチュートリアル" href="vector_api_tut.html" />
-    <link rel="prev" title="Geotransform Tutorial" href="geotransforms_tut.html" /> 
+    <link rel="prev" title="地理変換チュートリアル" href="geotransforms_tut.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -59,9 +59,9 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">チュートリアル</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="index.html#raster">ラスター</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html#multidimensional-raster">多次元ラスター</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Multidimensional raster API tutorial</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#read-the-content-of-an-array">Read the content of an array</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#other-examples">Other examples</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">多次元ラスタAPIチュートリアル</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#read-the-content-of-an-array">配列の内容を読む</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#other-examples">その他の例</a></li>
 </ul>
 </li>
 </ul>
@@ -114,7 +114,7 @@
       
           <li><a href="index.html">チュートリアル</a> &raquo;</li>
       
-      <li>Multidimensional raster API tutorial</li>
+      <li>多次元ラスタAPIチュートリアル</li>
     
 
     
@@ -136,7 +136,7 @@
         <a href="vector_api_tut.html" class="btn btn-neutral float-right" title="ベクターAPIチュートリアル" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="geotransforms_tut.html" class="btn btn-neutral float-left" title="Geotransform Tutorial" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="geotransforms_tut.html" class="btn btn-neutral float-left" title="地理変換チュートリアル" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -146,11 +146,11 @@
            <div itemprop="articleBody">
              
   <section id="multidimensional-raster-api-tutorial">
-<span id="multidimensional-api-tut"></span><h1>Multidimensional raster API tutorial<a class="headerlink" href="#multidimensional-raster-api-tutorial" title="Link to this heading"></a></h1>
+<span id="multidimensional-api-tut"></span><h1>多次元ラスタAPIチュートリアル<a class="headerlink" href="#multidimensional-raster-api-tutorial" title="Link to this heading"></a></h1>
 <section id="read-the-content-of-an-array">
-<h2>Read the content of an array<a class="headerlink" href="#read-the-content-of-an-array" title="Link to this heading"></a></h2>
+<h2>配列の内容を読む<a class="headerlink" href="#read-the-content-of-an-array" title="Link to this heading"></a></h2>
 <section id="in-c">
-<h3>In C++<a class="headerlink" href="#in-c" title="Link to this heading"></a></h3>
+<h3>C++の場合<a class="headerlink" href="#in-c" title="Link to this heading"></a></h3>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;gdal_priv.h&quot;</span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
 <span class="p">{</span>
@@ -191,7 +191,7 @@
 </div>
 </section>
 <section id="id1">
-<h3>In C<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<h3>Cの場合<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;gdal.h&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;cpl_conv.h&quot;</span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
@@ -268,7 +268,7 @@
 </div>
 </section>
 <section id="in-python">
-<h3>In Python<a class="headerlink" href="#in-python" title="Link to this heading"></a></h3>
+<h3>Pythonの場合<a class="headerlink" href="#in-python" title="Link to this heading"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">gdal</span>
 <span class="n">ds</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">OpenEx</span><span class="p">(</span><span class="s2">&quot;in.nc&quot;</span><span class="p">,</span> <span class="n">gdal</span><span class="o">.</span><span class="n">OF_MULTIDIM_RASTER</span><span class="p">)</span>
 <span class="n">rootGroup</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">GetRootGroup</span><span class="p">()</span>
@@ -276,7 +276,7 @@
 <span class="n">data</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">Read</span><span class="p">(</span><span class="n">buffer_datatype</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">ExtendedDataType</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span><span class="n">gdal</span><span class="o">.</span><span class="n">GDT_Float64</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>If NumPy is available:</p>
+<p>NumPyが利用可能な場合:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">gdal</span>
 <span class="n">ds</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">OpenEx</span><span class="p">(</span><span class="s2">&quot;in.nc&quot;</span><span class="p">,</span> <span class="n">gdal</span><span class="o">.</span><span class="n">OF_MULTIDIM_RASTER</span><span class="p">)</span>
 <span class="n">rootGroup</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">GetRootGroup</span><span class="p">()</span>
@@ -287,16 +287,16 @@
 </section>
 </section>
 <section id="other-examples">
-<h2>Other examples<a class="headerlink" href="#other-examples" title="Link to this heading"></a></h2>
-<p>Test scripts from the GDAL autotest suite</p>
+<h2>その他の例<a class="headerlink" href="#other-examples" title="Link to this heading"></a></h2>
+<p>GDALの自動テストスイートからのテストスクリプト</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><a class="reference internal" href="../drivers/raster/mem.html#raster-mem"><span class="std std-ref">MEM</span></a> driver: <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/autotest/gdrivers/memmultidim.py">memmultidim.py</a></p></li>
-<li><p><a class="reference internal" href="../drivers/raster/netcdf.html#raster-netcdf"><span class="std std-ref">netCDF</span></a> driver: <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/autotest/gdrivers/netcdf_multidim.py">netcdf_multidim.py</a></p></li>
-<li><p><a class="reference internal" href="../drivers/raster/hdf5.html#raster-hdf5"><span class="std std-ref">HDF5</span></a> driver: <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/autotest/gdrivers/hdf5multidim.py">hdf5multidim.py</a></p></li>
-<li><p><a class="reference internal" href="../drivers/raster/vrt.html#raster-vrt"><span class="std std-ref">VRT</span></a> driver: <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/autotest/gdrivers/vrtmultidim.py">vrtmultidim.py</a></p></li>
-<li><p><a class="reference internal" href="../programs/gdalmdiminfo.html#gdalmdiminfo"><span class="std std-ref">gdalmdiminfo</span></a> tests: <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/autotest/utilities/test_gdalmdiminfo_lib.py">test_gdalmdiminfo_lib.py</a></p></li>
-<li><p><a class="reference internal" href="../programs/gdalmdimtranslate.html#gdalmdimtranslate"><span class="std std-ref">gdalmdimtranslate</span></a> tests: <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/autotest/utilities/test_gdalmdimtranslate_lib.py">test_gdalmdimtranslate_lib.py</a></p></li>
+<li><p><a class="reference internal" href="../drivers/raster/mem.html#raster-mem"><span class="std std-ref">MEM</span></a> ドライバ: <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/autotest/gdrivers/memmultidim.py">memmultidim.py</a></p></li>
+<li><p><a class="reference internal" href="../drivers/raster/netcdf.html#raster-netcdf"><span class="std std-ref">netCDF</span></a> ドライバ: <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/autotest/gdrivers/netcdf_multidim.py">netcdf_multidim.py</a></p></li>
+<li><p><a class="reference internal" href="../drivers/raster/hdf5.html#raster-hdf5"><span class="std std-ref">HDF5</span></a> ドライバ: <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/autotest/gdrivers/hdf5multidim.py">hdf5multidim.py</a></p></li>
+<li><p><a class="reference internal" href="../drivers/raster/vrt.html#raster-vrt"><span class="std std-ref">VRT</span></a> ドライバ: <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/autotest/gdrivers/vrtmultidim.py">vrtmultidim.py</a></p></li>
+<li><p><a class="reference internal" href="../programs/gdalmdiminfo.html#gdalmdiminfo"><span class="std std-ref">gdalmdiminfo</span></a> テスト: <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/autotest/utilities/test_gdalmdiminfo_lib.py">test_gdalmdiminfo_lib.py</a></p></li>
+<li><p><a class="reference internal" href="../programs/gdalmdimtranslate.html#gdalmdimtranslate"><span class="std std-ref">gdalmdimtranslate</span></a> テスト: <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/autotest/utilities/test_gdalmdimtranslate_lib.py">test_gdalmdimtranslate_lib.py</a></p></li>
 </ul>
 </div></blockquote>
 </section>
@@ -312,7 +312,7 @@
         <a href="vector_api_tut.html" class="btn btn-neutral float-right" title="ベクターAPIチュートリアル" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="geotransforms_tut.html" class="btn btn-neutral float-left" title="Geotransform Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="geotransforms_tut.html" class="btn btn-neutral float-left" title="地理変換チュートリアル" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

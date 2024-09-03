@@ -26,7 +26,7 @@
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="ベクタードライバー実装チュートリアル" href="vector_driver_tut.html" />
-    <link rel="prev" title="Multidimensional raster API tutorial" href="multidimensional_api_tut.html" /> 
+    <link rel="prev" title="多次元ラスタAPIチュートリアル" href="multidimensional_api_tut.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -61,10 +61,10 @@
 <li class="toctree-l2"><a class="reference internal" href="index.html#multidimensional-raster">多次元ラスター</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html#vector">ベクター</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">ベクターAPIチュートリアル</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#reading-from-ogr">Reading From OGR</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#reading-from-ogr-using-the-arrow-c-stream-data-interface">Reading From OGR using the Arrow C Stream data interface</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#writing-to-ogr">Writing To OGR</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#writing-to-ogr-using-the-arrow-c-data-interface">Writing to OGR using the Arrow C Data interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reading-from-ogr">OGRからの読み込み</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reading-from-ogr-using-the-arrow-c-stream-data-interface">Arrow C Streamデータインターフェースを使用してOGRから読み込む</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#writing-to-ogr">OGRへの書き込み</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#writing-to-ogr-using-the-arrow-c-data-interface">Arrow Cデータインターフェースを使用してOGRに書き込む</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="vector_driver_tut.html">ベクタードライバー実装チュートリアル</a></li>
@@ -140,7 +140,7 @@
         <a href="vector_driver_tut.html" class="btn btn-neutral float-right" title="ベクタードライバー実装チュートリアル" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="multidimensional_api_tut.html" class="btn btn-neutral float-left" title="Multidimensional raster API tutorial" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="multidimensional_api_tut.html" class="btn btn-neutral float-left" title="多次元ラスタAPIチュートリアル" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -151,20 +151,13 @@
              
   <section id="vector-api-tutorial">
 <span id="vector-api-tut"></span><h1>ベクターAPIチュートリアル<a class="headerlink" href="#vector-api-tutorial" title="Link to this heading"></a></h1>
-<p>This document is intended to document using the OGR C++ classes to read
-and write data from a file.  It is strongly advised that the reader first
-review the <a class="reference internal" href="../user/vector_data_model.html#vector-data-model"><span class="std std-ref">ベクターデーターモデル</span></a> document describing
-the key classes and their roles in OGR.</p>
-<p>It also includes code snippets for the corresponding functions in C and Python.</p>
+<p>このドキュメントは、OGR C++クラスを使用してファイルからデータを読み書きする方法について説明することを目的としています.OGRの主要なクラスとその役割について説明した <a class="reference internal" href="../user/vector_data_model.html#vector-data-model"><span class="std std-ref">ベクターデーターモデル</span></a> ドキュメントを最初に読むことを強くお勧めします.</p>
+<p>また、それに対応するCおよびPythonの関数のコードスニペットも含まれています.</p>
 <section id="reading-from-ogr">
-<h2>Reading From OGR<a class="headerlink" href="#reading-from-ogr" title="Link to this heading"></a></h2>
-<p>For purposes of demonstrating reading with OGR, we will construct a small
-utility for dumping point layers from an OGR data source to stdout in
-comma-delimited format.</p>
-<p>Initially it is necessary to register all the format drivers that are desired.
-This is normally accomplished by calling <a class="reference internal" href="../api/raster_c_api.html#_CPPv415GDALAllRegisterv" title="GDALAllRegister"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALAllRegister()</span></code></a> which registers
-all format drivers built into GDAL/OGR.</p>
-<p>In C++ :</p>
+<h2>OGRからの読み込み<a class="headerlink" href="#reading-from-ogr" title="Link to this heading"></a></h2>
+<p>OGRでの読み込みをデモンストレーションするために、OGRデータソースからポイントレイヤーを標準出力にカンマ区切り形式でダンプする小さなユーティリティを構築します.</p>
+<p>最初に,必要なすべてのフォーマットドライバを登録する必要があります. これは通常、GDAL/OGRに組み込まれたすべてのフォーマットドライバを登録する <a class="reference internal" href="../api/raster_c_api.html#_CPPv415GDALAllRegisterv" title="GDALAllRegister"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALAllRegister()</span></code></a> を呼び出すことで行われます.</p>
+<p>C++の場合 :</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;ogrsf_frmts.h&quot;</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
@@ -173,7 +166,7 @@ all format drivers built into GDAL/OGR.</p>
 <span class="w">    </span><span class="n">GDALAllRegister</span><span class="p">();</span>
 </pre></div>
 </div>
-<p>In C :</p>
+<p>Cの場合 :</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;gdal.h&quot;</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
@@ -182,15 +175,8 @@ all format drivers built into GDAL/OGR.</p>
 <span class="w">    </span><span class="n">GDALAllRegister</span><span class="p">();</span>
 </pre></div>
 </div>
-<p>Next we need to open the input OGR datasource.  Datasources can be files,
-RDBMSes, directories full of files, or even remote web services depending on
-the driver being used.  However, the datasource name is always a single
-string.  In this case we are hardcoded to open a particular shapefile.
-The second argument (GDAL_OF_VECTOR) tells the <a class="reference internal" href="../api/vector_c_api.html#_CPPv47OGROpenPKciP12OGRSFDriverH" title="OGROpen"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGROpen()</span></code></a> method
-that we want a vector driver to be use and that don't require update access.
-On failure NULL is returned, and
-we report an error.</p>
-<p>In C++ :</p>
+<p>次に、入力のOGRデータソースを開く必要があります. データソースはファイル、RDBMS、ファイルでいっぱいのディレクトリ、または使用されているドライバによっては、リモートWebサービスである場合があります. ただし、データソース名は常に単一の文字列です. この場合、特定のシェープファイルを開くようにハードコードされています.2番目の引数 (GDAL_OF_VECTOR) は、<a class="reference internal" href="../api/vector_c_api.html#_CPPv47OGROpenPKciP12OGRSFDriverH" title="OGROpen"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGROpen()</span></code></a> メソッドに、ベクタードライバを使用することを指示し、更新アクセスは不要であることを示します. 失敗した場合はNULLが返され、エラーが報告されます.</p>
+<p>C++の場合 :</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">GDALDataset</span><span class="w">       </span><span class="o">*</span><span class="n">poDS</span><span class="p">;</span>
 
 <span class="n">poDS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">GDALDataset</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">GDALOpenEx</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;point.shp&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">GDAL_OF_VECTOR</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="w"> </span><span class="p">);</span>
@@ -201,7 +187,7 @@ we report an error.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>In C :</p>
+<p>Cの場合 :</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">GDALDatasetH</span><span class="w"> </span><span class="n">hDS</span><span class="p">;</span>
 
 <span class="n">hDS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GDALOpenEx</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;point.shp&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">GDAL_OF_VECTOR</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="w"> </span><span class="p">);</span>
@@ -212,41 +198,32 @@ we report an error.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>A GDALDataset can potentially have many layers associated with it.  The
-number of layers available can be queried with <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4N11GDALDataset13GetLayerCountEv" title="GDALDataset::GetLayerCount"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetLayerCount()</span></code></a>
-and individual layers fetched by index using <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4N11GDALDataset8GetLayerEi" title="GDALDataset::GetLayer"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetLayer()</span></code></a>.
-However, we will just fetch the layer by name.</p>
-<p>In C++ :</p>
+<p>GDALDatasetには,関連付けられているレイヤーが多数存在する可能性があります. 利用可能なレイヤーの数は <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4N11GDALDataset13GetLayerCountEv" title="GDALDataset::GetLayerCount"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetLayerCount()</span></code></a> で問い合わせることができ、個々のレイヤーは <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4N11GDALDataset8GetLayerEi" title="GDALDataset::GetLayer"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetLayer()</span></code></a> を使用してインデックスで取得することができます. ただし、ここではレイヤーを名前で取得します.</p>
+<p>C++の場合 :</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">OGRLayer</span><span class="w">  </span><span class="o">*</span><span class="n">poLayer</span><span class="p">;</span>
 
 <span class="n">poLayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">poDS</span><span class="o">-&gt;</span><span class="n">GetLayerByName</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;point&quot;</span><span class="w"> </span><span class="p">);</span>
 </pre></div>
 </div>
-<p>In C :</p>
+<p>Cの場合 :</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OGRLayerH</span><span class="w"> </span><span class="n">hLayer</span><span class="p">;</span>
 
 <span class="n">hLayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GDALDatasetGetLayerByName</span><span class="p">(</span><span class="w"> </span><span class="n">hDS</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;point&quot;</span><span class="w"> </span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Now we want to start reading features from the layer.  Before we start we
-could assign an attribute or spatial filter to the layer to restrict the set
-of feature we get back, but for now we are interested in getting all features.</p>
-<p>With GDAL 2.3 and C++11:</p>
+<p>次に,レイヤーから地物を読み始めたいと思います. 開始する前に,レイヤーに属性フィルタまたは空間フィルタを割り当てて,取得する地物のセットを制限することができますが,今のところはすべての地物を取得することに興味があります.</p>
+<p>GDAL 2.3とC++11を使用する場合:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="p">(</span><span class="w"> </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">poFeature</span><span class="o">:</span><span class="w"> </span><span class="n">poLayer</span><span class="w"> </span><span class="p">)</span>
 <span class="p">{</span>
 </pre></div>
 </div>
-<p>With GDAL 2.3 and C:</p>
+<p>GDAL 2.3とCを使用する場合:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OGR_FOR_EACH_FEATURE_BEGIN</span><span class="p">(</span><span class="n">hFeature</span><span class="p">,</span><span class="w"> </span><span class="n">hLayer</span><span class="p">)</span>
 <span class="p">{</span>
 </pre></div>
 </div>
-<p>If using older GDAL versions, while it isn't strictly necessary in this
-circumstance since we are starting fresh with the layer, it is often wise
-to call <a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer12ResetReadingEv" title="OGRLayer::ResetReading"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::ResetReading()</span></code></a> to ensure we are starting at the beginning of
-the layer.  We iterate through all the features in the layer using
-OGRLayer::GetNextFeature().  It will return NULL when we run out of features.</p>
-<p>With GDAL &lt; 2.3 and C++ :</p>
+<p>古いGDALバージョンを使用する場合,レイヤーを新しく開始しているため厳密には必要ではありませんが,しばしば <a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer12ResetReadingEv" title="OGRLayer::ResetReading"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::ResetReading()</span></code></a> を呼び出して,レイヤーの先頭から開始していることを確認することが賢明です. OGRLayer::GetNextFeature() を使用してレイヤー内のすべての地物を反復処理します.地物がなくなるとNULLが返されます.</p>
+<p>GDAL &lt; 2.3とC++を使用する場合:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">OGRFeature</span><span class="w"> </span><span class="o">*</span><span class="n">poFeature</span><span class="p">;</span>
 
 <span class="n">poLayer</span><span class="o">-&gt;</span><span class="n">ResetReading</span><span class="p">();</span>
@@ -254,7 +231,7 @@ OGRLayer::GetNextFeature().  It will return NULL when we run out of features.</p
 <span class="p">{</span>
 </pre></div>
 </div>
-<p>With GDAL &lt; 2.3 and C :</p>
+<p>GDAL &lt; 2.3とCを使用する場合:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OGRFeatureH</span><span class="w"> </span><span class="n">hFeature</span><span class="p">;</span>
 
 <span class="n">OGR_L_ResetReading</span><span class="p">(</span><span class="n">hLayer</span><span class="p">);</span>
@@ -262,11 +239,8 @@ OGRLayer::GetNextFeature().  It will return NULL when we run out of features.</p
 <span class="p">{</span>
 </pre></div>
 </div>
-<p>In order to dump all the attribute fields of the feature, it is helpful
-to get the <a class="reference internal" href="../api/ogrfeature_cpp.html#_CPPv414OGRFeatureDefn" title="OGRFeatureDefn"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRFeatureDefn</span></code></a>.  This is an object, associated with the layer,
-containing the definitions of all the fields.  We loop over all the fields,
-and fetch and report the attributes based on their type.</p>
-<p>With GDAL 2.3 and C++11:</p>
+<p>地物のすべての属性フィールドをダンプするためには, <a class="reference internal" href="../api/ogrfeature_cpp.html#_CPPv414OGRFeatureDefn" title="OGRFeatureDefn"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRFeatureDefn</span></code></a> を取得すると便利です.これは,レイヤーに関連付けられたオブジェクトで,すべてのフィールドの定義を含んでいます. すべてのフィールドを反復処理し,そのタイプに基づいて属性を取得して報告します.</p>
+<p>GDAL 2.3とC++11を使用する場合:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="p">(</span><span class="w"> </span><span class="k">auto</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">oField</span><span class="o">:</span><span class="w"> </span><span class="o">*</span><span class="n">poFeature</span><span class="w"> </span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">oField</span><span class="p">.</span><span class="n">IsUnset</span><span class="p">()</span><span class="w"> </span><span class="p">)</span>
@@ -304,7 +278,7 @@ and fetch and report the attributes based on their type.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>With GDAL &lt; 2.3 and C++ :</p>
+<p>GDAL &lt; 2.3とC++を使用する場合:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OGRFeatureDefn</span><span class="w"> </span><span class="o">*</span><span class="n">poFDefn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">poLayer</span><span class="o">-&gt;</span><span class="n">GetLayerDefn</span><span class="p">();</span>
 <span class="k">for</span><span class="p">(</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">iField</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">iField</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">poFDefn</span><span class="o">-&gt;</span><span class="n">GetFieldCount</span><span class="p">();</span><span class="w"> </span><span class="n">iField</span><span class="o">++</span><span class="w"> </span><span class="p">)</span>
 <span class="p">{</span>
@@ -341,7 +315,7 @@ and fetch and report the attributes based on their type.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>In C :</p>
+<p>Cの場合 :</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OGRFeatureDefnH</span><span class="w"> </span><span class="n">hFDefn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OGR_L_GetLayerDefn</span><span class="p">(</span><span class="n">hLayer</span><span class="p">);</span>
 <span class="kt">int</span><span class="w"> </span><span class="n">iField</span><span class="p">;</span>
 
@@ -381,16 +355,9 @@ and fetch and report the attributes based on their type.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>There are a few more field types than those explicitly handled above, but
-a reasonable representation of them can be fetched with the
-<a class="reference internal" href="../api/ogrfeature_cpp.html#_CPPv4NK10OGRFeature16GetFieldAsStringEi" title="OGRFeature::GetFieldAsString"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeature::GetFieldAsString()</span></code></a> method.  In fact we could shorten the above
-by using GetFieldAsString() for all the types.</p>
-<p>Next we want to extract the geometry from the feature, and write out the point
-geometry x and y.   Geometries are returned as a generic <a class="reference internal" href="../api/ogrgeometry_cpp.html#_CPPv411OGRGeometry" title="OGRGeometry"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRGeometry</span></code></a> pointer.
-We then determine the specific geometry type, and if it is a point, we
-cast it to point and operate on it.  If it is something else we write
-placeholders.</p>
-<p>In C++ :</p>
+<p>上記で明示的に処理されているフィールドタイプ以外にもいくつかのフィールドタイプがありますが, <a class="reference internal" href="../api/ogrfeature_cpp.html#_CPPv4NK10OGRFeature16GetFieldAsStringEi" title="OGRFeature::GetFieldAsString"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeature::GetFieldAsString()</span></code></a> メソッドを使用してそれらの合理的な表現を取得することができます.実際,GetFieldAsString() をすべてのタイプに使用して上記を短縮することができます.</p>
+<p>次に,地物からジオメトリを抽出し,ポイントジオメトリのxとyを書き出します. ジオメトリは一般的な <a class="reference internal" href="../api/ogrgeometry_cpp.html#_CPPv411OGRGeometry" title="OGRGeometry"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRGeometry</span></code></a> ポインタとして返されます. 次に,特定のジオメトリタイプを決定し,ポイントである場合はポイントにキャストして操作します. それ以外の場合はプレースホルダを書き込みます.</p>
+<p>C++の場合 :</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">OGRGeometry</span><span class="w"> </span><span class="o">*</span><span class="n">poGeometry</span><span class="p">;</span>
 
 <span class="n">poGeometry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">poFeature</span><span class="o">-&gt;</span><span class="n">GetGeometryRef</span><span class="p">();</span>
@@ -411,7 +378,7 @@ placeholders.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>In C :</p>
+<p>Cの場合 :</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OGRGeometryH</span><span class="w"> </span><span class="n">hGeometry</span><span class="p">;</span>
 
 <span class="n">hGeometry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OGR_F_GetGeometryRef</span><span class="p">(</span><span class="n">hFeature</span><span class="p">);</span>
@@ -426,13 +393,9 @@ placeholders.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">wkbFlatten()</span></code> macro is used above to convert the type for a wkbPoint25D
-(a point with a z coordinate) into the base 2D geometry type code (wkbPoint).
-For each 2D geometry type there is a corresponding 2.5D type code.  The 2D
-and 2.5D geometry cases are handled by the same C++ class, so our code will
-handle 2D or 3D cases properly.</p>
-<p>Several geometry fields can be associated to a feature.</p>
-<p>In C++ :</p>
+<p>上記で <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">wkbFlatten()</span></code> マクロを使用して, wkbPoint25D (z座標を持つポイント) のタイプを基本の2Dジオメトリタイプコード (wkbPoint) に変換します. 各2Dジオメトリタイプには対応する2.5Dタイプコードがあります.2Dおよび2.5Dジオメトリケースは同じC++クラスで処理されるため,コードは2Dまたは3Dケースを適切に処理します.</p>
+<p>複数のジオメトリフィールドを地物に関連付けることができます.</p>
+<p>C++の場合 :</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">OGRGeometry</span><span class="w"> </span><span class="o">*</span><span class="n">poGeometry</span><span class="p">;</span>
 <span class="kt">int</span><span class="w"> </span><span class="n">iGeomField</span><span class="p">;</span>
 <span class="kt">int</span><span class="w"> </span><span class="n">nGeomFieldCount</span><span class="p">;</span>
@@ -459,7 +422,7 @@ handle 2D or 3D cases properly.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>In C :</p>
+<p>Cの場合 :</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OGRGeometryH</span><span class="w"> </span><span class="n">hGeometry</span><span class="p">;</span>
 <span class="kt">int</span><span class="w"> </span><span class="n">iGeomField</span><span class="p">;</span>
 <span class="kt">int</span><span class="w"> </span><span class="n">nGeomFieldCount</span><span class="p">;</span>
@@ -481,7 +444,7 @@ handle 2D or 3D cases properly.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>In Python:</p>
+<p>Pythonの場合:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">nGeomFieldCount</span> <span class="o">=</span> <span class="n">feat</span><span class="o">.</span><span class="n">GetGeomFieldCount</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">iGeomField</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nGeomFieldCount</span><span class="p">):</span>
     <span class="n">geom</span> <span class="o">=</span> <span class="n">feat</span><span class="o">.</span><span class="n">GetGeomFieldRef</span><span class="p">(</span><span class="n">iGeomField</span><span class="p">)</span>
@@ -491,49 +454,35 @@ handle 2D or 3D cases properly.</p>
         <span class="nb">print</span> <span class="s2">&quot;no point geometry</span><span class="se">\n</span><span class="s2">&quot;</span>
 </pre></div>
 </div>
-<p>Note that <a class="reference internal" href="../api/ogrfeature_cpp.html#_CPPv4N10OGRFeature14GetGeometryRefEv" title="OGRFeature::GetGeometryRef"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeature::GetGeometryRef()</span></code></a> and <a class="reference internal" href="../api/ogrfeature_cpp.html#_CPPv4N10OGRFeature15GetGeomFieldRefEi" title="OGRFeature::GetGeomFieldRef"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeature::GetGeomFieldRef()</span></code></a>
-return a pointer to
-the internal geometry owned by the OGRFeature.  There we don't actually
-delete the return geometry.</p>
-<p>With GDAL 2.3 and C++11, the looping over features is simply terminated by
-a closing curly bracket.</p>
+<p><a class="reference internal" href="../api/ogrfeature_cpp.html#_CPPv4N10OGRFeature14GetGeometryRefEv" title="OGRFeature::GetGeometryRef"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeature::GetGeometryRef()</span></code></a> と <a class="reference internal" href="../api/ogrfeature_cpp.html#_CPPv4N10OGRFeature15GetGeomFieldRefEi" title="OGRFeature::GetGeomFieldRef"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeature::GetGeomFieldRef()</span></code></a> は, OGRFeatureが所有する内部ジオメトリへのポインタを返します. そこで,実際には返されたジオメトリを削除しません.</p>
+<p>GDAL 2.3とC++11を使用する場合,地物の反復処理は単純に閉じカーリーブラケットで終了します.</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="p">}</span>
 </pre></div>
 </div>
-<p>With GDAL 2.3 and C, the looping over features is simply terminated by
-the following.</p>
+<p>GDAL 2.3とCを使用する場合,地物の反復処理は単純に以下で終了します.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">}</span>
 <span class="n">OGR_FOR_EACH_FEATURE_END</span><span class="p">(</span><span class="n">hFeature</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>For GDAL &lt; 2.3, as the <a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer14GetNextFeatureEv" title="OGRLayer::GetNextFeature"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::GetNextFeature()</span></code></a> method
-returns a copy of the feature that is now owned by us.  So at the end of
-use we must free the feature.  We could just &quot;delete&quot; it, but this can cause
-problems in windows builds where the GDAL DLL has a different &quot;heap&quot; from the
-main program.  To be on the safe side we use a GDAL function to delete the
-feature.</p>
-<p>In C++ :</p>
+<p>GDAL &lt; 2.3の場合, <a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer14GetNextFeatureEv" title="OGRLayer::GetNextFeature"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::GetNextFeature()</span></code></a> メソッドは,現在所有している地物のコピーを返します.そのため,使用の最後に地物を解放する必要があります. 単に &quot;delete&quot; することもできますが,これはGDAL DLLがメインプログラムと異なる &quot;ヒープ&quot; を持つWindowsビルドで問題を引き起こす可能性があります. 安全を期すために,GDAL関数を使用して地物を削除します.</p>
+<p>C++の場合 :</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="n">OGRFeature</span><span class="o">::</span><span class="n">DestroyFeature</span><span class="p">(</span><span class="w"> </span><span class="n">poFeature</span><span class="w"> </span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>In C :</p>
+<p>Cの場合 :</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="n">OGR_F_Destroy</span><span class="p">(</span><span class="w"> </span><span class="n">hFeature</span><span class="w"> </span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The OGRLayer returned by <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4N11GDALDataset14GetLayerByNameEPKc" title="GDALDataset::GetLayerByName"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetLayerByName()</span></code></a> is also a reference
-to an internal layer owned by the GDALDataset so we don't need to delete
-it.  But we do need to delete the datasource in order to close the input file.
-Once again we do this with a custom delete method to avoid special win32
-heap issues.</p>
-<p>In C/C++ :</p>
+<p><a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv4N11GDALDataset14GetLayerByNameEPKc" title="GDALDataset::GetLayerByName"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDataset::GetLayerByName()</span></code></a> で返されるOGRLayerも,GDALDatasetが所有する内部レイヤーへの参照です.そのため,削除する必要はありません. ただし,入力ファイルを閉じるためにデータソースを削除する必要があります.再び,特別なwin32ヒープの問題を回避するために,これをカスタム削除メソッドで行います.</p>
+<p>C/C++の場合 :</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="n">GDALClose</span><span class="p">(</span><span class="w"> </span><span class="n">poDS</span><span class="w"> </span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>All together our program looks like this.</p>
-<p>With GDAL 2.3 and C++11 :</p>
+<p>すべてのプログラムは次のようになります.</p>
+<p>GDAL 2.3とC++11を使用する場合 :</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;ogrsf_frmts.h&quot;</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
@@ -606,7 +555,7 @@ heap issues.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>In C++ :</p>
+<p>C++の場合 :</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;ogrsf_frmts.h&quot;</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
@@ -682,7 +631,7 @@ heap issues.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>In C :</p>
+<p>Cの場合 :</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;gdal.h&quot;</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
@@ -764,7 +713,7 @@ heap issues.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>In Python:</p>
+<p>Pythonの場合:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">gdal</span>
 
@@ -805,141 +754,66 @@ heap issues.</p>
 </div>
 </section>
 <section id="reading-from-ogr-using-the-arrow-c-stream-data-interface">
-<span id="vector-api-tut-arrow-stream"></span><h2>Reading From OGR using the Arrow C Stream data interface<a class="headerlink" href="#reading-from-ogr-using-the-arrow-c-stream-data-interface" title="Link to this heading"></a></h2>
+<span id="vector-api-tut-arrow-stream"></span><h2>Arrow C Streamデータインターフェースを使用してOGRから読み込む<a class="headerlink" href="#reading-from-ogr-using-the-arrow-c-stream-data-interface" title="Link to this heading"></a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.6.</span></p>
 </div>
-<p>Instead of retrieving features one at a time, it is also possible to retrieve
-them by batches, with a column-oriented memory layout, using the
-<a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer14GetArrowStreamEP16ArrowArrayStream12CSLConstList" title="OGRLayer::GetArrowStream"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::GetArrowStream()</span></code></a> method. Note that this method is more
-difficult to use than the traditional <a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer14GetNextFeatureEv" title="OGRLayer::GetNextFeature"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::GetNextFeature()</span></code></a> approach,
-and is only advised when compatibility with the
-<a class="reference external" href="https://arrow.apache.org/docs/format/CStreamInterface.html">Apache Arrow C Stream interface</a>
-is needed, or when column-oriented consumption of layers is required.</p>
-<p>Pending using an helper library, consumption of the Arrow C Stream interface
-requires reading of the following documents:</p>
+<p>地物を1つずつ取得する代わりに,列指向のメモリレイアウトを使用してバッチで取得することも可能であり, <a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer14GetArrowStreamEP16ArrowArrayStream12CSLConstList" title="OGRLayer::GetArrowStream"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::GetArrowStream()</span></code></a> メソッドを使用します. このメソッドは,伝統的な  <a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer14GetNextFeatureEv" title="OGRLayer::GetNextFeature"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::GetNextFeature()</span></code></a> アプローチよりも使用が難しく, <a class="reference external" href="https://arrow.apache.org/docs/format/CStreamInterface.html">Apache Arrow C Stream interface</a> との互換性が必要な場合や,レイヤーの列指向の利用が必要な場合にのみ推奨されます.</p>
+<p>ヘルパーライブラリを使用するまで,Arrow C Streamインターフェースの利用には以下のドキュメントの読み取りが必要です:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://arrow.apache.org/docs/format/CStreamInterface.html">Arrow C Stream interface</a></p></li>
-<li><p><a class="reference external" href="https://arrow.apache.org/docs/format/CDataInterface.html">Arrow C data interface</a></p></li>
-<li><p><a class="reference external" href="https://arrow.apache.org/docs/format/Columnar.html">Arrow Columnar Format</a>.</p></li>
+<li><p>Arrow C Streamインターフェース &lt;<a class="reference external" href="https://arrow.apache.org/docs/format/CStreamInterface.html">https://arrow.apache.org/docs/format/CStreamInterface.html</a>&gt;`_</p></li>
+<li><p>Arrow Cデータインターフェース &lt;<a class="reference external" href="https://arrow.apache.org/docs/format/CDataInterface.html">https://arrow.apache.org/docs/format/CDataInterface.html</a>&gt;`_</p></li>
+<li><p>Arrow Columnar 形式 &lt;<a class="reference external" href="https://arrow.apache.org/docs/format/Columnar.html">https://arrow.apache.org/docs/format/Columnar.html</a>&gt;`_.</p></li>
 </ul>
-<p>The Arrow C Stream interface interface consists of a set of C structures, ArrowArrayStream, that provides
-two main callbacks to get:</p>
+<p>Arrow C Streamインターフェースは,2つの主要なコールバックを提供する一連のC構造体,ArrowArrayStreamで構成されています:</p>
 <ul class="simple">
-<li><p>a ArrowSchema with the get_schema() callback. A ArrowSchema describes a set of
-field descriptions (name, type, metadata). All OGR data types have a corresponding
-Arrow data type.</p></li>
-<li><p>a sequence of ArrowArray with the get_next() callback. A ArrowArray captures
-a set of values for a specific column/field in a subset of features.
-This is the equivalent of a
-<a class="reference external" href="https://arrow.apache.org/docs/python/pandas.html#series">Series</a> in a Pandas DataFrame.
-This is a potentially hiearchical structure that can aggregate
-sub arrays, and in OGR usage, the main array will be a StructArray which is
-the collection of OGR attribute and geometry fields.
-The layout of buffers and children arrays per data type is detailed in the
-<a class="reference external" href="https://arrow.apache.org/docs/format/Columnar.html">Arrow Columnar Format</a>.</p></li>
+<li><p>get_schema() コールバックでArrowSchemaを取得します. ArrowSchemaは,フィールドの説明 (名前,タイプ,メタデータ) のセットを記述します. すべてのOGRデータ型には対応するArrowデータ型があります.</p></li>
+<li><p>get_next() コールバックでArrowArrayのシーケンスを取得します. ArrowArrayは,特定の列/フィールドの値のセットを特定の地物のサブセットでキャプチャします. これはPandas DataFrameの <a class="reference external" href="https://arrow.apache.org/docs/python/pandas.html#series">Series</a> の相当物です. これは,サブ配列を集約できる可能性のある階層構造であり, OGRの使用では,主な配列はOGR属性およびジオメトリフィールドのコレクションであるStructArrayになります.データ型ごとのバッファと子配列のレイアウトは, <a class="reference external" href="https://arrow.apache.org/docs/format/Columnar.html">Arrow Columnar Format</a> で詳細に説明されています.</p></li>
 </ul>
-<p>If a layer consists of 4 features with 2 fields (one of integer type, one of
-floating-point type), the representation as a ArrowArray is <em>conceptually</em> the
-following one:</p>
+<p>レイヤーが2つのフィールド (1つは整数型,1つは浮動小数点型) の4つの地物で構成されている場合,ArrowArrayとしての表現は,*概念的に* 以下のようになります:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">.</span><span class="n">children</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">buffers</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">};</span>
 <span class="n">array</span><span class="p">.</span><span class="n">children</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">buffers</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mf">1.2</span><span class="p">,</span><span class="w"> </span><span class="mf">2.3</span><span class="p">,</span><span class="w"> </span><span class="mf">3.4</span><span class="p">,</span><span class="w"> </span><span class="mf">4.5</span><span class="w"> </span><span class="p">};</span>
 </pre></div>
 </div>
-<p>The content of a whole layer can be seen as a sequence of record batches, each
-record batches being an ArrowArray of a subset of features. Instead of iterating
-over individual features, one iterates over a batch of several features at
-once.</p>
-<p>The ArrowArrayStream, ArrowSchema, ArrowArray structures are defined in a
-ogr_recordbatch.h public header file, directly derived from
-<a class="reference external" href="https://github.com/apache/arrow/blob/main/cpp/src/arrow/c/abi.h">https://github.com/apache/arrow/blob/main/cpp/src/arrow/c/abi.h</a>
-to get API/ABI compatibility with Apache Arrow C++. This header file must be
-explicitly included when the related array batch API is used.</p>
-<p>The GetArrowStream() method has the following signature:</p>
+<p>レイヤー全体の内容は,各レコードバッチが地物のサブセットのArrowArrayであるレコードバッチのシーケンスとして見ることができます.個々の地物を反復処理する代わりに,一度に複数の地物のバッチを反復処理します.</p>
+<p>ArrowArrayStream, ArrowSchema, ArrowArray構造体は,API/ABI互換性をApache Arrow C++と取得するために, ogr_recordbatch.h パブリックヘッダファイルに直接派生させて定義されています. このヘッダファイルは,関連する配列バッチAPIが使用される場合に明示的に含める必要があります.</p>
+<p>GetArrowStream() メソッドのシグネチャは次のようになります:</p>
 <blockquote>
 <div><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">OGRLayer::GetArrowStream</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">ArrowArrayStream</span><span class="o">*</span><span class="w"> </span><span class="n">out_stream</span><span class="p">,</span>
 <span class="w">                                      </span><span class="n">CSLConstList</span><span class="w"> </span><span class="n">papszOptions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">);</span>
 </pre></div>
 </div>
 </div></blockquote>
-<p>It is also available in the C API as <a class="reference internal" href="../api/vector_c_api.html#_CPPv420OGR_L_GetArrowStream9OGRLayerHP16ArrowArrayStreamPPc" title="OGR_L_GetArrowStream"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGR_L_GetArrowStream()</span></code></a>.</p>
-<p>out_stream is a pointer to a ArrowArrayStream structure, that can be in a uninitialized
-state (the method will ignore any initial content).</p>
-<p>On successful return, and when the stream interfaces is no longer needed, it must must
-be freed with out_stream-&gt;release(out_stream).</p>
-<p>There are extra precautions to take into account in a OGR context. Unless
-otherwise specified by a particular driver implementation, the ArrowArrayStream
-structure, and the ArrowSchema or ArrowArray objects its callbacks have returned,
-should no longer be used (except for potentially being released) after the
-OGRLayer from which it was initialized has been destroyed (typically at dataset
-closing). Furthermore, unless otherwise specified by a particular driver
-implementation, only one ArrowArrayStream can be active at a time on
-a given layer (that is the last active one must be explicitly released before
-a next one is asked). Changing filter state, ignored columns, modifying the schema
-or using ResetReading()/GetNextFeature() while using a ArrowArrayStream is
-strongly discouraged and may lead to unexpected results. As a rule of thumb,
-no OGRLayer methods that affect the state of a layer should be called on a
-layer, while an ArrowArrayStream on it is active.</p>
-<p>The papszOptions that may be provided is a NULL terminated list of key=value
-strings, that may be driver specific.</p>
-<p>OGRLayer has a base implementation of GetArrowStream() that is such:</p>
+<p>C APIでも <a class="reference internal" href="../api/vector_c_api.html#_CPPv420OGR_L_GetArrowStream9OGRLayerHP16ArrowArrayStreamPPc" title="OGR_L_GetArrowStream"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGR_L_GetArrowStream()</span></code></a> として利用可能です.</p>
+<p>out_streamは,初期化されていない状態のArrowArrayStream構造体へのポインタであり,メソッドは初期内容を無視します.</p>
+<p>成功した場合,およびストリームインターフェイスが不要になった場合, out_stream-&gt;release(out_stream) で解放する必要があります.</p>
+<p>特定のドライバ実装によって指定されていない限り,ArrowArrayStream構造体およびそのコールバックが返したArrowSchemaまたはArrowArrayオブジェクトは,初期化されたOGRLayerが破棄された後 (通常はデータセットのクローズ時) には使用しないでください(解放される可能性があります). さらに,特定のドライバ実装によって指定されていない限り,特定のレイヤーで同時に1つのArrowArrayStreamのみがアクティブになります (つまり,次のものを要求する前に最後にアクティブになったものを明示的に解放する必要があります). ArrowArrayStreamを使用している間にフィルタ状態を変更したり,無視される列を変更したり,スキーマを変更したり,ResetReading()/GetNextFeature()を使用したりすることは強く推奨されず,予期しない結果につながる可能性があります. 一般的なルールとして,ArrowArrayStreamがアクティブな間にレイヤーの状態に影響を与えるOGRLayerメソッドは呼び出されるべきではありません.</p>
+<p>提供される可能性のあるpapszOptionsは,キー=値の文字列のNULL終端リストであり,ドライバに固有のものである可能性があります.</p>
+<p>OGRLayerには,次のようなGetArrowStream()の基本実装があります:</p>
 <ul>
-<li><p>The get_schema() callback returns a schema whose top-level object returned is
-of type Struct, and whose children consist of the FID column, all OGR attribute
-fields and geometry fields to Arrow fields.
-The FID column may be omitted by providing the INCLUDE_FID=NO option.</p>
-<p>When get_schema() returns 0, and the schema is no longer needed, it must
-be released with the following procedure, to take into account that it might
-have been released by other code, as documented in the Arrow C data
-interface:</p>
+<li><p>get_schema() コールバックは,トップレベルオブジェクトがStruct型であり,子がFID列,すべてのOGR属性フィールドおよびジオメトリフィールドをArrowフィールドに変換したスキーマを返します. FID列は,INCLUDE_FID=NOオプションを指定することで省略することができます.</p>
+<p>get_schema() が0を返し,スキーマが不要になった場合,以下の手順で解放する必要があります. これは,Arrow Cデータインターフェースで文書化されているように,他のコードによって解放されている可能性があることを考慮に入れるためです:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">out_schema</span><span class="o">-&gt;</span><span class="n">release</span><span class="w"> </span><span class="p">)</span>
 <span class="w">    </span><span class="n">out_schema</span><span class="o">-&gt;</span><span class="n">release</span><span class="p">(</span><span class="n">out_schema</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
-<li><p>The get_next() callback retrieve the next record batch over the layer.</p>
-<p>out_array is a pointer to a ArrowArray structure, that can be in a uninitialized
-state (the method will ignore any initial content).</p>
-<p>The default implementation uses GetNextFeature() internally to retrieve batches
-of up to 65,536 features (configurable with the MAX_FEATURES_IN_BATCH=num option).
-The starting address of buffers allocated by the
-default implementation is aligned on 64-byte boundaries.</p>
-<p>The default implementation outputs geometries as WKB in a binary field,
-whose corresponding entry in the schema is marked with the metadata item
-<code class="docutils literal notranslate"><span class="pre">ARROW:extension:name</span></code> set to <code class="docutils literal notranslate"><span class="pre">ogc.wkb</span></code>. Specialized implementations may output
-by default other formats (particularly the Arrow driver that can return geometries
-encoded according to the GeoArrow specification (using a list of coordinates).
-The GEOMETRY_ENCODING=WKB option can be passed to force the use of WKB (through
-the default implementation)</p>
-<p>The method may take into account ignored fields set with SetIgnoredFields() (the
-default implementation does), and should take into account filters set with
-SetSpatialFilter() and SetAttributeFilter(). Note however that specialized implementations
-may fallback to the default (slower) implementation when filters are set.</p>
-<p>Mixing calls to GetNextFeature() and get_next() is not recommended, as
-the behavior will be unspecified (but it should not crash).</p>
-<p>When get_next() returns 0, and the array is no longer needed, it must
-be released with the following procedure, to take into account that it might
-have been released by other code, as documented in the Arrow C data
-interface:</p>
+<li><p>get_next() コールバックは,レイヤー上の次のレコードバッチを取得します.</p>
+<p>out_arrayは,初期化されていない状態のArrowArray構造体へのポインタであり,メソッドは初期内容を無視します.</p>
+<p>デフォルトの実装は,GetNextFeature()を内部的に使用して,最大65,536地物のバッチを取得します (MAX_FEATURES_IN_BATCH=numオプションで設定可能). デフォルトの実装によって割り当てられたバッファの開始アドレスは,64バイトの境界に整列されます.</p>
+<p>デフォルトの実装は,スキーマの対応するエントリが <code class="docutils literal notranslate"><span class="pre">ARROW:extension:name</span></code> メタデータ項目に <code class="docutils literal notranslate"><span class="pre">ogc.wkb</span></code> と設定されている,バイナリフィールド内のWKBとしてジオメトリを出力します. 専門の実装は,他のフォーマットをデフォルトで出力する場合があります(特に,GeoArrow仕様に従ってエンコードされたジオメトリを返すArrowドライバ). GEOMETRY_ENCODING=WKBオプションを渡すことで,WKBの使用を強制することができます (デフォルトの実装を介して).</p>
+<p>メソッドは,SetIgnoredFields() で設定された無視されるフィールドを考慮に入れることができます (デフォルトの実装は行います),SetSpatialFilter() および SetAttributeFilter() で設定されたフィルタを考慮に入れる必要があります. ただし,特定の実装は,フィルタが設定されている場合にデフォルト (遅い) 実装にフォールバックする場合があります.</p>
+<p>GetNextFeature() と get_next() の呼び出しを混在させることは推奨されません. 動作は未指定です (ただし,クラッシュすることはありません).</p>
+<p>get_next() が0を返し,配列が不要になった場合,以下の手順で解放する必要があります. これは,Arrow Cデータインターフェースで文書化されているように,他のコードによって解放されている可能性があることを考慮に入れるためです:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">out_array</span><span class="o">-&gt;</span><span class="n">release</span><span class="w"> </span><span class="p">)</span>
 <span class="w">    </span><span class="n">out_array</span><span class="o">-&gt;</span><span class="n">release</span><span class="p">(</span><span class="n">out_array</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
 </ul>
-<p>Drivers that have a specialized implementation advertise the
-new OLCFastGetArrowStream layer capability.</p>
-<p>Using directly (as a producer or a consumer) a ArrowArray is admittedly not
-trivial, and requires good intimacy with the Arrow C data interface and columnar
-array specifications, to know, in which buffer of an array, data is to be read,
-which data type void* buffers should be cast to, how to use buffers that contain
-null/not_null information, how to use offset buffers for data types of type List, etc.
-The study of the gdal_array._RecordBatchAsNumpy() method of the SWIG Python
-bindings (<a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/swig/include/gdal_array.i">gdal_array.i</a>)
-can give a good hint of how to use an ArrowArray object, in conjunction
-with the associated ArrowSchema.</p>
-<p>The below example illustrates how to read the content of a layer that consists
-of a integer field and a geometry field:</p>
+<p>専門の実装を持つドライバは,新しいOLCFastGetArrowStreamレイヤー機能を表明します.</p>
+<p>ArrowArrayを直接使用する (プロデューサまたはコンシューマとして) ことは確かに簡単ではなく,Arrow Cデータインターフェースと列配列仕様についての深い理解が必要です. どのバッファからデータを読み取るか,どのデータ型のvoid*バッファをキャストするか,null/not_null情報を含むバッファを使用する方法,リスト型のデータ型のオフセットバッファを使用する方法などを知る必要があります.SWIG Pythonバインディング (<a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/swig/include/gdal_array.i">gdal_array.i</a> ) のgdal_array._RecordBatchAsNumpy() メソッドの学習は,関連するArrowSchemaと共にArrowArrayオブジェクトを使用する方法のヒントを提供するかもしれません.</p>
+<p>以下の例は,整数フィールドとジオメトリフィールドで構成されるレイヤーの内容を読み取る方法を示しています:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;gdal_priv.h&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;ogr_api.h&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;ogrsf_frmts.h&quot;</span>
@@ -1063,16 +937,13 @@ of a integer field and a geometry field:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>To write features by batches using an ArrowArray, consult <a class="reference internal" href="#vector-api-tut-arrow-write"><span class="std std-ref">Writing to OGR using the Arrow C Data interface</span></a>.</p>
+<p>ArrowArrayを使用して地物をバッチで書き込む場合は, <a class="reference internal" href="#vector-api-tut-arrow-write"><span class="std std-ref">Arrow Cデータインターフェースを使用してOGRに書き込む</span></a> を参照してください.</p>
 </section>
 <section id="writing-to-ogr">
-<h2>Writing To OGR<a class="headerlink" href="#writing-to-ogr" title="Link to this heading"></a></h2>
-<p>As an example of writing through OGR, we will do roughly the opposite of the
-above.  A short program that reads comma separated values from input text
-will be written to a point shapefile via OGR.</p>
-<p>As usual, we start by registering all the drivers, and then fetch the
-Shapefile driver as we will need it to create our output file.</p>
-<p>In C++ :</p>
+<h2>OGRへの書き込み<a class="headerlink" href="#writing-to-ogr" title="Link to this heading"></a></h2>
+<p>OGRを介して書き込む例として,上記の逆のことを行います. 入力テキストからカンマ区切り値を読み取り, OGRを介してポイントシェープファイルに書き込む短いプログラムを作成します.</p>
+<p>通常通り,すべてのドライバを登録してから,出力ファイルを作成するためにShapefileドライバを取得します.</p>
+<p>C++の場合 :</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;ogrsf_frmts.h&quot;</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
@@ -1090,7 +961,7 @@ Shapefile driver as we will need it to create our output file.</p>
 <span class="w">    </span><span class="p">}</span>
 </pre></div>
 </div>
-<p>In C :</p>
+<p>Cの場合 :</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;ogr_api.h&quot;</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
@@ -1108,15 +979,8 @@ Shapefile driver as we will need it to create our output file.</p>
 <span class="w">    </span><span class="p">}</span>
 </pre></div>
 </div>
-<p>Next we create the datasource.  The ESRI Shapefile driver allows us to create
-a directory full of shapefiles, or a single shapefile as a datasource.  In
-this case we will explicitly create a single file by including the extension
-in the name.  Other drivers behave differently.
-The second, third, fourth and fifth argument are related to raster dimensions
-(in case the driver has raster capabilities). The last argument to
-the call is a list of option values, but we will just be using defaults in
-this case.  Details of the options supported are also format specific.</p>
-<p>In C ++ :</p>
+<p>次に,データソースを作成します. ESRI Shapefileドライバを使用すると,シェープファイルのディレクトリ全体を作成するか,データソースとして単一のシェープファイルを作成することができます. この場合,名前に拡張子を含めて単一のファイルを明示的に作成します. 他のドライバは異なる動作をします. 2番目,3番目,4番目,5番目の引数はラスターの次元に関連しています(ドライバにラスター機能がある場合). 呼び出しの最後の引数はオプション値のリストですが,この場合はデフォルト値を使用します.サポートされているオプションの詳細は,フォーマットに固有です.</p>
+<p>C++の場合 :</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">GDALDataset</span><span class="w"> </span><span class="o">*</span><span class="n">poDS</span><span class="p">;</span>
 
 <span class="n">poDS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">poDriver</span><span class="o">-&gt;</span><span class="n">Create</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;point_out.shp&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">GDT_Unknown</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="w"> </span><span class="p">);</span>
@@ -1127,7 +991,7 @@ this case.  Details of the options supported are also format specific.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>In C :</p>
+<p>Cの場合 :</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">GDALDatasetH</span><span class="w"> </span><span class="n">hDS</span><span class="p">;</span>
 
 <span class="n">hDS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GDALCreate</span><span class="p">(</span><span class="w"> </span><span class="n">hDriver</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;point_out.shp&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">GDT_Unknown</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="w"> </span><span class="p">);</span>
@@ -1138,11 +1002,8 @@ this case.  Details of the options supported are also format specific.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Now we create the output layer.  In this case since the datasource is a
-single file, we can only have one layer.  We pass wkbPoint to specify the
-type of geometry supported by this layer.  In this case we aren't passing
-any coordinate system information or other special layer creation options.</p>
-<p>In C++ :</p>
+<p>次に,出力レイヤーを作成します. この場合,データソースが単一のファイルであるため,1つのレイヤーのみを持つことができます.wkbPointを渡して,このレイヤーでサポートされるジオメトリのタイプを指定します. この場合,座標系情報やその他の特別なレイヤー作成オプションを渡していません.</p>
+<p>C++の場合 :</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">OGRLayer</span><span class="w"> </span><span class="o">*</span><span class="n">poLayer</span><span class="p">;</span>
 
 <span class="n">poLayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">poDS</span><span class="o">-&gt;</span><span class="n">CreateLayer</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;point_out&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">wkbPoint</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="w"> </span><span class="p">);</span>
@@ -1153,7 +1014,7 @@ any coordinate system information or other special layer creation options.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>In C :</p>
+<p>Cの場合 :</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OGRLayerH</span><span class="w"> </span><span class="n">hLayer</span><span class="p">;</span>
 
 <span class="n">hLayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GDALDatasetCreateLayer</span><span class="p">(</span><span class="w"> </span><span class="n">hDS</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;point_out&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">wkbPoint</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="w"> </span><span class="p">);</span>
@@ -1164,16 +1025,9 @@ any coordinate system information or other special layer creation options.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Now that the layer exists, we need to create any attribute fields that should
-appear on the layer.  Fields must be added to the layer before any features
-are written.  To create a field we initialize an <a class="reference internal" href="../api/vector_c_api.html#_CPPv48OGRField" title="OGRField"><code class="xref cpp cpp-union docutils literal notranslate"><span class="pre">OGRField</span></code></a> object with the
-information about the field.  In the case of Shapefiles, the field width and
-precision is significant in the creation of the output .dbf file, so we
-set it specifically, though generally the defaults are OK.  For this example
-we will just have one attribute, a name string associated with the x,y point.</p>
-<p>Note that the template OGRField we pass to <a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer11CreateFieldEPK12OGRFieldDefni" title="OGRLayer::CreateField"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::CreateField()</span></code></a> is copied internally.
-We retain ownership of the object.</p>
-<p>In C++:</p>
+<p>レイヤーが存在するため,レイヤーに表示される必要がある属性フィールドを作成する必要があります. 地物が書き込まれる前に,フィールドをレイヤーに追加する必要があります. フィールドを作成するには,フィールドに関する情報を持つ <a class="reference internal" href="../api/vector_c_api.html#_CPPv48OGRField" title="OGRField"><code class="xref cpp cpp-union docutils literal notranslate"><span class="pre">OGRField</span></code></a> オブジェクトを初期化します. シェープファイルの場合,フィールドの幅と精度は出力.dbfファイルの作成に重要です. そのため,特に設定しますが,一般的にはデフォルトが適しています. この例では,1つの属性のみ, x,yポイントに関連付けられた名前文字列を持つことにします.</p>
+<p><a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer11CreateFieldEPK12OGRFieldDefni" title="OGRLayer::CreateField"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::CreateField()</span></code></a> に渡すテンプレートOGRFieldは内部でコピーされます. オブジェクトの所有権は保持されます.</p>
+<p>C++の場合:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">OGRFieldDefn</span><span class="w"> </span><span class="n">oField</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;Name&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">OFTString</span><span class="w"> </span><span class="p">);</span>
 
 <span class="n">oField</span><span class="p">.</span><span class="n">SetWidth</span><span class="p">(</span><span class="mi">32</span><span class="p">);</span>
@@ -1185,7 +1039,7 @@ We retain ownership of the object.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>In C:</p>
+<p>Cの場合:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OGRFieldDefnH</span><span class="w"> </span><span class="n">hFieldDefn</span><span class="p">;</span>
 
 <span class="n">hFieldDefn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OGR_Fld_Create</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;Name&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">OFTString</span><span class="w"> </span><span class="p">);</span>
@@ -1201,9 +1055,8 @@ We retain ownership of the object.</p>
 <span class="n">OGR_Fld_Destroy</span><span class="p">(</span><span class="n">hFieldDefn</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>The following snipping loops reading lines of the form &quot;x,y,name&quot; from stdin,
-and parsing them.</p>
-<p>In C++ and in C :</p>
+<p>以下のスニペットは,stdinから &quot;x,y,name&quot; 形式の行を読み取り,解析するループです.</p>
+<p>C++およびCの場合:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
 <span class="kt">char</span><span class="w"> </span><span class="n">szName</span><span class="p">[</span><span class="mi">33</span><span class="p">];</span>
 
@@ -1212,30 +1065,23 @@ and parsing them.</p>
 <span class="p">{</span>
 </pre></div>
 </div>
-<p>To write a feature to disk, we must create a local OGRFeature, set attributes
-and attach geometry before trying to write it to the layer.  It is
-imperative that this feature be instantiated from the OGRFeatureDefn
-associated with the layer it will be written to.</p>
-<p>In C++ :</p>
+<p>地物をディスクに書き込むためには,ローカルOGRFeatureを作成し,属性を設定し,ジオメトリを添付してから,レイヤーに書き込もうとします.この地物は,書き込まれるレイヤーに関連付けられたOGRFeatureDefnからインスタンス化されている必要があります.</p>
+<p>C++の場合 :</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">OGRFeature</span><span class="w"> </span><span class="o">*</span><span class="n">poFeature</span><span class="p">;</span>
 
 <span class="n">poFeature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OGRFeature</span><span class="o">::</span><span class="n">CreateFeature</span><span class="p">(</span><span class="w"> </span><span class="n">poLayer</span><span class="o">-&gt;</span><span class="n">GetLayerDefn</span><span class="p">()</span><span class="w"> </span><span class="p">);</span>
 <span class="n">poFeature</span><span class="o">-&gt;</span><span class="n">SetField</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;Name&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">szName</span><span class="w"> </span><span class="p">);</span>
 </pre></div>
 </div>
-<p>In C :</p>
+<p>Cの場合 :</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OGRFeatureH</span><span class="w"> </span><span class="n">hFeature</span><span class="p">;</span>
 
 <span class="n">hFeature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OGR_F_Create</span><span class="p">(</span><span class="w"> </span><span class="n">OGR_L_GetLayerDefn</span><span class="p">(</span><span class="w"> </span><span class="n">hLayer</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">);</span>
 <span class="n">OGR_F_SetFieldString</span><span class="p">(</span><span class="w"> </span><span class="n">hFeature</span><span class="p">,</span><span class="w"> </span><span class="n">OGR_F_GetFieldIndex</span><span class="p">(</span><span class="n">hFeature</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Name&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">szName</span><span class="w"> </span><span class="p">);</span>
 </pre></div>
 </div>
-<p>We create a local geometry object, and assign its copy (indirectly) to the feature.
-The <a class="reference internal" href="../api/ogrfeature_cpp.html#_CPPv4N10OGRFeature19SetGeometryDirectlyEP11OGRGeometry" title="OGRFeature::SetGeometryDirectly"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeature::SetGeometryDirectly()</span></code></a> differs from <a class="reference internal" href="../api/ogrfeature_cpp.html#_CPPv4N10OGRFeature11SetGeometryEPK11OGRGeometry" title="OGRFeature::SetGeometry"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeature::SetGeometry()</span></code></a>
-in that the direct method gives ownership of the geometry to the feature.
-This is generally more efficient as it avoids an extra deep object copy
-of the geometry.</p>
-<p>In C++ :</p>
+<p>ローカルジオメトリオブジェクトを作成し,そのコピーを地物に割り当てます (間接的に). <a class="reference internal" href="../api/ogrfeature_cpp.html#_CPPv4N10OGRFeature19SetGeometryDirectlyEP11OGRGeometry" title="OGRFeature::SetGeometryDirectly"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeature::SetGeometryDirectly()</span></code></a> は, <a class="reference internal" href="../api/ogrfeature_cpp.html#_CPPv4N10OGRFeature11SetGeometryEPK11OGRGeometry" title="OGRFeature::SetGeometry"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRFeature::SetGeometry()</span></code></a> と異なり,直接的なメソッドはジオメトリの所有権を地物に与えます. これは,ジオメトリの余分な深いオブジェクトコピーを回避するため,一般的に効率的です.</p>
+<p>C++の場合 :</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">OGRPoint</span><span class="w"> </span><span class="n">pt</span><span class="p">;</span>
 <span class="n">pt</span><span class="p">.</span><span class="n">setX</span><span class="p">(</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">);</span>
 <span class="n">pt</span><span class="p">.</span><span class="n">setY</span><span class="p">(</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="p">);</span>
@@ -1243,7 +1089,7 @@ of the geometry.</p>
 <span class="n">poFeature</span><span class="o">-&gt;</span><span class="n">SetGeometry</span><span class="p">(</span><span class="w"> </span><span class="o">&amp;</span><span class="n">pt</span><span class="w"> </span><span class="p">);</span>
 </pre></div>
 </div>
-<p>In C :</p>
+<p>Cの場合 :</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OGRGeometryH</span><span class="w"> </span><span class="n">hPt</span><span class="p">;</span>
 <span class="n">hPt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OGR_G_CreateGeometry</span><span class="p">(</span><span class="n">wkbPoint</span><span class="p">);</span>
 <span class="n">OGR_G_SetPoint_2D</span><span class="p">(</span><span class="n">hPt</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span>
@@ -1252,9 +1098,8 @@ of the geometry.</p>
 <span class="n">OGR_G_DestroyGeometry</span><span class="p">(</span><span class="n">hPt</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Now we create a feature in the file.  The <a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer13CreateFeatureEP10OGRFeature" title="OGRLayer::CreateFeature"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::CreateFeature()</span></code></a> does not
-take ownership of our feature so we clean it up when done with it.</p>
-<p>In C++ :</p>
+<p>次に,ファイル内の地物を作成します. <a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer13CreateFeatureEP10OGRFeature" title="OGRLayer::CreateFeature"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::CreateFeature()</span></code></a> は,地物の所有権を取得しないため,使用が終わったらクリーンアップします.</p>
+<p>C++の場合 :</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="w">     </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">poLayer</span><span class="o">-&gt;</span><span class="n">CreateFeature</span><span class="p">(</span><span class="w"> </span><span class="n">poFeature</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">OGRERR_NONE</span><span class="w"> </span><span class="p">)</span>
 <span class="w">     </span><span class="p">{</span>
 <span class="w">         </span><span class="n">printf</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;Failed to create feature in shapefile.</span><span class="se">\n</span><span class="s">&quot;</span><span class="w"> </span><span class="p">);</span>
@@ -1265,7 +1110,7 @@ take ownership of our feature so we clean it up when done with it.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>In C :</p>
+<p>Cの場合 :</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w">     </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">OGR_L_CreateFeature</span><span class="p">(</span><span class="w"> </span><span class="n">hLayer</span><span class="p">,</span><span class="w"> </span><span class="n">hFeature</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">OGRERR_NONE</span><span class="w"> </span><span class="p">)</span>
 <span class="w">     </span><span class="p">{</span>
 <span class="w">         </span><span class="n">printf</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;Failed to create feature in shapefile.</span><span class="se">\n</span><span class="s">&quot;</span><span class="w"> </span><span class="p">);</span>
@@ -1276,15 +1121,14 @@ take ownership of our feature so we clean it up when done with it.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Finally we need to close down the datasource in order to ensure headers
-are written out in an orderly way and all resources are recovered.</p>
-<p>In C/C++ :</p>
+<p>最後に,ヘッダが整然に書き出され,すべてのリソースが回収されるように,データソースを閉じる必要があります.</p>
+<p>C/C++の場合 :</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="n">GDALClose</span><span class="p">(</span><span class="w"> </span><span class="n">poDS</span><span class="w"> </span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The same program all in one block looks like this:</p>
-<p>In C++ :</p>
+<p>同じプログラムを1つのブロックにまとめると,次のようになります:</p>
+<p>C++の場合 :</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;ogrsf_frmts.h&quot;</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
@@ -1360,7 +1204,7 @@ are written out in an orderly way and all resources are recovered.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>In C :</p>
+<p>Cの場合 :</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;gdal.h&quot;</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
@@ -1436,7 +1280,7 @@ are written out in an orderly way and all resources are recovered.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>In Python :</p>
+<p>Pythonの場合:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">gdal</span>
 <span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">ogr</span>
@@ -1494,11 +1338,9 @@ are written out in an orderly way and all resources are recovered.</p>
 <span class="n">ds</span> <span class="o">=</span> <span class="kc">None</span>
 </pre></div>
 </div>
-<p>Several geometry fields can be associated to a feature. This capability
-is just available for a few file formats, such as PostGIS.</p>
-<p>To create such datasources, geometry fields must be first created.
-Spatial reference system objects can be associated to each geometry field.</p>
-<p>In C++ :</p>
+<p>複数のジオメトリフィールドを地物に関連付けることができます. この機能は,PostGISなどの一部のファイルフォーマットでのみ利用可能です.</p>
+<p>このようなデータソースを作成するには,最初にジオメトリフィールドを作成する必要があります. 空間参照システムオブジェクトを,各ジオメトリフィールドに関連付けることができます.</p>
+<p>C++の場合 :</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">OGRGeomFieldDefn</span><span class="w"> </span><span class="n">oPointField</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;PointField&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">wkbPoint</span><span class="w"> </span><span class="p">);</span>
 <span class="n">OGRSpatialReference</span><span class="o">*</span><span class="w"> </span><span class="n">poSRS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">OGRSpatialReference</span><span class="p">();</span>
 <span class="n">poSRS</span><span class="o">-&gt;</span><span class="n">importFromEPSG</span><span class="p">(</span><span class="mi">4326</span><span class="p">);</span>
@@ -1524,7 +1366,7 @@ Spatial reference system objects can be associated to each geometry field.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>In C :</p>
+<p>Cの場合 :</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OGRGeomFieldDefnH</span><span class="w"> </span><span class="n">hPointField</span><span class="p">;</span>
 <span class="n">OGRGeomFieldDefnH</span><span class="w"> </span><span class="n">hPointField2</span><span class="p">;</span>
 <span class="n">OGRSpatialReferenceH</span><span class="w"> </span><span class="n">hSRS</span><span class="p">;</span>
@@ -1557,11 +1399,8 @@ Spatial reference system objects can be associated to each geometry field.</p>
 <span class="n">OGR_GFld_Destroy</span><span class="p">(</span><span class="w"> </span><span class="n">hPointField2</span><span class="w"> </span><span class="p">);</span>
 </pre></div>
 </div>
-<p>To write a feature to disk, we must create a local OGRFeature, set attributes
-and attach geometries before trying to write it to the layer.  It is
-imperative that this feature be instantiated from the OGRFeatureDefn
-associated with the layer it will be written to.</p>
-<p>In C++ :</p>
+<p>地物をディスクに書き込むためには,ローカルOGRFeatureを作成し,属性を設定し,ジオメトリを添付してから,レイヤーに書き込もうとします.この地物は,書き込まれるレイヤーに関連付けられたOGRFeatureDefnからインスタンス化されている必要があります.</p>
+<p>C++の場合 :</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">OGRFeature</span><span class="w"> </span><span class="o">*</span><span class="n">poFeature</span><span class="p">;</span>
 <span class="n">OGRGeometry</span><span class="w"> </span><span class="o">*</span><span class="n">poGeometry</span><span class="p">;</span>
 <span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">pszWKT</span><span class="p">;</span>
@@ -1585,7 +1424,7 @@ associated with the layer it will be written to.</p>
 <span class="n">OGRFeature</span><span class="o">::</span><span class="n">DestroyFeature</span><span class="p">(</span><span class="w"> </span><span class="n">poFeature</span><span class="w"> </span><span class="p">);</span>
 </pre></div>
 </div>
-<p>In C :</p>
+<p>Cの場合 :</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">OGRFeatureH</span><span class="w"> </span><span class="n">hFeature</span><span class="p">;</span>
 <span class="n">OGRGeometryH</span><span class="w"> </span><span class="n">hGeometry</span><span class="p">;</span>
 <span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">pszWKT</span><span class="p">;</span>
@@ -1611,7 +1450,7 @@ associated with the layer it will be written to.</p>
 <span class="n">OGR_F_Destroy</span><span class="p">(</span><span class="w"> </span><span class="n">hFeature</span><span class="w"> </span><span class="p">);</span>
 </pre></div>
 </div>
-<p>In Python :</p>
+<p>Pythonの場合:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">feat</span> <span class="o">=</span> <span class="n">ogr</span><span class="o">.</span><span class="n">Feature</span><span class="p">(</span> <span class="n">lyr</span><span class="o">.</span><span class="n">GetLayerDefn</span><span class="p">()</span> <span class="p">)</span>
 
 <span class="n">feat</span><span class="o">.</span><span class="n">SetGeomFieldDirectly</span><span class="p">(</span> <span class="s2">&quot;PointField&quot;</span><span class="p">,</span>
@@ -1626,26 +1465,18 @@ associated with the layer it will be written to.</p>
 </div>
 </section>
 <section id="writing-to-ogr-using-the-arrow-c-data-interface">
-<span id="vector-api-tut-arrow-write"></span><h2>Writing to OGR using the Arrow C Data interface<a class="headerlink" href="#writing-to-ogr-using-the-arrow-c-data-interface" title="Link to this heading"></a></h2>
+<span id="vector-api-tut-arrow-write"></span><h2>Arrow Cデータインターフェースを使用してOGRに書き込む<a class="headerlink" href="#writing-to-ogr-using-the-arrow-c-data-interface" title="Link to this heading"></a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.8.</span></p>
 </div>
-<p>Instead of writing features one at a time, it is also possible to write
-them by batches, with a column-oriented memory layout, using the
-<a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer15WriteArrowBatchEPK11ArrowSchemaP10ArrowArray12CSLConstList" title="OGRLayer::WriteArrowBatch"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::WriteArrowBatch()</span></code></a> method. Note that this method is more
-difficult to use than the traditional <a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer13CreateFeatureEP10OGRFeature" title="OGRLayer::CreateFeature"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::CreateFeature()</span></code></a> approach,
-and is only advised when compatibility with the
-<a class="reference external" href="https://arrow.apache.org/docs/format/CDataInterface.html">Apache Arrow C Data interface</a>
-is needed, or when column-oriented writing of layers is required.</p>
-<p>Pending using an helper library, generation of the Arrow C Data interface
-requires reading of the following documents:</p>
+<p>地物を1つずつ書き込む代わりに,列指向のメモリレイアウトを使用してバッチで書き込むことも可能です. これには, <a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer15WriteArrowBatchEPK11ArrowSchemaP10ArrowArray12CSLConstList" title="OGRLayer::WriteArrowBatch"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::WriteArrowBatch()</span></code></a> メソッドを使用します. このメソッドは,従来の <a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer13CreateFeatureEP10OGRFeature" title="OGRLayer::CreateFeature"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::CreateFeature()</span></code></a> アプローチよりも使用が難しく, <a class="reference external" href="https://arrow.apache.org/docs/format/CDataInterface.html">Apache Arrow Cデータインターフェース</a>  との互換性が必要な場合や,レイヤーの列指向書き込みが必要な場合にのみ推奨されます.</p>
+<p>ヘルパーライブラリを使用するまで,Arrow Cデータインターフェースの生成には,以下のドキュメントの読み取りが必要です:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://arrow.apache.org/docs/format/CDataInterface.html">Arrow C data interface</a></p></li>
-<li><p><a class="reference external" href="https://arrow.apache.org/docs/format/Columnar.html">Arrow Columnar Format</a>.</p></li>
+<li><p>Arrow Cデータインターフェース &lt;<a class="reference external" href="https://arrow.apache.org/docs/format/CDataInterface.html">https://arrow.apache.org/docs/format/CDataInterface.html</a>&gt;`_</p></li>
+<li><p>Arrow Columnar 形式 &lt;<a class="reference external" href="https://arrow.apache.org/docs/format/Columnar.html">https://arrow.apache.org/docs/format/Columnar.html</a>&gt;`_.</p></li>
 </ul>
-<p>Consult <a class="reference internal" href="#vector-api-tut-arrow-stream"><span class="std std-ref">Reading From OGR using the Arrow C Stream data interface</span></a> for introduction to the ArrowSchema and ArrowArray
-basic types involved for batch writing.</p>
-<p>The WriteArrowBatch() method has the following signature:</p>
+<p>バッチ書き込みに関連するArrowSchemaおよびArrowArray基本型の紹介については, <a class="reference internal" href="#vector-api-tut-arrow-stream"><span class="std std-ref">Arrow C Streamデータインターフェースを使用してOGRから読み込む</span></a> を参照してください.</p>
+<p>WriteArrowBatch() メソッドのシグネチャは次のとおりです:</p>
 <blockquote>
 <div><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/** Writes a batch of rows from an ArrowArray.</span>
 <span class="cm"> *</span>
@@ -1661,44 +1492,20 @@ basic types involved for batch writing.</p>
 </pre></div>
 </div>
 </div></blockquote>
-<p>It is also available in the C API as <a class="reference internal" href="../api/vector_c_api.html#_CPPv421OGR_L_WriteArrowBatch9OGRLayerHPK11ArrowSchemaP10ArrowArrayPPc" title="OGR_L_WriteArrowBatch"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGR_L_WriteArrowBatch()</span></code></a>.</p>
-<p>This is semantically close to calling <a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer13CreateFeatureEP10OGRFeature" title="OGRLayer::CreateFeature"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::CreateFeature()</span></code></a>
-with multiple features at once.</p>
-<p>The ArrowArray must be of type struct (format=+s), and its children generally
-map to a OGR attribute or geometry field (unless they are struct themselves).</p>
-<p>Method <a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4NK8OGRLayer22IsArrowSchemaSupportedEPK11ArrowSchema12CSLConstListRNSt6stringE" title="OGRLayer::IsArrowSchemaSupported"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::IsArrowSchemaSupported()</span></code></a> can be called to determine
-if the schema will be supported by WriteArrowBatch().</p>
-<p>OGR fields for the corresponding children arrays must exist and be of a
-compatible type. For attribute fields, they should be created with
-<a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer26CreateFieldFromArrowSchemaEPK11ArrowSchema12CSLConstList" title="OGRLayer::CreateFieldFromArrowSchema"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::CreateFieldFromArrowSchema()</span></code></a>.</p>
-<p>Arrays for geometry columns should be of binary or large binary type and
-contain WKB geometry.</p>
-<p>Note that the passed array may be set to a released state
-(array-&gt;release==NULL) after this call (not by the base implementation,
-but in specialized ones such as Parquet or Arrow for example)</p>
-<p>Supported options of the base implementation are:</p>
+<p>C APIでも <a class="reference internal" href="../api/vector_c_api.html#_CPPv421OGR_L_WriteArrowBatch9OGRLayerHPK11ArrowSchemaP10ArrowArrayPPc" title="OGR_L_WriteArrowBatch"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGR_L_WriteArrowBatch()</span></code></a> として利用可能です.</p>
+<p>これは,一度に複数の地物を持って <a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer13CreateFeatureEP10OGRFeature" title="OGRLayer::CreateFeature"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::CreateFeature()</span></code></a> を呼び出すことに意味的に近いです.</p>
+<p>ArrowArrayは,struct (format=+s) 型である必要があり,その子は一般的にOGR属性またはジオメトリフィールドにマップします(struct自体でない限り).</p>
+<p>メソッド <a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4NK8OGRLayer22IsArrowSchemaSupportedEPK11ArrowSchema12CSLConstListRNSt6stringE" title="OGRLayer::IsArrowSchemaSupported"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::IsArrowSchemaSupported()</span></code></a> を呼び出して,スキーマがWriteArrowBatch() でサポートされるかどうかを判断できます.</p>
+<p>対応する子配列のOGRフィールドは存在し,互換性のあるタイプである必要があります. 属性フィールドの場合, <a class="reference internal" href="../api/ogrlayer_cpp.html#_CPPv4N8OGRLayer26CreateFieldFromArrowSchemaEPK11ArrowSchema12CSLConstList" title="OGRLayer::CreateFieldFromArrowSchema"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OGRLayer::CreateFieldFromArrowSchema()</span></code></a> で作成する必要があります.</p>
+<p>ジオメトリ列の配列は,バイナリまたは大きなバイナリ型である必要があり, WKBジオメトリを含んでいる必要があります.</p>
+<p>この呼び出し後,渡された配列は解放された状態に設定される可能性があることに注意してください(ベース実装ではなく,ParquetやArrowなどの専門実装で行われることがあります)</p>
+<p>ベース実装のサポートされているオプションは次のとおりです:</p>
 <ul class="simple">
-<li><p>FID=name. Name of the FID column in the array. If not provided,
-GetFIDColumn() is used to determine it. The special name
-OGRLayer::DEFAULT_ARROW_FID_NAME is also recognized if neither FID nor
-GetFIDColumn() are set.
-The corresponding ArrowArray must be of type int32 (i) or int64 (l).
-On input, values of the FID column are used to create the feature.
-On output, the values of the FID column may be set with the FID of the
-created feature (if the array is not released).</p></li>
-<li><p>GEOMETRY_NAME=name. Name of the geometry column. If not provided,
-GetGeometryColumn() is used. The special name
-OGRLayer::DEFAULT_ARROW_GEOMETRY_NAME is also recognized if neither
-GEOMETRY_NAME nor GetGeometryColumn() are set.
-Geometry columns are also identified if they have
-ARROW:extension:name=ogc.wkb as a field metadata.
-The corresponding ArrowArray must be of type binary (w) or large
-binary (W).</p></li>
+<li><p>FID=name. 配列内のFID列の名前. 指定されていない場合,GetFIDColumn() がそれを決定するために使用されます. 特別な名前OGRLayer::DEFAULT_ARROW_FID_NAME も認識されます. FID または GetFIDColumn() のどちらも設定されていない場合には,対応するArrowArrayはint32 (i) または int64 (l) 型である必要があります. 入力時に,FID列の値は地物を作成するために使用されます.出力時には,FID列の値は作成された地物のFIDで設定される可能性があります (配列が解放されていない場合).</p></li>
+<li><p>GEOMETRY_NAME=name. ジオメトリ列の名前. 指定されていない場合,GetGeometryColumn() が使用されます. GEOMETRY_NAME または GetGeometryColumn() のどちらも設定されていない場合,特別な名前OGRLayer::DEFAULT_ARROW_GEOMETRY_NAME も認識されます.ジオメトリ列は,フィールドメタデータとしてARROW:extension:name=ogc.wkb を持っている場合にも識別されます. 対応するArrowArrayは,binary (w) または large binary (W) 型である必要があります.</p></li>
 </ul>
-<p>Drivers that have a specialized implementation (such as <a class="reference internal" href="../drivers/vector/parquet.html#vector-parquet"><span class="std std-ref">(Geo)Parquet</span></a>
-and <a class="reference internal" href="../drivers/vector/arrow.html#vector-arrow"><span class="std std-ref">(Geo)Arrow IPC File Format / Stream</span></a>) advertise the OLCFastWriteArrowBatch layer capability.</p>
-<p>The following example in Python demonstrates how to copy a layer from one format to
-another one (assuming it has at most a single geometry column):</p>
+<p>専門の実装を持つドライバ ( <a class="reference internal" href="../drivers/vector/parquet.html#vector-parquet"><span class="std std-ref">(Geo)Parquet</span></a> および <a class="reference internal" href="../drivers/vector/arrow.html#vector-arrow"><span class="std std-ref">(Geo)Arrow IPC File Format / Stream</span></a> など) は,OLCFastWriteArrowBatch レイヤー機能を表明します.</p>
+<p>以下のPythonの例は,1つのジオメトリ列を持つレイヤーを別のフォーマットにコピーする方法を示しています:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">copy_layer</span><span class="p">(</span><span class="n">src_lyr</span><span class="p">,</span> <span class="n">out_filename</span><span class="p">,</span> <span class="n">out_format</span><span class="p">,</span> <span class="n">lcos</span> <span class="o">=</span> <span class="p">{}):</span>
     <span class="n">stream</span> <span class="o">=</span> <span class="n">src_lyr</span><span class="o">.</span><span class="n">GetArrowStream</span><span class="p">()</span>
     <span class="n">schema</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">GetSchema</span><span class="p">()</span>
@@ -1762,10 +1569,7 @@ another one (assuming it has at most a single geometry column):</p>
             <span class="n">out_lyr</span><span class="o">.</span><span class="n">WriteArrowBatch</span><span class="p">(</span><span class="n">schema</span><span class="p">,</span> <span class="n">array</span><span class="p">,</span> <span class="n">write_options</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>For the Python bindings, in addition to the above ogr.Layer.IsArrowSchemaSupported(),
-ogr.Layer.CreateFieldFromArrowSchema() and ogr.Layer.WriteArrowBatch() methods,
-3 similar methods exist using the <a class="reference external" href="https://arrow.apache.org/docs/python/index.html">PyArrow</a>
-data types:</p>
+<p>Pythonバインディングの場合,上記の ogr.Layer.IsArrowSchemaSupported(), ogr.Layer.CreateFieldFromArrowSchema() およびogr.Layer.WriteArrowBatch() メソッドに加えて,3つの類似したメソッドが <a class="reference external" href="https://arrow.apache.org/docs/python/index.html">PyArrow</a> データ型を使用して存在します:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Layer</span><span class="p">:</span>
 
     <span class="k">def</span> <span class="nf">IsPyArrowSchemaSupported</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pa_schema</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">[]):</span>
@@ -1791,7 +1595,7 @@ data types:</p>
         <a href="vector_driver_tut.html" class="btn btn-neutral float-right" title="ベクタードライバー実装チュートリアル" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="multidimensional_api_tut.html" class="btn btn-neutral float-left" title="Multidimensional raster API tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="multidimensional_api_tut.html" class="btn btn-neutral float-left" title="多次元ラスタAPIチュートリアル" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

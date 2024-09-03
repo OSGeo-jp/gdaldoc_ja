@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Geotransform Tutorial &mdash; GDAL  ドキュメント</title>
+  <title>地理変換チュートリアル &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
       <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
 
@@ -26,7 +26,7 @@
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="Multidimensional raster API tutorial" href="multidimensional_api_tut.html" />
-    <link rel="prev" title="GDAL Grid Tutorial" href="gdal_grid_tut.html" /> 
+    <link rel="prev" title="GDALグリッドチュートリアル" href="gdal_grid_tut.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -59,13 +59,13 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">チュートリアル</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="index.html#raster">ラスター</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="raster_api_tut.html">ラスターAPIチュートリアル</a></li>
-<li class="toctree-l3"><a class="reference internal" href="raster_driver_tut.html">Raster driver implementation tutorial</a></li>
-<li class="toctree-l3"><a class="reference internal" href="warp_tut.html">GDAL Warp API tutorial (Reprojection, ...)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="gdal_grid_tut.html">GDAL Grid Tutorial</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Geotransform Tutorial</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#introduction-to-geotransforms">Introduction to Geotransforms:</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#transformation-from-image-coordinate-space-to-georeferenced-coordinate-space">Transformation from image coordinate space to georeferenced coordinate space:</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#in-case-of-north-up-images">In case of north up images:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="raster_driver_tut.html">ラスタードライバー実装チュートリアル</a></li>
+<li class="toctree-l3"><a class="reference internal" href="warp_tut.html">GDAL Warp API チュートリアル (再投影、...)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gdal_grid_tut.html">GDALグリッドチュートリアル</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">地理変換チュートリアル</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#introduction-to-geotransforms">地理変換の紹介:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#transformation-from-image-coordinate-space-to-georeferenced-coordinate-space">画像座標空間から地理座標空間への変換:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#in-case-of-north-up-images">北向き画像の場合:</a></li>
 </ul>
 </li>
 </ul>
@@ -119,7 +119,7 @@
       
           <li><a href="index.html">チュートリアル</a> &raquo;</li>
       
-      <li>Geotransform Tutorial</li>
+      <li>地理変換チュートリアル</li>
     
 
     
@@ -141,7 +141,7 @@
         <a href="multidimensional_api_tut.html" class="btn btn-neutral float-right" title="Multidimensional raster API tutorial" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="gdal_grid_tut.html" class="btn btn-neutral float-left" title="GDAL Grid Tutorial" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="gdal_grid_tut.html" class="btn btn-neutral float-left" title="GDALグリッドチュートリアル" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -151,13 +151,11 @@
            <div itemprop="articleBody">
              
   <section id="geotransform-tutorial">
-<span id="geotransforms-tut"></span><h1>Geotransform Tutorial<a class="headerlink" href="#geotransform-tutorial" title="Link to this heading"></a></h1>
+<span id="geotransforms-tut"></span><h1>地理変換チュートリアル<a class="headerlink" href="#geotransform-tutorial" title="Link to this heading"></a></h1>
 <section id="introduction-to-geotransforms">
-<h2>Introduction to Geotransforms:<a class="headerlink" href="#introduction-to-geotransforms" title="Link to this heading"></a></h2>
-<p>A geotransform is an affine transformation from the image coordinate space (row, column),
-also known as (pixel, line)
-to the georeferenced coordinate space (projected or geographic coordinates).</p>
-<p>A geotransform consists in a set of 6 coefficients:</p>
+<h2>地理変換の紹介:<a class="headerlink" href="#introduction-to-geotransforms" title="Link to this heading"></a></h2>
+<p>地理変換は,画像座標空間（行,列）,または（ピクセル,ライン）から,地理座標空間（投影座標または地理座標）へのアフィン変換です.</p>
+<p>地理変換は、6つの係数のセットで構成されます:</p>
 <div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">GT(0)</span></code> x-coordinate of the upper-left corner of the upper-left pixel.</div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">GT(1)</span></code> w-e pixel resolution / pixel width.</div>
@@ -168,17 +166,15 @@ to the georeferenced coordinate space (projected or geographic coordinates).</p>
 </div>
 </section>
 <section id="transformation-from-image-coordinate-space-to-georeferenced-coordinate-space">
-<h2>Transformation from image coordinate space to georeferenced coordinate space:<a class="headerlink" href="#transformation-from-image-coordinate-space-to-georeferenced-coordinate-space" title="Link to this heading"></a></h2>
+<h2>画像座標空間から地理座標空間への変換:<a class="headerlink" href="#transformation-from-image-coordinate-space-to-georeferenced-coordinate-space" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">X_geo</span> <span class="o">=</span> <span class="n">GT</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">X_pixel</span> <span class="o">*</span> <span class="n">GT</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">Y_line</span> <span class="o">*</span> <span class="n">GT</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">Y_geo</span> <span class="o">=</span> <span class="n">GT</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="n">X_pixel</span> <span class="o">*</span> <span class="n">GT</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">+</span> <span class="n">Y_line</span> <span class="o">*</span> <span class="n">GT</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Note that the pixel/line coordinates in the above are from (0.0,0.0) at the top left corner of the top left pixel
-to (width_in_pixels,height_in_pixels) at the bottom right corner of the bottom right pixel.
-The pixel/line location of the center of the top left pixel would therefore be (0.5,0.5).</p>
+<p>上記のピクセル/ライン座標は,左上のピクセルの左上の(0.0,0.0)から、右下のピクセルの右下の(width_in_pixels,height_in_pixels)までです.したがって,左上のピクセルの中心のピクセル/ラインの位置は(0.5,0.5)です.</p>
 </section>
 <section id="in-case-of-north-up-images">
-<h2>In case of north up images:<a class="headerlink" href="#in-case-of-north-up-images" title="Link to this heading"></a></h2>
+<h2>北向き画像の場合:<a class="headerlink" href="#in-case-of-north-up-images" title="Link to this heading"></a></h2>
 <div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">GT(2)</span></code>, <code class="docutils literal notranslate"><span class="pre">GT(4)</span></code> coefficients are zero.</div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">GT(1)</span></code>, <code class="docutils literal notranslate"><span class="pre">GT(5)</span></code> is the pixel size.</div>
@@ -197,7 +193,7 @@ The pixel/line location of the center of the top left pixel would therefore be (
         <a href="multidimensional_api_tut.html" class="btn btn-neutral float-right" title="Multidimensional raster API tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="gdal_grid_tut.html" class="btn btn-neutral float-left" title="GDAL Grid Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="gdal_grid_tut.html" class="btn btn-neutral float-left" title="GDALグリッドチュートリアル" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

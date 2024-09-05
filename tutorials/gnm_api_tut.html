@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GNM API tutorial &mdash; GDAL  ドキュメント</title>
+  <title>GNM API チュートリアル &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
       <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
 
@@ -26,7 +26,7 @@
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="OGR Coordinate Reference Systems and Coordinate Transformation tutorial" href="osr_api_tut.html" />
-    <link rel="prev" title="Vector driver in Python implementation tutorial" href="vector_python_driver.html" /> 
+    <link rel="prev" title="ベクタードライバーのPython実装チュートリアル" href="vector_python_driver.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -61,9 +61,9 @@
 <li class="toctree-l2"><a class="reference internal" href="index.html#multidimensional-raster">多次元ラスター</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#vector">ベクター</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html#geographic-network-model">ジオグラフィックネットワークモデル</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">GNM API tutorial</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#managing-networks">Managing networks</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#analysing-networks">Analysing networks</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">GNM API チュートリアル</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#managing-networks">ネットワークを管理する</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analysing-networks">ネットワークの解析</a></li>
 </ul>
 </li>
 </ul>
@@ -114,7 +114,7 @@
       
           <li><a href="index.html">チュートリアル</a> &raquo;</li>
       
-      <li>GNM API tutorial</li>
+      <li>GNM API チュートリアル</li>
     
 
     
@@ -136,7 +136,7 @@
         <a href="osr_api_tut.html" class="btn btn-neutral float-right" title="OGR Coordinate Reference Systems and Coordinate Transformation tutorial" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="vector_python_driver.html" class="btn btn-neutral float-left" title="Vector driver in Python implementation tutorial" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="vector_python_driver.html" class="btn btn-neutral float-left" title="ベクタードライバーのPython実装チュートリアル" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -146,12 +146,12 @@
            <div itemprop="articleBody">
              
   <section id="gnm-api-tutorial">
-<span id="gnm-api-tut"></span><h1>GNM API tutorial<a class="headerlink" href="#gnm-api-tutorial" title="Link to this heading"></a></h1>
-<p>This document is intended to describe using the GNM C++ classes to work with networks. It is advised to read the <a class="reference internal" href="../user/gnm_data_model.html#gnm-data-model"><span class="std std-ref">地理ネットワークデータモデル</span></a> before to understand the purpose and structure of GNM classes.</p>
+<span id="gnm-api-tut"></span><h1>GNM API チュートリアル<a class="headerlink" href="#gnm-api-tutorial" title="Link to this heading"></a></h1>
+<p>このドキュメントは,ネットワークを扱うためのGNM C++クラスの使用方法を説明することを目的としています.GNMクラスの目的と構造を理解するために, <a class="reference internal" href="../user/gnm_data_model.html#gnm-data-model"><span class="std std-ref">地理ネットワークデータモデル</span></a> を読むことをお勧めします.</p>
 <section id="managing-networks">
-<h2>Managing networks<a class="headerlink" href="#managing-networks" title="Link to this heading"></a></h2>
-<p>In the first example we will create a small water network on the base of the set of spatial data (two shapefiles: pipes and wells which are situated at the GDAL source tree: autotest\gnm\data). The use of the common network format - <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GNMGdalNetwork</span></code> class - will allow us to select one of the GDAL-supported vector formats for our network - ESRI Shapefile. After the creation we will build a topology and add some additional data: pumps layer, in order to manually edit network topology.</p>
-<p>Initially we register GDAL drivers and create some options (string pairs), which will be passed as parameters during network creation. Here we create a network's name.</p>
+<h2>ネットワークを管理する<a class="headerlink" href="#managing-networks" title="Link to this heading"></a></h2>
+<p>最初の例では,空間データのセット(パイプと井戸の2つのシェープファイル)を基に小さな水ネットワークを作成します.これらのファイルは, GDALソースツリーのautotest\gnm\dataに配置されています.一般的なネットワークフォーマットである <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GNMGdalNetwork</span></code> クラスを使用することで,ネットワークにGDALでサポートされているベクトルフォーマットの1つであるESRI Shapefileを選択できます.作成後,トポロジを構築し,追加データ(ポンプレイヤー)を追加してネットワークトポロジを手動で編集します.</p>
+<p>最初にGDALドライバを登録し,ネットワーク作成時のパラメータとして渡されるいくつかのオプション(文字列ペア)を作成します.ここでは,ネットワーク名を作成します.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;gnm.h&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
 
@@ -166,14 +166,14 @@
 <span class="w">    </span><span class="n">papszDSCO</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CSLAddNameValue</span><span class="p">(</span><span class="n">papszDSCO</span><span class="p">,</span><span class="w"> </span><span class="n">GNM_MD_FORMAT</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ESRI Shapefile&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Some options are obligatory. The following parameters must be specified during the network creation: the path/name; format of network storage; spatial reference system (EPSG, WKT, etc.). The according dataset with the &quot;network part&quot; will be created and the resulting network will be returned.</p>
+<p>いくつかのオプションは必須です.ネットワーク作成時には,次のパラメータを指定する必要があります:パス/名前;ネットワークストレージの形式;空間参照システム(EPSG, WKTなど).&quot;ネットワーク部分&quot;を持つ対応するデータセットが作成され,結果のネットワークが返されます.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">GDALDriver</span><span class="w"> </span><span class="o">*</span><span class="n">poDriver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetGDALDriverManager</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">GetDriverByName</span><span class="p">(</span><span class="s">&quot;GNMFile&quot;</span><span class="p">);</span>
 <span class="n">GNMGenericNetwork</span><span class="o">*</span><span class="w"> </span><span class="n">poDS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">GNMGenericNetwork</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">poDriver</span><span class="o">-&gt;</span><span class="n">Create</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;..</span><span class="se">\\</span><span class="s">network_data&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">GDT_Unknown</span><span class="p">,</span>
 <span class="w">                                                   </span><span class="n">papszDSCO</span><span class="w"> </span><span class="p">);</span>
 <span class="n">CSLDestroy</span><span class="p">(</span><span class="n">papszDSCO</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>For now we have a void network consisted of only &quot;system layers&quot;. We need to populate it with &quot;class layers&quot; full of features, so we open a certain foreign dataset and copy layers from it to our network. Note, that we use GDALDataset:: methods for working with &quot;class layers&quot;, because <a class="reference internal" href="../api/gnm_cpp.html#_CPPv410GNMNetwork" title="GNMNetwork"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GNMNetwork</span></code></a> inherited from GDALDataset.</p>
+<p>現時点では, &quot;システムレイヤ&quot;のみで構成された空のネットワークがあります. &quot;クラスレイヤ&quot;を持つフィーチャでネットワークを埋める必要があるため,特定の外部データセットを開き,そのデータセットからネットワークにレイヤをコピーします.注意: &quot;クラスレイヤ&quot;との作業にはGDALDataset::メソッドを使用しています,なぜなら <a class="reference internal" href="../api/gnm_cpp.html#_CPPv410GNMNetwork" title="GNMNetwork"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GNMNetwork</span></code></a> はGDALDatasetから継承しているからです.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">GDALDataset</span><span class="w"> </span><span class="o">*</span><span class="n">poSrcDS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">GDALDataset</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">GDALOpenEx</span><span class="p">(</span><span class="s">&quot;..</span><span class="se">\\</span><span class="s">in_data&quot;</span><span class="p">,</span>
 <span class="w">                                </span><span class="n">GDAL_OF_VECTOR</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">GDAL_OF_READONLY</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="w"> </span><span class="p">);</span>
 
@@ -186,7 +186,7 @@
 <span class="n">GDALClose</span><span class="p">(</span><span class="n">poSrcDS</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>After the successful copying we have the network full of features, but with no topology. The features were added and registered in the network but they are still not connected with each other. Now it is time to build the network topology. There are two ways of doing this in GNM: manually or automatically. In the most cases automatic building is more convenient, while manual is useful for small editings. Automatic building requires some parameters: we must specify which &quot;class layers&quot; will participate in topology building (we select our two layers), a snap tolerance, direct and inverse cost, direction, which is equal 0.00005 in our case. If the building will be successful the network's graph will be filled with the according connections.</p>
+<p>コピーが成功した後,地物がいっぱいのネットワークがありますが,トポロジはありません.地物はネットワークに追加され,登録されましたが,まだ互いに接続されていません.ネットワークトポロジを構築する時期です. GNMでは,トポロジを手動で構築するか自動で構築するかの2つの方法があります.ほとんどの場合,自動構築がより便利ですが,手動構築は小さな編集に便利です.自動構築にはいくつかのパラメータが必要です: トポロジ構築に参加する&quot;クラスレイヤ&quot;を指定する必要があります(2つのレイヤを選択します),スナップ許容度,直接コストと逆コスト,方向,この場合は0.00005です.構築が成功すると,ネットワークのグラフが対応する接続で埋められます.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Building network topology ...</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
 <span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">papszLayers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
 <span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">poDS</span><span class="o">-&gt;</span><span class="n">GetLayerCount</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
@@ -206,7 +206,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>At this point we have a ready network with topological and spatial data, which can be used now for different purposes (analysis, converting into different formats, etc). But sometimes it is necessary to modify some network's data. For example we need to add additional features and attach them to our built topology (modify topology). We create a new &quot;class layer&quot; in the network and add one feature to it.</p>
+<p>この時点で,異なる目的(解析,異なる形式に変換など)に使用できるトポロジと空間データを持つ準備ができたネットワークがあります.しかし,ネットワークのデータを変更する必要がある場合があります.たとえば,追加の地物を追加し,それらを構築されたトポロジに接続する必要があります(トポロジを変更).ネットワーク内で新しい&quot;クラスレイヤ&quot;を作成し,1つの地物を追加します.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">OGRLayer</span><span class="w"> </span><span class="o">*</span><span class="n">poNewLayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">poDS</span><span class="o">-&gt;</span><span class="n">CreateLayer</span><span class="p">(</span><span class="s">&quot;pumps&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">wkbPoint</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="w"> </span><span class="p">);</span>
 <span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">poNewLayer</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="w"> </span><span class="p">)</span>
 <span class="p">{</span>
@@ -237,18 +237,18 @@
 <span class="n">OGRFeature</span><span class="o">::</span><span class="n">DestroyFeature</span><span class="p">(</span><span class="w"> </span><span class="n">poFeature</span><span class="w"> </span><span class="p">);</span>
 </pre></div>
 </div>
-<p>After the successful creation the feature will be registered in the network and we can connect it with others. There can be two possible ways to do this. In the first case we need a real feature which will be an edge in the connection, while in the second case we do not need such feature, and passing -1 into the <a class="reference internal" href="../api/gnm_cpp.html#_CPPv4N17GNMGenericNetwork15ConnectFeaturesE7GNMGFID7GNMGFID7GNMGFIDdd12GNMDirection" title="GNMGenericNetwork::ConnectFeatures"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GNMGenericNetwork::ConnectFeatures()</span></code></a> method means that the special system edge will be created for this connection and added to the graph automatically. In our case we had added only one point feature and we have not got the line one to be an edge, so we will use the &quot;virtual&quot; connection. We pass the GFID of our point as the source, the GFID of one of the existed features as the target and -1 as the connector. Note that we also set the costs (direct and inverse) and the direction of our edge manually and these values will be written to the graph. When we used the automatic connection (which also uses ConnectFeatures() internally) such vales were set automatically according to the rule which we also set before.</p>
+<p>作成が成功した後,地物はネットワークに登録され,他の地物と接続できます.これを行うためには2つの可能な方法があります.最初の場合は,接続のエッジとなる実際の地物が必要です.2番目の場合は,そのような地物が必要ないため, <a class="reference internal" href="../api/gnm_cpp.html#_CPPv4N17GNMGenericNetwork15ConnectFeaturesE7GNMGFID7GNMGFID7GNMGFIDdd12GNMDirection" title="GNMGenericNetwork::ConnectFeatures"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GNMGenericNetwork::ConnectFeatures()</span></code></a> メソッドに-1を渡すと,この接続のために特別なシステムエッジが作成され,自動的にグラフに追加されます.この場合,1つのポイント地物のみを追加し,ライン地物をエッジにする必要がないため,&quot;仮想&quot;接続を使用します.ソースとしてポイントのGFID,ターゲットとして既存の地物のGFIDの1つ,コネクタとして-1を渡します.コスト(直接と逆)とエッジの方向も手動で設定し,これらの値がグラフに書き込まれます.自動接続(内部的にもConnectFeatures() を使用)を使用した場合,これらの値は以前に設定したルールに従って自動的に設定されます.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">poDS</span><span class="o">-&gt;</span><span class="n">ConnectFeatures</span><span class="p">(</span><span class="n">gfid</span><span class="w"> </span><span class="p">,</span><span class="mi">63</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w"> </span><span class="n">GNMDirection_SrcToTgt</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">GNMError_None</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Can not connect features</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>After all we correctly close the network which frees the allocated resources.</p>
+<p>最後に,割り当てられたリソースを解放するためにネットワークを正しく閉じます.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">GDALClose</span><span class="p">(</span><span class="n">poDS</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>All in one block:</p>
+<p>すべてを1つのブロックに:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;gnm.h&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;gnm_priv.h&quot;</span>
 
@@ -352,9 +352,9 @@
 </div>
 </section>
 <section id="analysing-networks">
-<h2>Analysing networks<a class="headerlink" href="#analysing-networks" title="Link to this heading"></a></h2>
-<p>In the second example we will analyse the network which we have built in the first example. We will calculate the shortest path between two points via Dijkstra algorithm performing the feature blockings and saving the resulting path into the file.</p>
-<p>Initially we open our network, passing the path to its Shapefile dataset.</p>
+<h2>ネットワークの解析<a class="headerlink" href="#analysing-networks" title="Link to this heading"></a></h2>
+<p>2番目の例では,最初の例で構築したネットワークを解析します. Dijkstraアルゴリズムを使用して2点間の最短経路を計算し,地物のブロックを実行し,結果の経路をファイルに保存します.</p>
+<p>最初に,Shapefileデータセットへのパスを渡してネットワークを開きます.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;gnm.h&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;gnm_priv.h&quot;</span>
 
@@ -370,7 +370,7 @@
 <span class="w">    </span><span class="p">}</span>
 </pre></div>
 </div>
-<p>Before any calculations we open the dataset which will hold the layer with the resulting path.</p>
+<p>計算を行う前に,結果の経路を保持するレイヤを持つデータセットを開きます.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">GDALDataset</span><span class="w"> </span><span class="o">*</span><span class="n">poResDS</span><span class="p">;</span>
 <span class="n">poResDS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">GDALDataset</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">GDALOpenEx</span><span class="p">(</span><span class="s">&quot;..</span><span class="se">\\</span><span class="s">out_data&quot;</span><span class="p">,</span>
 <span class="w">                                    </span><span class="n">GDAL_OF_VECTOR</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">GDAL_OF_UPDATE</span><span class="p">,</span>
@@ -382,7 +382,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Finally we use the Dijkstra shortest path method to calculations. This path will be found passing over the blocked feature and saved into internal memory OGRLayer, which we copy to the real dataset. Now it can be visualized by GIS.</p>
+<p>最後に,最短経路メソッドを使用して計算します.この経路は,ブロックされた地物を通過して見つけられ,内部メモリOGRLayerに保存され,実際のデータセットにコピーされます.これでGISで可視化できます.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="n">OGRLayer</span><span class="w"> </span><span class="o">*</span><span class="n">poResLayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">poNet</span><span class="o">-&gt;</span><span class="n">GetPath</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span><span class="w"> </span><span class="mi">41</span><span class="p">,</span><span class="w"> </span><span class="n">GATDijkstraShortestPath</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">poResLayer</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
@@ -403,7 +403,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>All in one block:</p>
+<p>すべてを1つのブロックに:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;gnm.h&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;gnmstdanalysis.h&quot;</span>
 
@@ -465,7 +465,7 @@
         <a href="osr_api_tut.html" class="btn btn-neutral float-right" title="OGR Coordinate Reference Systems and Coordinate Transformation tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="vector_python_driver.html" class="btn btn-neutral float-left" title="Vector driver in Python implementation tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="vector_python_driver.html" class="btn btn-neutral float-left" title="ベクタードライバーのPython実装チュートリアル" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

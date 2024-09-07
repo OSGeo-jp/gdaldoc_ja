@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Building documentation &mdash; GDAL  ドキュメント</title>
+  <title>文書のビルド &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
       <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
 
@@ -62,26 +62,26 @@
 <li class="toctree-l2"><a class="reference internal" href="dev_environment.html">Setting up a development environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dev_practices.html">Development practices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="testing.html">Automated testing</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Building documentation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#documentation-overview">Documentation overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">Building documentation</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#python-api-documentation">Python API documentation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">文書のビルド</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#documentation-overview">ドキュメントの概要</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">文書のビルド</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#python-api-documentation">Python API ドキュメント</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#sphinx-rst-style-guide">Sphinx RST Style guide</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#basic-markup">Basic markup</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#lists">Lists</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#list-tables">List-tables</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#page-labels">Page labels</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#linking">Linking</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#sections">Sections</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#notes-and-warnings">Notes and warnings</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#images">Images</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#external-files">External files</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#reference-files-and-paths">Reference files and paths</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#reference-code">Reference code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sphinx-rst-style-guide">Sphinx RST スタイルガイド</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#basic-markup">基本的なマークアップ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lists">リスト</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#list-tables">リストテーブル</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#page-labels">ページラベル</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#linking">リンク</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sections">セクション</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#notes-and-warnings">注意と警告</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#images">画像</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#external-files">外部ファイル</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reference-files-and-paths">ファイルとパスを参照する</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reference-code">コードを参照する</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#define-and-reference-configuration-options">Define and reference configuration options</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#reference-commands">Reference commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reference-commands">参照コマンド</a></li>
 </ul>
 </li>
 </ul>
@@ -132,7 +132,7 @@
       
           <li><a href="index.html">開発</a> &raquo;</li>
       
-      <li>Building documentation</li>
+      <li>文書のビルド</li>
     
 
     
@@ -164,77 +164,44 @@
            <div itemprop="articleBody">
              
   <section id="building-documentation">
-<span id="dev-documentation"></span><h1>Building documentation<a class="headerlink" href="#building-documentation" title="Link to this heading"></a></h1>
+<span id="dev-documentation"></span><h1>文書のビルド<a class="headerlink" href="#building-documentation" title="Link to this heading"></a></h1>
 <section id="documentation-overview">
-<h2>Documentation overview<a class="headerlink" href="#documentation-overview" title="Link to this heading"></a></h2>
-<p>GDAL's documentation includes C and C++ <a class="reference internal" href="../api/index.html#api"><span class="std std-ref">API documentation</span></a> built
-automatically from source comments using Doxygen and reStructuredText (rst)
-files containing manually-edited content.</p>
-<p><a class="reference external" href="https://www.sphinx-doc.org/">Sphinx</a> is used to combine the above components into a complete set of documentation in HTML, PDF, and other formats.</p>
-<p><a class="reference external" href="https://www.sphinx-doc.org/">Sphinx</a> and extensions used by GDAL can be installed by running <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span></code> from
-the <code class="docutils literal notranslate"><span class="pre">doc</span></code> subdirectory.</p>
+<h2>ドキュメントの概要<a class="headerlink" href="#documentation-overview" title="Link to this heading"></a></h2>
+<p>GDALのドキュメントには,Doxygenを使用してソースコメントから自動的に構築されたCおよびC++の <a class="reference internal" href="../api/index.html#api"><span class="std std-ref">API documentation</span></a> と,手動で編集された内容を含むreStructuredText(rst)ファイルが含まれています.</p>
+<p><a class="reference external" href="https://www.sphinx-doc.org/">Sphinx</a> は,上記のコンポーネントを組み合わせて,HTML,PDFおよびその他の形式の完全なドキュメントセットを作成するために使用されます.</p>
+<p><a class="reference external" href="https://www.sphinx-doc.org/">Sphinx</a> およびGDALで使用される拡張機能は,``doc``サブディレクトリから <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span></code> を実行することでインストールできます.</p>
 </section>
 <section id="id1">
-<h2>Building documentation<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
-<p>Documentation can be generated with Makefile targets, from the <code class="docutils literal notranslate"><span class="pre">doc</span></code> subdirectory
-of the GDAL source repository (only on Unix systems).</p>
-<p>The following targets are available:</p>
+<h2>文書のビルド<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>ドキュメントは,UnixシステムのGDALソースリポジトリの <code class="docutils literal notranslate"><span class="pre">doc</span></code> サブディレクトリからMakefileターゲットを使用して生成できます.</p>
+<p>次のターゲットが利用可能です:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">html</span></code>: build HTML documentation into the <code class="docutils literal notranslate"><span class="pre">doc/build/html</span></code> directory, where
-they can be viewed using a web browser.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">man</span></code>: build MAN pages into the <code class="docutils literal notranslate"><span class="pre">doc/build/man</span></code> directory.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">latexpdf</span></code>: build PDF documentation into the <code class="docutils literal notranslate"><span class="pre">doc/build/pdf</span></code> directory</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">doxygen</span></code>: regenerate API Doxygen XML and HTML output, that is used by the
-<code class="docutils literal notranslate"><span class="pre">html</span></code> target. Doxygen content is not automatically rebuilt when source files
-are modified, hence this target must be explicitly run to refresh it.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">doxygen_check_warnings</span></code>: same as <code class="docutils literal notranslate"><span class="pre">doxygen</span></code>, but errors out when Doxygen
-emits a warning (the <code class="docutils literal notranslate"><span class="pre">doxygen</span></code> target is tolerant to Doxygen warnings).
-This can be useful to reproduce one of the continuous integration checks that
-verifies that there are no Doxygen warnings.
-Requires Doxygen &gt;= 1.9.3 to be warning free.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">spelling</span></code>: runs spell checking on the documentation, covering as well as
-documentation generated from C/C++ API (Doxygen) and Python API. Words unknown
-to the spell checker but still considered valid should be added to the allow
-list in <code class="file docutils literal notranslate"><span class="pre">doc/source/spelling_wordlist.txt</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">clean</span></code>: clean the <code class="docutils literal notranslate"><span class="pre">doc/build</span></code> directory.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">html</span></code>: HTMLドキュメントを <code class="docutils literal notranslate"><span class="pre">doc/build/html</span></code> ディレクトリにビルドし,ウェブブラウザを使用して表示できます.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">man</span></code>: <code class="docutils literal notranslate"><span class="pre">doc/build/man</span></code> ディレクトリに MANページをビルドします.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">latexpdf</span></code>: PDFドキュメントを <code class="docutils literal notranslate"><span class="pre">doc/build/pdf</span></code> ディレクトリにビルドします</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">doxygen</span></code>: API Doxygen XMLおよびHTML出力を再生成し, <code class="docutils literal notranslate"><span class="pre">html</span></code> ターゲットで使用されます.ソースファイルが変更されたときにDoxygenコンテンツが自動的に再構築されないため,このターゲットを明示的に実行して更新する必要があります.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">doxygen_check_warnings</span></code>: <code class="docutils literal notranslate"><span class="pre">doxygen</span></code> と同じですが,Doxygenが警告を出力したときにエラーとなります(<code class="docutils literal notranslate"><span class="pre">doxygen</span></code> ターゲットはDoxygenの警告に対して寛容です).Doxygenの警告がないことを確認する連続統合チェックの1つを再現するために役立ちます.Doxygen &gt;= 1.9.3 が警告フリーであることが必要です.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">spelling</span></code>: ドキュメントのスペルチェックを実行し, C/C++ API(Doxygen)およびPython APIから生成されたドキュメントもカバーします.スペルチェッカーには不明な単語がありますが,それらは有効と見なされるため, <code class="file docutils literal notranslate"><span class="pre">doc/source/spelling_wordlist.txt</span></code> に許可リストに追加する必要があります.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">clean</span></code>: <code class="docutils literal notranslate"><span class="pre">doc/build</span></code> ディレクトリをクリーンアップします.</p></li>
 </ul>
-<p>It is also possible to run those targets as CMake targets. In that case, the
-output directory will be the <code class="docutils literal notranslate"><span class="pre">doc/build</span></code> subdirectory of the CMake
-build directory. To only clean the documentation, the <code class="docutils literal notranslate"><span class="pre">clean_doc</span></code> target can
-be invoked.
-Note: those CMake targets are only available if the CMake BUILD_DOCS=ON variable
-is set (it is set by default if build preconditions are met, that is if Doxygen,
-Sphinx and make are available)</p>
-<p>To visualize documentation changes while editing, it may be useful to install the <a class="reference external" href="https://pypi.org/project/sphinx-autobuild/">sphinx-autobuild</a> python package.
-Once installed, running <code class="docutils literal notranslate"><span class="pre">sphinx-autobuild</span> <span class="pre">-b</span> <span class="pre">html</span> <span class="pre">source</span> <span class="pre">build</span></code> from the <code class="docutils literal notranslate"><span class="pre">doc</span></code> subdirectory will build documentation
-and serve it on a local web server at <code class="docutils literal notranslate"><span class="pre">http://127.0.0.1:8000</span></code>. The pages served will be automatically refreshed as changes
-are made to underlying <code class="docutils literal notranslate"><span class="pre">rst</span></code> documentation files.</p>
+<p>これらのターゲットをCMakeターゲットとして実行することもできます.その場合,出力ディレクトリはCMakeビルドディレクトリの <code class="docutils literal notranslate"><span class="pre">doc/build</span></code> サブディレクトリになります.ドキュメントのクリーンアップのみを行うには, <code class="docutils literal notranslate"><span class="pre">clean_doc</span></code> ターゲットを呼び出すことができます.注意:これらのCMakeターゲットは, CMake BUILD_DOCS=ON 変数が設定されている場合のみ利用可能です(Doxygen,Sphinxおよびmakeが利用可能である場合にはデフォルトで設定されます).</p>
+<p>編集中にドキュメントの変更を視覚化するために, <a class="reference external" href="https://pypi.org/project/sphinx-autobuild/">sphinx-autobuild</a> pythonパッケージをインストールすると便利です.インストール後, <code class="docutils literal notranslate"><span class="pre">doc``サブディレクトリから</span> <span class="pre">``sphinx-autobuild</span> <span class="pre">-b</span> <span class="pre">html</span> <span class="pre">source</span> <span class="pre">build</span></code> を実行すると,ドキュメントがビルドされ,ローカルウェブサーバで <code class="docutils literal notranslate"><span class="pre">http://127.0.0.1:8000</span></code> で提供されます.変更が <code class="docutils literal notranslate"><span class="pre">rst</span></code> ドキュメントファイルに加えられると,提供されるページは自動的にリフレッシュされます.</p>
 <section id="python-api-documentation">
-<h3>Python API documentation<a class="headerlink" href="#python-api-documentation" title="Link to this heading"></a></h3>
-<p>Sphinx uses the <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html">autodoc</a> extension
-to generate documentation for the Python API from Python function docstrings.
-To be correctly parsed by <code class="docutils literal notranslate"><span class="pre">autodoc</span></code>, docstrings should follow the <a class="reference external" href="https://numpydoc.readthedocs.io/en/latest/format.html">numpydoc Style guide</a>.
-Docstrings may be found in two locations. If the function was defined in Python
-(i.e., using a <code class="docutils literal notranslate"><span class="pre">%pythoncode</span></code> SWIG directive), then the docstring must be
-placed within the function definition. If the function is defined in C++ only,
-then the docstring should be placed in a separate file
-containing only docstrings (located in <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/swig/include/python/docs">docs</a>).
-Sphinx loads the Python bindings when generating documentation, so for it to see any changes
-the following steps must be completed:</p>
+<h3>Python API ドキュメント<a class="headerlink" href="#python-api-documentation" title="Link to this heading"></a></h3>
+<p>Sphinxは,Python関数のdocstringからPython APIのドキュメントを生成するために <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html">autodoc</a> 拡張機能を使用します. <code class="docutils literal notranslate"><span class="pre">autodoc</span></code> によって正しく解析されるためには,docstringは <a class="reference external" href="https://numpydoc.readthedocs.io/en/latest/format.html">numpydoc Style guide</a> に従う必要があります.Docstringは2つの場所にあります.関数がPythonで定義された場合(つまり, <code class="docutils literal notranslate"><span class="pre">%pythoncode</span></code> SWIGディレクティブを使用して定義された場合),docstringは関数定義内に配置する必要があります.関数がC++のみで定義されている場合,docstringはdocstringのみを含む別のファイルに配置する必要があります( <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/swig/include/python/docs">docs</a> に配置されています).Sphinxはドキュメントを生成する際にPythonバインディングをロードするため,変更を反映させるためには以下の手順を完了する必要があります:</p>
 <ul class="simple">
-<li><p>rebuild the Python bindings from the build directory (<code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">--build</span> <span class="pre">.</span> <span class="pre">--target</span> <span class="pre">python_binding</span></code>)</p></li>
-<li><p>make the updated Python bindings visible to Python, either by installing them, or by running <code class="docutils literal notranslate"><span class="pre">scripts/setdevenv.sh</span></code>
-from the build directory</p></li>
-<li><p>update the timestamp of the <code class="docutils literal notranslate"><span class="pre">rst</span></code> files associated with the page where the documentation appears (e.g., <code class="docutils literal notranslate"><span class="pre">touch</span> <span class="pre">doc/source/api/python/osgeo.ogr.rst</span></code>)</p></li>
+<li><p>ビルドディレクトリからPythonバインディングを再構築する( <code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">--build</span> <span class="pre">.</span> <span class="pre">--target</span> <span class="pre">python_binding</span></code> )</p></li>
+<li><p>更新されたPythonバインディングをPythonに表示可能にするために,それらをインストールするか,ビルドディレクトリから <code class="docutils literal notranslate"><span class="pre">scripts/setdevenv.sh</span></code> を実行します</p></li>
+<li><p>ドキュメントが表示されるページに関連する <code class="docutils literal notranslate"><span class="pre">rst</span></code> ファイルのタイムスタンプを更新します(例: <code class="docutils literal notranslate"><span class="pre">touch</span> <span class="pre">doc/source/api/python/osgeo.ogr.rst</span></code>)</p></li>
 </ul>
 </section>
 </section>
 <section id="sphinx-rst-style-guide">
-<span id="rst-style"></span><h2>Sphinx RST Style guide<a class="headerlink" href="#sphinx-rst-style-guide" title="Link to this heading"></a></h2>
-<p>This section contains syntax rules, tips, and tricks for using Sphinx and reStructuredText.  For more information, please see this  <a class="reference external" href="http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html">comprehensive guide to reStructuredText</a>, as well as the <a class="reference external" href="http://sphinx.pocoo.org/rest.html">Sphinx reStructuredText Primer</a>.</p>
+<span id="rst-style"></span><h2>Sphinx RST スタイルガイド<a class="headerlink" href="#sphinx-rst-style-guide" title="Link to this heading"></a></h2>
+<p>このセクションには,SphinxとreStructuredTextの使用に関する構文ルール,ヒント,トリックが含まれています.詳細については,この <a class="reference external" href="http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html">reStructuredTextの包括的なガイド</a> および <a class="reference external" href="http://sphinx.pocoo.org/rest.html">Sphinx reStructuredText Primer</a> を参照してください.</p>
 <section id="basic-markup">
-<h3>Basic markup<a class="headerlink" href="#basic-markup" title="Link to this heading"></a></h3>
-<p>A reStructuredText document is written in plain text.  Without the need for complex formatting, one can be composed simply, just like one would any plain text document.  For basic formatting, see this table:</p>
+<h3>基本的なマークアップ<a class="headerlink" href="#basic-markup" title="Link to this heading"></a></h3>
+<p>reStructuredTextドキュメントはプレーンテキストで書かれています.複雑なフォーマットが必要ないため,プレーンテキストドキュメントのように簡単に構成できます.基本的なフォーマットについては,この表を参照してください:</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 30.0%" />
@@ -242,80 +209,80 @@ from the build directory</p></li>
 <col style="width: 30.0%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><strong>Format</strong></p></td>
-<td><p><strong>Syntax</strong></p></td>
-<td><p><strong>Output</strong></p></td>
+<tr class="row-odd"><td><p><strong>フォーマット</strong></p></td>
+<td><p><strong>構文</strong></p></td>
+<td><p><strong>出力</strong></p></td>
 </tr>
-<tr class="row-even"><td><p>Italics</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">*italics*</span></code> (single asterisk)</p></td>
-<td><p><em>italics</em></p></td>
+<tr class="row-even"><td><p>イタリック</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">*イタリック*</span></code> (シングルアスタリスク)</p></td>
+<td><p>イタリック</p></td>
 </tr>
-<tr class="row-odd"><td><p>Bold</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">**bold**</span></code> (double asterisk)</p></td>
-<td><p><strong>bold</strong></p></td>
+<tr class="row-odd"><td><p>太字</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">**太字**</span></code> (ダブルアスタリスク)</p></td>
+<td><p><strong>太字</strong></p></td>
 </tr>
-<tr class="row-even"><td><p>Monospace</p></td>
-<td><p>`` <code class="docutils literal notranslate"><span class="pre">monospace</span></code> `` (double back quote)</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">monospace</span></code></p></td>
+<tr class="row-even"><td><p>等幅</p></td>
+<td><p>`` <code class="docutils literal notranslate"><span class="pre">等幅</span></code> `` (ダブルバッククォート)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">等幅</span></code></p></td>
 </tr>
 </tbody>
 </table>
 <div class="admonition warning">
 <p class="admonition-title">警告</p>
-<p>Use of basic markup is <strong>not recommend</strong>! Where possible use sphinx inline directives (described below) to logically mark commands, parameters, options, input, and files. By using directives consistently these items can be styled appropriately.</p>
+<p>基本的なマークアップの使用は <strong>推奨されません</strong>!可能な限り,コマンド,パラメータ,オプション,入力,ファイルを論理的にマークするために,後述のSphinxインラインディレクティブを使用してください.一貫してディレクティブを使用することで,これらの項目を適切にスタイル付けすることができます.</p>
 </div>
 </section>
 <section id="lists">
-<h3>Lists<a class="headerlink" href="#lists" title="Link to this heading"></a></h3>
-<p>There are two types of lists, bulleted lists and numbered lists.  A <strong>bulleted list</strong> looks like this:</p>
+<h3>リスト<a class="headerlink" href="#lists" title="Link to this heading"></a></h3>
+<p>2種類のリストがあります,箇条書きリストと番号付きリストです. <strong>箇条書きリスト</strong> は次のようになります:</p>
 <ul class="simple">
-<li><p>An item</p></li>
-<li><p>Another item</p></li>
-<li><p>Yet another item</p></li>
+<li><p>アイテム</p></li>
+<li><p>別のアイテム</p></li>
+<li><p>さらに別のアイテム</p></li>
 </ul>
-<p>This is accomplished with the following code:</p>
+<p>これは次のコードで実現されます:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="n">An</span> <span class="n">item</span>
 <span class="o">*</span> <span class="n">Another</span> <span class="n">item</span>
 <span class="o">*</span> <span class="n">Yet</span> <span class="n">another</span> <span class="n">item</span>
 </pre></div>
 </div>
-<p>A <strong>numbered list</strong> looks like this:</p>
+<p><strong>番号付きリスト</strong> は次のようになります:</p>
 <ol class="arabic simple">
-<li><p>First item</p></li>
-<li><p>Second item</p></li>
-<li><p>Third item</p></li>
+<li><p>最初のアイテム</p></li>
+<li><p>2番目のアイテム</p></li>
+<li><p>3番目のアイテム</p></li>
 </ol>
-<p>This is accomplished with the following code:</p>
+<p>これは次のコードで実現されます:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#. First item</span>
 <span class="c1">#. Second item</span>
 <span class="c1">#. Third item</span>
 </pre></div>
 </div>
-<p>Note that numbers are automatically generated, making it easy to add/remove items.</p>
+<p>数字は自動的に生成されるため,アイテムの追加/削除が簡単になります.</p>
 </section>
 <section id="list-tables">
-<h3>List-tables<a class="headerlink" href="#list-tables" title="Link to this heading"></a></h3>
-<p>Bulleted lists can sometimes be cumbersome and hard to follow.  When dealing with a long list of items, use list-tables.  For example, to talk about a list of options, create a table that looks like this:</p>
+<h3>リストテーブル<a class="headerlink" href="#list-tables" title="Link to this heading"></a></h3>
+<p>箇条書きリストは時に煩雑で追いにくいことがあります.アイテムの長いリストを扱う場合は,リストテーブルを使用してください.たとえば,オプションのリストについて話す場合,次のようなテーブルを作成します:</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 80.0%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Shapes</p></th>
-<th class="head"><p>Description</p></th>
+<tr class="row-odd"><th class="head"><p>形状</p></th>
+<th class="head"><p>説明</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Square</p></td>
-<td><p>Four sides of equal length, 90 degree angles</p></td>
+<tr class="row-even"><td><p>四角形</p></td>
+<td><p>4つの辺が等しい,90度の角</p></td>
 </tr>
-<tr class="row-odd"><td><p>Rectangle</p></td>
-<td><p>Four sides, 90 degree angles</p></td>
+<tr class="row-odd"><td><p>長方形</p></td>
+<td><p>4つの辺,90度の角</p></td>
 </tr>
 </tbody>
 </table>
-<p>This is done with the following code:</p>
+<p>これは次のコードで行います:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="nb">list</span><span class="o">-</span><span class="n">table</span><span class="p">::</span>
    <span class="p">:</span><span class="n">widths</span><span class="p">:</span> <span class="mi">20</span> <span class="mi">80</span>
    <span class="p">:</span><span class="n">header</span><span class="o">-</span><span class="n">rows</span><span class="p">:</span> <span class="mi">1</span>
@@ -330,42 +297,42 @@ from the build directory</p></li>
 </div>
 </section>
 <section id="page-labels">
-<h3>Page labels<a class="headerlink" href="#page-labels" title="Link to this heading"></a></h3>
-<p><strong>Ensure every page has a label that matches the name of the file.</strong> For example if the page is named <code class="docutils literal notranslate"><span class="pre">foo_bar.rst</span></code> then the page should have the label:</p>
+<h3>ページラベル<a class="headerlink" href="#page-labels" title="Link to this heading"></a></h3>
+<p><strong>すべてのページに,ファイル名と一致するラベルがあることを確認してください.</strong> たとえば,ページの名前が <code class="docutils literal notranslate"><span class="pre">foo_bar.rst</span></code> の場合,ページには次のラベルが必要です:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span>  <span class="n">_foo_bar</span><span class="p">:</span>
 </pre></div>
 </div>
-<p>Other pages can then link to that page by using the following code:</p>
+<p>他のページは,次のコードを使用してそのページにリンクできます:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:ref:`foo_bar`
 </pre></div>
 </div>
 </section>
 <section id="linking">
-<span id="id2"></span><h3>Linking<a class="headerlink" href="#linking" title="Link to this heading"></a></h3>
-<p>Links to other pages should never be titled as &quot;here&quot;.  Sphinx makes this easy by automatically inserting the title of the linked document.</p>
+<span id="id2"></span><h3>リンク<a class="headerlink" href="#linking" title="Link to this heading"></a></h3>
+<p>他のページへのリンクは,決して &quot;ここ&quot; というタイトルにすべきではありません.Sphinxは,リンクされたドキュメントのタイトルを自動的に挿入することで,これを簡単にします.</p>
 <dl class="simple">
-<dt>Bad</dt><dd><p>More information about linking can be found <a class="reference internal" href="#linking"><span class="std std-ref">here</span></a>.</p>
+<dt>悪い例</dt><dd><p>リンクに関する詳細は <a class="reference internal" href="#linking"><span class="std std-ref">ここ</span></a> にあります.</p>
 </dd>
-<dt>Good</dt><dd><p>For more information, please see the section on <a class="reference internal" href="#linking"><span class="std std-ref">Linking</span></a>.</p>
+<dt>良い例</dt><dd><p>詳細については, <a class="reference internal" href="#linking"><span class="std std-ref">リンク</span></a> のセクションを参照してください.</p>
 </dd>
 </dl>
-<p>To insert a link to an external website:</p>
+<p>外部ウェブサイトへのリンクを挿入するには:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>`Text of the link &lt;http://example.com&gt;`__
 </pre></div>
 </div>
-<p>The resulting link would look like this: <a class="reference external" href="http://example.com">Text of the link</a></p>
+<p>結果のリンクは次のようになります: <a class="reference external" href="http://example.com">リンクのテキスト</a></p>
 <div class="admonition warning">
 <p class="admonition-title">警告</p>
-<p>It is very easy to have two links with the same text resulting in the following error:</p>
+<p>同じテキストを持つ2つのリンクを持つことは非常に簡単であり,次のエラーが発生します:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">**</span><span class="p">(</span><span class="n">WARNING</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="n">Duplicate</span> <span class="n">explicit</span> <span class="n">target</span> <span class="n">name</span><span class="p">:</span><span class="n">foo</span><span class="o">**</span>
 </pre></div>
 </div>
-<p>To avoid these warnings use of a double <cite>__</cite> generates an anonymous link.</p>
+<p>これらの警告を回避するために,ダブル <cite>__</cite> の使用で匿名リンクが生成されます.</p>
 </div>
 </section>
 <section id="sections">
-<h3>Sections<a class="headerlink" href="#sections" title="Link to this heading"></a></h3>
-<p>Use sections to break up long pages and to help Sphinx generate tables of contents.</p>
+<h3>セクション<a class="headerlink" href="#sections" title="Link to this heading"></a></h3>
+<p>長いページを分割し, Sphinxが目次を生成するのを助けるためにセクションを使用してください.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">================================================================================</span>
 <span class="n">Document</span> <span class="n">title</span>
 <span class="o">================================================================================</span>
@@ -385,56 +352,56 @@ from the build directory</p></li>
 </div>
 </section>
 <section id="notes-and-warnings">
-<h3>Notes and warnings<a class="headerlink" href="#notes-and-warnings" title="Link to this heading"></a></h3>
-<p>When it is beneficial to have a section of text stand out from the main text, Sphinx has two such boxes, the note and the warning.  They function identically, and only differ in their coloring.  You should use notes and warnings sparingly, however, as adding emphasis to everything makes the emphasis less effective.</p>
-<p>Here is an example of a note:</p>
+<h3>注意と警告<a class="headerlink" href="#notes-and-warnings" title="Link to this heading"></a></h3>
+<p>メインテキストから目立たせるためにセクションのテキストが有益な場合, Sphinxには2つのボックス,ノートと警告があります.それらは同じように機能し,色が異なります. ただし,すべてに強調を追加すると,強調が効果が低下しますので,注意と警告は控えめに使用する必要があります.</p>
+<p>ノートの例です:</p>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
-<p>This is a note.</p>
+<p>これはノートです.</p>
 </div>
-<p>This note is generated with the following code:</p>
+<p>このノートは次のコードで生成されます:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">note</span><span class="p">::</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">note</span><span class="o">.</span>
 </pre></div>
 </div>
-<p>Similarly, here is an example of a warning:</p>
+<p>同様に,警告の例です:</p>
 <div class="admonition warning">
 <p class="admonition-title">警告</p>
-<p>Beware of dragons.</p>
+<p>ドラゴンに注意してください.</p>
 </div>
-<p>This warning is generated by the following code:</p>
+<p>この警告は次のコードで生成されます:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">warning</span><span class="p">::</span> <span class="n">Beware</span> <span class="n">of</span> <span class="n">dragons</span><span class="o">.</span>
 </pre></div>
 </div>
 </section>
 <section id="images">
-<h3>Images<a class="headerlink" href="#images" title="Link to this heading"></a></h3>
-<p>Add images to your documentation when possible.  Images, such as screenshots, are a very helpful way of making documentation understandable.  When making screenshots, try to crop out unnecessary content (browser window, desktop, etc).  Avoid scaling the images, as the Sphinx theme automatically resizes large images.  It is also helpful to include a caption underneath the image.:</p>
+<h3>画像<a class="headerlink" href="#images" title="Link to this heading"></a></h3>
+<p>可能な限り,ドキュメントに画像を追加してください. スクリーンショットなどの画像は,ドキュメントを理解しやすくするための非常に役立つ方法です.スクリーンショットを作成する際には,不要なコンテンツ(ブラウザウィンドウ,デスクトップなど)を切り取るようにしてください.画像のスケーリングは避けてください, Sphinxテーマは大きな画像を自動的にリサイズします. また,画像の下にキャプションを含めると便利です.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">figure</span><span class="p">::</span> <span class="n">image</span><span class="o">.</span><span class="n">png</span>
    <span class="p">:</span><span class="n">align</span><span class="p">:</span> <span class="n">center</span>
 
    <span class="o">*</span><span class="n">Caption</span><span class="o">*</span>
 </pre></div>
 </div>
-<p>In this example, the image file exists in the same directory as the source page.  If this is not the case, you can insert path information in the above command. The root <code class="file docutils literal notranslate"><span class="pre">/</span></code> is the directory of the <code class="file docutils literal notranslate"><span class="pre">conf.py</span></code> file.:</p>
+<p>この例では,画像ファイルはソースページと同じディレクトリに存在します. そうでない場合,上記のコマンドにパス情報を挿入できます.ルート <code class="file docutils literal notranslate"><span class="pre">/</span></code> は <code class="file docutils literal notranslate"><span class="pre">conf.py</span></code> ファイルのディレクトリです.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">figure</span><span class="p">::</span> <span class="o">/../</span><span class="n">images</span><span class="o">/</span><span class="n">gdalicon</span><span class="o">.</span><span class="n">png</span>
 </pre></div>
 </div>
 </section>
 <section id="external-files">
-<h3>External files<a class="headerlink" href="#external-files" title="Link to this heading"></a></h3>
-<p>Text snippets, large blocks of downloadable code, and even zip files or other binary sources can all be included as part of the documentation.</p>
-<p>To include link to sample file, use the <code class="docutils literal notranslate"><span class="pre">download</span></code> directive:</p>
+<h3>外部ファイル<a class="headerlink" href="#external-files" title="Link to this heading"></a></h3>
+<p>テキストスニペット,ダウンロード可能なコードの大きなブロック,およびzipファイルやその他のバイナリソースをすべてドキュメントの一部として含めることができます.</p>
+<p>サンプルファイルへのリンクを含めるには, <code class="docutils literal notranslate"><span class="pre">download</span></code> ディレクティブを使用します:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:download:`An external file &lt;example.txt&gt;`
 </pre></div>
 </div>
-<p>The result of this code will generate a standard link to an <a class="reference download internal" download="" href="../_downloads/0056e2c062ae841249224ed996032d6c/example.txt"><code class="xref download docutils literal notranslate"><span class="pre">external</span> <span class="pre">file</span></code></a></p>
-<p>To include the contents of a file, use <code class="docutils literal notranslate"><span class="pre">literalinclude</span></code> directive:</p>
+<p>このコードの結果は,標準リンクを生成します <a class="reference download internal" download="" href="../_downloads/0056e2c062ae841249224ed996032d6c/example.txt"><code class="xref download docutils literal notranslate"><span class="pre">外部ファイル</span></code></a></p>
+<p>ファイルの内容を含めるには, <code class="docutils literal notranslate"><span class="pre">literalinclude</span></code> ディレクティブを使用します:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Example of :command:`gdalinfo` use:
 
 .. literalinclude:: example.txt
 </pre></div>
 </div>
-<p>Example of <strong class="command">gdalinfo</strong> use:</p>
+<p><strong class="command">gdalinfo</strong> の使用例:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Driver</span><span class="p">:</span> <span class="n">GTiff</span><span class="o">/</span><span class="n">GeoTIFF</span>
 <span class="n">Size</span> <span class="ow">is</span> <span class="mi">512</span><span class="p">,</span> <span class="mi">512</span>
 <span class="n">Coordinate</span> <span class="n">System</span> <span class="ow">is</span><span class="p">:</span>
@@ -462,7 +429,7 @@ from the build directory</p></li>
 <span class="n">Band</span> <span class="mi">1</span> <span class="n">Block</span><span class="o">=</span><span class="mi">512</span><span class="n">x16</span> <span class="n">Type</span><span class="o">=</span><span class="n">Byte</span><span class="p">,</span> <span class="n">ColorInterp</span><span class="o">=</span><span class="n">Gray</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">literalinclude</span></code> directive has options for syntax highlighting, line numbers and extracting just a snippet:</p>
+<p><code class="docutils literal notranslate"><span class="pre">literalinclude</span></code> ディレクティブには,シンタックスハイライト,行番号,スニペットの抽出のためのオプションがあります:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Example of :command:`gdalinfo` use:
 
 .. literalinclude:: example.txt
@@ -475,40 +442,40 @@ from the build directory</p></li>
 </div>
 </section>
 <section id="reference-files-and-paths">
-<h3>Reference files and paths<a class="headerlink" href="#reference-files-and-paths" title="Link to this heading"></a></h3>
-<p>Use the following syntax to reference files and paths:</p>
+<h3>ファイルとパスを参照する<a class="headerlink" href="#reference-files-and-paths" title="Link to this heading"></a></h3>
+<p>ファイルとパスを参照するには,次の構文を使用します:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:file:`myfile.txt`
 </pre></div>
 </div>
-<p>This will output: <code class="file docutils literal notranslate"><span class="pre">myfile.txt</span></code>.</p>
-<p>You can reference paths in the same way:</p>
+<p>これは出力します: <code class="file docutils literal notranslate"><span class="pre">myfile.txt</span></code>.</p>
+<p>同様にパスを参照することもできます:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:file:`path/to/myfile.txt`
 </pre></div>
 </div>
-<p>This will output: <code class="file docutils literal notranslate"><span class="pre">path/to/myfile.txt</span></code>.</p>
-<p>For Windows paths, use double backslashes:</p>
+<p>これは出力します: <code class="file docutils literal notranslate"><span class="pre">path/to/myfile.txt</span></code>.</p>
+<p>Windowsパスの場合,ダブルバックスラッシュを使用します:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:file:`C:\\myfile.txt`
 </pre></div>
 </div>
-<p>This will output: <code class="file docutils literal notranslate"><span class="pre">C:\myfile.txt</span></code>.</p>
-<p>If you want to reference a non-specific path or file name:</p>
+<p>これは出力します: <code class="file docutils literal notranslate"><span class="pre">C:\myfile.txt</span></code>.</p>
+<p>特定のパスやファイル名を参照したい場合:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:file:`{your/own/path/to}/myfile.txt`
 </pre></div>
 </div>
-<p>This will output: <code class="file docutils literal notranslate"><em><span class="pre">your/own/path/to</span></em><span class="pre">/myfile.txt</span></code></p>
-<p>To reference a file in the GDAL source tree, use:</p>
+<p>これは出力します: <code class="file docutils literal notranslate"><em><span class="pre">your/own/path/to</span></em><span class="pre">/myfile.txt</span></code></p>
+<p>GDALソースツリー内のファイルを参照するには,次のようにします:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:source_file:`gcore/gdaldriver.cpp`
 </pre></div>
 </div>
-<p>This will output a link to the file on GitHub: <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/gcore/gdaldriver.cpp">gdaldriver.cpp</a></p>
+<p>これはGitHub上のファイルへのリンクを出力します: <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/gcore/gdaldriver.cpp">gdaldriver.cpp</a></p>
 </section>
 <section id="reference-code">
-<h3>Reference code<a class="headerlink" href="#reference-code" title="Link to this heading"></a></h3>
-<p>To reference a class:</p>
+<h3>コードを参照する<a class="headerlink" href="#reference-code" title="Link to this heading"></a></h3>
+<p>クラスを参照するには:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:cpp:class:`MyClass`
 </pre></div>
 </div>
-<p>To reference a method or function:</p>
+<p>メソッドまたは関数を参照するには:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:cpp:func:`MyClass::MyMethod`
 :cpp:func:`MyFunction`
 </pre></div>
@@ -516,7 +483,7 @@ from the build directory</p></li>
 </section>
 <section id="define-and-reference-configuration-options">
 <span id="config-option-syntax"></span><h3>Define and reference configuration options<a class="headerlink" href="#define-and-reference-configuration-options" title="Link to this heading"></a></h3>
-<p>To define a configuration option, use:</p>
+<p>設定オプションを定義するには,次のようにします:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">config</span><span class="p">::</span> <span class="n">OPTION_NAME</span>
    <span class="p">:</span><span class="n">choices</span><span class="p">:</span> <span class="n">COMMA</span><span class="p">,</span> <span class="n">SEPARATED</span><span class="p">,</span> <span class="n">LIST</span>
    <span class="p">:</span><span class="n">default</span><span class="p">:</span> <span class="n">DEFAULT_VALUE</span>
@@ -525,43 +492,40 @@ from the build directory</p></li>
    <span class="n">Narrative</span> <span class="n">about</span> <span class="n">the</span> <span class="n">option</span><span class="o">.</span>
 </pre></div>
 </div>
-<p>Similar syntax can be used to define opening options (<code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">oo::</span></code>),
-creation options (<code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">co::</span></code>), dataset creation options (<code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">dsco::</span></code>), or layer creation options
-(<code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">lco::</span></code>).</p>
-<p>To reference a configuration option, such as <strong>GDAL_CACHEMAX</strong>,
-use the syntax in the table below.</p>
+<p>開くオプション(<code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">oo::</span></code>),作成オプション(<code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">co::</span></code>),データセット作成オプション(<code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">dsco::</span></code>),またはレイヤ作成オプション(<code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">lco::</span></code>)を定義するためにも同様の構文を使用できます.</p>
+<p><strong>GDAL_CACHEMAX</strong> などの設定オプションを参照するには,以下の表の構文を使用してください.</p>
 <table class="docutils align-default">
 <thead>
-<tr class="row-odd"><th class="head"><p>Option type</p></th>
-<th class="head"><p>Syntax</p></th>
+<tr class="row-odd"><th class="head"><p>オプションタイプ</p></th>
+<th class="head"><p>構文</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Configuration option</p></td>
+<tr class="row-even"><td><p>設定オプション</p></td>
 <td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:config:`option_name`
 </pre></div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>Creation option</p></td>
+<tr class="row-odd"><td><p>作成オプション</p></td>
 <td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:co:`option_name`
 </pre></div>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>Open option</p></td>
+<tr class="row-even"><td><p>オープンオプション</p></td>
 <td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:oo:`option_name`
 </pre></div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>Dataset creation option</p></td>
+<tr class="row-odd"><td><p>データセット作成オプション</p></td>
 <td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:dsco:`option_name`
 </pre></div>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>Layer creation option</p></td>
+<tr class="row-even"><td><p>レイヤ作成オプション</p></td>
 <td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:lco:`option_name`
 </pre></div>
 </div>
@@ -571,18 +535,18 @@ use the syntax in the table below.</p>
 </table>
 </section>
 <section id="reference-commands">
-<h3>Reference commands<a class="headerlink" href="#reference-commands" title="Link to this heading"></a></h3>
-<p>Reference commands (such as <strong class="program">gdalinfo</strong>) with the following syntax:</p>
+<h3>参照コマンド<a class="headerlink" href="#reference-commands" title="Link to this heading"></a></h3>
+<p>次の構文でコマンド( <strong class="program">gdalinfo</strong> など)を参照します:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:program:`gdalinfo`
 </pre></div>
 </div>
-<p>Use <code class="docutils literal notranslate"><span class="pre">option</span></code> directive for command line options:</p>
+<p>コマンドラインオプションに <code class="docutils literal notranslate"><span class="pre">option</span></code> ディレクティブを使用します:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">option</span><span class="p">::</span> <span class="o">-</span><span class="n">json</span>
 
    <span class="n">Display</span> <span class="n">the</span> <span class="n">output</span> <span class="ow">in</span> <span class="n">json</span> <span class="nb">format</span><span class="o">.</span>
 </pre></div>
 </div>
-<p>Use <code class="docutils literal notranslate"><span class="pre">describe</span></code> to document create parameters:</p>
+<p>作成パラメータを文書化するために <code class="docutils literal notranslate"><span class="pre">describe</span></code> を使用します:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">describe</span><span class="p">::</span> <span class="n">WORLDFILE</span><span class="o">=</span><span class="n">YES</span>
 
    <span class="n">Force</span> <span class="n">the</span> <span class="n">generation</span> <span class="n">of</span> <span class="n">an</span> <span class="n">associated</span> <span class="n">ESRI</span> <span class="n">world</span> <span class="n">file</span> <span class="p">(</span><span class="k">with</span> <span class="n">the</span> <span class="n">extension</span> <span class="o">.</span><span class="n">wld</span><span class="p">)</span><span class="o">.</span>

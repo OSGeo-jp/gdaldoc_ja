@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>gdal_contour &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=75499f83" />
 
   
     <link rel="shortcut icon" href="../_static/favicon.png"/>
@@ -193,7 +193,7 @@
              <span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="n">d</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">inodata</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">snodata</span> <span class="o">&lt;</span><span class="n">n</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">f</span> <span class="o">&lt;</span><span class="n">formatname</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">i</span> <span class="o">&lt;</span><span class="n">interval</span><span class="o">&gt;</span><span class="p">]</span>
              <span class="p">[</span><span class="o">-</span><span class="n">dsco</span> <span class="o">&lt;</span><span class="n">NAME</span><span class="o">&gt;=&lt;</span><span class="n">VALUE</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span> <span class="p">[</span><span class="o">-</span><span class="n">lco</span> <span class="o">&lt;</span><span class="n">NAME</span><span class="o">&gt;=&lt;</span><span class="n">VALUE</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span>
              <span class="p">[</span><span class="o">-</span><span class="n">off</span> <span class="o">&lt;</span><span class="n">offset</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">fl</span> <span class="o">&lt;</span><span class="n">level</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">level</span><span class="o">&gt;...</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">e</span> <span class="o">&lt;</span><span class="n">exp_base</span><span class="o">&gt;</span><span class="p">]</span>
-             <span class="p">[</span><span class="o">-</span><span class="n">nln</span> <span class="o">&lt;</span><span class="n">outlayername</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">q</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">p</span><span class="p">]</span>
+             <span class="p">[</span><span class="o">-</span><span class="n">nln</span> <span class="o">&lt;</span><span class="n">outlayername</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">q</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">p</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">gt</span> <span class="o">&lt;</span><span class="n">n</span><span class="o">&gt;|</span><span class="n">unlimited</span><span class="p">]</span>
              <span class="o">&lt;</span><span class="n">src_filename</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">dst_filename</span><span class="o">&gt;</span>
 </pre></div>
 </div>
@@ -335,6 +335,18 @@ Must specify either -i or -fl or -e.</p>
 <dd><p>Generate contour polygons rather than contour lines.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 2.4.0.</span></p>
+</div>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-gdal_contour-gt">
+<span class="sig-name descname"><span class="pre">-gt</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;n&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_contour-gt" title="Link to this definition"></a></dt>
+<dd><p>Group n features per transaction (default 100 000). Increase the value for
+better performance when writing into DBMS drivers that have transaction
+support. <code class="docutils literal notranslate"><span class="pre">n</span></code> can be set to unlimited to load the data into a single
+transaction. If set to 0, no explicit transaction is done.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.10.</span></p>
 </div>
 </dd></dl>
 

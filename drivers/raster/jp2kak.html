@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>JP2KAK -- JPEG 2000 (based on Kakadu SDK) &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d10597a4" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/gdal.css?v=e152ac3b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/gdal.css?v=75499f83" />
 
   
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
@@ -58,6 +58,7 @@
 <li class="toctree-l2"><a class="reference internal" href="adrg.html">ADRG -- ADRG/ARC Digitized Raster Graphics (.gen/.thf)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="aig.html">AIG -- Arc/Info Binary Grid</a></li>
 <li class="toctree-l2"><a class="reference internal" href="airsar.html">AIRSAR -- AIRSAR Polarimetric Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avif.html">AVIF -- AV1 Image File Format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bag.html">BAG -- Bathymetry Attributed Grid</a></li>
 <li class="toctree-l2"><a class="reference internal" href="basisu.html">BASISU -- Basis Universal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="blx.html">BLX -- Magellan BLX Topo File Format</a></li>
@@ -489,19 +490,20 @@ to the rest of the image.</p>
 considered to be for advanced use only. Consult the Kakadu SDK documentation to
 better understand their meaning.</p>
 <ul class="simple">
-<li><p><strong>Corder</strong>: Defaults to &quot;PRCL&quot;.</p></li>
-<li><p><strong>Cprecincts</strong>: Defaults to
+<li><p><strong>Corder</strong>: Progression order. Defaults to &quot;PRCL&quot;.</p></li>
+<li><p><strong>Cprecincts</strong>: Precincts settings. Defaults to
 &quot;{512,512},{256,512},{128,512},{64,512},{32,512},{16,512},{8,512},{4,512},{2,512}&quot;.</p></li>
-<li><p><strong>ORGgen_plt</strong>: Defaults to &quot;yes&quot;.</p></li>
-<li><p><strong>ORGgen_tlm</strong>: Kakadu SDK defaults used.</p></li>
+<li><p><strong>ORGgen_plt</strong>: Whether to generate PLT markers (Paquet Length). Defaults to &quot;yes&quot;.</p></li>
+<li><p><strong>ORGgen_tlm</strong>: Whether to generate TLM markers (Tile Length). Kakadu SDK defaults used.</p></li>
 <li><p><strong>ORGtparts</strong>: Kakadu SDK defaults used.</p></li>
 <li><p><strong>Cmodes</strong>: Kakadu SDK defaults used.</p></li>
-<li><p><strong>Clevels</strong>: Kakadu SDK defaults used.</p></li>
+<li><p><strong>Clevels</strong>: Quality levels. Kakadu SDK defaults used.</p></li>
+<li><p><strong>Cycc</strong> =YES/NO: Whether to use YCbCr (lossy compression) or YUV (lossless compression) color space when encoding RGB images. Default to YES starting with GDAL 3.10 (was hardcoded to NO in previous versions)</p></li>
 <li><p><strong>Rshift</strong>: Kakadu SDK defaults used.</p></li>
 <li><p><strong>Rlevels</strong>: Kakadu SDK defaults used.</p></li>
 <li><p><strong>Rweight</strong>: Kakadu SDK defaults used.</p></li>
 <li><p><strong>Qguard</strong>: Kakadu SDK defaults used.</p></li>
-<li><p><strong>Creversible</strong>: If not set and QUALITY &gt;= 99.5, set to &quot;yes&quot;, otherwise to &quot;false&quot;.</p></li>
+<li><p><strong>Creversible</strong> = YES/NO: If not set and QUALITY &gt;= 99.5, set to &quot;yes&quot;, otherwise to &quot;false&quot;.</p></li>
 <li><p><strong>Sprofile</strong>: Kakadu SDK defaults used.</p></li>
 <li><p><strong>RATE</strong>: Kakadu SDK defaults used.
 One or more bit-rates, expressed in terms of the ratio between the total number of compressed bits

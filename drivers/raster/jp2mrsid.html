@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>JP2MrSID -- JPEG2000 via MrSID SDK &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d10597a4" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/gdal.css?v=e152ac3b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/gdal.css?v=75499f83" />
 
   
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
@@ -58,6 +58,7 @@
 <li class="toctree-l2"><a class="reference internal" href="adrg.html">ADRG -- ADRG/ARC Digitized Raster Graphics (.gen/.thf)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="aig.html">AIG -- Arc/Info Binary Grid</a></li>
 <li class="toctree-l2"><a class="reference internal" href="airsar.html">AIRSAR -- AIRSAR Polarimetric Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avif.html">AVIF -- AV1 Image File Format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bag.html">BAG -- Bathymetry Attributed Grid</a></li>
 <li class="toctree-l2"><a class="reference internal" href="basisu.html">BASISU -- Basis Universal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="blx.html">BLX -- Magellan BLX Topo File Format</a></li>
@@ -335,10 +336,10 @@ DSDK and ESDK.</p>
 <section id="georeferencing">
 <h2>Georeferencing<a class="headerlink" href="#georeferencing" title="Link to this heading"></a></h2>
 <p>Georeferencing information can come from different sources : internal
-(GeoJP2 or GMLJP2 boxes), worldfile .j2w/.wld sidecar files, or PAM
-(Persistent Auxiliary metadata) .aux.xml sidecar files. By default,
-information is fetched in following order (first listed is the highest
-priority): PAM, GeoJP2, GMLJP2, WORLDFILE.</p>
+(GeoJP2 or GMLJP2 boxes), <a class="reference internal" href="wld.html#raster-wld"><span class="std std-ref">worldfile</span></a> .j2w/.wld sidecar
+files, or PAM (Persistent Auxiliary metadata) .aux.xml sidecar files. By
+default, information is fetched in following order (first listed is the
+highest priority): PAM, GeoJP2, GMLJP2, WORLDFILE.</p>
 <p>Starting with GDAL 2.2, the allowed sources and their priority order can
 be changed with the <a class="reference internal" href="../../user/configoptions.html#config-GDAL_GEOREF_SOURCES"><code class="docutils literal notranslate"><span class="pre">GDAL_GEOREF_SOURCES</span></code></a> configuration option (or
 <a class="reference internal" href="#drivers/raster/jp2mrsid-oo-GEOREF_SOURCES"><code class="docutils literal notranslate"><span class="pre">GEOREF_SOURCES</span></code></a> open option) whose value is a comma-separated list of the
@@ -368,7 +369,8 @@ JPEG2000 files.
 Creation options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-co</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALCreate11GDALDriverHPKciii12GDALDataType12CSLConstList" title="GDALCreate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALCreate()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.Driver.Create" title="osgeo.gdal.Driver.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Driver.Create</span></code></a> (Python).
 The following creation options are supported.</p>
 <ul class="simple">
-<li><p id="drivers/raster/jp2mrsid-co-WORLDFILE"><strong>WORLDFILE=YES: </strong>to write an ESRI world file (with the extension .j2w).</p>
+<li><p id="drivers/raster/jp2mrsid-co-WORLDFILE"><strong>WORLDFILE=YES: </strong>to write an ESRI world file (with the extension .j2w).
+See <a class="reference internal" href="wld.html#raster-wld"><span class="std std-ref">World Files</span></a> section for details.</p>
 </li>
 <li><p id="drivers/raster/jp2mrsid-co-COMPRESSION"><strong>COMPRESSION=value: </strong>Indicates the desired compression ratio. Zero
 indicates lossless compression. Twenty would indicate a 20:1

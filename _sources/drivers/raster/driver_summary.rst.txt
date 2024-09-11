@@ -44,6 +44,12 @@
      - No
      - No
      - Built-in by default
+   * - :ref:`AVIF <raster.avif>`
+     - AV1 Image File Format
+     - No
+     - No
+     - No
+     - libavif
    * - :ref:`BAG <raster.bag>`
      - Bathymetry Attributed Grid
      - **Yes**

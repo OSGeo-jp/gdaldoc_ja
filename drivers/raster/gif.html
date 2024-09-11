@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GIF -- Graphics Interchange Format &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d10597a4" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/gdal.css?v=e152ac3b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/gdal.css?v=75499f83" />
 
   
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
@@ -58,6 +58,7 @@
 <li class="toctree-l2"><a class="reference internal" href="adrg.html">ADRG -- ADRG/ARC Digitized Raster Graphics (.gen/.thf)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="aig.html">AIG -- Arc/Info Binary Grid</a></li>
 <li class="toctree-l2"><a class="reference internal" href="airsar.html">AIRSAR -- AIRSAR Polarimetric Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avif.html">AVIF -- AV1 Image File Format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bag.html">BAG -- Bathymetry Attributed Grid</a></li>
 <li class="toctree-l2"><a class="reference internal" href="basisu.html">BASISU -- Basis Universal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="blx.html">BLX -- Magellan BLX Topo File Format</a></li>
@@ -317,8 +318,9 @@ files have no support for georeferencing.</p>
 <p>A GIF image with transparency will have that entry marked as having an
 alpha value of 0.0 (transparent). Also, the transparent value will be
 returned as the NoData value for the band.</p>
-<p>If an ESRI world file exists with the .gfw, .gifw or .wld extension, it
-will be read and used to establish the geotransform for the image.</p>
+<p>If an ESRI <a class="reference internal" href="wld.html#raster-wld"><span class="std std-ref">world file</span></a> exists with the .gfw, .gifw
+or .wld extension, it will be read and used to establish the geotransform
+for the image.</p>
 <p>XMP metadata can be extracted from the file,
 and will be stored as XML raw content in the xml:XMP metadata domain.</p>
 <section id="driver-capabilities">
@@ -341,7 +343,8 @@ supported on creation.</p>
 <p>Creation options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-co</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALCreate11GDALDriverHPKciii12GDALDataType12CSLConstList" title="GDALCreate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALCreate()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.Driver.Create" title="osgeo.gdal.Driver.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Driver.Create</span></code></a> (Python).
 The following creation options are supported:</p>
 <ul class="simple">
-<li><p id="drivers/raster/gif-co-WORLDFILE"><strong>WORLDFILE=[ON/OFF]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">OFF</span></code>. Force the generation of an associated ESRI world file (.wld).</p>
+<li><p id="drivers/raster/gif-co-WORLDFILE"><strong>WORLDFILE=[ON/OFF]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">OFF</span></code>. Force the generation of an associated ESRI world file (.wld).
+See <a class="reference internal" href="wld.html#raster-wld"><span class="std std-ref">World Files</span></a> section for details.</p>
 </li>
 <li><p id="drivers/raster/gif-co-INTERLACING"><strong>INTERLACING=[ON/OFF]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">OFF</span></code>. Generate an interlaced (progressive) GIF file.</p>
 </li>

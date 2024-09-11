@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SRTMHGT -- SRTM HGT Format &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d10597a4" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/gdal.css?v=e152ac3b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/gdal.css?v=75499f83" />
 
   
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
@@ -58,6 +58,7 @@
 <li class="toctree-l2"><a class="reference internal" href="adrg.html">ADRG -- ADRG/ARC Digitized Raster Graphics (.gen/.thf)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="aig.html">AIG -- Arc/Info Binary Grid</a></li>
 <li class="toctree-l2"><a class="reference internal" href="airsar.html">AIRSAR -- AIRSAR Polarimetric Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avif.html">AVIF -- AV1 Image File Format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bag.html">BAG -- Bathymetry Attributed Grid</a></li>
 <li class="toctree-l2"><a class="reference internal" href="basisu.html">BASISU -- Basis Universal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="blx.html">BLX -- Magellan BLX Topo File Format</a></li>
@@ -319,6 +320,8 @@ contain a NXXEYYY.hgt file. For previous versions, use
 <p>The driver does support creating new files, but the input data must be
 exactly formatted as a SRTM-3 or SRTM-1 cell. That is the size, and
 bounds must be appropriate for a cell.</p>
+<p>Starting with GDAL 3.10, the driver also supports reading and writing 0.5
+degree resolution SRTM HGT files.</p>
 <p>See Also:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="http://dds.cr.usgs.gov/srtm/version2_1/Documentation">SRTM

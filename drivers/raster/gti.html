@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GTI -- GDAL Raster Tile Index &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d10597a4" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/gdal.css?v=e152ac3b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/gdal.css?v=75499f83" />
 
   
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
@@ -58,6 +58,7 @@
 <li class="toctree-l2"><a class="reference internal" href="adrg.html">ADRG -- ADRG/ARC Digitized Raster Graphics (.gen/.thf)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="aig.html">AIG -- Arc/Info Binary Grid</a></li>
 <li class="toctree-l2"><a class="reference internal" href="airsar.html">AIRSAR -- AIRSAR Polarimetric Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avif.html">AVIF -- AV1 Image File Format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bag.html">BAG -- Bathymetry Attributed Grid</a></li>
 <li class="toctree-l2"><a class="reference internal" href="basisu.html">BASISU -- Basis Universal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="blx.html">BLX -- Magellan BLX Topo File Format</a></li>
@@ -112,9 +113,10 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">GTI -- GDAL Raster Tile Index</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#connection-strings">Connection strings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#stac-geoparquet-support">STAC GeoParquet support</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#tile-index-requirements">Tile index requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#gti-xml-format">GTI XML format</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#how-to-build-a-gti-comptatible-index">How to build a GTI comptatible index ?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-build-a-gti-compatible-index">How to build a GTI compatible index ?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#open-options">Open options</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#multi-threading-optimizations">Multi-threading optimizations</a></li>
 </ul>
@@ -373,6 +375,18 @@ the virtual mosaic.</p>
 </li>
 </ul>
 </section>
+<section id="stac-geoparquet-support">
+<h2>STAC GeoParquet support<a class="headerlink" href="#stac-geoparquet-support" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.10.</span></p>
+</div>
+<p>The driver can support <a class="reference external" href="https://stac-utils.github.io/stac-geoparquet/latest/spec/stac-geoparquet-spec">STAC GeoParquet catalogs</a>,
+provided GDAL is build with <a class="reference internal" href="../vector/parquet.html#vector-parquet"><span class="std std-ref">(Geo)Parquet</span></a> support.
+It can make use of fields <code class="docutils literal notranslate"><span class="pre">proj:epsg</span></code> and <code class="docutils literal notranslate"><span class="pre">proj:transform</span></code> from the
+<a class="reference external" href="https://github.com/stac-extensions/projection/">Projection Extension Specification</a>,
+to correctly infer the appropriate projection and resolution.</p>
+<p>Example of a valid connection string: <code class="docutils literal notranslate"><span class="pre">GTI:/vsicurl/https://github.com/stac-utils/stac-geoparquet/raw/main/tests/data/naip.parquet</span></code></p>
+</section>
 <section id="tile-index-requirements">
 <h2>Tile index requirements<a class="headerlink" href="#tile-index-requirements" title="Link to this heading"></a></h2>
 <p>The minimum requirements for a GTI compatible tile index is to be a
@@ -447,7 +461,7 @@ type String, Integer, Integer64, Date or DateTime. By default, the higher the
 value in that field, the last the corresponding tile will be rendered in the
 virtual mosaic (unless SORT_FIELD_ASC=NO is set)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">SORT_FIELD_ASC=YES|NO</span></code>: whether the values in SORT_FIELD should be sorted
-in ascendent or descent order. Defaults to YES (ascendent)</p></li>
+in ascending or descending order. Defaults to YES (ascending)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">BLOCKXSIZE=&lt;int&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">BLOCKYSIZE=&lt;int&gt;</span></code>: Block size of bands of the
 virtual mosaic. Defaults to 256x256.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">MASK_BAND=YES|NO</span></code>: whether a dataset-level mask band should be exposed.
@@ -625,11 +639,11 @@ Metadata.
 You can refer to the documentation of the <a class="reference internal" href="vrt.html#raster-vrt"><span class="std std-ref">VRT</span></a> driver for
 their syntax and semantics.</p>
 </section>
-<section id="how-to-build-a-gti-comptatible-index">
-<h2>How to build a GTI comptatible index ?<a class="headerlink" href="#how-to-build-a-gti-comptatible-index" title="Link to this heading"></a></h2>
+<section id="how-to-build-a-gti-compatible-index">
+<h2>How to build a GTI compatible index ?<a class="headerlink" href="#how-to-build-a-gti-compatible-index" title="Link to this heading"></a></h2>
 <p>The <a class="reference internal" href="../../programs/gdaltindex.html#gdaltindex"><span class="std std-ref">gdaltindex</span></a> program may be used to generate both a vector tile index,
 and optionally a wrapping .gti XML file.</p>
-<p>A GTI comptatible index may also be created by any programmatic means, provided
+<p>A GTI compatible index may also be created by any programmatic means, provided
 the above format specifications are met.</p>
 </section>
 <section id="open-options">
@@ -650,7 +664,7 @@ type String, Integer, Integer64, Date or DateTime. By default, the higher the
 value in that field, the last the corresponding tile will be rendered in the
 virtual mosaic (unless SORT_FIELD_ASC=NO is set)</p>
 </li>
-<li><p id="drivers/raster/gti-oo-SORT_FIELD_ASC"><strong>SORT_FIELD_ASC=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">YES</span></code>. Whether the values in SORT_FIELD should be sorted in ascendent or descent order</p>
+<li><p id="drivers/raster/gti-oo-SORT_FIELD_ASC"><strong>SORT_FIELD_ASC=[YES/NO]: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">YES</span></code>. Whether the values in SORT_FIELD should be sorted in ascending or descending order</p>
 </li>
 <li><p id="drivers/raster/gti-oo-FILTER"><strong>FILTER=&lt;string&gt;: </strong>Value of a SQL WHERE clause, used to select a subset of the features of the index.</p>
 </li>

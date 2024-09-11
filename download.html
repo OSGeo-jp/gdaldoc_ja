@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ダウンロード &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d10597a4" />
-      <link rel="stylesheet" type="text/css" href="_static/css/gdal.css?v=e152ac3b" />
+      <link rel="stylesheet" type="text/css" href="_static/css/gdal.css?v=75499f83" />
 
   
     <link rel="shortcut icon" href="_static/favicon.png"/>
@@ -55,6 +55,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#current-release">カレントリリース</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#past-releases">過去のリリース</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#development-source">開発ソース</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#maintenance-policy">Maintenance policy</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#binaries">バイナリ</a><ul>
@@ -163,18 +164,19 @@
 <li><p><a class="reference internal" href="#current-release" id="id9">カレントリリース</a></p></li>
 <li><p><a class="reference internal" href="#past-releases" id="id10">過去のリリース</a></p></li>
 <li><p><a class="reference internal" href="#development-source" id="id11">開発ソース</a></p></li>
+<li><p><a class="reference internal" href="#maintenance-policy" id="id12">Maintenance policy</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#binaries" id="id12">バイナリ</a></p>
+<li><p><a class="reference internal" href="#binaries" id="id13">バイナリ</a></p>
 <ul>
-<li><p><a class="reference internal" href="#windows" id="id13">Windows</a></p></li>
-<li><p><a class="reference internal" href="#linux" id="id14">Linux</a></p></li>
-<li><p><a class="reference internal" href="#mac-os" id="id15">Mac OS</a></p></li>
-<li><p><a class="reference internal" href="#cross-platform-package-managers" id="id16">クロスプラットフォームパッケージマネージャ</a></p></li>
+<li><p><a class="reference internal" href="#windows" id="id14">Windows</a></p></li>
+<li><p><a class="reference internal" href="#linux" id="id15">Linux</a></p></li>
+<li><p><a class="reference internal" href="#mac-os" id="id16">Mac OS</a></p></li>
+<li><p><a class="reference internal" href="#cross-platform-package-managers" id="id17">クロスプラットフォームパッケージマネージャ</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#containers" id="id17">コンテナ</a></p></li>
-<li><p><a class="reference internal" href="#documentation" id="id18">文書</a></p></li>
+<li><p><a class="reference internal" href="#containers" id="id18">コンテナ</a></p></li>
+<li><p><a class="reference internal" href="#documentation" id="id19">文書</a></p></li>
 </ul>
 </li>
 </ul>
@@ -200,6 +202,13 @@
 </pre></div>
 </div>
 <p><a class="reference internal" href="development/building_from_source.html#build-requirements"><span class="std std-ref">Build requirements</span></a> と <a class="reference internal" href="development/building_from_source.html#building-from-source"><span class="std std-ref">Building GDAL from source</span></a> について追加の情報があります.</p>
+</section>
+<section id="maintenance-policy">
+<h3>Maintenance policy<a class="headerlink" href="#maintenance-policy" title="Link to this heading"></a></h3>
+<p>The GDAL upstream team only maintains the branch on which the latest release has
+been done, with bugfixes releases issued roughly every 2 months.
+So, for example, during the development phase of GDAL 3.10.0, GDAL 3.9.x bugfixes
+releases are done based on the release/3.9 branch, but not older branches (GDAL 3.8.x or older).</p>
 </section>
 </section>
 <section id="binaries">

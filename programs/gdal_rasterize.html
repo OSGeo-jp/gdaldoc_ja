@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>gdal_rasterize &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=75499f83" />
 
   
     <link rel="shortcut icon" href="../_static/favicon.png"/>
@@ -252,6 +252,14 @@ by lines or polygons will be updated, not just those on the line render path,
 or whose center point is within the polygon (behavior is unspecified when the
 polygon is just touching the pixel center). Defaults to disabled for normal
 rendering rules.</p>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>When this option is enabled, the order of the input features (lines or polygons)
+can affect the results. When two features touch each other, the last one (i.e. topmost)
+will determine the burned pixel value at the edge.
+You may wish to use the <a class="reference internal" href="#cmdoption-gdal_rasterize-sql"><code class="xref std std-option docutils literal notranslate"><span class="pre">-sql</span></code></a> option to reorder the features (ORDER BY)
+to achieve a more predictable result.</p>
+</div>
 </dd></dl>
 
 <dl class="std option">
@@ -289,7 +297,7 @@ Suitable for heatmaps for instance.</p>
 <span class="sig-name descname"><span class="pre">-l</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;layername&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_rasterize-l" title="Link to this definition"></a></dt>
 <dd><p>Indicates the layer(s) from the datasource that will be used for input
 features.  May be specified multiple times, but at least one layer name or a
-<a class="reference internal" href="#cmdoption-gdal_rasterize-sql"><code class="xref std std-option docutils literal notranslate"><span class="pre">-sql</span></code></a> option must be specified.</p>
+<a class="reference internal" href="#cmdoption-gdal_rasterize-sql"><code class="xref std std-option docutils literal notranslate"><span class="pre">-sql</span></code></a> option must be specified (not both).</p>
 </dd></dl>
 
 <dl class="std option">
@@ -306,6 +314,10 @@ to burn in from the input layer(s).</p>
 virtual layer of features to be burned in.
 Starting with GDAL 3.7, the <code class="docutils literal notranslate"><span class="pre">&#64;filename</span></code> syntax can be used to indicate
 that the content is in the pointed filename.</p>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>This option will be ignored if the <a class="reference internal" href="#cmdoption-gdal_rasterize-l"><code class="xref std std-option docutils literal notranslate"><span class="pre">-l</span></code></a> option has been set as well.</p>
+</div>
 </dd></dl>
 
 <dl class="std option">

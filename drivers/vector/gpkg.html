@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GPKG -- GeoPackage vector &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d10597a4" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/gdal.css?v=e152ac3b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/gdal.css?v=75499f83" />
 
   
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
@@ -372,6 +372,10 @@ table/geometry column</p></li>
 <li><p>ST_Area(geom <em>Geometry</em>): compute the area in square units of the geometry SRS.</p></li>
 <li><p>ST_Area(geom <em>Geometry</em>, use_ellipsoid <em>boolean</em>): (GDAL &gt;= 3.9): compute
 the area in square meters, considering the geometry on the ellipsoid
+(use_ellipsoid must be set to true/1).</p></li>
+<li><p>ST_Length(geom <em>Geometry</em>): (GDAL &gt;= 3.10): compute the area in units of the geometry SRS.</p></li>
+<li><p>ST_Length(geom <em>Geometry</em>, use_ellipsoid <em>boolean</em>): (GDAL &gt;= 3.10): compute
+the area in meters, considering the geometry on the ellipsoid
 (use_ellipsoid must be set to true/1).</p></li>
 <li><p>SetSRID(geom <em>Geometry</em>, srs_id <em>Integer</em>): overrides the geometry' SRS ID,
 without reprojection.</p></li>

@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GeoJSONSeq: sequence of GeoJSON features &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d10597a4" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/gdal.css?v=e152ac3b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/gdal.css?v=75499f83" />
 
   
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
@@ -325,6 +325,9 @@ understand them as they are allowed by ECMAScript.</p>
 <li><p id="drivers/vector/geojsonseq-lco-AUTODETECT_JSON_STRINGS"><strong>AUTODETECT_JSON_STRINGS=[YES/NO]: </strong> (GDAL &gt;= 3.8)  Defaults to <code class="docutils literal notranslate"><span class="pre">YES</span></code>. Whether to try to interpret string fields as JSON arrays or objects
 if they start and end with brackets and braces, even if they do
 not have their subtype set to JSON.</p>
+</li>
+<li><p id="drivers/vector/geojsonseq-lco-WRITE_BBOX"><strong>WRITE_BBOX=[YES/NO]: </strong> (GDAL &gt;= 3.10)  Defaults to <code class="docutils literal notranslate"><span class="pre">NO</span></code>. Set to YES to write a bbox property with the bounding box of the
+geometry at the feature level.</p>
 </li>
 </ul>
 </section>

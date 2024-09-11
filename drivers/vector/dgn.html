@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Microstation DGN &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d10597a4" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/gdal.css?v=e152ac3b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/gdal.css?v=75499f83" />
 
   
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
@@ -69,6 +69,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#user-data-linkage">User data linkage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#styling-information">Styling Information</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#creation-issues">Creation Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#open-options">Open options</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dataset-creation-options">Dataset creation options</a></li>
 </ul>
 </li>
@@ -348,6 +349,22 @@ will be discarded, or corrupted in unpredictable ways.</p></li>
 layer in a DGN file will fail.</p></li>
 </ul>
 </section>
+<section id="open-options">
+<h2>Open options<a class="headerlink" href="#open-options" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 3.10.</span></p>
+</div>
+<p>Open options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-oo</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALOpenExPKcjPPCKcPPCKcPPCKc" title="GDALOpenEx"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALOpenEx()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.OpenEx" title="osgeo.gdal.OpenEx"><code class="xref py py-meth docutils literal notranslate"><span class="pre">gdal.OpenEx</span></code></a> (Python).
+The following open options are supported:</p>
+<ul class="simple">
+<li><p id="drivers/vector/dgn-oo-ENCODING"><strong>ENCODING=&lt;encoding&gt;: </strong> (GDAL &gt;= 3.10) An encoding name supported by <a class="reference internal" href="../../api/cpl.html#_CPPv49CPLRecodePKcPKcPKc" title="CPLRecode"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CPLRecode()</span></code></a> (i.e. an
+<a class="reference external" href="https://en.wikipedia.org/wiki/Iconv">iconv</a> name)
+that indicates the encoding used by Text elements in the DGN file, to
+recode them to UTF-8. If not specified (or specified to UTF-8), no
+recoding will be done.</p>
+</li>
+</ul>
+</section>
 <section id="dataset-creation-options">
 <h2>Dataset creation options<a class="headerlink" href="#dataset-creation-options" title="Link to this heading"></a></h2>
 <p>Dataset creation options can be specified in command-line tools using the syntax <code class="docutils literal notranslate"><span class="pre">-dsco</span> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></code> or by providing the appropriate arguments to <a class="reference internal" href="../../api/raster_c_api.html#_CPPv410GDALCreate11GDALDriverHPKciii12GDALDataType12CSLConstList" title="GDALCreate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALCreate()</span></code></a> (C) or <a class="reference internal" href="../../api/python/raster_api.html#osgeo.gdal.Driver.Create" title="osgeo.gdal.Driver.Create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Driver.Create</span></code></a> (Python).
@@ -380,11 +397,21 @@ Resolution) per sub unit. By default the seed file value is used.</p>
 <li><p id="drivers/vector/dgn-dsco-ORIGIN"><strong>ORIGIN=&lt;x,y,z&gt;: </strong>Override the origin of the design plane. By
 default the origin from the seed file is used.</p>
 </li>
+<li><p id="drivers/vector/dgn-dsco-ENCODING"><strong>ENCODING=&lt;encoding&gt;: </strong> (GDAL &gt;= 3.10) An encoding name supported by <a class="reference internal" href="../../api/cpl.html#_CPPv49CPLRecodePKcPKcPKc" title="CPLRecode"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CPLRecode()</span></code></a> (i.e. an
+<a class="reference external" href="https://en.wikipedia.org/wiki/Iconv">iconv</a> name)
+that indicates the encoding used by Text elements in the DGN file, to
+recode them from UTF-8. If not specified (or specified to UTF-8), no
+recoding will be done. &quot;ISO-8859-1&quot; (ISO Latin1) is supported even on
+builds without iconv support.
+Note that no fields in the DGN file itself contain the encoding name,
+hence it is the responsibility of the reader to open the file with the
+same value for the ENCODING open option.</p>
+</li>
 </ul>
 <hr class="docutils" />
 <ul class="simple">
 <li><p><a class="reference external" href="http://dgnlib.maptools.org/">Dgnlib Page</a></p></li>
-<li><p><a class="reference internal" href="../../user/ogr_feature_style.html#ogr-feature-style"><span class="std std-ref">Feature Style Specification</span></a></p></li>
+<li><p><a class="reference internal" href="../../user/ogr_feature_style.html#ogr-feature-style"><span class="std std-ref">地物スタイル仕様</span></a></p></li>
 <li><p><a class="reference internal" href="dgnv8.html#vector-dgnv8"><span class="std std-ref">DGNv8 driver</span></a> (using Teigha libraries)</p></li>
 </ul>
 </section>

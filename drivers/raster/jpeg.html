@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>JPEG -- JPEG JFIF File Format &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d10597a4" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/gdal.css?v=e152ac3b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/gdal.css?v=75499f83" />
 
   
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
@@ -58,6 +58,7 @@
 <li class="toctree-l2"><a class="reference internal" href="adrg.html">ADRG -- ADRG/ARC Digitized Raster Graphics (.gen/.thf)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="aig.html">AIG -- Arc/Info Binary Grid</a></li>
 <li class="toctree-l2"><a class="reference internal" href="airsar.html">AIRSAR -- AIRSAR Polarimetric Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avif.html">AVIF -- AV1 Image File Format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bag.html">BAG -- Bathymetry Attributed Grid</a></li>
 <li class="toctree-l2"><a class="reference internal" href="basisu.html">BASISU -- Basis Universal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="blx.html">BLX -- Magellan BLX Topo File Format</a></li>
@@ -326,8 +327,8 @@ space is indicated in the SOURCE_COLOR_SPACE metadata of the
 IMAGE_STRUCTURE domain.</p>
 <p>EXIF metadata can be read from JPEG files (but this will not result in a
 georeferenced image even if the EXIF_GPSLatitude and EXIF_GPSLongitude
-tags are set). But if an ESRI world file exists with the .jgw,
-.jpgw/.jpegw or .wld suffixes, it will be read and used to establish the
+tags are set). But if an ESRI <a class="reference internal" href="wld.html#raster-wld"><span class="std std-ref">world file</span></a> exists with the
+.jgw, .jpgw/.jpegw or .wld suffixes, it will be read and used to establish the
 geotransform for the image. If available a MapInfo .tab file will also
 be used for georeferencing. Overviews can be built for JPEG files as an
 external .ovr file.</p>
@@ -441,7 +442,8 @@ to the JPEG file.</p>
 The following creation options are supported:</p>
 <ul class="simple">
 <li><p id="drivers/raster/jpeg-co-WORLDFILE"><strong>WORLDFILE=YES: </strong>Force the generation of an associated ESRI world
-file (with the extension .wld).</p>
+file (with the extension .wld). See <a class="reference internal" href="wld.html#raster-wld"><span class="std std-ref">World Files</span></a>
+section for details.</p>
 </li>
 <li><p id="drivers/raster/jpeg-co-QUALITY"><strong>QUALITY=1-100: </strong> Defaults to <code class="docutils literal notranslate"><span class="pre">75</span></code>. Set the JPEG quality.<p>Low values result in higher compression ratios, but poorer image quality
 with strong blocking artifacts.

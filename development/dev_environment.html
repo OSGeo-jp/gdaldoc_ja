@@ -4,9 +4,9 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Setting up a development environment &mdash; GDAL  ドキュメント</title>
+  <title>開発環境の設定 &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=75499f83" />
 
   
     <link rel="shortcut icon" href="../_static/favicon.png"/>
@@ -26,7 +26,7 @@
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="Development practices" href="dev_practices.html" />
-    <link rel="prev" title="Building GDAL from source" href="building_from_source.html" /> 
+    <link rel="prev" title="GDAL のソースからのビルド" href="building_from_source.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -58,26 +58,26 @@
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">開発</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="building_from_source.html">Building GDAL from source</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Setting up a development environment</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#build-requirements">Build requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building_from_source.html">GDAL のソースからのビルド</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">開発環境の設定</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#build-requirements">ビルド要件</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#vagrant">Vagrant</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#docker">Docker</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#building-on-windows-with-conda-dependencies-and-visual-studio">Building on Windows with Conda dependencies and Visual Studio</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#install-git">Install git</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#install-miniconda">Install miniconda</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#install-visual-studio">Install Visual Studio</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#install-gdal-dependencies">Install GDAL dependencies</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#checkout-gdal-sources">Checkout GDAL sources</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#build-gdal">Build GDAL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building-on-windows-with-conda-dependencies-and-visual-studio">Windows で Conda 依存関係と Visual Studio を使用してビルド</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#install-git">git のインストール</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#install-miniconda">miniconda のインストール</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#install-visual-studio">Visual Studio のインストール</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#install-gdal-dependencies">GDAL の依存関係のインストール</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#checkout-gdal-sources">GDAL ソースのチェックアウト</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#build-gdal">GDAL のビルド</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#setting-development-environment-variables">Setting development environment variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setting-development-environment-variables">開発環境変数の設定</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="dev_practices.html">Development practices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="testing.html">Automated testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dev_documentation.html">Building documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_documentation.html">文書のビルド</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cmake.html">Using GDAL in CMake projects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rfc/index.html">RFC list</a></li>
 </ul>
@@ -124,7 +124,7 @@
       
           <li><a href="index.html">開発</a> &raquo;</li>
       
-      <li>Setting up a development environment</li>
+      <li>開発環境の設定</li>
     
 
     
@@ -146,7 +146,7 @@
         <a href="dev_practices.html" class="btn btn-neutral float-right" title="Development practices" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="building_from_source.html" class="btn btn-neutral float-left" title="Building GDAL from source" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="building_from_source.html" class="btn btn-neutral float-left" title="GDAL のソースからのビルド" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -156,46 +156,34 @@
            <div itemprop="articleBody">
              
   <section id="setting-up-a-development-environment">
-<span id="dev-environment"></span><h1>Setting up a development environment<a class="headerlink" href="#setting-up-a-development-environment" title="Link to this heading"></a></h1>
+<span id="dev-environment"></span><h1>開発環境の設定<a class="headerlink" href="#setting-up-a-development-environment" title="Link to this heading"></a></h1>
 <section id="build-requirements">
-<h2>Build requirements<a class="headerlink" href="#build-requirements" title="Link to this heading"></a></h2>
-<p>See <a class="reference internal" href="building_from_source.html#build-requirements"><span class="std std-ref">Build requirements</span></a></p>
+<h2>ビルド要件<a class="headerlink" href="#build-requirements" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="building_from_source.html#build-requirements"><span class="std std-ref">ビルド要件</span></a> を参照してください</p>
 </section>
 <section id="vagrant">
 <h2>Vagrant<a class="headerlink" href="#vagrant" title="Link to this heading"></a></h2>
-<p><a class="reference external" href="https://www.vagrantup.com">Vagrant</a> is a tool that works with a virtualization product such as
-VirtualBox to create a reproducible development environment. GDAL includes a Vagrant configuration
-file that sets up an Ubuntu virtual machine with a comprehensive set of dependencies.</p>
-<p>Once Vagrant has been installed and the GDAL source downloaded, the virtual machine can be set up
-by running the following from the source root directory:</p>
+<p><a class="reference external" href="https://www.vagrantup.com">Vagrant</a> は,VirtualBox などの仮想化製品と連携して再現可能な開発環境を作成するツールです.GDAL には,包括的な依存関係を持つ Ubuntu 仮想マシンを設定する Vagrant 構成ファイルが含まれています.</p>
+<p>Vagrant がインストールされ, GDAL ソースがダウンロードされたら,ソースルートディレクトリから以下を実行して仮想マシンを設定できます:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># VAGRANT_VM_CPU=number_of_cpus</span>
 vagrant<span class="w"> </span>up
 </pre></div>
 </div>
-<p>The source root directory is exposed inside the virtual machine at <code class="docutils literal notranslate"><span class="pre">/vagrant</span></code>, so changes made to
-GDAL source files on the host are seen inside the VM. To rebuild GDAL after changing source files,
-you can connect to the VM and re-run the build command:</p>
+<p>ソースルートディレクトリは仮想マシン内で <code class="docutils literal notranslate"><span class="pre">/vagrant</span></code> に公開されているため,ホストで GDAL ソースファイルを変更すると,VM内で変更が反映されます.ソースファイルを変更した後に GDAL を再構築するには,VMに接続してビルドコマンドを再実行できます:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vagrant<span class="w"> </span>ssh
 cmake<span class="w"> </span>--build<span class="w"> </span>.
 </pre></div>
 </div>
-<p>Note that the following directories on the host will be created (and can be
-removed if the Vagrant environment is no longer needed):</p>
+<p>ホスト上に以下のディレクトリが作成されます(不要になった場合は削除できます):</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">../apt-cache/ubuntu/jammy64</span></code>: contains a cache of Ubuntu packages of the VM,
-to allow faster VM reconstruction</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">build_vagrant</span></code>: CMake build directory</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ccache_vagrant</span></code>: CCache directory</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">../apt-cache/ubuntu/jammy64</span></code>: VM の Ubuntu パッケージのキャッシュを含み,VM の再構築を高速化します</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">build_vagrant</span></code>: CMake ビルドディレクトリ</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ccache_vagrant</span></code>: CCache ディレクトリ</p></li>
 </ul>
 </section>
 <section id="docker">
 <h2>Docker<a class="headerlink" href="#docker" title="Link to this heading"></a></h2>
-<p>The Linux environments used for building and testing GDAL on GitHub Actions are
-defined by Docker images that can be pulled to any machine for development. The
-Docker image used for each build is specified in <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/.github/workflows/linux_build.yml">linux_build.yml</a>. As an
-example, the following commands can be run from the GDAL source root to build
-and test GDAL using the clang address sanitizer (ASAN) in the same environment
-that is used in GitHub Actions:</p>
+<p>GitHub Actions で GDAL のビルドとテストに使用される Linux 環境は,開発用の任意のマシンにプルできる Docker イメージで定義されています.各ビルドに使用される Docker イメージは, <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/.github/workflows/linux_build.yml">linux_build.yml</a> で指定されています.例として,以下のコマンドを GDAL ソースルートから実行して, GitHub Actions で使用されている環境と同じ環境で clang アドレスサニタイザ(ASAN) を使用して GDAL をビルドおよびテストできます:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/gdal:rw<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>ghcr.io/osgeo/gdal-deps:ubuntu20.04-master
@@ -206,29 +194,26 @@ mkdir<span class="w"> </span>build-asan
 ../.github/workflows/asan/test.sh
 </pre></div>
 </div>
-<p>To avoid built objects being owned by root, it may be desirable to add <code class="docutils literal notranslate"><span class="pre">-u</span> <span class="pre">$(id</span>
-<span class="pre">-u):$(id</span> <span class="pre">-g)</span> <span class="pre">-v</span> <span class="pre">/etc/passwd:/etc/passwd</span></code> to the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> command above.</p>
+<p>ビルドされたオブジェクトが root に所有されるのを避けるために,上記の <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> コマンドに <code class="docutils literal notranslate"><span class="pre">-u</span> <span class="pre">$(id</span> <span class="pre">-u):$(id</span> <span class="pre">-g)</span> <span class="pre">-v</span> <span class="pre">/etc/passwd:/etc/passwd</span></code> を追加すると便利です.</p>
 </section>
 <section id="building-on-windows-with-conda-dependencies-and-visual-studio">
-<h2>Building on Windows with Conda dependencies and Visual Studio<a class="headerlink" href="#building-on-windows-with-conda-dependencies-and-visual-studio" title="Link to this heading"></a></h2>
-<p>It is less appropriate for Debug builds of GDAL, than other methods, such as using vcpkg.</p>
+<h2>Windows で Conda 依存関係と Visual Studio を使用してビルド<a class="headerlink" href="#building-on-windows-with-conda-dependencies-and-visual-studio" title="Link to this heading"></a></h2>
+<p>vcpkg を使用するなどの他の方法よりも, GDAL のデバッグビルドには適していません.</p>
 <section id="install-git">
-<h3>Install git<a class="headerlink" href="#install-git" title="Link to this heading"></a></h3>
-<p>Install <a class="reference external" href="https://git-scm.com/download/win">git</a></p>
+<h3>git のインストール<a class="headerlink" href="#install-git" title="Link to this heading"></a></h3>
+<p><a class="reference external" href="https://git-scm.com/download/win">git</a> をインストールします</p>
 </section>
 <section id="install-miniconda">
-<h3>Install miniconda<a class="headerlink" href="#install-miniconda" title="Link to this heading"></a></h3>
-<p>Install <a class="reference external" href="https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe">miniconda</a></p>
+<h3>miniconda のインストール<a class="headerlink" href="#install-miniconda" title="Link to this heading"></a></h3>
+<p><a class="reference external" href="https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe">miniconda</a> をインストールします</p>
 </section>
 <section id="install-visual-studio">
-<h3>Install Visual Studio<a class="headerlink" href="#install-visual-studio" title="Link to this heading"></a></h3>
-<p>Install <a class="reference external" href="https://visualstudio.microsoft.com/vs/community/">Visual Studio</a>
-In Visual Studio Installer Workloads tab check Desktop development with C++.
-Only the latest Community Edition (2022) is available.</p>
+<h3>Visual Studio のインストール<a class="headerlink" href="#install-visual-studio" title="Link to this heading"></a></h3>
+<p><a class="reference external" href="https://visualstudio.microsoft.com/vs/community/">Visual Studio</a> をインストールします.Visual Studio インストーラの Workloads タブで Desktop development with C++ をチェックします.最新の Community Edition (2022) のみが利用可能です.</p>
 </section>
 <section id="install-gdal-dependencies">
-<h3>Install GDAL dependencies<a class="headerlink" href="#install-gdal-dependencies" title="Link to this heading"></a></h3>
-<p>Start a Conda enabled console and assuming there is a c:\dev directory</p>
+<h3>GDAL の依存関係のインストール<a class="headerlink" href="#install-gdal-dependencies" title="Link to this heading"></a></h3>
+<p>利用可能なコンソールでCondaを開始し, c:\dev ディレクトリがあると仮定します</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd c:\dev</span>
 <span class="go">conda create --name gdal</span>
 <span class="go">conda activate gdal</span>
@@ -243,21 +228,19 @@ Only the latest Community Edition (2022) is available.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">compilers</span></code> package will install <code class="docutils literal notranslate"><span class="pre">vs2019_win-64</span></code> (at time of writing)
-to set the appropriate environment for cmake to pick up. It also finds and works
-with Visual Studio 2022 if that is installed.</p>
+<p><code class="docutils literal notranslate"><span class="pre">compilers</span></code> パッケージは,cmake が適切な環境を選択するために <code class="docutils literal notranslate"><span class="pre">vs2019_win-64</span></code> (執筆時点) をインストールします.インストールされている場合は,Visual Studio 2022 とも機能します.</p>
 </div>
 </section>
 <section id="checkout-gdal-sources">
-<h3>Checkout GDAL sources<a class="headerlink" href="#checkout-gdal-sources" title="Link to this heading"></a></h3>
+<h3>GDAL ソースのチェックアウト<a class="headerlink" href="#checkout-gdal-sources" title="Link to this heading"></a></h3>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd c:\dev</span>
 <span class="go">git clone https://github.com/OSGeo/gdal.git</span>
 </pre></div>
 </div>
 </section>
 <section id="build-gdal">
-<h3>Build GDAL<a class="headerlink" href="#build-gdal" title="Link to this heading"></a></h3>
-<p>From a Conda enabled console</p>
+<h3>GDAL のビルド<a class="headerlink" href="#build-gdal" title="Link to this heading"></a></h3>
+<p>Conda が有効なコンソールから</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">conda activate gdal</span>
 <span class="go">cd c:\dev\gdal</span>
 <span class="go">cmake -S . -B build -DCMAKE_PREFIX_PATH:FILEPATH=&quot;%CONDA_PREFIX%&quot; \</span>
@@ -269,25 +252,24 @@ with Visual Studio 2022 if that is installed.</p>
 </section>
 </section>
 <section id="setting-development-environment-variables">
-<h2>Setting development environment variables<a class="headerlink" href="#setting-development-environment-variables" title="Link to this heading"></a></h2>
-<p>Once GDAL has been built, a number of environment variables must be set to be
-able to execute C++ or Python utilities of the build directory, or run tests.</p>
-<p>This can be done by sourcing the following from the build directory:</p>
+<h2>開発環境変数の設定<a class="headerlink" href="#setting-development-environment-variables" title="Link to this heading"></a></h2>
+<p>GDAL がビルドされると,ビルドディレクトリの C++ または Python ユーティリティを実行したり,テストを実行するために,いくつかの環境変数を設定する必要があります.</p>
+<p>これは,ビルドディレクトリから以下のソースを実行することで行えます:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.<span class="w"> </span>../scripts/setdevenv.sh
 </pre></div>
 </div>
-<p>(with adjustments to the above path if the build directory is not a subdirectory of the GDAL source root).</p>
-<p>For Windows, a similar <code class="docutils literal notranslate"><span class="pre">scripts/setdevenv.bat</span></code> script exists (it currently assumes a Release build).</p>
+<p>(ビルドディレクトリが GDAL ソースルートのサブディレクトリでない場合は,上記のパスを調整してください).</p>
+<p>Windows の場合,類似の <code class="docutils literal notranslate"><span class="pre">scripts/setdevenv.bat</span></code> スクリプトが存在します(現在は Release ビルドを想定しています).</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd c:\dev\gdal\build</span>
 <span class="go">..\scripts\setdevenv.bat</span>
 </pre></div>
 </div>
-<p>To verify that environment variables have been set correctly, you can check the version of a GDAL binary:</p>
+<p>環境変数が正しく設定されているかどうかを確認するには, GDAL バイナリのバージョンで確認できます:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdalinfo<span class="w"> </span>--version
 <span class="c1"># GDAL 3.7.0dev-5327c149f5-dirty, released 2018/99/99 (debug build)</span>
 </pre></div>
 </div>
-<p>and the Python bindings:</p>
+<p>および Python バインディングで確認できます:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;from osgeo import gdal; print(gdal.__version__)&#39;</span>
 <span class="c1"># 3.7.0dev-5327c149f5-dirty</span>
 </pre></div>
@@ -305,7 +287,7 @@ able to execute C++ or Python utilities of the build directory, or run tests.</p
         <a href="dev_practices.html" class="btn btn-neutral float-right" title="Development practices" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="building_from_source.html" class="btn btn-neutral float-left" title="Building GDAL from source" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="building_from_source.html" class="btn btn-neutral float-left" title="GDAL のソースからのビルド" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

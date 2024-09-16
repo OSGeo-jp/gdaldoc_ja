@@ -4,9 +4,9 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Development practices &mdash; GDAL  ドキュメント</title>
+  <title>開発プラクティス &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=75499f83" />
 
   
     <link rel="shortcut icon" href="../_static/favicon.png"/>
@@ -26,7 +26,7 @@
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="Automated testing" href="testing.html" />
-    <link rel="prev" title="Setting up a development environment" href="dev_environment.html" /> 
+    <link rel="prev" title="開発環境の設定" href="dev_environment.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -58,34 +58,34 @@
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">開発</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="building_from_source.html">Building GDAL from source</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dev_environment.html">Setting up a development environment</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Development practices</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#making-changes-to-gdal">Making changes to GDAL</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#portability">Portability</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#c-c-standards">C/C++ standards</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#variable-naming">Variable naming</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#function-and-class-naming">Function and class naming</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#file-naming-and-code-formatting">File naming and code formatting</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#memory-allocation">Memory allocation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#adding-a-new-driver">Adding a new driver</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#writing-tests">Writing tests</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#git-usage">Git usage</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#initiating-your-work-repository">Initiating your work repository</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#working-with-a-feature-branch">Working with a feature branch</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#updating-your-local-master-against-upstream-master">Updating your local master against upstream master</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#commit-messages">Commit messages</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#commit-hooks">Commit hooks</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#blame-ignore-file">Blame ignore file</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#backporting-bugfixes-from-master-to-a-stable-branch">Backporting bugfixes from master to a stable branch</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#things-you-should-not-do">Things you should NOT do</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building_from_source.html">GDAL のソースからのビルド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_environment.html">開発環境の設定</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">開発プラクティス</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#making-changes-to-gdal">GDAL への変更</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#portability">ポータビリティ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-c-standards">C/C++ 標準</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#variable-naming">変数名</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#function-and-class-naming">関数およびクラスの命名</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#file-naming-and-code-formatting">ファイル名とコードのフォーマット</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#memory-allocation">メモリ割り当て</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-a-new-driver">新しいドライバの追加</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#writing-tests">テストの書き方</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#git-usage">Git の使用</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#initiating-your-work-repository">作業リポジトリの初期化</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#working-with-a-feature-branch">フィーチャーブランチでの作業</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#updating-your-local-master-against-upstream-master">ローカルの master をアップストリームの master に更新する</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#commit-messages">コミットメッセージ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#commit-hooks">コミットフック</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#blame-ignore-file">Blame 無視ファイル</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#backporting-bugfixes-from-master-to-a-stable-branch">master から安定ブランチにバグ修正をバックポートする</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#things-you-should-not-do">行ってはいけないこと</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#source-tree-layout">Source tree layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#source-tree-layout">ソースツリーレイアウト</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="testing.html">Automated testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dev_documentation.html">Building documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_documentation.html">文書のビルド</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cmake.html">Using GDAL in CMake projects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rfc/index.html">RFC list</a></li>
 </ul>
@@ -132,7 +132,7 @@
       
           <li><a href="index.html">開発</a> &raquo;</li>
       
-      <li>Development practices</li>
+      <li>開発プラクティス</li>
     
 
     
@@ -154,7 +154,7 @@
         <a href="testing.html" class="btn btn-neutral float-right" title="Automated testing" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="dev_environment.html" class="btn btn-neutral float-left" title="Setting up a development environment" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="dev_environment.html" class="btn btn-neutral float-left" title="開発環境の設定" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -164,118 +164,93 @@
            <div itemprop="articleBody">
              
   <section id="development-practices">
-<span id="id1"></span><h1>Development practices<a class="headerlink" href="#development-practices" title="Link to this heading"></a></h1>
+<span id="id1"></span><h1>開発プラクティス<a class="headerlink" href="#development-practices" title="Link to this heading"></a></h1>
 <section id="making-changes-to-gdal">
-<h2>Making changes to GDAL<a class="headerlink" href="#making-changes-to-gdal" title="Link to this heading"></a></h2>
-<p>Minor changes to GDAL, such as bug fixes, may be made by opening a GitHub pull request.</p>
-<p>Major changes should be discussed on the <a class="reference external" href="https://lists.osgeo.org/mailman/listinfo/gdal-dev">gdal-dev</a> listserv and may require the drafting
-of a RFC (request for comment) document.</p>
-<p>GDAL's policy on substantial code additions is documented at <a class="reference internal" href="rfc/rfc85_policy_code_additions.html#rfc-85"><span class="std std-ref">RFC 85: Policy regarding substantial code additions</span></a>.</p>
+<h2>GDAL への変更<a class="headerlink" href="#making-changes-to-gdal" title="Link to this heading"></a></h2>
+<p>バグ修正などの小さな変更は, GitHub プルリクエストを作成して行うことができます.</p>
+<p>大きな変更は <a class="reference external" href="https://lists.osgeo.org/mailman/listinfo/gdal-dev">gdal-dev</a> リストサーバで議論されるべきであり, RFC (リクエストフォーコメント) ドキュメントの作成が必要な場合があります.</p>
+<p>GDAL における大規模なコード追加に関するポリシーは, <a class="reference internal" href="rfc/rfc85_policy_code_additions.html#rfc-85"><span class="std std-ref">RFC 85: Policy regarding substantial code additions</span></a> に記載されています.</p>
 </section>
 <section id="portability">
-<span id="cpl"></span><h2>Portability<a class="headerlink" href="#portability" title="Link to this heading"></a></h2>
-<p>GDAL strives to be widely portable to 32 bit and 64 bit computing
-environments, as well as little-endian and big-endian ordered CPUs.
-CPL functions in the port directory provide services to abstract platform
-specific operations.</p>
-<p>Generally speaking, where available CPL functions should be used in
-preference to operating system functions for operations like memory
-allocation, path parsing, filesystem I/O (using VSILFILE* / VSIVirtualFile*),
-ODBC access, etc.</p>
+<span id="cpl"></span><h2>ポータビリティ<a class="headerlink" href="#portability" title="Link to this heading"></a></h2>
+<p>GDAL は,32 ビットおよび 64 ビットのコンピューティング環境,リトルエンディアンおよびビッグエンディアンの CPU に広くポータブルであるように努めています.ポートディレクトリの CPL 関数は,プラットフォーム固有の操作を抽象化するサービスを提供します.</p>
+<p>一般的に,メモリ割り当て,パス解析,ファイルシステム I/O(VSILFILE* / VSIVirtualFile* を使用),ODBC アクセスなどの操作において,OS 関数の代わりに CPL 関数を使用するべきです.</p>
 </section>
 <section id="c-c-standards">
-<h2>C/C++ standards<a class="headerlink" href="#c-c-standards" title="Link to this heading"></a></h2>
-<p>The current C and C++ standards adopted by GDAL/OGR are C99 and C++17
-(last updated per <a class="reference internal" href="rfc/rfc98_build_requirements_gdal_3_9.html#rfc-98"><span class="std std-ref">RFC 98: Build requirements for GDAL 3.9</span></a>).</p>
+<h2>C/C++ 標準<a class="headerlink" href="#c-c-standards" title="Link to this heading"></a></h2>
+<p>GDAL/OGR で採用されている現在の C および C++ 標準は,C99 および C++17 です(<a class="reference internal" href="rfc/rfc98_build_requirements_gdal_3_9.html#rfc-98"><span class="std std-ref">RFC 98: Build requirements for GDAL 3.9</span></a> で最終更新).</p>
 </section>
 <section id="variable-naming">
-<h2>Variable naming<a class="headerlink" href="#variable-naming" title="Link to this heading"></a></h2>
-<p>Much of the existing GDAL/OGR code uses an adapted Hungarian naming
-convention. Use of this convention is not mandatory, but when
-maintaining code using this convention it is desirable to continue
-adhering to it with changes. Most importantly, please avoiding using it
-improperly as that can be very confusing.</p>
-<p>In Hungarian prefixing the prefix tells something about about the type,
-and potentially semantics of a variable. The following are some prefixes
-used in GDAL/OGR.</p>
+<h2>変数名<a class="headerlink" href="#variable-naming" title="Link to this heading"></a></h2>
+<p>多くの既存の GDAL/OGR コードは,適応型ハンガリア命名規則を使用しています.この規則の使用は必須ではありませんが,この規則を使用しているコードを維持する場合は,変更時に引き続きこれに従うことが望ましいです.最も重要なのは,それを不適切に使用しないようにすることです.それは非常に混乱を招く可能性があるためです.</p>
+<p>ハンガリア命名法では,接頭辞は変数の型や意味について何かを伝えます.以下は,GDAL/OGR で使用されるいくつかの接頭辞です.</p>
 <ul class="simple">
-<li><p><em>a</em>: array</p></li>
-<li><p><em>b</em>: C/C++ bool. In C code that pre-dates C99 adoption, it is also used for ints with only TRUE/FALSE values.</p></li>
-<li><p><em>by</em>: byte (GByte / unsigned char).</p></li>
-<li><p><em>df</em>: floating point value (double precision)</p></li>
-<li><p><em>e</em>: enumeration</p></li>
-<li><p><em>i</em>: integer number used as a zero based array or loop index.</p></li>
-<li><p><em>f</em>: floating point value (single precision)</p></li>
-<li><p><em>h</em>: an opaque handle (such as GDALDatasetH).</p></li>
-<li><p><em>n</em>: integer number (size unspecified)</p></li>
-<li><p><em>o</em>: C++ object</p></li>
-<li><p><em>os</em>: CPLString or std::string</p></li>
-<li><p><em>p</em>: pointer</p></li>
-<li><p><em>psz</em>: pointer to a null-terminated string. (eg. &quot;char *pszName;&quot;)</p></li>
-<li><p><em>sz</em>: null-terminated string (eg.&quot; char szName[100];&quot;)</p></li>
-<li><p><em>k</em>: compile-time constant</p></li>
+<li><p><em>a</em>: 配列</p></li>
+<li><p><em>b</em>: C/C++ bool. C99 採用以前の C コードでは,TRUE/FALSE 値のみを持つ int にも使用されます.</p></li>
+<li><p><em>by</em>: バイト (GByte / unsigned char).</p></li>
+<li><p><em>df</em>: 浮動小数点数 (倍精度)</p></li>
+<li><p><em>e</em>: 列挙</p></li>
+<li><p><em>i</em>: ゼロベースの配列またはループインデックスとして使用される整数.</p></li>
+<li><p><em>f</em>: 浮動小数点数 (単精度)</p></li>
+<li><p><em>h</em>: 不透明なハンドル (GDALDatasetH など).</p></li>
+<li><p><em>n</em>: 整数 (サイズ未指定)</p></li>
+<li><p><em>o</em>: C++ オブジェクト</p></li>
+<li><p><em>os</em>: CPLString または std::string</p></li>
+<li><p><em>p</em>: ポインタ</p></li>
+<li><p><em>psz</em>: ヌル終端文字列へのポインタ (例.&quot;char *pszName;&quot;)</p></li>
+<li><p><em>sz</em>: ヌル終端文字列 (例.&quot; char szName[100];&quot;)</p></li>
+<li><p><em>k</em>: コンパイル時定数</p></li>
 </ul>
-<p>Prefixes can be stacked. The following are some examples of meaningful
-variables.</p>
+<p>接頭辞は重ねることができます.以下は,意味のある変数のいくつかの例です.</p>
 <ul class="simple">
-<li><p>*char !*<em>papszTokens</em>: Pointer to an array of strings.</p></li>
-<li><p>*int <em>panBands</em>: Pointer to the first element of an array of
-numbers.</p></li>
-<li><p>*double <em>padfScanline</em>: Pointer to the first element of an array of
-doubles.</p></li>
-<li><p>*double <em>pdfMeanRet</em>: Pointer to a single double.</p></li>
-<li><p>*GDALRasterBand <em>poBand</em>: Pointer to a single object.</p></li>
-<li><p>*GByte <em>pabyHeader</em>: Pointer to an array of bytes.</p></li>
+<li><p>*char !*<em>papszTokens</em>: 文字列の配列へのポインタ.</p></li>
+<li><p>*int <em>panBands</em>: 数値の配列の最初の要素へのポインタ.</p></li>
+<li><p>*double <em>padfScanline</em>: 倍精度浮動小数点数の配列の最初の要素へのポインタ.</p></li>
+<li><p>*double <em>pdfMeanRet</em>: 単一の倍精度浮動小数点数へのポインタ.</p></li>
+<li><p>*GDALRasterBand <em>poBand</em>: 単一のオブジェクトへのポインタ.</p></li>
+<li><p>*GByte <em>pabyHeader</em>: バイトの配列へのポインタ.</p></li>
 </ul>
-<p>It may also be noted that the standard convention for variable names is
-to capitalize each word in a variable name.</p>
+<p>変数名の標準的な規則は,変数名の各単語の先頭を大文字にすることです.</p>
 </section>
 <section id="function-and-class-naming">
-<h2>Function and class naming<a class="headerlink" href="#function-and-class-naming" title="Link to this heading"></a></h2>
+<h2>関数およびクラスの命名<a class="headerlink" href="#function-and-class-naming" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p>Functions and classes should have a selective enough namespace (&quot;GDAL&quot; or &quot;OGR&quot; prefix, or use of C++ namespace) to avoid symbol collision.</p></li>
+<li><p>関数およびクラスは,シンボルの衝突を回避するために十分な名前空間 (&quot;GDAL&quot; または &quot;OGR&quot; 接頭辞,または C++ 名前空間の使用) を持つべきです.</p></li>
 </ul>
 </section>
 <section id="file-naming-and-code-formatting">
-<h2>File naming and code formatting<a class="headerlink" href="#file-naming-and-code-formatting" title="Link to this heading"></a></h2>
+<h2>ファイル名とコードのフォーマット<a class="headerlink" href="#file-naming-and-code-formatting" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p>All source files (.h, .c, .cpp, .py, etc.) should have a header with copyright attribution and the text of the GDAL X/MIT license.</p></li>
-<li><p>Use lower case filenames.</p></li>
-<li><p>Use .cpp extension for C++ files (not .cc).</p></li>
-<li><p>C/C++ code formatting rules are defined in <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/.clang-format">.clang-format</a>. Python code formatting
-is enforced by Black. The pre-commit utility should be used to enforce them automatically. See <a class="reference internal" href="#commit-hooks"><span class="std std-ref">Commit hooks</span></a>.</p></li>
+<li><p>すべてのソースファイル (.h, .c, .cpp, .py など) には,著作権表示と GDAL X/MIT ライセンスのテキストが含まれているヘッダーが必要です.</p></li>
+<li><p>小文字のファイル名を使用します.</p></li>
+<li><p>C++ ファイルには .cpp 拡張子を使用します (.cc ではありません).</p></li>
+<li><p>C/C++ コードのフォーマットルールは, <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/.clang-format">.clang-format</a> で定義されています.Python コードのフォーマットは Black によって強制されます. pre-commit ユーティリティを使用して,これらを自動的に強制する必要があります. <a class="reference internal" href="#commit-hooks"><span class="std std-ref">コミットフック</span></a> を参照してください.</p></li>
 </ul>
 </section>
 <section id="memory-allocation">
-<h2>Memory allocation<a class="headerlink" href="#memory-allocation" title="Link to this heading"></a></h2>
-<p>Large memory allocations should be performed using the <a class="reference internal" href="../api/cpl.html#_CPPv49VSIMalloc6size_t" title="VSIMalloc"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIMalloc()</span></code></a> family of functions, which will return <code class="docutils literal notranslate"><span class="pre">nullptr</span></code> on allocation failure.
-As per <a class="reference internal" href="rfc/rfc19_safememalloc.html#rfc-19"><span class="std std-ref">RFC 19: Safer memory allocation in GDAL</span></a>, you can use <code class="docutils literal notranslate"><span class="pre">VSIMalloc2(x,</span> <span class="pre">y)</span></code> instead of
-doing <code class="docutils literal notranslate"><span class="pre">CPLMalloc(x</span> <span class="pre">*</span> <span class="pre">y)</span></code> or <code class="docutils literal notranslate"><span class="pre">VSIMalloc(x</span> <span class="pre">*</span> <span class="pre">y)</span></code>. <a class="reference internal" href="../api/cpl.html#_CPPv410VSIMalloc26size_t6size_t" title="VSIMalloc2"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIMalloc2()</span></code></a> will detect
-potential overflows in the multiplication and return a NULL pointer if
-it happens. This can be useful in GDAL raster drivers where x and y are
-related to the raster dimensions or raster block sizes. Similarly,
-<code class="docutils literal notranslate"><span class="pre">VSIMalloc3(x,</span> <span class="pre">y,</span> <span class="pre">z)</span></code> can be used as a replacement for <code class="docutils literal notranslate"><span class="pre">CPLMalloc(x</span> <span class="pre">*</span> <span class="pre">y</span> <span class="pre">*</span> <span class="pre">z)</span></code>.</p>
-<p>When working with standard library data structures such as <code class="docutils literal notranslate"><span class="pre">std::vector</span></code> that may throw <code class="docutils literal notranslate"><span class="pre">std::bad_alloc</span></code>, a try/catch block should be used around blocks that may allocate a large amount of memory.</p>
+<h2>メモリ割り当て<a class="headerlink" href="#memory-allocation" title="Link to this heading"></a></h2>
+<p>大規模なメモリ割り当ては, <a class="reference internal" href="../api/cpl.html#_CPPv49VSIMalloc6size_t" title="VSIMalloc"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIMalloc()</span></code></a> ファミリの関数を使用して行うべきです.これにより, <code class="docutils literal notranslate"><span class="pre">nullptr</span></code> が返されます. <a class="reference internal" href="rfc/rfc19_safememalloc.html#rfc-19"><span class="std std-ref">RFC 19: Safer memory allocation in GDAL</span></a> に従って, <a class="reference internal" href="../api/cpl.html#_CPPv410VSIMalloc26size_t6size_t" title="VSIMalloc2"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VSIMalloc2()</span></code></a> を使用することができます.これにより, <code class="docutils literal notranslate"><span class="pre">CPLMalloc(x</span> <span class="pre">*</span> <span class="pre">y)</span></code> または  <code class="docutils literal notranslate"><span class="pre">VSIMalloc(x</span> <span class="pre">*</span> <span class="pre">y)</span></code> を行う代わりに,潜在的なオーバーフローを検出し,それが発生した場合は NULL ポインタを返します.これは, x と y がラスタの寸法またはラスタブロックサイズに関連している GDAL ラスタドライバで有用です.同様に, <code class="docutils literal notranslate"><span class="pre">VSIMalloc3(x,</span> <span class="pre">y,</span> <span class="pre">z)</span></code> は, <code class="docutils literal notranslate"><span class="pre">CPLMalloc(x</span> <span class="pre">*</span> <span class="pre">y</span> <span class="pre">*</span> <span class="pre">z)</span></code> の代わりに使用できます.</p>
+<p><code class="docutils literal notranslate"><span class="pre">std::bad_alloc</span></code> をスローする可能性がある <code class="docutils literal notranslate"><span class="pre">std::vector</span></code> などの標準ライブラリデータ構造を使用する場合,大量のメモリを割り当てる可能性のあるブロックの周りに try/catch ブロックを使用する必要があります.</p>
 </section>
 <section id="adding-a-new-driver">
-<h2>Adding a new driver<a class="headerlink" href="#adding-a-new-driver" title="Link to this heading"></a></h2>
+<h2>新しいドライバの追加<a class="headerlink" href="#adding-a-new-driver" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p>If the driver depends on a third-party library, compilation of the driver must be made conditional on the presence of the library. Drivers should try to re-use existing library dependencies as much as possible, e.g. Expat for SAX XML parsing.</p></li>
-<li><p>For a vector driver, check that the Open() method of the driver (often delegated to a Open() method of the datasource) is selective enough (i.e. it will not accept data files that are not meant for the driver), and robust enough (it will not crash for small variations w.r.t content that it would recognize). Check that it can deal with unusual filenames. For a GDAL driver, similar checks, as well for the optional Identify() method.</p></li>
-<li><p>A set of tests covering the driver should be added to the Python test suite. If appropriate, small sample data files may be added to autotest/gdrivers/data or autotest/ogr/data. The <code class="docutils literal notranslate"><span class="pre">test_ogrsf</span></code> utility and <code class="docutils literal notranslate"><span class="pre">GDALTest</span></code> class may simplify testing of basic driver functionality.</p></li>
-<li><p>A documentation page should be created for the driver. Documentation should, at a minimum, briefly describe the format handled by the driver and, when relevant, describe the particular syntax for the connection string, creation options, configuration options, etc. The documentation should provide a link to a more detailed format description and mention needed third-party libraries.</p></li>
+<li><p>ドライバがサードパーティライブラリに依存している場合,ドライバのコンパイルはライブラリの存在に依存する必要があります.ドライバは,可能な限り既存のライブラリ依存関係を再利用するようにする必要があります. 例: SAX XML パーサリングのための Expat.</p></li>
+<li><p>ベクトルドライバの場合,ドライバの Open() メソッド (しばしばデータソースの Open() メソッドに委任される) が十分に選択的であることを確認してください.つまり,ドライバに適していないデータファイルを受け入れないこと,および十分に堅牢であること (認識するコンテンツに対する小さな変化に対してクラッシュしないこと) を確認してください.異常なファイル名に対処できるかどうかを確認してください. GDAL ドライバの場合,オプションの Identify() メソッドについても同様のチェックを行ってください.</p></li>
+<li><p>ドライバをカバーするテストセットを Python テストスイートに追加する必要があります.適切な場合,小さなサンプルデータファイルを autotest/gdrivers/data または autotest/ogr/data に追加することができます.``test_ogrsf`` ユーティリティと <code class="docutils literal notranslate"><span class="pre">GDALTest</span></code> クラスは,基本的なドライバ機能のテストを簡素化することができます.</p></li>
+<li><p>ドライバのためのドキュメントページを作成する必要があります.ドキュメントは,最低限,ドライバで処理されるフォーマットについて簡単に説明し,接続文字列,作成オプション,構成オプションなどの特定の構文を説明する必要があります.ドキュメントは,より詳細なフォーマットの説明へのリンクを提供し,必要なサードパーティライブラリを言及する必要があります.</p></li>
 </ul>
 </section>
 <section id="writing-tests">
-<h2>Writing tests<a class="headerlink" href="#writing-tests" title="Link to this heading"></a></h2>
-<p>See <a class="reference internal" href="testing.html#writing-tests"><span class="std std-ref">Recommendations on how to write new tests</span></a>.</p>
+<h2>テストの書き方<a class="headerlink" href="#writing-tests" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="testing.html#writing-tests"><span class="std std-ref">Recommendations on how to write new tests</span></a> を参照してください.</p>
 </section>
 <section id="git-usage">
-<h2>Git usage<a class="headerlink" href="#git-usage" title="Link to this heading"></a></h2>
-<p>This section collects a few best practices for git usage for GDAL development.</p>
+<h2>Git の使用<a class="headerlink" href="#git-usage" title="Link to this heading"></a></h2>
+<p>このセクションでは,GDAL 開発のための git 使用のいくつかのベストプラクティスをまとめています.</p>
 <section id="initiating-your-work-repository">
-<h3>Initiating your work repository<a class="headerlink" href="#initiating-your-work-repository" title="Link to this heading"></a></h3>
-<p>Fork <a class="reference external" href="https://github.com/OSGeo/gdal">OSGeo/gdal</a> from the GitHub UI, and then run:</p>
+<h3>作業リポジトリの初期化<a class="headerlink" href="#initiating-your-work-repository" title="Link to this heading"></a></h3>
+<p>GitHub UI から <a class="reference external" href="https://github.com/OSGeo/gdal">OSGeo/gdal</a> をフォークし,次に以下を実行します:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/OSGeo/gdal
 <span class="nb">cd</span><span class="w"> </span>gdal
 git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>my_user_name<span class="w"> </span>git@github.com:my_user_name/gdal.git
@@ -283,7 +258,7 @@ git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </s
 </div>
 </section>
 <section id="working-with-a-feature-branch">
-<h3>Working with a feature branch<a class="headerlink" href="#working-with-a-feature-branch" title="Link to this heading"></a></h3>
+<h3>フィーチャーブランチでの作業<a class="headerlink" href="#working-with-a-feature-branch" title="Link to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>master
 <span class="c1"># potentially update your local master against upstream, as described above</span>
 git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>my_new_feature_branch
@@ -316,14 +291,11 @@ git<span class="w"> </span>commit<span class="w"> </span>-a<span class="w"> </sp
 git<span class="w"> </span>push<span class="w"> </span>my_user_name<span class="w"> </span>my_new_feature_branch
 </pre></div>
 </div>
-<p>From the GitHub UI, issue a pull request.</p>
-<p>If the pull request discussion or automated checks require changes, commit
-locally and push. To get a reasonable history, you may need to combine commits
-using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">rebase</span> <span class="pre">-i</span> <span class="pre">master</span></code>, in which case you will have to force-push your
-branch with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span> <span class="pre">-f</span> <span class="pre">my_user_name</span> <span class="pre">my_new_feature_branch</span></code>.</p>
+<p>GitHub UI からプルリクエストを発行します.</p>
+<p>プルリクエストの議論や自動チェックで変更が必要な場合,ローカルでコミットしてプッシュします.適切な履歴を取得するためには,``git rebase -i master`` を使用してコミットを結合する必要があります.その場合,``git push -f my_user_name my_new_feature_branch`` でブランチを強制プッシュする必要があります.</p>
 </section>
 <section id="updating-your-local-master-against-upstream-master">
-<h3>Updating your local master against upstream master<a class="headerlink" href="#updating-your-local-master-against-upstream-master" title="Link to this heading"></a></h3>
+<h3>ローカルの master をアップストリームの master に更新する<a class="headerlink" href="#updating-your-local-master-against-upstream-master" title="Link to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>master
 git<span class="w"> </span>fetch<span class="w"> </span>origin
 
@@ -333,10 +305,8 @@ git<span class="w"> </span>reset<span class="w"> </span>--hard<span class="w"> <
 </div>
 </section>
 <section id="commit-messages">
-<h3>Commit messages<a class="headerlink" href="#commit-messages" title="Link to this heading"></a></h3>
-<p>Commit messages should indicate a component name (eg a driver name), a short
-description, and when relevant, a reference to a issue (with 'fixes #' if it
-actually fixes it)</p>
+<h3>コミットメッセージ<a class="headerlink" href="#commit-messages" title="Link to this heading"></a></h3>
+<p>コミットメッセージには,コンポーネント名 (例: ドライバ名),短い説明,および適切な場合には,問題への参照 ('fixes #' が実際に修正している場合) を示すべきです.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">COMPONENT_NAME</span><span class="p">:</span> <span class="n">fix</span> <span class="n">bla</span> <span class="n">bla</span> <span class="p">(</span><span class="n">fixes</span> <span class="c1">#1234)</span>
 
 <span class="n">Details</span> <span class="n">here</span><span class="o">...</span>
@@ -344,28 +314,23 @@ actually fixes it)</p>
 </div>
 </section>
 <section id="commit-hooks">
-<span id="id2"></span><h3>Commit hooks<a class="headerlink" href="#commit-hooks" title="Link to this heading"></a></h3>
-<p>GDAL provides pre-commit hooks to run code formatters and linters before a commit is made. The
-hooks are cloned with the repository and can be installed using
-<a class="reference external" href="https://pre-commit.com">pre-commit</a>:</p>
+<span id="id2"></span><h3>コミットフック<a class="headerlink" href="#commit-hooks" title="Link to this heading"></a></h3>
+<p>GDAL は,コミット前にコードフォーマッタやリンタを実行するための pre-commit フックを提供しています.フックはリポジトリと共にクローンされ,`pre-commit &lt;<a class="reference external" href="https://pre-commit.com">https://pre-commit.com</a>&gt;`_ を使用してインストールすることができます:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>pre-commit
 pre-commit<span class="w"> </span>install
 </pre></div>
 </div>
-<p>Once installed, the hooks can be run manually via <code class="docutils literal notranslate"><span class="pre">pre-commit</span> <span class="pre">run</span> <span class="pre">--all-files</span></code>.</p>
+<p>インストールされると,フックは <code class="docutils literal notranslate"><span class="pre">pre-commit</span> <span class="pre">run</span> <span class="pre">--all-files</span></code> を使用して手動で実行できます.</p>
 </section>
 <section id="blame-ignore-file">
-<h3>Blame ignore file<a class="headerlink" href="#blame-ignore-file" title="Link to this heading"></a></h3>
-<p>Due to whole-tree code reformatting done during GDAL 3.7 development,
-<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">blame</span></code> information might be misleading. To avoid that, you need
-to modify your git configuration as following to ignore the revision of
-the whole-tree reformatting:</p>
+<h3>Blame 無視ファイル<a class="headerlink" href="#blame-ignore-file" title="Link to this heading"></a></h3>
+<p>GDAL 3.7 開発中に行われた全体ツリーコードの再フォーマットにより,``git blame`` 情報が誤解を招く可能性があります.それを避けるために,以下のように git 設定を変更して,全体ツリーリフォーマットのリビジョンを無視する必要があります:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>config<span class="w"> </span>blame.ignoreRevsFile<span class="w"> </span>.git-blame-ignore-revs
 </pre></div>
 </div>
 </section>
 <section id="backporting-bugfixes-from-master-to-a-stable-branch">
-<h3>Backporting bugfixes from master to a stable branch<a class="headerlink" href="#backporting-bugfixes-from-master-to-a-stable-branch" title="Link to this heading"></a></h3>
+<h3>master から安定ブランチにバグ修正をバックポートする<a class="headerlink" href="#backporting-bugfixes-from-master-to-a-stable-branch" title="Link to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>master
 With<span class="w"> </span>git<span class="w"> </span>log,<span class="w"> </span>identify<span class="w"> </span>the<span class="w"> </span>sha1sum<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>commit<span class="w"> </span>you<span class="w"> </span>want<span class="w"> </span>to<span class="w"> </span>backport
 git<span class="w"> </span>checkout<span class="w"> </span><span class="m">2</span>.2<span class="w"> </span><span class="c1"># if you want to backport to 2.2</span>
@@ -375,42 +340,39 @@ git<span class="w"> </span>cherry-pick<span class="w"> </span>the_sha1_sum
 git<span class="w"> </span>push<span class="w"> </span>...
 </pre></div>
 </div>
-<p>If changes are needed, do them and <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-a</span> <span class="pre">--amend</span></code></p>
+<p>変更が必要な場合,それを行い,``git commit -a --amend`` を実行します</p>
 </section>
 <section id="things-you-should-not-do">
-<h3>Things you should NOT do<a class="headerlink" href="#things-you-should-not-do" title="Link to this heading"></a></h3>
-<p>(For anyone with push rights to <a class="reference external" href="https://github.com/OSGeo/gdal">OSGeo/gdal</a>) Never modify a commit or
-the history of anything that has been
-committed to <a class="reference external" href="https://github.com/OSGeo/gdal">https://github.com/OSGeo/gdal</a></p>
-<p>Committing symbolic links is allowed only under the .github directory in order to
-avoid potential problems on Windows.</p>
+<h3>行ってはいけないこと<a class="headerlink" href="#things-you-should-not-do" title="Link to this heading"></a></h3>
+<p>(<a class="reference external" href="https://github.com/OSGeo/gdal">OSGeo/gdal</a> にプッシュ権限を持つ人向け) コミットを修正したり, <a class="reference external" href="https://github.com/OSGeo/gdal">https://github.com/OSGeo/gdal</a> にコミットされたものの履歴を修正したりしてはいけません.</p>
+<p>シンボリックリンクをコミットすることは,Windows での潜在的な問題を回避するために,.github ディレクトリ内でのみ許可されています.</p>
 </section>
 </section>
 <section id="source-tree-layout">
-<h2>Source tree layout<a class="headerlink" href="#source-tree-layout" title="Link to this heading"></a></h2>
+<h2>ソースツリーレイアウト<a class="headerlink" href="#source-tree-layout" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p><code class="file docutils literal notranslate"><span class="pre">alg</span></code>: Algorithms: rasterization, polygonization, warper engine, etc.</p></li>
-<li><p><code class="file docutils literal notranslate"><span class="pre">apps</span></code>: C++ command line utilities</p></li>
-<li><p><code class="file docutils literal notranslate"><span class="pre">autotest</span></code>: Regression test suite (C++ and Python)</p></li>
-<li><p><code class="file docutils literal notranslate"><span class="pre">cmake</span></code>: CMake modules and helpers functions</p></li>
-<li><p><code class="file docutils literal notranslate"><span class="pre">doc</span></code>: Source code of GDAL documentation and scripts</p></li>
-<li><p><code class="file docutils literal notranslate"><span class="pre">docker</span></code>: Dockerfile's for <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/docker/README.md">GDAL Docker images</a></p></li>
-<li><p><code class="file docutils literal notranslate"><span class="pre">gcore</span></code>: Raster core functionality. Base classes: <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv411GDALDataset" title="GDALDataset"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALDataset</span></code></a>, <a class="reference internal" href="../api/gdalrasterband_cpp.html#_CPPv414GDALRasterBand" title="GDALRasterBand"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALRasterBand</span></code></a>, <a class="reference internal" href="../api/gdaldriver_cpp.html#_CPPv410GDALDriver" title="GDALDriver"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALDriver</span></code></a>, overview building, etc.</p></li>
-<li><p><code class="file docutils literal notranslate"><span class="pre">frmts</span></code>: GDAL/raster drivers (mostly, with the exception of the GDAL GeoPackage raster support in ogr/ogrsf_frmts/gpkg)</p></li>
-<li><p><code class="file docutils literal notranslate"><span class="pre">fuzzer</span></code>: Source code and scripts for GDAL <a class="reference external" href="https://github.com/google/oss-fuzz">OSS-Fuzz integration</a></p></li>
-<li><p><code class="file docutils literal notranslate"><span class="pre">gnm</span></code>: Source code for <a class="reference internal" href="../user/gnm_data_model.html#gnm-data-model"><span class="std std-ref">地理ネットワークデータモデル</span></a></p></li>
-<li><p><code class="file docutils literal notranslate"><span class="pre">ogr</span></code>: OGR vector core classes: <a class="reference internal" href="../api/ogrfeature_cpp.html#_CPPv412OGRFieldDefn" title="OGRFieldDefn"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRFieldDefn</span></code></a>, <a class="reference internal" href="../api/ogrfeature_cpp.html#_CPPv416OGRGeomFieldDefn" title="OGRGeomFieldDefn"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRGeomFieldDefn</span></code></a>, <a class="reference internal" href="../api/ogrfeature_cpp.html#_CPPv414OGRFeatureDefn" title="OGRFeatureDefn"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRFeatureDefn</span></code></a>, <a class="reference internal" href="../api/ogrgeometry_cpp.html#_CPPv411OGRGeometry" title="OGRGeometry"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRGeometry</span></code></a> and derived classes, OGR SQL, etc.</p></li>
-<li><p><code class="file docutils literal notranslate"><span class="pre">ogr/ogrsf_frmts</span></code>: OGR/vector drivers</p></li>
-<li><p><code class="file docutils literal notranslate"><span class="pre">ogr/ogrsf_frmts/generic</span></code>: OGR vector core class: <cite>OGRLayer</cite>, OGR SQL generic layer</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">alg</span></code>: アルゴリズム: ラスタ化,ポリゴン化,ワーパーエンジンなど.</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">apps</span></code>: C++ コマンドラインユーティリティ</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">autotest</span></code>: リグレッションテストスイート (C++ および Python)</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">cmake</span></code>: CMake モジュールとヘルパー関数</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">doc</span></code>: GDAL ドキュメントおよびスクリプトのソースコード</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">docker</span></code>: <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/docker/README.md">GDAL Docker イメージ</a> の Dockerfile</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">gcore</span></code>: ラスタコア機能. ベースクラス: <a class="reference internal" href="../api/gdaldataset_cpp.html#_CPPv411GDALDataset" title="GDALDataset"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALDataset</span></code></a>, <a class="reference internal" href="../api/gdalrasterband_cpp.html#_CPPv414GDALRasterBand" title="GDALRasterBand"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALRasterBand</span></code></a>, <a class="reference internal" href="../api/gdaldriver_cpp.html#_CPPv410GDALDriver" title="GDALDriver"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">GDALDriver</span></code></a>, 概要ビルドなど.</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">frmts</span></code>: GDAL/ラスタドライバ (主に,ogr/ogrsf_frmts/gpkg の GDAL GeoPackage ラスタサポートを除く)</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">fuzzer</span></code>: GDAL <a class="reference external" href="https://github.com/google/oss-fuzz">OSS-Fuzz 統合</a> のソースコードとスクリプト</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">gnm</span></code>: <a class="reference internal" href="../user/gnm_data_model.html#gnm-data-model"><span class="std std-ref">地理ネットワークデータモデル</span></a> のソースコード</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">ogr</span></code>: OGR ベクトルコアクラス: <a class="reference internal" href="../api/ogrfeature_cpp.html#_CPPv412OGRFieldDefn" title="OGRFieldDefn"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRFieldDefn</span></code></a>, <a class="reference internal" href="../api/ogrfeature_cpp.html#_CPPv416OGRGeomFieldDefn" title="OGRGeomFieldDefn"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRGeomFieldDefn</span></code></a>, <a class="reference internal" href="../api/ogrfeature_cpp.html#_CPPv414OGRFeatureDefn" title="OGRFeatureDefn"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRFeatureDefn</span></code></a>, <a class="reference internal" href="../api/ogrgeometry_cpp.html#_CPPv411OGRGeometry" title="OGRGeometry"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">OGRGeometry</span></code></a> および派生クラス, OGR SQL など.</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">ogr/ogrsf_frmts</span></code>: OGR/ベクトルドライバ</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">ogr/ogrsf_frmts/generic</span></code>: OGR ベクトルコアクラス: <cite>OGRLayer</cite>, OGR SQL 汎用レイヤー</p></li>
 <li><p><code class="file docutils literal notranslate"><span class="pre">port</span></code>: <a class="reference internal" href="#cpl"><span class="std std-ref">CPL (Common Portability Library)</span></a></p></li>
-<li><p><code class="file docutils literal notranslate"><span class="pre">perftests</span></code>: C++ and Python scripts to check the speed/performance of various aspects of GDAL.</p></li>
-<li><p><code class="file docutils literal notranslate"><span class="pre">scripts</span></code>: various utility scripts used for Continuous Integration, release generation, and other auxiliary tasks. None of them are for end users.</p></li>
-<li><p><code class="file docutils literal notranslate"><span class="pre">swig/include</span></code>: definition of SWIG Python, Java, C# bindings</p></li>
-<li><p><code class="file docutils literal notranslate"><span class="pre">swig/python/gdal-utils/scripts</span></code>: Launcher scripts for installed/public GDAL Python utilities. No real functionality there</p></li>
-<li><p><code class="file docutils literal notranslate"><span class="pre">swig/python/gdal-utils/osgeo_utils</span></code>: Core code for GDAL Python utilities. Available in the PyPI gdal and gdal-utils packages.</p></li>
-<li><p><code class="file docutils literal notranslate"><span class="pre">swig/python/gdal-utils/samples</span></code>: Scripts that are not installed and generally not or very little documented. May serve as a staging area for future scripts that are going to be promoted as official.</p></li>
-<li><p><code class="file docutils literal notranslate"><span class="pre">swig/python/gdal-utils/auxiliary</span></code>: Helper methods and classes used by GDAL Python utilities. Available in the PyPI gdal and gdal-utils packages.</p></li>
-<li><p><code class="file docutils literal notranslate"><span class="pre">third_party</span></code>: Third-party libraries used by libgdal. Other may be found in:</p>
+<li><p><code class="file docutils literal notranslate"><span class="pre">perftests</span></code>: GDAL のさまざまな側面の速度/パフォーマンスをチェックするための C++ および Python スクリプト.</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">scripts</span></code>: 継続的インテグレーション,リリース生成,およびその他の補助タスクに使用されるさまざまなユーティリティスクリプト.いずれもエンドユーザー向けではありません.</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">swig/include</span></code>: SWIG Python, Java, C# バインディングの定義</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">swig/python/gdal-utils/scripts</span></code>: インストールされた/公開された GDAL Python ユーティリティのランチャースクリプト.実際の機能はありません</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">swig/python/gdal-utils/osgeo_utils</span></code>: GDAL Python ユーティリティのコアコード.PyPI gdal および gdal-utils パッケージで利用可能です.</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">swig/python/gdal-utils/samples</span></code>: インストールされていないスクリプトであり,一般的にはほとんどまたはほとんどドキュメント化されていません.将来公式として昇格される予定のスクリプトのステージングエリアとして機能するかもしれません.</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">swig/python/gdal-utils/auxiliary</span></code>: GDAL Python ユーティリティで使用されるヘルパーメソッドとクラス.PyPI gdal および gdal-utils パッケージで利用可能です.</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">third_party</span></code>: libgdal で使用されるサードパーティライブラリ. 他のものは以下で見つけることができます:</p>
 <ul>
 <li><p><code class="file docutils literal notranslate"><span class="pre">alg/internal_libqhull</span></code></p></li>
 <li><p><code class="file docutils literal notranslate"><span class="pre">apps/argparse</span></code></p></li>
@@ -447,7 +409,7 @@ avoid potential problems on Windows.</p>
         <a href="testing.html" class="btn btn-neutral float-right" title="Automated testing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="dev_environment.html" class="btn btn-neutral float-left" title="Setting up a development environment" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="dev_environment.html" class="btn btn-neutral float-left" title="開発環境の設定" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

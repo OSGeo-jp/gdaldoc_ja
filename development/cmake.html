@@ -4,9 +4,9 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Using GDAL in CMake projects &mdash; GDAL  ドキュメント</title>
+  <title>Cmake プロジェクトでの GDAL の利用 &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=75499f83" />
 
   
     <link rel="shortcut icon" href="../_static/favicon.png"/>
@@ -26,7 +26,7 @@
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="RFC list" href="rfc/index.html" />
-    <link rel="prev" title="Building documentation" href="dev_documentation.html" /> 
+    <link rel="prev" title="文書のビルド" href="dev_documentation.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -58,12 +58,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">開発</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="building_from_source.html">Building GDAL from source</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dev_environment.html">Setting up a development environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dev_practices.html">Development practices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="testing.html">Automated testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dev_documentation.html">Building documentation</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Using GDAL in CMake projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building_from_source.html">GDAL のソースからのビルド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_environment.html">開発環境の設定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_practices.html">開発プラクティス</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html">自動テスト</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_documentation.html">文書のビルド</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Cmake プロジェクトでの GDAL の利用</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rfc/index.html">RFC list</a></li>
 </ul>
 </li>
@@ -109,7 +109,7 @@
       
           <li><a href="index.html">開発</a> &raquo;</li>
       
-      <li>Using GDAL in CMake projects</li>
+      <li>Cmake プロジェクトでの GDAL の利用</li>
     
 
     
@@ -131,7 +131,7 @@
         <a href="rfc/index.html" class="btn btn-neutral float-right" title="RFC list" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="dev_documentation.html" class="btn btn-neutral float-left" title="Building documentation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="dev_documentation.html" class="btn btn-neutral float-left" title="文書のビルド" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -141,28 +141,19 @@
            <div itemprop="articleBody">
              
   <section id="using-gdal-in-cmake-projects">
-<span id="using-gdal-in-cmake"></span><h1>Using GDAL in CMake projects<a class="headerlink" href="#using-gdal-in-cmake-projects" title="Link to this heading"></a></h1>
+<span id="using-gdal-in-cmake"></span><h1>Cmake プロジェクトでの GDAL の利用<a class="headerlink" href="#using-gdal-in-cmake-projects" title="Link to this heading"></a></h1>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.5.</span></p>
 </div>
-<p>The recommended way to use the GDAL library 3.5 or higher in a CMake project is to
-link to the imported library target <code class="docutils literal notranslate"><span class="pre">GDAL::GDAL</span></code> provided by
-the CMake configuration which comes with the library. Typical usage is:</p>
+<p>GDAL ライブラリ 3.5 以上を CMake プロジェクトで使用する推奨される方法は,ライブラリに付属する CMake 構成で提供されるインポートされたライブラリターゲット <code class="docutils literal notranslate"><span class="pre">GDAL::GDAL</span></code> にリンクすることです.典型的な使用法は次のとおりです:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">find_package</span><span class="p">(</span><span class="n">GDAL</span> <span class="n">CONFIG</span> <span class="n">REQUIRED</span><span class="p">)</span>
 
 <span class="n">target_link_libraries</span><span class="p">(</span><span class="n">MyApp</span> <span class="n">PRIVATE</span> <span class="n">GDAL</span><span class="p">::</span><span class="n">GDAL</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>By adding the imported library target <code class="docutils literal notranslate"><span class="pre">GDAL::GDAL</span></code> to the
-target link libraries, CMake will also pass the include directories to
-the compiler.</p>
-<p>The CMake command <code class="docutils literal notranslate"><span class="pre">find_package</span></code> will look for the configuration in a
-number of places. The lookup can be adjusted for all packages by setting
-the cache variable or environment variable <code class="docutils literal notranslate"><span class="pre">CMAKE_PREFIX_PATH</span></code>. In
-particular, CMake will consult (and set) the cache variable
-<code class="docutils literal notranslate"><span class="pre">GDAL_DIR</span></code>.</p>
-<p>Before GDAL 3.5, it is recommended to use <a class="reference external" href="https://cmake.org/cmake/help/latest/module/FindGDAL.html">find module supplied with CMake</a>.
-This also creates the <code class="docutils literal notranslate"><span class="pre">GDAL::GDAL</span></code> target. It requires CMake version 3.14.</p>
+<p>インポートされたライブラリターゲット <code class="docutils literal notranslate"><span class="pre">GDAL::GDAL</span></code> をターゲットリンクライブラリに追加することで,CMake はコンパイラにインクルードディレクトリを渡します.</p>
+<p>CMake コマンド <code class="docutils literal notranslate"><span class="pre">find_package</span></code> は,構成をいくつかの場所で検索します.検索は,キャッシュ変数または環境変数 <code class="docutils literal notranslate"><span class="pre">CMAKE_PREFIX_PATH</span></code> を設定することですべてのパッケージに調整できます.特に,CMake はキャッシュ変数 <code class="docutils literal notranslate"><span class="pre">GDAL_DIR</span></code> を参照して(および設定して)います.</p>
+<p>GDAL 3.5 より前では,`CMake で提供される検索モジュール &lt;<a class="reference external" href="https://cmake.org/cmake/help/latest/module/FindGDAL.html">https://cmake.org/cmake/help/latest/module/FindGDAL.html</a>&gt;`__ を使用することをお勧めします.これは <code class="docutils literal notranslate"><span class="pre">GDAL::GDAL</span></code> ターゲットも作成します. CMake バージョン 3.14 が必要です.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cmake_minimum_required</span><span class="p">(</span><span class="n">VERSION</span> <span class="mf">3.14</span><span class="p">)</span>
 
 <span class="n">find_package</span><span class="p">(</span><span class="n">GDAL</span> <span class="n">CONFIG</span><span class="p">)</span>
@@ -185,7 +176,7 @@ This also creates the <code class="docutils literal notranslate"><span class="pr
         <a href="rfc/index.html" class="btn btn-neutral float-right" title="RFC list" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="dev_documentation.html" class="btn btn-neutral float-left" title="Building documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="dev_documentation.html" class="btn btn-neutral float-left" title="文書のビルド" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

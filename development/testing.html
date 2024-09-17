@@ -4,9 +4,9 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Automated testing &mdash; GDAL  ドキュメント</title>
+  <title>自動テスト &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=75499f83" />
 
   
     <link rel="shortcut icon" href="../_static/favicon.png"/>
@@ -25,8 +25,8 @@
     <link rel="author" title="このドキュメントについて" href="../about.html" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
-    <link rel="next" title="Building documentation" href="dev_documentation.html" />
-    <link rel="prev" title="Development practices" href="dev_practices.html" /> 
+    <link rel="next" title="文書のビルド" href="dev_documentation.html" />
+    <link rel="prev" title="開発プラクティス" href="dev_practices.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -58,23 +58,23 @@
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">チュートリアル</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">開発</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="building_from_source.html">Building GDAL from source</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dev_environment.html">Setting up a development environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dev_practices.html">Development practices</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Automated testing</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#running-a-subset-of-tests-using-ctest">Running a subset of tests using <code class="docutils literal notranslate"><span class="pre">ctest</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#running-a-subset-of-tests-using-pytest">Running a subset of tests using <code class="docutils literal notranslate"><span class="pre">pytest</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#checking-for-memory-leaks-and-access-errors-using-valgrind">Checking for memory leaks and access errors using Valgrind</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#recommendations-on-how-to-write-new-tests">Recommendations on how to write new tests</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#python-tests">Python tests</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#c-tests">C++ tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building_from_source.html">GDAL のソースからのビルド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_environment.html">開発環境の設定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_practices.html">開発プラクティス</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">自動テスト</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#running-a-subset-of-tests-using-ctest"><code class="docutils literal notranslate"><span class="pre">ctest</span></code> を使用してテストのサブセットを実行する</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-a-subset-of-tests-using-pytest"><code class="docutils literal notranslate"><span class="pre">pytest</span></code> を使用してテストのサブセットを実行します</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#checking-for-memory-leaks-and-access-errors-using-valgrind">Valgrind を使用してメモリリークとアクセスエラーをチェックする</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#recommendations-on-how-to-write-new-tests">新しいテストの書き方に関する推奨事項</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#python-tests">Python テスト</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c-tests">C++ テスト</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#test-coverage-reports">Test coverage reports</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#post-commit-testing">Post-commit testing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#test-coverage-reports">テストカバレッジレポート</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#post-commit-testing">コミット後のテスト</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="dev_documentation.html">Building documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_documentation.html">文書のビルド</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cmake.html">Using GDAL in CMake projects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rfc/index.html">RFC list</a></li>
 </ul>
@@ -121,7 +121,7 @@
       
           <li><a href="index.html">開発</a> &raquo;</li>
       
-      <li>Automated testing</li>
+      <li>自動テスト</li>
     
 
     
@@ -140,10 +140,10 @@
   
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
-        <a href="dev_documentation.html" class="btn btn-neutral float-right" title="Building documentation" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="dev_documentation.html" class="btn btn-neutral float-right" title="文書のビルド" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="dev_practices.html" class="btn btn-neutral float-left" title="Development practices" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="dev_practices.html" class="btn btn-neutral float-left" title="開発プラクティス" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -153,81 +153,55 @@
            <div itemprop="articleBody">
              
   <section id="automated-testing">
-<span id="testing"></span><h1>Automated testing<a class="headerlink" href="#automated-testing" title="Link to this heading"></a></h1>
-<p>GDAL includes a comprehensive test suite, implemented using a combination of Python (via pytest) and C++ (via gtest).</p>
-<p>After building GDAL using CMake, the complete test suite can be run using <code class="docutils literal notranslate"><span class="pre">ctest</span> <span class="pre">-v</span> <span class="pre">--output-on-failure</span></code>. This will automatically set environment variables so that tests are run on the
-the built version of GDAL, rather than an installed system copy.</p>
+<span id="testing"></span><h1>自動テスト<a class="headerlink" href="#automated-testing" title="Link to this heading"></a></h1>
+<p>GDAL には,Python (pytest 経由) と C++ (gtest 経由) の組み合わせを使用して実装された包括的なテストスイートが含まれています.</p>
+<p>CMake を使用して GDAL をビルドした後, <code class="docutils literal notranslate"><span class="pre">ctest</span> <span class="pre">-v</span> <span class="pre">--output-on-failure</span></code> を使用して完全なテストスイートを実行できます.これにより,テストがインストールされたシステムコピーではなく,ビルドされたバージョンの GDAL で実行されるように環境変数が自動的に設定されます.</p>
 <section id="running-a-subset-of-tests-using-ctest">
-<h2>Running a subset of tests using <code class="docutils literal notranslate"><span class="pre">ctest</span></code><a class="headerlink" href="#running-a-subset-of-tests-using-ctest" title="Link to this heading"></a></h2>
-<p>The complete set of test suites known to <code class="docutils literal notranslate"><span class="pre">ctest</span></code> can be viewed running <code class="docutils literal notranslate"><span class="pre">ctest</span> <span class="pre">-N</span></code>.</p>
-<p>A subset of tests can be run using the <code class="docutils literal notranslate"><span class="pre">-R</span></code> argument to <code class="docutils literal notranslate"><span class="pre">ctest</span></code>, which selects tests using a provided regular expression.
-For example, <code class="docutils literal notranslate"><span class="pre">ctest</span> <span class="pre">-R</span> <span class="pre">autotest</span></code> would run the Python-based tests.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">-E</span></code> argument can be used to exclude tests using a regular expression. For example, <code class="docutils literal notranslate"><span class="pre">ctest</span> <span class="pre">-E</span> <span class="pre">gdrivers</span></code> would exclude the suite of driver tests.</p>
+<h2><code class="docutils literal notranslate"><span class="pre">ctest</span></code> を使用してテストのサブセットを実行する<a class="headerlink" href="#running-a-subset-of-tests-using-ctest" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">ctest</span></code> によって認識されている完全なテストスイートのセットは,``ctest -N`` を実行して表示できます.</p>
+<p><code class="docutils literal notranslate"><span class="pre">ctest</span></code> の <code class="docutils literal notranslate"><span class="pre">-R</span></code> 引数を使用してテストのサブセットを実行できます.これにより,指定された正規表現を使用してテストを選択できます.たとえば,``ctest -R autotest`` は Python ベースのテストを実行します.</p>
+<p><code class="docutils literal notranslate"><span class="pre">-E</span></code> 引数を使用して正規表現を使用してテストを除外できます.たとえば,``ctest -E gdrivers`` はドライバーテストのスイートを除外します.</p>
 </section>
 <section id="running-a-subset-of-tests-using-pytest">
-<h2>Running a subset of tests using <code class="docutils literal notranslate"><span class="pre">pytest</span></code><a class="headerlink" href="#running-a-subset-of-tests-using-pytest" title="Link to this heading"></a></h2>
-<p>The test subsets exposed by <code class="docutils literal notranslate"><span class="pre">ctest</span></code> are still rather large and some may take several minutes to run.
-If a higher level of specificity is needed, <code class="docutils literal notranslate"><span class="pre">pytest</span></code> can be called directly to run groups of tests or individual tests.
-Before running <code class="docutils literal notranslate"><span class="pre">pytest</span></code>, it is important to set <a class="reference internal" href="dev_environment.html#setting-dev-environment-variables"><span class="std std-ref">development environment variables</span></a> so that the development build of GDAL is tested, rather than a system version.</p>
-<p>Tests can then be run by calling <code class="docutils literal notranslate"><span class="pre">pytest</span></code>, for example on an individual file.
-On Linux and MacOS builds, the tests are symlinked into the build directory, so this
-can be done by running the following from the build directory:</p>
+<h2><code class="docutils literal notranslate"><span class="pre">pytest</span></code> を使用してテストのサブセットを実行します<a class="headerlink" href="#running-a-subset-of-tests-using-pytest" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">ctest</span></code> によって公開されるテストサブセットはまだかなり大きく,いくつかは実行に数分かかる場合があります.より高いレベルの特異性が必要な場合,``pytest`` を直接呼び出して,グループのテストまたは個々のテストを実行できます.``pytest`` を実行する前に,システムバージョンではなく,開発ビルドの GDAL がテストされるように, <a class="reference internal" href="dev_environment.html#setting-dev-environment-variables"><span class="std std-ref">development environment variables</span></a> を設定することが重要です.</p>
+<p>その後,``pytest`` を呼び出すことで,個々のファイルでテストを実行できます.Linux および MacOS ビルドでは,テストはビルドディレクトリにシンボリックリンクされているため,ビルドディレクトリから次のコマンドを実行することでこれを行うことができます:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>autotest/gcore/vrt_read.py
 </pre></div>
 </div>
-<p>On Windows, the test files remain in the source tree, but the pytest configuration file <code class="docutils literal notranslate"><span class="pre">pytest.ini</span></code> is only available in the build directory. To accommodate this, the above command would be modified as follows:</p>
+<p>Windows では,テストファイルはソースツリーに残りますが,pytest の設定ファイル <code class="docutils literal notranslate"><span class="pre">pytest.ini</span></code> はビルドディレクトリにのみ利用可能です.これに対応するために,上記のコマンドは次のように変更されます:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>-c<span class="w"> </span>pytest.ini<span class="w"> </span>../autotest/gcore/vrt_read.py
 </pre></div>
 </div>
-<p>A subset of tests within an individual test file can be run by providing a regular expression to the <code class="docutils literal notranslate"><span class="pre">-k</span></code> argument to <code class="docutils literal notranslate"><span class="pre">pytest</span></code>.</p>
+<p>個々のテストファイル内のテストのサブセットは,``pytest`` の <code class="docutils literal notranslate"><span class="pre">-k</span></code> 引数に正規表現を指定することで実行できます.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>autotest/gcore/vrt_read.py<span class="w"> </span>-k<span class="w"> </span>test_vrt_read_non_existing_source
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">pytest</span></code> can also report information on the tests without running them. For
-example, to list tests containing &quot;tiff&quot; in the name:</p>
+<p><code class="docutils literal notranslate"><span class="pre">pytest</span></code> は,テストを実行せずにテストに関する情報を報告することもできます.たとえば,名前に &quot;tiff&quot; が含まれるテストをリストするには:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>--collect-only<span class="w"> </span>autotest<span class="w"> </span>-k<span class="w"> </span>tiff
 </pre></div>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">警告</p>
-<p>Not all Python tests can be run independently; some tests depend on state set by a previous tests in the same file.</p>
+<p>すべての Python テストを独立して実行することはできません.一部のテストは,同じファイル内の前のテストによって設定された状態に依存しています.</p>
 </div>
 </section>
 <section id="checking-for-memory-leaks-and-access-errors-using-valgrind">
-<h2>Checking for memory leaks and access errors using Valgrind<a class="headerlink" href="#checking-for-memory-leaks-and-access-errors-using-valgrind" title="Link to this heading"></a></h2>
-<p>The GDAL unit test suite can be run using the Valgrind tool to detect memory
-errors such as leaks and incorrect reads/writes.</p>
-<p>The test suite will run considerably slower under Valgrind (perhaps by a factor
-of ten) so it is generally advisable to run a subset of the tests using the
-methods described above.</p>
+<h2>Valgrind を使用してメモリリークとアクセスエラーをチェックする<a class="headerlink" href="#checking-for-memory-leaks-and-access-errors-using-valgrind" title="Link to this heading"></a></h2>
+<p>GDAL ユニットテストスイートは,Valgrind ツールを使用してメモリエラー (リークや不正な読み取り/書き込みなど) を検出するために実行できます.</p>
+<p>テストスイートは Valgrind の下でかなり遅くなります (おそらく 10 倍程度),したがって,通常は上記の方法でテストのサブセットを実行することが望ましいです.</p>
 <div class="admonition warning">
 <p class="admonition-title">警告</p>
-<p>Calling <code class="docutils literal notranslate"><span class="pre">valgrind</span> <span class="pre">ctest</span></code> will _not_ run the tests under
-<code class="docutils literal notranslate"><span class="pre">valgrind</span></code>. Although it is possible to use Valgrind with ctest, it is
-simpler to call <code class="docutils literal notranslate"><span class="pre">pytest</span></code> or <code class="docutils literal notranslate"><span class="pre">gdal_unit_test</span></code> directly.</p>
+<p><code class="docutils literal notranslate"><span class="pre">valgrind</span> <span class="pre">ctest</span></code> を呼び出しても,テストは <code class="docutils literal notranslate"><span class="pre">valgrind</span></code> の下で実行されません.Valgrind を ctest と組み合わせて使用することは可能ですが,``pytest`` または <code class="docutils literal notranslate"><span class="pre">gdal_unit_test</span></code> を直接呼び出す方が簡単です.</p>
 </div>
-<p>The following preparatory steps are necessary to avoid numerous false-positive
-errors from Valgrind:</p>
+<p>Valgrind からの多数の false-positive エラーを回避するためには,次の準備手順が必要です:</p>
 <ol class="arabic simple">
-<li><p>Many false-positive errors are generated by Python itself. Most of these can be
-removed by obtaining a suppression file that corresponds to the version of
-the Python interpreter used to run the tests. This file can be located in a
-source distribution of Python, or downloaded directly from GitHub (for
-example, at
-<a class="reference external" href="https://raw.githubusercontent.com/python/cpython/3.11/Misc/valgrind-python.supp">https://raw.githubusercontent.com/python/cpython/3.11/Misc/valgrind-python.supp</a>)</p></li>
-<li><p>A few false-positive errors are generated by the GDAL test suite or
-libraries that it uses (e.g., SWIG, numpy). These can be removed by
-<code class="docutils literal notranslate"><span class="pre">autotest/valgrind-gdal.supp</span></code> file in the GDAL repository.</p></li>
-<li><p>When running Python unit tests, the default system memory allocator should
-be used instead of Python's internal memory allocator. This can be done by
-setting the <code class="docutils literal notranslate"><span class="pre">PYTHONMALLOC</span></code> environment variable to <code class="docutils literal notranslate"><span class="pre">malloc</span></code>.</p></li>
-<li><p>When running Python unit tests, Valgrind will report numerous &quot;Invalid file
-descriptor&quot; warnings that cannot currently be suppressed. These can be
-removed from the output using <code class="docutils literal notranslate"><span class="pre">grep</span> <span class="pre">-v</span> <span class="pre">&quot;invalid</span> <span class="pre">file</span>
-<span class="pre">descriptor\|alternative</span> <span class="pre">log</span> <span class="pre">fd&quot;</span></code>.</p></li>
+<li><p>多くの false-positive エラーは Python 自体によって生成されます.これらのほとんどは,テストを実行するために使用される Python インタプリタのバージョンに対応する抑制ファイルを取得することで削除できます.このファイルは,Python のソースディストリビューションにあるか,直接 GitHub からダウンロードできます (たとえば, <a class="reference external" href="https://raw.githubusercontent.com/python/cpython/3.11/Misc/valgrind-python.supp">https://raw.githubusercontent.com/python/cpython/3.11/Misc/valgrind-python.supp</a>)</p></li>
+<li><p>GDAL テストスイートまたはそれが使用するライブラリ (SWIG, numpy など) によっていくつかの false-positive エラーが生成されます.これらは,``autotest/valgrind-gdal.supp`` ファイルで GDAL リポジトリから削除できます.</p></li>
+<li><p>Python ユニットテストを実行する場合,Python の内部メモリアロケータの代わりにデフォルトのシステムメモリアロケータを使用する必要があります.これは,``PYTHONMALLOC`` 環境変数を <code class="docutils literal notranslate"><span class="pre">malloc</span></code> に設定することで行うことができます.</p></li>
+<li><p>Python ユニットテストを実行する場合,Valgrind は現在抑制できない多数の &quot;Invalid file descriptor&quot; 警告を報告します.これらは,``grep -v &quot;invalid file descriptor|alternative log fd&quot;`` を使用して出力から削除できます.</p></li>
 </ol>
-<p>Combining the following, we can run valgrind for a subset of Python tests as
-follows:</p>
+<p>以下を組み合わせることで,次のように Python テストのサブセットのために valgrind を実行できます:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">PYTHONMALLOC</span><span class="o">=</span>malloc<span class="w"> </span>valgrind<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--leak-check<span class="o">=</span>full<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--suppressions<span class="o">=</span>/home/dan/dev/valgrind-python.supp<span class="w"> </span><span class="se">\</span>
@@ -237,41 +211,21 @@ follows:</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
-<p>To avoid verbose commands such as the one above, it may be useful to
-reference the suppression files and other common arguments in a
-<code class="docutils literal notranslate"><span class="pre">~/.valgrindrc</span></code> file.</p>
+<p>上記のような冗長なコマンドを避けるためには,抑制ファイルやその他の一般的な引数を <code class="docutils literal notranslate"><span class="pre">~/.valgrindrc</span></code> ファイルに記述すると便利です.</p>
 </div>
 </section>
 <section id="recommendations-on-how-to-write-new-tests">
-<span id="writing-tests"></span><h2>Recommendations on how to write new tests<a class="headerlink" href="#recommendations-on-how-to-write-new-tests" title="Link to this heading"></a></h2>
-<p>Python-based tests should be preferred when possible, as productivity is higher
-in Python and there is no associated compilation time (compilation time affects
-feedback received from continuous integration).</p>
-<p>C/C++-based test should be reserved for C++-specific aspects that cannot be tested
-with the SWIG Python bindings, which use the C interface. For example testing
-of C++ operators (copy/move constructors/assignment operators, iterator interfaces,
-etc.) or C/C++ functionality not mapped to SWIG (e.g. CPL utility functions/classes)</p>
+<span id="writing-tests"></span><h2>新しいテストの書き方に関する推奨事項<a class="headerlink" href="#recommendations-on-how-to-write-new-tests" title="Link to this heading"></a></h2>
+<p>可能な限り Python ベースのテストを使用することが推奨されます. Python では生産性が高く,関連するコンパイル時間がないため (コンパイル時間は継続的統合から受け取るフィードバックに影響します).</p>
+<p>C/C++ ベースのテストは,SWIG Python バインディングを使用してテストできない C++ 固有の側面に予約するべきです.たとえば,C++ 演算子 (コピー/ムーブコンストラクタ/代入演算子,イテレータインタフェースなど) のテストや,SWIG にマッピングされていない C/C++ 機能 (たとえば,CPL ユーティリティ関数/クラス) のテストです.</p>
 <section id="python-tests">
-<h3>Python tests<a class="headerlink" href="#python-tests" title="Link to this heading"></a></h3>
-<p>Python tests use the <a class="reference external" href="https://docs.pytest.org/en/latest/">pytest</a>
-framework since <a class="reference internal" href="rfc/rfc72_pytest.html#rfc-72"><span class="std std-ref">RFC 72: Update autotest suite to use pytest</span></a>.</p>
-<p>Test cases should be written in a way where they are independent from other
-ones, so they can potentially be run in a isolated way or in parallel of other
-test cases. In particular temporary files should be created with a name that
-cannot conflict with other tests: preferably use pytest's <code class="docutils literal notranslate"><span class="pre">`tmp_path</span></code> fixture &lt;<a class="reference external" href="https://docs.pytest.org/en/7.1.x/how-to/tmp_path.html#the-tmp-path-fixture">https://docs.pytest.org/en/7.1.x/how-to/tmp_path.html#the-tmp-path-fixture</a>&gt;`__.</p>
-<p>Use <code class="docutils literal notranslate"><span class="pre">&#64;pytest.mark.require_driver(driver_name)</span></code> as an annotation for a test
-case that requires an optional driver to be present.</p>
-<p>Use <code class="docutils literal notranslate"><span class="pre">pytestmark</span> <span class="pre">=</span> <span class="pre">pytest.mark.require_driver(&quot;driver_name&quot;)</span></code> towards the
-beginning of a test file that requires a given driver to be available for
-all its test cases. This is typically when writing tests for a particular
-driver.</p>
-<p>Use <code class="docutils literal notranslate"><span class="pre">&#64;pytest.mark.require_run_on_demand</span></code> as an annotation to signal a test
-that should not be run by default, typically because it requires special
-pre-conditions, use a lot of RAM, etc. and is thus not appropriate to be
-automatically run by continuous integration.</p>
-<p>Use <code class="docutils literal notranslate"><span class="pre">&#64;pytest.mark.parametrize(...)</span></code> as an annotation for test functions
-that test for variations, instead of for() constructs.
-More details at <a class="reference external" href="https://docs.pytest.org/en/latest/parametrize.html">https://docs.pytest.org/en/latest/parametrize.html</a></p>
+<h3>Python テスト<a class="headerlink" href="#python-tests" title="Link to this heading"></a></h3>
+<p>Python テストは, <a class="reference internal" href="rfc/rfc72_pytest.html#rfc-72"><span class="std std-ref">RFC 72: Update autotest suite to use pytest</span></a> 以降,`pytest &lt;<a class="reference external" href="https://docs.pytest.org/en/latest/">https://docs.pytest.org/en/latest/</a>&gt;`__ フレームワークを使用しています.</p>
+<p>テストケースは,他のテストケースと独立しているため,潜在的に分離された方法で実行されるか,他のテストケースと並行して実行されるように書かれるべきです.特に一時ファイルは,他のテストと競合しない名前で作成する必要があります:可能であれば,pytest の <code class="docutils literal notranslate"><span class="pre">tmp_path</span></code> フィクスチャを使用してください. &lt;<a class="reference external" href="https://docs.pytest.org/en/7.1.x/how-to/tmp_path.html#the-tmp-path-fixture">https://docs.pytest.org/en/7.1.x/how-to/tmp_path.html#the-tmp-path-fixture</a>&gt;`__.</p>
+<p>オプションのドライバが存在する必要があるテストケースには,``&#64;pytest.mark.require_driver(driver_name)`` をアノテーションとして使用します.</p>
+<p>特定のドライバが利用可能である必要があるテストファイルの最初に <code class="docutils literal notranslate"><span class="pre">pytestmark</span> <span class="pre">=</span> <span class="pre">pytest.mark.require_driver(&quot;driver_name&quot;)</span></code> を使用します.これは,通常,特定のドライバのテストを書くときに使用します.</p>
+<p>特別な前提条件が必要であるため,通常はデフォルトで実行されないテストを示すために,``&#64;pytest.mark.require_run_on_demand`` をアノテーションとして使用します.たとえば,多くの RAM を使用するなど,継続的統合によって自動的に実行されるのに適していない場合です.</p>
+<p>変化をテストするテスト関数のアノテーションとして,``&#64;pytest.mark.parametrize(...)`` を使用します.詳細は,https://docs.pytest.org/en/latest/parametrize.html にあります.</p>
 <p>e.g.:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="s2">&quot;dt,expected_size&quot;</span><span class="p">,</span> <span class="p">[(</span><span class="n">gdal</span><span class="o">.</span><span class="n">GDT_Byte</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
                                               <span class="p">(</span><span class="n">gdal</span><span class="o">.</span><span class="n">GDT_UInt16</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
@@ -279,17 +233,14 @@ More details at <a class="reference external" href="https://docs.pytest.org/en/l
     <span class="k">assert</span> <span class="n">gdal</span><span class="o">.</span><span class="n">GetDataTypeSizeBytes</span><span class="p">(</span><span class="n">dt</span><span class="p">)</span> <span class="o">==</span> <span class="n">expected_size</span>
 </pre></div>
 </div>
-<p>instead of</p>
+<p>代わりに</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_datatypesize_DO_NOT_DO_THAT</span><span class="p">():</span>
     <span class="k">for</span> <span class="n">dt</span><span class="p">,</span> <span class="n">expected_size</span> <span class="ow">in</span> <span class="p">[(</span><span class="n">gdal</span><span class="o">.</span><span class="n">GDT_Byte</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="n">gdal</span><span class="o">.</span><span class="n">GDT_UInt16</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]:</span>
         <span class="k">assert</span> <span class="n">gdal</span><span class="o">.</span><span class="n">GetDataTypeSizeBytes</span><span class="p">(</span><span class="n">dt</span><span class="p">)</span> <span class="o">==</span> <span class="n">expected_size</span>
 </pre></div>
 </div>
-<p><a class="reference external" href="https://docs.pytest.org/en/latest/how-to/fixtures.html">Fixtures</a> can
-be used to share set-up and tear-down code between test cases.</p>
-<p>e.g. a fixture automatically loaded for all test cases of a test file, that
-takes care to unregister a given driver before the test case is run, and
-re-register it afterwards:</p>
+<p><a class="reference external" href="https://docs.pytest.org/en/latest/how-to/fixtures.html">Fixtures</a> を使用して,テストケース間でセットアップとティアダウンのコードを共有できます.</p>
+<p>たとえば,テストケースが実行される前に指定されたドライバを登録解除し,その後に再登録するためのテストファイルのすべてのテストケースに自動的にロードされるフィクスチャ:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="s2">&quot;module&quot;</span><span class="p">,</span> <span class="n">autouse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">without_filegdb_driver</span><span class="p">():</span>
 <span class="c1"># remove FileGDB driver before running tests</span>
@@ -304,8 +255,7 @@ re-register it afterwards:</p>
     <span class="n">filegdb_driver</span><span class="o">.</span><span class="n">Register</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>or a fixture that runs preliminary checks to discover if a driver has
-some optional capabilities, and skip a test case if not:</p>
+<p>または,ドライバにオプションの機能があるかどうかを発見するための事前チェックを実行し,機能がない場合はテストケースをスキップするフィクスチャ:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">()</span>
 <span class="k">def</span> <span class="nf">require_auto_load_extension</span><span class="p">():</span>
 <span class="k">if</span> <span class="n">ogr</span><span class="o">.</span><span class="n">GetDriverByName</span><span class="p">(</span><span class="s2">&quot;SQLite&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -328,18 +278,10 @@ some optional capabilities, and skip a test case if not:</p>
 </div>
 </section>
 <section id="c-tests">
-<h3>C++ tests<a class="headerlink" href="#c-tests" title="Link to this heading"></a></h3>
-<p>GDAL C++ tests use the <a class="reference external" href="https://github.com/google/googletest">GoogleTest</a>
-framework since <a class="reference internal" href="rfc/rfc88_googletest.html#rfc-88"><span class="std std-ref">RFC 88: Use GoogleTest framework for C/C++ unit tests</span></a>.</p>
-<p>Common non-failing assertions are: <code class="docutils literal notranslate"><span class="pre">EXPECT_TRUE(cond)</span></code>, <code class="docutils literal notranslate"><span class="pre">EXPECT_FALSE(cond)</span></code>,
-<code class="docutils literal notranslate"><span class="pre">EXPECT_EQ(a,</span> <span class="pre">b)</span></code>, <code class="docutils literal notranslate"><span class="pre">EXPECT_NE(a,</span> <span class="pre">b)</span></code>, <code class="docutils literal notranslate"><span class="pre">EXPECT_STREQ(a,</span> <span class="pre">b)</span></code>, <code class="docutils literal notranslate"><span class="pre">EXPECT_LE(a,</span> <span class="pre">b)</span></code>,
-<code class="docutils literal notranslate"><span class="pre">EXPECT_LT(a,</span> <span class="pre">b)</span></code>, <code class="docutils literal notranslate"><span class="pre">EXPECT_GE(a,</span> <span class="pre">b)</span></code>, <code class="docutils literal notranslate"><span class="pre">EXPECT_GT(a,</span> <span class="pre">b)</span></code>, <code class="docutils literal notranslate"><span class="pre">EXPECT_NEAR(a,</span> <span class="pre">b,</span> <span class="pre">tolerance)</span></code>
-If one of those assertions fail, the execution of the rest of the test cases
-continues, hence they should not typically be used if testing a pointer against
-NULL and dereferencing it unconditionally afterwards. The ASSERT_xxxx family
-of assertions should be used for such cases where early exit of the test case
-is desired.</p>
-<p>GoogleTest also offers capabilities for parametrized tests. For example:</p>
+<h3>C++ テスト<a class="headerlink" href="#c-tests" title="Link to this heading"></a></h3>
+<p>GDAL C++ テストは, <a class="reference internal" href="rfc/rfc88_googletest.html#rfc-88"><span class="std std-ref">RFC 88: Use GoogleTest framework for C/C++ unit tests</span></a> 以降,`GoogleTest &lt;<a class="reference external" href="https://github.com/google/googletest">https://github.com/google/googletest</a>&gt;`__ フレームワークを使用しています.</p>
+<p>一般的な失敗しないアサーションは,``EXPECT_TRUE(cond)``, <code class="docutils literal notranslate"><span class="pre">EXPECT_FALSE(cond)</span></code>, <code class="docutils literal notranslate"><span class="pre">EXPECT_EQ(a,</span> <span class="pre">b)</span></code>, <code class="docutils literal notranslate"><span class="pre">EXPECT_NE(a,</span> <span class="pre">b)</span></code>, <code class="docutils literal notranslate"><span class="pre">EXPECT_STREQ(a,</span> <span class="pre">b)</span></code>, <code class="docutils literal notranslate"><span class="pre">EXPECT_LE(a,</span> <span class="pre">b)</span></code>, <code class="docutils literal notranslate"><span class="pre">EXPECT_LT(a,</span> <span class="pre">b)</span></code>, <code class="docutils literal notranslate"><span class="pre">EXPECT_GE(a,</span> <span class="pre">b)</span></code>, <code class="docutils literal notranslate"><span class="pre">EXPECT_GT(a,</span> <span class="pre">b)</span></code>, <code class="docutils literal notranslate"><span class="pre">EXPECT_NEAR(a,</span> <span class="pre">b,</span> <span class="pre">tolerance)</span></code> です.これらのアサーションのいずれかが失敗すると,残りのテストケースの実行が続行されるため,通常は,ポインタを NULL に対してテストし,その後無条件にデリファレンスする場合には使用しないでください.&quot;早期にテストケースを終了する場合には,ASSERT_xxxx ファミリのアサーションを使用する必要があります.</p>
+<p>GoogleTest は,パラメータ化されたテストの機能も提供しています.たとえば:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">DataTypeTupleFixture</span><span class="o">:</span>
 <span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="n">test_gdal</span><span class="p">,</span>
 <span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="o">::</span><span class="n">testing</span><span class="o">::</span><span class="n">WithParamInterface</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="n">GDALDataType</span><span class="p">,</span><span class="w"> </span><span class="n">GDALDataType</span><span class="o">&gt;&gt;</span>
@@ -390,20 +332,14 @@ is desired.</p>
 </section>
 </section>
 <section id="test-coverage-reports">
-<h2>Test coverage reports<a class="headerlink" href="#test-coverage-reports" title="Link to this heading"></a></h2>
-<p>GDAL continuous integration has a <code class="docutils literal notranslate"><span class="pre">coverage</span></code> configuration that builds
-GDAL with the <code class="docutils literal notranslate"><span class="pre">gcov</span></code> GCC module to get the line coverage of running Python
-and C++ autotest tests.</p>
-<p>This is used by the <a class="reference external" href="https://github.com/marketplace/actions/coveralls-github-action">Coveralls GitHub Action</a>
-to upload results to <a class="reference external" href="https://coveralls.io/github/OSGeo/gdal">https://coveralls.io/github/OSGeo/gdal</a>, for both push
-and pull requests events.</p>
-<p>A somewhat nicer looking output of line coverage results for the latest master
-build, generated by <code class="docutils literal notranslate"><span class="pre">lcov</span></code>, is also available at
-<a class="reference external" href="https://gdalautotest-coverage-results.github.io/coverage_html/index.html">https://gdalautotest-coverage-results.github.io/coverage_html/index.html</a></p>
+<h2>テストカバレッジレポート<a class="headerlink" href="#test-coverage-reports" title="Link to this heading"></a></h2>
+<p>GDAL 継続的統合には,``gcov`` GCC モジュールを使用して Python および C++ autotest テストの行カバレッジを取得する <code class="docutils literal notranslate"><span class="pre">coverage</span></code> 構成があります.</p>
+<p>これは,`Coveralls GitHub Action &lt;<a class="reference external" href="https://github.com/marketplace/actions/coveralls-github-action">https://github.com/marketplace/actions/coveralls-github-action</a>&gt;`__ によって使用され,https://coveralls.io/github/OSGeo/gdal に結果をアップロードします.プッシュとプルリクエストイベントの両方です.</p>
+<p><code class="docutils literal notranslate"><span class="pre">lcov</span></code> によって生成された最新の master ビルドの行カバレッジ結果のやや見栄えの良い出力も,https://gdalautotest-coverage-results.github.io/coverage_html/index.html で利用できます.</p>
 </section>
 <section id="post-commit-testing">
-<h2>Post-commit testing<a class="headerlink" href="#post-commit-testing" title="Link to this heading"></a></h2>
-<p>A weekly static analysis is run by <a class="reference external" href="https://scan.coverity.com">Coverity</a>. Developers/maintainers can request access on the <a class="reference external" href="https://scan.coverity.com/projects/749">GDAL project page</a>.</p>
+<h2>コミット後のテスト<a class="headerlink" href="#post-commit-testing" title="Link to this heading"></a></h2>
+<p>週次の静的解析は,`Coverity &lt;<a class="reference external" href="https://scan.coverity.com">https://scan.coverity.com</a>&gt;`__ によって実行されます.開発者/メンテナーは,`GDAL プロジェクトページ &lt;<a class="reference external" href="https://scan.coverity.com/projects/749">https://scan.coverity.com/projects/749</a>&gt;`__ でアクセスをリクエストできます.</p>
 </section>
 </section>
 
@@ -414,10 +350,10 @@ build, generated by <code class="docutils literal notranslate"><span class="pre"
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="dev_documentation.html" class="btn btn-neutral float-right" title="Building documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="dev_documentation.html" class="btn btn-neutral float-right" title="文書のビルド" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="dev_practices.html" class="btn btn-neutral float-left" title="Development practices" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="dev_practices.html" class="btn btn-neutral float-left" title="開発プラクティス" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

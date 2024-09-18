@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>gdal2xyz &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=75499f83" />
 
   
     <link rel="shortcut icon" href="../_static/favicon.png"/>
@@ -185,7 +185,7 @@
              
   <section id="gdal2xyz">
 <span id="id1"></span><h1>gdal2xyz<a class="headerlink" href="#gdal2xyz" title="Link to this heading"></a></h1>
-<p>ラスターファイルを <cite>xyz</cite> フォーマットに変換する。</p>
+<p>ラスターファイルを <cite>xyz</cite> フォーマットに変換します.</p>
 <section id="synopsis">
 <span id="index-0"></span><h2>概要<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdal2xyz</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="o">-</span><span class="n">general</span><span class="p">]</span>
@@ -201,103 +201,94 @@
 </section>
 <section id="description">
 <h2>説明<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
-<p>The <strong class="program">gdal2xyz</strong> utility can be used to translate a raster file into xyz format.
-<cite>gdal2xyz</cite> can be used as an alternative to <cite>gdal_translate of=xyz</cite>. Features include:</p>
+<p><strong class="program">gdal2xyz</strong> ユーティリティは,ラスターファイルを xyz フォーマットに変換するために使用できます.`gdal2xyz` は <cite>gdal_translate of=xyz</cite> の代替として使用できます.機能には次のものがあります:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>複数のバンドを選択する</p></li>
-<li><p>ノデータの値をスキップまたは置換する</p></li>
-<li><p>出力をnumpy配列で返す。</p></li>
+<li><p>複数のバンドを選択します</p></li>
+<li><p>nodataの値をスキップまたは置換します</p></li>
+<li><p>出力をnumpy配列で返します.</p></li>
 </ul>
 </div></blockquote>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
-<p>gdal2xyz is a Python utility, and is only available if GDAL Python bindings are available.</p>
+<p>gdal2xyz は Python ユーティリティであり,GDAL Python バインディングが利用可能な場合のみ利用可能です.</p>
 </div>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal2xyz-help">
 <span class="sig-name descname"><span class="pre">--help</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal2xyz-help" title="Link to this definition"></a></dt>
-<dd><p>このヘルプメッセージを表示して終了する</p>
+<dd><p>このヘルプメッセージを表示して終了します</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal2xyz-help-general">
 <span class="sig-name descname"><span class="pre">--help-general</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal2xyz-help-general" title="Link to this definition"></a></dt>
-<dd><p>Gives a brief usage message for the generic GDAL commandline options and exit.</p>
+<dd><p>一般的な GDAL コマンドラインオプションの使用方法を簡単に表示して終了します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal2xyz-skip">
 <span class="sig-name descname"><span class="pre">-skip</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal2xyz-skip" title="Link to this definition"></a></dt>
-<dd><p>各反復でスキップする行数/列数。</p>
+<dd><p>各反復でスキップする行数/列数.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal2xyz-srcwin">
 <span class="sig-name descname"><span class="pre">-srcwin</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;xoff&gt;</span> <span class="pre">&lt;yoff&gt;</span> <span class="pre">&lt;xsize&gt;</span> <span class="pre">&lt;ysize&gt;</span></span><a class="headerlink" href="#cmdoption-gdal2xyz-srcwin" title="Link to this definition"></a></dt>
-<dd><p>Selects a subwindow from the source image for copying based on pixel/line location.</p>
+<dd><p>ピクセル/ラインの位置に基づいてソース画像からコピーするためのサブウィンドウを選択します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal2xyz-b">
 <span id="cmdoption-gdal2xyz-band"></span><span class="sig-name descname"><span class="pre">-b</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">-band</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;band&gt;</span></span><a class="headerlink" href="#cmdoption-gdal2xyz-b" title="Link to this definition"></a></dt>
-<dd><p>Select band <em>band</em> from the input spectral bands for output.
-Bands are numbered from 1 in the order spectral bands are specified.
-Multiple <strong>-b</strong> switches may be used.
-When no -b switch is used, the first band will be used.
-In order to use all input bands set <cite>-allbands</cite> or <cite>-b 0</cite>.</p>
+<dd><p>出力のための入力スペクトルバンドからバンド <em>band</em> を選択します. バンドは,スペクトルバンドが指定された順序で1から番号付けされます.複数の <strong>-b</strong> スイッチを使用できます. <strong>-b</strong> スイッチを使用しない場合,最初のバンドが使用されます. すべての入力バンドを使用するには,`-allbands` または <cite>-b 0</cite> を設定します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal2xyz-allbands">
 <span class="sig-name descname"><span class="pre">-allbands</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal2xyz-allbands" title="Link to this definition"></a></dt>
-<dd><p>すべての入力バンドを選択する。</p>
+<dd><p>すべての入力バンドを選択します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal2xyz-csv">
 <span class="sig-name descname"><span class="pre">-csv</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal2xyz-csv" title="Link to this definition"></a></dt>
-<dd><p>区切り文字として、スペースの代わりにカンマを使用する。</p>
+<dd><p>区切り文字として、スペースの代わりにカンマを使用します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal2xyz-skipnodata">
 <span class="sig-name descname"><span class="pre">-skipnodata</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal2xyz-skipnodata" title="Link to this definition"></a></dt>
-<dd><p>(srcnodataによって決定される)nodata値を持つ出力行を除外する</p>
+<dd><p>(srcnodataによって決定される)nodata値を持つ出力行を除外します</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal2xyz-srcnodata">
 <span class="sig-name descname"><span class="pre">-srcnodata</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal2xyz-srcnodata" title="Link to this definition"></a></dt>
-<dd><p>The nodata value of the dataset (for skipping or replacing)
-Default (<cite>None</cite>) - Use the dataset nodata value;
-<cite>Sequence</cite>/<cite>Number</cite> - Use the given nodata value (per band or per dataset).</p>
+<dd><p>データセットの nodata 値(スキップまたは置換のため) デフォルト(<cite>None</cite>) - データセットの nodata 値を使用します;`Sequence`/<cite>Number</cite> - 指定された nodata 値を使用します(バンドごとまたはデータセットごと)。</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal2xyz-dstnodata">
 <span class="sig-name descname"><span class="pre">-dstnodata</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal2xyz-dstnodata" title="Link to this definition"></a></dt>
-<dd><p>Replace source nodata with a given nodata. Has an effect only if not setting <cite>-skipnodata</cite>.
-Default(<cite>None</cite>) - Use <cite>srcnodata</cite>, no replacement;
-<cite>Sequence</cite>/<cite>Number</cite> - Replace the <cite>srcnodata</cite> with the given nodata value (per band or per dataset).</p>
+<dd><p>ソースの nodata を指定された nodata で置き換えます. <cite>-skipnodata</cite> を設定していない場合のみ効果があります.デフォルト(<cite>None</cite>) - <cite>srcnodata</cite> を使用し,置換は行いません; <cite>Sequence</cite>/<cite>Number</cite> - <cite>srcnodata</cite> を指定された nodata 値で置き換えます(バンドごとまたはデータセットごと)。</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal2xyz-h">
 <span id="cmdoption-gdal2xyz-0"></span><span class="sig-name descname"><span class="pre">-h</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--help</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal2xyz-h" title="Link to this definition"></a></dt>
-<dd><p>ヘルプメッセージを表示して終了する。</p>
+<dd><p>ヘルプメッセージを表示して終了します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal2xyz-arg-src_dataset">
 <span class="sig-name descname"><span class="pre">&lt;src_dataset&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal2xyz-arg-src_dataset" title="Link to this definition"></a></dt>
-<dd><p>ソースデータセット名。ファイル名、データソースのURL、またはマルチデータセットファイルの場合はサブデータセット名のいずれかになります。</p>
+<dd><p>ソースデータセット名.ファイル名,データソースのURL,またはマルチデータセットファイルの場合はサブデータセット名のいずれかになります.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal2xyz-arg-dst_dataset">
 <span class="sig-name descname"><span class="pre">&lt;dst_dataset&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal2xyz-arg-dst_dataset" title="Link to this definition"></a></dt>
-<dd><p>保存先のファイル名。</p>
+<dd><p>保存先のファイル名.</p>
 </dd></dl>
 
 </section>
@@ -306,14 +297,11 @@ Default(<cite>None</cite>) - Use <cite>srcnodata</cite>, no replacement;
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdal2xyz</span> <span class="o">-</span><span class="n">b</span> <span class="mi">1</span> <span class="o">-</span><span class="n">b</span> <span class="mi">2</span> <span class="o">-</span><span class="n">dstnodata</span> <span class="mi">0</span> <span class="nb">input</span><span class="o">.</span><span class="n">tif</span> <span class="n">output</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
-<p>To create a text file in <cite>xyz</cite> format from the input file <cite>input.tif</cite>.
-The first columns, x and y, are the coordinates of the centers of each cell.
-The remaining columns represent the first and second bands.
-We also replace the dataset nodata values with zeros.</p>
+<p>入力ファイル <cite>input.tif</cite> から <cite>xyz</cite> フォーマットのテキストファイルを作成します.最初の列 x と y は各セルの中心の座標です. 残りの列は,最初と2番目のバンドを表します.また,データセットの nodata 値をゼロに置き換えます.</p>
 </section>
 <section id="caveats">
 <h2>注意事項<a class="headerlink" href="#caveats" title="Link to this heading"></a></h2>
-<p>gdal2xyz の出力の精度は限定されています。さらに高い精度が必要な場合は <code class="docutils literal notranslate"><span class="pre">gdal_translate</span> <span class="pre">-of</span> <span class="pre">XYZ</span></code> を使用してください。</p>
+<p>gdal2xyz の出力の精度は限定されています.さらに高い精度が必要な場合は <code class="docutils literal notranslate"><span class="pre">gdal_translate</span> <span class="pre">-of</span> <span class="pre">XYZ</span></code> を使用してください.</p>
 </section>
 </section>
 

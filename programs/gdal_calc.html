@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>gdal_calc &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=75499f83" />
 
   
     <link rel="shortcut icon" href="../_static/favicon.png"/>
@@ -59,9 +59,9 @@
 <li class="toctree-l3"><a class="reference internal" href="gdal2tiles.html">gdal2tiles</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdal2xyz.html">gdal2xyz</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">gdal_calc</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#synopsis">Synopsis</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#python-options">Python options</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#synopsis">概要</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#python-options">Python オプション</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#examples">例</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="gdal_contour.html">gdal_contour</a></li>
@@ -184,76 +184,64 @@
              
   <section id="gdal-calc">
 <span id="id1"></span><h1>gdal_calc<a class="headerlink" href="#gdal-calc" title="Link to this heading"></a></h1>
-<p>Command line raster calculator with numpy syntax.</p>
+<p>numpy 構文を使用したコマンドラインラスター計算機.</p>
 <section id="synopsis">
-<span id="index-0"></span><h2>Synopsis<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
+<span id="index-0"></span><h2>概要<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdal_calc</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="o">-</span><span class="n">general</span><span class="p">]</span>
              <span class="o">--</span><span class="n">calc</span><span class="o">=</span><span class="n">expression</span> <span class="o">--</span><span class="n">outfile</span><span class="o">=&lt;</span><span class="n">out_filename</span><span class="o">&gt;</span> <span class="p">[</span><span class="o">-</span><span class="n">A</span> <span class="o">&lt;</span><span class="n">filename</span><span class="o">&gt;</span><span class="p">]</span>
              <span class="p">[</span><span class="o">--</span><span class="n">A_band</span><span class="o">=&lt;</span><span class="n">n</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">B</span><span class="o">...-</span><span class="n">Z</span> <span class="o">&lt;</span><span class="n">filename</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">other_options</span><span class="o">&gt;</span><span class="p">]</span>
 </pre></div>
 </div>
-<p class="rubric" id="description">DESCRIPTION</p>
-<p>Command line raster calculator with numpy syntax. Use any basic
-arithmetic supported by numpy arrays such as <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, and
-<code class="docutils literal notranslate"><span class="pre">/</span></code> along with logical operators such as <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>.
-Note that all files must have the same dimensions (unless extent option is used),
-but no projection checking is performed (unless projectionCheck option is used).</p>
+<p class="rubric" id="description">解説</p>
+<p>numpy 構文を使用したコマンドラインラスター計算機. <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">/</span></code> などの numpy 配列でサポートされる基本的な算術と <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> のような論理演算子を使用します.すべてのファイルは同じ次元である必要があります(範囲オプションが使用されていない限り),ただし,投影チェックは実行されません(投影チェックオプションが使用されていない限り).</p>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
-<p>gdal_calc is a Python utility, and is only available if GDAL Python bindings are available.</p>
+<p>gdal_calc は Python ユーティリティであり,GDAL Python バインディングが利用可能な場合のみ利用できます.</p>
 </div>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-help">
 <span class="sig-name descname"><span class="pre">--help</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-help" title="Link to this definition"></a></dt>
-<dd><p>Show this help message and exit</p>
+<dd><p>このヘルプメッセージを表示して終了します</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-help-general">
 <span class="sig-name descname"><span class="pre">--help-general</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-help-general" title="Link to this definition"></a></dt>
-<dd><p>Gives a brief usage message for the generic GDAL commandline options and exit.</p>
+<dd><p>一般的な GDAL コマンドラインオプションの使用方法の簡単なメッセージを表示して終了します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-calc">
 <span class="sig-name descname"><span class="pre">--calc</span></span><span class="sig-prename descclassname"><span class="pre">=&lt;expression&gt;</span></span><a class="headerlink" href="#cmdoption-calc" title="Link to this definition"></a></dt>
-<dd><p>Calculation in numpy syntax using <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">/</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, or any numpy array functions (i.e. <code class="docutils literal notranslate"><span class="pre">log10()</span></code>).
-Multiple <code class="docutils literal notranslate"><span class="pre">--calc</span></code> options can be listed to produce a multiband file (GDAL &gt;= 3.2).</p>
+<dd><p><code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">/</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code> または任意の numpy 配列関数(<code class="docutils literal notranslate"><span class="pre">log10()</span></code> など)を使用した numpy 構文での計算.複数の <code class="docutils literal notranslate"><span class="pre">--calc</span></code> オプションをリストアップして,マルチバンドファイルを生成できます(GDAL &gt;= 3.2).</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-A">
 <span class="sig-name descname"><span class="pre">-A</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;filename&gt;</span></span><a class="headerlink" href="#cmdoption-A" title="Link to this definition"></a></dt>
-<dd><p>Input gdal raster file, you can use any letter (a-z, A-Z).  (lower case supported since GDAL 3.3)</p>
-<p>A letter may be repeated, or several values (separated by space) can be provided (GDAL &gt;= 3.3).
-Since GDAL 3.5, wildcard exceptions (using ?, *) are supported for all shells/platforms.
-The effect will be to create a 3-dim numpy array.
-In such a case, the calculation formula must use this input as a 3-dim array and must return a 2D array (see examples below).
-In case the calculation does not return a 2D array an error would be generated.</p>
+<dd><p>入力 gdal ラスターファイル,任意の文字 (a-z, A-Z) を使用できます. (小文字は GDAL 3.3 以降でサポートされています)</p>
+<p>文字を繰り返すことができます,または複数の値(スペースで区切られた値)を提供できます(GDAL &gt;= 3.3). GDAL 3.5 以降,ワイルドカード例外(?, *) がすべてのシェル/プラットフォームでサポートされています. その効果は,3 次元 numpy 配列を作成することです.この場合,計算式はこの入力を 3 次元配列として使用し,2D 配列を返さなければなりません(以下の例を参照). 計算が 2D 配列を返さない場合,エラーが生成されます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-A_band">
 <span class="sig-name descname"><span class="pre">--A_band</span></span><span class="sig-prename descclassname"><span class="pre">=&lt;n&gt;</span></span><a class="headerlink" href="#cmdoption-A_band" title="Link to this definition"></a></dt>
-<dd><p>Number of raster band for file A (default 1).</p>
+<dd><p>ファイル A のラスターバンドの数(デフォルト 1).</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-outfile">
 <span class="sig-name descname"><span class="pre">--outfile</span></span><span class="sig-prename descclassname"><span class="pre">=&lt;filename&gt;</span></span><a class="headerlink" href="#cmdoption-outfile" title="Link to this definition"></a></dt>
-<dd><p>Output file to generate or fill.</p>
+<dd><p>生成または塗りつぶす出力ファイル.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-NoDataValue">
 <span class="sig-name descname"><span class="pre">--NoDataValue</span></span><span class="sig-prename descclassname"><span class="pre">=&lt;value&gt;</span></span><a class="headerlink" href="#cmdoption-NoDataValue" title="Link to this definition"></a></dt>
-<dd><p>Output NoDataValue (default datatype specific value).
-To indicate not setting a NoDataValue use --NoDataValue=none (GDAL &gt;= 3.3)</p>
+<dd><p>出力 NoDataValue (デフォルトのデータ型固有の値). NoDataValue を設定しないことを示すには,--NoDataValue=none を使用します(GDAL &gt;= 3.3)</p>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
-<p>Using the Python API:
-<code class="docutils literal notranslate"><span class="pre">None</span></code> value will indicate default datatype specific value.
-<code class="docutils literal notranslate"><span class="pre">'none'</span></code> value will indicate not setting a NoDataValue.</p>
+<p>Python API を使用する場合: <code class="docutils literal notranslate"><span class="pre">None</span></code> 値はデフォルトのデータ型固有の値を示します. <code class="docutils literal notranslate"><span class="pre">'none'</span></code> 値は NoDataValue を設定しないことを示します.</p>
 </div>
 </dd></dl>
 
@@ -263,39 +251,33 @@ To indicate not setting a NoDataValue use --NoDataValue=none (GDAL &gt;= 3.3)</p
 <dd><div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.3.</span></p>
 </div>
-<p>Ignores the input bands NoDataValue.
-By default, the input bands NoDataValue are not participating in the calculation.
-By setting this setting - no special treatment will be performed on the input NoDataValue. and they will be participating in the calculation as any other value.
-The output will not have a set NoDataValue, unless you explicitly specified a specific value by setting --NoDataValue=&lt;value&gt;.</p>
+<p>入力バンドの NoDataValue を無視します. デフォルトでは,入力バンドの NoDataValue は計算に参加しません. この設定を設定することで,入力 NoDataValue に特別な処理は行われず,他の値と同様に計算に参加します. 出力には 特定の値を明示的に指定して --NoDataValue=&lt;value&gt; を設定しない限り NoDataValue が設定されません.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-type">
 <span class="sig-name descname"><span class="pre">--type</span></span><span class="sig-prename descclassname"><span class="pre">=&lt;datatype&gt;</span></span><a class="headerlink" href="#cmdoption-type" title="Link to this definition"></a></dt>
-<dd><p>Output datatype, must be one of [<code class="docutils literal notranslate"><span class="pre">Byte</span></code>, <code class="docutils literal notranslate"><span class="pre">Int8</span></code>, <code class="docutils literal notranslate"><span class="pre">UInt16</span></code>, <code class="docutils literal notranslate"><span class="pre">Int16</span></code>, <code class="docutils literal notranslate"><span class="pre">UInt32</span></code>, <code class="docutils literal notranslate"><span class="pre">Int32</span></code>, <code class="docutils literal notranslate"><span class="pre">UInt64</span></code>, <code class="docutils literal notranslate"><span class="pre">Int64</span></code>, <code class="docutils literal notranslate"><span class="pre">Float64</span></code>, <code class="docutils literal notranslate"><span class="pre">Float32</span></code>, <code class="docutils literal notranslate"><span class="pre">CInt16</span></code>, <code class="docutils literal notranslate"><span class="pre">CInt32</span></code>, <code class="docutils literal notranslate"><span class="pre">CFloat64</span></code>, <code class="docutils literal notranslate"><span class="pre">CFloat32</span></code>].</p>
+<dd><p>出力データ型は,以下のいずれかである必要があります[<code class="docutils literal notranslate"><span class="pre">Byte</span></code>, <code class="docutils literal notranslate"><span class="pre">Int8</span></code>, <code class="docutils literal notranslate"><span class="pre">UInt16</span></code>, <code class="docutils literal notranslate"><span class="pre">Int16</span></code>, <code class="docutils literal notranslate"><span class="pre">UInt32</span></code>, <code class="docutils literal notranslate"><span class="pre">Int32</span></code>, <code class="docutils literal notranslate"><span class="pre">UInt64</span></code>, <code class="docutils literal notranslate"><span class="pre">Int64</span></code>, <code class="docutils literal notranslate"><span class="pre">Float64</span></code>, <code class="docutils literal notranslate"><span class="pre">Float32</span></code>, <code class="docutils literal notranslate"><span class="pre">CInt16</span></code>, <code class="docutils literal notranslate"><span class="pre">CInt32</span></code>, <code class="docutils literal notranslate"><span class="pre">CFloat64</span></code>, <code class="docutils literal notranslate"><span class="pre">CFloat32</span></code>].</p>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
-<p>Despite the datatype set using <code class="docutils literal notranslate"><span class="pre">--type</span></code>, when doing intermediate arithmetic operations using operands of the
-same type, the operation result will honor the original datatype. This may lead into unexpected results in the final result.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--type</span></code> を使用して設定されたデータ型に関係なく,同じタイプのオペランドを使用して中間算術演算を行う場合,演算結果は元のデータ型を尊重します.これは最終結果で予期しない結果につながる可能性があります.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
-<p>UInt64, Int64, CInt16, CInt32, CFloat32, CFloat64 have been added in GDAL 3.5.3
-Int8 has been added in GDAL 3.7</p>
+<p>UInt64, Int64, CInt16, CInt32, CFloat32, CFloat64 は GDAL 3.5.3 で追加されました. Int8 は GDAL 3.7 で追加されました.</p>
 </div>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-format">
 <span class="sig-name descname"><span class="pre">--format</span></span><span class="sig-prename descclassname"><span class="pre">=&lt;gdal_format&gt;</span></span><a class="headerlink" href="#cmdoption-format" title="Link to this definition"></a></dt>
-<dd><p>GDAL format for output file.</p>
+<dd><p>出力ファイルの GDAL フォーマット.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-color-table">
 <span class="sig-name descname"><span class="pre">--color-table</span></span><span class="sig-prename descclassname"><span class="pre">=&lt;filename&gt;</span></span><a class="headerlink" href="#cmdoption-color-table" title="Link to this definition"></a></dt>
-<dd><p>Allows specifying a filename of a color table (or a ColorTable object) (with Palette Index interpretation) to be used for the output raster.
-Supported formats: txt (i.e. like gdaldem, but color names are not supported), qlr, qml (i.e. exported from QGIS)</p>
+<dd><p>出力ラスターに使用するカラーテーブルのファイル名(または ColorTable オブジェクト)を指定できます(パレットインデックス解釈付き).サポートされるフォーマット: txt (gdaldem のような), qlr, qml (QGIS からエクスポートされたもの)</p>
 </dd></dl>
 
 <dl class="std option">
@@ -304,13 +286,12 @@ Supported formats: txt (i.e. like gdaldem, but color names are not supported), q
 <dd><div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.3.</span></p>
 </div>
-<p>This option determines how to handle rasters with different extents.
-This option is mutually exclusive with the <cite>projwin</cite> option, which is used for providing a custom extent.</p>
-<p>For all the options below the pixel size (resolution) and SRS (Spatial Reference System) of all the input rasters must be the same.</p>
-<p><code class="docutils literal notranslate"><span class="pre">ignore</span></code> (default) - only the dimensions of the rasters are compared. if the dimensions do not agree the operation will fail.</p>
-<p><code class="docutils literal notranslate"><span class="pre">fail</span></code> - the dimensions and the extent (bounds) of the rasters must agree, otherwise the operation will fail.</p>
-<p><code class="docutils literal notranslate"><span class="pre">union</span></code> - the extent (bounds) of the output will be the minimal rectangle that contains all the input extents.</p>
-<p><code class="docutils literal notranslate"><span class="pre">intersect</span></code> - the extent (bounds) of the output will be the maximal rectangle that is contained in all the input extents.</p>
+<p>このオプションは,異なる範囲のラスタをどのように処理するかを決定します. このオプションは,カスタム範囲を提供するために使用される <cite>projwin</cite> オプションと排他的です.</p>
+<p>以下のすべてのオプションにおいて,すべての入力ラスタのピクセルサイズ(解像度)と SRS (空間参照システム)は同じである必要があります.</p>
+<p><code class="docutils literal notranslate"><span class="pre">ignore</span></code> (デフォルト) - ラスタの次元のみが比較されます. 次元が一致しない場合,操作は失敗します.</p>
+<p><code class="docutils literal notranslate"><span class="pre">fail</span></code> - ラスタの次元と範囲(境界)が一致している必要があります. そうでない場合,操作は失敗します.</p>
+<p><code class="docutils literal notranslate"><span class="pre">union</span></code> - 出力の範囲(境界)は,すべての入力範囲を含む最小の長方形になります.</p>
+<p><code class="docutils literal notranslate"><span class="pre">intersect</span></code> - 出力の範囲(境界)は,すべての入力範囲に含まれる最大の長方形になります.</p>
 </dd></dl>
 
 <dl class="std option">
@@ -319,7 +300,7 @@ This option is mutually exclusive with the <cite>projwin</cite> option, which is
 <dd><div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.3.</span></p>
 </div>
-<p>This option provides a custom extent for the output, it is mutually exclusive with the <cite>extent</cite> option.</p>
+<p>このオプションは,出力のカスタム範囲を提供します. これは <cite>extent</cite> オプションと排他的です.</p>
 </dd></dl>
 
 <dl class="std option">
@@ -328,126 +309,118 @@ This option is mutually exclusive with the <cite>projwin</cite> option, which is
 <dd><div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.3.</span></p>
 </div>
-<p>By default, no projection checking will be performed.
-By setting this option, if the projection is not the same for all bands then the operation will fail.</p>
+<p>デフォルトでは,投影チェックは実行されません. このオプションを設定することで,すべてのバンドの投影が同じでない場合,操作は失敗します.</p>
 </dd></dl>
 
 <dl class="std option" id="creation-option">
 <dt class="sig sig-object std" id="cmdoption-creation-option">
 <span class="sig-name descname"><span class="pre">--creation-option</span></span><span class="sig-prename descclassname"><span class="pre">=&lt;option&gt;</span></span><a class="headerlink" href="#cmdoption-creation-option" title="Link to this definition"></a></dt>
-<dd><p>Passes a creation option to the output format driver.  Multiple
-options may be listed. See format specific documentation for legal
-creation options for each format.</p>
+<dd><p>出力フォーマットドライバに作成オプションを渡します. 複数のオプションをリストアップできます. 各フォーマットの法的な作成オプションについては,フォーマット固有のドキュメントを参照してください.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-co">
 <span class="sig-name descname"><span class="pre">--co</span></span><span class="sig-prename descclassname"><span class="pre">=&lt;option&gt;</span></span><a class="headerlink" href="#cmdoption-co" title="Link to this definition"></a></dt>
-<dd><p>The same as <a class="reference internal" href="#creation-option">creation-option</a>.</p>
+<dd><p><a class="reference internal" href="#creation-option">creation-option</a> と同じです.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-allBands">
 <span id="cmdoption-arg-A-Z"></span><span class="sig-name descname"><span class="pre">--allBands</span></span><span class="sig-prename descclassname"><span class="pre">=[a-z</span></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">A-Z]</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-allBands" title="Link to this definition"></a></dt>
-<dd><p>Process all bands of given raster (a-z, A-Z). Requires a single calc for all bands.</p>
+<dd><p>指定されたラスタのすべてのバンド(a-z, A-Z)を処理します. すべてのバンドに対して単一の計算が必要です.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-overwrite">
 <span class="sig-name descname"><span class="pre">--overwrite</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-overwrite" title="Link to this definition"></a></dt>
-<dd><p>Overwrite output file if it already exists. Overwriting must be understood
-here as deleting and recreating the file from scratch. Note that if this option
-is <em>not</em> specified and the output file already exists, it will be updated in
-place.</p>
+<dd><p>出力ファイルがすでに存在する場合は上書きします. ここでの上書きは,ファイルをゼロから削除して再作成することとして理解する必要があります.このオプションが指定されていない場合,出力ファイルがすでに存在する場合,その場所で更新されます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-debug">
 <span class="sig-name descname"><span class="pre">--debug</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-debug" title="Link to this definition"></a></dt>
-<dd><p>Print debugging information.</p>
+<dd><p>デバッグ情報を出力します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-quiet">
 <span class="sig-name descname"><span class="pre">--quiet</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-quiet" title="Link to this definition"></a></dt>
-<dd><p>Suppress progress messages.</p>
+<dd><p>進行メッセージを抑制します.</p>
 </dd></dl>
 
 </section>
 <section id="python-options">
-<h2>Python options<a class="headerlink" href="#python-options" title="Link to this heading"></a></h2>
+<h2>Python オプション<a class="headerlink" href="#python-options" title="Link to this heading"></a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.3.</span></p>
 </div>
-<p>The following options are available by using function the python interface of gdal_calc.
-They are not available using the command prompt.</p>
+<p>次のオプションは, gdal_calc の Python インターフェースを使用して利用できます. コマンドプロンプトを使用しては利用できません.</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-arg-user_namespace">
 <span class="sig-name descname"><span class="pre">user_namespace</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-user_namespace" title="Link to this definition"></a></dt>
-<dd><p>A dictionary of custom functions or other names to be available for use in the Calc expression.</p>
+<dd><p>Calc 式で使用できるカスタム関数やその他の名前の辞書.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-arg-return_ds">
 <span class="sig-name descname"><span class="pre">return_ds</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-return_ds" title="Link to this definition"></a></dt>
-<dd><p>If enabled, the output dataset would be returned from the function and not closed.</p>
+<dd><p>有効にすると,出力データセットは関数から返され,閉じられません.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-arg-color_table">
 <span class="sig-name descname"><span class="pre">color_table</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-color_table" title="Link to this definition"></a></dt>
-<dd><p>Allows specifying a ColorTable object (with Palette Index interpretation) to be used for the output raster.</p>
+<dd><p>出力ラスタに使用する ColorTable オブジェクト(パレットインデックス解釈付き)を指定できます.</p>
 </dd></dl>
 
 </section>
 <section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
-<p>Add two files together:</p>
+<h2>例<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
+<p>2 つのファイルを追加します:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_calc<span class="w"> </span>-A<span class="w"> </span>input1.tif<span class="w"> </span>-B<span class="w"> </span>input2.tif<span class="w"> </span>--outfile<span class="o">=</span>result.tif<span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;A+B&quot;</span>
 </pre></div>
 </div>
-<p>Average of two layers:</p>
+<p>2 つのレイヤーの平均:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_calc<span class="w"> </span>-A<span class="w"> </span>input1.tif<span class="w"> </span>-B<span class="w"> </span>input2.tif<span class="w"> </span>--outfile<span class="o">=</span>result.tif<span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;(A+B)/2&quot;</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
-<p>In the previous example, beware that if A and B inputs are of the same datatype, for example integers, you
-may need to force the conversion of one of the operands before the division operation.</p>
+<p>前の例では,入力 A と B が同じデータ型である場合,例えば整数である場合,除算操作の前にオペランドの変換を強制する必要があることに注意してください.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_calc<span class="w"> </span>-A<span class="w"> </span>input.tif<span class="w"> </span>-B<span class="w"> </span>input2.tif<span class="w"> </span>--outfile<span class="o">=</span>result.tif<span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;(A.astype(numpy.float64) + B) / 2&quot;</span>
 </pre></div>
 </div>
 </div>
-<p>Add three files together (two options with the same result):</p>
+<p>3 つのファイルを追加します(2 つのオプションで同じ結果):</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_calc<span class="w"> </span>-A<span class="w"> </span>input1.tif<span class="w"> </span>-B<span class="w"> </span>input2.tif<span class="w"> </span>-C<span class="w"> </span>input3.tif<span class="w"> </span>--outfile<span class="o">=</span>result.tif<span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;A+B+C&quot;</span>
 </pre></div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_calc<span class="w"> </span>-A<span class="w"> </span>input1.tif<span class="w"> </span>-A<span class="w"> </span>input2.tif<span class="w"> </span>-A<span class="w"> </span>input3.tif<span class="w"> </span>--outfile<span class="o">=</span>result.tif<span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;numpy.sum(A,axis=0)&quot;</span>.
 </pre></div>
 </div>
-<p>Average of three layers (two options with the same result):</p>
+<p>3 つのレイヤーの平均(2 つのオプションで同じ結果):</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_calc<span class="w"> </span>-A<span class="w"> </span>input1.tif<span class="w"> </span>-B<span class="w"> </span>input2.tif<span class="w"> </span>-C<span class="w"> </span>input3.tif<span class="w"> </span>--outfile<span class="o">=</span>result.tif<span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;(A+B+C)/3&quot;</span>
 </pre></div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_calc<span class="w"> </span>-A<span class="w"> </span>input1.tif<span class="w"> </span>input2.tif<span class="w"> </span>input3.tif<span class="w"> </span>--outfile<span class="o">=</span>result.tif<span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;numpy.average(a,axis=0)&quot;</span>.
 </pre></div>
 </div>
-<p>Maximum of three layers  (two options with the same result):</p>
+<p>3 つのレイヤーの最大値(2 つのオプションで同じ結果):</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_calc<span class="w"> </span>-A<span class="w"> </span>input1.tif<span class="w"> </span>-B<span class="w"> </span>input2.tif<span class="w"> </span>-C<span class="w"> </span>input3.tif<span class="w"> </span>--outfile<span class="o">=</span>result.tif<span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;numpy.max((A,B,C),axis=0)&quot;</span>
 </pre></div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_calc<span class="w"> </span>-A<span class="w"> </span>input1.tif<span class="w"> </span>input2.tif<span class="w"> </span>input3.tif<span class="w"> </span>--outfile<span class="o">=</span>result.tif<span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;numpy.max(A,axis=0)&quot;</span>
 </pre></div>
 </div>
-<p>Set values of zero and below to null:</p>
+<p>0 以下の値を null に設定します:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_calc<span class="w"> </span>-A<span class="w"> </span>input.tif<span class="w"> </span>--outfile<span class="o">=</span>result.tif<span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;A*(A&gt;0)&quot;</span><span class="w"> </span>--NoDataValue<span class="o">=</span><span class="m">0</span>
 </pre></div>
 </div>
-<p>Using logical operator to keep a range of values from input:</p>
+<p>入力から値の範囲を保持するための論理演算子の使用:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_calc<span class="w"> </span>-A<span class="w"> </span>input.tif<span class="w"> </span>--outfile<span class="o">=</span>result.tif<span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;A*logical_and(A&gt;100,A&lt;150)&quot;</span>
 </pre></div>
 </div>
-<p>Work with multiple bands:</p>
+<p>複数のバンドで作業:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_calc<span class="w"> </span>-A<span class="w"> </span>input.tif<span class="w"> </span>--A_band<span class="o">=</span><span class="m">1</span><span class="w"> </span>-B<span class="w"> </span>input.tif<span class="w"> </span>--B_band<span class="o">=</span><span class="m">2</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--outfile<span class="o">=</span>result.tif<span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;(A+B)/2&quot;</span><span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;B*logical_and(A&gt;100,A&lt;150)&quot;</span>
 </pre></div>

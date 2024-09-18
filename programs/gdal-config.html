@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>gdal-config (Unix) &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=75499f83" />
 
   
     <link rel="shortcut icon" href="../_static/favicon.png"/>
@@ -56,8 +56,8 @@
 <li class="toctree-l2 current"><a class="reference internal" href="index.html#raster-programs">ラスタープログラム</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="raster_common_options.html">共通オプション</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">gdal-config (Unix)</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#synopsis">Synopsis</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#synopsis">概要</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#description">説明</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="gdal2tiles.html">gdal2tiles</a></li>
@@ -183,9 +183,9 @@
              
   <section id="gdal-config-unix">
 <span id="gdal-config"></span><h1>gdal-config (Unix)<a class="headerlink" href="#gdal-config-unix" title="Link to this heading"></a></h1>
-<p>Determines various information about a GDAL installation.</p>
+<p>GDAL インストールに関するさまざまな情報を決定します.</p>
 <section id="synopsis">
-<span id="index-0"></span><h2>Synopsis<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
+<span id="index-0"></span><h2>概要<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdal</span><span class="o">-</span><span class="n">config</span> <span class="p">[</span><span class="n">OPTIONS</span><span class="p">]</span>
 <span class="n">Options</span><span class="p">:</span>
         <span class="p">[</span><span class="o">--</span><span class="n">prefix</span><span class="p">[</span><span class="o">=</span><span class="n">DIR</span><span class="p">]]</span>
@@ -198,47 +198,42 @@
 </div>
 </section>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
-<p>This utility script (available on Unix systems) can be used to determine
-various information about a GDAL installation. It is normally just used
-by configure scripts for applications using GDAL but can be queried by
-an end user.</p>
+<h2>説明<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>このユーティリティスクリプト(Unix システムで利用可能)は,GDAL インストールに関するさまざまな情報を決定するために使用できます.通常は,GDAL を使用するアプリケーションの設定スクリプトによってのみ使用されますが,エンドユーザーによってクエリできます.</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-prefix">
 <span class="sig-name descname"><span class="pre">--prefix</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-prefix" title="Link to this definition"></a></dt>
-<dd><p>the top level directory for the GDAL installation.</p>
+<dd><p>GDAL インストールのトップレベルディレクトリ.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-libs">
 <span class="sig-name descname"><span class="pre">--libs</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-libs" title="Link to this definition"></a></dt>
-<dd><p>The libraries and link directives required to use GDAL.</p>
+<dd><p>GDAL を使用するために必要なライブラリとリンクディレクティブ.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-cflags">
 <span class="sig-name descname"><span class="pre">--cflags</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-cflags" title="Link to this definition"></a></dt>
-<dd><p>The include and macro definition required to compiled modules using
-GDAL.</p>
+<dd><p>GDAL を使用してモジュールをコンパイルするために必要なインクルードとマクロ定義.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-version">
 <span class="sig-name descname"><span class="pre">--version</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-version" title="Link to this definition"></a></dt>
-<dd><p>Reports the GDAL version.</p>
+<dd><p>GDAL バージョンを報告します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-ogr-enabled">
 <span class="sig-name descname"><span class="pre">--ogr-enabled</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-ogr-enabled" title="Link to this definition"></a></dt>
-<dd><p>Reports &quot;yes&quot; or &quot;no&quot; to standard output depending on whether OGR is
-built into GDAL.</p>
+<dd><p>OGR が GDAL に組み込まれているかどうかに応じて,標準出力に &quot;yes&quot; または &quot;no&quot; を報告します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-formats">
 <span class="sig-name descname"><span class="pre">--formats</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-formats" title="Link to this definition"></a></dt>
-<dd><p>Reports which formats are configured into GDAL to stdout.</p>
+<dd><p>どのフォーマットが GDAL に設定されているかを標準出力に報告します.</p>
 </dd></dl>
 
 </section>

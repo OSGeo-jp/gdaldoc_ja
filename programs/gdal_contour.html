@@ -60,10 +60,10 @@
 <li class="toctree-l3"><a class="reference internal" href="gdal2xyz.html">gdal2xyz</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdal_calc.html">gdal_calc</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">gdal_contour</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#synopsis">Synopsis</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#synopsis">概要</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#description">解説</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#c-api">C API</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#example">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example">例</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="gdal_create.html">gdal_create</a></li>
@@ -185,9 +185,9 @@
              
   <section id="gdal-contour">
 <span id="id1"></span><h1>gdal_contour<a class="headerlink" href="#gdal-contour" title="Link to this heading"></a></h1>
-<p>Builds vector contour lines from a raster elevation model.</p>
+<p>ラスター標高モデルからベクトル等高線を作成します.</p>
 <section id="synopsis">
-<span id="index-0"></span><h2>Synopsis<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
+<span id="index-0"></span><h2>概要<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdal_contour</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="o">-</span><span class="n">general</span><span class="p">]</span>
              <span class="p">[</span><span class="o">-</span><span class="n">b</span> <span class="o">&lt;</span><span class="n">band</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">a</span> <span class="o">&lt;</span><span class="n">attribute_name</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">amin</span> <span class="o">&lt;</span><span class="n">attribute_name</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">amax</span> <span class="o">&lt;</span><span class="n">attribute_name</span><span class="o">&gt;</span><span class="p">]</span>
              <span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="n">d</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">inodata</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">snodata</span> <span class="o">&lt;</span><span class="n">n</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">f</span> <span class="o">&lt;</span><span class="n">formatname</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">i</span> <span class="o">&lt;</span><span class="n">interval</span><span class="o">&gt;</span><span class="p">]</span>
@@ -199,43 +199,37 @@
 </div>
 </section>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
-<p>The <strong class="program">gdal_contour</strong> generates a vector contour file from the input
-raster elevation model (DEM).</p>
-<p>The contour line-strings are oriented consistently and the high side will
-be on the right, i.e. a line string goes clockwise around a top.</p>
+<h2>解説<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p><strong class="program">gdal_contour</strong> は,入力ラスター標高モデル(DEM)からベクトル等高線ファイルを生成します.</p>
+<p>等高線ラインストリングは一貫して方向がつけられ,高い側が右側になります.つまり,ラインストリングはトップを時計回りに回ります.</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_contour-help">
 <span class="sig-name descname"><span class="pre">--help</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal_contour-help" title="Link to this definition"></a></dt>
-<dd><p>Show this help message and exit</p>
+<dd><p>このヘルプメッセージを表示して終了します</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_contour-help-general">
 <span class="sig-name descname"><span class="pre">--help-general</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal_contour-help-general" title="Link to this definition"></a></dt>
-<dd><p>Gives a brief usage message for the generic GDAL commandline options and exit.</p>
+<dd><p>一般的な GDAL コマンドラインオプションの使用方法を簡単に表示して終了します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_contour-b">
 <span class="sig-name descname"><span class="pre">-b</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;band&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_contour-b" title="Link to this definition"></a></dt>
-<dd><p>Picks a particular band to get the DEM from. Defaults to band 1.</p>
+<dd><p>DEMから取得する特定のバンドを選択します.デフォルトはバンド 1 です.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_contour-a">
 <span class="sig-name descname"><span class="pre">-a</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;name&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_contour-a" title="Link to this definition"></a></dt>
-<dd><p>Provides a name for the attribute in which to put the elevation.
-If not provided no elevation attribute is attached.
-Ignored in polygonal contouring (<a class="reference internal" href="#cmdoption-gdal_contour-p"><code class="xref std std-option docutils literal notranslate"><span class="pre">-p</span></code></a>) mode.</p>
+<dd><p>標高を格納する属性の名前を指定します.指定しない場合,標高属性は付加されません.多角形等高線(<a class="reference internal" href="#cmdoption-gdal_contour-p"><code class="xref std std-option docutils literal notranslate"><span class="pre">-p</span></code></a>)モードでは無視されます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_contour-amin">
 <span class="sig-name descname"><span class="pre">-amin</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;name&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_contour-amin" title="Link to this definition"></a></dt>
-<dd><p>Provides a name for the attribute in which to put the minimum elevation
-of contour polygon. If not provided no minimum elevation attribute
-is attached. Ignored in default line contouring mode.</p>
+<dd><p>等高線ポリゴンの最小標高を格納する属性の名前を指定します.指定しない場合,最小標高属性は付加されません.デフォルトのライン等高線モードでは無視されます.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 2.4.0.</span></p>
 </div>
@@ -244,9 +238,7 @@ is attached. Ignored in default line contouring mode.</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_contour-amax">
 <span class="sig-name descname"><span class="pre">-amax</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;name&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_contour-amax" title="Link to this definition"></a></dt>
-<dd><p>Provides a name for the attribute in which to put the maximum elevation of
-contour polygon. If not provided no maximum elevation attribute is attached.
-Ignored in default line contouring mode.</p>
+<dd><p>等高線ポリゴンの最大標高を格納する属性の名前を指定します.指定しない場合,最大標高属性は付加されません.デフォルトのライン等高線モードでは無視されます.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 2.4.0.</span></p>
 </div>
@@ -255,69 +247,65 @@ Ignored in default line contouring mode.</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_contour-3d">
 <span class="sig-name descname"><span class="pre">-3d</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal_contour-3d" title="Link to this definition"></a></dt>
-<dd><p>Force production of 3D vectors instead of 2D.
-Includes elevation at every vertex.</p>
+<dd><p>2D ではなく 3D ベクトルの生成を強制します.すべての頂点に標高を含みます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_contour-inodata">
 <span class="sig-name descname"><span class="pre">-inodata</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal_contour-inodata" title="Link to this definition"></a></dt>
-<dd><p>Ignore any nodata value implied in the dataset - treat all values as valid.</p>
+<dd><p>データセットに含まれる暗黙の nodata 値を無視し,すべての値を有効として扱います.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_contour-snodata">
 <span class="sig-name descname"><span class="pre">-snodata</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;value&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_contour-snodata" title="Link to this definition"></a></dt>
-<dd><p>Input pixel value to treat as &quot;nodata&quot;.</p>
+<dd><p>&quot;nodata&quot; として扱う入力ピクセル値.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_contour-f">
 <span class="sig-name descname"><span class="pre">-f</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;format&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_contour-f" title="Link to this definition"></a></dt>
-<dd><p>Create output in a particular format.</p>
+<dd><p>特定のフォーマットで出力を作成します.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 2.3.0: </span>If not specified, the format is guessed from the extension (previously was ESRI Shapefile).</p>
+<p><span class="versionmodified added">Added in version 2.3.0: </span>指定しない場合,フォーマットは拡張子から推測されます(以前は ESRI Shapefile でした).</p>
 </div>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_contour-dsco">
 <span class="sig-name descname"><span class="pre">-dsco</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_contour-dsco" title="Link to this definition"></a></dt>
-<dd><p>Dataset creation option (format specific)</p>
+<dd><p>データセット作成オプション(フォーマット固有)</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_contour-lco">
 <span class="sig-name descname"><span class="pre">-lco</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_contour-lco" title="Link to this definition"></a></dt>
-<dd><p>Layer creation option (format specific)</p>
+<dd><p>レイヤ作成オプション(フォーマット固有)</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_contour-i">
 <span class="sig-name descname"><span class="pre">-i</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;interval&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_contour-i" title="Link to this definition"></a></dt>
-<dd><p>Elevation interval between contours.
-Must specify either -i or -fl or -e.</p>
+<dd><p>標高線間の高さ間隔. -i または -fl または -e を指定する必要があります.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_contour-off">
 <span class="sig-name descname"><span class="pre">-off</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;offset&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_contour-off" title="Link to this definition"></a></dt>
-<dd><p>Offset from zero relative to which to interpret intervals.</p>
-<p>For example, <cite>-i 100</cite> requests contours at ...-100, 0, 100...
-Further adding <cite>-off 25</cite> makes that request instead ...-75, 25, 125...</p>
+<dd><p>間隔を解釈するためのゼロからのオフセット.</p>
+<p>たとえば,`-i 100` は ...-100, 0, 100... で等高線を要求します.さらに <cite>-off 25</cite> を追加すると,その代わりに ...-75, 25, 125... になります.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_contour-fl">
 <span class="sig-name descname"><span class="pre">-fl</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;level&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_contour-fl" title="Link to this definition"></a></dt>
-<dd><p>Name one or more &quot;fixed levels&quot; to extract.</p>
+<dd><p>抽出する 1 つ以上の &quot;固定レベル&quot; の名前を指定します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_contour-e">
 <span class="sig-name descname"><span class="pre">-e</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;base&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_contour-e" title="Link to this definition"></a></dt>
-<dd><p>Generate levels on an exponential scale: <cite>base ^ k</cite>, for <cite>k</cite> an integer.
-Must specify either -i or -fl or -e.</p>
+<dd><p>指数スケールでレベルを生成します:<cite>base ^ k</cite>, <cite>k</cite> は整数です. -i または -fl または -e を指定する必要があります.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 2.4.0.</span></p>
 </div>
@@ -326,13 +314,13 @@ Must specify either -i or -fl or -e.</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_contour-nln">
 <span class="sig-name descname"><span class="pre">-nln</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;name&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_contour-nln" title="Link to this definition"></a></dt>
-<dd><p>Provide a name for the output vector layer. Defaults to &quot;contour&quot;.</p>
+<dd><p>出力ベクトルレイヤの名前を指定します.デフォルトは &quot;contour&quot; です.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_contour-p">
 <span class="sig-name descname"><span class="pre">-p</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal_contour-p" title="Link to this definition"></a></dt>
-<dd><p>Generate contour polygons rather than contour lines.</p>
+<dd><p>等高線ラインではなく等高線ポリゴンを生成します.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 2.4.0.</span></p>
 </div>
@@ -341,10 +329,7 @@ Must specify either -i or -fl or -e.</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_contour-gt">
 <span class="sig-name descname"><span class="pre">-gt</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;n&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_contour-gt" title="Link to this definition"></a></dt>
-<dd><p>Group n features per transaction (default 100 000). Increase the value for
-better performance when writing into DBMS drivers that have transaction
-support. <code class="docutils literal notranslate"><span class="pre">n</span></code> can be set to unlimited to load the data into a single
-transaction. If set to 0, no explicit transaction is done.</p>
+<dd><p>トランザクションごとに n 個のフィーチャをグループ化します(デフォルトは 100,000).トランザクションサポートを持つ DBMS ドライバに書き込むときのパフォーマンスを向上させるために値を増やします.``n`` はデータを単一のトランザクションにロードするために無制限に設定できます.0 に設定すると,明示的なトランザクションは行われません.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.10.</span></p>
 </div>
@@ -353,19 +338,17 @@ transaction. If set to 0, no explicit transaction is done.</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_contour-q">
 <span class="sig-name descname"><span class="pre">-q</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal_contour-q" title="Link to this definition"></a></dt>
-<dd><p>Be quiet: do not print progress indicators.</p>
+<dd><p>表示を静かにします:進行状況インジケータを表示しません.</p>
 </dd></dl>
 
 </section>
 <section id="c-api">
 <h2>C API<a class="headerlink" href="#c-api" title="Link to this heading"></a></h2>
-<p>Functionality of this utility can be done from C with <a class="reference internal" href="../api/gdal_alg.html#_CPPv419GDALContourGenerate15GDALRasterBandHddiPdidPvii16GDALProgressFuncPv" title="GDALContourGenerate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALContourGenerate()</span></code></a>.</p>
+<p>このユーティリティの機能は,C から <a class="reference internal" href="../api/gdal_alg.html#_CPPv419GDALContourGenerate15GDALRasterBandHddiPdidPvii16GDALProgressFuncPv" title="GDALContourGenerate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALContourGenerate()</span></code></a> で行うことができます.</p>
 </section>
 <section id="example">
-<h2>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h2>
-<p>This would create 10-meter contours from the DEM data in <code class="file docutils literal notranslate"><span class="pre">dem.tif</span></code> and
-produce a shapefile in <code class="file docutils literal notranslate"><span class="pre">contour.shp|shx|dbf</span></code> with the contour elevations
-in the <code class="docutils literal notranslate"><span class="pre">elev</span></code> attribute.</p>
+<h2>例<a class="headerlink" href="#example" title="Link to this heading"></a></h2>
+<p>これにより,DEM データの <code class="file docutils literal notranslate"><span class="pre">dem.tif</span></code> から 10 メートルの等高線が作成され,等高線標高が <code class="docutils literal notranslate"><span class="pre">elev</span></code> 属性に含まれる <code class="file docutils literal notranslate"><span class="pre">contour.shp|shx|dbf</span></code> のシェープファイルが生成されます.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdal_contour</span> <span class="o">-</span><span class="n">a</span> <span class="n">elev</span> <span class="n">dem</span><span class="o">.</span><span class="n">tif</span> <span class="n">contour</span><span class="o">.</span><span class="n">shp</span> <span class="o">-</span><span class="n">i</span> <span class="mf">10.0</span>
 </pre></div>
 </div>

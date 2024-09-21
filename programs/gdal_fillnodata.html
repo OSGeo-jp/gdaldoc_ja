@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>gdal_fillnodata &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=75499f83" />
 
   
     <link rel="shortcut icon" href="../_static/favicon.png"/>
@@ -63,8 +63,8 @@
 <li class="toctree-l3"><a class="reference internal" href="gdal_create.html">gdal_create</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdal_edit.html">gdal_edit</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">gdal_fillnodata</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#synopsis">Synopsis</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#synopsis">概要</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#description">説明</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="gdal_footprint.html">gdal_footprint</a></li>
@@ -183,9 +183,9 @@
              
   <section id="gdal-fillnodata">
 <span id="id1"></span><h1>gdal_fillnodata<a class="headerlink" href="#gdal-fillnodata" title="Link to this heading"></a></h1>
-<p>Fill raster regions by interpolation from edges.</p>
+<p>ラスター領域をエッジから補間して埋めます.</p>
 <section id="synopsis">
-<span id="index-0"></span><h2>Synopsis<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
+<span id="index-0"></span><h2>概要<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdal_fillnodata</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="o">-</span><span class="n">general</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">q</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">md</span> <span class="o">&lt;</span><span class="n">max_distance</span><span class="o">&gt;</span><span class="p">]</span>
            <span class="p">[</span><span class="o">-</span><span class="n">si</span> <span class="o">&lt;</span><span class="n">smoothing_iterations</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">o</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;=&lt;</span><span class="n">value</span><span class="o">&gt;</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;=&lt;</span><span class="n">value</span><span class="o">&gt;</span> <span class="o">...</span><span class="p">]]</span>
            <span class="p">[</span><span class="o">-</span><span class="n">mask</span> <span class="o">&lt;</span><span class="n">filename</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">interp</span> <span class="p">{</span><span class="n">inv_dist</span><span class="p">,</span><span class="n">nearest</span><span class="p">}]</span> <span class="p">[</span><span class="o">-</span><span class="n">b</span> <span class="o">&lt;</span><span class="n">band</span><span class="o">&gt;</span><span class="p">]</span>
@@ -195,72 +195,65 @@
 </div>
 </section>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
-<p><strong class="program">gdal_fillnodata</strong> fills selection regions (usually
-nodata areas) by interpolating from valid pixels around the edges of the area.</p>
-<p>Additional details on the algorithm are available in the
-<a class="reference internal" href="../api/gdal_alg.html#_CPPv414GDALFillNodata15GDALRasterBandH15GDALRasterBandHdiiPPc16GDALProgressFuncPv" title="GDALFillNodata"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALFillNodata()</span></code></a> docs.</p>
+<h2>説明<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p><strong class="program">gdal_fillnodata</strong> は選択領域(通常はノーデータ領域)を,その領域の周囲の有効なピクセルから補間して埋めます.</p>
+<p>アルゴリズムの詳細については, <a class="reference internal" href="../api/gdal_alg.html#_CPPv414GDALFillNodata15GDALRasterBandH15GDALRasterBandHdiiPPc16GDALProgressFuncPv" title="GDALFillNodata"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALFillNodata()</span></code></a> ドキュメントを参照してください.</p>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
-<p>gdal_fillnodata is a Python utility, and is only available if GDAL Python bindings are available.</p>
+<p>gdal_fillnodata は Python ユーティリティであり, GDAL Python バインディングが利用可能な場合のみ利用できます.</p>
 </div>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-help">
 <span class="sig-name descname"><span class="pre">--help</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-help" title="Link to this definition"></a></dt>
-<dd><p>Show this help message and exit</p>
+<dd><p>このヘルプメッセージを表示して終了します</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-help-general">
 <span class="sig-name descname"><span class="pre">--help-general</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-help-general" title="Link to this definition"></a></dt>
-<dd><p>Gives a brief usage message for the generic GDAL commandline options and exit.</p>
+<dd><p>一般的な GDAL コマンドラインオプションの使用方法を簡単に表示して終了します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-q">
 <span class="sig-name descname"><span class="pre">-q</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-q" title="Link to this definition"></a></dt>
-<dd><p>The script runs in quiet mode. The progress monitor is suppressed and
-routine messages are not displayed.</p>
+<dd><p>スクリプトはクワイエットモードで実行されます.進行状況モニターは抑制され,通常のメッセージは表示されません.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-md">
 <span class="sig-name descname"><span class="pre">-md</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;max_distance&gt;</span></span><a class="headerlink" href="#cmdoption-md" title="Link to this definition"></a></dt>
-<dd><p>The maximum distance (in pixels) that the algorithm will search out for
-values to interpolate. The default is 100 pixels.</p>
+<dd><p>アルゴリズムが補間する値を検索する最大距離(ピクセル単位).デフォルトは 100 ピクセルです.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-si">
 <span class="sig-name descname"><span class="pre">-si</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;smooth_iterations&gt;</span></span><a class="headerlink" href="#cmdoption-si" title="Link to this definition"></a></dt>
-<dd><p>The number of 3x3 average filter smoothing iterations to run after the
-interpolation to dampen artifacts. The default is zero smoothing iterations.</p>
+<dd><p>補間後にアーティファクトを抑制するために実行する 3x3 平均フィルターのスムージング反復回数.デフォルトはゼロのスムージング反復です.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-o">
 <span class="sig-name descname"><span class="pre">-o</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;name&gt;=&lt;value&gt;</span></span><a class="headerlink" href="#cmdoption-o" title="Link to this definition"></a></dt>
-<dd><p>Specify a special argument to the algorithm. Currently none are supported.</p>
+<dd><p>アルゴリズムに特別な引数を指定します.現在はサポートされていません.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-b">
 <span class="sig-name descname"><span class="pre">-b</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;band&gt;</span></span><a class="headerlink" href="#cmdoption-b" title="Link to this definition"></a></dt>
-<dd><p>The band to operate on, by default the first band is operated on.</p>
+<dd><p>操作するバンドです.デフォルトでは最初のバンドが操作されます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-mask">
 <span class="sig-name descname"><span class="pre">-mask</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;filename&gt;</span></span><a class="headerlink" href="#cmdoption-mask" title="Link to this definition"></a></dt>
-<dd><p>Use the first band of the specified file as a validity mask (zero is
-invalid, non-zero is valid).</p>
+<dd><p>指定されたファイルの最初のバンドを有効性マスクとして使用します(ゼロは無効,ゼロ以外は有効).</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-of">
 <span class="sig-name descname"><span class="pre">-of</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;format&gt;</span></span><a class="headerlink" href="#cmdoption-of" title="Link to this definition"></a></dt>
-<dd><p>Select the output format. The default is <a class="reference internal" href="../drivers/raster/gtiff.html#raster-gtiff"><span class="std std-ref">GTiff -- GeoTIFF File Format</span></a>.
-Use the short format name.</p>
+<dd><p>出力フォーマットを選択します.デフォルトは <a class="reference internal" href="../drivers/raster/gtiff.html#raster-gtiff"><span class="std std-ref">GTiff -- GeoTIFF File Format</span></a> です.短いフォーマット名を使用します.</p>
 </dd></dl>
 
 <dl class="std option">
@@ -269,22 +262,19 @@ Use the short format name.</p>
 <dd><div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.9.</span></p>
 </div>
-<p>By default, pixels are interpolated using an inverse distance weighting
-(<code class="docutils literal notranslate"><span class="pre">inv_dist</span></code>). It is also possible to choose a nearest neighbour (<code class="docutils literal notranslate"><span class="pre">nearest</span></code>)
-strategy.</p>
+<p>デフォルトでは,ピクセルは逆距離重み付け(<code class="docutils literal notranslate"><span class="pre">inv_dist</span></code>)を使用して補間されます.最近傍(<code class="docutils literal notranslate"><span class="pre">nearest</span></code>)を選択することも可能です.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-arg-srcfile">
 <span class="sig-name descname"><span class="pre">&lt;srcfile&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-srcfile" title="Link to this definition"></a></dt>
-<dd><p>The source raster file used to identify target pixels.
-Only one band is used.</p>
+<dd><p>ターゲットピクセルを識別するために使用されるソースラスターファイルです.バンドは 1 つだけ使用されます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-arg-dstfile">
 <span class="sig-name descname"><span class="pre">&lt;dstfile&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-dstfile" title="Link to this definition"></a></dt>
-<dd><p>The new file to create with the interpolated result.</p>
+<dd><p>補間結果で作成する新しいファイルです.</p>
 </dd></dl>
 
 </section>

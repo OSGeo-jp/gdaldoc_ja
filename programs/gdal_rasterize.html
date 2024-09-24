@@ -70,10 +70,10 @@
 <li class="toctree-l3"><a class="reference internal" href="gdal_polygonize.html">gdal_polygonize</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdal_proximity.html">gdal_proximity</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">gdal_rasterize</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#synopsis">Synopsis</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#synopsis">概要</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#description">説明</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#c-api">C API</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#examples">例</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="gdal_retile.html">gdal_retile</a></li>
@@ -185,9 +185,9 @@
              
   <section id="gdal-rasterize">
 <span id="id1"></span><h1>gdal_rasterize<a class="headerlink" href="#gdal-rasterize" title="Link to this heading"></a></h1>
-<p>Burns vector geometries into a raster</p>
+<p>ベクタージオメトリをラスターに焼き付けます</p>
 <section id="synopsis">
-<span id="index-0"></span><h2>Synopsis<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
+<span id="index-0"></span><h2>概要<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdal_rasterize</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="o">-</span><span class="n">general</span><span class="p">]</span>
     <span class="p">[</span><span class="o">-</span><span class="n">b</span> <span class="o">&lt;</span><span class="n">band</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span> <span class="p">[</span><span class="o">-</span><span class="n">i</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">at</span><span class="p">]</span>
     <span class="p">[</span><span class="o">-</span><span class="n">oo</span> <span class="o">&lt;</span><span class="n">NAME</span><span class="o">&gt;=&lt;</span><span class="n">VALUE</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span>
@@ -203,129 +203,97 @@
 </div>
 </section>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
-<p>This program burns vector geometries (points, lines, and polygons) into the
-raster band(s) of a raster image.  Vectors are read from OGR supported vector
-formats. If the output raster already exists, the affected pixels are updated
-in-place.</p>
-<p>Note that on the fly reprojection of vector data to the coordinate system of the
-raster data is only supported since GDAL 2.1.0.</p>
+<h2>説明<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>このプログラムは,ベクタージオメトリ(点,線,ポリゴン)をラスター画像のラスターバンドに焼き付けます.ベクターは OGR サポートされたベクターフォーマットから読み込まれます.出力ラスターが既に存在する場合,影響を受けるピクセルはその場で更新されます.</p>
+<p>ベクターデータをラスターデータの座標系にオンザフライで再投影する機能は, GDAL 2.1.0 以降でのみサポートされていることに注意してください.</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_rasterize-help">
 <span class="sig-name descname"><span class="pre">--help</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal_rasterize-help" title="Link to this definition"></a></dt>
-<dd><p>Show this help message and exit</p>
+<dd><p>このヘルプメッセージを表示して終了します</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_rasterize-help-general">
 <span class="sig-name descname"><span class="pre">--help-general</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal_rasterize-help-general" title="Link to this definition"></a></dt>
-<dd><p>Gives a brief usage message for the generic GDAL commandline options and exit.</p>
+<dd><p>一般的な GDAL コマンドラインオプションの使用方法を簡単に表示して終了します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_rasterize-b">
 <span class="sig-name descname"><span class="pre">-b</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;band&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_rasterize-b" title="Link to this definition"></a></dt>
-<dd><p>The band(s) to burn values into.  Multiple -b arguments may be used to burn
-into a list of bands.  The default is to burn into band 1.  Not used when
-creating a new raster.</p>
+<dd><p>値を焼き付けるバンドです. 複数の -b 引数を使用してバンドのリストに焼き付けることができます.デフォルトはバンド 1 に焼き付けます. 新しいラスターを作成する場合は使用しません.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_rasterize-i">
 <span class="sig-name descname"><span class="pre">-i</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal_rasterize-i" title="Link to this definition"></a></dt>
-<dd><p>Invert rasterization.  Burn the fixed burn value, or the burn value associated
-with the first feature into all parts of the image <em>not</em> inside the
-provided polygon.</p>
+<dd><p>ラスタライズを反転します. 固定焼き付け値または最初のフィーチャに関連付けられた焼き付け値を,提供されたポリゴンの内部でない画像のすべての部分に焼き付けます.</p>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
-<p>When the vector features contain a polygon nested within another polygon
-(like an island in a lake), GDAL must be built against GEOS to get
-correct results.</p>
+<p>ベクターフィーチャに他のポリゴンにネストされたポリゴン(湖の中の島のような)が含まれている場合,正しい結果を得るためには GEOS に対して GDAL をビルドする必要があります.</p>
 </div>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_rasterize-at">
 <span class="sig-name descname"><span class="pre">-at</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal_rasterize-at" title="Link to this definition"></a></dt>
-<dd><p>Enables the ALL_TOUCHED rasterization option so that all pixels touched
-by lines or polygons will be updated, not just those on the line render path,
-or whose center point is within the polygon (behavior is unspecified when the
-polygon is just touching the pixel center). Defaults to disabled for normal
-rendering rules.</p>
+<dd><p>ALL_TOUCHED ラスタライズオプションを有効にして,線またはポリゴンによって触れられたすべてのピクセルが更新されるようにします.通常のレンダリングルールでは,ラインレンダリングパス上のピクセルまたは中心点がポリゴン内にあるピクセルのみが更新されます(ポリゴンがピクセル中心にちょうど触れている場合の動作は未指定です).通常のレンダリングルールでは無効になっています.</p>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
-<p>When this option is enabled, the order of the input features (lines or polygons)
-can affect the results. When two features touch each other, the last one (i.e. topmost)
-will determine the burned pixel value at the edge.
-You may wish to use the <a class="reference internal" href="#cmdoption-gdal_rasterize-sql"><code class="xref std std-option docutils literal notranslate"><span class="pre">-sql</span></code></a> option to reorder the features (ORDER BY)
-to achieve a more predictable result.</p>
+<p>このオプションが有効になっている場合,入力地物(線またはポリゴン)の順序が結果に影響を与える可能性があります.2つの地物が互いに接触すると,最後の地物(つまり最上位の地物)がエッジの焼き付けピクセル値を決定します.より予測可能な結果を得るために,地物を再配置するために <a class="reference internal" href="#cmdoption-gdal_rasterize-sql"><code class="xref std std-option docutils literal notranslate"><span class="pre">-sql</span></code></a> オプションを使用することができます(ORDER BY).</p>
 </div>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_rasterize-burn">
 <span class="sig-name descname"><span class="pre">-burn</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;value&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_rasterize-burn" title="Link to this definition"></a></dt>
-<dd><p>A fixed value to burn into a band for all objects.  A list of <a class="reference internal" href="#cmdoption-gdal_rasterize-burn"><code class="xref std std-option docutils literal notranslate"><span class="pre">-burn</span></code></a> options
-can be supplied, one per band being written to.</p>
+<dd><p>すべてのオブジェクトに焼き付けるための固定値です. 書き込まれる各バンドにつき, <a class="reference internal" href="#cmdoption-gdal_rasterize-burn"><code class="xref std std-option docutils literal notranslate"><span class="pre">-burn</span></code></a> オプションのリストを提供できます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_rasterize-a">
 <span class="sig-name descname"><span class="pre">-a</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;attribute_name&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_rasterize-a" title="Link to this definition"></a></dt>
-<dd><p>Identifies an attribute field on the features to be used for a burn-in value.
-The value will be burned into all output bands.</p>
+<dd><p>焼き付け値に使用する地物の属性フィールドを識別します. その値はすべての出力バンドに焼き付けられます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_rasterize-3d">
 <span class="sig-name descname"><span class="pre">-3d</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal_rasterize-3d" title="Link to this definition"></a></dt>
-<dd><p>Indicates that a burn value should be extracted from the &quot;Z&quot; values of the
-feature. Works with points and lines (linear interpolation along each segment).
-For polygons, works properly only if the are flat (same Z value for all
-vertices).</p>
+<dd><p>焼き付け値を地物の &quot;Z&quot; 値から抽出することを示します. 点と線(各セグメントに沿った線形補間)で機能します.ポリゴンの場合,フラットである場合のみ正しく機能します(すべての頂点の Z 値が同じ).</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_rasterize-add">
 <span class="sig-name descname"><span class="pre">-add</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal_rasterize-add" title="Link to this definition"></a></dt>
-<dd><p>Instead of burning a new value, this adds the new value to the existing raster.
-Suitable for heatmaps for instance.</p>
+<dd><p>新しい値を焼き付ける代わりに,既存のラスターに新しい値を追加します. たとえばヒートマップに適しています.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_rasterize-l">
 <span class="sig-name descname"><span class="pre">-l</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;layername&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_rasterize-l" title="Link to this definition"></a></dt>
-<dd><p>Indicates the layer(s) from the datasource that will be used for input
-features.  May be specified multiple times, but at least one layer name or a
-<a class="reference internal" href="#cmdoption-gdal_rasterize-sql"><code class="xref std std-option docutils literal notranslate"><span class="pre">-sql</span></code></a> option must be specified (not both).</p>
+<dd><p>入力地物に使用されるデータソースからのレイヤーを示します. 複数回指定できますが,少なくとも1つのレイヤー名または <a class="reference internal" href="#cmdoption-gdal_rasterize-sql"><code class="xref std std-option docutils literal notranslate"><span class="pre">-sql</span></code></a> オプションを指定する必要があります(両方ではありません).</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_rasterize-where">
 <span class="sig-name descname"><span class="pre">-where</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;expression&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_rasterize-where" title="Link to this definition"></a></dt>
-<dd><p>An optional SQL WHERE style query expression to be applied to select features
-to burn in from the input layer(s).</p>
+<dd><p>入力レイヤーから焼き付ける地物を選択するために適用されるオプションの SQL WHERE スタイルのクエリ式です.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_rasterize-sql">
 <span class="sig-name descname"><span class="pre">-sql</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;select_statement&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_rasterize-sql" title="Link to this definition"></a></dt>
-<dd><p>An SQL statement to be evaluated against the datasource to produce a
-virtual layer of features to be burned in.
-Starting with GDAL 3.7, the <code class="docutils literal notranslate"><span class="pre">&#64;filename</span></code> syntax can be used to indicate
-that the content is in the pointed filename.</p>
+<dd><p>焼き付ける地物の仮想レイヤーを生成するためにデータソースに対して評価される SQL 文です.GDAL 3.7 以降, <code class="docutils literal notranslate"><span class="pre">&#64;filename</span></code> 構文を使用して,内容が指定されたファイル名にあることを示すことができます.</p>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
-<p>This option will be ignored if the <a class="reference internal" href="#cmdoption-gdal_rasterize-l"><code class="xref std std-option docutils literal notranslate"><span class="pre">-l</span></code></a> option has been set as well.</p>
+<p>このオプションは, <a class="reference internal" href="#cmdoption-gdal_rasterize-l"><code class="xref std std-option docutils literal notranslate"><span class="pre">-l</span></code></a> オプションが設定されている場合は無視されます.</p>
 </div>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_rasterize-dialect">
 <span class="sig-name descname"><span class="pre">-dialect</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;dialect&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_rasterize-dialect" title="Link to this definition"></a></dt>
-<dd><p>SQL dialect. In some cases can be used to use (unoptimized) OGR SQL instead of
-the native SQL of an RDBMS by passing OGRSQL. The
-&quot;SQLITE&quot; dialect can also be used with any datasource.</p>
+<dd><p>SQL 方言です. いくつかの場合, OGR SQL をネイティブ SQL の代わりに使用するために OGRSQL を渡すことができます(最適化されていない場合があります).&quot;SQLITE&quot; 方言は,任意のデータソースで使用することもできます.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 2.1.</span></p>
 </div>
@@ -334,43 +302,31 @@ the native SQL of an RDBMS by passing OGRSQL. The
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_rasterize-of">
 <span class="sig-name descname"><span class="pre">-of</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;format&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_rasterize-of" title="Link to this definition"></a></dt>
-<dd><p>Select the output format. Starting with GDAL 2.3, if not specified, the
-format is guessed from the extension (previously was GTiff). Use the short
-format name.</p>
+<dd><p>出力フォーマットを選択します. GDAL 2.3 以降,指定されていない場合,フォーマットは拡張子から推測されます(以前は GTiff でした).短いフォーマット名を使用します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_rasterize-a_nodata">
 <span class="sig-name descname"><span class="pre">-a_nodata</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;value&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_rasterize-a_nodata" title="Link to this definition"></a></dt>
-<dd><p>Assign a specified nodata value to output bands.</p>
+<dd><p>指定されたノーデータ値を出力バンドに割り当てます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_rasterize-init">
 <span class="sig-name descname"><span class="pre">-init</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;value&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_rasterize-init" title="Link to this definition"></a></dt>
-<dd><p>Pre-initialize the output image bands with these values.  However, it is not
-marked as the nodata value in the output file.  If only one value is given, the
-same value is used in all the bands.</p>
+<dd><p>これらの値で出力画像バンドを事前初期化します. ただし,出力ファイルではノーデータ値としてマークされていません.1つの値のみが指定されている場合,すべてのバンドで同じ値が使用されます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_rasterize-a_srs">
 <span class="sig-name descname"><span class="pre">-a_srs</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;srs_def&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_rasterize-a_srs" title="Link to this definition"></a></dt>
-<dd><p>Override the projection for the output file. If not specified, the projection of
-the input vector file will be used if available. When using this option, no reprojection
-of features from the SRS of the input vector to the specified SRS of the output raster,
-so use only this option to correct an invalid source SRS.
-The &lt;srs_def&gt; may be any of the usual GDAL/OGR forms, complete WKT, PROJ.4,
-EPSG:n or a file containing the WKT.</p>
+<dd><p>出力ファイルの投影を上書きします. 指定されていない場合,入力ベクターファイルの投影が利用可能な場合に使用されます.このオプションを使用すると,入力ベクターの SRS から出力ラスターの指定された SRS への地物の再投影は行われないため,無効なソース SRS を修正するためにこのオプションのみを使用してください.&lt;srs_def&gt; は通常の GDAL/OGR 形式,完全な WKT,PROJ.4,EPSG:n または WKT を含むファイルのいずれかである可能性があります.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_rasterize-to">
 <span class="sig-name descname"><span class="pre">-to</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_rasterize-to" title="Link to this definition"></a></dt>
-<dd><p>set a transformer
-option suitable to pass to <a class="reference internal" href="../api/gdal_alg.html#_CPPv432GDALCreateGenImgProjTransformer212GDALDatasetH12GDALDatasetHPPc" title="GDALCreateGenImgProjTransformer2"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALCreateGenImgProjTransformer2()</span></code></a>. This is
-used when converting geometries coordinates to target raster pixel space. For
-example this can be used to specify RPC related transformer options.</p>
+<dd><p><a class="reference internal" href="../api/gdal_alg.html#_CPPv432GDALCreateGenImgProjTransformer212GDALDatasetH12GDALDatasetHPPc" title="GDALCreateGenImgProjTransformer2"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALCreateGenImgProjTransformer2()</span></code></a> に渡す適切なトランスフォーマーオプションを設定します.これは,ジオメトリ座標をターゲットラスターピクセル空間に変換するときに使用されます.たとえば,これは RPC 関連のトランスフォーマーオプションを指定するために使用できます.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 2.3.</span></p>
 </div>
@@ -379,67 +335,44 @@ example this can be used to specify RPC related transformer options.</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_rasterize-co">
 <span class="sig-name descname"><span class="pre">-co</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_rasterize-co" title="Link to this definition"></a></dt>
-<dd><p>Many formats have one or more optional creation options that can be
-used to control particulars about the file created. For instance,
-the GeoTIFF driver supports creation options to control compression,
-and whether the file should be tiled.</p>
-<p>The creation options available vary by format driver, and some
-simple formats have no creation options at all. A list of options
-supported for a format can be listed with the
-<a class="reference internal" href="raster_common_options.html#raster-common-options-formats"><span class="std std-ref">--formats</span></a>
-command line option but the documentation for the format is the
-definitive source of information on driver creation options.
-See <a class="reference internal" href="../drivers/raster/index.html#raster-drivers"><span class="std std-ref">ラスタードライバー</span></a> format
-specific documentation for legal creation options for each format.</p>
+<dd><p>多くのフォーマットには,作成されたファイルに関する特定の情報を制御するために使用できる1つ以上のオプションがあります.たとえば,GeoTIFF ドライバは,圧縮を制御する作成オプションやファイルをタイル化するかどうかを制御する作成オプションをサポートしています.</p>
+<p>利用可能な作成オプションはフォーマットドライバによって異なり,一部のシンプルなフォーマットには作成オプションが全くありません.フォーマットでサポートされているオプションのリストは,コマンドラインオプション <a class="reference internal" href="raster_common_options.html#raster-common-options-formats"><span class="std std-ref">--formats</span></a> でリストできますが,フォーマットのドキュメントがドライバ作成オプションに関する情報の決定的なソースです.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_rasterize-te">
 <span class="sig-name descname"><span class="pre">-te</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;xmin&gt;</span> <span class="pre">&lt;ymin&gt;</span> <span class="pre">&lt;xmax&gt;</span> <span class="pre">&lt;ymax&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_rasterize-te" title="Link to this definition"></a></dt>
-<dd><p>Set georeferenced extents. The values must be expressed in georeferenced units.
-If not specified, the extent of the output file will be the extent of the vector
-layers.</p>
+<dd><p>ジオリファレンスされた範囲を設定します. 値はジオリファレンスされた単位で表される必要があります.指定されていない場合,出力ファイルの範囲はベクターレイヤーの範囲になります.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_rasterize-tr">
 <span class="sig-name descname"><span class="pre">-tr</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;xres&gt;</span> <span class="pre">&lt;yres&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_rasterize-tr" title="Link to this definition"></a></dt>
-<dd><p>Set target resolution. The values must be expressed in georeferenced units.
-Both must be positive values.</p>
+<dd><p>ターゲット解像度を設定します.値はジオリファレンスされた単位で表される必要があります.両方とも正の値である必要があります.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_rasterize-tap">
 <span class="sig-name descname"><span class="pre">-tap</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal_rasterize-tap" title="Link to this definition"></a></dt>
-<dd><p>(target aligned pixels) Align
-the coordinates of the extent of the output file to the values of the <a class="reference internal" href="#cmdoption-gdal_rasterize-tr"><code class="xref std std-option docutils literal notranslate"><span class="pre">-tr</span></code></a>,
-such that the aligned extent includes the minimum extent.
-Alignment means that xmin / resx, ymin / resy, xmax / resx and ymax / resy are integer values.</p>
+<dd><p>(ターゲットアラインドピクセル) 出力ファイルの範囲の座標を <a class="reference internal" href="#cmdoption-gdal_rasterize-tr"><code class="xref std std-option docutils literal notranslate"><span class="pre">-tr</span></code></a> の値に整列させることで,整列された範囲に最小範囲が含まれるようにします.整列とは, xmin / resx, ymin / resy, xmax / resx および ymax / resy が整数値であることを意味します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_rasterize-ts">
 <span class="sig-name descname"><span class="pre">-ts</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;width&gt;</span> <span class="pre">&lt;height&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_rasterize-ts" title="Link to this definition"></a></dt>
-<dd><p>Set output file size in pixels and lines. Note that <a class="reference internal" href="#cmdoption-gdal_rasterize-ts"><code class="xref std std-option docutils literal notranslate"><span class="pre">-ts</span></code></a> cannot be used with
-<a class="reference internal" href="#cmdoption-gdal_rasterize-tr"><code class="xref std std-option docutils literal notranslate"><span class="pre">-tr</span></code></a></p>
+<dd><p>ピクセルと行で出力ファイルのサイズを設定します. <a class="reference internal" href="#cmdoption-gdal_rasterize-ts"><code class="xref std std-option docutils literal notranslate"><span class="pre">-ts</span></code></a> は <a class="reference internal" href="#cmdoption-gdal_rasterize-tr"><code class="xref std std-option docutils literal notranslate"><span class="pre">-tr</span></code></a> とは使用できないことに注意してください</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_rasterize-ot">
 <span class="sig-name descname"><span class="pre">-ot</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;type&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_rasterize-ot" title="Link to this definition"></a></dt>
-<dd><p>Force the output bands to be of the indicated data type. Defaults to <code class="docutils literal notranslate"><span class="pre">Float64</span></code>,
-unless the attribute field to burn is of type <code class="docutils literal notranslate"><span class="pre">Int64</span></code>, in which case <code class="docutils literal notranslate"><span class="pre">Int64</span></code>
-is used for the output raster data type if the output driver supports it.</p>
+<dd><p>出力バンドを指定されたデータ型にするように強制します. デフォルトは <code class="docutils literal notranslate"><span class="pre">Float64</span></code> ですが,焼き付ける属性フィールドが <code class="docutils literal notranslate"><span class="pre">Int64</span></code> 型の場合,出力ドライバがサポートしている場合は出力ラスターデータ型として <code class="docutils literal notranslate"><span class="pre">Int64</span></code> が使用されます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_rasterize-optim">
 <span class="sig-name descname"><span class="pre">-optim</span></span><span class="sig-prename descclassname"> <span class="pre">{AUTO|VECTOR|RASTER}</span></span><a class="headerlink" href="#cmdoption-gdal_rasterize-optim" title="Link to this definition"></a></dt>
-<dd><p>Force the algorithm used (results are identical). The raster mode is used in most cases and
-optimise read/write operations. The vector mode is useful with a decent amount of input
-features and optimise the CPU use. That mode have to be used with tiled images to be
-efficient. The auto mode (the default) will chose the algorithm based on input and output
-properties.</p>
+<dd><p>使用されるアルゴリズムを強制します(結果は同一です). ラスターモードはほとんどの場合に使用され,読み書き操作を最適化します.ベクターモードは,適切な量の入力地物と CPU 使用を最適化するのに役立ちます. そのモードは効率的にするためにタイル化された画像で使用する必要があります.自動モード(デフォルト)は,入力と出力のプロパティに基づいてアルゴリズムを選択します.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 2.3.</span></p>
 </div>
@@ -451,58 +384,47 @@ properties.</p>
 <dd><div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.7.</span></p>
 </div>
-<p>Source dataset open option (format specific)</p>
+<p>ソースデータセットオープンオプション(フォーマット固有)</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_rasterize-q">
 <span class="sig-name descname"><span class="pre">-q</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal_rasterize-q" title="Link to this definition"></a></dt>
-<dd><p>Suppress progress monitor and other non-error output.</p>
+<dd><p>進行状況モニターおよびその他のエラー以外の出力を抑制します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_rasterize-arg-src_datasource">
 <span class="sig-name descname"><span class="pre">&lt;src_datasource&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal_rasterize-arg-src_datasource" title="Link to this definition"></a></dt>
-<dd><p>Any OGR supported readable datasource.</p>
+<dd><p>OGR がサポートする読み込み可能なデータソース.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_rasterize-arg-dst_filename">
 <span class="sig-name descname"><span class="pre">&lt;dst_filename&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal_rasterize-arg-dst_filename" title="Link to this definition"></a></dt>
-<dd><p>The GDAL supported output file.  Must support update mode access.
-This file will be created if it does not already exist
-If the output raster already exists, the affected pixels are updated in-place.</p>
+<dd><p>GDAL がサポートする出力ファイルです. 更新モードアクセスをサポートする必要があります.このファイルは存在しない場合に作成されます.出力ラスターが既に存在する場合,影響を受けるピクセルはその場で更新されます.</p>
 </dd></dl>
 
-<p>The program creates a new target raster image when any of the <a class="reference internal" href="#cmdoption-gdal_rasterize-of"><code class="xref std std-option docutils literal notranslate"><span class="pre">-of</span></code></a>,
-<a class="reference internal" href="#cmdoption-gdal_rasterize-a_nodata"><code class="xref std std-option docutils literal notranslate"><span class="pre">-a_nodata</span></code></a>, <a class="reference internal" href="#cmdoption-gdal_rasterize-init"><code class="xref std std-option docutils literal notranslate"><span class="pre">-init</span></code></a>, <a class="reference internal" href="#cmdoption-gdal_rasterize-a_srs"><code class="xref std std-option docutils literal notranslate"><span class="pre">-a_srs</span></code></a>, <a class="reference internal" href="#cmdoption-gdal_rasterize-co"><code class="xref std std-option docutils literal notranslate"><span class="pre">-co</span></code></a>, <a class="reference internal" href="#cmdoption-gdal_rasterize-te"><code class="xref std std-option docutils literal notranslate"><span class="pre">-te</span></code></a>,
-<a class="reference internal" href="#cmdoption-gdal_rasterize-tr"><code class="xref std std-option docutils literal notranslate"><span class="pre">-tr</span></code></a>, <a class="reference internal" href="#cmdoption-gdal_rasterize-tap"><code class="xref std std-option docutils literal notranslate"><span class="pre">-tap</span></code></a>, <a class="reference internal" href="#cmdoption-gdal_rasterize-ts"><code class="xref std std-option docutils literal notranslate"><span class="pre">-ts</span></code></a>, or <a class="reference internal" href="#cmdoption-gdal_rasterize-ot"><code class="xref std std-option docutils literal notranslate"><span class="pre">-ot</span></code></a> options are used.
-The resolution or size must be specified using the <a class="reference internal" href="#cmdoption-gdal_rasterize-tr"><code class="xref std std-option docutils literal notranslate"><span class="pre">-tr</span></code></a> or <a class="reference internal" href="#cmdoption-gdal_rasterize-ts"><code class="xref std std-option docutils literal notranslate"><span class="pre">-ts</span></code></a> option for all new
-rasters.  The target raster will be overwritten if it already exists and any of
-these creation-related options are used.</p>
+<p>プログラムは, <a class="reference internal" href="#cmdoption-gdal_rasterize-of"><code class="xref std std-option docutils literal notranslate"><span class="pre">-of</span></code></a>, <a class="reference internal" href="#cmdoption-gdal_rasterize-a_nodata"><code class="xref std std-option docutils literal notranslate"><span class="pre">-a_nodata</span></code></a>, <a class="reference internal" href="#cmdoption-gdal_rasterize-init"><code class="xref std std-option docutils literal notranslate"><span class="pre">-init</span></code></a>, <a class="reference internal" href="#cmdoption-gdal_rasterize-a_srs"><code class="xref std std-option docutils literal notranslate"><span class="pre">-a_srs</span></code></a>, <a class="reference internal" href="#cmdoption-gdal_rasterize-co"><code class="xref std std-option docutils literal notranslate"><span class="pre">-co</span></code></a>, <a class="reference internal" href="#cmdoption-gdal_rasterize-te"><code class="xref std std-option docutils literal notranslate"><span class="pre">-te</span></code></a>, <a class="reference internal" href="#cmdoption-gdal_rasterize-tr"><code class="xref std std-option docutils literal notranslate"><span class="pre">-tr</span></code></a>, <a class="reference internal" href="#cmdoption-gdal_rasterize-tap"><code class="xref std std-option docutils literal notranslate"><span class="pre">-tap</span></code></a>, <a class="reference internal" href="#cmdoption-gdal_rasterize-ts"><code class="xref std std-option docutils literal notranslate"><span class="pre">-ts</span></code></a>, または <a class="reference internal" href="#cmdoption-gdal_rasterize-ot"><code class="xref std std-option docutils literal notranslate"><span class="pre">-ot</span></code></a> オプションのいずれかが使用されると,新しいターゲットラスター画像が作成されます.新しいラスターの解像度またはサイズは,すべての新しいラスターに対して <a class="reference internal" href="#cmdoption-gdal_rasterize-tr"><code class="xref std std-option docutils literal notranslate"><span class="pre">-tr</span></code></a> または <a class="reference internal" href="#cmdoption-gdal_rasterize-ts"><code class="xref std std-option docutils literal notranslate"><span class="pre">-ts</span></code></a> オプションを使用して指定する必要があります.ターゲットラスターが既に存在し,これらの作成関連オプションのいずれかが使用される場合,ターゲットラスターは上書きされます.</p>
 </section>
 <section id="c-api">
 <h2>C API<a class="headerlink" href="#c-api" title="Link to this heading"></a></h2>
-<p>This utility is also callable from C with <a class="reference internal" href="../api/gdal_utils.html#_CPPv413GDALRasterizePKc12GDALDatasetH12GDALDatasetHPK20GDALRasterizeOptionsPi" title="GDALRasterize"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALRasterize()</span></code></a>.</p>
+<p>このユーティリティは, <a class="reference internal" href="../api/gdal_utils.html#_CPPv413GDALRasterizePKc12GDALDatasetH12GDALDatasetHPK20GDALRasterizeOptionsPi" title="GDALRasterize"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALRasterize()</span></code></a> から C で呼び出すこともできます.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 2.1.</span></p>
 </div>
 </section>
 <section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
-<p>The following would burn all polygons from mask.shp into the RGB TIFF
-file work.tif with the color red (RGB = 255,0,0).</p>
+<h2>例<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
+<p>次の例では,mask.shp からすべてのポリゴンを RGB TIFF ファイル work.tif に焼き付けます.色は赤(RGB = 255,0,0)です.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdal_rasterize</span> <span class="o">-</span><span class="n">b</span> <span class="mi">1</span> <span class="o">-</span><span class="n">b</span> <span class="mi">2</span> <span class="o">-</span><span class="n">b</span> <span class="mi">3</span> <span class="o">-</span><span class="n">burn</span> <span class="mi">255</span> <span class="o">-</span><span class="n">burn</span> <span class="mi">0</span> <span class="o">-</span><span class="n">burn</span> <span class="mi">0</span> <span class="o">-</span><span class="n">l</span> <span class="n">mask</span> <span class="n">mask</span><span class="o">.</span><span class="n">shp</span> <span class="n">work</span><span class="o">.</span><span class="n">tif</span>
 </pre></div>
 </div>
-<p>The following would burn all &quot;class A&quot; buildings into the output elevation
-file, pulling the top elevation from the ROOF_H attribute.</p>
+<p>次の例では,&quot;class A&quot; 建物を出力標高ファイルに焼き付けます. ROOF_H 属性から最上部の標高を取得します.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdal_rasterize</span> <span class="o">-</span><span class="n">a</span> <span class="n">ROOF_H</span> <span class="o">-</span><span class="n">where</span> <span class="s2">&quot;class=&#39;A&#39;&quot;</span> <span class="o">-</span><span class="n">l</span> <span class="n">footprints</span> <span class="n">footprints</span><span class="o">.</span><span class="n">shp</span> <span class="n">city_dem</span><span class="o">.</span><span class="n">tif</span>
 </pre></div>
 </div>
-<p>The following would burn all polygons from footprint.shp into a new 1000x1000
-rgb TIFF as the color red.  Note that <a class="reference internal" href="#cmdoption-gdal_rasterize-b"><code class="xref std std-option docutils literal notranslate"><span class="pre">-b</span></code></a> is not used; the order of the <a class="reference internal" href="#cmdoption-gdal_rasterize-burn"><code class="xref std std-option docutils literal notranslate"><span class="pre">-burn</span></code></a>
-options determines the bands of the output raster.</p>
+<p>次の例では,footprint.shp からすべてのポリゴンを新しい 1000x1000 RGB TIFF に赤色で焼き付けます. <a class="reference internal" href="#cmdoption-gdal_rasterize-b"><code class="xref std std-option docutils literal notranslate"><span class="pre">-b</span></code></a> は使用されていないことに注意してください; <a class="reference internal" href="#cmdoption-gdal_rasterize-burn"><code class="xref std std-option docutils literal notranslate"><span class="pre">-burn</span></code></a> オプションの順序が出力ラスターのバンドを決定します.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdal_rasterize</span> <span class="o">-</span><span class="n">burn</span> <span class="mi">255</span> <span class="o">-</span><span class="n">burn</span> <span class="mi">0</span> <span class="o">-</span><span class="n">burn</span> <span class="mi">0</span> <span class="o">-</span><span class="n">ot</span> <span class="n">Byte</span> <span class="o">-</span><span class="n">ts</span> <span class="mi">1000</span> <span class="mi">1000</span> <span class="o">-</span><span class="n">l</span> <span class="n">footprints</span> <span class="n">footprints</span><span class="o">.</span><span class="n">shp</span> <span class="n">mask</span><span class="o">.</span><span class="n">tif</span>
 </pre></div>
 </div>

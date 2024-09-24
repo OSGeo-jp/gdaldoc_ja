@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>gdal_grid &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=75499f83" />
 
   
     <link rel="shortcut icon" href="../_static/favicon.png"/>
@@ -65,14 +65,14 @@
 <li class="toctree-l3"><a class="reference internal" href="gdal_fillnodata.html">gdal_fillnodata</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdal_footprint.html">gdal_footprint</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">gdal_grid</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#synopsis">Synopsis</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#interpolation-algorithms">Interpolation algorithms</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#data-metrics">Data metrics</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#reading-comma-separated-values">Reading comma separated values</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#creating-multiband-files">Creating multiband files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#synopsis">概要</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#description">説明</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#interpolation-algorithms">補間アルゴリズム</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#data-metrics">データメトリクス</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reading-comma-separated-values">カンマ区切り値の読み取り</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-multiband-files">マルチバンドファイルの作成</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#c-api">C API</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#examples">例</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="gdal_merge.html">gdal_merge</a></li>
@@ -189,9 +189,9 @@
              
   <section id="gdal-grid">
 <span id="id1"></span><h1>gdal_grid<a class="headerlink" href="#gdal-grid" title="Link to this heading"></a></h1>
-<p>Creates regular grid from the scattered data.</p>
+<p>散在データから正規グリッドを作成します.</p>
 <section id="synopsis">
-<span id="index-0"></span><h2>Synopsis<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
+<span id="index-0"></span><h2>概要<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdal_grid</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="o">-</span><span class="n">general</span><span class="p">]</span>
           <span class="p">[</span><span class="o">-</span><span class="n">ot</span> <span class="p">{</span><span class="n">Byte</span><span class="o">/</span><span class="n">Int16</span><span class="o">/</span><span class="n">UInt16</span><span class="o">/</span><span class="n">UInt32</span><span class="o">/</span><span class="n">Int32</span><span class="o">/</span><span class="n">Float32</span><span class="o">/</span><span class="n">Float64</span><span class="o">/</span>
           <span class="n">CInt16</span><span class="o">/</span><span class="n">CInt32</span><span class="o">/</span><span class="n">CFloat32</span><span class="o">/</span><span class="n">CFloat64</span><span class="p">}]</span>
@@ -210,62 +210,50 @@
 </div>
 </section>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
-<p>This program creates a regular grid (raster) from the scattered data read from
-the OGR datasource. Input data will be interpolated to fill grid nodes with
-values, you can choose from various interpolation methods.</p>
-<p>It is possible to set the <a class="reference internal" href="../user/configoptions.html#config-GDAL_NUM_THREADS"><code class="docutils literal notranslate"><span class="pre">GDAL_NUM_THREADS</span></code></a>
-configuration option to parallelize the processing. The value to specify is
-the number of worker threads, or <code class="docutils literal notranslate"><span class="pre">ALL_CPUS</span></code> to use all the cores/CPUs of the
-computer.</p>
+<h2>説明<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>このプログラムは,OGR データソースから読み取られた散在データから正規グリッド(ラスター)を作成します.入力データは,値を持つグリッドノードを補間するために補間されます.さまざまな補間方法から選択できます.</p>
+<p>処理を並列化するために <a class="reference internal" href="../user/configoptions.html#config-GDAL_NUM_THREADS"><code class="docutils literal notranslate"><span class="pre">GDAL_NUM_THREADS</span></code></a> 設定オプションを設定することができます.指定する値はワーカースレッドの数,または <code class="docutils literal notranslate"><span class="pre">ALL_CPUS</span></code> でコンピュータのすべてのコア/CPU を使用します.</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_grid-help">
 <span class="sig-name descname"><span class="pre">--help</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal_grid-help" title="Link to this definition"></a></dt>
-<dd><p>Show this help message and exit</p>
+<dd><p>このヘルプメッセージを表示して終了します</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_grid-help-general">
 <span class="sig-name descname"><span class="pre">--help-general</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal_grid-help-general" title="Link to this definition"></a></dt>
-<dd><p>Gives a brief usage message for the generic GDAL commandline options and exit.</p>
+<dd><p>一般的な GDAL コマンドラインオプションの使用方法を簡単に表示して終了します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_grid-ot">
 <span class="sig-name descname"><span class="pre">-ot</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;type&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_grid-ot" title="Link to this definition"></a></dt>
-<dd><p>Force the output image bands to have a specific data type supported by the
-driver, which may be one of the following: <code class="docutils literal notranslate"><span class="pre">Byte</span></code>, <code class="docutils literal notranslate"><span class="pre">Int8</span></code>, <code class="docutils literal notranslate"><span class="pre">UInt16</span></code>,
-<code class="docutils literal notranslate"><span class="pre">Int16</span></code>, <code class="docutils literal notranslate"><span class="pre">UInt32</span></code>, <code class="docutils literal notranslate"><span class="pre">Int32</span></code>, <code class="docutils literal notranslate"><span class="pre">UInt64</span></code>, <code class="docutils literal notranslate"><span class="pre">Int64</span></code>, <code class="docutils literal notranslate"><span class="pre">Float32</span></code>, <code class="docutils literal notranslate"><span class="pre">Float64</span></code>, <code class="docutils literal notranslate"><span class="pre">CInt16</span></code>,
-<code class="docutils literal notranslate"><span class="pre">CInt32</span></code>, <code class="docutils literal notranslate"><span class="pre">CFloat32</span></code> or <code class="docutils literal notranslate"><span class="pre">CFloat64</span></code>.</p>
+<dd><p>出力画像バンドをドライバでサポートされている特定のデータ型に強制します.これは次のいずれかである可能性があります:<code class="docutils literal notranslate"><span class="pre">Byte</span></code>, <code class="docutils literal notranslate"><span class="pre">Int8</span></code>, <code class="docutils literal notranslate"><span class="pre">UInt16</span></code>, <code class="docutils literal notranslate"><span class="pre">Int16</span></code>, <code class="docutils literal notranslate"><span class="pre">UInt32</span></code>, <code class="docutils literal notranslate"><span class="pre">Int32</span></code>, <code class="docutils literal notranslate"><span class="pre">UInt64</span></code>, <code class="docutils literal notranslate"><span class="pre">Int64</span></code>, <code class="docutils literal notranslate"><span class="pre">Float32</span></code>, <code class="docutils literal notranslate"><span class="pre">Float64</span></code>, <code class="docutils literal notranslate"><span class="pre">CInt16</span></code>, <code class="docutils literal notranslate"><span class="pre">CInt32</span></code>, <code class="docutils literal notranslate"><span class="pre">CFloat32</span></code> または <code class="docutils literal notranslate"><span class="pre">CFloat64</span></code>.</p>
 </dd></dl>
 
-<p>If not set then a default type is used, which might not be supported
-by the relevant driver, causing a error.</p>
+<p>設定されていない場合,関連するドライバでサポートされていないデフォルトのタイプが使用される可能性があり,エラーが発生します.</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_grid-of">
 <span class="sig-name descname"><span class="pre">-of</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;format&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_grid-of" title="Link to this definition"></a></dt>
-<dd><p>Select the output format. Starting with GDAL 2.3, if not specified, the
-format is guessed from the extension (previously was GTiff). Use the short
-format name.</p>
+<dd><p>出力フォーマットを選択します. GDAL 2.3 以降,指定されていない場合,フォーマットは拡張子から推測されます(以前は GTiff でした).短いフォーマット名を使用します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_grid-txe">
 <span class="sig-name descname"><span class="pre">-txe</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;xmin&gt;</span> <span class="pre">&lt;xmax&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_grid-txe" title="Link to this definition"></a></dt>
-<dd><p>Set georeferenced X extents of output file to be created.</p>
+<dd><p>作成される出力ファイルのジオリファレンス X 範囲を設定します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_grid-tye">
 <span class="sig-name descname"><span class="pre">-tye</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;ymin&gt;</span> <span class="pre">&lt;ymax&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_grid-tye" title="Link to this definition"></a></dt>
-<dd><p>Set georeferenced Y extents of output file to be created.</p>
+<dd><p>作成される出力ファイルのジオリファレンス Y 範囲を設定します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_grid-tr">
 <span class="sig-name descname"><span class="pre">-tr</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;xres&gt;</span> <span class="pre">&lt;yres&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_grid-tr" title="Link to this definition"></a></dt>
-<dd><p>Set output file resolution (in target georeferenced units).
-Note that <a class="reference internal" href="#cmdoption-gdal_grid-tr"><code class="xref std std-option docutils literal notranslate"><span class="pre">-tr</span></code></a> just works in combination with a valid input from <a class="reference internal" href="#cmdoption-gdal_grid-txe"><code class="xref std std-option docutils literal notranslate"><span class="pre">-txe</span></code></a> and <a class="reference internal" href="#cmdoption-gdal_grid-tye"><code class="xref std std-option docutils literal notranslate"><span class="pre">-tye</span></code></a></p>
+<dd><p>出力ファイルの解像度を設定します(ターゲットのジオリファレンス単位で). <a class="reference internal" href="#cmdoption-gdal_grid-tr"><code class="xref std std-option docutils literal notranslate"><span class="pre">-tr</span></code></a> は <a class="reference internal" href="#cmdoption-gdal_grid-txe"><code class="xref std std-option docutils literal notranslate"><span class="pre">-txe</span></code></a> と <a class="reference internal" href="#cmdoption-gdal_grid-tye"><code class="xref std std-option docutils literal notranslate"><span class="pre">-tye</span></code></a> からの有効な入力と組み合わせてのみ機能します</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.2.</span></p>
 </div>
@@ -274,113 +262,85 @@ Note that <a class="reference internal" href="#cmdoption-gdal_grid-tr"><code cla
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_grid-outsize">
 <span class="sig-name descname"><span class="pre">-outsize</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;xsize&gt;</span> <span class="pre">&lt;ysize&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_grid-outsize" title="Link to this definition"></a></dt>
-<dd><p>Set the size of the output file in pixels and lines.
-Note that <a class="reference internal" href="#cmdoption-gdal_grid-outsize"><code class="xref std std-option docutils literal notranslate"><span class="pre">-outsize</span></code></a> cannot be used with <a class="reference internal" href="#cmdoption-gdal_grid-tr"><code class="xref std std-option docutils literal notranslate"><span class="pre">-tr</span></code></a></p>
+<dd><p>出力ファイルのサイズをピクセルと行で設定します. <a class="reference internal" href="#cmdoption-gdal_grid-outsize"><code class="xref std std-option docutils literal notranslate"><span class="pre">-outsize</span></code></a> は <a class="reference internal" href="#cmdoption-gdal_grid-tr"><code class="xref std std-option docutils literal notranslate"><span class="pre">-tr</span></code></a> とは使用できません</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_grid-a_srs">
 <span class="sig-name descname"><span class="pre">-a_srs</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;srs_def&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_grid-a_srs" title="Link to this definition"></a></dt>
-<dd><p>Override the projection for the
-output file.  The <em>srs_def</em> may be any of the usual GDAL/OGR forms,
-complete WKT, PROJ.4, EPSG:n or a file containing the WKT.
-No reprojection is done.</p>
+<dd><p>出力ファイルの投影を上書きします. <em>srs_def</em> は通常の GDAL/OGR 形式,完全な WKT,PROJ.4,EPSG:n または WKT を含むファイルのいずれかである可能性があります.再投影は行われません.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_grid-zfield">
 <span class="sig-name descname"><span class="pre">-zfield</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;field_name&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_grid-zfield" title="Link to this definition"></a></dt>
-<dd><p>Identifies an attribute field
-on the features to be used to get a Z value from. This value overrides the Z value
-read from the feature geometry record (naturally, if you have a Z value in
-the geometry, otherwise you have no choice and should specify a field name
-containing a Z value).</p>
+<dd><p>Z 値を取得するために使用される地物の属性フィールドを識別します.この値は地物ジオメトリから読み取られた Z 値を上書きします(もちろん,ジオメトリに Z 値がある場合は,それ以外の場合は選択肢がなく,Z 値を含むフィールド名を指定する必要があります).</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_grid-z_increase">
 <span class="sig-name descname"><span class="pre">-z_increase</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;increase_value&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_grid-z_increase" title="Link to this definition"></a></dt>
-<dd><p>Addition to the attribute field
-on the features to be used to get a Z value from. The addition should be the same
-unit as the Z value. The result value will be Z value + Z increase value. The default value is 0.</p>
+<dd><p>Z 値を取得するために使用される地物の属性フィールドに追加します.追加は Z 値と同じ単位である必要があります.結果値は Z 値 + Z 増加値 になります.デフォルト値は 0 です.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_grid-z_multiply">
 <span class="sig-name descname"><span class="pre">-z_multiply</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;multiply_value&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_grid-z_multiply" title="Link to this definition"></a></dt>
-<dd><p>This is multiplication
-ratio for the Z field. This can be used for a shift from e.g. feet to meters or from
-elevation to depth. The result value will be (Z value + Z increase value) * Z multiply value.
-The default value is 1.</p>
+<dd><p>Z フィールドの乗算比率です.これは,例えばフィートからメートルへのシフトや標高から深さへの変換に使用できます.結果値は (Z 値 + Z 増加値) * Z 乗算値 になります.デフォルト値は 1 です.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_grid-a">
 <span class="sig-name descname"><span class="pre">-a</span></span><span class="sig-prename descclassname"> <span class="pre">{&lt;algorithm&gt;[[:&lt;parameter1&gt;=&lt;value1&gt;]...]}</span></span><a class="headerlink" href="#cmdoption-gdal_grid-a" title="Link to this definition"></a></dt>
-<dd><p>Set the interpolation algorithm or data metric name and (optionally)
-its parameters. See the <a class="reference internal" href="#interpolation-algorithms">Interpolation algorithms</a> and <a class="reference internal" href="#data-metrics">Data metrics</a>
-sections for further discussion of available options.</p>
+<dd><p>補間アルゴリズムまたはデータメトリック名と(オプションで)そのパラメータを設定します.使用可能なオプションの詳細については, <a class="reference internal" href="#interpolation-algorithms">Interpolation algorithms</a>  および <a class="reference internal" href="#data-metrics">Data metrics</a> セクションを参照してください.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_grid-spat">
 <span class="sig-name descname"><span class="pre">-spat</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;xmin&gt;</span> <span class="pre">&lt;ymin&gt;</span> <span class="pre">&lt;xmax&gt;</span> <span class="pre">&lt;ymax&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_grid-spat" title="Link to this definition"></a></dt>
-<dd><p>Adds a spatial filter
-to select only features contained within the bounding box described by
-(xmin, ymin) - (xmax, ymax).</p>
+<dd><p>(xmin, ymin) - (xmax, ymax) で記述されるバウンディングボックスに含まれる地物のみを選択するための空間フィルタを追加します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_grid-clipsrc">
 <span class="sig-name descname"><span class="pre">-clipsrc</span></span><span class="sig-prename descclassname"> <span class="pre">[&lt;xmin&gt;</span> <span class="pre">&lt;ymin&gt;</span> <span class="pre">&lt;xmax&gt;</span> <span class="pre">&lt;ymax&gt;]|&lt;WKT&gt;|&lt;datasource&gt;|spat_extent</span></span><a class="headerlink" href="#cmdoption-gdal_grid-clipsrc" title="Link to this definition"></a></dt>
-<dd><p>Adds a spatial filter to select only features contained within the
-specified bounding box (expressed in source SRS), WKT geometry (POLYGON or
-MULTIPOLYGON), from a datasource or to the spatial extent of the <a class="reference internal" href="#cmdoption-gdal_grid-spat"><code class="xref std std-option docutils literal notranslate"><span class="pre">-spat</span></code></a>
-option if you use the <code class="docutils literal notranslate"><span class="pre">spat_extent</span></code> keyword. When specifying a
-datasource, you will generally want to use it in combination with the
-<a class="reference internal" href="#cmdoption-gdal_grid-clipsrclayer"><code class="xref std std-option docutils literal notranslate"><span class="pre">-clipsrclayer</span></code></a>, <a class="reference internal" href="#cmdoption-gdal_grid-clipsrcwhere"><code class="xref std std-option docutils literal notranslate"><span class="pre">-clipsrcwhere</span></code></a> or <a class="reference internal" href="#cmdoption-gdal_grid-clipsrcsql"><code class="xref std std-option docutils literal notranslate"><span class="pre">-clipsrcsql</span></code></a>
-options.</p>
+<dd><p>指定されたバウンディングボックス(ソース SRS で表現される)または WKT ジオメトリ(POLYGON または MULTIPOLYGON)に含まれる地物のみを選択するための空間フィルタを追加します. <code class="docutils literal notranslate"><span class="pre">spat_extent</span></code> キーワードを使用すると,データソースまたは <a class="reference internal" href="#cmdoption-gdal_grid-spat"><code class="xref std std-option docutils literal notranslate"><span class="pre">-spat</span></code></a> オプションの空間範囲に対して使用できます.データソースを指定する場合,通常は <a class="reference internal" href="#cmdoption-gdal_grid-clipsrclayer"><code class="xref std std-option docutils literal notranslate"><span class="pre">-clipsrclayer</span></code></a>, <a class="reference internal" href="#cmdoption-gdal_grid-clipsrcwhere"><code class="xref std std-option docutils literal notranslate"><span class="pre">-clipsrcwhere</span></code></a> または <a class="reference internal" href="#cmdoption-gdal_grid-clipsrcsql"><code class="xref std std-option docutils literal notranslate"><span class="pre">-clipsrcsql</span></code></a> オプションと組み合わせて使用することになります.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_grid-clipsrcsql">
 <span class="sig-name descname"><span class="pre">-clipsrcsql</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;sql_statement&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_grid-clipsrcsql" title="Link to this definition"></a></dt>
-<dd><p>Select desired geometries using an SQL query instead.</p>
+<dd><p>SQL クエリを使用して必要なジオメトリを選択します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_grid-clipsrclayer">
 <span class="sig-name descname"><span class="pre">-clipsrclayer</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;layername&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_grid-clipsrclayer" title="Link to this definition"></a></dt>
-<dd><p>Select the named layer from the source clip datasource.</p>
+<dd><p>ソースクリップデータソースから指定されたレイヤを選択します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_grid-clipsrcwhere">
 <span class="sig-name descname"><span class="pre">-clipsrcwhere</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;expression&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_grid-clipsrcwhere" title="Link to this definition"></a></dt>
-<dd><p>Restrict desired geometries based on an attribute query.</p>
+<dd><p>属性クエリに基づいて必要なジオメトリを制限します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_grid-l">
 <span class="sig-name descname"><span class="pre">-l</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;layername&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_grid-l" title="Link to this definition"></a></dt>
-<dd><p>Indicates the layer(s) from the
-datasource that will be used for input features.  May be specified multiple
-times, but at least one layer name or a <a class="reference internal" href="#cmdoption-gdal_grid-sql"><code class="xref std std-option docutils literal notranslate"><span class="pre">-sql</span></code></a> option must be
-specified.</p>
+<dd><p>入力地物に使用されるデータソースからのレイヤを示します.複数回指定できますが,少なくとも 1 つのレイヤ名または <a class="reference internal" href="#cmdoption-gdal_grid-sql"><code class="xref std std-option docutils literal notranslate"><span class="pre">-sql</span></code></a> オプションを指定する必要があります.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_grid-where">
 <span class="sig-name descname"><span class="pre">-where</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;expression&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_grid-where" title="Link to this definition"></a></dt>
-<dd><p>An optional SQL WHERE style query expression to be applied to select features
-to process from the input layer(s).</p>
+<dd><p>入力レイヤから処理する地物を選択するために適用されるオプションの SQL WHERE スタイルのクエリ式.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_grid-sql">
 <span class="sig-name descname"><span class="pre">-sql</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;select_statement&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_grid-sql" title="Link to this definition"></a></dt>
-<dd><p>An SQL statement to be evaluated against the datasource to produce a
-virtual layer of features to be processed.</p>
+<dd><p>データソースに対して評価される SQL ステートメントで,処理される地物の仮想レイヤを生成します.</p>
 </dd></dl>
 
 <dl class="std option">
@@ -389,82 +349,54 @@ virtual layer of features to be processed.</p>
 <dd><div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.7.</span></p>
 </div>
-<p>Source dataset open option (format specific)</p>
+<p>ソースデータセットのオープンオプション(フォーマット固有)</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_grid-co">
 <span class="sig-name descname"><span class="pre">-co</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_grid-co" title="Link to this definition"></a></dt>
-<dd><p>Many formats have one or more optional creation options that can be
-used to control particulars about the file created. For instance,
-the GeoTIFF driver supports creation options to control compression,
-and whether the file should be tiled.</p>
-<p>The creation options available vary by format driver, and some
-simple formats have no creation options at all. A list of options
-supported for a format can be listed with the
-<a class="reference internal" href="raster_common_options.html#raster-common-options-formats"><span class="std std-ref">--formats</span></a>
-command line option but the documentation for the format is the
-definitive source of information on driver creation options.
-See <a class="reference internal" href="../drivers/raster/index.html#raster-drivers"><span class="std std-ref">ラスタードライバー</span></a> format
-specific documentation for legal creation options for each format.</p>
+<dd><p>多くのフォーマットには,作成されたファイルに関する特定の情報を制御するために使用できる1つ以上のオプションがあります.たとえば,GeoTIFF ドライバは,圧縮を制御する作成オプションやファイルをタイル化するかどうかを制御する作成オプションをサポートしています.</p>
+<p>利用可能な作成オプションはフォーマットドライバによって異なり,一部のシンプルなフォーマットには作成オプションが全くありません.フォーマットでサポートされているオプションのリストは,コマンドラインオプション <a class="reference internal" href="raster_common_options.html#raster-common-options-formats"><span class="std std-ref">--formats</span></a> でリストできますが,フォーマットのドキュメントがドライバ作成オプションに関する情報の決定的なソースです.各フォーマットの有効な作成オプションについては, <a class="reference internal" href="../drivers/raster/index.html#raster-drivers"><span class="std std-ref">ラスタードライバー</span></a> フォーマット固有のドキュメントを参照してください.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_grid-q">
 <span class="sig-name descname"><span class="pre">-q</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal_grid-q" title="Link to this definition"></a></dt>
-<dd><p>Suppress progress monitor and other non-error output.</p>
+<dd><p>進行状況モニターとその他のエラー以外の出力を抑制します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_grid-arg-src_datasource">
 <span class="sig-name descname"><span class="pre">&lt;src_datasource&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal_grid-arg-src_datasource" title="Link to this definition"></a></dt>
-<dd><p>Any OGR supported readable datasource.</p>
+<dd><p>OGR でサポートされている読み取り可能なデータソース.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_grid-arg-dst_filename">
 <span class="sig-name descname"><span class="pre">&lt;dst_filename&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal_grid-arg-dst_filename" title="Link to this definition"></a></dt>
-<dd><p>The GDAL supported output file.</p>
+<dd><p>GDAL でサポートされている出力ファイル.</p>
 </dd></dl>
 
 </section>
 <section id="interpolation-algorithms">
-<h2>Interpolation algorithms<a class="headerlink" href="#interpolation-algorithms" title="Link to this heading"></a></h2>
-<p>There are a number of interpolation algorithms to choose from.</p>
-<p>More details about them can also be found in <a class="reference internal" href="../tutorials/gdal_grid_tut.html#gdal-grid-tut"><span class="std std-ref">GDAL Grid Tutorial</span></a></p>
+<h2>補間アルゴリズム<a class="headerlink" href="#interpolation-algorithms" title="Link to this heading"></a></h2>
+<p>選択できる補間アルゴリズムがいくつかあります.</p>
+<p>これについての詳細は <a class="reference internal" href="../tutorials/gdal_grid_tut.html#gdal-grid-tut"><span class="std std-ref">GDALグリッドチュートリアル</span></a> にも記載されています</p>
 <section id="invdist">
-<span id="gdal-grid-invdist"></span><h3>invdist<a class="headerlink" href="#invdist" title="Link to this heading"></a></h3>
-<p>Inverse distance to a power. This is the default algorithm. It has the following
-parameters:</p>
+<span id="gdal-grid-invdist"></span><h3>不一致<a class="headerlink" href="#invdist" title="Link to this heading"></a></h3>
+<p>べき乗の逆距離.これがデフォルトのアルゴリズムです.次のパラメータがあります:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">power</span></code>: Weighting power (default 2.0).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">smoothing</span></code>: Smoothing parameter (default 0.0).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">radius1</span></code>: The first radius (X axis if rotation angle is 0)
-of the search ellipse. Set this parameter to zero to use the whole point array.
-Default is 0.0.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">radius2</span></code>: The second radius (Y axis if rotation angle is 0)
-of the search ellipse. Set this parameter to zero to use the whole point array.
-Default is 0.0.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">radius</span></code>: Set first and second radius (mutually exclusive with radius1 and radius2).
-Default is 0.0. Added in GDAL 3.6</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">angle</span></code>: Angle of search ellipse rotation in degrees
-(counter clockwise, default 0.0).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">max_points</span></code>: Maximum number of data points to use. Do not
-search for more points than this number. This is only used if the search ellipse
-is set (both radii are non-zero). Zero means that all found points should
-be used. Default is 0.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">min_points</span></code>: Minimum number of data points to use. If less
-amount of points found the grid node considered empty and will be filled with
-NODATA marker. This is only used if search ellipse is set (both radii are
-non-zero). Default is 0.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">max_points_per_quadrant</span></code>: Maximum number of data points to use per quadrant.
-Default is 0. Added in GDAL 3.6.
-When specified, this actually uses invdistnn implementation.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">min_points_per_quadrant</span></code>: Minimum number of data points to use per quadrant.
-Default is 0. Added in GDAL 3.6.
-When specified, this actually uses invdistnn implementation.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">nodata</span></code>: NODATA marker to fill empty points (default
-0.0).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">power</span></code>: 重み付け係数 (デフォルト 2.0).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">smoothing</span></code>: スムージングパラメータ (デフォルト 0.0).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">radius1</span></code>: 検索楕円の最初の半径(X 軸,回転角が 0 の場合).このパラメータをゼロに設定して,全点配列を使用します.デフォルトは 0.0 です.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">radius2</span></code>: 検索楕円の 2 番目の半径(Y 軸,回転角が 0 の場合).このパラメータをゼロに設定して,全点配列を使用します.デフォルトは 0.0 です.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">radius</span></code>: 最初の半径と 2 番目の半径を設定します(radius1 と radius2 とは相互排他です).デフォルトは 0.0 です. GDAL 3.6 で追加されました</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">angle</span></code>: 検索楕円の回転角度(度単位,反時計回り,デフォルト 0.0).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_points</span></code>: 使用するデータポイントの最大数.この数より多くのポイントを検索しないでください.これは検索楕円が設定されている場合のみ使用されます(両方の半径がゼロでない).ゼロは,見つかったすべてのポイントを使用することを意味します.デフォルトは 0 です.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">min_points</span></code>: 使用するデータポイントの最小数.見つかったポイントの数が少ない場合,グリッドノードは空と見なされ, NODATA マーカーで埋められます.これは検索楕円が設定されている場合のみ使用されます(両方の半径がゼロでない).デフォルトは 0 です.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_points_per_quadrant</span></code>: クォードラントごとに使用するデータポイントの最大数.デフォルトは 0 です. GDAL 3.6 で追加されました.指定された場合,これは実際には invdistnn 実装を使用します.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">min_points_per_quadrant</span></code>: クォードラントごとに使用するデータポイントの最小数.デフォルトは 0 です. GDAL 3.6 で追加されました.指定された場合,これは実際には invdistnn 実装を使用します.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nodata</span></code>: 空のポイントを埋めるための NODATA マーカー(デフォルト 0.0).</p></li>
 </ul>
 </section>
 <section id="invdistnn">
@@ -472,194 +404,89 @@ When specified, this actually uses invdistnn implementation.</p></li>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 2.1.</span></p>
 </div>
-<p>Inverse distance to a power with nearest neighbor searching, ideal when
-max_points is used. It has following parameters:</p>
+<p>最近傍探索を伴うべき乗の逆距離, max_points が使用されている場合に理想的です.次のパラメータがあります:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">power</span></code>: Weighting power (default 2.0).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">smoothing</span></code>: Smoothing parameter (default 0.0).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">radius</span></code>: The radius of the search circle, which should be
-non-zero. Default is 1.0.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">max_points</span></code>: Maximum number of data points to use. Do not
-search for more points than this number. Found points will be ranked from
-nearest to furthest distance when weighting. Default is 12.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">min_points</span></code>: Minimum number of data points to use. If less
-amount of points found the grid node is considered empty and will be filled
-with NODATA marker. Default is 0.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">max_points_per_quadrant</span></code>: Maximum number of data points to use per quadrant.
-Default is 0. Added in GDAL 3.6.
-When specified, the algorithm will only take into account up to max_points_per_quadrant
-points for each of the right-top, left-top, right-bottom and right-top quadrant
-relative to the point being interpolated.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">min_points_per_quadrant</span></code>: Minimum number of data points to use per quadrant.
-Default is 0. Added in GDAL 3.6.
-If that number is not reached, the point being interpolated will be set with
-the NODATA marker.
-When specified, the algorithm will collect at least min_points_per_quadrant
-points for each of the right-top, left-top, right-bottom and right-top quadrant
-relative to the point being interpolated.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">nodata</span></code>: NODATA marker to fill empty points (default
-0.0).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">power</span></code>: 重み付け係数 (デフォルト 2.0).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">smoothing</span></code>: スムージングパラメータ (デフォルト 0.0).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">radius</span></code>: 検索円の半径,ゼロでない必要があります.デフォルトは 1.0 です.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_points</span></code>: 使用するデータポイントの最大数.この数より多くのポイントを検索しないでください.重み付け時に,見つかったポイントは最も近い距離から最も遠い距離までランク付けされます.デフォルトは 12 です.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">min_points</span></code>: 使用するデータポイントの最小数.見つかったポイントの数が少ない場合,グリッドノードは空と見なされ, NODATA マーカーで埋められます.デフォルトは 0 です.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_points_per_quadrant</span></code>: クォードラントごとに使用するデータポイントの最大数.デフォルトは 0 です. GDAL 3.6 で追加されました.指定された場合,アルゴリズムは補間されるポイントに対して右上,左上,右下,右上の各クォードラントごとに最大 max_points_per_quadrant ポイントまでしか考慮しません.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">min_points_per_quadrant</span></code>: クォードラントごとに使用するデータポイントの最小数.デフォルトは 0 です. GDAL 3.6 で追加されました.その数に達しない場合,補間されるポイントは NODATA マーカーで設定されます.指定された場合,アルゴリズムは補間されるポイントに対して右上,左上,右下,右上の各クォードラントごとに少なくとも min_points_per_quadrant ポイントを収集します.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nodata</span></code>: 空のポイントを埋めるための NODATA マーカー(デフォルト 0.0).</p></li>
 </ul>
-<p>When <code class="docutils literal notranslate"><span class="pre">min_points_per_quadrant</span></code> or <code class="docutils literal notranslate"><span class="pre">max_points_per_quadrant</span></code> is specified, the
-search will start with the closest point to the point being interpolated
-from the first quadrant, then the closest point to the point being interpolated
-from the second quadrant, etc. up to the 4th quadrant, and will continue with
-the next closest point in the first quadrant, etc. until <code class="docutils literal notranslate"><span class="pre">max_points</span></code> and/or
-<code class="docutils literal notranslate"><span class="pre">max_points_per_quadrant</span></code> thresholds are reached.</p>
+<p><code class="docutils literal notranslate"><span class="pre">min_points_per_quadrant</span></code> または <code class="docutils literal notranslate"><span class="pre">max_points_per_quadrant</span></code> が指定された場合,検索は補間されるポイントに最も近いポイントから始まり,最初のクォードラントから補間されるポイントに最も近いポイント,2 番目のクォードラントから補間されるポイントに最も近いポイントなど,4 番目のクォードラントまで続き,最初のクォードラントの次に最も近いポイントなど,``max_points`` および/または <code class="docutils literal notranslate"><span class="pre">max_points_per_quadrant</span></code> のしきい値に達するまで続きます.</p>
 </section>
 <section id="average">
-<span id="gdal-grid-average"></span><h3>average<a class="headerlink" href="#average" title="Link to this heading"></a></h3>
-<p>Moving average algorithm. It has following parameters:</p>
+<span id="gdal-grid-average"></span><h3>平均<a class="headerlink" href="#average" title="Link to this heading"></a></h3>
+<p>移動平均アルゴリズム.次のパラメータがあります:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">radius1</span></code>: The first radius (X axis if rotation angle is 0)
-of search ellipse. Set this parameter to zero to use whole point array.
-Default is 0.0.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">radius2</span></code>: The second radius (Y axis if rotation angle is 0)
-of search ellipse. Set this parameter to zero to use whole point array.
-Default is 0.0.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">radius</span></code>: Set first and second radius (mutually exclusive with radius1 and radius2).
-Default is 0.0. Added in GDAL 3.6</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">angle</span></code>: Angle of search ellipse rotation in degrees
-(counter clockwise, default 0.0).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">max_points</span></code>: Maximum number of data points to use. Do not
-search for more points than this number. Found points will be ranked from
-nearest to furthest distance when weighting. Default is 0. Added in GDAL 3.6
-Only taken into account if one or both of <code class="docutils literal notranslate"><span class="pre">min_points_per_quadrant</span></code> or <code class="docutils literal notranslate"><span class="pre">max_points_per_quadrant</span></code>
-is specified</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">min_points</span></code>: Minimum number of data points to use. If less
-amount of points found the grid node considered empty and will be filled with
-NODATA marker. Default is 0.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">max_points_per_quadrant</span></code>: Maximum number of data points to use per quadrant.
-Default is 0. Added in GDAL 3.6.
-When specified, the algorithm will only take into account up to max_points_per_quadrant
-points for each of the right-top, left-top, right-bottom and right-top quadrant
-relative to the point being interpolated.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">min_points_per_quadrant</span></code>: Minimum number of data points to use per quadrant.
-Default is 0. Added in GDAL 3.6.
-If that number is not reached, the point being interpolated will be set with
-the NODATA marker.
-When specified, the algorithm will collect at least min_points_per_quadrant
-points for each of the right-top, left-top, right-bottom and right-top quadrant
-relative to the point being interpolated.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">nodata</span></code>: NODATA marker to fill empty points (default
-0.0).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">radius1</span></code>: 検索楕円の最初の半径(X 軸,回転角が 0 の場合).このパラメータをゼロに設定して,全点配列を使用します.デフォルトは 0.0 です.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">radius2</span></code>: 検索楕円の 2 番目の半径(Y 軸,回転角が 0 の場合).このパラメータをゼロに設定して,全点配列を使用します.デフォルトは 0.0 です.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">radius</span></code>: 最初の半径と 2 番目の半径を設定します(radius1 と radius2 とは相互排他です).デフォルトは 0.0 です. GDAL 3.6 で追加されました</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">angle</span></code>: 検索楕円の回転角度(度単位,反時計回り,デフォルト 0.0).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_points</span></code>: 使用するデータポイントの最大数.この数より多くのポイントを検索しないでください.重み付け時に,見つかったポイントは最も近い距離から最も遠い距離までランク付けされます.デフォルトは 0 です. GDAL 3.6 で追加されました. <code class="docutils literal notranslate"><span class="pre">min_points_per_quadrant</span></code> または <code class="docutils literal notranslate"><span class="pre">max_points_per_quadrant</span></code> のいずれかまたは両方が指定されている場合のみ考慮されます</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">min_points</span></code>: 使用するデータポイントの最小数.見つかったポイントの数が少ない場合,グリッドノードは空と見なされ, NODATA マーカーで埋められます.デフォルトは 0 です.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_points_per_quadrant</span></code>: クォードラントごとに使用するデータポイントの最大数.デフォルトは 0 です. GDAL 3.6 で追加されました.指定された場合,アルゴリズムは補間されるポイントに対して右上,左上,右下,右上の各クォードラントごとに最大 max_points_per_quadrant ポイントまでしか考慮しません.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">min_points_per_quadrant</span></code>: クォードラントごとに使用するデータポイントの最小数.デフォルトは 0 です. GDAL 3.6 で追加されました.その数に達しない場合,補間されるポイントは NODATA マーカーで設定されます.指定された場合,アルゴリズムは補間されるポイントに対して右上,左上,右下,右上の各クォードラントごとに少なくとも min_points_per_quadrant ポイントを収集します.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nodata</span></code>: 空のポイントを埋めるための NODATA マーカー(デフォルト 0.0).</p></li>
 </ul>
-<p>Note, that it is essential to set search ellipse for moving average method. It
-is a window that will be averaged when computing grid nodes values.</p>
-<p>When <code class="docutils literal notranslate"><span class="pre">min_points_per_quadrant</span></code> or <code class="docutils literal notranslate"><span class="pre">max_points_per_quadrant</span></code> is specified, the
-search will start with the closest point to the point being interpolated
-from the first quadrant, then the closest point to the point being interpolated
-from the second quadrant, etc. up to the 4th quadrant, and will continue with
-the next closest point in the first quadrant, etc. until <code class="docutils literal notranslate"><span class="pre">max_points</span></code> and/or
-<code class="docutils literal notranslate"><span class="pre">max_points_per_quadrant</span></code> thresholds are reached.</p>
+<p>移動平均法には検索楕円を設定することが重要です.これは,グリッドノードの値を計算する際に平均化されるウィンドウです.</p>
+<p><code class="docutils literal notranslate"><span class="pre">min_points_per_quadrant</span></code> または <code class="docutils literal notranslate"><span class="pre">max_points_per_quadrant</span></code> が指定された場合,検索は補間されるポイントに最も近いポイントから始まり,最初のクォードラントから補間されるポイントに最も近いポイント,2 番目のクォードラントから補間されるポイントに最も近いポイントなど,4 番目のクォードラントまで続き,最初のクォードラントの次に最も近いポイントなど,``max_points`` および/または <code class="docutils literal notranslate"><span class="pre">max_points_per_quadrant</span></code> のしきい値に達するまで続きます.</p>
 </section>
 <section id="nearest">
-<span id="gdal-grid-nearest"></span><h3>nearest<a class="headerlink" href="#nearest" title="Link to this heading"></a></h3>
-<p>Nearest neighbor algorithm. It has following parameters:</p>
+<span id="gdal-grid-nearest"></span><h3>最近傍<a class="headerlink" href="#nearest" title="Link to this heading"></a></h3>
+<p>最近傍アルゴリズム.次のパラメータがあります:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">radius1</span></code>: The first radius (X axis if rotation angle is 0)
-of search ellipse. Set this parameter to zero to use whole point array.
-Default is 0.0.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">radius2</span></code>: The second radius (Y axis if rotation angle is 0)
-of search ellipse. Set this parameter to zero to use whole point array.
-Default is 0.0.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">radius</span></code>: Set first and second radius (mutually exclusive with radius1 and radius2).
-Default is 0.0. Added in GDAL 3.6</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">angle</span></code>: Angle of search ellipse rotation in degrees
-(counter clockwise, default 0.0).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">nodata</span></code>: NODATA marker to fill empty points (default
-0.0).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">radius1</span></code>: 検索楕円の最初の半径(X 軸,回転角が 0 の場合).このパラメータをゼロに設定して,全点配列を使用します.デフォルトは 0.0 です.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">radius2</span></code>: 検索楕円の 2 番目の半径(Y 軸,回転角が 0 の場合).このパラメータをゼロに設定して,全点配列を使用します.デフォルトは 0.0 です.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">radius</span></code>: 最初の半径と 2 番目の半径を設定します(radius1 と radius2 とは相互排他です).デフォルトは 0.0 です. GDAL 3.6 で追加されました</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">angle</span></code>: 検索楕円の回転角度(度単位,反時計回り,デフォルト 0.0).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nodata</span></code>: 空のポイントを埋めるための NODATA マーカー(デフォルト 0.0).</p></li>
 </ul>
 </section>
 <section id="linear">
-<h3>linear<a class="headerlink" href="#linear" title="Link to this heading"></a></h3>
+<h3>線形<a class="headerlink" href="#linear" title="Link to this heading"></a></h3>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 2.1.</span></p>
 </div>
-<p>Linear interpolation algorithm.</p>
-<p>The Linear method performs linear interpolation by computing a Delaunay
-triangulation of the point cloud, finding in which triangle of the triangulation
-the point is, and by doing linear interpolation from its barycentric coordinates
-within the triangle.
-If the point is not in any triangle, depending on the radius, the
-algorithm will use the value of the nearest point or the nodata value.</p>
-<p>It has following parameters:</p>
+<p>線形補間アルゴリズム.</p>
+<p>線形法は,点群のデラニ三角形分割を計算し,点が三角形のどこにあるかを見つけ,三角形内のバリセントリック座標から線形補間を行うことで線形補間を実行します.点がどの三角形にも含まれていない場合,半径に応じて,アルゴリズムは最も近い点の値または nodata 値を使用します.</p>
+<p>次のパラメータがあります:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">radius</span></code>: In case the point to be interpolated does not fit
-into a triangle of the Delaunay triangulation, use that maximum distance to search a nearest
-neighbour, or use nodata otherwise. If set to -1, the search distance is infinite.
-If set to 0, nodata value will be always used. Default is -1.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">nodata</span></code>: NODATA marker to fill empty points (default
-0.0).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">radius</span></code>: 補間される点がデラニ三角形分割の三角形に適合しない場合,最大距離を使用して最近傍を検索するか,それ以外の場合は nodata を使用します.-1 に設定すると,検索距離は無限です.0 に設定すると,常に nodata 値が使用されます.デフォルトは -1 です.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nodata</span></code>: 空のポイントを埋めるための NODATA マーカー(デフォルト 0.0).</p></li>
 </ul>
 </section>
 </section>
 <section id="data-metrics">
-<h2>Data metrics<a class="headerlink" href="#data-metrics" title="Link to this heading"></a></h2>
-<p>Besides the interpolation functionality <strong class="program">gdal_grid</strong> can be used to compute
-some data metrics using the specified window and output grid geometry. These
-metrics are:</p>
+<h2>データメトリクス<a class="headerlink" href="#data-metrics" title="Link to this heading"></a></h2>
+<p>補間機能に加えて,指定されたウィンドウと出力グリッドジオメトリを使用して,いくつかのデータメトリクスを計算するために <strong class="program">gdal_grid</strong> を使用できます.これらのメトリクスは次のとおりです:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">minimum</span></code>: Minimum value found in grid node search ellipse.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">maximum</span></code>: Maximum value found in grid node search ellipse.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">range</span></code>: A difference between the minimum and maximum values
-found in grid node search ellipse.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">count</span></code>:  A number of data points found in grid node search ellipse.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">average_distance</span></code>: An average distance between the grid
-node (center of the search ellipse) and all of the data points found in grid
-node search ellipse.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">average_distance_pts</span></code>: An average distance between the data
-points found in grid node search ellipse. The distance between each pair of
-points within ellipse is calculated and average of all distances is set as a
-grid node value.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">minimum</span></code>: 検索楕円グリッドノード内の最小値.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">maximum</span></code>: 検索楕円グリッドノード内の最大値.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">range</span></code>: 検索楕円グリッドノード内で見つかった最小値と最大値の差.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">count</span></code>: 検索楕円グリッドノード内で見つかったデータポイントの数.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">average_distance</span></code>: グリッドノード(検索楕円の中心)と検索楕円グリッドノード内で見つかったすべてのデータポイントとの平均距離.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">average_distance_pts</span></code>: 検索楕円グリッドノード内で見つかったデータポイント間の平均距離.楕円内の各ペアのポイント間の距離が計算され,すべての距離の平均がグリッドノード値として設定されます.</p></li>
 </ul>
-<p>All the metrics have the same set of options:</p>
+<p>すべてのメトリクスには同じオプションセットがあります:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">radius1</span></code>: The first radius (X axis if rotation angle is 0)
-of search ellipse. Set this parameter to zero to use whole point array.
-Default is 0.0.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">radius2</span></code>: The second radius (Y axis if rotation angle is 0)
-of search ellipse. Set this parameter to zero to use whole point array.
-Default is 0.0.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">radius</span></code>: Set first and second radius (mutually exclusive with radius1 and radius2).
-Default is 0.0. Added in GDAL 3.6</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">angle</span></code>: Angle of search ellipse rotation in degrees
-(counter clockwise, default 0.0).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">min_points</span></code>: Minimum number of data points to use. If less
-amount of points found the grid node considered empty and will be filled with
-NODATA marker. This is only used if search ellipse is set (both radii are
-non-zero). Default is 0.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">max_points_per_quadrant</span></code>: Maximum number of data points to use per quadrant.
-Default is 0. Added in GDAL 3.6.
-When specified, the algorithm will only take into account up to max_points_per_quadrant
-points for each of the right-top, left-top, right-bottom and right-top quadrant
-relative to the point being interpolated.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">min_points_per_quadrant</span></code>: Minimum number of data points to use per quadrant.
-Default is 0. Added in GDAL 3.6.
-If that number is not reached, the point being interpolated will be set with
-the NODATA marker.
-When specified, the algorithm will collect at least min_points_per_quadrant
-points for each of the right-top, left-top, right-bottom and right-top quadrant
-relative to the point being interpolated.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">nodata</span></code>: NODATA marker to fill empty points (default
-0.0).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">radius1</span></code>: 検索楕円の最初の半径(X 軸,回転角が 0 の場合).このパラメータをゼロに設定して,全点配列を使用します.デフォルトは 0.0 です.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">radius2</span></code>: 検索楕円の 2 番目の半径(Y 軸,回転角が 0 の場合).このパラメータをゼロに設定して,全点配列を使用します.デフォルトは 0.0 です.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">radius</span></code>: 最初の半径と 2 番目の半径を設定します(radius1 と radius2 とは相互排他です).デフォルトは 0.0 です. GDAL 3.6 で追加されました</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">angle</span></code>: 検索楕円の回転角度(度単位,反時計回り,デフォルト 0.0).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">min_points</span></code>: 使用するデータポイントの最小数.見つかったポイントの数が少ない場合,グリッドノードは空と見なされ, NODATA マーカーで埋められます.これは検索楕円が設定されている場合のみ使用されます(両方の半径がゼロでない).デフォルトは 0 です.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_points_per_quadrant</span></code>: クォードラントごとに使用するデータポイントの最大数.デフォルトは 0 です. GDAL 3.6 で追加されました.指定された場合,アルゴリズムは補間されるポイントに対して右上,左上,右下,右上の各クォードラントごとに最大 max_points_per_quadrant ポイントまでしか考慮しません.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">min_points_per_quadrant</span></code>: クォードラントごとに使用するデータポイントの最小数.デフォルトは 0 です. GDAL 3.6 で追加されました.その数に達しない場合,補間されるポイントは NODATA マーカーで設定されます.指定された場合,アルゴリズムは補間されるポイントに対して右上,左上,右下,右上の各クォードラントごとに少なくとも min_points_per_quadrant ポイントを収集します.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nodata</span></code>: 空のポイントを埋めるための NODATA マーカー(デフォルト 0.0).</p></li>
 </ul>
-<p>When <code class="docutils literal notranslate"><span class="pre">min_points_per_quadrant</span></code> or <code class="docutils literal notranslate"><span class="pre">max_points_per_quadrant</span></code> is specified, the
-search will start with the closest point to the point being interpolated
-from the first quadrant, then the closest point to the point being interpolated
-from the second quadrant, etc. up to the 4th quadrant, and will continue with
-the next closest point in the first quadrant, etc. until <code class="docutils literal notranslate"><span class="pre">max_points</span></code> and/or
-<code class="docutils literal notranslate"><span class="pre">max_points_per_quadrant</span></code> thresholds are reached.</p>
+<p><code class="docutils literal notranslate"><span class="pre">min_points_per_quadrant</span></code> または <code class="docutils literal notranslate"><span class="pre">max_points_per_quadrant</span></code> が指定された場合,検索は補間されるポイントに最も近いポイントから始まり,最初のクォードラントから補間されるポイントに最も近いポイント,2 番目のクォードラントから補間されるポイントに最も近いポイントなど,4 番目のクォードラントまで続き,最初のクォードラントの次に最も近いポイントなど,``max_points`` および/または <code class="docutils literal notranslate"><span class="pre">max_points_per_quadrant</span></code> のしきい値に達するまで続きます.</p>
 </section>
 <section id="reading-comma-separated-values">
-<h2>Reading comma separated values<a class="headerlink" href="#reading-comma-separated-values" title="Link to this heading"></a></h2>
-<p>Often you have a text file with a list of comma separated XYZ values to work
-with (so called CSV file). You can easily use that kind of data source in
-<strong class="program">gdal_grid</strong>. All you need is to create a virtual dataset header (VRT) for your CSV
-file and use it as an input datasource for <strong class="program">gdal_grid</strong>. You can find details
-on the VRT format on the <a class="reference internal" href="../drivers/vector/vrt.html#vector-vrt"><span class="std std-ref">VRT -- Virtual Format</span></a> description page.</p>
-<p>Here is a small example. Let's say we have a CSV file called <em>dem.csv</em>
-containing</p>
+<h2>カンマ区切り値の読み取り<a class="headerlink" href="#reading-comma-separated-values" title="Link to this heading"></a></h2>
+<p>しばしば,作業するためのカンマ区切り XYZ 値のリストを含むテキストファイル(いわゆる CSV ファイル)があります. <strong class="program">gdal_grid</strong> でその種類のデータソースを簡単に使用できます.必要なのは,CSV ファイルの仮想データセットヘッダ(VRT)を作成し, <strong class="program">gdal_grid</strong> の入力データソースとして使用するだけです. VRT フォーマットの詳細については, <a class="reference internal" href="../drivers/vector/vrt.html#vector-vrt"><span class="std std-ref">VRT -- Virtual Format</span></a> 説明ページを参照してください.</p>
+<p>以下に小さな例を示します. <em>dem.csv</em> という CSV ファイルが含まれているとします.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Easting</span><span class="p">,</span><span class="n">Northing</span><span class="p">,</span><span class="n">Elevation</span>
 <span class="mf">86943.4</span><span class="p">,</span><span class="mi">891957</span><span class="p">,</span><span class="mf">139.13</span>
 <span class="mf">87124.3</span><span class="p">,</span><span class="mi">892075</span><span class="p">,</span><span class="mf">135.01</span>
@@ -668,8 +495,7 @@ containing</p>
 <span class="o">...</span>
 </pre></div>
 </div>
-<p>For the above data we will create a <em>dem.vrt</em> header with the following
-content:</p>
+<p>上記のデータに対して,以下の内容の <em>dem.vrt</em> ヘッダを作成します:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;OGRVRTDataSource&gt;</span>
 <span class="w">    </span><span class="nt">&lt;OGRVRTLayer</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;dem&quot;</span><span class="nt">&gt;</span>
 <span class="w">        </span><span class="nt">&lt;SrcDataSource&gt;</span>dem.csv<span class="nt">&lt;/SrcDataSource&gt;</span>
@@ -679,40 +505,30 @@ content:</p>
 <span class="nt">&lt;/OGRVRTDataSource&gt;</span>
 </pre></div>
 </div>
-<p>This description specifies so called 2.5D geometry with  three  coordinates
-X,  Y and Z. The Z value will be used for interpolation. Now you can
-use <em>dem.vrt</em> with all OGR programs (start  with  <a class="reference internal" href="ogrinfo.html#ogrinfo"><span class="std std-ref">ogrinfo</span></a>  to  test  that
-everything works fine). The datasource will contain a single layer called
-<em>&quot;dem&quot;</em>  filled  with point features constructed from values in the CSV file.
-Using this technique you can handle CSV  files  with  more  than  three
-columns, switch columns, etc. OK, now the final step:</p>
+<p>この記述は,3 つの座標 X, Y, Z を持ついわゆる 2.5D ジオメトリを指定します. Z 値が補間に使用されます.これで <em>dem.vrt</em> をすべての OGR プログラムで使用できます(<a class="reference internal" href="ogrinfo.html#ogrinfo"><span class="std std-ref">ogrinfo</span></a> から始めて,すべてが正常に動作するかどうかをテストしてください).データソースには,CSV ファイルの値から構築されたポイントフィーチャで構成された <em>&quot;dem&quot;</em> という名前の単一レイヤが含まれます.このテクニックを使用すると,3 列以上の CSV ファイルを処理したり,列を切り替えたりすることができます.では,最後のステップです:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdal_grid</span> <span class="n">dem</span><span class="o">.</span><span class="n">vrt</span> <span class="n">demv</span><span class="o">.</span><span class="n">tif</span>
 </pre></div>
 </div>
-<p>Or, if we do not wish to use a VRT file:</p>
+<p>または,VRT ファイルを使用したくない場合:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdal_grid</span> <span class="o">-</span><span class="n">l</span> <span class="n">dem</span> <span class="o">-</span><span class="n">oo</span> <span class="n">X_POSSIBLE_NAMES</span><span class="o">=</span><span class="n">Easting</span> \
 <span class="o">-</span><span class="n">oo</span> <span class="n">Y_POSSIBLE_NAMES</span><span class="o">=</span><span class="n">Northing</span> <span class="o">-</span><span class="n">zfield</span> <span class="n">Elevation</span> <span class="n">dem</span><span class="o">.</span><span class="n">csv</span> <span class="n">dem</span><span class="o">.</span><span class="n">tif</span>
 </pre></div>
 </div>
-<p>If your CSV file does not contain column headers then it can be handled
-in the VRT file in the following way:</p>
+<p>CSV ファイルに列ヘッダが含まれていない場合,以下の方法で VRT ファイルで処理できます:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;GeometryField</span><span class="w"> </span><span class="na">encoding=</span><span class="s">&quot;PointFromColumns&quot;</span><span class="w"> </span><span class="na">x=</span><span class="s">&quot;field_1&quot;</span><span class="w"> </span><span class="na">y=</span><span class="s">&quot;field_2&quot;</span><span class="w"> </span><span class="na">z=</span><span class="s">&quot;field_3&quot;</span><span class="nt">/&gt;</span>
 </pre></div>
 </div>
-<p>The <a class="reference internal" href="../drivers/vector/csv.html#vector-csv"><span class="std std-ref">Comma Separated Value (.csv)</span></a> description page contains
-details on CSV format supported by GDAL/OGR.</p>
+<p><a class="reference internal" href="../drivers/vector/csv.html#vector-csv"><span class="std std-ref">Comma Separated Value (.csv)</span></a> 説明ページには,GDAL/OGR でサポートされている CSV フォーマットの詳細が記載されています.</p>
 </section>
 <section id="creating-multiband-files">
-<h2>Creating multiband files<a class="headerlink" href="#creating-multiband-files" title="Link to this heading"></a></h2>
-<p>Creating multiband files is not directly possible with gdal_grid.
-One might use gdal_grid multiple times to create one band per file,
-and then use <a class="reference internal" href="gdalbuildvrt.html#gdalbuildvrt"><span class="std std-ref">gdalbuildvrt</span></a> -separate and then <a class="reference internal" href="gdal_translate.html#gdal-translate"><span class="std std-ref">gdal_translate</span></a>:</p>
+<h2>マルチバンドファイルの作成<a class="headerlink" href="#creating-multiband-files" title="Link to this heading"></a></h2>
+<p>gdal_grid で直接マルチバンドファイルを作成することはできません.1 つのファイルあたり 1 バンドを作成するために複数回 gdal_grid を使用し,次に <a class="reference internal" href="gdalbuildvrt.html#gdalbuildvrt"><span class="std std-ref">gdalbuildvrt</span></a> -separate を使用してから <a class="reference internal" href="gdal_translate.html#gdal-translate"><span class="std std-ref">gdal_translate</span></a> を使用することができます:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_grid<span class="w"> </span>...<span class="w"> </span><span class="m">1</span>.tif<span class="p">;</span><span class="w"> </span>gdal_grid<span class="w"> </span>...<span class="w"> </span><span class="m">2</span>.tif<span class="p">;</span><span class="w"> </span>gdal_grid<span class="w"> </span>...<span class="w"> </span><span class="m">3</span>.tif
 gdalbuildvrt<span class="w"> </span>-separate<span class="w"> </span><span class="m">123</span>.vrt<span class="w"> </span><span class="m">1</span>.tif<span class="w"> </span><span class="m">2</span>.tif<span class="w"> </span><span class="m">3</span>.tif
 gdal_translate<span class="w"> </span><span class="m">123</span>.vrt<span class="w"> </span><span class="m">123</span>.tif
 </pre></div>
 </div>
-<p>Or just use <a class="reference internal" href="gdal_merge.html#gdal-merge"><span class="std std-ref">gdal_merge</span></a>, to combine the one-band files into a single one:</p>
+<p>または,1 バンドファイルを 1 つのファイルに結合するために <a class="reference internal" href="gdal_merge.html#gdal-merge"><span class="std std-ref">gdal_merge</span></a> を使用することもできます:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_grid<span class="w"> </span>...<span class="w"> </span>a.tif<span class="p">;</span><span class="w"> </span>gdal_grid<span class="w"> </span>...<span class="w"> </span>b.tif<span class="p">;</span><span class="w"> </span>gdal_grid<span class="w"> </span>...<span class="w"> </span>c.tif
 gdal_merge<span class="w"> </span>-separate<span class="w"> </span>a.tif<span class="w"> </span>b.tif<span class="w"> </span>c.tif<span class="w"> </span>-o<span class="w"> </span>d.tif
 </pre></div>
@@ -720,22 +536,16 @@ gdal_merge<span class="w"> </span>-separate<span class="w"> </span>a.tif<span cl
 </section>
 <section id="c-api">
 <h2>C API<a class="headerlink" href="#c-api" title="Link to this heading"></a></h2>
-<p>This utility is also callable from C with <a class="reference internal" href="../api/gdal_utils.html#_CPPv48GDALGridPKc12GDALDatasetHPK15GDALGridOptionsPi" title="GDALGrid"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALGrid()</span></code></a>.</p>
+<p>このユーティリティは, <a class="reference internal" href="../api/gdal_utils.html#_CPPv48GDALGridPKc12GDALDatasetHPK15GDALGridOptionsPi" title="GDALGrid"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALGrid()</span></code></a> を使用して C からも呼び出すことができます.</p>
 </section>
 <section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
-<p>The following would create raster TIFF file from VRT datasource described in
-<a class="reference internal" href="#reading-comma-separated-values">Reading comma separated values</a> section using the inverse distance to a power method.
-Values to interpolate will be read from Z value of geometry record.</p>
+<h2>例<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
+<p>次のコマンドは,逆距離べき乗法を使用して, <a class="reference internal" href="#reading-comma-separated-values">Reading comma separated values</a> セクションで説明されている VRT データソースからラスター TIFF ファイルを作成します.補間する値は,ジオメトリレコードの Z 値から読み取られます.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdal_grid</span> <span class="o">-</span><span class="n">a</span> <span class="n">invdist</span><span class="p">:</span><span class="n">power</span><span class="o">=</span><span class="mf">2.0</span><span class="p">:</span><span class="n">smoothing</span><span class="o">=</span><span class="mf">1.0</span> <span class="o">-</span><span class="n">txe</span> <span class="mi">85000</span> <span class="mi">89000</span> <span class="o">-</span><span class="n">tye</span> <span class="mi">894000</span> <span class="mi">890000</span> \
     <span class="o">-</span><span class="n">outsize</span> <span class="mi">400</span> <span class="mi">400</span> <span class="o">-</span><span class="n">of</span> <span class="n">GTiff</span> <span class="o">-</span><span class="n">ot</span> <span class="n">Float64</span> <span class="o">-</span><span class="n">l</span> <span class="n">dem</span> <span class="n">dem</span><span class="o">.</span><span class="n">vrt</span> <span class="n">dem</span><span class="o">.</span><span class="n">tiff</span>
 </pre></div>
 </div>
-<p>The next command does the same thing as the previous one, but reads values to
-interpolate from the attribute field specified with <strong>-zfield</strong> option
-instead of geometry record. So in this case X and Y coordinates are being
-taken from geometry and Z is being taken from the <em>&quot;Elevation&quot;</em> field.
-The <a class="reference internal" href="../user/configoptions.html#config-GDAL_NUM_THREADS"><code class="docutils literal notranslate"><span class="pre">GDAL_NUM_THREADS</span></code></a> is also set to parallelize the computation.</p>
+<p>次のコマンドは,前のコマンドと同じことを行いますが,**-zfield** オプションで指定された属性フィールドから補間する値を読み取ります.この場合, X と Y 座標はジオメトリから取得され,Z は <em>&quot;Elevation&quot;</em> フィールドから取得されます.計算を並列化するために <a class="reference internal" href="../user/configoptions.html#config-GDAL_NUM_THREADS"><code class="docutils literal notranslate"><span class="pre">GDAL_NUM_THREADS</span></code></a> も設定されています.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdal_grid</span> <span class="o">-</span><span class="n">zfield</span> <span class="s2">&quot;Elevation&quot;</span> <span class="o">-</span><span class="n">a</span> <span class="n">invdist</span><span class="p">:</span><span class="n">power</span><span class="o">=</span><span class="mf">2.0</span><span class="p">:</span><span class="n">smoothing</span><span class="o">=</span><span class="mf">1.0</span> <span class="o">-</span><span class="n">txe</span> <span class="mi">85000</span> <span class="mi">89000</span> \
     <span class="o">-</span><span class="n">tye</span> <span class="mi">894000</span> <span class="mi">890000</span> <span class="o">-</span><span class="n">outsize</span> <span class="mi">400</span> <span class="mi">400</span> <span class="o">-</span><span class="n">of</span> <span class="n">GTiff</span> <span class="o">-</span><span class="n">ot</span> <span class="n">Float64</span> <span class="o">-</span><span class="n">l</span> <span class="n">dem</span> <span class="n">dem</span><span class="o">.</span><span class="n">vrt</span> \
     <span class="n">dem</span><span class="o">.</span><span class="n">tiff</span> <span class="o">--</span><span class="n">config</span> <span class="n">GDAL_NUM_THREADS</span> <span class="n">ALL_CPUS</span>

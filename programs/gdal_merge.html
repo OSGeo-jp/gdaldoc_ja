@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>gdal_merge &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=75499f83" />
 
   
     <link rel="shortcut icon" href="../_static/favicon.png"/>
@@ -66,9 +66,9 @@
 <li class="toctree-l3"><a class="reference internal" href="gdal_footprint.html">gdal_footprint</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdal_grid.html">gdal_grid</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">gdal_merge</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#synopsis">Synopsis</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#synopsis">概要</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#description">説明</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#examples">例</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="gdal_pansharpen.html">gdal_pansharpen</a></li>
@@ -184,9 +184,9 @@
              
   <section id="gdal-merge">
 <span id="id1"></span><h1>gdal_merge<a class="headerlink" href="#gdal-merge" title="Link to this heading"></a></h1>
-<p>Mosaics a set of images.</p>
+<p>イメージセットをモザイクします.</p>
 <section id="synopsis">
-<span id="index-0"></span><h2>Synopsis<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
+<span id="index-0"></span><h2>概要<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdal_merge</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="o">-</span><span class="n">general</span><span class="p">]</span>
               <span class="p">[</span><span class="o">-</span><span class="n">o</span> <span class="o">&lt;</span><span class="n">out_filename</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">of</span> <span class="o">&lt;</span><span class="n">out_format</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">co</span> <span class="o">&lt;</span><span class="n">NAME</span><span class="o">&gt;=&lt;</span><span class="n">VALUE</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span>
               <span class="p">[</span><span class="o">-</span><span class="n">ps</span> <span class="o">&lt;</span><span class="n">pixelsize_x</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">pixelsize_y</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">tap</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">separate</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">q</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">v</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">pct</span><span class="p">]</span>
@@ -197,197 +197,157 @@
 </div>
 </section>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
-<p>This utility will automatically mosaic a set of images.  All the images must
-be in the same coordinate system and have a matching number of bands, but
-they may be overlapping, and at different resolutions. In areas of overlap,
-the last image will be copied over earlier ones. Nodata/transparency values
-are considered on a band by band level, i.e. a nodata/transparent pixel on
-one source band will not set a nodata/transparent value on all bands for the
-target pixel in the resulting raster nor will it overwrite a valid pixel value.</p>
+<h2>説明<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>このユーティリティは,イメージセットを自動的にモザイクします.すべてのイメージは同じ座標系にあり,一致するバンド数を持っている必要がありますが,重なり合っていて異なる解像度であっても構いません.重なり合う領域では,最後のイメージが以前のものにコピーされます.ノーデータ/透過値はバンドごとに考慮されます.つまり,ソースバンドのノーデータ/透過ピクセルは,結果のラスターの対象ピクセルのすべてのバンドにノーデータ/透過値を設定するわけではありません.また,有効なピクセル値を上書きすることもありません.</p>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
-<p>gdal_merge is a Python utility, and is only available if GDAL Python bindings are available.</p>
+<p>gdal_merge は Python ユーティリティであり, GDAL Python バインディングが利用可能な場合のみ利用できます.</p>
 </div>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_merge-help">
 <span class="sig-name descname"><span class="pre">--help</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal_merge-help" title="Link to this definition"></a></dt>
-<dd><p>Show this help message and exit</p>
+<dd><p>このヘルプメッセージを表示して終了します</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_merge-help-general">
 <span class="sig-name descname"><span class="pre">--help-general</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal_merge-help-general" title="Link to this definition"></a></dt>
-<dd><p>Gives a brief usage message for the generic GDAL commandline options and exit.</p>
+<dd><p>一般的な GDAL コマンドラインオプションの使用方法を簡単に表示して終了します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_merge-o">
 <span class="sig-name descname"><span class="pre">-o</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;out_filename&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_merge-o" title="Link to this definition"></a></dt>
-<dd><p>The name of the output file,
-which will be created if it does not already exist (defaults to &quot;out.tif&quot;).</p>
+<dd><p>出力ファイルの名前です.存在しない場合は作成されます(デフォルトは &quot;out.tif&quot;).</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_merge-of">
 <span class="sig-name descname"><span class="pre">-of</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;format&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_merge-of" title="Link to this definition"></a></dt>
-<dd><p>Select the output format. Starting with GDAL 2.3, if not specified, the
-format is guessed from the extension (previously was GTiff). Use the short
-format name.</p>
+<dd><p>出力フォーマットを選択します. GDAL 2.3 以降,指定されていない場合,フォーマットは拡張子から推測されます(以前は GTiff でした).短いフォーマット名を使用します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_merge-co">
 <span class="sig-name descname"><span class="pre">-co</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_merge-co" title="Link to this definition"></a></dt>
-<dd><p>Many formats have one or more optional creation options that can be
-used to control particulars about the file created. For instance,
-the GeoTIFF driver supports creation options to control compression,
-and whether the file should be tiled.</p>
-<p>The creation options available vary by format driver, and some
-simple formats have no creation options at all. A list of options
-supported for a format can be listed with the
-<a class="reference internal" href="raster_common_options.html#raster-common-options-formats"><span class="std std-ref">--formats</span></a>
-command line option but the documentation for the format is the
-definitive source of information on driver creation options.
-See <a class="reference internal" href="../drivers/raster/index.html#raster-drivers"><span class="std std-ref">ラスタードライバー</span></a> format
-specific documentation for legal creation options for each format.</p>
+<dd><p>多くのフォーマットには,作成されたファイルに関する特定の情報を制御するために使用できる 1 つ以上のオプションがあります.たとえば,GeoTIFF ドライバは,圧縮を制御する作成オプションやファイルをタイル化するかどうかを制御する作成オプションをサポートしています.</p>
+<p>利用可能な作成オプションはフォーマットドライバによって異なり,一部のシンプルなフォーマットには作成オプションが全くありません.フォーマットでサポートされているオプションのリストは,コマンドラインオプション <a class="reference internal" href="raster_common_options.html#raster-common-options-formats"><span class="std std-ref">--formats</span></a> でリストできますが,フォーマットのドキュメントがドライバ作成オプションに関する情報の決定的なソースです.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_merge-ot">
 <span class="sig-name descname"><span class="pre">-ot</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;type&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_merge-ot" title="Link to this definition"></a></dt>
-<dd><p>Force the output image bands to have a specific data type supported by the
-driver, which may be one of the following: <code class="docutils literal notranslate"><span class="pre">Byte</span></code>, <code class="docutils literal notranslate"><span class="pre">Int8</span></code>, <code class="docutils literal notranslate"><span class="pre">UInt16</span></code>,
-<code class="docutils literal notranslate"><span class="pre">Int16</span></code>, <code class="docutils literal notranslate"><span class="pre">UInt32</span></code>, <code class="docutils literal notranslate"><span class="pre">Int32</span></code>, <code class="docutils literal notranslate"><span class="pre">UInt64</span></code>, <code class="docutils literal notranslate"><span class="pre">Int64</span></code>, <code class="docutils literal notranslate"><span class="pre">Float32</span></code>, <code class="docutils literal notranslate"><span class="pre">Float64</span></code>, <code class="docutils literal notranslate"><span class="pre">CInt16</span></code>,
-<code class="docutils literal notranslate"><span class="pre">CInt32</span></code>, <code class="docutils literal notranslate"><span class="pre">CFloat32</span></code> or <code class="docutils literal notranslate"><span class="pre">CFloat64</span></code>.</p>
+<dd><p>出力画像バンドをドライバでサポートされている特定のデータ型に強制します.これは次のいずれかである可能性があります:<code class="docutils literal notranslate"><span class="pre">Byte</span></code>, <code class="docutils literal notranslate"><span class="pre">Int8</span></code>, <code class="docutils literal notranslate"><span class="pre">UInt16</span></code>, <code class="docutils literal notranslate"><span class="pre">Int16</span></code>, <code class="docutils literal notranslate"><span class="pre">UInt32</span></code>, <code class="docutils literal notranslate"><span class="pre">Int32</span></code>, <code class="docutils literal notranslate"><span class="pre">UInt64</span></code>, <code class="docutils literal notranslate"><span class="pre">Int64</span></code>, <code class="docutils literal notranslate"><span class="pre">Float32</span></code>, <code class="docutils literal notranslate"><span class="pre">Float64</span></code>, <code class="docutils literal notranslate"><span class="pre">CInt16</span></code>, <code class="docutils literal notranslate"><span class="pre">CInt32</span></code>, <code class="docutils literal notranslate"><span class="pre">CFloat32</span></code> または <code class="docutils literal notranslate"><span class="pre">CFloat64</span></code>.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_merge-ps">
 <span class="sig-name descname"><span class="pre">-ps</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;pixelsize_x&gt;</span> <span class="pre">&lt;pixelsize_y&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_merge-ps" title="Link to this definition"></a></dt>
-<dd><p>Pixel size to be used for the
-output file.  If not specified the resolution of the first input file will
-be used.</p>
+<dd><p>出力ファイルに使用するピクセルサイズです.指定されていない場合,最初の入力ファイルの解像度が使用されます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_merge-tap">
 <span class="sig-name descname"><span class="pre">-tap</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal_merge-tap" title="Link to this definition"></a></dt>
-<dd><p>(target aligned pixels) align
-the coordinates of the extent of the output file to the values of the -tr,
-such that the aligned extent includes the minimum extent.
-Alignment means that xmin / resx, ymin / resy, xmax / resx and ymax / resy are integer values.</p>
+<dd><p>(ターゲットアラインドピクセル)出力ファイルの範囲の座標を -tr の値に整列させることで,整列された範囲が最小範囲を含むようにします.整列とは,xmin / resx, ymin / resy, xmax / resx および ymax / resy が整数値であることを意味します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_merge-ul_lr">
 <span class="sig-name descname"><span class="pre">-ul_lr</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;ulx&gt;</span> <span class="pre">&lt;uly&gt;</span> <span class="pre">&lt;lrx&gt;</span> <span class="pre">&lt;lry&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_merge-ul_lr" title="Link to this definition"></a></dt>
-<dd><p>The extents of the output file.
-If not specified the aggregate extents of all input files will be
-used.</p>
+<dd><p>出力ファイルの範囲です.指定されていない場合,すべての入力ファイルの集計範囲が使用されます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_merge-q">
 <span id="cmdoption-gdal_merge-quiet"></span><span class="sig-name descname"><span class="pre">-q</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">-quiet</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal_merge-q" title="Link to this definition"></a></dt>
-<dd><p>Suppress progress messages.</p>
+<dd><p>進行メッセージを抑制します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_merge-v">
 <span class="sig-name descname"><span class="pre">-v</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal_merge-v" title="Link to this definition"></a></dt>
-<dd><p>Generate verbose output of mosaicing operations as they are done.</p>
+<dd><p>モザイク操作が行われるときの操作の詳細な出力を生成します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_merge-separate">
 <span class="sig-name descname"><span class="pre">-separate</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal_merge-separate" title="Link to this definition"></a></dt>
-<dd><p>Place each input file into a separate band.</p>
+<dd><p>各入力ファイルを別々のバンドに配置します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_merge-pct">
 <span class="sig-name descname"><span class="pre">-pct</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal_merge-pct" title="Link to this definition"></a></dt>
-<dd><p>Grab a pseudo-color table from the first input image, and use it for the output.
-Merging pseudo-colored images this way assumes that all input files use the same
-color table.</p>
+<dd><p>最初の入力イメージから疑似カラーテーブルを取得し,出力に使用します.この方法で疑似カラーイメージをマージすると,すべての入力ファイルが同じカラーテーブルを使用していると仮定されます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_merge-n">
 <span class="sig-name descname"><span class="pre">-n</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;nodata_value&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_merge-n" title="Link to this definition"></a></dt>
-<dd><p>Ignore pixels from files being merged in with this pixel value.</p>
+<dd><p>マージされるファイルからのピクセルをこのピクセル値で無視します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_merge-a_nodata">
 <span class="sig-name descname"><span class="pre">-a_nodata</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;output_nodata_value&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_merge-a_nodata" title="Link to this definition"></a></dt>
-<dd><p>Assign a specified nodata value to output bands.</p>
+<dd><p>指定されたノーデータ値を出力バンドに割り当てます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_merge-init">
 <span class="sig-name descname"><span class="pre">-init</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;&quot;value(s)&quot;&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_merge-init" title="Link to this definition"></a></dt>
-<dd><p>Pre-initialize the output image bands with these values.  However, it is not
-marked as the nodata value in the output file.  If only one value is given, the
-same value is used in all the bands.</p>
+<dd><p>これらの値で出力画像バンドを事前初期化します.ただし,出力ファイルではノーデータ値としてマークされていません.1 つの値のみが与えられた場合,すべてのバンドで同じ値が使用されます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_merge-createonly">
 <span class="sig-name descname"><span class="pre">-createonly</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal_merge-createonly" title="Link to this definition"></a></dt>
-<dd><p>The output file is created (and potentially pre-initialized) but no input
-image data is copied into it.</p>
+<dd><p>出力ファイルが作成され(おそらく事前初期化されます)が,入力イメージデータはコピーされません.</p>
 </dd></dl>
 
 </section>
 <section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
+<h2>例<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
 <section id="creating-an-image-with-the-pixels-in-all-bands-initialized-to-255">
-<h3>Creating an image with the pixels in all bands initialized to 255<a class="headerlink" href="#creating-an-image-with-the-pixels-in-all-bands-initialized-to-255" title="Link to this heading"></a></h3>
+<h3>すべてのバンドのピクセルを 255 で初期化したイメージを作成します<a class="headerlink" href="#creating-an-image-with-the-pixels-in-all-bands-initialized-to-255" title="Link to this heading"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdal_merge</span> <span class="o">-</span><span class="n">init</span> <span class="mi">255</span> <span class="o">-</span><span class="n">o</span> <span class="n">out</span><span class="o">.</span><span class="n">tif</span> <span class="n">in1</span><span class="o">.</span><span class="n">tif</span> <span class="n">in2</span><span class="o">.</span><span class="n">tif</span>
 </pre></div>
 </div>
 </section>
 <section id="creating-an-rgb-image-that-shows-blue-in-pixels-with-no-data">
-<h3>Creating an RGB image that shows blue in pixels with no data<a class="headerlink" href="#creating-an-rgb-image-that-shows-blue-in-pixels-with-no-data" title="Link to this heading"></a></h3>
-<p>The first two bands will be initialized to 0 and the third band will be
-initialized to 255.</p>
+<h3>ノーデータのピクセルに青を表示する RGB イメージを作成します<a class="headerlink" href="#creating-an-rgb-image-that-shows-blue-in-pixels-with-no-data" title="Link to this heading"></a></h3>
+<p>最初の 2 つのバンドは 0 で初期化され,3 番目のバンドは 255 で初期化されます.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdal_merge</span> <span class="o">-</span><span class="n">init</span> <span class="s2">&quot;0 0 255&quot;</span> <span class="o">-</span><span class="n">o</span> <span class="n">out</span><span class="o">.</span><span class="n">tif</span> <span class="n">in1</span><span class="o">.</span><span class="n">tif</span> <span class="n">in2</span><span class="o">.</span><span class="n">tif</span>
 </pre></div>
 </div>
 </section>
 <section id="passing-a-large-list-of-files-to-gdal-merge">
-<h3>Passing a large list of files to <strong class="program">gdal_merge</strong><a class="headerlink" href="#passing-a-large-list-of-files-to-gdal-merge" title="Link to this heading"></a></h3>
-<p>A large list of files can be passed to <strong class="program">gdal_merge</strong> by
-listing them in a text file using:</p>
+<h3><strong class="program">gdal_merge</strong> に大量のファイルを渡します<a class="headerlink" href="#passing-a-large-list-of-files-to-gdal-merge" title="Link to this heading"></a></h3>
+<p>大量のファイルを <strong class="program">gdal_merge</strong> に渡すには,テキストファイルにリストして次のようにします:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>-1<span class="w"> </span>*.tif<span class="w"> </span>&gt;<span class="w"> </span>tiff_list.txt
 </pre></div>
 </div>
-<p>on Linux, or</p>
+<p>Linux では,または</p>
 <div class="highlight-doscon notranslate"><div class="highlight"><pre><span></span><span class="gp">dir /b /s *.tif &gt;</span> tiff_list.txt
 </pre></div>
 </div>
-<p>on Windows. The text file can then be passed to <strong class="program">gdal_merge</strong>
-using <cite>--optfile</cite>:</p>
+<p>Windows では.テキストファイルは <cite>--optfile</cite> を使用して <strong class="program">gdal_merge</strong> に渡すことができます:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdal_merge</span> <span class="o">-</span><span class="n">o</span> <span class="n">mosaic</span><span class="o">.</span><span class="n">tif</span> <span class="o">--</span><span class="n">optfile</span> <span class="n">tiff_list</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
 </section>
 <section id="creating-an-rgb-image-by-merging-3-different-greyscale-bands">
-<h3>Creating an RGB image by merging 3 different greyscale bands<a class="headerlink" href="#creating-an-rgb-image-by-merging-3-different-greyscale-bands" title="Link to this heading"></a></h3>
-<p>Conduct &quot;merging by stacking&quot; with the <a class="reference internal" href="#cmdoption-gdal_merge-separate"><code class="xref std std-option docutils literal notranslate"><span class="pre">-separate</span></code></a> flag. Given three
-greyscale files that cover the same area, you can run:</p>
+<h3>3 つの異なるグレースケールバンドをマージして RGB イメージを作成します<a class="headerlink" href="#creating-an-rgb-image-by-merging-3-different-greyscale-bands" title="Link to this heading"></a></h3>
+<p><a class="reference internal" href="#cmdoption-gdal_merge-separate"><code class="xref std std-option docutils literal notranslate"><span class="pre">-separate</span></code></a> フラグを使用して &quot;スタックによるマージ&quot; を実行します.同じ領域をカバーする 3 つのグレースケールファイルがある場合,次のように実行できます:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_merge<span class="w"> </span>-separate<span class="w"> </span><span class="m">1</span>.tif<span class="w"> </span><span class="m">2</span>.tif<span class="w"> </span><span class="m">3</span>.tif<span class="w"> </span>-o<span class="w"> </span>rgb.tif
 </pre></div>
 </div>
-<p>This maps <code class="file docutils literal notranslate"><span class="pre">1.tif</span></code> to red, <code class="file docutils literal notranslate"><span class="pre">2.tif</span></code> to green and <code class="file docutils literal notranslate"><span class="pre">3.tif</span></code> to blue.</p>
+<p>これにより, <code class="file docutils literal notranslate"><span class="pre">1.tif</span></code> が赤に, <code class="file docutils literal notranslate"><span class="pre">2.tif</span></code> が緑に, <code class="file docutils literal notranslate"><span class="pre">3.tif</span></code> が青にマッピングされます.</p>
 </section>
 <section id="specifying-overlap-precedence">
-<h3>Specifying overlap precedence<a class="headerlink" href="#specifying-overlap-precedence" title="Link to this heading"></a></h3>
-<p>The last image in the input line comes out on top of the finished image stack.
-You might also need to use <a class="reference internal" href="#cmdoption-gdal_merge-n"><code class="xref std std-option docutils literal notranslate"><span class="pre">-n</span></code></a> to note which value should not be
-copied into the destination image if it is not already defined as nodata.</p>
+<h3>重なり合う優先順位を指定します<a class="headerlink" href="#specifying-overlap-precedence" title="Link to this heading"></a></h3>
+<p>入力行の最後のイメージが完成したイメージスタックの上に出てきます.また,既にノーデータとして定義されていない場合,宛先イメージにコピーされるべきでない値を指定するために <a class="reference internal" href="#cmdoption-gdal_merge-n"><code class="xref std std-option docutils literal notranslate"><span class="pre">-n</span></code></a> を使用する必要があります.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_merge<span class="w"> </span>-o<span class="w"> </span>merge.tif<span class="w"> </span>-n<span class="w"> </span><span class="m">0</span><span class="w"> </span>image1.tif<span class="w"> </span>image2.tif<span class="w"> </span>image3.tif<span class="w"> </span>image4.tif
 </pre></div>
 </div>

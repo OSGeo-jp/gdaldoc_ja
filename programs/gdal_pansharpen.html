@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>gdal_pansharpen &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=75499f83" />
 
   
     <link rel="shortcut icon" href="../_static/favicon.png"/>
@@ -67,9 +67,9 @@
 <li class="toctree-l3"><a class="reference internal" href="gdal_grid.html">gdal_grid</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdal_merge.html">gdal_merge</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">gdal_pansharpen</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#synopsis">Synopsis</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#example">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#synopsis">概要</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#description">説明</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example">例</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="gdal_polygonize.html">gdal_polygonize</a></li>
@@ -184,10 +184,10 @@
              
   <section id="gdal-pansharpen">
 <span id="id1"></span><h1>gdal_pansharpen<a class="headerlink" href="#gdal-pansharpen" title="Link to this heading"></a></h1>
-<p>Perform a pansharpen operation.</p>
+<p>パンシャープン操作を実行します.</p>
 <p>(Since GDAL 2.1)</p>
 <section id="synopsis">
-<span id="index-0"></span><h2>Synopsis<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
+<span id="index-0"></span><h2>概要<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdal_pansharpen</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="o">-</span><span class="n">general</span><span class="p">]</span>
                 <span class="o">&lt;</span><span class="n">pan_dataset</span><span class="o">&gt;</span>
                 <span class="o">&lt;</span><span class="n">spectral_dataset</span><span class="o">&gt;</span><span class="p">[,</span><span class="n">band</span><span class="o">=&lt;</span><span class="n">num</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">spectral_dataset</span><span class="o">&gt;</span><span class="p">[,</span><span class="n">band</span><span class="o">=&lt;</span><span class="n">num</span><span class="o">&gt;</span><span class="p">]]</span><span class="o">...</span>
@@ -201,154 +201,125 @@
 </div>
 </section>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
-<p><strong class="program">gdal_pansharpen</strong> performs a pan-sharpening operation. It
-can create a &quot;classic&quot; output dataset (such as GeoTIFF), or a VRT
-dataset describing the pan-sharpening operation.</p>
-<p>More details can be found in the <a class="reference internal" href="../drivers/raster/vrt.html#gdal-vrttut-pansharpen"><span class="std std-ref">Pansharpened VRT</span></a> section.</p>
+<h2>説明<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p><strong class="program">gdal_pansharpen</strong> はパンシャープン操作を実行します.&quot;classic&quot; 出力データセット(例: GeoTIFF)またはパンシャープン操作を記述する VRT データセットを作成できます.</p>
+<p>さらに詳細は, <a class="reference internal" href="../drivers/raster/vrt.html#gdal-vrttut-pansharpen"><span class="std std-ref">Pansharpened VRT</span></a> セクションを参照してください.</p>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
-<p>gdal_pansharpen is a Python utility, and is only available if GDAL Python bindings are available.</p>
+<p>gdal_pansharpen は Python ユーティリティであり, GDAL Python バインディングが利用可能な場合のみ利用できます.</p>
 </div>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-help">
 <span class="sig-name descname"><span class="pre">--help</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-help" title="Link to this definition"></a></dt>
-<dd><p>Show this help message and exit</p>
+<dd><p>このヘルプメッセージを表示して終了します</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-help-general">
 <span class="sig-name descname"><span class="pre">--help-general</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-help-general" title="Link to this definition"></a></dt>
-<dd><p>Gives a brief usage message for the generic GDAL commandline options and exit.</p>
+<dd><p>一般的な GDAL コマンドラインオプションの使用方法を簡単に表示して終了します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-of">
 <span class="sig-name descname"><span class="pre">-of</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;format&gt;</span></span><a class="headerlink" href="#cmdoption-of" title="Link to this definition"></a></dt>
-<dd><p>Select the output format. Starting with GDAL 2.3, if not specified,
-the format is guessed from the extension (previously was <code class="docutils literal notranslate"><span class="pre">GTiff</span></code>). Use
-the short format name. <code class="docutils literal notranslate"><span class="pre">VRT</span></code> can also be used.</p>
+<dd><p>出力フォーマットを選択します. GDAL 2.3 以降,指定されていない場合,フォーマットは拡張子から推測されます(以前は <code class="docutils literal notranslate"><span class="pre">GTiff</span></code> でした).短いフォーマット名を使用します. <code class="docutils literal notranslate"><span class="pre">VRT</span></code> も使用できます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-b">
 <span class="sig-name descname"><span class="pre">-b</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;band&gt;</span></span><a class="headerlink" href="#cmdoption-b" title="Link to this definition"></a></dt>
-<dd><p>Select band <em>band</em> from the input spectral bands for output. Bands
-are numbered from 1 in the order spectral bands are specified.
-Multiple <strong>-b</strong> switches may be used. When no -b switch is used, all
-input spectral bands are set for output.</p>
+<dd><p>出力のための入力スペクトルバンドからバンド <em>band</em> を選択します. バンドは,スペクトルバンドが指定された順序で1から番号付けされます.複数の <strong>-b</strong> スイッチを使用できます. <strong>-b</strong> スイッチを使用しない場合,すべての入力スペクトルバンドが出力に設定されます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-w">
 <span class="sig-name descname"><span class="pre">-w</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;weight_val&gt;</span></span><a class="headerlink" href="#cmdoption-w" title="Link to this definition"></a></dt>
-<dd><p>Specify a weight for the computation of the pseudo panchromatic
-value. There must be as many -w switches as input spectral bands.</p>
+<dd><p>疑似パンクロマチック値の計算のための重みを指定します. 入力スペクトルバンドの数だけ -w スイッチが必要です.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-r">
 <span class="sig-name descname"><span class="pre">-r</span></span><span class="sig-prename descclassname"> <span class="pre">{nearest|bilinear|cubic|cubicspline|lanczos|average}</span></span><a class="headerlink" href="#cmdoption-r" title="Link to this definition"></a></dt>
-<dd><p>Select a resampling algorithm. <code class="docutils literal notranslate"><span class="pre">cubic</span></code> is the default.</p>
+<dd><p>リサンプリングアルゴリズムを選択します. <code class="docutils literal notranslate"><span class="pre">cubic</span></code> がデフォルトです.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-threads">
 <span class="sig-name descname"><span class="pre">-threads</span></span><span class="sig-prename descclassname"> <span class="pre">{ALL_CPUS|&lt;number&gt;}</span></span><a class="headerlink" href="#cmdoption-threads" title="Link to this definition"></a></dt>
-<dd><p>Specify number of threads to use to do the resampling and
-pan-sharpening itself. Can be an integer number or <code class="docutils literal notranslate"><span class="pre">ALL_CPUS</span></code>.</p>
+<dd><p>リサンプリングとパンシャープン自体を行うために使用するスレッド数を指定します. 整数値または <code class="docutils literal notranslate"><span class="pre">ALL_CPUS</span></code> にすることができます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-bitdepth">
 <span class="sig-name descname"><span class="pre">-bitdepth</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;val&gt;</span></span><a class="headerlink" href="#cmdoption-bitdepth" title="Link to this definition"></a></dt>
-<dd><p>Specify the bit depth of the panchromatic and spectral bands (e.g.
-12). If not specified, the NBITS metadata item from the panchromatic
-band will be used if it exists.</p>
+<dd><p>パンクロマチックおよびスペクトルバンドのビット深度を指定します(例: 12). 指定されていない場合,パンクロマチックバンドの NBITS メタデータ項目が存在する場合は使用されます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-nodata">
 <span class="sig-name descname"><span class="pre">-nodata</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;val&gt;</span></span><a class="headerlink" href="#cmdoption-nodata" title="Link to this definition"></a></dt>
-<dd><p>Specify nodata value for bands. Used for the resampling and
-pan-sharpening computation itself. If not set, deduced from the
-input bands, provided they have a consistent setting.</p>
+<dd><p>バンドの nodata 値を指定します. リサンプリングおよびパンシャープン計算自体に使用されます.設定されていない場合,入力バンドから推測されます.一貫した設定がある場合に提供されます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-spat_adjust">
 <span class="sig-name descname"><span class="pre">-spat_adjust</span></span><span class="sig-prename descclassname"> <span class="pre">{union|intersection|none|nonewithoutwarning}</span></span><a class="headerlink" href="#cmdoption-spat_adjust" title="Link to this definition"></a></dt>
-<dd><p>Select behavior when bands have not the same extent. See
-<em>SpatialExtentAdjustment</em> documentation in <a class="reference internal" href="../drivers/raster/vrt.html#gdal-vrttut-pansharpen"><span class="std std-ref">Pansharpened VRT</span></a>
-<code class="docutils literal notranslate"><span class="pre">union</span></code> is the default.</p>
+<dd><p>バンドの範囲が同じでない場合の動作を選択します. <a class="reference internal" href="../drivers/raster/vrt.html#gdal-vrttut-pansharpen"><span class="std std-ref">Pansharpened VRT</span></a> の <em>SpatialExtentAdjustment</em> ドキュメントを参照してください.``union`` がデフォルトです.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-co">
 <span class="sig-name descname"><span class="pre">-co</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></span><a class="headerlink" href="#cmdoption-co" title="Link to this definition"></a></dt>
-<dd><p>Many formats have one or more optional creation options that can be
-used to control particulars about the file created. For instance,
-the GeoTIFF driver supports creation options to control compression,
-and whether the file should be tiled.</p>
-<p>The creation options available vary by format driver, and some
-simple formats have no creation options at all. A list of options
-supported for a format can be listed with the
-<a class="reference internal" href="raster_common_options.html#raster-common-options-formats"><span class="std std-ref">--formats</span></a>
-command line option but the documentation for the format is the
-definitive source of information on driver creation options.
-See <a class="reference internal" href="../drivers/raster/index.html#raster-drivers"><span class="std std-ref">ラスタードライバー</span></a> format
-specific documentation for legal creation options for each format.</p>
+<dd><p>多くのフォーマットには,作成されたファイルに関する特定の情報を制御するために使用できる1つ以上のオプションがあります.たとえば,GeoTIFF ドライバは,圧縮を制御する作成オプションやファイルをタイル化するかどうかを制御する作成オプションをサポートしています.</p>
+<p>利用可能な作成オプションはフォーマットドライバによって異なり,一部のシンプルなフォーマットには作成オプションが全くありません.フォーマットでサポートされているオプションのリストは,コマンドラインオプション <a class="reference internal" href="raster_common_options.html#raster-common-options-formats"><span class="std std-ref">--formats</span></a> でリストできますが,フォーマットのドキュメントがドライバ作成オプションに関する情報の決定的なソースです.各フォーマットの有効な作成オプションについては, <a class="reference internal" href="../drivers/raster/index.html#raster-drivers"><span class="std std-ref">ラスタードライバー</span></a> フォーマット固有のドキュメントを参照してください.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-q">
 <span class="sig-name descname"><span class="pre">-q</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-q" title="Link to this definition"></a></dt>
-<dd><p>Suppress progress monitor and other non-error output.</p>
+<dd><p>進行状況モニターとその他のエラー以外の出力を抑制します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-arg-pan_dataset">
 <span class="sig-name descname"><span class="pre">&lt;pan_dataset&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-pan_dataset" title="Link to this definition"></a></dt>
-<dd><p>Dataset with panchromatic band (first band will be used).</p>
+<dd><p>パンクロマティックバンドを持つデータセット(最初のバンドが使用されます).</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-arg-spectral_dataset-band">
 <span class="sig-name descname"><span class="pre">&lt;spectral_dataset&gt;[,band</span></span><span class="sig-prename descclassname"><span class="pre">=&lt;num&gt;]</span></span><a class="headerlink" href="#cmdoption-arg-spectral_dataset-band" title="Link to this definition"></a></dt>
-<dd><p>Dataset with one or several spectral bands. If the band option is
-not specified, all bands of the datasets are taken into account.
-Otherwise, only the specified (num)th band. The same dataset can be
-repeated several times.</p>
+<dd><p>1つまたは複数のスペクトルバンドを持つデータセット. バンドオプションが指定されていない場合,データセットのすべてのバンドが考慮されます.それ以外の場合,指定された (num) 番目のバンドのみが考慮されます. 同じデータセットを複数回繰り返すことができます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-arg-out_dataset">
 <span class="sig-name descname"><span class="pre">&lt;out_dataset&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-out_dataset" title="Link to this definition"></a></dt>
-<dd><p>Output dataset</p>
+<dd><p>出力データセット</p>
 </dd></dl>
 
-<p>Bands should be in the same projection.</p>
+<p>バンドは同じ投影法である必要があります.</p>
 </section>
 <section id="example">
-<h2>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h2>
-<p>With spectral bands in a single dataset :</p>
+<h2>例<a class="headerlink" href="#example" title="Link to this heading"></a></h2>
+<p>シングルデータセット内のスペクトルバンドを利用 :</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdal_pansharpen</span> <span class="n">panchro</span><span class="o">.</span><span class="n">tif</span> <span class="n">multispectral</span><span class="o">.</span><span class="n">tif</span> <span class="n">pansharpened_out</span><span class="o">.</span><span class="n">tif</span>
 </pre></div>
 </div>
-<p>With a few spectral bands from a single dataset, reordered :</p>
+<p>シングルデータセット内の並べなおしたいくつかのスペクトルバンドを利用 :</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdal_pansharpen</span> <span class="n">panchro</span><span class="o">.</span><span class="n">tif</span> <span class="n">multispectral</span><span class="o">.</span><span class="n">tif</span><span class="p">,</span><span class="n">band</span><span class="o">=</span><span class="mi">3</span> <span class="n">multispectral</span><span class="o">.</span><span class="n">tif</span><span class="p">,</span><span class="n">band</span><span class="o">=</span><span class="mi">2</span> <span class="n">multispectral</span><span class="o">.</span><span class="n">tif</span><span class="p">,</span><span class="n">band</span><span class="o">=</span><span class="mi">1</span> <span class="n">pansharpened_out</span><span class="o">.</span><span class="n">tif</span>
 </pre></div>
 </div>
-<p>With spectral bands in several datasets :</p>
+<p>複数のデータセット内のスペクトルバンドを利用 :</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdal_pansharpen</span> <span class="n">panchro</span><span class="o">.</span><span class="n">tif</span> <span class="n">band1</span><span class="o">.</span><span class="n">tif</span> <span class="n">band2</span><span class="o">.</span><span class="n">tif</span> <span class="n">band3</span><span class="o">.</span><span class="n">tif</span> <span class="n">pansharpened_out</span><span class="o">.</span><span class="n">tif</span>
 </pre></div>
 </div>
-<p>Specify weights:</p>
+<p>重みを指定します:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdal_pansharpen</span> <span class="o">-</span><span class="n">w</span> <span class="mf">0.7</span> <span class="o">-</span><span class="n">w</span> <span class="mf">0.2</span> <span class="o">-</span><span class="n">w</span> <span class="mf">0.1</span> <span class="n">panchro</span><span class="o">.</span><span class="n">tif</span> <span class="n">multispectral</span><span class="o">.</span><span class="n">tif</span> <span class="n">pansharpened_out</span><span class="o">.</span><span class="n">tif</span>
 </pre></div>
 </div>
-<p>Specify RGB bands from a RGBNir multispectral dataset while computing
-the pseudo panchromatic intensity on the 4 RGBNir bands:</p>
+<p>RGBNir マルチスペクトルデータセットから RGB バンドを指定し,4つの RGBNir バンドで疑似パンクロマチック強度を計算します:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdal_pansharpen</span> <span class="o">-</span><span class="n">b</span> <span class="mi">1</span> <span class="o">-</span><span class="n">b</span> <span class="mi">2</span> <span class="o">-</span><span class="n">b</span> <span class="mi">3</span> <span class="n">panchro</span><span class="o">.</span><span class="n">tif</span> <span class="n">rgbnir</span><span class="o">.</span><span class="n">tif</span> <span class="n">pansharpened_out</span><span class="o">.</span><span class="n">tif</span>
 </pre></div>
 </div>

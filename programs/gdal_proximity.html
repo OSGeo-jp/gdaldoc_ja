@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>gdal_proximity &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=75499f83" />
 
   
     <link rel="shortcut icon" href="../_static/favicon.png"/>
@@ -69,8 +69,8 @@
 <li class="toctree-l3"><a class="reference internal" href="gdal_pansharpen.html">gdal_pansharpen</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdal_polygonize.html">gdal_polygonize</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">gdal_proximity</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#synopsis">Synopsis</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#synopsis">概要</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#description">説明</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="gdal_rasterize.html">gdal_rasterize</a></li>
@@ -183,9 +183,9 @@
              
   <section id="gdal-proximity">
 <span id="id1"></span><h1>gdal_proximity<a class="headerlink" href="#gdal-proximity" title="Link to this heading"></a></h1>
-<p>Produces a raster proximity map.</p>
+<p>ラスター近接マップを生成します.</p>
 <section id="synopsis">
-<span id="index-0"></span><h2>Synopsis<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
+<span id="index-0"></span><h2>概要<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdal_proximity</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="o">-</span><span class="n">general</span><span class="p">]</span>
                   <span class="o">&lt;</span><span class="n">srcfile</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">dstfile</span><span class="o">&gt;</span> <span class="p">[</span><span class="o">-</span><span class="n">srcband</span> <span class="o">&lt;</span><span class="n">n</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">dstband</span> <span class="o">&lt;</span><span class="n">n</span><span class="o">&gt;</span><span class="p">]</span>
                   <span class="p">[</span><span class="o">-</span><span class="n">of</span> <span class="o">&lt;</span><span class="nb">format</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">co</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;=&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span>
@@ -197,127 +197,101 @@
 </div>
 </section>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
-<p><strong class="program">gdal_proximity</strong> generates a raster proximity map indicating
-the distance from the center of each pixel to the center of the nearest
-pixel identified as a target pixel.  Target pixels are those in the source
-raster for which the raster pixel value is in the set of target pixel values.</p>
+<h2>説明<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p><strong class="program">gdal_proximity</strong> は,各ピクセルの中心から最も近いターゲットピクセルの中心までの距離を示すラスター近接マップを生成します.ターゲットピクセルは,ラスターピクセル値がターゲットピクセル値のセットにあるソースラスター内のピクセルです.</p>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
-<p>gdal_proximity is a Python utility, and is only available if GDAL Python bindings are available.</p>
+<p>gdal_proximity は Python ユーティリティであり, GDAL Python バインディングが利用可能な場合のみ利用できます.</p>
 </div>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_proximity-help">
 <span class="sig-name descname"><span class="pre">--help</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal_proximity-help" title="Link to this definition"></a></dt>
-<dd><p>Show this help message and exit</p>
+<dd><p>このヘルプメッセージを表示して終了します</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_proximity-help-general">
 <span class="sig-name descname"><span class="pre">--help-general</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal_proximity-help-general" title="Link to this definition"></a></dt>
-<dd><p>Gives a brief usage message for the generic GDAL commandline options and exit.</p>
+<dd><p>一般的な GDAL コマンドラインオプションの使用方法を簡単に表示して終了します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_proximity-arg-srcfile">
 <span class="sig-name descname"><span class="pre">&lt;srcfile&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal_proximity-arg-srcfile" title="Link to this definition"></a></dt>
-<dd><p>The source raster file used to identify target pixels.</p>
+<dd><p>ターゲットピクセルを識別するために使用されるソースラスターファイル.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_proximity-arg-dstfile">
 <span class="sig-name descname"><span class="pre">&lt;dstfile&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal_proximity-arg-dstfile" title="Link to this definition"></a></dt>
-<dd><p>The destination raster file to which the proximity map will be written.
-It may be a pre-existing file of the same size as srcfile.
-If it does not exist it will be created.</p>
+<dd><p>近接マップが書き込まれる宛先ラスターファイルです.srcfile と同じサイズの事前に存在するファイルである場合があります.存在しない場合は作成されます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_proximity-srcband">
 <span class="sig-name descname"><span class="pre">-srcband</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;n&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_proximity-srcband" title="Link to this definition"></a></dt>
-<dd><p>Identifies the band in the source file to use (default is 1).</p>
+<dd><p>使用するソースファイル内のバンドを識別します(デフォルトは 1).</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_proximity-dstband">
 <span class="sig-name descname"><span class="pre">-dstband</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;n&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_proximity-dstband" title="Link to this definition"></a></dt>
-<dd><p>Identifies the band in the destination file to use (default is 1).</p>
+<dd><p>使用する宛先ファイル内のバンドを識別します(デフォルトは 1).</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_proximity-of">
 <span class="sig-name descname"><span class="pre">-of</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;format&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_proximity-of" title="Link to this definition"></a></dt>
-<dd><p>Select the output format. Starting with GDAL 2.3, if not specified, the
-format is guessed from the extension (previously was GTiff). Use the short
-format name.</p>
+<dd><p>出力フォーマットを選択します. GDAL 2.3 以降,指定されていない場合,フォーマットは拡張子から推測されます(以前は GTiff でした).短いフォーマット名を使用します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_proximity-co">
 <span class="sig-name descname"><span class="pre">-co</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_proximity-co" title="Link to this definition"></a></dt>
-<dd><p>Many formats have one or more optional creation options that can be
-used to control particulars about the file created. For instance,
-the GeoTIFF driver supports creation options to control compression,
-and whether the file should be tiled.</p>
-<p>The creation options available vary by format driver, and some
-simple formats have no creation options at all. A list of options
-supported for a format can be listed with the
-<a class="reference internal" href="raster_common_options.html#raster-common-options-formats"><span class="std std-ref">--formats</span></a>
-command line option but the documentation for the format is the
-definitive source of information on driver creation options.
-See <a class="reference internal" href="../drivers/raster/index.html#raster-drivers"><span class="std std-ref">ラスタードライバー</span></a> format
-specific documentation for legal creation options for each format.</p>
+<dd><p>多くのフォーマットには,作成されたファイルに関する特定の情報を制御するために使用できる1つ以上のオプションがあります.たとえば,GeoTIFF ドライバは,圧縮を制御する作成オプションやファイルをタイル化するかどうかを制御する作成オプションをサポートしています.</p>
+<p>利用可能な作成オプションはフォーマットドライバによって異なり,一部のシンプルなフォーマットには作成オプションが全くありません.フォーマットでサポートされているオプションのリストは,コマンドラインオプション <a class="reference internal" href="raster_common_options.html#raster-common-options-formats"><span class="std std-ref">--formats</span></a> でリストできますが,フォーマットのドキュメントがドライバ作成オプションに関する情報の決定的なソースです.各フォーマットの有効な作成オプションについては, <a class="reference internal" href="../drivers/raster/index.html#raster-drivers"><span class="std std-ref">ラスタードライバー</span></a> フォーマット固有のドキュメントを参照してください.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_proximity-ot">
 <span class="sig-name descname"><span class="pre">-ot</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;type&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_proximity-ot" title="Link to this definition"></a></dt>
-<dd><p>Specify a data type supported by the driver, which may be one of the
-following: <code class="docutils literal notranslate"><span class="pre">Byte</span></code>, <code class="docutils literal notranslate"><span class="pre">UInt16</span></code>, <code class="docutils literal notranslate"><span class="pre">Int16</span></code>, <code class="docutils literal notranslate"><span class="pre">UInt32</span></code>, <code class="docutils literal notranslate"><span class="pre">Int32</span></code>,
-<code class="docutils literal notranslate"><span class="pre">Float32</span></code> (default), or <code class="docutils literal notranslate"><span class="pre">Float64</span></code>.</p>
+<dd><p>ドライバでサポートされているデータ型を指定します.次のいずれかである場合があります: <code class="docutils literal notranslate"><span class="pre">Byte</span></code>, <code class="docutils literal notranslate"><span class="pre">UInt16</span></code>, <code class="docutils literal notranslate"><span class="pre">Int16</span></code>, <code class="docutils literal notranslate"><span class="pre">UInt32</span></code>, <code class="docutils literal notranslate"><span class="pre">Int32</span></code>, <code class="docutils literal notranslate"><span class="pre">Float32</span></code> (デフォルト), または <code class="docutils literal notranslate"><span class="pre">Float64</span></code>.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_proximity-values">
 <span class="sig-name descname"><span class="pre">-values</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;n&gt;,&lt;n&gt;,&lt;n&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_proximity-values" title="Link to this definition"></a></dt>
-<dd><p>A list of target pixel values in the source image to be considered target
-pixels. If not specified, all non-zero pixels will be considered target pixels.</p>
+<dd><p>ターゲットピクセルとして考慮されるソース画像内のターゲットピクセル値のリストです.指定されていない場合,すべてのゼロ以外のピクセルがターゲットピクセルと見なされます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_proximity-distunits">
 <span class="sig-name descname"><span class="pre">-distunits</span></span><span class="sig-prename descclassname"> <span class="pre">{PIXEL|GEO}</span></span><a class="headerlink" href="#cmdoption-gdal_proximity-distunits" title="Link to this definition"></a></dt>
-<dd><p>Indicate whether distances generated should be in pixel or georeferenced
-coordinates (default PIXEL).</p>
+<dd><p>生成された距離がピクセルまたはジオリファレンス座標であるかを示します(デフォルトは PIXEL).</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_proximity-maxdist">
 <span class="sig-name descname"><span class="pre">-maxdist</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;n&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_proximity-maxdist" title="Link to this definition"></a></dt>
-<dd><p>The maximum distance to be generated. The nodata value will be used for pixels
-beyond this distance. If a nodata value is not provided, the output band will be
-queried for its nodata value. If the output band does not have a nodata value,
-then the value 65535 will be used. Distance is interpreted in pixels unless
--distunits GEO is specified.</p>
+<dd><p>生成される最大距離です.この距離を超えたピクセルにはノーデータ値が使用されます.ノーデータ値が提供されていない場合,出力バンドはそのノーデータ値に対してクエリされます.出力バンドにノーデータ値がない場合,値 65535 が使用されます.距離は, -distunits GEO が指定されていない限り,ピクセルで解釈されます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_proximity-nodata">
 <span class="sig-name descname"><span class="pre">-nodata</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;n&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_proximity-nodata" title="Link to this definition"></a></dt>
-<dd><p>Specify a nodata value to use for the destination proximity raster.</p>
+<dd><p>宛先近接ラスターに使用するノーデータ値を指定します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_proximity-use_input_nodata">
 <span class="sig-name descname"><span class="pre">-use_input_nodata</span></span><span class="sig-prename descclassname"> <span class="pre">{YES|NO}</span></span><a class="headerlink" href="#cmdoption-gdal_proximity-use_input_nodata" title="Link to this definition"></a></dt>
-<dd><p>Indicate whether nodata pixels in the input raster should be nodata in the output raster (default NO).</p>
+<dd><p>入力ラスターのノーデータピクセルが出力ラスターのノーデータであるかを示します(デフォルトは NO).</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_proximity-fixed-buf-val">
 <span class="sig-name descname"><span class="pre">-fixed-buf-val</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;n&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_proximity-fixed-buf-val" title="Link to this definition"></a></dt>
-<dd><p>Specify a value to be applied to all pixels that are within the
--maxdist of target pixels (including the target pixels) instead of a distance value.</p>
+<dd><p>ターゲットピクセルの -maxdist 内(ターゲットピクセルを含む)のすべてのピクセルに適用される値を指定します.</p>
 </dd></dl>
 
 </section>

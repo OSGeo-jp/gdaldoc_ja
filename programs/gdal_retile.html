@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>gdal_retile &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=75499f83" />
 
   
     <link rel="shortcut icon" href="../_static/favicon.png"/>
@@ -71,8 +71,8 @@
 <li class="toctree-l3"><a class="reference internal" href="gdal_proximity.html">gdal_proximity</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdal_rasterize.html">gdal_rasterize</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">gdal_retile</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#synopsis">Synopsis</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#synopsis">概要</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#description">説明</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="gdal_sieve.html">gdal_sieve</a></li>
@@ -183,9 +183,9 @@
              
   <section id="gdal-retile">
 <span id="id1"></span><h1>gdal_retile<a class="headerlink" href="#gdal-retile" title="Link to this heading"></a></h1>
-<p>Retiles a set of tiles and/or build tiled pyramid levels.</p>
+<p>タイルセットを再タイル化し, タイルピラミッドレベルを構築します.</p>
 <section id="synopsis">
-<span id="index-0"></span><h2>Synopsis<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
+<span id="index-0"></span><h2>概要<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdal_retile</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="o">-</span><span class="n">general</span><span class="p">]</span>
                <span class="p">[</span><span class="o">-</span><span class="n">v</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">co</span> <span class="o">&lt;</span><span class="n">NAME</span><span class="o">&gt;=&lt;</span><span class="n">VALUE</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span> <span class="p">[</span><span class="o">-</span><span class="n">of</span> <span class="o">&lt;</span><span class="n">out_format</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">ps</span> <span class="o">&lt;</span><span class="n">pixelWidth</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">pixelHeight</span><span class="o">&gt;</span><span class="p">]</span>
                <span class="p">[</span><span class="o">-</span><span class="n">overlap</span> <span class="o">&lt;</span><span class="n">val_in_pixel</span><span class="o">&gt;</span><span class="p">]</span>
@@ -202,84 +202,62 @@
 </div>
 </section>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
-<p>This utility will retile a set of input tile(s). All the input tile(s) must
-be georeferenced in the same coordinate system and have a matching number of bands.
-The geotransform matrix of input tiles must not contain rotation terms.</p>
-<p>Optionally pyramid levels are generated. All pyramid levels are generated from the
-input tiles (not from previous levels).</p>
-<p>It is possible to generate shape file(s) for the tiled output.</p>
-<p>If your number of input tiles exhausts the command line buffer, use the general
-<a class="reference internal" href="raster_common_options.html#raster-common-options-optfile"><span class="std std-ref">--optfile</span></a> option</p>
+<h2>説明<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>このユーティリティは,入力タイルセットを再タイル化します. 全ての入力タイルは,同じ座標系でジオリファレンスされており, 一致するバンド数を持っている必要があります. 入力タイルのジオトランスフォーム行列には回転項が含まれていてはいけません.</p>
+<p>オプションでピラミッドレベルを生成します. すべてのピラミッドレベルは,入力タイルから生成されます(以前のレベルからではありません).</p>
+<p>タイル出力のためのシェープファイルを生成することができます.</p>
+<p>入力タイルの数がコマンドラインバッファを使い果たす場合は, 一般的な <a class="reference internal" href="raster_common_options.html#raster-common-options-optfile"><span class="std std-ref">--optfile</span></a> オプションを使用してください</p>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
-<p>gdal_retile is a Python utility, and is only available if GDAL Python bindings are available.</p>
+<p>gdal_retile は Python ユーティリティであり, GDAL Python バインディングが利用可能な場合のみ利用できます.</p>
 </div>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_retile-help">
 <span class="sig-name descname"><span class="pre">--help</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal_retile-help" title="Link to this definition"></a></dt>
-<dd><p>Show this help message and exit</p>
+<dd><p>このヘルプメッセージを表示して終了します</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_retile-help-general">
 <span class="sig-name descname"><span class="pre">--help-general</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal_retile-help-general" title="Link to this definition"></a></dt>
-<dd><p>Gives a brief usage message for the generic GDAL commandline options and exit.</p>
+<dd><p>一般的な GDAL コマンドラインオプションの使用方法を簡単に表示して終了します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_retile-targetDir">
 <span class="sig-name descname"><span class="pre">-targetDir</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;directory&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_retile-targetDir" title="Link to this definition"></a></dt>
-<dd><p>The directory where the tile result is created. Pyramids are stored
-in  sub-directories  numbered  from  1. Created tile names have a numbering
-schema and contain the name of the source tiles(s)</p>
+<dd><p>タイル結果が作成されるディレクトリです. ピラミッドは,1から番号付けされたサブディレクトリに格納されます. 作成されたタイル名には番号付けスキーマが含まれ,ソースタイルの名前が含まれます</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_retile-of">
 <span class="sig-name descname"><span class="pre">-of</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;format&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_retile-of" title="Link to this definition"></a></dt>
-<dd><p>Select the output format. Starting with GDAL 2.3, if not specified, the
-format is guessed from the extension (previously was GTiff). Use the short
-format name.</p>
+<dd><p>出力フォーマットを選択します. GDAL 2.3 以降,指定されていない場合,フォーマットは拡張子から推測されます(以前は GTiff でした).短いフォーマット名を使用します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_retile-co">
 <span class="sig-name descname"><span class="pre">-co</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_retile-co" title="Link to this definition"></a></dt>
-<dd><p>Many formats have one or more optional creation options that can be
-used to control particulars about the file created. For instance,
-the GeoTIFF driver supports creation options to control compression,
-and whether the file should be tiled.</p>
-<p>The creation options available vary by format driver, and some
-simple formats have no creation options at all. A list of options
-supported for a format can be listed with the
-<a class="reference internal" href="raster_common_options.html#raster-common-options-formats"><span class="std std-ref">--formats</span></a>
-command line option but the documentation for the format is the
-definitive source of information on driver creation options.
-See <a class="reference internal" href="../drivers/raster/index.html#raster-drivers"><span class="std std-ref">ラスタードライバー</span></a> format
-specific documentation for legal creation options for each format.</p>
+<dd><p>多くのフォーマットには,作成されたファイルに関する特定の情報を制御するために使用できる1つ以上のオプションがあります.たとえば,GeoTIFF ドライバは,圧縮を制御する作成オプションやファイルをタイル化するかどうかを制御する作成オプションをサポートしています.</p>
+<p>利用可能な作成オプションはフォーマットドライバによって異なり,一部のシンプルなフォーマットには作成オプションが全くありません.フォーマットでサポートされているオプションのリストは,コマンドラインオプション <a class="reference internal" href="raster_common_options.html#raster-common-options-formats"><span class="std std-ref">--formats</span></a> でリストできますが,フォーマットのドキュメントがドライバ作成オプションに関する情報の決定的なソースです.各フォーマットの有効な作成オプションについては, <a class="reference internal" href="../drivers/raster/index.html#raster-drivers"><span class="std std-ref">ラスタードライバー</span></a> フォーマット固有のドキュメントを参照してください.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_retile-ot">
 <span class="sig-name descname"><span class="pre">-ot</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;type&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_retile-ot" title="Link to this definition"></a></dt>
-<dd><p>Force the output image bands to have a specific data type supported by the
-driver, which may be one of the following: <code class="docutils literal notranslate"><span class="pre">Byte</span></code>, <code class="docutils literal notranslate"><span class="pre">Int8</span></code>, <code class="docutils literal notranslate"><span class="pre">UInt16</span></code>,
-<code class="docutils literal notranslate"><span class="pre">Int16</span></code>, <code class="docutils literal notranslate"><span class="pre">UInt32</span></code>, <code class="docutils literal notranslate"><span class="pre">Int32</span></code>, <code class="docutils literal notranslate"><span class="pre">UInt64</span></code>, <code class="docutils literal notranslate"><span class="pre">Int64</span></code>, <code class="docutils literal notranslate"><span class="pre">Float32</span></code>, <code class="docutils literal notranslate"><span class="pre">Float64</span></code>, <code class="docutils literal notranslate"><span class="pre">CInt16</span></code>,
-<code class="docutils literal notranslate"><span class="pre">CInt32</span></code>, <code class="docutils literal notranslate"><span class="pre">CFloat32</span></code> or <code class="docutils literal notranslate"><span class="pre">CFloat64</span></code>.</p>
+<dd><p>出力画像バンドをドライバでサポートされている特定のデータ型に強制します. これは次のいずれかである場合があります: <code class="docutils literal notranslate"><span class="pre">Byte</span></code>, <code class="docutils literal notranslate"><span class="pre">Int8</span></code>, <code class="docutils literal notranslate"><span class="pre">UInt16</span></code>, <code class="docutils literal notranslate"><span class="pre">Int16</span></code>, <code class="docutils literal notranslate"><span class="pre">UInt32</span></code>, <code class="docutils literal notranslate"><span class="pre">Int32</span></code>, <code class="docutils literal notranslate"><span class="pre">UInt64</span></code>, <code class="docutils literal notranslate"><span class="pre">Int64</span></code>, <code class="docutils literal notranslate"><span class="pre">Float32</span></code>, <code class="docutils literal notranslate"><span class="pre">Float64</span></code>, <code class="docutils literal notranslate"><span class="pre">CInt16</span></code>, <code class="docutils literal notranslate"><span class="pre">CInt32</span></code>, <code class="docutils literal notranslate"><span class="pre">CFloat32</span></code> または <code class="docutils literal notranslate"><span class="pre">CFloat64</span></code>.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_retile-ps">
 <span class="sig-name descname"><span class="pre">-ps</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;pixelsize_x&gt;</span> <span class="pre">&lt;pixelsize_y&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_retile-ps" title="Link to this definition"></a></dt>
-<dd><p>Pixel size to be used for the
-output file.  If not specified, 256 x 256 is the default</p>
+<dd><p>出力ファイルに使用されるピクセルサイズです. 指定されていない場合,デフォルトは 256 x 256 です</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_retile-overlap">
 <span class="sig-name descname"><span class="pre">-overlap</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;val_in_pixel&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_retile-overlap" title="Link to this definition"></a></dt>
-<dd><p>Overlap in pixels between consecutive tiles. If not specified, 0 is the default</p>
+<dd><p>連続するタイル間のオーバーラップ(ピクセル単位)です. 指定されていない場合,デフォルトは 0 です</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 2.2.</span></p>
 </div>
@@ -288,82 +266,67 @@ output file.  If not specified, 256 x 256 is the default</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_retile-levels">
 <span class="sig-name descname"><span class="pre">-levels</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;numberOfLevels&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_retile-levels" title="Link to this definition"></a></dt>
-<dd><p>Number of pyramids levels to build.</p>
+<dd><p>構築するピラミッドレベルの数です.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_retile-v">
 <span class="sig-name descname"><span class="pre">-v</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal_retile-v" title="Link to this definition"></a></dt>
-<dd><p>Generate verbose output of tile operations as they are done.</p>
+<dd><p>タイル操作が行われるときのタイル操作の詳細な出力を生成します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_retile-pyramidOnly">
 <span class="sig-name descname"><span class="pre">-pyramidOnly</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal_retile-pyramidOnly" title="Link to this definition"></a></dt>
-<dd><p>No retiling, build only the pyramids</p>
+<dd><p>再タイリングせず, ピラミッドのみを構築します</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_retile-r">
 <span class="sig-name descname"><span class="pre">-r</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;algorithm&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_retile-r" title="Link to this definition"></a></dt>
-<dd><p>Resampling algorithm, default is near</p>
+<dd><p>リサンプリングアルゴリズムです. デフォルトは near です</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_retile-s_srs">
 <span class="sig-name descname"><span class="pre">-s_srs</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;srs_def&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_retile-s_srs" title="Link to this definition"></a></dt>
-<dd><p>Source spatial reference to use. The coordinate systems  that  can  be
-passed  are  anything  supported by the OGRSpatialReference.SetFromUserInput()  call,
-which  includes  EPSG, PCS, and GCSes (i.e. EPSG:4296), PROJ.4 declarations (as above),
-or the name of a .prj file containing well known text.
-If  no  srs_def  is  given,  the srs_def  of the source tiles is used (if there is any).
-The srs_def will be propagated to created tiles (if possible) and  to  the  optional
-shape file(s)</p>
+<dd><p>使用するソース空間参照です. 渡すことができる座標系は, OGRSpatialReference.SetFromUserInput() 呼び出しでサポートされているものです.これには, EPSG, PCS, GCSes (つまり, EPSG:4296), PROJ.4 宣言(上記のように), またはウェルノウンテキストを含む .prj ファイルの名前が含まれます.srs_def が指定されていない場合, ソースタイルの srs_def が使用されます(存在する場合). srs_def は, 作成されたタイル(可能な限り)およびオプションのシェープファイルに伝播されます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_retile-tileIndex">
 <span class="sig-name descname"><span class="pre">-tileIndex</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;tileIndexName&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_retile-tileIndex" title="Link to this definition"></a></dt>
-<dd><p>The name of shape file containing the result tile(s) index</p>
+<dd><p>結果のタイルインデックスを含むシェープファイルの名前です</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_retile-tileIndexField">
 <span class="sig-name descname"><span class="pre">-tileIndexField</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;tileIndexFieldName&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_retile-tileIndexField" title="Link to this definition"></a></dt>
-<dd><p>The name of the attribute containing the tile name</p>
+<dd><p>タイル名を含む属性の名前です</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_retile-csv">
 <span class="sig-name descname"><span class="pre">-csv</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;csvFileName&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_retile-csv" title="Link to this definition"></a></dt>
-<dd><p>The name of the csv file containing the tile(s) georeferencing information.
-The file contains 5 columns: tilename,minx,maxx,miny,maxy</p>
+<dd><p>タイルのジオリファレンス情報を含む csv ファイルの名前です. ファイルには 5 つの列が含まれています: タイル名, minx, maxx, miny, maxy</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_retile-csvDelim">
 <span class="sig-name descname"><span class="pre">-csvDelim</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;column</span> <span class="pre">delimiter&gt;</span></span><a class="headerlink" href="#cmdoption-gdal_retile-csvDelim" title="Link to this definition"></a></dt>
-<dd><p>The column delimiter used in the CSV file, default value is a semicolon &quot;;&quot;</p>
+<dd><p>CSV ファイルで使用される列区切り記号です. デフォルト値はセミコロン &quot;;&quot; です</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_retile-useDirForEachRow">
 <span class="sig-name descname"><span class="pre">-useDirForEachRow</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal_retile-useDirForEachRow" title="Link to this definition"></a></dt>
-<dd><p>Normally the tiles of the base image are stored as described in <a class="reference internal" href="#cmdoption-gdal_retile-targetDir"><code class="xref std std-option docutils literal notranslate"><span class="pre">-targetDir</span></code></a>.
-For large images, some file systems have performance problems if the number of files
-in a directory is too big, causing gdal_retile not to finish in reasonable time.
-Using this parameter creates a different output structure. The tiles of the base image
-are stored in a sub-directory called 0, the pyramids in sub-directories numbered 1,2,....
-Within each of these directories another level of sub-directories is created, numbered from
-0...n, depending of how many tile rows are needed for each level. Finally, a directory contains
-only the tiles for one row for a specific level. For large images a performance improvement
-of a factor N could be achieved.</p>
+<dd><p>通常,ベース画像のタイルは <a class="reference internal" href="#cmdoption-gdal_retile-targetDir"><code class="xref std std-option docutils literal notranslate"><span class="pre">-targetDir</span></code></a> で説明されているように保存されます. 大きな画像の場合, ディレクトリ内のファイル数が多すぎると,一部のファイルシステムはパフォーマンスの問題を抱えており, gdal_retile が合理的な時間内に終了しないことがあります. このパラメータを使用すると, 異なる出力構造が作成されます.ベース画像のタイルは 0 という名前のサブディレクトリに保存され, ピラミッドは 1,2,... と番号付けされたサブディレクトリに保存されます.これらのディレクトリのそれぞれに, 0...n と番号付けされた別のレベルのサブディレクトリが作成されます. これは, 各レベルに必要なタイル行数に応じています.最後に, 特定のレベルの1行のタイルのみを含むディレクトリがあります. 大きな画像の場合, N 倍のパフォーマンス向上が達成される可能性があります.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdal_retile-resume">
 <span class="sig-name descname"><span class="pre">-resume</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdal_retile-resume" title="Link to this definition"></a></dt>
-<dd><p>Resume mode. Generate only missing files.</p>
+<dd><p>再開モードです. 不足しているファイルのみを生成します.</p>
 </dd></dl>
 
 </section>

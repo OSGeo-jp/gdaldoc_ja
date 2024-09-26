@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>gdal_sieve &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=75499f83" />
 
   
     <link rel="shortcut icon" href="../_static/favicon.png"/>
@@ -72,8 +72,8 @@
 <li class="toctree-l3"><a class="reference internal" href="gdal_rasterize.html">gdal_rasterize</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdal_retile.html">gdal_retile</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">gdal_sieve</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#synopsis">Synopsis</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#synopsis">概要</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#description">説明</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="gdal_translate.html">gdal_translate</a></li>
@@ -183,9 +183,9 @@
              
   <section id="gdal-sieve">
 <span id="id1"></span><h1>gdal_sieve<a class="headerlink" href="#gdal-sieve" title="Link to this heading"></a></h1>
-<p>Removes small raster polygons.</p>
+<p>小さいラスターポリゴンを削除します.</p>
 <section id="synopsis">
-<span id="index-0"></span><h2>Synopsis<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
+<span id="index-0"></span><h2>概要<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdal_sieve</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="o">-</span><span class="n">general</span><span class="p">]</span>
               <span class="p">[</span><span class="o">-</span><span class="n">q</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">st</span> <span class="n">threshold</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="mi">8</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">o</span> <span class="n">name</span><span class="o">=</span><span class="n">value</span><span class="p">]</span>
               <span class="o">&lt;</span><span class="n">srcfile</span><span class="o">&gt;</span> <span class="p">[</span><span class="o">-</span><span class="n">nomask</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">mask</span> <span class="n">filename</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">of</span> <span class="nb">format</span><span class="p">]</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">dstfile</span><span class="o">&gt;</span><span class="p">]</span>
@@ -193,18 +193,13 @@
 </div>
 </section>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
-<p><strong class="program">gdal_sieve</strong> removes raster polygons smaller than
-a provided threshold size (in pixels) and replaces them with the
-pixel value of the largest neighbour polygon. The result can be written
-back to the existing raster band, or copied into a new file.</p>
-<p>The input dataset is read as integer data which means that floating point
-values are rounded to integers. Re-scaling source data may be necessary in
-some cases (e.g. 32-bit floating point data with min=0 and max=1).</p>
-<p>Additional details on the algorithm are available in the <a class="reference internal" href="../api/gdal_alg.html#_CPPv415GDALSieveFilter15GDALRasterBandH15GDALRasterBandH15GDALRasterBandHiiPPc16GDALProgressFuncPv" title="GDALSieveFilter"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALSieveFilter()</span></code></a> docs.</p>
+<h2>説明<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p><strong class="program">gdal_sieve</strong> は,指定されたしきい値サイズ(ピクセル単位)より小さいラスターポリゴンを削除し,最大の隣接ポリゴンのピクセル値で置き換えます.結果は既存のラスターバンドに書き戻すか,新しいファイルにコピーできます.</p>
+<p>入力データセットは整数データとして読み込まれるため,浮動小数点値は整数に丸められます.ソースデータの再スケーリングが必要な場合があります(例: min=0 および max=1 の 32 ビット浮動小数点データ).</p>
+<p>アルゴリズムの詳細については, <a class="reference internal" href="../api/gdal_alg.html#_CPPv415GDALSieveFilter15GDALRasterBandH15GDALRasterBandH15GDALRasterBandHiiPPc16GDALProgressFuncPv" title="GDALSieveFilter"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALSieveFilter()</span></code></a> ドキュメントを参照してください.</p>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
-<p>gdal_retile is a Python utility, and is only available if GDAL Python bindings are available.</p>
+<p>gdal_sieve は Python ユーティリティであり, GDAL Python バインディングが利用可能な場合のみ利用できます.</p>
 </div>
 </section>
 </section>

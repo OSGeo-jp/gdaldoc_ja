@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>gdaladdo &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=75499f83" />
 
   
     <link rel="shortcut icon" href="../_static/favicon.png"/>
@@ -75,14 +75,14 @@
 <li class="toctree-l3"><a class="reference internal" href="gdal_translate.html">gdal_translate</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdal_viewshed.html">gdal_viewshed</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">gdaladdo</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#synopsis">Synopsis</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#external-overviews-in-geotiff-format">External overviews in GeoTIFF format</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#setting-blocksize-in-geotiff-overviews">Setting blocksize in Geotiff overviews</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#nodata-source-validity-mask-handling-during-resampling">Nodata / source validity mask handling during resampling</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#multithreading">Multithreading</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#c-api">C API</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#synopsis">概要</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#description">説明</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#external-overviews-in-geotiff-format">GeoTIFF形式の外部オーバービュー</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setting-blocksize-in-geotiff-overviews">Geotiffオーバービューでのブロックサイズの設定</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nodata-source-validity-mask-handling-during-resampling">リサンプリング中のノーデータ/ソース有効マスクの処理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#multithreading">マルチスレッディング</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c-api">C言語API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#examples">例</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="gdalattachpct.html">gdalattachpct</a></li>
@@ -189,9 +189,9 @@
              
   <section id="gdaladdo">
 <span id="id1"></span><h1>gdaladdo<a class="headerlink" href="#gdaladdo" title="Link to this heading"></a></h1>
-<p>Builds or rebuilds overview images.</p>
+<p>オーバービュー画像を構築または再構築します.</p>
 <section id="synopsis">
-<span id="index-0"></span><h2>Synopsis<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
+<span id="index-0"></span><h2>概要<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdaladdo</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="o">-</span><span class="n">general</span><span class="p">]</span>
          <span class="p">[</span><span class="o">-</span><span class="n">r</span> <span class="p">{</span><span class="n">nearest</span><span class="o">|</span><span class="n">average</span><span class="o">|</span><span class="n">rms</span><span class="o">|</span><span class="n">gauss</span><span class="o">|</span><span class="n">bilinear</span><span class="o">|</span><span class="n">cubic</span><span class="o">|</span><span class="n">cubicspline</span><span class="o">|</span><span class="n">lanczos</span><span class="o">|</span><span class="n">average_mp</span><span class="o">|</span><span class="n">average_magphase</span><span class="o">|</span><span class="n">mode</span><span class="p">}]</span>
          <span class="p">[</span><span class="o">-</span><span class="n">ro</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">clean</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">q</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">oo</span> <span class="o">&lt;</span><span class="n">NAME</span><span class="o">&gt;=&lt;</span><span class="n">VALUE</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span> <span class="p">[</span><span class="o">-</span><span class="n">minsize</span> <span class="o">&lt;</span><span class="n">val</span><span class="o">&gt;</span><span class="p">]</span>
@@ -203,77 +203,66 @@
 </div>
 </section>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
-<p>The <strong class="program">gdaladdo</strong> utility can be used to build or rebuild overview images for
-most supported file formats with one of several downsampling algorithms.</p>
+<h2>説明<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p><strong class="program">gdaladdo</strong> ユーティリティは,いくつかのダウンサンプリングアルゴリズムの1つを使用して,ほとんどのサポートされているファイル形式のオーバービュー画像を構築または再構築するために使用できます.</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdaladdo-help">
 <span class="sig-name descname"><span class="pre">--help</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdaladdo-help" title="Link to this definition"></a></dt>
-<dd><p>Show this help message and exit</p>
+<dd><p>このヘルプメッセージを表示して終了します</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdaladdo-help-general">
 <span class="sig-name descname"><span class="pre">--help-general</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdaladdo-help-general" title="Link to this definition"></a></dt>
-<dd><p>Gives a brief usage message for the generic GDAL commandline options and exit.</p>
+<dd><p>一般的なGDALコマンドラインオプションの簡単な使用メッセージを表示して終了します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdaladdo-r">
 <span class="sig-name descname"><span class="pre">-r</span></span><span class="sig-prename descclassname"> <span class="pre">{nearest|average|rms|gauss|bilinear|cubic|cubicspline|lanczos|average_magphase|mode}</span></span><a class="headerlink" href="#cmdoption-gdaladdo-r" title="Link to this definition"></a></dt>
-<dd><p>Select a resampling algorithm. The default is <code class="docutils literal notranslate"><span class="pre">nearest</span></code>, which is generally not
-appropriate if sub-pixel accuracy is desired.</p>
-<p>Starting with GDAL 3.9, when refreshing existing TIFF overviews, the previously
-used method, as noted in the RESAMPLING metadata item of the overview, will
-be used if <a class="reference internal" href="#cmdoption-gdaladdo-r"><code class="xref std std-option docutils literal notranslate"><span class="pre">-r</span></code></a> is not specified.</p>
-<p>The available methods are:</p>
-<p><code class="docutils literal notranslate"><span class="pre">nearest</span></code> applies a nearest neighbour (simple sampling) resampler.</p>
-<p><code class="docutils literal notranslate"><span class="pre">average</span></code> computes the average of all non-NODATA contributing pixels. Starting with GDAL 3.1, this is a weighted average taking into account properly the weight of source pixels not contributing fully to the target pixel.</p>
-<p><code class="docutils literal notranslate"><span class="pre">rms</span></code> computes the root mean squared / quadratic mean of all non-NODATA contributing pixels (GDAL &gt;= 3.3)</p>
-<p><code class="docutils literal notranslate"><span class="pre">gauss</span></code> applies a Gaussian kernel before computing the overview,
-which can lead to better results than simple averaging in e.g case of sharp edges
-with high contrast or noisy patterns. The advised level values should be 2, 4, 8, ...
-so that a 3x3 resampling Gaussian kernel is selected.</p>
-<p><code class="docutils literal notranslate"><span class="pre">bilinear</span></code> applies a bilinear convolution kernel.</p>
-<p><code class="docutils literal notranslate"><span class="pre">cubic</span></code> applies a cubic convolution kernel.</p>
-<p><code class="docutils literal notranslate"><span class="pre">cubicspline</span></code> applies a B-Spline convolution kernel.</p>
-<p><code class="docutils literal notranslate"><span class="pre">lanczos</span></code> applies a Lanczos windowed sinc convolution kernel.</p>
-<p><code class="docutils literal notranslate"><span class="pre">average_magphase</span></code> averages complex data in mag/phase space.</p>
-<p><code class="docutils literal notranslate"><span class="pre">mode</span></code> selects the value which appears most often of all the sampled points.</p>
+<dd><p>リサンプリングアルゴリズムを選択します.デフォルトは <code class="docutils literal notranslate"><span class="pre">nearest</span></code> で,これは一般的にサブピクセルの精度が必要な場合に適していません.</p>
+<p>GDAL 3.9以降,既存のTIFFオーバービューを更新する場合,オプション <a class="reference internal" href="#cmdoption-gdaladdo-r"><code class="xref std std-option docutils literal notranslate"><span class="pre">-r</span></code></a> が指定されていない場合,オーバービューの RESAMPLING メタデータ項目に記載されている以前に使用されたメソッドが使用されます.</p>
+<p>利用可能なメソッドは次のとおりです:</p>
+<p><code class="docutils literal notranslate"><span class="pre">nearest</span></code> は最近傍（単純サンプリング）リサンプラを適用します.</p>
+<p><code class="docutils literal notranslate"><span class="pre">average</span></code> はすべての非-NODATA寄与ピクセルの平均を計算します. GDAL 3.1以降,これは,ターゲットピクセルに完全に寄与していないソースピクセルの重みを適切に考慮した重み付き平均です.</p>
+<p><code class="docutils literal notranslate"><span class="pre">rms</span></code> はすべての非-NODATA寄与ピクセルの平均二乗平方根/二乗平均を計算します(GDAL &gt;= 3.3)</p>
+<p><code class="docutils literal notranslate"><span class="pre">gauss</span></code> は,オーバービューを計算する前にガウスカーネルを適用します. これは,例えば鮮明なエッジや高コントラストまたはノイズの多いパターンの場合に,単純な平均よりも良い結果をもたらすことがあります. 推奨されるレベル値は2, 4, 8, ... であるべきです. これにより,3x3リサンプリングガウスカーネルが選択されます.</p>
+<p><code class="docutils literal notranslate"><span class="pre">bilinear</span></code> はバイリニア畳み込みカーネルを適用します.</p>
+<p><code class="docutils literal notranslate"><span class="pre">cubic</span></code> は立方体畳み込みカーネルを適用します.</p>
+<p><code class="docutils literal notranslate"><span class="pre">cubicspline</span></code> はB-Spline畳み込みカーネルを適用します.</p>
+<p><code class="docutils literal notranslate"><span class="pre">lanczos</span></code> はランチョス窓付きシンク畳み込みカーネルを適用します.</p>
+<p><code class="docutils literal notranslate"><span class="pre">average_magphase</span></code> は複素データを mag/phase 空間で平均化します.</p>
+<p><code class="docutils literal notranslate"><span class="pre">mode</span></code> はサンプリングされたすべての点の中で最も頻繁に現れる値を選択します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdaladdo-b">
 <span class="sig-name descname"><span class="pre">-b</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;band&gt;</span></span><a class="headerlink" href="#cmdoption-gdaladdo-b" title="Link to this definition"></a></dt>
-<dd><p>Select an input band <strong>band</strong> for overview generation. Band numbering
-starts from 1. Multiple <a class="reference internal" href="#cmdoption-gdaladdo-b"><code class="xref std std-option docutils literal notranslate"><span class="pre">-b</span></code></a> switches may be used to select a set
-of input bands to generate overviews.</p>
+<dd><p>オーバービューの生成のための入力バンド <strong>band</strong> を選択します. バンド番号は1から始まります. オーバービューを生成するために複数の <a class="reference internal" href="#cmdoption-gdaladdo-b"><code class="xref std std-option docutils literal notranslate"><span class="pre">-b</span></code></a> スイッチを使用できます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdaladdo-ro">
 <span class="sig-name descname"><span class="pre">-ro</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdaladdo-ro" title="Link to this definition"></a></dt>
-<dd><p>open the dataset in read-only mode, in order to generate external overview
-(for GeoTIFF especially).</p>
+<dd><p>外部オーバービューを生成するためにデータセットを読み取り専用モードで開きます(特にGeoTIFFの場合).</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdaladdo-clean">
 <span class="sig-name descname"><span class="pre">-clean</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdaladdo-clean" title="Link to this definition"></a></dt>
-<dd><p>remove all overviews.</p>
+<dd><p>すべてのオーバービューを削除します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdaladdo-oo">
 <span class="sig-name descname"><span class="pre">-oo</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></span><a class="headerlink" href="#cmdoption-gdaladdo-oo" title="Link to this definition"></a></dt>
-<dd><p>Dataset open option (format specific)</p>
+<dd><p>データセットオープンオプション（フォーマット固有）</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdaladdo-minsize">
 <span class="sig-name descname"><span class="pre">-minsize</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;val&gt;</span></span><a class="headerlink" href="#cmdoption-gdaladdo-minsize" title="Link to this definition"></a></dt>
-<dd><p>Maximum width or height of the smallest overview level. Only taken into
-account if explicit levels are not specified. Defaults to 256.</p>
+<dd><p>最小のオーバービューレベルの最大幅または高さ. 明示的なレベルが指定されていない場合にのみ考慮されます. デフォルトは256です.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 2.3.</span></p>
 </div>
@@ -285,13 +274,7 @@ account if explicit levels are not specified. Defaults to 256.</p>
 <dd><div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.8.</span></p>
 </div>
-<p>This option performs a partial refresh of existing overviews, when &lt;filename&gt;
-is a VRT file with an external overview.
-It checks the modification timestamp of all the sources of the VRT
-and regenerate the overview for areas corresponding to sources whose
-timestamp is more recent than the external overview of the VRT.
-By default all existing overview levels will be refreshed, unless explicit
-levels are specified.</p>
+<p>このオプションは,外部オーバービューを持つVRTファイルの既存のオーバービューの部分的な更新を行います. VRTのすべてのソースの変更タイムスタンプをチェックし,VRTの外部オーバービューよりも新しいタイムスタンプのソースに対応する領域のオーバービューを再生成します. デフォルトでは,明示的なレベルが指定されていない限り,すべての既存のオーバービューレベルが更新されます.</p>
 </dd></dl>
 
 <dl class="std option">
@@ -300,13 +283,7 @@ levels are specified.</p>
 <dd><div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.8.</span></p>
 </div>
-<p>This option performs a partial refresh of existing overviews, in the region
-of interest specified by georeference coordinates where &lt;ulx&gt; is the X value
-of the upper left corner, &lt;uly&gt; is the Y value of the upper left corner,
-&lt;lrx&gt; is the X value of the lower right corner and &lt;lry&gt; is the Y value of
-the lower right corner.
-By default all existing overview levels will be refreshed, unless explicit
-levels are specified.</p>
+<p>このオプションは,ジオリファレンス座標で指定された関心領域で既存のオーバービューの部分的な更新を行います. &lt;ulx&gt; は左上隅のX値, &lt;uly&gt; は左上隅のY値, &lt;lrx&gt; は右下隅のX値, &lt;lry&gt; は右下隅のY値です. デフォルトでは,明示的なレベルが指定されていない限り,すべての既存のオーバービューレベルが更新されます.</p>
 </dd></dl>
 
 <dl class="std option">
@@ -315,190 +292,126 @@ levels are specified.</p>
 <dd><div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.8.</span></p>
 </div>
-<p>This option performs a partial refresh of existing overviews, in the region
-of interest specified by one or several filenames (names separated by comma).
-Note that the filenames are only used to determine the regions of interest
-to refresh. The reference source pixels are the one of the main dataset.
-By default all existing overview levels will be refreshed, unless explicit
-levels are specified.</p>
+<p>このオプションは,1つまたは複数のファイル名（カンマで区切られた名前）で指定された関心領域で既存のオーバービューの部分的な更新を行います. ファイル名は,更新する関心領域を決定するためにのみ使用されることに注意してください. 参照ソースピクセルはメインデータセットのものです. デフォルトでは,明示的なレベルが指定されていない限り,すべての既存のオーバービューレベルが更新されます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdaladdo-arg-filename">
 <span class="sig-name descname"><span class="pre">&lt;filename&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdaladdo-arg-filename" title="Link to this definition"></a></dt>
-<dd><p>The file to build overviews for (or whose overviews must be removed).</p>
+<dd><p>オーバービューを構築するファイル（またはオーバービューを削除する必要があるファイル）です.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdaladdo-arg-levels">
 <span class="sig-name descname"><span class="pre">&lt;levels&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdaladdo-arg-levels" title="Link to this definition"></a></dt>
-<dd><p>A list of integral overview levels to build. Ignored with <a class="reference internal" href="#cmdoption-gdaladdo-clean"><code class="xref std std-option docutils literal notranslate"><span class="pre">-clean</span></code></a> option.</p>
+<dd><p>構築する整数のオーバービューレベルのリストです. <a class="reference internal" href="#cmdoption-gdaladdo-clean"><code class="xref std std-option docutils literal notranslate"><span class="pre">-clean</span></code></a> オプションとは無視されます.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 2.3: </span>Levels are no longer required to build overviews.
-In which case, appropriate overview power-of-two factors will be selected
-until the smallest overview is smaller than the value of the -minsize switch.</p>
-<p>Starting with GDAL 3.9, if there are already existing overviews, the
-corresponding levels will be used to refresh them if no explicit levels
-are specified.</p>
+<p><span class="versionmodified added">Added in version 2.3: </span>オーバービューを構築するためにレベルはもはや必要ありません. この場合,適切なオーバービューの2の累乗の要素が選択され,最小のオーバービューが -minsize スイッチの値より小さくなるまで続きます.</p>
+<p>GDAL 3.9以降,既存のオーバービューがすでにある場合,明示的なレベルが指定されていない場合,それらを更新するために対応するレベルが使用されます.</p>
 </div>
 </dd></dl>
 
-<p>gdaladdo will honour properly NODATA_VALUES tuples (special dataset metadata) so
-that only a given RGB triplet (in case of a RGB image) will be considered as the
-nodata value and not each value of the triplet independently per band.</p>
-<p>Selecting a level value like <code class="docutils literal notranslate"><span class="pre">2</span></code> causes an overview level that is 1/2
-the resolution (in each dimension) of the base layer to be computed.  If
-the file has existing overview levels at a level selected, those levels will
-be recomputed and rewritten in place.</p>
-<p>For internal GeoTIFF overviews (or external overviews in GeoTIFF format), note
-that -clean does not shrink the file. A later run of gdaladdo with overview levels
-will cause the file to be expanded, rather than reusing the space of the previously
-deleted overviews. If you just want to change the resampling method on a file that
-already has overviews computed, you don't need to clean the existing overviews.</p>
-<p>Some format drivers do not support overviews at all.  Many format drivers
-store overviews in a secondary file with the extension .ovr that is actually
-in TIFF format.  By default, the GeoTIFF driver stores overviews internally to the file
-operated on (if it is writable), unless the -ro flag is specified.</p>
-<p>Most drivers also support an alternate overview format using Erdas Imagine
-format.  To trigger this use the <a class="reference internal" href="../user/configoptions.html#config-USE_RRD"><code class="docutils literal notranslate"><span class="pre">USE_RRD=YES</span></code></a> configuration option.  This will
-place the overviews in an associated .aux file suitable for direct use with
-Imagine or ArcGIS as well as GDAL applications.  (e.g. --config USE_RRD YES)</p>
+<p>gdaladdo は,特別なデータセットメタデータである NODATA_VALUES タプルを適切に尊重します. そのため,RGB画像の場合,特定のRGB三重組だけがノーデータ値として考慮され,各バンドごとに三重組の値が独立して考慮されません.</p>
+<p><code class="docutils literal notranslate"><span class="pre">2</span></code> のようなレベル値を選択すると,基本レイヤーの解像度の1/2(各次元で)のオーバービューレベルが計算されます. ファイルに選択されたレベルの既存のオーバービューレベルがある場合,それらのレベルが再計算されてその場で書き換えられます.</p>
+<p>内部GeoTIFFオーバービュー(またはGeoTIFF形式の外部オーバービュー)の場合, -clean はファイルを縮小しません. 後でオーバービューレベルを持つgdaladdoの実行は,以前に削除されたオーバービューのスペースを再利用するのではなく,ファイルを拡張します. 既に計算されたオーバービューを持つファイルのリサンプリング方法を変更したい場合,既存のオーバービューをクリーンアップする必要はありません.</p>
+<p>一部のフォーマットドライバはオーバービューを全くサポートしていません. 多くのフォーマットドライバは,実際にはTIFF形式である拡張子 .ovr を持つセカンダリファイルにオーバービューを格納します. デフォルトでは,GeoTIFFドライバは,書き込み可能な場合には,操作されたファイルにオーバービューを内部的に格納します. ただし, -ro フラグが指定されていない限り.</p>
+<p>ほとんどのドライバは,Erdas Imagine形式を使用した代替オーバービューフォーマットもサポートしています. これをトリガーするには, <a class="reference internal" href="../user/configoptions.html#config-USE_RRD"><code class="docutils literal notranslate"><span class="pre">USE_RRD=YES</span></code></a> 構成オプションを使用します. これにより,ImagineやArcGISとGDALアプリケーションの両方で直接使用できる関連する .aux ファイルにオーバービューが配置されます. (例: --config USE_RRD YES)</p>
 </section>
 <section id="external-overviews-in-geotiff-format">
-<h2>External overviews in GeoTIFF format<a class="headerlink" href="#external-overviews-in-geotiff-format" title="Link to this heading"></a></h2>
-<p>External overviews created in TIFF format may be compressed using the <a class="reference internal" href="../drivers/raster/gtiff.html#config-COMPRESS_OVERVIEW"><code class="docutils literal notranslate"><span class="pre">COMPRESS_OVERVIEW</span></code></a>
-configuration option.  All compression methods, supported by the GeoTIFF
-driver, are available here. (e.g. <code class="docutils literal notranslate"><span class="pre">--config</span> <span class="pre">COMPRESS_OVERVIEW</span> <span class="pre">DEFLATE</span></code>).
-The photometric interpretation can be set with the <a class="reference internal" href="../drivers/raster/gtiff.html#config-PHOTOMETRIC_OVERVIEW"><code class="docutils literal notranslate"><span class="pre">PHOTOMETRIC_OVERVIEW</span></code></a>
-=RGB/YCBCR/... configuration option,
-and the interleaving with the <a class="reference internal" href="../drivers/raster/gtiff.html#config-INTERLEAVE_OVERVIEW"><code class="docutils literal notranslate"><span class="pre">INTERLEAVE_OVERVIEW</span></code></a> =PIXEL/BAND configuration option.</p>
-<p>Since GDAL 3.6, <a class="reference internal" href="../drivers/raster/gtiff.html#config-COMPRESS_OVERVIEW"><code class="docutils literal notranslate"><span class="pre">COMPRESS_OVERVIEW</span></code></a> and <a class="reference internal" href="../drivers/raster/gtiff.html#config-INTERLEAVE_OVERVIEW"><code class="docutils literal notranslate"><span class="pre">INTERLEAVE_OVERVIEW</span></code></a>
-are honoured when creating internal overviews of TIFF files.</p>
-<p>For JPEG compressed external and internal overviews, the JPEG quality can be set with
-<code class="docutils literal notranslate"><span class="pre">--config</span> <span class="pre">JPEG_QUALITY_OVERVIEW</span> <span class="pre">value</span></code>.</p>
-<p>For WEBP compressed external and internal overviews, the WEBP quality level can be set with
-<code class="docutils literal notranslate"><span class="pre">--config</span> <span class="pre">WEBP_LEVEL_OVERVIEW</span> <span class="pre">value</span></code>. If not set, will default to 75.</p>
-<p>For WEBP compressed external and internal overviews, the WEBP lossless/lossy switch can be set with
-<code class="docutils literal notranslate"><span class="pre">--config</span> <span class="pre">WEBP_LOSSLESS_OVERVIEW</span> <span class="pre">value</span></code>. If not set, will default to NO (lossy). Added in GDAL 3.6.0</p>
-<p>For LERC compressed external and internal overviews, the max error threshold can be set with
-<code class="docutils literal notranslate"><span class="pre">--config</span> <span class="pre">MAX_Z_ERROR_OVERVIEW</span> <span class="pre">value</span></code>. If not set, will default to 0 (lossless). Added in GDAL 3.4.1</p>
-<p>For DEFLATE or LERC_DEFLATE compressed external and internal overviews, the compression level can be set with
-<code class="docutils literal notranslate"><span class="pre">--config</span> <span class="pre">ZLEVEL_OVERVIEW</span> <span class="pre">value</span></code>. If not set, will default to 6. Added in GDAL 3.4.1</p>
-<p>For ZSTD or LERC_ZSTD compressed external and internal overviews, the compression level can be set with
-<code class="docutils literal notranslate"><span class="pre">--config</span> <span class="pre">ZSTD_LEVEL_OVERVIEW</span> <span class="pre">value</span></code>. If not set, will default to 9. Added in GDAL 3.4.1</p>
-<p>For JPEG-XL compressed external and internal overviews, the following settings can be set since GDAL 3.9.0:</p>
+<h2>GeoTIFF形式の外部オーバービュー<a class="headerlink" href="#external-overviews-in-geotiff-format" title="Link to this heading"></a></h2>
+<p>TIFF形式で作成された外部オーバービューは, <a class="reference internal" href="../drivers/raster/gtiff.html#config-COMPRESS_OVERVIEW"><code class="docutils literal notranslate"><span class="pre">COMPRESS_OVERVIEW</span></code></a> 構成オプションを使用して圧縮できます. GeoTIFFドライバでサポートされているすべての圧縮方法がここで利用可能です. (例: <code class="docutils literal notranslate"><span class="pre">--config</span> <span class="pre">COMPRESS_OVERVIEW</span> <span class="pre">DEFLATE</span></code>). フォトメトリックインタープリテーションは, <a class="reference internal" href="../drivers/raster/gtiff.html#config-PHOTOMETRIC_OVERVIEW"><code class="docutils literal notranslate"><span class="pre">PHOTOMETRIC_OVERVIEW</span></code></a> =RGB/YCBCR/... 構成オプションで設定できます. また,インターリーブは, <a class="reference internal" href="../drivers/raster/gtiff.html#config-INTERLEAVE_OVERVIEW"><code class="docutils literal notranslate"><span class="pre">INTERLEAVE_OVERVIEW</span></code></a> =PIXEL/BAND 構成オプションで設定できます.</p>
+<p>GDAL 3.6以降, <a class="reference internal" href="../drivers/raster/gtiff.html#config-COMPRESS_OVERVIEW"><code class="docutils literal notranslate"><span class="pre">COMPRESS_OVERVIEW</span></code></a> と <a class="reference internal" href="../drivers/raster/gtiff.html#config-INTERLEAVE_OVERVIEW"><code class="docutils literal notranslate"><span class="pre">INTERLEAVE_OVERVIEW</span></code></a> は, TIFFファイルの内部オーバービューを作成する際に尊重されます.</p>
+<p>JPEG圧縮された外部および内部オーバービューの場合, JPEG品質は <code class="docutils literal notranslate"><span class="pre">--config</span> <span class="pre">JPEG_QUALITY_OVERVIEW</span> <span class="pre">value</span></code> で設定できます.</p>
+<p>WEBP圧縮された外部および内部オーバービューの場合, WEBP品質レベルは <code class="docutils literal notranslate"><span class="pre">--config</span> <span class="pre">WEBP_LEVEL_OVERVIEW</span> <span class="pre">value</span></code> で設定できます. 設定されていない場合,デフォルトは75になります.</p>
+<p>WEBP圧縮された外部および内部オーバービューの場合, WEBPロスレス/ロシー切り替えは <code class="docutils literal notranslate"><span class="pre">--config</span> <span class="pre">WEBP_LOSSLESS_OVERVIEW</span> <span class="pre">value</span></code> で設定できます. 設定されていない場合,デフォルトはNO(ロスレス)になります. GDAL 3.6.0で追加されました.</p>
+<p>LERC圧縮された外部および内部オーバービューの場合,最大誤差しきい値は <code class="docutils literal notranslate"><span class="pre">--config</span> <span class="pre">MAX_Z_ERROR_OVERVIEW</span> <span class="pre">value</span></code> で設定できます. 設定されていない場合,デフォルトは0(ロスレス)になります. GDAL 3.4.1で追加されました.</p>
+<p>DEFLATEまたはLERC_DEFLATE圧縮された外部および内部オーバービューの場合,圧縮レベルは <code class="docutils literal notranslate"><span class="pre">--config</span> <span class="pre">ZLEVEL_OVERVIEW</span> <span class="pre">value</span></code> で設定できます. 設定されていない場合,デフォルトは6になります. GDAL 3.4.1で追加されました.</p>
+<p>ZSTDまたはLERC_ZSTD圧縮された外部および内部オーバービューの場合,圧縮レベルは <code class="docutils literal notranslate"><span class="pre">--config</span> <span class="pre">ZSTD_LEVEL_OVERVIEW</span> <span class="pre">value</span></code> で設定できます. 設定されていない場合,デフォルトは9になります. GDAL 3.4.1で追加されました.</p>
+<p>JPEG-XL圧縮された外部および内部オーバービューの場合,以下の設定がGDAL 3.9.0以降で設定できます:</p>
 <ul class="simple">
-<li><p>Whether compression should be lossless with <code class="docutils literal notranslate"><span class="pre">--config</span> <span class="pre">JXL_LOSSLESS_OVERVIEW</span> <span class="pre">YES|NO</span></code>. Default is YES</p></li>
-<li><p>Level of effort with <code class="docutils literal notranslate"><span class="pre">--config</span> <span class="pre">JXL_EFFORT_OVERVIEW</span> <span class="pre">value</span></code>, with value between 1(fast) and 9(flow). Default is 5</p></li>
-<li><p>Distance level for lossy compression with <code class="docutils literal notranslate"><span class="pre">--config</span> <span class="pre">JXL_DISTANCE_OVERVIEW</span> <span class="pre">value</span></code>, with value: 0=mathematically lossless, 1.0=visually lossless, usual range [0.5,3]. Default is 1.0. Ignored if JXL_LOSSLESS_OVERVIEW is YES</p></li>
-<li><p>Distance level for lossy compression of alpha channel with <code class="docutils literal notranslate"><span class="pre">--config</span> <span class="pre">JXL_ALPHA_DISTANCE_OVERVIEW</span> <span class="pre">value</span></code>, with value: 0=mathematically lossless, 1.0=visually lossless, usual range [0.5,3]. Default is the same value as JXL_DISTANCE_OVERVIEW. Ignored if JXL_LOSSLESS_OVERVIEW is YES</p></li>
+<li><p>圧縮がロスレスであるかどうかは <code class="docutils literal notranslate"><span class="pre">--config</span> <span class="pre">JXL_LOSSLESS_OVERVIEW</span> <span class="pre">YES|NO</span></code> で設定できます. デフォルトはYESです</p></li>
+<li><p>努力レベルは <code class="docutils literal notranslate"><span class="pre">--config</span> <span class="pre">JXL_EFFORT_OVERVIEW</span> <span class="pre">value</span></code> で設定できます. 値は1(高速)から9(高品質)の間です. デフォルトは5です</p></li>
+<li><p>損失圧縮のための距離レベルは <code class="docutils literal notranslate"><span class="pre">--config</span> <span class="pre">JXL_DISTANCE_OVERVIEW</span> <span class="pre">value</span></code> で設定できます. 値は: 0=数学的にロスレス, 1.0=視覚的にロスレス, 通常の範囲[0.5,3]. デフォルトは1.0です. JXL_LOSSLESS_OVERVIEW がYESの場合は無視されます</p></li>
+<li><p>アルファチャンネルの損失圧縮のための距離レベルは <code class="docutils literal notranslate"><span class="pre">--config</span> <span class="pre">JXL_ALPHA_DISTANCE_OVERVIEW</span> <span class="pre">value</span></code> で設定できます. 値は: 0=数学的にロスレス, 1.0=視覚的にロスレス, 通常の範囲[0.5,3]. デフォルトはJXL_DISTANCE_OVERVIEWと同じ値です. JXL_LOSSLESS_OVERVIEW がYESの場合は無視されます</p></li>
 </ul>
-<p>For LZW, ZSTD or DEFLATE compressed external overviews, the predictor value can be set
-with <code class="docutils literal notranslate"><span class="pre">--config</span> <span class="pre">PREDICTOR_OVERVIEW</span> <span class="pre">1|2|3</span></code>.</p>
-<p>To produce the smallest possible JPEG-In-TIFF overviews, you should use:</p>
+<p>LZW, ZSTDまたはDEFLATE圧縮された外部オーバービューの場合,予測子値は <code class="docutils literal notranslate"><span class="pre">--config</span> <span class="pre">PREDICTOR_OVERVIEW</span> <span class="pre">1|2|3</span></code> で設定できます.</p>
+<p>可能な限り小さなJPEG-In-TIFFオーバービューを生成するには,次のようにします:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">config</span> <span class="n">COMPRESS_OVERVIEW</span> <span class="n">JPEG</span> <span class="o">--</span><span class="n">config</span> <span class="n">PHOTOMETRIC_OVERVIEW</span> <span class="n">YCBCR</span> <span class="o">--</span><span class="n">config</span> <span class="n">INTERLEAVE_OVERVIEW</span> <span class="n">PIXEL</span>
 </pre></div>
 </div>
-<p>External overviews can be created in the BigTIFF format by using
-the <a class="reference internal" href="../drivers/raster/gtiff.html#config-BIGTIFF_OVERVIEW"><code class="docutils literal notranslate"><span class="pre">BIGTIFF_OVERVIEW</span></code></a> configuration option:
-<code class="docutils literal notranslate"><span class="pre">--config</span> <span class="pre">BIGTIFF_OVERVIEW</span> <span class="pre">{IF_NEEDED|IF_SAFER|YES|NO}</span></code>.</p>
-<p>The default value is IF_SAFER starting with GDAL 2.3.0 (previously was IF_NEEDED).
-The behavior of this option is exactly the same as the BIGTIFF creation option
-documented in the GeoTIFF driver documentation.</p>
+<p>外部オーバービューは, <a class="reference internal" href="../drivers/raster/gtiff.html#config-BIGTIFF_OVERVIEW"><code class="docutils literal notranslate"><span class="pre">BIGTIFF_OVERVIEW</span></code></a> 構成オプションを使用してBigTIFF形式で作成できます: <code class="docutils literal notranslate"><span class="pre">--config</span> <span class="pre">BIGTIFF_OVERVIEW</span> <span class="pre">{IF_NEEDED|IF_SAFER|YES|NO}</span></code>.</p>
+<p>デフォルト値はGDAL 2.3.0以降はIF_SAFERです(以前はIF_NEEDEDでした). このオプションの動作は,GeoTIFFドライバのドキュメントに記載されているBIGTIFF作成オプションとまったく同じです.</p>
 <ul class="simple">
-<li><p>YES forces BigTIFF.</p></li>
-<li><p>NO forces classic TIFF.</p></li>
-<li><p>IF_NEEDED will only create a BigTIFF if it is clearly needed (uncompressed,
-and overviews larger than 4GB).</p></li>
-<li><p>IF_SAFER will create BigTIFF if the resulting file <em>might</em> exceed 4GB.</p></li>
+<li><p>YES はBigTIFFを強制します.</p></li>
+<li><p>NO はクラシックTIFFを強制します.</p></li>
+<li><p>IF_NEEDED は,明らかに必要な場合のみBigTIFFを作成します(非圧縮であり,オーバービューが4GBを超える場合).</p></li>
+<li><p>IF_SAFER は,結果のファイルが4GBを超える可能性がある場合にBigTIFFを作成します.</p></li>
 </ul>
-<p>Sparse GeoTIFF overview files (that is tiles which are omitted if all their pixels are
-at the nodata value, when there's one, or at 0 otherwise) can be obtained with
-<code class="docutils literal notranslate"><span class="pre">--config</span> <span class="pre">SPARSE_OK_OVERVIEW</span> <span class="pre">ON</span></code>. Added in GDAL 3.4.1</p>
-<p>See the documentation of the <a class="reference internal" href="../drivers/raster/gtiff.html#raster-gtiff"><span class="std std-ref">GTiff -- GeoTIFF File Format</span></a> driver for further explanations on all those options.</p>
+<p>疎なGeoTIFFオーバービューファイル(つまり,すべてのピクセルがノーデータ値である場合に省略されるタイル,ノーデータ値がある場合,または0である場合)は, <code class="docutils literal notranslate"><span class="pre">--config</span> <span class="pre">SPARSE_OK_OVERVIEW</span> <span class="pre">ON</span></code> で取得できます. GDAL 3.4.1で追加されました</p>
+<p>これらのオプションの詳細については, <a class="reference internal" href="../drivers/raster/gtiff.html#raster-gtiff"><span class="std std-ref">GTiff -- GeoTIFF File Format</span></a> ドライバのドキュメントを参照してください.</p>
 </section>
 <section id="setting-blocksize-in-geotiff-overviews">
-<h2>Setting blocksize in Geotiff overviews<a class="headerlink" href="#setting-blocksize-in-geotiff-overviews" title="Link to this heading"></a></h2>
+<h2>Geotiffオーバービューでのブロックサイズの設定<a class="headerlink" href="#setting-blocksize-in-geotiff-overviews" title="Link to this heading"></a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">--config</span> <span class="pre">GDAL_TIFF_OVR_BLOCKSIZE</span> <span class="pre">&lt;size&gt;</span></code></p>
-<p>Example: <code class="docutils literal notranslate"><span class="pre">--config</span> <span class="pre">GDAL_TIFF_OVR_BLOCKSIZE</span> <span class="pre">256</span></code></p>
-<p>Default value is 128, or starting with GDAL 3.1, if creating overviews on a tiled GeoTIFF file, the tile size of the full resolution image.
-Note: without this setting, the file can have the full resolution image with a blocksize different from overviews blocksize.(e.g. full resolution image at blocksize 256, overviews at blocksize 128)</p>
+<p>例: <code class="docutils literal notranslate"><span class="pre">--config</span> <span class="pre">GDAL_TIFF_OVR_BLOCKSIZE</span> <span class="pre">256</span></code></p>
+<p>デフォルト値は128です. またはGDAL 3.1以降,タイルGeoTIFFファイルでオーバービューを作成する場合,フル解像度画像のタイルサイズです. 注意:この設定がない場合,ファイルはオーバービューブロックサイズと異なるブロックサイズでフル解像度画像を持つことがあります. (例: ブロックサイズ256のフル解像度画像,ブロックサイズ128のオーバービュー)</p>
 </section>
 <section id="nodata-source-validity-mask-handling-during-resampling">
-<h2>Nodata / source validity mask handling during resampling<a class="headerlink" href="#nodata-source-validity-mask-handling-during-resampling" title="Link to this heading"></a></h2>
-<p>Invalid values in source pixels, either identified through a nodata value
-metadata set on the source band, a mask band, an alpha band will not be used
-during resampling.</p>
-<p>The details of how it is taken into account depends on the resampling kernel:</p>
+<h2>リサンプリング中のノーデータ/ソース有効マスクの処理<a class="headerlink" href="#nodata-source-validity-mask-handling-during-resampling" title="Link to this heading"></a></h2>
+<p>ソースピクセルの無効な値は,ソースバンドに設定されたノーデータ値メタデータ,マスクバンド,アルファバンドを通じて識別された場合,リサンプリング中に使用されません.</p>
+<p>それがどのように考慮されるかの詳細は,リサンプリングカーネルに依存します:</p>
 <ul class="simple">
-<li><p>for nearest resampling, for each target pixel, one of the potential contributing
-source pixels is selected (in an implementation specific way). Its value is used
-as it, be it valid or invalid.</p></li>
-<li><p>for bilinear, cubic, cubicspline and lanczos, for each target pixel, the weights
-of contributing source pixels is set to zero to ignore them when they are masked.
-There is an extra specificity for cubic: given that some of the weights in the
-kernel are negative, such strategy could lead to strong overshoot/undershoot
-when there is an alternance of valid and invalid pixels. Consequently, if any
-of the horizontal or vertical direction, if the maximum number of valid source
-pixels in each dimension is less than the radius of the resampling kernel,
-the target pixel is considered as nodata.</p></li>
-<li><p>for the other resampling methods, source pixels contributing to the target pixel
-are ignored if masked. Only the valid ones are taken into account. If there are
-none, the target pixel is considered as nodata.</p></li>
+<li><p>最近傍リサンプリングの場合,各ターゲットピクセルに対して,潜在的な寄与ソースピクセルの1つが選択されます(実装固有の方法で). その値は,有効であろうと無効であろうとそのまま使用されます.</p></li>
+<li><p>バイリニア,キュービック,キュービックスプラインおよびランチョスの場合,各ターゲットピクセルに対して,マスクされた場合に無視するために寄与ソースピクセルの重みがゼロに設定されます. キュービックの場合,カーネル内の一部の重みが負であるため,有効なピクセルと無効なピクセルの交互がある場合,強いオーバーシュート/アンダーシュートにつながる可能性があります. そのため,水平または垂直方向のいずれかで,各次元のリサンプリングカーネルの半径よりも有効なソースピクセルの最大数が少ない場合,ターゲットピクセルはノーデータと見なされます.</p></li>
+<li><p>その他のリサンプリング方法の場合,マスクされた場合に寄与するソースピクセルは無視されます. 有効なものだけが考慮されます. それがない場合,ターゲットピクセルはノーデータと見なされます.</p></li>
 </ul>
 </section>
 <section id="multithreading">
-<h2>Multithreading<a class="headerlink" href="#multithreading" title="Link to this heading"></a></h2>
+<h2>マルチスレッディング<a class="headerlink" href="#multithreading" title="Link to this heading"></a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.2.</span></p>
 </div>
-<p>The <a class="reference internal" href="../user/configoptions.html#config-GDAL_NUM_THREADS"><code class="docutils literal notranslate"><span class="pre">GDAL_NUM_THREADS</span></code></a> configuration option can be set to
-<code class="docutils literal notranslate"><span class="pre">ALL_CPUS</span></code> or a integer value to specify the number of threads to use for
-overview computation.</p>
+<p><a class="reference internal" href="../user/configoptions.html#config-GDAL_NUM_THREADS"><code class="docutils literal notranslate"><span class="pre">GDAL_NUM_THREADS</span></code></a> 構成オプションは,オーバービュー計算に使用するスレッド数を指定するために <code class="docutils literal notranslate"><span class="pre">ALL_CPUS</span></code> または整数値に設定できます.</p>
 </section>
 <section id="c-api">
-<h2>C API<a class="headerlink" href="#c-api" title="Link to this heading"></a></h2>
-<p>Functionality of this utility can be done from C with <a class="reference internal" href="../api/raster_c_api.html#_CPPv418GDALBuildOverviews12GDALDatasetHPKciPKiiPKi16GDALProgressFuncPv" title="GDALBuildOverviews"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALBuildOverviews()</span></code></a>.</p>
+<h2>C言語API<a class="headerlink" href="#c-api" title="Link to this heading"></a></h2>
+<p>このユーティリティの機能は,C言語で <a class="reference internal" href="../api/raster_c_api.html#_CPPv418GDALBuildOverviews12GDALDatasetHPKciPKiiPKi16GDALProgressFuncPv" title="GDALBuildOverviews"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALBuildOverviews()</span></code></a> で行うことができます.</p>
 </section>
 <section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
-<p>Create overviews, embedded in the supplied TIFF file, with automatic computation
-of levels (GDAL 2.3 or later)</p>
+<h2>例<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
+<p>オーバービューを作成し,レベルの自動計算を行いTIFFファイルに埋め込みます. (GDAL 2.3以降）</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdaladdo</span> <span class="o">-</span><span class="n">r</span> <span class="n">average</span> <span class="n">abc</span><span class="o">.</span><span class="n">tif</span>
 </pre></div>
 </div>
-<p>Create overviews, embedded in the supplied TIFF file:</p>
+<p>TIFFファイルに埋め込まれたオーバービューを作成します:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdaladdo</span> <span class="o">-</span><span class="n">r</span> <span class="n">average</span> <span class="n">abc</span><span class="o">.</span><span class="n">tif</span> <span class="mi">2</span> <span class="mi">4</span> <span class="mi">8</span> <span class="mi">16</span>
 </pre></div>
 </div>
-<p>Create an external compressed GeoTIFF overview file from the ERDAS .IMG file:</p>
+<p>ERDAS .IMG ファイルから外部圧縮されたGeoTIFFオーバービューファイルを作成します:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdaladdo</span> <span class="o">-</span><span class="n">ro</span> <span class="o">--</span><span class="n">config</span> <span class="n">COMPRESS_OVERVIEW</span> <span class="n">DEFLATE</span> <span class="n">erdas</span><span class="o">.</span><span class="n">img</span> <span class="mi">2</span> <span class="mi">4</span> <span class="mi">8</span> <span class="mi">16</span>
 </pre></div>
 </div>
-<p>Create an external JPEG-compressed GeoTIFF overview file from a 3-band RGB dataset
-(if the dataset is a writable GeoTIFF, you also need to add the -ro option to
-force the generation of external overview):</p>
+<p>3バンドRGBデータセットから外部JPEG圧縮GeoTIFFオーバービューファイルを作成します(データセットが書き込み可能なGeoTIFFの場合,外部オーバービューの生成を強制するために -ro オプションを追加する必要があります):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdaladdo</span> <span class="o">--</span><span class="n">config</span> <span class="n">COMPRESS_OVERVIEW</span> <span class="n">JPEG</span> <span class="o">--</span><span class="n">config</span> <span class="n">PHOTOMETRIC_OVERVIEW</span> <span class="n">YCBCR</span>
          <span class="o">--</span><span class="n">config</span> <span class="n">INTERLEAVE_OVERVIEW</span> <span class="n">PIXEL</span> <span class="n">rgb_dataset</span><span class="o">.</span><span class="n">ext</span> <span class="mi">2</span> <span class="mi">4</span> <span class="mi">8</span> <span class="mi">16</span>
 </pre></div>
 </div>
-<p>Create an Erdas Imagine format overviews for the indicated JPEG file:</p>
+<p>指定されたJPEGファイルのErdas Imagine形式のオーバービューを作成します:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdaladdo</span> <span class="o">--</span><span class="n">config</span> <span class="n">USE_RRD</span> <span class="n">YES</span> <span class="n">airphoto</span><span class="o">.</span><span class="n">jpg</span> <span class="mi">3</span> <span class="mi">9</span> <span class="mi">27</span> <span class="mi">81</span>
 </pre></div>
 </div>
-<p>Create overviews for a specific subdataset, like for example one of potentially many raster layers in a GeoPackage (the &quot;filename&quot; parameter must be driver prefix, filename and subdataset name, like e.g. shown by gdalinfo):</p>
+<p>GeoPackage内の複数のラスタレイヤーの1つのような特定のサブデータセットのオーバービューを作成します(&quot;filename&quot; パラメータは,ドライバプレフィックス,ファイル名,サブデータセット名のように,gdalinfoで表示されるようになります):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdaladdo</span> <span class="n">GPKG</span><span class="p">:</span><span class="n">file</span><span class="o">.</span><span class="n">gpkg</span><span class="p">:</span><span class="n">layer</span>
 </pre></div>
 </div>
-<p>Refresh overviews of a VRT file, for sources that have been modified after the
-.vrt.ovr generation:</p>
+<p>.vrt.ovr 生成後に変更されたソースのVRTファイルのオーバービューを更新します:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdalbuildvrt</span> <span class="n">my</span><span class="o">.</span><span class="n">vrt</span> <span class="n">tile1</span><span class="o">.</span><span class="n">tif</span> <span class="n">tile2</span><span class="o">.</span><span class="n">tif</span>                          <span class="c1"># create VRT</span>
 <span class="n">gdaladdo</span> <span class="o">-</span><span class="n">r</span> <span class="n">cubic</span> <span class="n">my</span><span class="o">.</span><span class="n">vrt</span>                                         <span class="c1"># initial overview generation</span>
 <span class="n">touch</span> <span class="n">tile1</span><span class="o">.</span><span class="n">tif</span>                                                  <span class="c1"># simulate update of one of the source tiles</span>
 <span class="n">gdaladdo</span> <span class="o">--</span><span class="n">partial</span><span class="o">-</span><span class="n">refresh</span><span class="o">-</span><span class="n">from</span><span class="o">-</span><span class="n">source</span><span class="o">-</span><span class="n">timestamp</span> <span class="o">-</span><span class="n">r</span> <span class="n">cubic</span> <span class="n">my</span><span class="o">.</span><span class="n">vrt</span> <span class="c1"># refresh overviews</span>
 </pre></div>
 </div>
-<p>Refresh overviews of a TIFF file:</p>
+<p>TIFFファイルのオーバービューを更新します:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdalwarp</span> <span class="o">-</span><span class="n">overwrite</span> <span class="n">tile1</span><span class="o">.</span><span class="n">tif</span> <span class="n">tile2</span><span class="o">.</span><span class="n">tif</span> <span class="n">mosaic</span><span class="o">.</span><span class="n">tif</span>                      <span class="c1"># create mosaic</span>
 <span class="n">gdaladdo</span> <span class="o">-</span><span class="n">r</span> <span class="n">cubic</span> <span class="n">mosaic</span><span class="o">.</span><span class="n">tif</span>                                            <span class="c1"># initial overview generation</span>
 <span class="n">touch</span> <span class="n">tile1</span><span class="o">.</span><span class="n">tif</span>                                                         <span class="c1"># simulate update of one of the source tiles</span>

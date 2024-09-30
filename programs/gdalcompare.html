@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>gdalcompare &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=75499f83" />
 
   
     <link rel="shortcut icon" href="../_static/favicon.png"/>
@@ -78,9 +78,9 @@
 <li class="toctree-l3"><a class="reference internal" href="gdalattachpct.html">gdalattachpct</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdalbuildvrt.html">gdalbuildvrt</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">gdalcompare</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#synopsis">Synopsis</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#synopsis">概要</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#description">説明</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#examples">例</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="gdaldem.html">gdaldem</a></li>
@@ -184,9 +184,9 @@
              
   <section id="gdalcompare">
 <span id="id1"></span><h1>gdalcompare<a class="headerlink" href="#gdalcompare" title="Link to this heading"></a></h1>
-<p>Compare two images.</p>
+<p>2 つの画像を比較します.</p>
 <section id="synopsis">
-<span id="index-0"></span><h2>Synopsis<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
+<span id="index-0"></span><h2>概要<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdalcompare</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="o">-</span><span class="n">general</span><span class="p">]</span>
                <span class="p">[</span><span class="o">-</span><span class="n">dumpdiffs</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">skip_binary</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">skip_overviews</span><span class="p">]</span>
                <span class="p">[</span><span class="o">-</span><span class="n">skip_geolocation</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">skip_geotransform</span><span class="p">]</span>
@@ -196,29 +196,23 @@
 </div>
 </section>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
-<p><strong class="program">gdalcompare</strong> compares two GDAL supported datasets and
-reports the differences. In addition to reporting differences to the
-standard output the script will also return the difference count in its
-exit value.</p>
-<p>Image pixels, and various metadata are checked. There is also a byte by
-byte comparison done which will count as one difference. So if it is
-only important that the GDAL visible data is identical a difference
-count of 1 (the binary difference) should be considered acceptable.</p>
+<h2>説明<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p><strong class="program">gdalcompare</strong> は 2 つの GDAL サポートされたデータセットを比較し, 差異を報告します. 標準出力に差異を報告するだけでなく, スクリプトは終了値に差異カウントを返します.</p>
+<p>画像のピクセルとさまざまなメタデータがチェックされます. また, 1 つの差異としてカウントされるバイトごとの比較も行われます. したがって, GDAL の可視データが同一であることが重要な場合, 差異カウント 1 (バイナリの差異) は許容されると考えられます.</p>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
-<p>gdalcompare is a Python utility, and is only available if GDAL Python bindings are available.</p>
+<p>gdalcompare は Python ユーティリティであり, GDAL Python バインディングが利用可能な場合のみ利用可能です.</p>
 </div>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalcompare-help">
 <span class="sig-name descname"><span class="pre">--help</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalcompare-help" title="Link to this definition"></a></dt>
-<dd><p>Show this help message and exit</p>
+<dd><p>このヘルプメッセージを表示して終了します</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalcompare-help-general">
 <span class="sig-name descname"><span class="pre">--help-general</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalcompare-help-general" title="Link to this definition"></a></dt>
-<dd><p>Gives a brief usage message for the generic GDAL commandline options and exit.</p>
+<dd><p>一般的な GDAL コマンドラインオプションの使用方法を簡単に表示して終了します.</p>
 </dd></dl>
 
 <dl class="std option">
@@ -227,8 +221,7 @@ count of 1 (the binary difference) should be considered acceptable.</p>
 <dd><div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.8.</span></p>
 </div>
-<p>Whether to output the difference in pixel content in a TIFF file in the
-current directory.</p>
+<p>現在のディレクトリにある TIFF ファイルにピクセルコンテンツの差異を出力するかどうか.</p>
 </dd></dl>
 
 <dl class="std option">
@@ -237,7 +230,7 @@ current directory.</p>
 <dd><div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.8.</span></p>
 </div>
-<p>Whether to skip exact comparison of binary content.</p>
+<p>バイナリーコンテンツの正確な比較をスキップするかどうか.</p>
 </dd></dl>
 
 <dl class="std option">
@@ -246,7 +239,7 @@ current directory.</p>
 <dd><div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.8.</span></p>
 </div>
-<p>Whether to skip comparison of overviews.</p>
+<p>オーバービューの比較をスキップするかどうか.</p>
 </dd></dl>
 
 <dl class="std option">
@@ -255,7 +248,7 @@ current directory.</p>
 <dd><div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.8.</span></p>
 </div>
-<p>Whether to skip comparison of GEOLOCATION metadata domain.</p>
+<p>GEOLOCATION メタデータドメインの比較をスキップするかどうか.</p>
 </dd></dl>
 
 <dl class="std option">
@@ -264,7 +257,7 @@ current directory.</p>
 <dd><div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.8.</span></p>
 </div>
-<p>Whether to skip comparison of geotransform matrix.</p>
+<p>ジオトランスフォーム行列の比較をスキップするかどうか.</p>
 </dd></dl>
 
 <dl class="std option">
@@ -273,7 +266,7 @@ current directory.</p>
 <dd><div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.8.</span></p>
 </div>
-<p>Whether to skip comparison of metadata</p>
+<p>メタデータの比較をスキップするかどうか.</p>
 </dd></dl>
 
 <dl class="std option">
@@ -282,7 +275,7 @@ current directory.</p>
 <dd><div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.8.</span></p>
 </div>
-<p>Whether to skip comparison of Rational Polynomial Coefficients (RPC) metadata domain.</p>
+<p>有理多項式係数 (RPC) メタデータドメインの比較をスキップするかどうか.</p>
 </dd></dl>
 
 <dl class="std option">
@@ -291,39 +284,31 @@ current directory.</p>
 <dd><div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.8.</span></p>
 </div>
-<p>Whether to skip comparison of spatial reference systems (SRS).</p>
+<p>空間参照システム (SRS) の比較をスキップするかどうか.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalcompare-sds">
 <span class="sig-name descname"><span class="pre">-sds</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalcompare-sds" title="Link to this definition"></a></dt>
-<dd><p>If this flag is passed the script will compare all subdatasets that
-are part of the dataset, otherwise subdatasets are ignored.</p>
+<dd><p>このフラグが渡されると, データセットの一部であるすべてのサブデータセットを比較します. それ以外の場合, サブデータセットは無視されます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalcompare-arg-golden_file">
 <span class="sig-name descname"><span class="pre">&lt;golden_file&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalcompare-arg-golden_file" title="Link to this definition"></a></dt>
-<dd><p>The file that is considered correct, referred to as the golden file.</p>
+<dd><p>golden ファイルとして考慮されるファイル.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalcompare-arg-new_file">
 <span class="sig-name descname"><span class="pre">&lt;new_file&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalcompare-arg-new_file" title="Link to this definition"></a></dt>
-<dd><p>The file being compared to the golden file, referred to as the new
-file.</p>
+<dd><p>golden ファイルと比較されるファイル.</p>
 </dd></dl>
 
-<p>Note that the <strong class="program">gdalcompare</strong> script (like all the other scripts)
-can also be called as a library from python code: <cite>from osgeo_utils import gdalcompare</cite>.
-The primary entry point is <cite>gdalcompare.compare_db()</cite> which takes a golden
-<cite>gdal.Dataset</cite> and a new <cite>gdal.Dataset</cite> as arguments and returns a
-difference count (excluding the binary comparison). The
-<cite>gdalcompare.compare_sds()</cite> entry point can be used to compare
-subdatasets.</p>
+<p><strong class="program">gdalcompare</strong> スクリプト (他のすべてのスクリプトと同様) は, Python コードからライブラリとしても呼び出すことができます: <cite>from osgeo_utils import gdalcompare</cite>. 主要なエントリポイントは <cite>gdalcompare.compare_db()</cite> で, golden <cite>gdal.Dataset</cite> と新しい <cite>gdal.Dataset</cite> を引数に取り, 差異カウント(バイナリの比較を除く) を返します. <cite>gdalcompare.compare_sds()</cite> エントリポイントは, サブデータセットを比較するために使用できます.</p>
 </section>
 <section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
+<h2>例<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdalcompare<span class="w"> </span>-dumpdiffs<span class="w"> </span>N.tiff<span class="w"> </span>S.tiff<span class="p">;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$?</span>
 Files<span class="w"> </span>differ<span class="w"> </span>at<span class="w"> </span>the<span class="w"> </span>binary<span class="w"> </span>level.
 Band<span class="w"> </span><span class="m">1</span><span class="w"> </span>checksum<span class="w"> </span>difference:

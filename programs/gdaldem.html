@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>gdaldem &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=75499f83" />
 
   
     <link rel="shortcut icon" href="../_static/favicon.png"/>
@@ -79,12 +79,12 @@
 <li class="toctree-l3"><a class="reference internal" href="gdalbuildvrt.html">gdalbuildvrt</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdalcompare.html">gdalcompare</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">gdaldem</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#synopsis">Synopsis</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#modes">Modes</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#c-api">C API</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#authors">Authors</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#see-also">See also</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#synopsis">概要</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#description">説明</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#modes">モード</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c-api">C言語API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#authors">著者</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#see-also">さらに参照</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="gdalinfo.html">gdalinfo</a></li>
@@ -187,14 +187,14 @@
              
   <section id="gdaldem">
 <span id="id1"></span><h1>gdaldem<a class="headerlink" href="#gdaldem" title="Link to this heading"></a></h1>
-<p>Tools to analyze and visualize DEMs.</p>
+<p>DEM を分析および可視化するツール.</p>
 <section id="synopsis">
-<span id="index-0"></span><h2>Synopsis<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
+<span id="index-0"></span><h2>概要<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdaldem</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="o">-</span><span class="n">general</span><span class="p">]</span> <span class="o">&lt;</span><span class="n">mode</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="nb">input</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">output</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">options</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<p>From any GDAL-supported elevation raster:</p>
-<p>Generate a shaded relief map:</p>
+<p>GDAL でサポートされる任意の標高ラスタから:</p>
+<p>陰影図を生成します:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdaldem</span> <span class="n">hillshade</span> <span class="o">&lt;</span><span class="n">input_dem</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">output_hillshade</span><span class="o">&gt;</span>
             <span class="p">[</span><span class="o">-</span><span class="n">z</span> <span class="o">&lt;</span><span class="n">zfactor</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">s</span> <span class="o">&lt;</span><span class="n">scale</span><span class="o">&gt;</span><span class="p">]</span>
             <span class="p">[</span><span class="o">-</span><span class="n">az</span> <span class="o">&lt;</span><span class="n">azimuth</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">alt</span> <span class="o">&lt;</span><span class="n">altitude</span><span class="o">&gt;</span><span class="p">]</span>
@@ -202,22 +202,21 @@
             <span class="p">[</span><span class="o">-</span><span class="n">compute_edges</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">b</span> <span class="o">&lt;</span><span class="n">Band</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">of</span> <span class="o">&lt;</span><span class="nb">format</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">co</span> <span class="o">&lt;</span><span class="n">NAME</span><span class="o">&gt;=&lt;</span><span class="n">VALUE</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span> <span class="p">[</span><span class="o">-</span><span class="n">q</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>Generate a slope map:</p>
+<p>傾斜図を生成します:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdaldem</span> <span class="n">slope</span> <span class="o">&lt;</span><span class="n">input_dem</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">output_slope_map</span><span class="o">&gt;</span>
             <span class="p">[</span><span class="o">-</span><span class="n">p</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">s</span> <span class="o">&lt;</span><span class="n">scale</span><span class="o">&gt;</span><span class="p">]</span>
             <span class="p">[</span><span class="o">-</span><span class="n">alg</span> <span class="n">ZevenbergenThorne</span><span class="p">]</span>
             <span class="p">[</span><span class="o">-</span><span class="n">compute_edges</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">b</span> <span class="o">&lt;</span><span class="n">band</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">of</span> <span class="o">&lt;</span><span class="nb">format</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">co</span> <span class="o">&lt;</span><span class="n">NAME</span><span class="o">&gt;=&lt;</span><span class="n">VALUE</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span> <span class="p">[</span><span class="o">-</span><span class="n">q</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>Generate an aspect map,
-outputs a 32-bit float raster with pixel values from 0-360 indicating azimuth:</p>
+<p>32ビットフロートラスターのアスペクトマップを生成し, 方位を示す0 から 360 のピクセル値を出力します:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdaldem</span> <span class="n">aspect</span> <span class="o">&lt;</span><span class="n">input_dem</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">output_aspect_map</span><span class="o">&gt;</span>
             <span class="p">[</span><span class="o">-</span><span class="n">trigonometric</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">zero_for_flat</span><span class="p">]</span>
             <span class="p">[</span><span class="o">-</span><span class="n">alg</span> <span class="n">ZevenbergenThorne</span><span class="p">]</span>
             <span class="p">[</span><span class="o">-</span><span class="n">compute_edges</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">b</span> <span class="o">&lt;</span><span class="n">band</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">of</span> <span class="nb">format</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">co</span> <span class="o">&lt;</span><span class="n">NAME</span><span class="o">&gt;=&lt;</span><span class="n">VALUE</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span> <span class="p">[</span><span class="o">-</span><span class="n">q</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>Generate a color relief map:</p>
+<p>カラーレリーフマップを生成します:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdaldem</span> <span class="n">color</span><span class="o">-</span><span class="n">relief</span> <span class="o">&lt;</span><span class="n">input_dem</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">color_text_file</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">output_color_relief_map</span><span class="o">&gt;</span>
              <span class="p">[</span><span class="o">-</span><span class="n">alpha</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">exact_color_entry</span> <span class="o">|</span> <span class="o">-</span><span class="n">nearest_color_entry</span><span class="p">]</span>
              <span class="p">[</span><span class="o">-</span><span class="n">b</span> <span class="o">&lt;</span><span class="n">band</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">of</span> <span class="nb">format</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">co</span> <span class="o">&lt;</span><span class="n">NAME</span><span class="o">&gt;=&lt;</span><span class="n">VALUE</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span> <span class="p">[</span><span class="o">-</span><span class="n">q</span><span class="p">]</span>
@@ -225,204 +224,180 @@ outputs a 32-bit float raster with pixel values from 0-360 indicating azimuth:</
 <span class="n">where</span> <span class="n">color_text_file</span> <span class="n">contains</span> <span class="n">lines</span> <span class="n">of</span> <span class="n">the</span> <span class="nb">format</span> <span class="s2">&quot;elevation_value red green blue [alpha]&quot;</span><span class="o">.</span> <span class="n">If</span> <span class="n">alpha</span> <span class="n">column</span> <span class="ow">is</span> <span class="n">present</span> <span class="n">it</span> <span class="n">can</span> <span class="n">be</span> <span class="n">enabled</span> <span class="k">for</span> <span class="n">use</span> <span class="k">with</span> <span class="s1">&#39;-alpha&#39;</span><span class="o">.</span>
 </pre></div>
 </div>
-<p>Generate a Terrain Ruggedness Index (TRI) map:</p>
+<p>起伏指標 (TRI) マップを生成します:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdaldem</span> <span class="n">TRI</span> <span class="n">input_dem</span> <span class="n">output_TRI_map</span>
             <span class="p">[</span><span class="o">-</span><span class="n">alg</span> <span class="n">Wilson</span><span class="o">|</span><span class="n">Riley</span><span class="p">]</span>
             <span class="p">[</span><span class="o">-</span><span class="n">compute_edges</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">b</span> <span class="n">Band</span> <span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span> <span class="p">[</span><span class="o">-</span><span class="n">of</span> <span class="nb">format</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">q</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>Generate a Topographic Position Index (TPI) map:</p>
+<p>地形位置指標 (TPI) マップを生成します:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdaldem</span> <span class="n">TPI</span> <span class="o">&lt;</span><span class="n">input_dem</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">output_TPI_map</span><span class="o">&gt;</span>
             <span class="p">[</span><span class="o">-</span><span class="n">compute_edges</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">b</span> <span class="o">&lt;</span><span class="n">band</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">of</span> <span class="o">&lt;</span><span class="nb">format</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">co</span> <span class="o">&lt;</span><span class="n">NAME</span><span class="o">&gt;=&lt;</span><span class="n">VALUE</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span> <span class="p">[</span><span class="o">-</span><span class="n">q</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>Generate a roughness map:</p>
+<p>粗さマップを生成します:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdaldem</span> <span class="n">roughness</span> <span class="o">&lt;</span><span class="n">input_dem</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">output_roughness_map</span><span class="o">&gt;</span>
             <span class="p">[</span><span class="o">-</span><span class="n">compute_edges</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">b</span> <span class="o">&lt;</span><span class="n">band</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">of</span> <span class="o">&lt;</span><span class="nb">format</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">co</span> <span class="o">&lt;</span><span class="n">NAME</span><span class="o">&gt;=&lt;</span><span class="n">VALUE</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span> <span class="p">[</span><span class="o">-</span><span class="n">q</span><span class="p">]</span>
 </pre></div>
 </div>
 </section>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
-<p>The <strong class="program">gdaldem</strong> generally assumes that x, y and z units are identical.
-If x (east-west) and y (north-south) units are identical, but z (elevation)
-units are different, the scale (-s) option can be used to set the ratio of
-vertical units to horizontal.
-For LatLong projections near the equator, where units of latitude and units of
-longitude are similar, elevation (z) units can be converted to be compatible
-by using scale=370400 (if elevation is in feet) or scale=111120 (if elevation is in
-meters).  For locations not near the equator, it would be best to reproject your
-grid using gdalwarp before using gdaldem.</p>
+<h2>説明<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p><strong class="program">gdaldem</strong> は一般的に x, y, z の単位が同一であると仮定します. x (東西) と y (南北) の単位が同一であるが, z (標高) の単位が異なる場合, scale (-s) オプションを使用して, 垂直単位と水平単位の比率を設定することができます. 赤道付近の緯度と経度の単位が類似している LatLong 投影の場合, 緯度の単位と経度の単位が類似している場合, 標高 (z) の単位を互換性のあるものに変換するために, scale=370400 (標高がフィートの場合) または scale=111120 (標高がメートルの場合) を使用することができます. 赤道から遠い場所の場合, gdaldem を使用する前に gdalwarp を使用してグリッドを再投影することが最善です.</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-arg-mode">
 <span class="sig-name descname"><span class="pre">&lt;mode&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-mode" title="Link to this definition"></a></dt>
-<dd><p>Where &lt;mode&gt; is one of the seven available modes:</p>
+<dd><p>&lt;mode&gt; は 7 つの利用可能なモードのいずれかです:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">hillshade</span></code></p>
 <blockquote>
-<div><p>Generate a shaded relief map from any GDAL-supported elevation raster.</p>
+<div><p>GDAL でサポートされる任意の標高ラスタから陰影図を生成します.</p>
 </div></blockquote>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">slope</span></code></p>
 <blockquote>
-<div><p>Generate a slope map from any GDAL-supported elevation raster.</p>
+<div><p>GDAL でサポートされる任意の標高ラスタから傾斜図を生成します.</p>
 </div></blockquote>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">aspect</span></code></p>
 <blockquote>
-<div><p>Generate an aspect map from any GDAL-supported elevation raster.</p>
+<div><p>GDAL でサポートされる任意の標高ラスタからアスペクトマップを生成します.</p>
 </div></blockquote>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">color-relief</span></code></p>
 <blockquote>
-<div><p>Generate a color relief map from any GDAL-supported elevation raster.</p>
+<div><p>GDAL でサポートされる任意の標高ラスタからカラーレリーフマップを生成します.</p>
 </div></blockquote>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">TRI</span></code></p>
 <blockquote>
-<div><p>Generate a map of Terrain Ruggedness Index from any GDAL-supported elevation raster.</p>
+<div><p>GDAL でサポートされる任意の標高ラスタから地形起伏指数マップを生成します.</p>
 </div></blockquote>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">TPI</span></code></p>
 <blockquote>
-<div><p>Generate a map of Topographic Position Index from any GDAL-supported elevation raster.</p>
+<div><p>GDAL でサポートされる任意の標高ラスタから地形位置指数マップを生成します.</p>
 </div></blockquote>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">roughness</span></code></p>
 <blockquote>
-<div><p>Generate a map of roughness from any GDAL-supported elevation raster.</p>
+<div><p>GDAL でサポートされる任意の標高ラスタから粗さマップを生成します.</p>
 </div></blockquote>
 </li>
 </ul>
 </dd></dl>
 
-<p>The following general options are available:</p>
+<p>次の一般オプションが利用可能です:</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-help">
 <span class="sig-name descname"><span class="pre">--help</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-help" title="Link to this definition"></a></dt>
-<dd><p>Show this help message and exit</p>
+<dd><p>このヘルプメッセージを表示して終了します</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-help-general">
 <span class="sig-name descname"><span class="pre">--help-general</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-help-general" title="Link to this definition"></a></dt>
-<dd><p>Gives a brief usage message for the generic GDAL commandline options and exit.</p>
+<dd><p>一般的な GDAL コマンドラインオプションの使用方法を簡単に表示して終了します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-arg-input_dem">
 <span class="sig-name descname"><span class="pre">&lt;input_dem&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-input_dem" title="Link to this definition"></a></dt>
-<dd><p>The input DEM raster to be processed</p>
+<dd><p>入力 DEM ラスタを加工します</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-arg-output_xxx_map">
 <span class="sig-name descname"><span class="pre">&lt;output_xxx_map&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-output_xxx_map" title="Link to this definition"></a></dt>
-<dd><p>The output raster produced</p>
+<dd><p>生成された出力ラスタ</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-of">
 <span class="sig-name descname"><span class="pre">-of</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;format&gt;</span></span><a class="headerlink" href="#cmdoption-of" title="Link to this definition"></a></dt>
-<dd><p>Select the output format.</p>
+<dd><p>出力フォーマットを選択します.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">Added in version 2.3.0: </span>If not specified, the format is guessed from the extension
-(previously was <a class="reference internal" href="../drivers/raster/gtiff.html#raster-gtiff"><span class="std std-ref">GTiff -- GeoTIFF File Format</span></a>). Use the short format name.</p>
+<p><span class="versionmodified added">Added in version 2.3.0: </span>指定されていない場合,フォーマットは拡張子から推測されます (以前は <a class="reference internal" href="../drivers/raster/gtiff.html#raster-gtiff"><span class="std std-ref">GTiff -- GeoTIFF File Format</span></a>).</p>
 </div>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-compute_edges">
 <span class="sig-name descname"><span class="pre">-compute_edges</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-compute_edges" title="Link to this definition"></a></dt>
-<dd><p>Do the computation at raster edges and near nodata values</p>
+<dd><p>ラスタの端とノーデータ値の近くで計算を行います</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-b">
 <span class="sig-name descname"><span class="pre">-b</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;band&gt;</span></span><a class="headerlink" href="#cmdoption-b" title="Link to this definition"></a></dt>
-<dd><p>Select an input band to be processed. Bands are numbered from 1.</p>
+<dd><p>処理する入力バンドを選択します. バンドは 1 から番号付けされます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-co">
 <span class="sig-name descname"><span class="pre">-co</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></span><a class="headerlink" href="#cmdoption-co" title="Link to this definition"></a></dt>
-<dd><p>Many formats have one or more optional creation options that can be
-used to control particulars about the file created. For instance,
-the GeoTIFF driver supports creation options to control compression,
-and whether the file should be tiled.</p>
-<p>The creation options available vary by format driver, and some
-simple formats have no creation options at all. A list of options
-supported for a format can be listed with the
-<a class="reference internal" href="raster_common_options.html#raster-common-options-formats"><span class="std std-ref">--formats</span></a>
-command line option but the documentation for the format is the
-definitive source of information on driver creation options.
-See <a class="reference internal" href="../drivers/raster/index.html#raster-drivers"><span class="std std-ref">ラスタードライバー</span></a> format
-specific documentation for legal creation options for each format.</p>
+<dd><p>多くのフォーマットには,作成されたファイルに関する特定の点を制御するために使用できる 1 つ以上のオプションがあります. たとえば, GeoTIFF ドライバは圧縮を制御する作成オプションや, ファイルをタイル化するかどうかを制御する作成オプションをサポートしています.</p>
+<p>利用可能な作成オプションはフォーマットドライバによって異なり,いくつかのシンプルなフォーマットには 全く作成オプションがありません. フォーマットでサポートされているオプションのリストは, <a class="reference internal" href="raster_common_options.html#raster-common-options-formats"><span class="std std-ref">--formats</span></a> コマンドラインオプションでリストアップできますが, フォーマットのドキュメントがドライバ作成オプションに関する情報の決定的なソースです. 各フォーマットの法的な作成オプションについては, <a class="reference internal" href="../drivers/raster/index.html#raster-drivers"><span class="std std-ref">ラスタードライバー</span></a> フォーマット固有のドキュメントを参照してください.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-q">
 <span class="sig-name descname"><span class="pre">-q</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-q" title="Link to this definition"></a></dt>
-<dd><p>Suppress progress monitor and other non-error output.</p>
+<dd><p>進行状況モニターおよびその他のエラー以外の出力を抑制します.</p>
 </dd></dl>
 
-<p>For all algorithms, except color-relief, a nodata value in the target dataset
-will be emitted if at least one pixel set to the nodata value is found in the
-3x3 window centered around each source pixel. The consequence is that there
-will be a 1-pixel border around each image set with nodata value.</p>
+<p>カラーレリーフを除くすべてのアルゴリズムでは,ターゲットデータセットのノーデータ値が 3x3 ウィンドウの中心にある各ソースピクセルの周りに少なくとも 1 つのピクセルがノーデータ値に設定されている場合, ノーデータ値が出力されます. その結果,各画像の周りにノーデータ値が設定された 1 ピクセルの境界があります.</p>
 <blockquote>
-<div><p>If <a class="reference internal" href="#cmdoption-compute_edges"><code class="xref std std-option docutils literal notranslate"><span class="pre">-compute_edges</span></code></a> is specified, gdaldem will compute values
-at image edges or if a nodata value is found in the 3x3 window,
-by interpolating missing values.</p>
+<div><p><a class="reference internal" href="#cmdoption-compute_edges"><code class="xref std std-option docutils literal notranslate"><span class="pre">-compute_edges</span></code></a> が指定されている場合, gdaldem は画像の端または 3x3 ウィンドウでノーデータ値が見つかった場合, 欠落している値を補間して値を計算します.</p>
 </div></blockquote>
 </section>
 <section id="modes">
-<h2>Modes<a class="headerlink" href="#modes" title="Link to this heading"></a></h2>
+<h2>モード<a class="headerlink" href="#modes" title="Link to this heading"></a></h2>
 <section id="hillshade">
 <h3>hillshade<a class="headerlink" href="#hillshade" title="Link to this heading"></a></h3>
-<p>This command outputs an 8-bit raster with a nice shaded relief effect. It’s very useful for visualizing the terrain. You can optionally specify the azimuth and altitude of the light source, a vertical exaggeration factor and a scaling factor to account for differences between vertical and horizontal units.</p>
-<p>The value 0 is used as the output nodata value.</p>
-<p>The following specific options are available :</p>
+<p>このコマンドは,素敵な陰影効果を持つ 8 ビットラスターを出力します. 地形を視覚化するのに非常に便利です. 光源の方位と高度,垂直の誇張係数,水平単位と垂直単位の違いを考慮するためのスケーリング係数をオプションで指定できます.</p>
+<p>出力ノーデータ値として値 0 が使用されます.</p>
+<p>次の特定のオプションが利用可能です:</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-alg">
 <span class="sig-name descname"><span class="pre">-alg</span></span><span class="sig-prename descclassname"> <span class="pre">Horn|ZevenbergenThorne</span></span><a class="headerlink" href="#cmdoption-alg" title="Link to this definition"></a></dt>
-<dd><p>The literature suggests Zevenbergen &amp; Thorne to be more suited to smooth landscapes, whereas Horn's formula to perform better on rougher terrain.</p>
+<dd><p>文献によれば, Zevenbergen &amp; Thorne は平坦な地形に適しているとされていますが, Horn の式はより荒れた地形でより良いパフォーマンスを発揮するとされています.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-z">
 <span class="sig-name descname"><span class="pre">-z</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;factor&gt;</span></span><a class="headerlink" href="#cmdoption-z" title="Link to this definition"></a></dt>
-<dd><p>Vertical exaggeration used to pre-multiply the elevations</p>
+<dd><p>標高を事前に乗算するために使用される垂直誇張</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-s">
 <span class="sig-name descname"><span class="pre">-s</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;scale&gt;</span></span><a class="headerlink" href="#cmdoption-s" title="Link to this definition"></a></dt>
-<dd><p>Ratio of vertical units to horizontal. If the horizontal unit of the source DEM is degrees (e.g Lat/Long WGS84 projection), you can use scale=111120 if the vertical units are meters (or scale=370400 if they are in feet)</p>
+<dd><p>垂直単位と水平単位の比率. ソース DEM の水平単位が度 (たとえば Lat/Long WGS84 投影) の場合, 垂直単位がメートルの場合は scale=111120 を使用できます (またはフィートの場合は scale=370400 を使用できます).</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-az">
 <span class="sig-name descname"><span class="pre">-az</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;azimuth&gt;</span></span><a class="headerlink" href="#cmdoption-az" title="Link to this definition"></a></dt>
-<dd><p>Azimuth of the light, in degrees. 0 if it comes from the top of the raster, 90 from the east, ... The default value, 315, should rarely be changed as it is the value generally used to generate shaded maps.</p>
+<dd><p>光の方位,度. ラスタの上部から来る場合は 0, 東から 90, ... デフォルト値の 315 は, 一般的に陰影図を生成するために使用される値であるため, ほとんど変更する必要はありません.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-alt">
 <span class="sig-name descname"><span class="pre">-alt</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;altitude&gt;</span></span><a class="headerlink" href="#cmdoption-alt" title="Link to this definition"></a></dt>
-<dd><p>Altitude of the light, in degrees. 90 if the light comes from above the DEM, 0 if it is raking light.</p>
+<dd><p>光の高度,度. DEM の上から来る場合は 90, ライティングが行われる場合は 0.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-combined">
 <span class="sig-name descname"><span class="pre">-combined</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-combined" title="Link to this definition"></a></dt>
-<dd><p>combined shading, a combination of slope and oblique shading.</p>
+<dd><p>傾斜と斜面の組み合わせを利用した組み合わせシェーディング.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-multidirectional">
 <span class="sig-name descname"><span class="pre">-multidirectional</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-multidirectional" title="Link to this definition"></a></dt>
-<dd><p>multidirectional shading, a combination of hillshading illuminated from 225 deg, 270 deg, 315 deg, and 360 deg azimuth.</p>
+<dd><p>多方向シェーディング, 225 度, 270 度, 315 度, 360 度の方位から照らされた陰影の組み合わせ.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 2.2.</span></p>
 </div>
@@ -431,118 +406,99 @@ by interpolating missing values.</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-igor">
 <span class="sig-name descname"><span class="pre">-igor</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-igor" title="Link to this definition"></a></dt>
-<dd><p>shading which tries to minimize effects on other map features beneath. Can't be used with -alt option.</p>
+<dd><p>他のマップ機能に影響を与えることを最小限に抑えるように設計されたシェーディング. -alt オプションとは使用できません.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.0.</span></p>
 </div>
 </dd></dl>
 
-<p>Multidirectional hillshading applies the formula of <a class="reference external" href="http://pubs.usgs.gov/of/1992/of92-422/of92-422.pdf">http://pubs.usgs.gov/of/1992/of92-422/of92-422.pdf</a>.</p>
-<p>Igor's hillshading uses formula from Maperitive <a class="reference external" href="http://maperitive.net/docs/Commands/GenerateReliefImageIgor.html">http://maperitive.net/docs/Commands/GenerateReliefImageIgor.html</a>.</p>
+<p>多方向陰影は, <a class="reference external" href="http://pubs.usgs.gov/of/1992/of92-422/of92-422.pdf">http://pubs.usgs.gov/of/1992/of92-422/of92-422.pdf</a> の式を適用します.</p>
+<p>Igor の陰影は, Maperitive の式を使用します. <a class="reference external" href="http://maperitive.net/docs/Commands/GenerateReliefImageIgor.html">http://maperitive.net/docs/Commands/GenerateReliefImageIgor.html</a>.</p>
 </section>
 <section id="slope">
 <h3>slope<a class="headerlink" href="#slope" title="Link to this heading"></a></h3>
-<p>This command will take a DEM raster and output a 32-bit float raster with slope values. You have the option of specifying the type of slope value you want: degrees or percent slope. In cases where the horizontal units differ from the vertical units, you can also supply a scaling factor.</p>
-<p>The value <cite>-9999</cite> is used as the output nodata value.</p>
-<p>The following specific options are available :</p>
+<p>このコマンドは DEM ラスタを取り, 傾斜値を持つ 32 ビットフロートラスタを出力します. 傾斜値のタイプを指定するオプションがあります: 度またはパーセント傾斜. 水平単位が垂直単位と異なる場合, スケーリング係数を指定することもできます.</p>
+<p>出力ノーデータ値として値 <cite>-9999</cite> が使用されます.</p>
+<p>次の特定のオプションが利用可能です:</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-0">
 <span class="sig-name descname"><span class="pre">-alg</span></span><span class="sig-prename descclassname"> <span class="pre">Horn|ZevenbergenThorne</span></span><a class="headerlink" href="#cmdoption-0" title="Link to this definition"></a></dt>
-<dd><p>The literature suggests Zevenbergen &amp; Thorne to be more suited to smooth landscapes, whereas Horn's formula to perform better on rougher terrain.</p>
+<dd><p>文献によれば, Zevenbergen &amp; Thorne は平坦な地形に適しているとされていますが, Horn の式はより荒れた地形でより良いパフォーマンスを発揮するとされています.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-p">
 <span class="sig-name descname"><span class="pre">-p</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-p" title="Link to this definition"></a></dt>
-<dd><p>If specified, the slope will be expressed as percent slope. Otherwise, it is expressed as degrees</p>
+<dd><p>指定されている場合,傾斜はパーセント傾斜として表されます. それ以外の場合,度で表されます.</p>
 </dd></dl>
 
 <p><a class="reference internal" href="#cmdoption-s"><code class="xref std std-option docutils literal notranslate"><span class="pre">-s</span></code></a></p>
 <blockquote>
-<div><p>Ratio of vertical units to horizontal. If the horizontal unit of the source DEM is degrees (e.g Lat/Long WGS84 projection), you can use scale=111120 if the vertical units are meters (or scale=370400 if they are in feet).</p>
+<div><p>垂直単位と水平単位の比率. ソース DEM の水平単位が度 (たとえば Lat/Long WGS84 投影) の場合, 垂直単位がメートルの場合は scale=111120 を使用できます (またはフィートの場合は scale=370400 を使用できます).</p>
 </div></blockquote>
 </section>
 <section id="aspect">
 <h3>aspect<a class="headerlink" href="#aspect" title="Link to this heading"></a></h3>
-<p>This command outputs a 32-bit float raster with values between 0° and 360° representing the azimuth that slopes are facing. The definition of the azimuth is such that : 0° means that the slope is facing the North, 90° it's facing the East, 180° it's facing the South and 270° it's facing the West (provided that the top of your input raster is north oriented). The aspect value -9999 is used as the nodata value to indicate undefined aspect in flat areas with slope=0.</p>
-<p>The following specifics options are available :</p>
+<p>このコマンドは,傾斜が向いている方位を表す 0° から 360° の値を持つ 32 ビットフロートラスタを出力します. 方位の定義は次のとおりです: 0° は傾斜が北を向いていることを意味し, 90° は東を向いていることを意味し, 180° は南を向いていることを意味し, 270° は西を向いていることを意味します (入力ラスタの上部が北向きであることが前提です). アスペクト値 -9999 は,傾斜が 0 の平坦な領域で未定義のアスペクトを示すためのノーデータ値として使用されます.</p>
+<p>次の特定のオプションが利用可能です:</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-1">
 <span class="sig-name descname"><span class="pre">-alg</span></span><span class="sig-prename descclassname"> <span class="pre">Horn|ZevenbergenThorne</span></span><a class="headerlink" href="#cmdoption-1" title="Link to this definition"></a></dt>
-<dd><p>The literature suggests Zevenbergen &amp; Thorne to be more suited to smooth landscapes, whereas Horn's formula to perform better on rougher terrain.</p>
+<dd><p>文献によれば, Zevenbergen &amp; Thorne は平坦な地形に適しているとされていますが, Horn の式はより荒れた地形でより良いパフォーマンスを発揮するとされています.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-trigonometric">
 <span class="sig-name descname"><span class="pre">-trigonometric</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-trigonometric" title="Link to this definition"></a></dt>
-<dd><p>Return trigonometric angle instead of azimuth. Thus 0° means East, 90° North, 180° West, 270° South.</p>
+<dd><p>方位の代わりに三角関数の角度を返します. したがって, 0° は東を意味し, 90° は北を意味し, 180° は西を意味し, 270° は南を意味します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-zero_for_flat">
 <span class="sig-name descname"><span class="pre">-zero_for_flat</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-zero_for_flat" title="Link to this definition"></a></dt>
-<dd><p>Return 0 for flat areas with slope=0, instead of -9999.</p>
+<dd><p>傾斜が 0 の平坦な領域に対して -9999 の代わりに 0 を返します.</p>
 </dd></dl>
 
-<p>By using those 2 options, the aspect returned by gdaldem aspect should be
-identical to the one of GRASS r.slope.aspect. Otherwise, it's identical to
-the one of Matthew Perry's <code class="file docutils literal notranslate"><span class="pre">aspect.cpp</span></code> utility.</p>
+<p>これらの 2 つのオプションを使用することで, gdaldem aspect によって返されるアスペクトは, GRASS r.slope.aspect のものと同一であるはずです. それ以外の場合, Matthew Perry の <code class="file docutils literal notranslate"><span class="pre">aspect.cpp</span></code> ユーティリティのものと同一です.</p>
 </section>
 <section id="color-relief">
 <h3>color-relief<a class="headerlink" href="#color-relief" title="Link to this heading"></a></h3>
-<p>This command outputs a 3-band (RGB) or 4-band (RGBA) raster with values are computed from the elevation and a text-based color configuration file, containing the association between various elevation values and the corresponding wished color. By default, the colors between the given elevation values are blended smoothly and the result is a nice colorized DEM. The -exact_color_entry or -nearest_color_entry options can be used to avoid that linear interpolation for values that don't match an index of the color configuration file.</p>
-<p>The following specifics options are available :</p>
+<p>このコマンドは,標高とテキストベースのカラー設定ファイルとの間の関連付けを含む, 3 バンド (RGB) または 4 バンド (RGBA) ラスタを出力します. デフォルトでは,指定された標高値の間の色が滑らかに混合され, 結果は素敵なカラー化された DEM になります. -exact_color_entry または -nearest_color_entry オプションを使用して, カラー設定ファイルのインデックスに一致しない値のための線形補間を回避することができます.</p>
+<p>次の特定のオプションが利用可能です:</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-arg-color_text_file">
 <span class="sig-name descname"><span class="pre">color_text_file</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-color_text_file" title="Link to this definition"></a></dt>
-<dd><p>Text-based color configuration file</p>
+<dd><p>テキストベースのカラー設定ファイル</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-alpha">
 <span class="sig-name descname"><span class="pre">-alpha</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-alpha" title="Link to this definition"></a></dt>
-<dd><p>Add an alpha channel to the output raster</p>
+<dd><p>出力ラスタにアルファチャンネルを追加します</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-exact_color_entry">
 <span class="sig-name descname"><span class="pre">-exact_color_entry</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-exact_color_entry" title="Link to this definition"></a></dt>
-<dd><p>Use strict matching when searching in the color configuration file.
-If none matching color entry is found, the &quot;0,0,0,0&quot; RGBA quadruplet will be used</p>
+<dd><p>カラー設定ファイルを検索する際に厳密な一致を使用します. 一致するカラーエントリが見つからない場合, &quot;0,0,0,0&quot; RGBA クアドルプレットが使用されます</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-nearest_color_entry">
 <span class="sig-name descname"><span class="pre">-nearest_color_entry</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-nearest_color_entry" title="Link to this definition"></a></dt>
-<dd><p>Use the RGBA quadruplet corresponding to the closest entry in the color configuration file.</p>
+<dd><p>カラー設定ファイルの最も近いエントリに対応する RGBA クアドルプレットを使用します.</p>
 </dd></dl>
 
-<p>The color-relief mode is the only mode that supports VRT as output format.
-In that case, it will translate the color configuration file into appropriate
-LUT elements. Note that elevations specified as percentage will be translated
-as absolute values, which must be taken into account when the statistics of
-the source raster differ from the one that was used when building the VRT.</p>
-<p>The text-based color configuration file generally contains 4 columns
-per line: the elevation value and the corresponding Red, Green, Blue
-component (between 0 and 255). The elevation value can be any floating
-point value, or the nv keyword for the nodata value.
-The elevation can also be expressed as a percentage: 0% being the minimum
-value found in the raster, 100% the maximum value.</p>
-<p>An extra column can be optionally added for the alpha component.
-If it is not specified, full opacity (255) is assumed.</p>
-<p>Various field separators are accepted: comma, tabulation, spaces, ':'.</p>
-<p>Common colors used by GRASS can also be specified by using their name,
-instead of the RGB triplet. The supported list is: white, black, red,
-green, blue, yellow, magenta, cyan, aqua, grey/gray, orange, brown,
-purple/violet and indigo.</p>
+<p>カラーレリーフモードは,出力フォーマットとして VRT をサポートする唯一のモードです. その場合, カラー設定ファイルを適切な LUT 要素に変換します. パーセンテージで指定された標高は, VRT を構築する際に使用された統計情報と異なる場合があるため, 絶対値として変換されることに注意してください.</p>
+<p>テキストベースのカラー設定ファイルには通常, 1 行あたり 4 列が含まれます: 標高値と対応する赤, 緑, 青の成分 (0 から 255 の間). 標高値は任意の浮動小数点値またはノーデータ値の nv キーワードであることができます. 標高はパーセンテージとしても表現できます: 0% がラスタで見つかった最小値で, 100% が最大値です.</p>
+<p>オプションでアルファ成分のための追加の列を追加できます. 指定されていない場合, 完全な不透明度 (255) が想定されます.</p>
+<p>さまざまなフィールドセパレータが受け入れられます: カンマ, タブ, スペース, ':'.</p>
+<p>RGB トリプレットの代わりに名前を使用して指定することで, GRASS で使用される一般的な色も指定できます. サポートされているリストは次のとおりです: white, black, red, green, blue, yellow, magenta, cyan, aqua, grey/gray, orange, brown, purple/violet, indigo.</p>
 <blockquote>
-<div><p>GMT <code class="file docutils literal notranslate"><span class="pre">.cpt</span></code> palette files are also supported (COLOR_MODEL = RGB only).</p>
+<div><p>GMT <code class="file docutils literal notranslate"><span class="pre">.cpt</span></code> パレットファイルもサポートされています (COLOR_MODEL = RGB のみ).</p>
 </div></blockquote>
-<p>Note: the syntax of the color configuration file is derived from the one
-supported by GRASS r.colors utility. ESRI HDR color table files (.clr)
-also match that syntax. The alpha component and the support of tab and
-comma as separators are GDAL specific extensions.</p>
-<p>For example:</p>
+<p>注: カラー設定ファイルの構文は, GRASS r.colors ユーティリティでサポートされている構文から派生しています. ESRI HDR カラーテーブルファイル (.clr) もその構文に一致します. アルファ成分とタブおよびカンマをセパレータとしてサポートするのは GDAL 固有の拡張です.</p>
+<p>例:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">3500</span>   <span class="n">white</span>
 <span class="mi">2500</span>   <span class="mi">235</span><span class="p">:</span><span class="mi">220</span><span class="p">:</span><span class="mi">175</span>
 <span class="mi">50</span><span class="o">%</span>   <span class="mi">190</span> <span class="mi">185</span> <span class="mi">135</span>
@@ -551,9 +507,7 @@ comma as separators are GDAL specific extensions.</p>
 <span class="n">nv</span>     <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>
 </pre></div>
 </div>
-<p>To implement a &quot;round to the floor value&quot; mode, the elevation value can be
-duplicate with a new value being slightly above the threshold.
-For example to have red in [0,10], green in ]10,20] and blue in ]20,30]:</p>
+<p>&quot;床値に丸める&quot; モードを実装するために, 標高値は新しい値がしきい値よりわずかに上になるように複製できます. たとえば, [0,10] で赤, ]10,20] で緑, ]20,30] で青を持つようにするには:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span>       <span class="n">red</span>
 <span class="mi">10</span>      <span class="n">red</span>
 <span class="mf">10.001</span>  <span class="n">green</span>
@@ -565,62 +519,46 @@ For example to have red in [0,10], green in ]10,20] and blue in ]20,30]:</p>
 </section>
 <section id="tri">
 <h3>TRI<a class="headerlink" href="#tri" title="Link to this heading"></a></h3>
-<p>This command outputs a single-band raster with values computed from the elevation.
-<cite>TRI</cite> stands for Terrain Ruggedness Index, which measures the difference
-between a central pixel and its surrounding cells.</p>
-<p>The value -9999 is used as the output nodata value.</p>
-<p>The following option is available:</p>
+<p>このコマンドは,標高から計算された値を持つ単一バンドラスタを出力します. <cite>TRI</cite> は地形起伏指数を表し, 中央ピクセルとその周囲のセルとの差を測定します.</p>
+<p>出力ノーデータ値として値 -9999 が使用されます.</p>
+<p>次のオプションが利用可能です:</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-2">
 <span class="sig-name descname"><span class="pre">-alg</span></span><span class="sig-prename descclassname"> <span class="pre">Wilson|Riley</span></span><a class="headerlink" href="#cmdoption-2" title="Link to this definition"></a></dt>
-<dd><p>Starting with GDAL 3.3, the Riley algorithm (see Riley, S.J.,
-De Gloria, S.D., Elliot, R. (1999): A Terrain Ruggedness that Quantifies Topographic Heterogeneity.
-Intermountain Journal of Science, Vol.5, No.1-4, pp.23-27) is available and
-the new default value. This algorithm uses the
-square root of the sum of the square of the difference between a central pixel
-and its surrounding cells. This is recommended for terrestrial use cases.</p>
-<p>The Wilson (see Wilson et al 2007, Marine Geodesy 30:3-35) algorithm
-uses the mean difference between a central pixel and its surrounding cells.
-This is recommended for bathymetric use cases.</p>
+<dd><p>GDAL 3.3 以降, Riley アルゴリズム (Riley, S.J., De Gloria, S.D., Elliot, R. (1999): A Terrain Ruggedness that Quantifies Topographic Heterogeneity. Intermountain Journal of Science, Vol.5, No.1-4, pp.23-27) が利用可能であり, 新しいデフォルト値です. このアルゴリズムは,中央ピクセルとその周囲のセルとの差の二乗の和の平方根を使用します. これは陸上の使用ケースにお勧めです.</p>
+<p>Wilson アルゴリズム (Wilson et al 2007, Marine Geodesy 30:3-35) は,中央ピクセルとその周囲のセルとの平均差を使用します. これは水深測量の使用ケースにお勧めです.</p>
 </dd></dl>
 
 </section>
 <section id="tpi">
 <h3>TPI<a class="headerlink" href="#tpi" title="Link to this heading"></a></h3>
-<p>This command outputs a single-band raster with values computed from the elevation.
-<cite>TPI</cite> stands for Topographic Position Index, which is defined as the difference
-between a central pixel and the mean of its surrounding cells (see Wilson et al
-2007, Marine Geodesy 30:3-35).</p>
-<p>The value -9999 is used as the output nodata value.</p>
-<p>There are no specific options.</p>
+<p>このコマンドは,標高から計算された値を持つ単一バンドラスタを出力します. <cite>TPI</cite> は地形位置指数を表し, 中央ピクセルとその周囲のセルの平均との差を定義します (Wilson et al 2007, Marine Geodesy 30:3-35 参照).</p>
+<p>出力ノーデータ値として値 -9999 が使用されます.</p>
+<p>特定のオプションはありません.</p>
 </section>
 <section id="roughness">
 <h3>roughness<a class="headerlink" href="#roughness" title="Link to this heading"></a></h3>
-<p>This command outputs a single-band raster with values computed from the elevation.
-Roughness is the largest inter-cell difference of a central pixel and its surrounding
-cell, as defined in Wilson et al (2007, Marine Geodesy 30:3-35).</p>
-<p>The value -9999 is used as the output nodata value.</p>
-<p>There are no specific options.</p>
+<p>このコマンドは,標高から計算された値を持つ単一バンドラスタを出力します. 粗さは,中央ピクセルとその周囲のセルとの最大のセル間差を表します. これは Wilson et al (2007, Marine Geodesy 30:3-35) で定義されています.</p>
+<p>出力ノーデータ値として値 -9999 が使用されます.</p>
+<p>特定のオプションはありません.</p>
 </section>
 </section>
 <section id="c-api">
-<h2>C API<a class="headerlink" href="#c-api" title="Link to this heading"></a></h2>
-<p>This utility is also callable from C with <a class="reference internal" href="../api/gdal_utils.html#_CPPv417GDALDEMProcessingPKc12GDALDatasetHPKcPKcPK24GDALDEMProcessingOptionsPi" title="GDALDEMProcessing"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDEMProcessing()</span></code></a>.</p>
+<h2>C言語API<a class="headerlink" href="#c-api" title="Link to this heading"></a></h2>
+<p>このユーティリティは, <a class="reference internal" href="../api/gdal_utils.html#_CPPv417GDALDEMProcessingPKc12GDALDatasetHPKcPKcPK24GDALDEMProcessingOptionsPi" title="GDALDEMProcessing"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDEMProcessing()</span></code></a> を使用して C からも呼び出すことができます.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 2.1.</span></p>
 </div>
 </section>
 <section id="authors">
-<h2>Authors<a class="headerlink" href="#authors" title="Link to this heading"></a></h2>
+<h2>著者<a class="headerlink" href="#authors" title="Link to this heading"></a></h2>
 <p>Matthew Perry <a class="reference external" href="mailto:perrygeo&#37;&#52;&#48;gmail&#46;com">perrygeo<span>&#64;</span>gmail<span>&#46;</span>com</a>, Even Rouault <a class="reference external" href="mailto:even&#46;rouault&#37;&#52;&#48;spatialys&#46;com">even<span>&#46;</span>rouault<span>&#64;</span>spatialys<span>&#46;</span>com</a>,
 Howard Butler <a class="reference external" href="mailto:hobu&#46;inc&#37;&#52;&#48;gmail&#46;com">hobu<span>&#46;</span>inc<span>&#64;</span>gmail<span>&#46;</span>com</a>, Chris Yesson <a class="reference external" href="mailto:chris&#46;yesson&#37;&#52;&#48;ioz&#46;ac&#46;uk">chris<span>&#46;</span>yesson<span>&#64;</span>ioz<span>&#46;</span>ac<span>&#46;</span>uk</a></p>
-<p>Derived from code by Michael Shapiro, Olga Waupotitsch, Marjorie Larson, Jim Westervelt:
-U.S. Army CERL, 1993. GRASS 4.1 Reference Manual. U.S. Army Corps of Engineers,
-Construction Engineering Research Laboratories, Champaign, Illinois, 1-425.</p>
+<p>Michael Shapiro, Olga Waupotitsch, Marjorie Larson, Jim Westervelt によるコードから派生しました: U.S. Army CERL, 1993. GRASS 4.1 リファレンスマニュアル. U.S. Army Corps of Engineers, Construction Engineering Research Laboratories, Champaign, Illinois, 1-425.</p>
 </section>
 <section id="see-also">
-<h2>See also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>
-<p>Documentation of related GRASS utilities:</p>
+<h2>さらに参照<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>
+<p>GRASS ユーティリティ関連ドキュメント:</p>
 <p><a class="reference external" href="https://grass.osgeo.org/grass79/manuals/r.slope.aspect.html">https://grass.osgeo.org/grass79/manuals/r.slope.aspect.html</a></p>
 <p><a class="reference external" href="https://grass.osgeo.org/grass79/manuals/r.relief.html">https://grass.osgeo.org/grass79/manuals/r.relief.html</a></p>
 <p><a class="reference external" href="https://grass.osgeo.org/grass79/manuals/r.colors.html">https://grass.osgeo.org/grass79/manuals/r.colors.html</a></p>

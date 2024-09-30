@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>gdalinfo &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=75499f83" />
 
   
     <link rel="shortcut icon" href="../_static/favicon.png"/>
@@ -274,9 +274,8 @@
 <dd><div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.10.</span></p>
 </div>
-<p>Suppress nodata printing. Implies <a class="reference internal" href="#cmdoption-gdalinfo-nomask"><code class="xref std std-option docutils literal notranslate"><span class="pre">-nomask</span></code></a>.</p>
-<p>Can be useful for example when querying a remove GRIB2 dataset that has an
-index .idx side-car file, together with <a class="reference internal" href="#cmdoption-gdalinfo-nomd"><code class="xref std std-option docutils literal notranslate"><span class="pre">-nomd</span></code></a></p>
+<p>NODATAの出力を抑制します。<a class="reference internal" href="#cmdoption-gdalinfo-nomask"><code class="xref std std-option docutils literal notranslate"><span class="pre">-nomask</span></code></a> を含みます。</p>
+<p>たとえば .idx サイドカーファイルを持つリモートGRIB2データセットを問い合わせる場合に便利です。<a class="reference internal" href="#cmdoption-gdalinfo-nomd"><code class="xref std std-option docutils literal notranslate"><span class="pre">-nomd</span></code></a> と一緒に利用します。</p>
 </dd></dl>
 
 <dl class="std option">
@@ -285,7 +284,7 @@ index .idx side-car file, together with <a class="reference internal" href="#cmd
 <dd><div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.10.</span></p>
 </div>
-<p>Suppress band mask printing. Is implied if <a class="reference internal" href="#cmdoption-gdalinfo-nonodata"><code class="xref std std-option docutils literal notranslate"><span class="pre">-nonodata</span></code></a> is specified.</p>
+<p>バンドマスクの出力を抑制します。<a class="reference internal" href="#cmdoption-gdalinfo-nonodata"><code class="xref std std-option docutils literal notranslate"><span class="pre">-nonodata</span></code></a> が指定された場合に含まれます。</p>
 </dd></dl>
 
 <dl class="std option">
@@ -319,9 +318,9 @@ index .idx side-car file, together with <a class="reference internal" href="#cmd
 <span class="sig-name descname"><span class="pre">-wkt_format</span></span><span class="sig-prename descclassname"> <span class="pre">WKT1|WKT2|WKT2_2015|WKT2_2018|WKT2_2019</span></span><a class="headerlink" href="#cmdoption-gdalinfo-wkt_format" title="Link to this definition"></a></dt>
 <dd><p>SRSを表示するために使用されるWKT形式。現在サポートされている値は次のとおりです:</p>
 <p><code class="docutils literal notranslate"><span class="pre">WKT1</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">WKT2</span></code> (latest WKT version, currently <em>WKT2_2019</em>)</p>
+<p><code class="docutils literal notranslate"><span class="pre">WKT2</span></code> (WKT の最新バージョン, 現在 <em>WKT2_2019</em>)</p>
 <p><code class="docutils literal notranslate"><span class="pre">WKT2_2015</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">WKT2_2018</span></code> (deprecated)</p>
+<p><code class="docutils literal notranslate"><span class="pre">WKT2_2018</span></code> (非推奨)</p>
 <p><code class="docutils literal notranslate"><span class="pre">WKT2_2019</span></code></p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.0.0.</span></p>

@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>gdalmanage &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=75499f83" />
 
   
     <link rel="shortcut icon" href="../_static/favicon.png"/>
@@ -82,9 +82,9 @@
 <li class="toctree-l3"><a class="reference internal" href="gdalinfo.html">gdalinfo</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdallocationinfo.html">gdallocationinfo</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">gdalmanage</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#synopsis">Synopsis</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#synopsis">概要</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#description">説明</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#examples">例</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="gdalmove.html">gdalmove</a></li>
@@ -184,9 +184,9 @@
              
   <section id="gdalmanage">
 <span id="id1"></span><h1>gdalmanage<a class="headerlink" href="#gdalmanage" title="Link to this heading"></a></h1>
-<p>Identify, delete, rename and copy raster data files.</p>
+<p>ラスターデータファイルを識別し, 削除し, 名前を変更し, コピーします.</p>
 <section id="synopsis">
-<span id="index-0"></span><h2>Synopsis<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
+<span id="index-0"></span><h2>概要<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Usage</span><span class="p">:</span> <span class="n">gdalmanage</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="o">-</span><span class="n">general</span><span class="p">]</span>
                   <span class="o">&lt;</span><span class="n">mode</span><span class="o">&gt;</span> <span class="p">[</span><span class="o">-</span><span class="n">r</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">fr</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">u</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">f</span> <span class="o">&lt;</span><span class="nb">format</span><span class="o">&gt;</span><span class="p">]</span>
                   <span class="o">&lt;</span><span class="n">datasetname</span><span class="o">&gt;</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">newdatasetname</span><span class="o">&gt;</span><span class="p">]</span>
@@ -194,22 +194,20 @@
 </div>
 </section>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
-<p>The <strong class="program">gdalmanage</strong> program can perform various operations on raster data
-files, depending on the chosen <em>mode</em>. This includes identifying raster
-data types and deleting, renaming or copying the files.</p>
+<h2>説明<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p><strong class="program">gdalmanage</strong> プログラムは, 選択した <em>mode</em> に応じてラスタデータファイルにさまざまな操作を実行できます. これには, ラスタデータの種類を識別し, ファイルを削除したり, 名前を変更したり, コピーしたりすることが含まれます.</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-arg-mode">
 <span class="sig-name descname"><span class="pre">&lt;mode&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-mode" title="Link to this definition"></a></dt>
-<dd><p>Mode of operation</p>
+<dd><p>操作モード</p>
 <dl class="simple">
-<dt><strong>identify</strong> <em>&lt;datasetname&gt;</em>:</dt><dd><p>List data format of file(s).</p>
+<dt><strong>identify</strong> <em>&lt;datasetname&gt;</em>:</dt><dd><p>ファイルのデータ形式をリストします.</p>
 </dd>
-<dt><strong>copy</strong> <em>&lt;datasetname&gt;</em> <em>&lt;newdatasetname&gt;</em>:</dt><dd><p>Create a copy of the raster file with a new name.</p>
+<dt><strong>copy</strong> <em>&lt;datasetname&gt;</em> <em>&lt;newdatasetname&gt;</em>:</dt><dd><p>ラスターファイルのコピーを新しい名前で作成します.</p>
 </dd>
-<dt><strong>rename</strong> <em>&lt;datasetname&gt;</em> <em>&lt;newdatasetname&gt;</em>:</dt><dd><p>Change the name of the raster file.</p>
+<dt><strong>rename</strong> <em>&lt;datasetname&gt;</em> <em>&lt;newdatasetname&gt;</em>:</dt><dd><p>ラスターファイルの名前を変更します.</p>
 </dd>
-<dt><strong>delete</strong> <em>&lt;datasetname&gt;</em>:</dt><dd><p>Delete raster file(s).</p>
+<dt><strong>delete</strong> <em>&lt;datasetname&gt;</em>:</dt><dd><p>ラスターファイルを削除します.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -217,55 +215,51 @@ data types and deleting, renaming or copying the files.</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-r">
 <span class="sig-name descname"><span class="pre">-r</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-r" title="Link to this definition"></a></dt>
-<dd><p>Recursively scan files/folders for raster files.</p>
+<dd><p>ラスターファイルを再帰的にスキャンします.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-fr">
 <span class="sig-name descname"><span class="pre">-fr</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-fr" title="Link to this definition"></a></dt>
-<dd><p>Recursively scan folders for raster files, forcing recursion in folders recognized as valid formats.</p>
+<dd><p>ラスターファイルを再帰的にスキャンし,有効なフォーマットとして認識されたフォルダーで再帰を強制します。</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-u">
 <span class="sig-name descname"><span class="pre">-u</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-u" title="Link to this definition"></a></dt>
-<dd><p>Report failures if file type is unidentified.</p>
+<dd><p>ファイルタイプが未識別の場合に失敗を報告します。</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-f">
 <span class="sig-name descname"><span class="pre">-f</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;format&gt;</span></span><a class="headerlink" href="#cmdoption-f" title="Link to this definition"></a></dt>
-<dd><p>Specify format of raster file if unknown by the application. Uses
-short data format name (e.g. <em>GTiff</em>).</p>
+<dd><p>アプリケーションによって未知のラスターファイルの形式を指定します。短いデータ形式名を使用します (例: <em>GTiff</em>)。</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-arg-datasetname">
 <span class="sig-name descname"><span class="pre">&lt;datasetname&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-datasetname" title="Link to this definition"></a></dt>
-<dd><p>Raster file to operate on. With <strong>identify</strong> may be repeated for multiple files.</p>
+<dd><p>操作対象ラスターファイル. <strong>identify</strong> では複数のファイルに対して繰り返すことができます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-arg-newdatasetname">
 <span class="sig-name descname"><span class="pre">&lt;newdatasetname&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-arg-newdatasetname" title="Link to this definition"></a></dt>
-<dd><p>For copy and rename modes, you provide a <em>source</em> filename and a
-<em>target</em> filename, just like copy and move commands in an operating
-system.</p>
+<dd><p>コピーおよび名前変更モードの場合, ソースファイル名とターゲットファイル名を指定します。これは, オペレーティングシステムのコピーおよび移動コマンドと同じです。</p>
 </dd></dl>
 
 </section>
 <section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
+<h2>例<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
 <section id="using-identify-mode">
-<h3>Using identify mode<a class="headerlink" href="#using-identify-mode" title="Link to this heading"></a></h3>
-<p>Report the data format of the raster file by using the <em>identify</em> mode
-and specifying a data file name:</p>
+<h3>識別モードを使用する<a class="headerlink" href="#using-identify-mode" title="Link to this heading"></a></h3>
+<p>データファイル名を指定して <em>identify</em> モードを使用してラスターファイルのデータ形式を報告します:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ gdalmanage identify NE1_50M_SR_W.tif
 
 NE1_50M_SR_W.tif: GTiff
 </pre></div>
 </div>
-<p>Recursive mode will scan subfolders and report the data format:</p>
+<p>再帰モードではサブフォルダをスキャンしてデータ形式を報告します:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ gdalmanage identify -r 50m_raster/
 
 NE1_50M_SR_W/ne1_50m.jpg: JPEG
@@ -281,22 +275,22 @@ NE1_50M_SR_W/ne1_50m_sub2.tif: GTiff
 </div>
 </section>
 <section id="using-copy-mode">
-<h3>Using copy mode<a class="headerlink" href="#using-copy-mode" title="Link to this heading"></a></h3>
-<p>Copy the raster data:</p>
+<h3>コピーモードを使用する<a class="headerlink" href="#using-copy-mode" title="Link to this heading"></a></h3>
+<p>ラスターデータをコピーします:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ gdalmanage copy NE1_50M_SR_W.tif ne1_copy.tif
 </pre></div>
 </div>
 </section>
 <section id="using-rename-mode">
-<h3>Using rename mode<a class="headerlink" href="#using-rename-mode" title="Link to this heading"></a></h3>
-<p>Rename raster data:</p>
+<h3>改名モードを使用する<a class="headerlink" href="#using-rename-mode" title="Link to this heading"></a></h3>
+<p>ラスターデータの名前を変更します:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ gdalmanage rename NE1_50M_SR_W.tif ne1_rename.tif
 </pre></div>
 </div>
 </section>
 <section id="using-delete-mode">
-<h3>Using delete mode<a class="headerlink" href="#using-delete-mode" title="Link to this heading"></a></h3>
-<p>Delete the raster data:</p>
+<h3>削除モードを使用する<a class="headerlink" href="#using-delete-mode" title="Link to this heading"></a></h3>
+<p>ラスターデータを削除します:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdalmanage</span> <span class="n">delete</span> <span class="n">NE1_50M_SR_W</span><span class="o">.</span><span class="n">tif</span>
 </pre></div>
 </div>

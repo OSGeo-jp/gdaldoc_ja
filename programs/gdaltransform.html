@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>gdaltransform &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=75499f83" />
 
   
     <link rel="shortcut icon" href="../_static/favicon.png"/>
@@ -86,9 +86,9 @@
 <li class="toctree-l3"><a class="reference internal" href="gdalsrsinfo.html">gdalsrsinfo</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdaltindex.html">gdaltindex</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">gdaltransform</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#synopsis">Synopsis</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#synopsis">概要</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#description">説明</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#examples">例</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="gdalwarp.html">gdalwarp</a></li>
@@ -184,9 +184,9 @@
              
   <section id="gdaltransform">
 <span id="id1"></span><h1>gdaltransform<a class="headerlink" href="#gdaltransform" title="Link to this heading"></a></h1>
-<p>Transforms coordinates</p>
+<p>座標を変換します</p>
 <section id="synopsis">
-<span id="index-0"></span><h2>Synopsis<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
+<span id="index-0"></span><h2>概要<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdaltransform</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="o">-</span><span class="n">general</span><span class="p">]</span>
     <span class="p">[</span><span class="o">-</span><span class="n">i</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">s_srs</span> <span class="o">&lt;</span><span class="n">srs_def</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">t_srs</span> <span class="o">&lt;</span><span class="n">srs_def</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">to</span> <span class="o">&lt;</span><span class="n">NAME</span><span class="o">&gt;=&lt;</span><span class="n">VALUE</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span>
     <span class="p">[</span><span class="o">-</span><span class="n">s_coord_epoch</span> <span class="o">&lt;</span><span class="n">epoch</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">t_coord_epoch</span> <span class="o">&lt;</span><span class="n">epoch</span><span class="o">&gt;</span><span class="p">]</span>
@@ -198,29 +198,24 @@
 </div>
 </section>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
-<p>The gdaltransform utility reprojects a list of coordinates into any supported
-projection,including GCP-based transformations.</p>
+<h2>説明<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>gdaltransform ユーティリティは, GCP ベースの変換を含む, 任意のサポートされている投影法に座標のリストを再投影します.</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdaltransform-help">
 <span class="sig-name descname"><span class="pre">--help</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdaltransform-help" title="Link to this definition"></a></dt>
-<dd><p>Show this help message and exit</p>
+<dd><p>このヘルプメッセージを表示して終了します</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdaltransform-help-general">
 <span class="sig-name descname"><span class="pre">--help-general</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdaltransform-help-general" title="Link to this definition"></a></dt>
-<dd><p>Gives a brief usage message for the generic GDAL commandline options and exit.</p>
+<dd><p>一般的な GDAL コマンドラインオプションの使用方法を簡単に表示して終了します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdaltransform-s_srs">
 <span class="sig-name descname"><span class="pre">-s_srs</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;srs_def&gt;</span></span><a class="headerlink" href="#cmdoption-gdaltransform-s_srs" title="Link to this definition"></a></dt>
-<dd><p>Set source spatial reference.
-The coordinate systems that can be passed are anything supported by the
-OGRSpatialReference.SetFromUserInput() call, which includes EPSG PCS and GCSes
-(i.e. EPSG:4296), PROJ.4 declarations (as above), or the name of a .prj file
-containing well known text.</p>
+<dd><p>ソース空間参照を設定します. 渡すことができる座標系は, OGRSpatialReference.SetFromUserInput() 呼び出しでサポートされているもので, これには EPSG PCS およびGCS (例: EPSG:4296), PROJ.4 宣言 (上記のように), またはよく知られたテキストを含む.prj ファイルの名前が含まれます.</p>
 </dd></dl>
 
 <dl class="std option">
@@ -229,21 +224,14 @@ containing well known text.</p>
 <dd><div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.8.</span></p>
 </div>
-<p>Assign a coordinate epoch, linked with the source SRS. Useful when the
-source SRS is a dynamic CRS. Only taken into account if <a class="reference internal" href="#cmdoption-gdaltransform-s_srs"><code class="xref std std-option docutils literal notranslate"><span class="pre">-s_srs</span></code></a>
-is used.</p>
-<p>Before PROJ 9.4, <a class="reference internal" href="#cmdoption-gdaltransform-s_coord_epoch"><code class="xref std std-option docutils literal notranslate"><span class="pre">-s_coord_epoch</span></code></a> and <a class="reference internal" href="#cmdoption-gdaltransform-t_coord_epoch"><code class="xref std std-option docutils literal notranslate"><span class="pre">-t_coord_epoch</span></code></a> were
-mutually exclusive, due to lack of support for transformations between two dynamic CRS.</p>
+<p>ソース SRS にリンクされた座標エポックを割り当てます. ソース SRS が動的 CRS の場合に便利です. <a class="reference internal" href="#cmdoption-gdaltransform-s_srs"><code class="xref std std-option docutils literal notranslate"><span class="pre">-s_srs</span></code></a> が使用されている場合のみ考慮されます.</p>
+<p>PROJ 9.4 以前, <a class="reference internal" href="#cmdoption-gdaltransform-s_coord_epoch"><code class="xref std std-option docutils literal notranslate"><span class="pre">-s_coord_epoch</span></code></a> と <a class="reference internal" href="#cmdoption-gdaltransform-t_coord_epoch"><code class="xref std std-option docutils literal notranslate"><span class="pre">-t_coord_epoch</span></code></a> は, 2 つの動的 CRS 間の変換のサポートがないため, 相互に排他的でした.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdaltransform-t_srs">
 <span class="sig-name descname"><span class="pre">-t_srs</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;srs_def&gt;</span></span><a class="headerlink" href="#cmdoption-gdaltransform-t_srs" title="Link to this definition"></a></dt>
-<dd><p>set target spatial reference.
-The coordinate systems that can be passed are anything supported by the
-OGRSpatialReference.SetFromUserInput() call, which includes EPSG PCS and GCSes
-(i.e. EPSG:4296), PROJ.4 declarations (as above), or the name of a .prj file
-containing well known text.</p>
+<dd><p>ターゲット空間参照を設定します. 渡すことができる座標系は, OGRSpatialReference.SetFromUserInput() 呼び出しでサポートされているもので, これには EPSG PCS およびGCS (例: EPSG:4296), PROJ.4 宣言 (上記のように), またはよく知られたテキストを含む.prj ファイルの名前が含まれます.</p>
 </dd></dl>
 
 <dl class="std option">
@@ -252,21 +240,14 @@ containing well known text.</p>
 <dd><div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.8.</span></p>
 </div>
-<p>Assign a coordinate epoch, linked with the output SRS. Useful when the
-output SRS is a dynamic CRS. Only taken into account if <a class="reference internal" href="#cmdoption-gdaltransform-t_srs"><code class="xref std std-option docutils literal notranslate"><span class="pre">-t_srs</span></code></a>
-is used.</p>
-<p>Before PROJ 9.4, <a class="reference internal" href="#cmdoption-gdaltransform-s_coord_epoch"><code class="xref std std-option docutils literal notranslate"><span class="pre">-s_coord_epoch</span></code></a> and <a class="reference internal" href="#cmdoption-gdaltransform-t_coord_epoch"><code class="xref std std-option docutils literal notranslate"><span class="pre">-t_coord_epoch</span></code></a> were
-mutually exclusive, due to lack of support for transformations between two dynamic CRS.</p>
+<p>出力 SRS が動的 CRS の場合に便利な座標エポックを割り当てます. <a class="reference internal" href="#cmdoption-gdaltransform-t_srs"><code class="xref std std-option docutils literal notranslate"><span class="pre">-t_srs</span></code></a> が使用されている場合のみ考慮されます.</p>
+<p>PROJ 9.4 以前, <a class="reference internal" href="#cmdoption-gdaltransform-s_coord_epoch"><code class="xref std std-option docutils literal notranslate"><span class="pre">-s_coord_epoch</span></code></a> と <a class="reference internal" href="#cmdoption-gdaltransform-t_coord_epoch"><code class="xref std std-option docutils literal notranslate"><span class="pre">-t_coord_epoch</span></code></a> は, 2 つの動的 CRS 間の変換のサポートがないため, 相互に排他的でした.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdaltransform-ct">
 <span class="sig-name descname"><span class="pre">-ct</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;string&gt;</span></span><a class="headerlink" href="#cmdoption-gdaltransform-ct" title="Link to this definition"></a></dt>
-<dd><p>A PROJ string (single step operation or multiple step string
-starting with +proj=pipeline), a WKT2 string describing a CoordinateOperation,
-or a <a class="reference external" href="urn:ogc:def:coordinateOperation:EPSG::XXXX">urn:ogc:def:coordinateOperation:EPSG::XXXX</a> URN overriding the default
-transformation from the source to the target CRS. It must take into account the
-axis order of the source and target CRS.</p>
+<dd><p>ソースからターゲット CRS へのデフォルトの変換を上書きする <a class="reference external" href="urn:ogc:def:coordinateOperation:EPSG::XXXX">urn:ogc:def:coordinateOperation:EPSG::XXXX</a> URN, +proj=pipeline で始まる単一ステップ操作または複数ステップ文字列の PROJ 文字列, CoordinateOperation を記述する WKT2 文字列を指定します. ソースとターゲット CRS の軸順を考慮する必要があります.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.0.</span></p>
 </div>
@@ -275,50 +256,49 @@ axis order of the source and target CRS.</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdaltransform-to">
 <span class="sig-name descname"><span class="pre">-to</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></span><a class="headerlink" href="#cmdoption-gdaltransform-to" title="Link to this definition"></a></dt>
-<dd><p>set a transformer option suitable to pass to <a class="reference internal" href="../api/gdal_alg.html#_CPPv432GDALCreateGenImgProjTransformer212GDALDatasetH12GDALDatasetHPPc" title="GDALCreateGenImgProjTransformer2"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALCreateGenImgProjTransformer2()</span></code></a>.</p>
+<dd><p><a class="reference internal" href="../api/gdal_alg.html#_CPPv432GDALCreateGenImgProjTransformer212GDALDatasetH12GDALDatasetHPPc" title="GDALCreateGenImgProjTransformer2"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALCreateGenImgProjTransformer2()</span></code></a> に渡すのに適したトランスフォーマーオプションを設定します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdaltransform-order">
 <span class="sig-name descname"><span class="pre">-order</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;n&gt;</span></span><a class="headerlink" href="#cmdoption-gdaltransform-order" title="Link to this definition"></a></dt>
-<dd><p>order of polynomial used for warping (1 to 3). The default is to select a
-polynomial order based on the number of GCPs.</p>
+<dd><p>変形に使用される多項式の順序 (1 から 3). デフォルトは, GCP の数に基づいて多項式の順序を選択します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdaltransform-tps">
 <span class="sig-name descname"><span class="pre">-tps</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdaltransform-tps" title="Link to this definition"></a></dt>
-<dd><p>Force use of thin plate spline transformer based on available GCPs.</p>
+<dd><p>利用可能な GCP に基づいてシンプレートスプライントランスフォーマーの使用を強制します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdaltransform-rpc">
 <span class="sig-name descname"><span class="pre">-rpc</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdaltransform-rpc" title="Link to this definition"></a></dt>
-<dd><p>Force use of RPCs.</p>
+<dd><p>RPC の使用を強制します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdaltransform-geoloc">
 <span class="sig-name descname"><span class="pre">-geoloc</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdaltransform-geoloc" title="Link to this definition"></a></dt>
-<dd><p>Force use of Geolocation Arrays.</p>
+<dd><p>ジオロケーション配列の使用を強制します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdaltransform-i">
 <span class="sig-name descname"><span class="pre">-i</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdaltransform-i" title="Link to this definition"></a></dt>
-<dd><p>Inverse transformation: from destination to source.</p>
+<dd><p>逆変換: ターゲットからソースへ.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdaltransform-gcp">
 <span class="sig-name descname"><span class="pre">-gcp</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;pixel&gt;</span> <span class="pre">&lt;line&gt;</span> <span class="pre">&lt;easting&gt;</span> <span class="pre">&lt;northing&gt;</span> <span class="pre">[&lt;elevation&gt;]</span></span><a class="headerlink" href="#cmdoption-gdaltransform-gcp" title="Link to this definition"></a></dt>
-<dd><p>Provide a GCP to be used for transformation (generally three or more are required). Pixel and line need not be integers.</p>
+<dd><p>変換に使用する GCP を提供します (通常, 3 つ以上が必要です). ピクセルとラインは整数である必要はありません.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdaltransform-output_xy">
 <span class="sig-name descname"><span class="pre">-output_xy</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdaltransform-output_xy" title="Link to this definition"></a></dt>
-<dd><p>Restrict output to &quot;x y&quot; instead of &quot;x y z&quot;</p>
+<dd><p>&quot;x y z&quot; の代わりに &quot;x y&quot; に出力を制限します</p>
 </dd></dl>
 
 <dl class="std option">
@@ -327,8 +307,7 @@ polynomial order based on the number of GCPs.</p>
 <dd><div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.9.</span></p>
 </div>
-<p>Set this flag to avoid extra non-numeric content at end of input lines to be
-appended to the output lines.</p>
+<p>入力行の末尾に追加される追加の非数値コンテンツを避けるためにこのフラグを設定します.</p>
 </dd></dl>
 
 <dl class="std option">
@@ -337,7 +316,7 @@ appended to the output lines.</p>
 <dd><div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.9.</span></p>
 </div>
-<p>Enable Echo mode, where input coordinates are prepended to the output lines.</p>
+<p>入力座標が出力行に先行して追加されるエコーモードを有効にします.</p>
 </dd></dl>
 
 <dl class="std option">
@@ -346,72 +325,56 @@ appended to the output lines.</p>
 <dd><div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.9.</span></p>
 </div>
-<p>Defines the field separator, to separate different values.
-It defaults to the space character.</p>
+<p>異なる値を区切るためのフィールドセパレータを定義します. デフォルトはスペース文字です.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdaltransform-arg-srcfile">
 <span class="sig-name descname"><span class="pre">&lt;srcfile&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdaltransform-arg-srcfile" title="Link to this definition"></a></dt>
-<dd><p>Raster dataset with source projection definition or GCPs. If
-not given, source projection/GCPs are read from the command-line <a class="reference internal" href="#cmdoption-gdaltransform-s_srs"><code class="xref std std-option docutils literal notranslate"><span class="pre">-s_srs</span></code></a>
-or <a class="reference internal" href="#cmdoption-gdaltransform-gcp"><code class="xref std std-option docutils literal notranslate"><span class="pre">-gcp</span></code></a> parameters.</p>
-<p>Note that only the SRS and/or GCPs of this input file is taken into account, and not its pixel content.</p>
+<dd><p>ソース投影定義または GCP を持つラスタデータセット. 指定されていない場合, ソース投影/GCP はコマンドライン <a class="reference internal" href="#cmdoption-gdaltransform-s_srs"><code class="xref std std-option docutils literal notranslate"><span class="pre">-s_srs</span></code></a> または <a class="reference internal" href="#cmdoption-gdaltransform-gcp"><code class="xref std std-option docutils literal notranslate"><span class="pre">-gcp</span></code></a> パラメータから読み込まれます.</p>
+<p>この入力ファイルの SRS および/または GCP のみが考慮され, ピクセルコンテンツは考慮されません.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdaltransform-arg-dstfile">
 <span class="sig-name descname"><span class="pre">&lt;dstfile&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdaltransform-arg-dstfile" title="Link to this definition"></a></dt>
-<dd><p>Raster dataset with destination projection definition.</p>
+<dd><p>ターゲット投影定義を持つラスタデータセット.</p>
 </dd></dl>
 
-<p>Coordinates are read as pairs, triples (for 3D,) or (since GDAL 3.0.0,) quadruplets
-(for X,Y,Z,time) of numbers per line from standard
-input, transformed, and written out to standard output in the same way. All
-transformations offered by gdalwarp are handled, including gcp-based ones.</p>
-<p>Starting with GDAL 3.9, additional non-numeric content (typically point name)
-at the end of an input line will also be appended to the output line, unless
-the <a class="reference internal" href="#cmdoption-gdaltransform-ignore_extra_input"><code class="xref std std-option docutils literal notranslate"><span class="pre">-ignore_extra_input</span></code></a> is added.</p>
-<p>Note that input and output must always be in decimal form.  There is currently
-no support for DMS input or output.</p>
-<p>If an input image file is provided, input is in pixel/line coordinates on that
-image.  If an output file is provided, output is in pixel/line coordinates
-on that image.</p>
+<p>座標は, 標準入力から行ごとにペア, 3 つ組 (3D の場合,) または (GDAL 3.0.0 以降,) 4 つ組 (X,Y,Z,time) の数値, 変換され, 同じ方法で標準出力に書き出されます. gdalwarp で提供されるGCPベースのものを含むすべての変換が処理されます.</p>
+<p>GDAL 3.9 以降, 入力行の末尾に追加の非数値コンテンツ (通常はポイント名) がある場合, <a class="reference internal" href="#cmdoption-gdaltransform-ignore_extra_input"><code class="xref std std-option docutils literal notranslate"><span class="pre">-ignore_extra_input</span></code></a> が追加されていない限り, それも出力行に追加されます.</p>
+<p>入力と出力は常に10進形式である必要があります. 現在, DMS 入力または出力はサポートされていません.</p>
+<p>入力画像ファイルが提供された場合, 入力はその画像のピクセル/ライン座標です. 出力ファイルが提供された場合, 出力はその画像のピクセル/ライン座標です.</p>
 </section>
 <section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
+<h2>例<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
 <section id="reprojection-example">
-<h3>Reprojection Example<a class="headerlink" href="#reprojection-example" title="Link to this heading"></a></h3>
-<p>Simple reprojection from one projected coordinate system to another:</p>
+<h3>再投影の例<a class="headerlink" href="#reprojection-example" title="Link to this heading"></a></h3>
+<p>単純な再投影, 1 つの投影座標系から別の投影座標系へ:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdaltransform<span class="w"> </span>-s_srs<span class="w"> </span>EPSG:28992<span class="w"> </span>-t_srs<span class="w"> </span>EPSG:31370
 <span class="m">177502</span><span class="w"> </span><span class="m">311865</span>
 </pre></div>
 </div>
-<p>Produces the following output in meters in the &quot;Belge 1972 / Belgian Lambert
-72&quot; projection:</p>
+<p>&quot;Belge 1972 / Belgian Lambert 72&quot; 投影でメートル単位で次の出力を生成します:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">244296</span>.724777415<span class="w"> </span><span class="m">165937</span>.350217148<span class="w"> </span><span class="m">0</span>
 </pre></div>
 </div>
 </section>
 <section id="image-rpc-example">
-<h3>Image RPC Example<a class="headerlink" href="#image-rpc-example" title="Link to this heading"></a></h3>
-<p>The following command requests an RPC based transformation using the RPC
-model associated with the named file.  Because the -i (inverse) flag is
-used, the transformation is from output georeferenced (WGS84) coordinates
-back to image coordinates.</p>
+<h3>画像 RPC の例<a class="headerlink" href="#image-rpc-example" title="Link to this heading"></a></h3>
+<p>次のコマンドは, 名前付きファイルに関連付けられた RPC モデルを使用した RPC ベースの変換を要求します. -i (逆) フラグが使用されているため, 変換は出力ジオリファレンス (WGS84) 座標から画像座標に戻ります.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdaltransform<span class="w"> </span>-i<span class="w"> </span>-rpc<span class="w"> </span>06OCT20025052-P2AS-005553965230_01_P001.TIF
 <span class="m">125</span>.67206<span class="w"> </span><span class="m">39</span>.85307<span class="w"> </span><span class="m">50</span>
 </pre></div>
 </div>
-<p>Produces this output measured in pixels and lines on the image:</p>
+<p>画像上のピクセルとラインで測定された次の出力を生成します:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">3499</span>.49282422381<span class="w"> </span><span class="m">2910</span>.83892848414<span class="w"> </span><span class="m">50</span>
 </pre></div>
 </div>
 </section>
 <section id="x-y-z-time-transform">
-<h3>X,Y,Z,time transform<a class="headerlink" href="#x-y-z-time-transform" title="Link to this heading"></a></h3>
-<p>15-term time-dependent Helmert coordinate transformation from ITRF2000 to ITRF93
-for a coordinate at epoch 2000.0</p>
+<h3>X,Y,Z,time 変換<a class="headerlink" href="#x-y-z-time-transform" title="Link to this heading"></a></h3>
+<p>2000.0 エポックの ITRF2000 から ITRF93 への 15 項目の時間依存ヘルムート座標変換</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdaltransform<span class="w"> </span>-ct<span class="w"> </span><span class="s2">&quot;+proj=pipeline +step +proj=unitconvert +xy_in=deg \</span>
 <span class="s2">+xy_out=rad +step +proj=cart +step +proj=helmert +convention=position_vector \</span>
 <span class="s2">+x=0.0127 +dx=-0.0029 +rx=-0.00039 +drx=-0.00011 +y=0.0065 +dy=-0.0002 \</span>
@@ -421,34 +384,31 @@ for a coordinate at epoch 2000.0</p>
 <span class="m">2</span><span class="w"> </span><span class="m">49</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">2000</span>
 </pre></div>
 </div>
-<p>Produces this output measured in longitude degrees, latitude degrees and ellipsoid height in meters:</p>
+<p>経度度, 緯度度, 楕円体高さ (メートル) で測定された次の出力を生成します:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">2</span>.0000005420366<span class="w"> </span><span class="m">49</span>.0000003766711<span class="w"> </span>-0.0222802283242345
 </pre></div>
 </div>
 </section>
 <section id="ground-control-points">
-<h3>Ground control points<a class="headerlink" href="#ground-control-points" title="Link to this heading"></a></h3>
-<p>Task: find one address and assign another.
-We pick Salt Lake City, where road names <em>are</em> their grid values.
-We first establish some ground control points at road intersections.
-We'll use <a class="reference internal" href="raster_common_options.html#raster-common-options-optfile"><span class="std std-ref">--optfile</span></a> for easy reuse of our GCPs.</p>
+<h3>地上制御点<a class="headerlink" href="#ground-control-points" title="Link to this heading"></a></h3>
+<p>タスク: 1 つの住所を見つけて別の住所を割り当てます. 道路名がグリッド値であるソルトレイクシティを選択します. 最初に, 道路の交差点にいくつかの地上制御点を設定します. GCP を簡単に再利用するために <a class="reference internal" href="raster_common_options.html#raster-common-options-optfile"><span class="std std-ref">--optfile</span></a> を使用します.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span>-output_xy<span class="w"> </span><span class="se">\</span>
 -gcp<span class="w"> </span><span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w">    </span>-111.89114717<span class="w"> </span><span class="m">40</span>.76932606<span class="w"> </span><span class="se">\</span>
 -gcp<span class="w"> </span><span class="m">0</span><span class="w">   </span>-500<span class="w"> </span>-111.89114803<span class="w"> </span><span class="m">40</span>.75846686<span class="w"> </span><span class="se">\</span>
 -gcp<span class="w"> </span><span class="m">500</span><span class="w"> </span><span class="m">0</span><span class="w">    </span>-111.87685039<span class="w"> </span><span class="m">40</span>.76940631<span class="w"> </span>&gt;<span class="w"> </span>optfile.txt
 </pre></div>
 </div>
-<p>Where is the address &quot;370 S. 300 E.&quot;?</p>
+<p>住所 &quot;370 S. 300 E.&quot; はどこですか?</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="m">300</span><span class="w"> </span>-370<span class="w"> </span><span class="m">370</span><span class="w"> </span>S.<span class="w"> </span><span class="m">300</span><span class="w"> </span>E.<span class="w"> </span><span class="p">|</span><span class="w"> </span>gdaltransform<span class="w"> </span>--optfile<span class="w"> </span>optfile.txt
 -111.8825697384<span class="w"> </span><span class="m">40</span>.761338402<span class="w"> </span><span class="m">370</span><span class="w"> </span>S.<span class="w"> </span><span class="m">300</span><span class="w"> </span>E.
 </pre></div>
 </div>
-<p>Nearby, a newly constructed building needs an address assigned. We use <a class="reference internal" href="#cmdoption-gdaltransform-i"><code class="xref std std-option docutils literal notranslate"><span class="pre">-i</span></code></a>:</p>
+<p>近くに, 新しく建設された建物に住所を割り当てる必要があります. <a class="reference internal" href="#cmdoption-gdaltransform-i"><code class="xref std std-option docutils literal notranslate"><span class="pre">-i</span></code></a> を使用します:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span>-111.88705<span class="w"> </span><span class="m">40</span>.76502<span class="w"> </span>Building<span class="w"> </span>ABC123<span class="w"> </span><span class="p">|</span><span class="w"> </span>gdaltransform<span class="w"> </span>-i<span class="w"> </span>--optfile<span class="w"> </span>optfile.txt
 <span class="m">143</span>.301947786644<span class="w"> </span>-199.32683635161<span class="w"> </span>Building<span class="w"> </span>ABC123
 </pre></div>
 </div>
-<p>(i.e., 143 E. 200 S. Or 144 if across the street.)</p>
+<p>(例: 143 E. 200 S. または通りを渡った場合は 144.)</p>
 </section>
 </section>
 </section>

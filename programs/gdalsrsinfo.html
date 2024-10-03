@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>gdalsrsinfo &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=75499f83" />
 
   
     <link rel="shortcut icon" href="../_static/favicon.png"/>
@@ -84,9 +84,9 @@
 <li class="toctree-l3"><a class="reference internal" href="gdalmanage.html">gdalmanage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdalmove.html">gdalmove</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">gdalsrsinfo</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#synopsis">Synopsis</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#example">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#synopsis">概要</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#description">説明</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example">例</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="gdaltindex.html">gdaltindex</a></li>
@@ -184,84 +184,83 @@
              
   <section id="gdalsrsinfo">
 <span id="id1"></span><h1>gdalsrsinfo<a class="headerlink" href="#gdalsrsinfo" title="Link to this heading"></a></h1>
-<p>Lists info about a given SRS in number of formats (WKT, PROJ.4, etc.)</p>
+<p>指定された SRS に関する情報をいくつかの形式 (WKT, PROJ.4 など) でリストします</p>
 <section id="synopsis">
-<span id="index-0"></span><h2>Synopsis<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
+<span id="index-0"></span><h2>概要<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Usage</span><span class="p">:</span> <span class="n">gdalsrsinfo</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="o">-</span><span class="n">general</span><span class="p">]</span>
                    <span class="p">[</span><span class="o">--</span><span class="n">single</span><span class="o">-</span><span class="n">line</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">V</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">e</span><span class="p">][</span><span class="o">-</span><span class="n">o</span> <span class="o">&lt;</span><span class="n">out_type</span><span class="o">&gt;</span><span class="p">]</span> <span class="o">&lt;</span><span class="n">srs_def</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 </section>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
-<p>The <strong class="program">gdalsrsinfo</strong> utility reports information about a given SRS from one of the following:</p>
+<h2>説明<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p><strong class="program">gdalsrsinfo</strong> ユーティリティは, 次のいずれかから指定された SRS に関する情報を報告します:</p>
 <ul class="simple">
-<li><p>The filename of a dataset supported by GDAL/OGR which contains SRS information</p></li>
-<li><p>Any of the usual GDAL/OGR forms (complete WKT, PROJ.4, EPSG:n or a file containing the SRS)</p></li>
+<li><p>GDAL/OGR でサポートされているデータセットのファイル名で, SRS 情報を含みます</p></li>
+<li><p>通常の GDAL/OGR 形式のいずれか (完全な WKT, PROJ.4, EPSG:n または SRS を含むファイル)</p></li>
 </ul>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalsrsinfo-help">
 <span class="sig-name descname"><span class="pre">--help</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalsrsinfo-help" title="Link to this definition"></a></dt>
-<dd><p>Show this help message and exit</p>
+<dd><p>このヘルプメッセージを表示して終了します</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalsrsinfo-help-general">
 <span class="sig-name descname"><span class="pre">--help-general</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalsrsinfo-help-general" title="Link to this definition"></a></dt>
-<dd><p>Gives a brief usage message for the generic GDAL commandline options and exit.</p>
+<dd><p>一般的な GDAL コマンドラインオプションの使用方法を簡単に表示して終了します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalsrsinfo-single-line">
 <span class="sig-name descname"><span class="pre">--single-line</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalsrsinfo-single-line" title="Link to this definition"></a></dt>
-<dd><p>Print WKT on single line</p>
+<dd><p>1 行で WKT を表示します</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalsrsinfo-V">
 <span class="sig-name descname"><span class="pre">-V</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalsrsinfo-V" title="Link to this definition"></a></dt>
-<dd><p>Validate SRS</p>
+<dd><p>SRS を検証します</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalsrsinfo-e">
 <span class="sig-name descname"><span class="pre">-e</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalsrsinfo-e" title="Link to this definition"></a></dt>
-<dd><p>Search for EPSG number(s) corresponding to SRS</p>
+<dd><p>SRS に対応する EPSG 番号を検索します</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalsrsinfo-o">
 <span class="sig-name descname"><span class="pre">-o</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;out_type&gt;</span></span><a class="headerlink" href="#cmdoption-gdalsrsinfo-o" title="Link to this definition"></a></dt>
-<dd><p>Output types:</p>
+<dd><p>出力タイプ:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">default</span></code>: proj4 and wkt (default option)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">all</span></code>: all options available</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">wkt_all</span></code>: all wkt options available</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">PROJJSON</span></code>: PROJJSON string (GDAL &gt;= 3.1 and PROJ &gt;= 6.2)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">proj4</span></code>: PROJ.4 string</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">wkt1</span></code>: OGC WKT format (full)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">wkt_simple</span></code>: OGC WKT 1 (simplified)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">wkt_noct</span></code>: OGC WKT 1 (without OGC CT params)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">wkt_esri</span></code>: ESRI WKT format</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">wkt</span></code>: Latest WKT version supported, currently wkt2_2019</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">wkt2</span></code>: Latest WKT2 version supported, currently wkt2_2019</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">default</span></code>: proj4 と wkt (デフォルトオプション)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">all</span></code>: 利用可能なすべてのオプション</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wkt_all</span></code>: 利用可能なすべてのwktオプション</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PROJJSON</span></code>: PROJJSON 文字列 (GDAL &gt;= 3.1 と PROJ &gt;= 6.2)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">proj4</span></code>: PROJ.4 文字列</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wkt1</span></code>: OGC WKT 形式 (フル)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wkt_simple</span></code>: OGC WKT 1 (簡略化)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wkt_noct</span></code>: OGC WKT 1 (OGC CT パラメータ無し)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wkt_esri</span></code>: ESRI WKT 形式</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wkt</span></code>: WKTでサポートされている最新版, 現在 wkt2_2019</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wkt2</span></code>: WKT2でサポートされている最新版, 現在 wkt2_2019</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">wkt2_2015</span></code>: OGC WKT2:2015</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">wkt2_2019</span></code>: OGC WKT2:2019 (for GDAL &lt; 3.6, use <code class="docutils literal notranslate"><span class="pre">wkt2_2018</span></code>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">mapinfo</span></code>: Mapinfo style CoordSys format</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">xml</span></code>: XML format (GML based)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wkt2_2019</span></code>: OGC WKT2:2019 (for GDAL &lt; 3.6 では <code class="docutils literal notranslate"><span class="pre">wkt2_2018</span></code> を使用してください)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mapinfo</span></code>: Mapinfo スタイル CoordSys 形式</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">xml</span></code>: XML 形式 (GML ベース)</p></li>
 </ul>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalsrsinfo-arg-srs_def">
 <span class="sig-name descname"><span class="pre">&lt;srs_def&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalsrsinfo-arg-srs_def" title="Link to this definition"></a></dt>
-<dd><p>may be the filename of a dataset supported by GDAL/OGR from which to extract SRS information
-OR any of the usual GDAL/OGR forms (complete WKT, PROJ.4, EPSG:n or a file containing the SRS)</p>
+<dd><p>GDAL/OGR でサポートされているデータセットから SRS 情報を抽出するためのファイル名であるか, 通常の GDAL/OGR 形式のいずれか (完全な WKT, PROJ.4, EPSG:n または SRS を含むファイル)です</p>
 </dd></dl>
 
 </section>
 <section id="example">
-<h2>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h2>
+<h2>例<a class="headerlink" href="#example" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ gdalsrsinfo EPSG:4326
 
 PROJ.4 : +proj=longlat +datum=WGS84 +no_defs

@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>nearblack &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=75499f83" />
 
   
     <link rel="shortcut icon" href="../_static/favicon.png"/>
@@ -88,8 +88,8 @@
 <li class="toctree-l3"><a class="reference internal" href="gdaltransform.html">gdaltransform</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdalwarp.html">gdalwarp</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">nearblack</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#synopsis">Synopsis</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#synopsis">概要</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#description">説明</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#c-api">C API</a></li>
 </ul>
 </li>
@@ -184,9 +184,9 @@
              
   <section id="nearblack">
 <span id="id1"></span><h1>nearblack<a class="headerlink" href="#nearblack" title="Link to this heading"></a></h1>
-<p>Convert nearly black/white borders to black.</p>
+<p>黒/白に近い境界色部分を黒に変換します.</p>
 <section id="synopsis">
-<span id="index-0"></span><h2>Synopsis<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
+<span id="index-0"></span><h2>概要<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nearblack</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="o">-</span><span class="n">general</span><span class="p">]</span>
           <span class="p">[</span><span class="o">-</span><span class="n">of</span> <span class="o">&lt;</span><span class="nb">format</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">white</span> <span class="o">|</span> <span class="p">[</span><span class="o">-</span><span class="n">color</span> <span class="o">&lt;</span><span class="n">c1</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">c2</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">c3</span><span class="o">&gt;...&lt;</span><span class="n">cn</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span><span class="p">]</span>
           <span class="p">[</span><span class="o">-</span><span class="n">near</span> <span class="o">&lt;</span><span class="n">dist</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">nb</span> <span class="o">&lt;</span><span class="n">non_black_pixels</span><span class="o">&gt;</span><span class="p">]</span>
@@ -196,90 +196,73 @@
 </div>
 </section>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
-<p>This utility will scan an image and try to set all pixels that are nearly or exactly
-black, white or one or more custom colors around the collar to black or white. This
-is often used to &quot;fix up&quot; lossy compressed air photos so that color pixels can be
-treated as transparent when mosaicing. The output format must use lossless compression
-if either alpha band or mask band is not set.</p>
+<h2>説明<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p>このユーティリティは画像をスキャンし, ほぼ黒または完全に黒, 白またはカラーカラーの周りの 1 つ以上のカスタムカラーのすべてのピクセルを黒または白に設定しようとします. これは, 圧縮されたエア写真を &quot;修正&quot; してモザイク処理時にカラーピクセルを透明として扱うためによく使用されます. 出力形式は, アルファバンドまたはマスクバンドのいずれかが設定されていない場合, 損失のない圧縮を使用する必要があります.</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-nearblack-help">
 <span class="sig-name descname"><span class="pre">--help</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-nearblack-help" title="Link to this definition"></a></dt>
-<dd><p>Show this help message and exit</p>
+<dd><p>このヘルプメッセージを表示して終了します</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-nearblack-help-general">
 <span class="sig-name descname"><span class="pre">--help-general</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-nearblack-help-general" title="Link to this definition"></a></dt>
-<dd><p>Gives a brief usage message for the generic GDAL commandline options and exit.</p>
+<dd><p>一般的な GDAL コマンドラインオプションの簡単な使用メッセージを表示して終了します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-nearblack-o">
 <span class="sig-name descname"><span class="pre">-o</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;outfile&gt;</span></span><a class="headerlink" href="#cmdoption-nearblack-o" title="Link to this definition"></a></dt>
-<dd><p>The name of the output file to be created.</p>
+<dd><p>作成される出力ファイルの名前です.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-nearblack-of">
 <span class="sig-name descname"><span class="pre">-of</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;format&gt;</span></span><a class="headerlink" href="#cmdoption-nearblack-of" title="Link to this definition"></a></dt>
-<dd><p>Select the output format.
-Starting with GDAL 2.3, if not specified, the format is guessed from the extension (previously
-was ERDAS Imagine .img).
-Use the short format name (GTiff for GeoTIFF for example).</p>
+<dd><p>出力フォーマットを選択します. GDAL 2.3 以降,指定されていない場合,フォーマットは拡張子から推測されます (以前は ERDAS Imagine .img でした). 短いフォーマット名を使用してください (例: GeoTIFF の場合は GTiff).</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-nearblack-co">
 <span class="sig-name descname"><span class="pre">-co</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></span><a class="headerlink" href="#cmdoption-nearblack-co" title="Link to this definition"></a></dt>
-<dd><p>Passes a creation option to the output format driver.  Multiple
-<a class="reference internal" href="#cmdoption-nearblack-co"><code class="xref std std-option docutils literal notranslate"><span class="pre">-co</span></code></a> options may be listed. See <a class="reference internal" href="../drivers/raster/index.html#raster-drivers"><span class="std std-ref">ラスタードライバー</span></a> format
-specific documentation for legal creation options for each format.</p>
-<p>Only valid when creating a new file</p>
+<dd><p>出力フォーマットドライバに作成オプションを渡します. 複数の <a class="reference internal" href="#cmdoption-nearblack-co"><code class="xref std std-option docutils literal notranslate"><span class="pre">-co</span></code></a> オプションをリストアップできます. 各フォーマットの法的な作成オプションについては, <a class="reference internal" href="../drivers/raster/index.html#raster-drivers"><span class="std std-ref">ラスタードライバー</span></a> 形式固有のドキュメントを参照してください.</p>
+<p>新しいファイルを作成する場合のみ有効です</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-nearblack-white">
 <span class="sig-name descname"><span class="pre">-white</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-nearblack-white" title="Link to this definition"></a></dt>
-<dd><p>Search for nearly white (255) pixels instead of nearly black pixels.</p>
+<dd><p>ほぼ白 (255) のピクセルを検索します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-nearblack-color">
 <span class="sig-name descname"><span class="pre">-color</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;c1&gt;,&lt;c2&gt;,&lt;c3&gt;...&lt;cn&gt;</span></span><a class="headerlink" href="#cmdoption-nearblack-color" title="Link to this definition"></a></dt>
-<dd><p>Search for pixels near the specified color. May be specified multiple times.
-When -color is specified, the pixels that are considered as the collar are set to 0.</p>
+<dd><p>指定されたカラーに近いピクセルを検索します. 複数回指定できます. -color が指定されている場合, カラーとして考慮されるピクセルは 0 に設定されます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-nearblack-near">
 <span class="sig-name descname"><span class="pre">-near</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;dist&gt;</span></span><a class="headerlink" href="#cmdoption-nearblack-near" title="Link to this definition"></a></dt>
-<dd><p>Select how far from black, white or custom colors the pixel values can be
-and still considered near black, white or custom color.  Defaults to 15.</p>
+<dd><p>ピクセル値が黒, 白またはカスタムカラーからどれだけ離れていても, まだ黒, 白またはカスタムカラーに近いと見なされるかを選択します. デフォルトは 15 です.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-nearblack-nb">
 <span class="sig-name descname"><span class="pre">-nb</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;non_black_pixels&gt;</span></span><a class="headerlink" href="#cmdoption-nearblack-nb" title="Link to this definition"></a></dt>
-<dd><p>number of consecutive non-black pixels that can be encountered before the
-giving up search inwards. Defaults to 2.</p>
+<dd><p>内側の検索を諦める前に遭遇できる連続した非黒ピクセルの数. デフォルトは 2 です.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-nearblack-setalpha">
 <span class="sig-name descname"><span class="pre">-setalpha</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-nearblack-setalpha" title="Link to this definition"></a></dt>
-<dd><p>Adds an alpha band if the output file is specified and the input file has 3 bands,
-or sets the alpha band of the output file if it is specified and the input file has 4 bands,
-or sets the alpha band of the input file if it has 4 bands and no output file is specified.
-The alpha band is set to 0 in the image collar and to 255 elsewhere.</p>
+<dd><p>出力ファイルが指定されており,入力ファイルが 3 バンドの場合,アルファバンドを追加します. または,出力ファイルが指定されており,入力ファイルが 4 バンドの場合,アルファバンドを設定します. または,入力ファイルが 4 バンドで出力ファイルが指定されていない場合,入力ファイルのアルファバンドを設定します. アルファバンドは画像のカラー部分に 0 を設定し,それ以外は 255 に設定されます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-nearblack-setmask">
 <span class="sig-name descname"><span class="pre">-setmask</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-nearblack-setmask" title="Link to this definition"></a></dt>
-<dd><p>Adds a mask band to the output file,
-or adds a mask band to the input file if it does not already have one and no output file is specified.
-The mask band is set to 0 in the image collar and to 255 elsewhere.</p>
+<dd><p>出力ファイルにマスクバンドを追加します.または,入力ファイルにマスクバンドを追加します. または,入力ファイルにマスクバンドを追加します. マスクバンドは画像のカラー部分に 0 を設定し,それ以外は 255 に設定されます.</p>
 </dd></dl>
 
 <dl class="std option">
@@ -288,42 +271,29 @@ The mask band is set to 0 in the image collar and to 255 elsewhere.</p>
 <dd><div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.8.</span></p>
 </div>
-<p>Selects the algorithm to apply.</p>
-<p><code class="docutils literal notranslate"><span class="pre">twopasses</span></code> uses a top-to-bottom pass followed by a bottom-to-top pass.
-This is the only algorithm implemented before GDAL 3.8. It may miss with
-concave areas.
-The algorithm processes the image one scanline at a time.  A scan &quot;in&quot; is done
-from either end setting pixels to black or white until at least
-&quot;non_black_pixels&quot; pixels that are more than &quot;dist&quot; gray levels away from
-black, white or custom colors have been encountered at which point the scan stops.  The nearly
-black, white or custom color pixels are set to black or white. The algorithm also scans from
-top to bottom and from bottom to top to identify indentations in the top or bottom.</p>
-<p><code class="docutils literal notranslate"><span class="pre">floodfill</span></code> (added in GDAL 3.8) uses the <a class="reference external" href="https://en.wikipedia.org/wiki/Flood_fill#Span_filling">Flood Fill</a>
-algorithm and will work with concave areas. It requires creating a temporary
-dataset and is slower than <code class="docutils literal notranslate"><span class="pre">twopasses</span></code>. When a non-zero value for <a class="reference internal" href="#cmdoption-nearblack-nb"><code class="xref std std-option docutils literal notranslate"><span class="pre">-nb</span></code></a>
-is used, <code class="docutils literal notranslate"><span class="pre">twopasses</span></code> is actually called as an initial step of <code class="docutils literal notranslate"><span class="pre">floodfill</span></code>.</p>
+<p>適用するアルゴリズムを選択します.</p>
+<p><code class="docutils literal notranslate"><span class="pre">twopasses</span></code> は上から下へのパスに続いて下から上へのパスを使用します. これは, GDAL 3.8 以前に実装された唯一のアルゴリズムです. 凹凸部分でミスする可能性があります. このアルゴリズムは画像を 1 スキャンラインずつ処理します. 両端からのスキャン &quot;in&quot; は, &quot;non_black_pixels&quot; ピクセルが黒, 白またはカスタムカラーから &quot;dist&quot; グレーレベル以上離れていることが確認されるまで, ピクセルを黒または白に設定します. ほぼ黒, 白またはカスタムカラーピクセルは黒または白に設定されます. このアルゴリズムはまた, 上から下へ,下から上へのスキャンを行い, 上部または下部の凹凸を識別します.</p>
+<p><code class="docutils literal notranslate"><span class="pre">floodfill</span></code> (GDAL 3.8 で追加) は <a class="reference external" href="https://en.wikipedia.org/wiki/Flood_fill#Span_filling">Flood Fill</a> アルゴリズムを使用し, 凹凸部分でも機能します. 一時データセットの作成が必要であり, <code class="docutils literal notranslate"><span class="pre">twopasses</span></code> よりも遅くなります. <a class="reference internal" href="#cmdoption-nearblack-nb"><code class="xref std std-option docutils literal notranslate"><span class="pre">-nb</span></code></a> に 0 以外の値を使用すると, <code class="docutils literal notranslate"><span class="pre">floodfill</span></code> の初期ステップとして実際に <code class="docutils literal notranslate"><span class="pre">twopasses</span></code> が呼び出されます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-nearblack-q">
 <span class="sig-name descname"><span class="pre">-q</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-nearblack-q" title="Link to this definition"></a></dt>
-<dd><p>Suppress progress monitor and other non-error output.</p>
+<dd><p>進行状況モニターおよびその他のエラー以外の出力を抑制します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-nearblack-arg-infile">
 <span class="sig-name descname"><span class="pre">&lt;infile&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-nearblack-arg-infile" title="Link to this definition"></a></dt>
-<dd><p>The input file.  Any GDAL supported format, any number of bands, normally 8bit
-Byte bands.</p>
+<dd><p>入力ファイルです. 任意の GDAL サポートされた形式, 任意のバンド数, 通常 8 ビットバンドです.</p>
 </dd></dl>
 
-<p>The processing is all done in 8bit (Bytes).</p>
-<p>If the output file is omitted, the processed results will be written back
-to the input file - which must support update.</p>
+<p>処理はすべて 8 ビット (バイト) で行われます.</p>
+<p>出力ファイルが省略された場合,処理された結果は入力ファイルに書き戻されます. 入力ファイルは更新をサポートする必要があります.</p>
 </section>
 <section id="c-api">
 <h2>C API<a class="headerlink" href="#c-api" title="Link to this heading"></a></h2>
-<p>This utility is also callable from C with <a class="reference internal" href="../api/gdal_utils.html#_CPPv413GDALNearblackPKc12GDALDatasetH12GDALDatasetHPK20GDALNearblackOptionsPi" title="GDALNearblack"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALNearblack()</span></code></a>.</p>
+<p>このユーティリティは <a class="reference internal" href="../api/gdal_utils.html#_CPPv413GDALNearblackPKc12GDALDatasetH12GDALDatasetHPK20GDALNearblackOptionsPi" title="GDALNearblack"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALNearblack()</span></code></a> から C で呼び出すこともできます.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 2.1.</span></p>
 </div>

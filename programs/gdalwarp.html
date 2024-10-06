@@ -87,16 +87,16 @@
 <li class="toctree-l3"><a class="reference internal" href="gdaltindex.html">gdaltindex</a></li>
 <li class="toctree-l3"><a class="reference internal" href="gdaltransform.html">gdaltransform</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">gdalwarp</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#synopsis">Synopsis</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#nodata-source-validity-mask-handling">Nodata / source validity mask handling</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#approximate-transformation">Approximate transformation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#vertical-transformation">Vertical transformation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#memory-usage">Memory usage</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#compressed-output">Compressed output</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#synopsis">概要</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#description">説明</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nodata-source-validity-mask-handling">ノーデータ / ソース有効マスクの処理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#approximate-transformation">近似変換</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vertical-transformation">垂直変換</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#memory-usage">メモリ使用量</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#compressed-output">圧縮された出力</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#examples">例</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#c-api">C API</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#see-also">See also</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#see-also">関連項目</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="nearblack.html">nearblack</a></li>
@@ -191,9 +191,9 @@
              
   <section id="gdalwarp">
 <span id="id1"></span><h1>gdalwarp<a class="headerlink" href="#gdalwarp" title="Link to this heading"></a></h1>
-<p>Image reprojection and warping utility</p>
+<p>画像再投影および変形ユーティリティ</p>
 <section id="synopsis">
-<span id="index-0"></span><h2>Synopsis<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
+<span id="index-0"></span><h2>概要<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdalwarp</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">long</span><span class="o">-</span><span class="n">usage</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="o">-</span><span class="n">general</span><span class="p">]</span>
          <span class="p">[</span><span class="o">--</span><span class="n">quiet</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">overwrite</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">of</span> <span class="o">&lt;</span><span class="n">output_format</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">co</span> <span class="o">&lt;</span><span class="n">NAME</span><span class="o">&gt;=&lt;</span><span class="n">VALUE</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span>
          <span class="p">[</span><span class="o">-</span><span class="n">s_srs</span> <span class="o">&lt;</span><span class="n">srs_def</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">t_srs</span> <span class="o">&lt;</span><span class="n">srs_def</span><span class="o">&gt;</span><span class="p">]</span>
@@ -228,21 +228,18 @@
 </div>
 </section>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
-<p>The <strong class="program">gdalwarp</strong> utility is an image mosaicing, reprojection and warping
-utility. The program can reproject to any supported projection,
-and can also apply GCPs stored with the image if the image is &quot;raw&quot;
-with control information.</p>
+<h2>説明<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p><strong class="program">gdalwarp</strong> ユーティリティは画像モザイキング, 再投影および変形ユーティリティです. このプログラムは, 任意のサポートされている投影法に再投影でき, 画像が制御情報を持つ &quot;raw&quot; である場合は画像に格納された GCP を適用することもできます.</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-help">
 <span class="sig-name descname"><span class="pre">--help</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalwarp-help" title="Link to this definition"></a></dt>
-<dd><p>Show this help message and exit</p>
+<dd><p>このヘルプメッセージを表示して終了します</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-help-general">
 <span class="sig-name descname"><span class="pre">--help-general</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalwarp-help-general" title="Link to this definition"></a></dt>
-<dd><p>Gives a brief usage message for the generic GDAL commandline options and exit.</p>
+<dd><p>一般的な GDAL コマンドラインオプションの使用方法を簡単に表示して終了します.</p>
 </dd></dl>
 
 <dl class="std option">
@@ -256,18 +253,11 @@ with control information.</p>
 <dd><div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.7.</span></p>
 </div>
-<p>Specify an input band number to warp (between 1 and the number of bands
-of the source dataset).</p>
-<p>This option is used to warp a subset of the input bands. All input bands
-are used when it is not specified.</p>
-<p>This option may be repeated multiple times to select several input bands.
-The order in which bands are specified will be the order in which they
-appear in the output dataset (unless <a class="reference internal" href="#cmdoption-gdalwarp-dstband"><code class="xref std std-option docutils literal notranslate"><span class="pre">-dstband</span></code></a> is specified).</p>
-<p>The alpha band should not be specified in the list, as it will be
-automatically retrieved (unless <a class="reference internal" href="#cmdoption-gdalwarp-nosrcalpha"><code class="xref std std-option docutils literal notranslate"><span class="pre">-nosrcalpha</span></code></a> is specified).</p>
-<p>The following invocation will warp an input datasets with bands ordered as
-Blue, Green, Red, NearInfraRed in an output dataset with bands ordered as
-Red, Green, Blue.</p>
+<p>変形する入力バンド番号を指定します (1 からソースデータセットのバンド数まで).</p>
+<p>このオプションは, 入力バンドのサブセットを変形するために使用されます. 指定されていない場合は, すべての入力バンドが使用されます.</p>
+<p>このオプションは複数回繰り返すことができ, 複数の入力バンドを選択します. バンドが指定された順序が出力データセットに表示される順序になります (<a class="reference internal" href="#cmdoption-gdalwarp-dstband"><code class="xref std std-option docutils literal notranslate"><span class="pre">-dstband</span></code></a> が指定されていない限り).</p>
+<p>アルファバンドはリストに指定しないでください. 自動的に取得されます (<a class="reference internal" href="#cmdoption-gdalwarp-nosrcalpha"><code class="xref std std-option docutils literal notranslate"><span class="pre">-nosrcalpha</span></code></a> が指定されていない限り).</p>
+<p>次の呼び出しは, Blue, Green, Red, NearInfraRed として並べられたバンドを Red, Green, Blue として並べられた出力データセットで変形します.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdalwarp<span class="w"> </span>in_bgrn.tif<span class="w"> </span>out_rgb.tif<span class="w"> </span>-b<span class="w"> </span><span class="m">3</span><span class="w"> </span>-b<span class="w"> </span><span class="m">2</span><span class="w"> </span>-b<span class="w"> </span><span class="m">1</span><span class="w"> </span>-overwrite
 </pre></div>
 </div>
@@ -279,39 +269,24 @@ Red, Green, Blue.</p>
 <dd><div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.7.</span></p>
 </div>
-<p>Specify the output band number in which to warp. In practice, this option
-is only useful when updating an existing dataset, e.g to warp one band at
-at time.</p>
+<p>変形する出力バンド番号を指定します. 実際には, 既存のデータセットを更新する場合にのみ有用です. たとえば, 1 回に 1 つのバンドを変形するために使用します.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_create<span class="w"> </span>-if<span class="w"> </span>in_red.tif<span class="w"> </span>-bands<span class="w"> </span><span class="m">3</span><span class="w"> </span>out_rgb.tif
 gdalwarp<span class="w"> </span>in_red.tif<span class="w"> </span>out_rgb.tif<span class="w"> </span>-srcband<span class="w"> </span><span class="m">1</span><span class="w"> </span>-dstband<span class="w"> </span><span class="m">1</span>
 gdalwarp<span class="w"> </span>in_green.tif<span class="w"> </span>out_rgb.tif<span class="w"> </span>-srcband<span class="w"> </span><span class="m">1</span><span class="w"> </span>-dstband<span class="w"> </span><span class="m">2</span>
 gdalwarp<span class="w"> </span>in_blue.tif<span class="w"> </span>out_rgb.tif<span class="w"> </span>-srcband<span class="w"> </span><span class="m">1</span><span class="w"> </span>-dstband<span class="w"> </span><span class="m">3</span>
 </pre></div>
 </div>
-<p>If <a class="reference internal" href="#cmdoption-gdalwarp-srcband"><code class="xref std std-option docutils literal notranslate"><span class="pre">-srcband</span></code></a> is specified, there must be as many occurrences of
-<a class="reference internal" href="#cmdoption-gdalwarp-dstband"><code class="xref std std-option docutils literal notranslate"><span class="pre">-dstband</span></code></a> as there are of <a class="reference internal" href="#cmdoption-gdalwarp-srcband"><code class="xref std std-option docutils literal notranslate"><span class="pre">-srcband</span></code></a>.</p>
-<p>The output alpha band should not be specified, as it will be automatically
-created if the input dataset has an alpha band, or if <a class="reference internal" href="#cmdoption-gdalwarp-dstalpha"><code class="xref std std-option docutils literal notranslate"><span class="pre">-dstalpha</span></code></a>
-is specified.</p>
-<p>If <a class="reference internal" href="#cmdoption-gdalwarp-dstband"><code class="xref std std-option docutils literal notranslate"><span class="pre">-dstband</span></code></a> is not specified, then
-<code class="docutils literal notranslate"><span class="pre">-dstband</span> <span class="pre">1</span> <span class="pre">-dstband</span> <span class="pre">2</span> <span class="pre">...</span> <span class="pre">-dstband</span> <span class="pre">N</span></code> is assumed where N is the number
-of input bands (specified explicitly either with <a class="reference internal" href="#cmdoption-gdalwarp-srcband"><code class="xref std std-option docutils literal notranslate"><span class="pre">-srcband</span></code></a> or
-implicitly)</p>
+<p><a class="reference internal" href="#cmdoption-gdalwarp-srcband"><code class="xref std std-option docutils literal notranslate"><span class="pre">-srcband</span></code></a> が指定されている場合, <a class="reference internal" href="#cmdoption-gdalwarp-srcband"><code class="xref std std-option docutils literal notranslate"><span class="pre">-srcband</span></code></a> の数と同じ数の <a class="reference internal" href="#cmdoption-gdalwarp-dstband"><code class="xref std std-option docutils literal notranslate"><span class="pre">-dstband</span></code></a> がある必要があります.</p>
+<p>出力アルファバンドは指定しないでください. 入力データセットにアルファバンドがある場合や <a class="reference internal" href="#cmdoption-gdalwarp-dstalpha"><code class="xref std std-option docutils literal notranslate"><span class="pre">-dstalpha</span></code></a> が指定されている場合は, 自動的に作成されます.</p>
+<p><a class="reference internal" href="#cmdoption-gdalwarp-dstband"><code class="xref std std-option docutils literal notranslate"><span class="pre">-dstband</span></code></a> が指定されていない場合, <code class="docutils literal notranslate"><span class="pre">-dstband</span> <span class="pre">1</span> <span class="pre">-dstband</span> <span class="pre">2</span> <span class="pre">...</span> <span class="pre">-dstband</span> <span class="pre">N</span></code> が仮定されます. ここで, N は入力バンドの数です ( <a class="reference internal" href="#cmdoption-gdalwarp-srcband"><code class="xref std std-option docutils literal notranslate"><span class="pre">-srcband</span></code></a> で明示的に指定されているか暗黙的に指定されています).</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-s_srs">
 <span class="sig-name descname"><span class="pre">-s_srs</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;srs</span> <span class="pre">def&gt;</span></span><a class="headerlink" href="#cmdoption-gdalwarp-s_srs" title="Link to this definition"></a></dt>
-<dd><p>Set source spatial reference. If not specified the SRS found in the input
-dataset will be used.</p>
-<p>The coordinate reference systems that can be passed are anything supported by the
-OGRSpatialReference.SetFromUserInput() call, which includes EPSG Projected,
-Geographic or Compound CRS (i.e. EPSG:4296), a well known text (WKT) CRS definition,
-PROJ.4 declarations, or the name of a .prj file containing a WKT CRS definition.</p>
-<p>Starting with GDAL 2.2, if the SRS has an explicit
-vertical datum that points to a PROJ.4 geoidgrids, and the input dataset is a
-single band dataset, a vertical correction will be applied to the values of the
-dataset.</p>
+<dd><p>ソース空間参照を設定します. 指定されていない場合, 入力データセットで見つかった SRS が使用されます.</p>
+<p>渡すことができる座標参照システムは, OGRSpatialReference.SetFromUserInput() 呼び出しでサポートされているものです. これには, EPSG プロジェクト済み, 地理的または複合 CRS (つまりEPSG:4296), 既知のテキスト (WKT) CRS 定義, PROJ.4 宣言, または WKT CRS 定義を含む .prj ファイルの名前が含まれます.</p>
+<p>GDAL 2.2 以降, SRS に PROJ.4 geoidgrids を指す明示的な垂直基準がある場合, 入力データセットが単一バンドデータセットである場合, データセットの値に垂直補正が適用されます.</p>
 </dd></dl>
 
 <dl class="std option">
@@ -320,28 +295,17 @@ dataset.</p>
 <dd><div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.4.</span></p>
 </div>
-<p>Assign a coordinate epoch, linked with the source SRS. Useful when the
-source SRS is a dynamic CRS. Only taken into account if <a class="reference internal" href="#cmdoption-gdalwarp-s_srs"><code class="xref std std-option docutils literal notranslate"><span class="pre">-s_srs</span></code></a>
-is used.</p>
-<p>Before PROJ 9.4, <a class="reference internal" href="#cmdoption-gdalwarp-s_coord_epoch"><code class="xref std std-option docutils literal notranslate"><span class="pre">-s_coord_epoch</span></code></a> and <a class="reference internal" href="#cmdoption-gdalwarp-t_coord_epoch"><code class="xref std std-option docutils literal notranslate"><span class="pre">-t_coord_epoch</span></code></a> were
-mutually exclusive, due to lack of support for transformations between two dynamic CRS.</p>
+<p>ソース SRS にリンクされた座標エポックを割り当てます. ソース SRS が動的 CRS の場合に便利です. <a class="reference internal" href="#cmdoption-gdalwarp-s_srs"><code class="xref std std-option docutils literal notranslate"><span class="pre">-s_srs</span></code></a> が使用されている場合のみ考慮されます.</p>
+<p>PROJ 9.4 以前, <a class="reference internal" href="#cmdoption-gdalwarp-s_coord_epoch"><code class="xref std std-option docutils literal notranslate"><span class="pre">-s_coord_epoch</span></code></a> と <a class="reference internal" href="#cmdoption-gdalwarp-t_coord_epoch"><code class="xref std std-option docutils literal notranslate"><span class="pre">-t_coord_epoch</span></code></a> は, 2 つの動的 CRS 間の変換のサポートがないため, 相互に排他的でした.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-t_srs">
 <span class="sig-name descname"><span class="pre">-t_srs</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;srs_def&gt;</span></span><a class="headerlink" href="#cmdoption-gdalwarp-t_srs" title="Link to this definition"></a></dt>
-<dd><p>Set target spatial reference.</p>
-<p>A source SRS must be available for reprojection to occur. The source SRS
-will be by default the one found in the input dataset when it is available,
-or as overridden by the user with <a class="reference internal" href="#cmdoption-gdalwarp-s_srs"><code class="xref std std-option docutils literal notranslate"><span class="pre">-s_srs</span></code></a></p>
-<p>The coordinate reference systems that can be passed are anything supported by the
-OGRSpatialReference.SetFromUserInput() call, which includes EPSG Projected,
-Geographic or Compound CRS (i.e. EPSG:4296), a well known text (WKT) CRS definition,
-PROJ.4 declarations, or the name of a .prj file containing a WKT CRS definition.</p>
-<p>Starting with GDAL 2.2, if the SRS has an explicit
-vertical datum that points to a PROJ.4 geoidgrids, and the input dataset is a
-single band dataset, a vertical correction will be applied to the values of the
-dataset.</p>
+<dd><p>ターゲット空間参照を設定します.</p>
+<p>再投影が発生するためには, ソース SRS が利用可能である必要があります. ソース SRS は, 利用可能な場合は入力データセットで見つかったものであり, ユーザーによって <a class="reference internal" href="#cmdoption-gdalwarp-s_srs"><code class="xref std std-option docutils literal notranslate"><span class="pre">-s_srs</span></code></a> で上書きされます.</p>
+<p>渡すことができる座標参照システムは, OGRSpatialReference.SetFromUserInput() 呼び出しでサポートされているものです. これには, EPSG プロジェクト済み, 地理的または複合 CRS (つまりEPSG:4296), 既知のテキスト (WKT) CRS 定義, PROJ.4 宣言, または WKT CRS 定義を含む .prj ファイルの名前が含まれます.</p>
+<p>GDAL 2.2 以降, SRS に PROJ.4 geoidgrids を指す明示的な垂直基準がある場合, 入力データセットが単一バンドデータセットである場合, データセットの値に垂直補正が適用されます.</p>
 </dd></dl>
 
 <dl class="std option">
@@ -350,28 +314,16 @@ dataset.</p>
 <dd><div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.4.</span></p>
 </div>
-<p>Assign a coordinate epoch, linked with the target SRS. Useful when the
-target SRS is a dynamic CRS. Only taken into account if <a class="reference internal" href="#cmdoption-gdalwarp-t_srs"><code class="xref std std-option docutils literal notranslate"><span class="pre">-t_srs</span></code></a>
-is used.</p>
-<p>Before PROJ 9.4, <a class="reference internal" href="#cmdoption-gdalwarp-s_coord_epoch"><code class="xref std std-option docutils literal notranslate"><span class="pre">-s_coord_epoch</span></code></a> and <a class="reference internal" href="#cmdoption-gdalwarp-t_coord_epoch"><code class="xref std std-option docutils literal notranslate"><span class="pre">-t_coord_epoch</span></code></a> were
-mutually exclusive, due to lack of support for transformations between two dynamic CRS.</p>
+<p>ターゲット SRS にリンクされた座標エポックを割り当てます. ターゲット SRS が動的 CRS の場合に便利です. <a class="reference internal" href="#cmdoption-gdalwarp-t_srs"><code class="xref std std-option docutils literal notranslate"><span class="pre">-t_srs</span></code></a> が使用されている場合のみ考慮されます.</p>
+<p>PROJ 9.4 以前, <a class="reference internal" href="#cmdoption-gdalwarp-s_coord_epoch"><code class="xref std std-option docutils literal notranslate"><span class="pre">-s_coord_epoch</span></code></a> と <a class="reference internal" href="#cmdoption-gdalwarp-t_coord_epoch"><code class="xref std std-option docutils literal notranslate"><span class="pre">-t_coord_epoch</span></code></a> は, 2 つの動的 CRS 間の変換のサポートがないため, 相互に排他的でした.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-ct">
 <span class="sig-name descname"><span class="pre">-ct</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;string&gt;</span></span><a class="headerlink" href="#cmdoption-gdalwarp-ct" title="Link to this definition"></a></dt>
-<dd><p>A PROJ string (single step operation or multiple step string
-starting with +proj=pipeline), a WKT2 string describing a CoordinateOperation,
-or a <a class="reference external" href="urn:ogc:def:coordinateOperation:EPSG::XXXX">urn:ogc:def:coordinateOperation:EPSG::XXXX</a> URN overriding the default
-transformation from the source to the target CRS.</p>
-<p>It must take into account the axis order of the source and target CRS, that
-is typically include a <code class="docutils literal notranslate"><span class="pre">step</span> <span class="pre">proj=axisswap</span> <span class="pre">order=2,1</span></code> at the beginning of
-the pipeline if the source CRS has northing/easting axis order, and/or at
-the end of the pipeline if the target CRS has northing/easting axis order.</p>
-<p>When creating a new output file, using <a class="reference internal" href="#cmdoption-gdalwarp-t_srs"><code class="xref std std-option docutils literal notranslate"><span class="pre">-t_srs</span></code></a> is still necessary
-to have the target CRS written in the metadata of the output file,
-but the parameters of the CoordinateOperation will override those of the
-standard transformation.</p>
+<dd><p>PROJ 文字列 (単一ステップ操作または +proj=pipeline で始まる複数ステップ文字列), CoordinateOperation を記述する WKT2 文字列, またはソースからターゲット CRS へのデフォルト変換を上書きする <a class="reference external" href="urn:ogc:def:coordinateOperation:EPSG::XXXX">urn:ogc:def:coordinateOperation:EPSG::XXXX</a> URN.</p>
+<p>通常, ソース CRS が北方/東方軸順序を持つ場合はパイプラインの先頭に <code class="docutils literal notranslate"><span class="pre">step</span> <span class="pre">proj=axisswap</span> <span class="pre">order=2,1</span></code> を含め, ターゲット CRS が北方/東方軸順序を持つ場合はパイプラインの末尾に含める必要があります.ソースとターゲット CRS の軸順序を考慮する必要があります.</p>
+<p>新しい出力ファイルを作成する場合, <a class="reference internal" href="#cmdoption-gdalwarp-t_srs"><code class="xref std std-option docutils literal notranslate"><span class="pre">-t_srs</span></code></a> を使用して出力ファイルのメタデータにターゲット CRS を書き込む必要がありますが, CoordinateOperation のパラメータは標準変換のパラメータを上書きします.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.0.</span></p>
 </div>
@@ -380,16 +332,13 @@ standard transformation.</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-to">
 <span class="sig-name descname"><span class="pre">-to</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></span><a class="headerlink" href="#cmdoption-gdalwarp-to" title="Link to this definition"></a></dt>
-<dd><p>Set a transformer option suitable to pass to <a class="reference internal" href="../api/gdal_alg.html#_CPPv432GDALCreateGenImgProjTransformer212GDALDatasetH12GDALDatasetHPPc" title="GDALCreateGenImgProjTransformer2"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALCreateGenImgProjTransformer2()</span></code></a>.
-See <a class="reference internal" href="../api/gdal_alg.html#_CPPv426GDALCreateRPCTransformerV2PK13GDALRPCInfoV2idPPc" title="GDALCreateRPCTransformerV2"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALCreateRPCTransformerV2()</span></code></a> for RPC specific options.</p>
+<dd><p><a class="reference internal" href="../api/gdal_alg.html#_CPPv432GDALCreateGenImgProjTransformer212GDALDatasetH12GDALDatasetHPPc" title="GDALCreateGenImgProjTransformer2"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALCreateGenImgProjTransformer2()</span></code></a> に渡すのに適した変換オプションを設定します.RPC 固有のオプションについては, <a class="reference internal" href="../api/gdal_alg.html#_CPPv426GDALCreateRPCTransformerV2PK13GDALRPCInfoV2idPPc" title="GDALCreateRPCTransformerV2"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALCreateRPCTransformerV2()</span></code></a> を参照してください.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-vshift">
 <span class="sig-name descname"><span class="pre">-vshift</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalwarp-vshift" title="Link to this definition"></a></dt>
-<dd><p>Force the use of vertical shift. This option is generally not necessary,
-except when using an explicit coordinate transformation (<a class="reference internal" href="#cmdoption-gdalwarp-ct"><code class="xref std std-option docutils literal notranslate"><span class="pre">-ct</span></code></a>),
-and not specifying an explicit source and target SRS.</p>
+<dd><p>垂直シフトの使用を強制します. このオプションは一般的には必要ありませんが, 明示的な座標変換(<a class="reference internal" href="#cmdoption-gdalwarp-ct"><code class="xref std std-option docutils literal notranslate"><span class="pre">-ct</span></code></a>)を使用し, 明示的なソースとターゲット SRS を指定しない場合にのみ必要です.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.4.</span></p>
 </div>
@@ -398,11 +347,10 @@ and not specifying an explicit source and target SRS.</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-novshift">
 <span class="sig-name descname"><span class="pre">-novshift</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalwarp-novshift" title="Link to this definition"></a></dt>
-<dd><p>Disable the use of vertical shift when one of the source or target SRS has
-an explicit vertical datum, and the input dataset is a single band dataset.</p>
+<dd><p>ソースまたはターゲット SRS のいずれかが明示的な垂直基準を持ち, 入力データセットが単一バンドデータセットの場合,垂直シフトの使用を無効にします.</p>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
-<p>this option was named <code class="docutils literal notranslate"><span class="pre">-novshiftgrid</span></code> in GDAL 2.2 to 3.3.</p>
+<p>このオプションは GDAL 2.2 から 3.3 では <code class="docutils literal notranslate"><span class="pre">-novshiftgrid</span></code> という名前でした.</p>
 </div>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.4.</span></p>
@@ -412,208 +360,144 @@ an explicit vertical datum, and the input dataset is a single band dataset.</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-order">
 <span class="sig-name descname"><span class="pre">-order</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;n&gt;</span></span><a class="headerlink" href="#cmdoption-gdalwarp-order" title="Link to this definition"></a></dt>
-<dd><p>order of polynomial used for warping (1 to 3). The default is to select
-a polynomial order based on the number of GCPs.</p>
+<dd><p>変形に使用される多項式の順序 (1 から 3). デフォルトは, GCP の数に基づいて多項式の順序を選択します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-tps">
 <span class="sig-name descname"><span class="pre">-tps</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalwarp-tps" title="Link to this definition"></a></dt>
-<dd><p>Force use of thin plate spline transformer based on available GCPs.</p>
+<dd><p>利用可能な GCP に基づいて薄板スプライン変換器の使用を強制します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-rpc">
 <span class="sig-name descname"><span class="pre">-rpc</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalwarp-rpc" title="Link to this definition"></a></dt>
-<dd><p>Force use of RPCs.</p>
+<dd><p>RPC の使用を強制します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-geoloc">
 <span class="sig-name descname"><span class="pre">-geoloc</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalwarp-geoloc" title="Link to this definition"></a></dt>
-<dd><p>Force use of Geolocation Arrays.</p>
+<dd><p>ジオロケーション配列の使用を強制します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-et">
 <span class="sig-name descname"><span class="pre">-et</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;err_threshold&gt;</span></span><a class="headerlink" href="#cmdoption-gdalwarp-et" title="Link to this definition"></a></dt>
-<dd><p>Error threshold for transformation approximation (in pixel units -
-defaults to 0.125, unless, starting with GDAL 2.1, the RPC_DEM transformer
-option is specified, in which case, an exact transformer, i.e.
-err_threshold=0, will be used).</p>
+<dd><p>変換近似のエラー閾値 (ピクセル単位 - デフォルトは 0.125 ですが, GDAL 2.1 以降, RPC_DEM 変換器オプションが指定されている場合は, 正確な変換器, つまり err_threshold=0 が使用されます).</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-refine_gcps">
 <span class="sig-name descname"><span class="pre">-refine_gcps</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;tolerance&gt;</span> <span class="pre">[&lt;minimum_gcps&gt;]</span></span><a class="headerlink" href="#cmdoption-gdalwarp-refine_gcps" title="Link to this definition"></a></dt>
-<dd><p>Refines the GCPs by automatically eliminating outliers.
-Outliers will be eliminated until minimum_gcps are left or when no outliers can be detected.
-The tolerance is passed to adjust when a GCP will be eliminated.
-Not that GCP refinement only works with polynomial interpolation.
-The tolerance is in pixel units if no projection is available, otherwise it is in SRS units.
-If minimum_gcps is not provided, the minimum GCPs according to the polynomial model is used.</p>
+<dd><p>外れ値を自動的に除外して GCP を洗練します. 外れ値は, 最小_gcps が残っているか, 外れ値が検出されなくなるまで除外されます. 許容値は, GCP が除外されるタイミングを調整するために渡されます. GCP の洗練は多項式補間とのみ機能します. 許容値は, 投影が利用できない場合はピクセル単位で, それ以外の場合は SRS 単位で指定されます.minimum_gcps が提供されていない場合, 多項式モデルに従って最小 GCP が使用されます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-te">
 <span class="sig-name descname"><span class="pre">-te</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;xmin&gt;</span> <span class="pre">&lt;ymin&gt;</span> <span class="pre">&lt;xmax&gt;</span> <span class="pre">&lt;ymax&gt;</span></span><a class="headerlink" href="#cmdoption-gdalwarp-te" title="Link to this definition"></a></dt>
-<dd><p>Set georeferenced extents of output file to be created (in target SRS by
-default, or in the SRS specified with <a class="reference internal" href="#cmdoption-gdalwarp-te_srs"><code class="xref std std-option docutils literal notranslate"><span class="pre">-te_srs</span></code></a>)</p>
+<dd><p>作成される出力ファイルのジオリファレンスされた範囲を設定します (デフォルトではターゲット SRS または <a class="reference internal" href="#cmdoption-gdalwarp-te_srs"><code class="xref std std-option docutils literal notranslate"><span class="pre">-te_srs</span></code></a> で指定された SRS で).</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-te_srs">
 <span class="sig-name descname"><span class="pre">-te_srs</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;srs_def&gt;</span></span><a class="headerlink" href="#cmdoption-gdalwarp-te_srs" title="Link to this definition"></a></dt>
-<dd><p>Specifies the SRS in
-which to interpret the coordinates given with -te. The &lt;srs_def&gt; may
-be any of the usual GDAL/OGR forms, complete WKT, PROJ.4, EPSG:n or a file
-containing the WKT.
-This must not be confused with -t_srs which is the target SRS of the output
-dataset. <a class="reference internal" href="#cmdoption-gdalwarp-te_srs"><code class="xref std std-option docutils literal notranslate"><span class="pre">-te_srs</span></code></a> is a convenience e.g. when knowing the output coordinates in a
-geodetic long/lat SRS, but still wanting a result in a projected coordinate system.</p>
+<dd><p>-te で指定された座標を解釈する SRS を指定します. &lt;srs_def&gt; は, 通常の GDAL/OGR 形式, 完全な WKT, PROJ.4, EPSG:n または WKT を含むファイルのいずれかです. これは, 出力データセットのターゲット SRS である-t_srs と混同してはいけません. <a class="reference internal" href="#cmdoption-gdalwarp-te_srs"><code class="xref std std-option docutils literal notranslate"><span class="pre">-te_srs</span></code></a> は, 出力座標を地理的な経度/緯度 SRS で知っている場合でも, 投影された座標系で結果を得たい場合などの便利な機能です.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-tr">
 <span class="sig-name descname"><span class="pre">-tr</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;xres&gt;</span> <span class="pre">&lt;yres&gt;</span> <span class="pre">|</span> <span class="pre">-tr</span> <span class="pre">square</span></span><a class="headerlink" href="#cmdoption-gdalwarp-tr" title="Link to this definition"></a></dt>
-<dd><p>Set output file resolution (in target georeferenced units).</p>
-<p>If not specified (or not deduced from -te and -ts), gdalwarp will, in the
-general case, generate an output raster with xres=yres.</p>
-<p>Starting with GDAL 3.7, if neither <a class="reference internal" href="#cmdoption-gdalwarp-tr"><code class="xref std std-option docutils literal notranslate"><span class="pre">-tr</span></code></a> nor <a class="reference internal" href="#cmdoption-gdalwarp-ts"><code class="xref std std-option docutils literal notranslate"><span class="pre">-ts</span></code></a> are specified,
-that no reprojection is involved (including taking into account geolocation arrays
-or RPC), the resolution of the source file(s) will be preserved (in previous
-version, an output raster with xres=yres was always generated).
-It is possible to ask square pixels to still be generated, by specifying
-<code class="docutils literal notranslate"><span class="pre">square</span></code> as the value for <a class="reference internal" href="#cmdoption-gdalwarp-tr"><code class="xref std std-option docutils literal notranslate"><span class="pre">-tr</span></code></a>.</p>
+<dd><p>出力ファイルの解像度を設定します (ターゲットのジオリファレンス単位で).</p>
+<p>指定されていない場合 (または -te と -ts から推論されていない場合), gdalwarp は, 一般的な場合,xres=yres の出力ラスタを生成します.</p>
+<p>GDAL 3.7 以降, <a class="reference internal" href="#cmdoption-gdalwarp-tr"><code class="xref std std-option docutils literal notranslate"><span class="pre">-tr</span></code></a> または <a class="reference internal" href="#cmdoption-gdalwarp-ts"><code class="xref std std-option docutils literal notranslate"><span class="pre">-ts</span></code></a> のいずれも指定されていない場合, 再投影が関係していない場合 (ジオロケーション配列や RPC を考慮に入れることを含む), ソースファイルの解像度が保持されます (以前のバージョンでは, 常に xres=yres の出力ラスタが生成されました). <code class="docutils literal notranslate"><span class="pre">square</span></code> を <a class="reference internal" href="#cmdoption-gdalwarp-tr"><code class="xref std std-option docutils literal notranslate"><span class="pre">-tr</span></code></a> の値として指定することで, 依然として正方形のピクセルを生成することができます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-tap">
 <span class="sig-name descname"><span class="pre">-tap</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalwarp-tap" title="Link to this definition"></a></dt>
-<dd><p>(target aligned pixels) align the coordinates of the extent of the output
-file to the values of the <a class="reference internal" href="#cmdoption-gdalwarp-tr"><code class="xref std std-option docutils literal notranslate"><span class="pre">-tr</span></code></a>, such that the aligned extent
-includes the minimum extent (edges lines/columns that are detected as
-blank, before actual warping, will be removed starting with GDAL 3.8).
-Alignment means that xmin / resx, ymin / resy,
-xmax / resx and ymax / resy are integer values.</p>
+<dd><p>(ターゲットに整列したピクセル) 出力ファイルの範囲の座標を <a class="reference internal" href="#cmdoption-gdalwarp-tr"><code class="xref std std-option docutils literal notranslate"><span class="pre">-tr</span></code></a> の値に整列させ, 整列した範囲が最小範囲を含むようにします (実際の変形前に検出された空白のエッジ行/列は, GDAL 3.8 以降削除されます). 整列とは, xmin / resx, ymin / resy, xmax / resx, ymax / resy が整数値であることを意味します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-ts">
 <span class="sig-name descname"><span class="pre">-ts</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;width&gt;</span> <span class="pre">&lt;height&gt;</span></span><a class="headerlink" href="#cmdoption-gdalwarp-ts" title="Link to this definition"></a></dt>
-<dd><p>Set output file size in pixels and lines. If width or height is set to 0,
-the other dimension will be guessed from the computed resolution. Note that
-<a class="reference internal" href="#cmdoption-gdalwarp-ts"><code class="xref std std-option docutils literal notranslate"><span class="pre">-ts</span></code></a> cannot be used with <a class="reference internal" href="#cmdoption-gdalwarp-tr"><code class="xref std std-option docutils literal notranslate"><span class="pre">-tr</span></code></a></p>
+<dd><p>ピクセル数と行数の出力ファイルサイズを設定します. 幅または高さが 0 に設定されている場合, 他の次元は計算された解像度から推測されます. <a class="reference internal" href="#cmdoption-gdalwarp-ts"><code class="xref std std-option docutils literal notranslate"><span class="pre">-ts</span></code></a> は <a class="reference internal" href="#cmdoption-gdalwarp-tr"><code class="xref std std-option docutils literal notranslate"><span class="pre">-tr</span></code></a> とは使用できないことに注意してください.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-ovr">
 <span class="sig-name descname"><span class="pre">-ovr</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;level&gt;|AUTO|AUTO-&lt;n&gt;|NONE</span></span><a class="headerlink" href="#cmdoption-gdalwarp-ovr" title="Link to this definition"></a></dt>
-<dd><p>To specify which overview level of source files must be used. The default choice,
-AUTO, will select the overview level whose resolution is the closest to the
-target resolution. Specify an integer value (0-based, i.e. 0=1st overview level)
-to select a particular level. Specify AUTO-n where n is an integer greater or
-equal to 1, to select an overview level below the AUTO one. Or specify NONE to
-force the base resolution to be used (can be useful if overviews have been
-generated with a low quality resampling method, and the warping is done using a
-higher quality resampling method).</p>
+<dd><p>使用するソースファイルのオーバービューレベルを指定します. デフォルトの選択肢である AUTO は, ターゲット解像度に最も近い解像度のオーバービューレベルを選択します. 特定のレベルを選択するには, 整数値 (0 から始まる, つまり 0=1 番目のオーバービューレベル) を指定します. AUTO よりも低いオーバービューレベルを選択するには, AUTO-n と指定します. ここで n は 1 以上の整数です. または, NONE を指定してベース解像度を使用するように強制します (オーバービューが低品質のリサンプリング方法で生成されており, 変形が高品質のリサンプリング方法を使用して行われている場合に便利です).</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-wo">
 <span class="sig-name descname"><span class="pre">-wo</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></span><a class="headerlink" href="#cmdoption-gdalwarp-wo" title="Link to this definition"></a></dt>
-<dd><p>Set a warp option.  The <a class="reference internal" href="../api/gdalwarp_cpp.html#_CPPv4N15GDALWarpOptions16papszWarpOptionsE" title="GDALWarpOptions::papszWarpOptions"><code class="xref cpp cpp-member docutils literal notranslate"><span class="pre">GDALWarpOptions::papszWarpOptions</span></code></a> docs show all options.
-Multiple <a class="reference internal" href="#cmdoption-gdalwarp-wo"><code class="xref std std-option docutils literal notranslate"><span class="pre">-wo</span></code></a> options may be listed.</p>
+<dd><p>変形オプションを設定します. <a class="reference internal" href="../api/gdalwarp_cpp.html#_CPPv4N15GDALWarpOptions16papszWarpOptionsE" title="GDALWarpOptions::papszWarpOptions"><code class="xref cpp cpp-member docutils literal notranslate"><span class="pre">GDALWarpOptions::papszWarpOptions</span></code></a> ドキュメントにすべてのオプションが表示されます. 複数の <a class="reference internal" href="#cmdoption-gdalwarp-wo"><code class="xref std std-option docutils literal notranslate"><span class="pre">-wo</span></code></a> オプションをリストアップすることができます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-ot">
 <span class="sig-name descname"><span class="pre">-ot</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;type&gt;</span></span><a class="headerlink" href="#cmdoption-gdalwarp-ot" title="Link to this definition"></a></dt>
-<dd><p>Force the output image bands to have a specific data type supported by the
-driver, which may be one of the following: <code class="docutils literal notranslate"><span class="pre">Byte</span></code>, <code class="docutils literal notranslate"><span class="pre">Int8</span></code>, <code class="docutils literal notranslate"><span class="pre">UInt16</span></code>,
-<code class="docutils literal notranslate"><span class="pre">Int16</span></code>, <code class="docutils literal notranslate"><span class="pre">UInt32</span></code>, <code class="docutils literal notranslate"><span class="pre">Int32</span></code>, <code class="docutils literal notranslate"><span class="pre">UInt64</span></code>, <code class="docutils literal notranslate"><span class="pre">Int64</span></code>, <code class="docutils literal notranslate"><span class="pre">Float32</span></code>, <code class="docutils literal notranslate"><span class="pre">Float64</span></code>, <code class="docutils literal notranslate"><span class="pre">CInt16</span></code>,
-<code class="docutils literal notranslate"><span class="pre">CInt32</span></code>, <code class="docutils literal notranslate"><span class="pre">CFloat32</span></code> or <code class="docutils literal notranslate"><span class="pre">CFloat64</span></code>.</p>
+<dd><p>ドライバでサポートされている特定のデータ型を持つ出力画像バンドを強制します. これは, 次のいずれかである可能性があります: <code class="docutils literal notranslate"><span class="pre">Byte</span></code>, <code class="docutils literal notranslate"><span class="pre">Int8</span></code>, <code class="docutils literal notranslate"><span class="pre">UInt16</span></code>, <code class="docutils literal notranslate"><span class="pre">Int16</span></code>, <code class="docutils literal notranslate"><span class="pre">UInt32</span></code>, <code class="docutils literal notranslate"><span class="pre">Int32</span></code>, <code class="docutils literal notranslate"><span class="pre">UInt64</span></code>, <code class="docutils literal notranslate"><span class="pre">Int64</span></code>, <code class="docutils literal notranslate"><span class="pre">Float32</span></code>, <code class="docutils literal notranslate"><span class="pre">Float64</span></code>, <code class="docutils literal notranslate"><span class="pre">CInt16</span></code>, <code class="docutils literal notranslate"><span class="pre">CInt32</span></code>, <code class="docutils literal notranslate"><span class="pre">CFloat32</span></code> または``CFloat64``.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-wt">
 <span class="sig-name descname"><span class="pre">-wt</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;type&gt;</span></span><a class="headerlink" href="#cmdoption-gdalwarp-wt" title="Link to this definition"></a></dt>
-<dd><p>Working pixel data type. The data type of pixels in the source image and
-destination image buffers.</p>
+<dd><p>作業ピクセルデータ型. ソース画像と宛先画像バッファ内のピクセルのデータ型.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-r">
 <span class="sig-name descname"><span class="pre">-r</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;resampling_method&gt;</span></span><a class="headerlink" href="#cmdoption-gdalwarp-r" title="Link to this definition"></a></dt>
-<dd><p>Resampling method to use. Available methods are:</p>
-<p><code class="docutils literal notranslate"><span class="pre">near</span></code>: nearest neighbour resampling (default, fastest algorithm, worst interpolation quality).</p>
-<p><code class="docutils literal notranslate"><span class="pre">bilinear</span></code>: bilinear resampling.</p>
-<p><code class="docutils literal notranslate"><span class="pre">cubic</span></code>: cubic resampling.</p>
-<p><code class="docutils literal notranslate"><span class="pre">cubicspline</span></code>: cubic spline resampling.</p>
-<p><code class="docutils literal notranslate"><span class="pre">lanczos</span></code>: Lanczos windowed sinc resampling.</p>
-<p><code class="docutils literal notranslate"><span class="pre">average</span></code>: average resampling, computes the weighted average of all non-NODATA contributing pixels.</p>
-<p><code class="docutils literal notranslate"><span class="pre">rms</span></code> root mean square / quadratic mean of all non-NODATA contributing pixels (GDAL &gt;= 3.3)</p>
-<p><code class="docutils literal notranslate"><span class="pre">mode</span></code>: mode resampling, selects the value which appears most often of all the sampled points. In the case of ties, the first value identified as the mode will be selected.</p>
-<p><code class="docutils literal notranslate"><span class="pre">max</span></code>: maximum resampling, selects the maximum value from all non-NODATA contributing pixels.</p>
-<p><code class="docutils literal notranslate"><span class="pre">min</span></code>: minimum resampling, selects the minimum value from all non-NODATA contributing pixels.</p>
-<p><code class="docutils literal notranslate"><span class="pre">med</span></code>: median resampling, selects the median value of all non-NODATA contributing pixels.</p>
-<p><code class="docutils literal notranslate"><span class="pre">q1</span></code>: first quartile resampling, selects the first quartile value of all non-NODATA contributing pixels.</p>
-<p><code class="docutils literal notranslate"><span class="pre">q3</span></code>: third quartile resampling, selects the third quartile value of all non-NODATA contributing pixels.</p>
-<p><code class="docutils literal notranslate"><span class="pre">sum</span></code>: compute the weighted sum of all non-NODATA contributing pixels (since GDAL 3.1)</p>
+<dd><p>使用するリサンプリング方法. 使用可能な方法は次のとおりです:</p>
+<p><code class="docutils literal notranslate"><span class="pre">near</span></code>: 最近傍補間 (デフォルト, 最速のアルゴリズム, 最悪の補間品質).</p>
+<p><code class="docutils literal notranslate"><span class="pre">bilinear</span></code>: バイリニア補間.</p>
+<p><code class="docutils literal notranslate"><span class="pre">cubic</span></code>: cubic 補間.</p>
+<p><code class="docutils literal notranslate"><span class="pre">cubicspline</span></code>: cubic spline 補間.</p>
+<p><code class="docutils literal notranslate"><span class="pre">lanczos</span></code>: Lanczos windowed sinc 補間.</p>
+<p><code class="docutils literal notranslate"><span class="pre">average</span></code>: average 補間, すべての非NODATAの寄与ピクセルの加重背筋を計算します.</p>
+<p><code class="docutils literal notranslate"><span class="pre">rms</span></code>: すべての非NODATAの寄与ピクセルの平均二乗平方根 / 平方平均 (GDAL &gt;= 3.3)</p>
+<p><code class="docutils literal notranslate"><span class="pre">mode</span></code>: mode 補間, サンプリングされたすべての点の中で最も頻繁に現れる値を選択します. 引き分けの場合, 最初にモードとして識別された値が選択されます.</p>
+<p><code class="docutils literal notranslate"><span class="pre">max</span></code>: 最大値補間, すべての非NODATAの寄与ピクセルから最大値を選択します.</p>
+<p><code class="docutils literal notranslate"><span class="pre">min</span></code>: 最小値補間, すべての非NODATAの寄与ピクセルから最小値を選択します.</p>
+<p><code class="docutils literal notranslate"><span class="pre">med</span></code>: median 補間, すべての非NODATAの寄与ピクセルの中央値を選択します.</p>
+<p><code class="docutils literal notranslate"><span class="pre">q1</span></code>: 第 1 四分位数補間, すべての非NODATAの寄与ピクセルの第 1 四分位数値を選択します.</p>
+<p><code class="docutils literal notranslate"><span class="pre">q3</span></code>: 第 3 四分位数補間, すべての非NODATAの寄与ピクセルの第 3 四分位数値を選択します.</p>
+<p><code class="docutils literal notranslate"><span class="pre">sum</span></code>: すべての非NODATAの寄与ピクセルの加重和を計算します (GDAL 3.1 以降)</p>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
-<p>When downsampling is performed (use of <a class="reference internal" href="#cmdoption-gdalwarp-tr"><code class="xref std std-option docutils literal notranslate"><span class="pre">-tr</span></code></a> or <a class="reference internal" href="#cmdoption-gdalwarp-ts"><code class="xref std std-option docutils literal notranslate"><span class="pre">-ts</span></code></a>), existing
-overviews (either internal/implicit or external ones) on the source image
-will be used by default by selecting the closest overview to the desired output
-resolution.
-The resampling method used to create those overviews is generally not the one you
-specify through the <a class="reference internal" href="#cmdoption-gdalwarp-r"><code class="xref std std-option docutils literal notranslate"><span class="pre">-r</span></code></a> option. Some formats, like JPEG2000, can contain
-significant outliers due to wavelet compression works. It might thus be useful in
-those situations to use the <a class="reference internal" href="#cmdoption-gdalwarp-ovr"><code class="xref std std-option docutils literal notranslate"><span class="pre">-ovr</span></code></a> <code class="docutils literal notranslate"><span class="pre">NONE</span></code> option to prevent existing overviews to
-be used.</p>
+<p>ダウンサンプリングが実行される場合 (<a class="reference internal" href="#cmdoption-gdalwarp-tr"><code class="xref std std-option docutils literal notranslate"><span class="pre">-tr</span></code></a> または <a class="reference internal" href="#cmdoption-gdalwarp-ts"><code class="xref std std-option docutils literal notranslate"><span class="pre">-ts</span></code></a> の使用), ソース画像の既存のオーバービュー (内部/暗黙的または外部のいずれか) は, 通常, 出力解像度に最も近いオーバービューを選択してデフォルトで使用されます. これらのオーバービューを作成するために使用されるリサンプリング方法は, 通常, <a class="reference internal" href="#cmdoption-gdalwarp-r"><code class="xref std std-option docutils literal notranslate"><span class="pre">-r</span></code></a> オプションを通じて指定する方法ではありません. JPEG2000 のような一部のフォーマットは, ウェーブレット圧縮の動作による重要な外れ値を含むことがあります. そのような状況では, 既存のオーバービューが使用されないようにするために, <a class="reference internal" href="#cmdoption-gdalwarp-ovr"><code class="xref std std-option docutils literal notranslate"><span class="pre">-ovr</span></code></a> <code class="docutils literal notranslate"><span class="pre">NONE</span></code> オプションを使用すると便利です.</p>
 </div>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-srcnodata">
 <span class="sig-name descname"><span class="pre">-srcnodata</span></span><span class="sig-prename descclassname"> <span class="pre">&quot;&lt;value&gt;[</span> <span class="pre">&lt;value&gt;]...&quot;</span></span><a class="headerlink" href="#cmdoption-gdalwarp-srcnodata" title="Link to this definition"></a></dt>
-<dd><p>Set nodata masking values for input bands (different values can be supplied
-for each band). If more than one value is supplied all values should be quoted
-to keep them together as a single operating system argument.
-Masked values will not be used in interpolation (details given in <a class="reference internal" href="#gdalwarp-nodata"><span class="std std-ref">Nodata / source validity mask handling</span></a>)</p>
-<p>Use a value of <code class="docutils literal notranslate"><span class="pre">None</span></code> to ignore intrinsic nodata settings on the source dataset.</p>
-<p>When this option is set to a non-<code class="docutils literal notranslate"><span class="pre">None</span></code> value, it causes the <code class="docutils literal notranslate"><span class="pre">UNIFIED_SRC_NODATA</span></code>
-warping option (see <a class="reference internal" href="../api/gdalwarp_cpp.html#_CPPv4N15GDALWarpOptions16papszWarpOptionsE" title="GDALWarpOptions::papszWarpOptions"><code class="xref cpp cpp-member docutils literal notranslate"><span class="pre">GDALWarpOptions::papszWarpOptions</span></code></a>) to be
-set to <code class="docutils literal notranslate"><span class="pre">YES</span></code>, if it is not explicitly set.</p>
-<p>If <code class="docutils literal notranslate"><span class="pre">-srcnodata</span></code> is not explicitly set, but the source dataset has nodata values,
-they will be taken into account, with <code class="docutils literal notranslate"><span class="pre">UNIFIED_SRC_NODATA</span></code> at <code class="docutils literal notranslate"><span class="pre">PARTIAL</span></code>
-by default.</p>
+<dd><p>入力バンドのためのノーデータマスク値を設定します (異なる値を各バンドに供給することができます). 複数の値が供給される場合, すべての値を引用符で囲んで, 1 つのオペレーティングシステム引数としてまとめておく必要があります. マスクされた値は補間に使用されません (<a class="reference internal" href="#gdalwarp-nodata"><span class="std std-ref">ノーデータ / ソース有効マスクの処理</span></a> で詳細を説明しています).</p>
+<p>ソースデータセットの固有のノーデータ設定を無視するには, <code class="docutils literal notranslate"><span class="pre">None</span></code> の値を使用します.</p>
+<p>このオプションが <code class="docutils literal notranslate"><span class="pre">None</span></code> 以外の値に設定されている場合, <code class="docutils literal notranslate"><span class="pre">UNIFIED_SRC_NODATA</span></code> 変形オプション(<a class="reference internal" href="../api/gdalwarp_cpp.html#_CPPv4N15GDALWarpOptions16papszWarpOptionsE" title="GDALWarpOptions::papszWarpOptions"><code class="xref cpp cpp-member docutils literal notranslate"><span class="pre">GDALWarpOptions::papszWarpOptions</span></code></a>) が明示的に設定されていない場合に <code class="docutils literal notranslate"><span class="pre">YES</span></code> に設定されます.</p>
+<p><code class="docutils literal notranslate"><span class="pre">-srcnodata</span></code> が明示的に設定されていない場合, ただしソースデータセットにノーデータ値がある場合, デフォルトで <code class="docutils literal notranslate"><span class="pre">UNIFIED_SRC_NODATA</span></code> は <code class="docutils literal notranslate"><span class="pre">PARTIAL</span></code> で考慮されます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-dstnodata">
 <span class="sig-name descname"><span class="pre">-dstnodata</span></span><span class="sig-prename descclassname"> <span class="pre">&quot;&lt;value&gt;[</span> <span class="pre">&lt;value&gt;]...&quot;</span></span><a class="headerlink" href="#cmdoption-gdalwarp-dstnodata" title="Link to this definition"></a></dt>
-<dd><p>Set nodata values
-for output bands (different values can be supplied for each band).  If more
-than one value is supplied all values should be quoted to keep them together
-as a single operating system argument.  New files will be initialized to this
-value and if possible the nodata value will be recorded in the output
-file. Use a value of <code class="docutils literal notranslate"><span class="pre">None</span></code> to ensure that nodata is not defined.
-If this argument is not used then nodata values will be copied from the source dataset.</p>
+<dd><p>出力バンドのためのノーデータ値を設定します (異なる値を各バンドに供給することができます). 複数の値が供給される場合, すべての値を引用符で囲んで, 1 つのオペレーティングシステム引数としてまとめておく必要があります. 新しいファイルはこの値で初期化され, 可能であればノーデータ値は出力ファイルに記録されます. ノーデータが定義されていないことを確認するには, <code class="docutils literal notranslate"><span class="pre">None</span></code> の値を使用します. この引数が使用されていない場合, ノーデータ値はソースデータセットからコピーされます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-srcalpha">
 <span class="sig-name descname"><span class="pre">-srcalpha</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalwarp-srcalpha" title="Link to this definition"></a></dt>
-<dd><p>Force the last band of a source image to be
-considered as a source alpha band.</p>
+<dd><p>ソース画像の最後のバンドをソースアルファバンドとして扱うように強制します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-nosrcalpha">
 <span class="sig-name descname"><span class="pre">-nosrcalpha</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalwarp-nosrcalpha" title="Link to this definition"></a></dt>
-<dd><p>Prevent the alpha band of a source image to be
-considered as such (it will be warped as a regular band)</p>
+<dd><p>ソース画像のアルファバンドがそのように考慮されないようにします (通常のバンドとして変形されます)</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 2.2.</span></p>
 </div>
@@ -622,50 +506,33 @@ considered as such (it will be warped as a regular band)</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-dstalpha">
 <span class="sig-name descname"><span class="pre">-dstalpha</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalwarp-dstalpha" title="Link to this definition"></a></dt>
-<dd><p>Create an output alpha band to identify nodata (unset/transparent) pixels.</p>
+<dd><p>ノーデータ (未設定/透過) ピクセルを識別するための出力アルファバンドを作成します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-wm">
 <span class="sig-name descname"><span class="pre">-wm</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;memory_in_mb&gt;</span></span><a class="headerlink" href="#cmdoption-gdalwarp-wm" title="Link to this definition"></a></dt>
-<dd><p>Set the amount of memory that the
-warp API is allowed to use for caching. The value is interpreted as being
-in megabytes if the value is less than 10000. For values &gt;=10000, this is
-interpreted as bytes.</p>
-<p>The warper will total up the memory required to hold the input and output
-image arrays and any auxiliary masking arrays and if they are larger than
-the &quot;warp memory&quot; allowed it will subdivide the chunk into smaller chunks
-and try again.</p>
-<p>If the -wm value is very small there is some extra overhead in doing many
-small chunks so setting it larger is better but it is a matter of
-diminishing returns.</p>
+<dd><p>ワープ API がキャッシュに使用するメモリ量を設定します. 値が 10000 未満の場合, メガバイト単位として解釈されます. 10000 以上の値の場合, バイトとして解釈されます.</p>
+<p>ワーパーは, 入力および出力画像配列と補助マスキング配列を保持するために必要なメモリを合計し, それらが許容される &quot;ワープメモリ&quot; よりも大きい場合, チャンクをより小さなチャンクに分割して再試行します.</p>
+<p>-wm 値が非常に小さい場合, 多くの小さなチャンクを処理するための追加のオーバーヘッドが発生するため, 大きく設定する方が良いですが, それは収穫逓減の問題です.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-multi">
 <span class="sig-name descname"><span class="pre">-multi</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalwarp-multi" title="Link to this definition"></a></dt>
-<dd><p>Use multithreaded warping implementation.
-Two threads will be used to process chunks of image and perform
-input/output operation simultaneously. Note that computation is not
-multithreaded itself. To do that, you can use the <a class="reference internal" href="#cmdoption-gdalwarp-wo"><code class="xref std std-option docutils literal notranslate"><span class="pre">-wo</span></code></a> NUM_THREADS=val/ALL_CPUS
-option, which can be combined with <a class="reference internal" href="#cmdoption-gdalwarp-multi"><code class="xref std std-option docutils literal notranslate"><span class="pre">-multi</span></code></a></p>
+<dd><p>マルチスレッドワーピング実装を使用します. 2 つのスレッドが画像のチャンクを処理し, 入出力操作を同時に実行します. 計算自体はマルチスレッド化されていません. そのため, <a class="reference internal" href="#cmdoption-gdalwarp-wo"><code class="xref std std-option docutils literal notranslate"><span class="pre">-wo</span></code></a> NUM_THREADS=val/ALL_CPUSオプションを使用することができます. これは <a class="reference internal" href="#cmdoption-gdalwarp-multi"><code class="xref std std-option docutils literal notranslate"><span class="pre">-multi</span></code></a> と組み合わせて使用することができます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-q">
 <span class="sig-name descname"><span class="pre">-q</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalwarp-q" title="Link to this definition"></a></dt>
-<dd><p>Be quiet.</p>
+<dd><p>静かにします.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-if">
 <span class="sig-name descname"><span class="pre">-if</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;format&gt;</span></span><a class="headerlink" href="#cmdoption-gdalwarp-if" title="Link to this definition"></a></dt>
-<dd><p>Format/driver name to be attempted to open the input file(s). It is generally
-not necessary to specify it, but it can be used to skip automatic driver
-detection, when it fails to select the appropriate driver.
-This option can be repeated several times to specify several candidate drivers.
-Note that it does not force those drivers to open the dataset. In particular,
-some drivers have requirements on file extensions.</p>
+<dd><p>入力ファイルを開こうとするフォーマット/ドライバ名. 通常, 指定する必要はありませんが, 適切なドライバを選択できない場合に自動ドライバ検出をスキップするために使用できます. このオプションは複数回繰り返すことができ, 複数の候補ドライバを指定するために使用できます. ただし, これらのドライバをデータセットを開くように強制するわけではありません.特に, 一部のドライバはファイル拡張子に要件を持っています.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.2.</span></p>
 </div>
@@ -674,34 +541,20 @@ some drivers have requirements on file extensions.</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-of">
 <span class="sig-name descname"><span class="pre">-of</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;format&gt;</span></span><a class="headerlink" href="#cmdoption-gdalwarp-of" title="Link to this definition"></a></dt>
-<dd><p>Select the output format. Starting with GDAL 2.3, if not specified, the
-format is guessed from the extension (previously was GTiff). Use the short
-format name.</p>
+<dd><p>出力フォーマットを選択します. GDAL 2.3 以降, 指定されていない場合, フォーマットは拡張子から推測されます(以前は GTiff でした). 短いフォーマット名を使用します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-co">
 <span class="sig-name descname"><span class="pre">-co</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></span><a class="headerlink" href="#cmdoption-gdalwarp-co" title="Link to this definition"></a></dt>
-<dd><p>Many formats have one or more optional creation options that can be
-used to control particulars about the file created. For instance,
-the GeoTIFF driver supports creation options to control compression,
-and whether the file should be tiled.</p>
-<p>The creation options available vary by format driver, and some
-simple formats have no creation options at all. A list of options
-supported for a format can be listed with the
-<a class="reference internal" href="raster_common_options.html#raster-common-options-formats"><span class="std std-ref">--formats</span></a>
-command line option but the documentation for the format is the
-definitive source of information on driver creation options.
-See <a class="reference internal" href="../drivers/raster/index.html#raster-drivers"><span class="std std-ref">ラスタードライバー</span></a> format
-specific documentation for legal creation options for each format.</p>
+<dd><p>多くのフォーマットには, 作成されるファイルについての特定の点を制御するために使用できる 1 つ以上のオプションがあります. たとえば, GeoTIFF ドライバは, 圧縮を制御する作成オプションや, ファイルをタイル化するかどうかを制御する作成オプションをサポートしています.</p>
+<p>利用可能な作成オプションはフォーマットドライバによって異なり, 一部のシンプルなフォーマットには全く作成オプションがありません. フォーマットでサポートされているオプションのリストは, <a class="reference internal" href="raster_common_options.html#raster-common-options-formats"><span class="std std-ref">--formats</span></a> コマンドラインオプションでリストアップすることができますが, フォーマットのドキュメントがドライバ作成オプションに関する情報の決定的なソースです. 各フォーマットの法的な作成オプションについては, <a class="reference internal" href="../drivers/raster/index.html#raster-drivers"><span class="std std-ref">ラスタードライバー</span></a> フォーマット固有のドキュメントを参照してください.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-cutline">
 <span class="sig-name descname"><span class="pre">-cutline</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;datasource&gt;|&lt;WKT&gt;</span></span><a class="headerlink" href="#cmdoption-gdalwarp-cutline" title="Link to this definition"></a></dt>
-<dd><p>Enable use of a blend cutline from the name of a vector dataset.
-Starting with GDAL 3.9, a WKT geometry string starting with POLYGON or
-MULTIPOLYGON can also be specified.</p>
+<dd><p>ベクトルデータセットの名前からブレンドカットラインの使用を有効にします. GDAL 3.9 以降, POLYGON またはMULTIPOLYGON で始まる WKT ジオメトリ文字列も指定できます.</p>
 </dd></dl>
 
 <dl class="std option">
@@ -710,80 +563,73 @@ MULTIPOLYGON can also be specified.</p>
 <dd><div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.9.</span></p>
 </div>
-<p>Sets or overrides the SRS of the cutline.</p>
+<p>カットラインの SRS を設定または上書きします.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-cl">
 <span class="sig-name descname"><span class="pre">-cl</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;layername&gt;</span></span><a class="headerlink" href="#cmdoption-gdalwarp-cl" title="Link to this definition"></a></dt>
-<dd><p>Select the named layer from the cutline datasource.</p>
+<dd><p>カットラインデータソースから名前付きレイヤを選択します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-cwhere">
 <span class="sig-name descname"><span class="pre">-cwhere</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;expression&gt;</span></span><a class="headerlink" href="#cmdoption-gdalwarp-cwhere" title="Link to this definition"></a></dt>
-<dd><p>Restrict desired cutline features based on attribute query.</p>
+<dd><p>属性クエリに基づいて希望のカットラインフィーチャを制限します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-csql">
 <span class="sig-name descname"><span class="pre">-csql</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;query&gt;</span></span><a class="headerlink" href="#cmdoption-gdalwarp-csql" title="Link to this definition"></a></dt>
-<dd><p>Select cutline features using an SQL query instead of from a layer with <a class="reference internal" href="#cmdoption-gdalwarp-cl"><code class="xref std std-option docutils literal notranslate"><span class="pre">-cl</span></code></a>.</p>
+<dd><p><a class="reference internal" href="#cmdoption-gdalwarp-cl"><code class="xref std std-option docutils literal notranslate"><span class="pre">-cl</span></code></a> で指定されたレイヤではなく, SQL クエリを使用してカットラインフィーチャを選択します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-cblend">
 <span class="sig-name descname"><span class="pre">-cblend</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;distance&gt;</span></span><a class="headerlink" href="#cmdoption-gdalwarp-cblend" title="Link to this definition"></a></dt>
-<dd><p>Set a blend distance to use to blend over cutlines (in pixels).</p>
+<dd><p>カットライン上でブレンドするために使用するブレンド距離を設定します (ピクセル単位).</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-crop_to_cutline">
 <span class="sig-name descname"><span class="pre">-crop_to_cutline</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalwarp-crop_to_cutline" title="Link to this definition"></a></dt>
-<dd><p>Crop the extent of the target dataset to the extent of the cutline.</p>
+<dd><p>ターゲットデータセットの範囲をカットラインの範囲に切り取ります.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-overwrite">
 <span class="sig-name descname"><span class="pre">-overwrite</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalwarp-overwrite" title="Link to this definition"></a></dt>
-<dd><p>Overwrite the target dataset if it already exists. Overwriting must be understood
-here as deleting and recreating the file from scratch. Note that if this option
-is <em>not</em> specified and the output file already exists, it will be updated in
-place.</p>
+<dd><p>ターゲットデータセットが既に存在する場合, 上書きします. ここでの上書きは, ファイルをゼロから削除して再作成することとして理解する必要があります. このオプションが指定されていない場合, 出力ファイルが既に存在する場合, その場所で更新されます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-nomd">
 <span class="sig-name descname"><span class="pre">-nomd</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalwarp-nomd" title="Link to this definition"></a></dt>
-<dd><p>Do not copy metadata. Without this option, dataset and band metadata
-(as well as some band information) will be copied from the first source dataset.
-Items that differ between source datasets will be set to * (see <a class="reference internal" href="#cmdoption-gdalwarp-cvmd"><code class="xref std std-option docutils literal notranslate"><span class="pre">-cvmd</span></code></a> option).</p>
+<dd><p>メタデータをコピーしないでください. このオプションがない場合, データセットおよびバンドメタデータ (および一部のバンド情報) は最初のソースデータセットからコピーされます. ソースデータセット間で異なる項目は * に設定されます ( <a class="reference internal" href="#cmdoption-gdalwarp-cvmd"><code class="xref std std-option docutils literal notranslate"><span class="pre">-cvmd</span></code></a> オプションを参照してください).</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-cvmd">
 <span class="sig-name descname"><span class="pre">-cvmd</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;meta_conflict_value&gt;</span></span><a class="headerlink" href="#cmdoption-gdalwarp-cvmd" title="Link to this definition"></a></dt>
-<dd><p>Value to set metadata items that conflict between source datasets
-(default is &quot;*&quot;). Use &quot;&quot; to remove conflicting items.</p>
+<dd><p>ソースデータセット間で競合するメタデータ項目を設定する値 (デフォルトは &quot;*&quot;). 競合する項目を削除するには&quot;&quot; を使用します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-setci">
 <span class="sig-name descname"><span class="pre">-setci</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalwarp-setci" title="Link to this definition"></a></dt>
-<dd><p>Set the color interpretation of the bands of the target dataset from
-the source dataset.</p>
+<dd><p>ターゲットデータセットのバンドのカラーインタープリテーションをソースデータセットから設定します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-oo">
 <span class="sig-name descname"><span class="pre">-oo</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></span><a class="headerlink" href="#cmdoption-gdalwarp-oo" title="Link to this definition"></a></dt>
-<dd><p>Dataset open option (format specific)</p>
+<dd><p>データセットオープンオプション (フォーマット固有)</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-doo">
 <span class="sig-name descname"><span class="pre">-doo</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></span><a class="headerlink" href="#cmdoption-gdalwarp-doo" title="Link to this definition"></a></dt>
-<dd><p>Output dataset open option (format specific)</p>
+<dd><p>出力データセットオープンオプション (フォーマット固有)</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 2.1.</span></p>
 </div>
@@ -792,57 +638,28 @@ the source dataset.</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-arg-src_dataset_name">
 <span class="sig-name descname"><span class="pre">&lt;src_dataset_name&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalwarp-arg-src_dataset_name" title="Link to this definition"></a></dt>
-<dd><p>The source file name(s).</p>
+<dd><p>ソースファイル名.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalwarp-arg-dst_dataset_name">
 <span class="sig-name descname"><span class="pre">&lt;dst_dataset_name&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalwarp-arg-dst_dataset_name" title="Link to this definition"></a></dt>
-<dd><p>The destination file name.</p>
+<dd><p>宛先ファイル名.</p>
 </dd></dl>
 
-<p>Mosaicing into an existing output file is supported if the output file
-already exists. The spatial extent of the existing file will not
-be modified to accommodate new data, so you may have to remove it in that case, or
-use the -overwrite option.</p>
-<p>Polygon cutlines may be used as a mask to restrict the area of the
-destination file that may be updated, including blending.  If the OGR
-layer containing the cutline features has no explicit SRS, the cutline
-features must be in the SRS of the destination file. When writing to a
-not yet existing target dataset, its extent will be the one of the
-original raster unless -te or -crop_to_cutline are specified.</p>
-<p>Starting with GDAL 3.1, it is possible to use as output format a driver that
-only supports the CreateCopy operation. This may internally imply creation of
-a temporary file.</p>
+<p>既存の出力ファイルにモザイクを作成することがサポートされています. 既存のファイルの空間範囲は新しいデータに対応するために変更されませんので, その場合は削除するか, -overwrite オプションを使用する必要があります.</p>
+<p>ポリゴンカットラインは, ブレンドを含む, 更新できる宛先ファイルの領域を制限するためのマスクとして使用できます. カットラインフィーチャを含む OGR レイヤに明示的な SRS がない場合, カットラインフィーチャは宛先ファイルの SRS である必要があります. まだ存在しないターゲットデータセットに書き込む場合, -te または -crop_to_cutline が指定されていない限り, その範囲は元のラスタの範囲になります.</p>
+<p>GDAL 3.1 以降, CreateCopy 操作のみをサポートするドライバを出力フォーマットとして使用することが可能です. これは内部的に一時ファイルの作成を意味する場合があります.</p>
 </section>
 <section id="nodata-source-validity-mask-handling">
-<span id="gdalwarp-nodata"></span><h2>Nodata / source validity mask handling<a class="headerlink" href="#nodata-source-validity-mask-handling" title="Link to this heading"></a></h2>
-<p>Invalid values in source pixels, either identified through a nodata value
-metadata set on the source band, a mask band, an alpha band or the use of
-<a class="reference internal" href="#cmdoption-gdalwarp-srcnodata"><code class="xref std std-option docutils literal notranslate"><span class="pre">-srcnodata</span></code></a> will not be used in interpolation.
-The details of how it is taken into account depends on the resampling kernel:</p>
+<span id="gdalwarp-nodata"></span><h2>ノーデータ / ソース有効マスクの処理<a class="headerlink" href="#nodata-source-validity-mask-handling" title="Link to this heading"></a></h2>
+<p>ソースピクセルの無効な値は, ソースバンドに設定されたノーデータ値メタデータ, マスクバンド, アルファバンド, または <a class="reference internal" href="#cmdoption-gdalwarp-srcnodata"><code class="xref std std-option docutils literal notranslate"><span class="pre">-srcnodata</span></code></a> の使用によって識別され, 補間に使用されません. それがどのように考慮されるかの詳細は, 補間カーネルに依存します:</p>
 <ul class="simple">
-<li><p>for nearest resampling, for each target pixel, the coordinate of its center
-is projected back to source coordinates and the source pixel containing that
-coordinate is identified. If this source pixel is invalid, the target pixel
-is considered as nodata.</p></li>
-<li><p>for bilinear, cubic, cubicspline and lanczos, for each target pixel, the
-coordinate of its center is projected back to source coordinates and a
-corresponding source pixel is identified. If this source pixel is invalid, the
-target pixel is considered as nodata.
-Given that those resampling kernels have a non-null kernel radius, this source
-pixel is just one among other several source pixels, and it might be possible
-that there are invalid values in those other contributing source pixels.
-The weights used to take into account those invalid values will be set to zero
-to ignore them.</p></li>
-<li><p>for the other resampling methods, source pixels contributing to the target pixel
-are ignored if invalid. Only the valid ones are taken into account. If there are
-none, the target pixel is considered as nodata.</p></li>
+<li><p>最近傍補間の場合, 各ターゲットピクセルについて, その中心の座標がソース座標に逆投影され, その座標を含むソースピクセルが識別されます. このソースピクセルが無効な場合, ターゲットピクセルはノーデータと見なされます.</p></li>
+<li><p>バイリニア, 立方体, キュービックスプライン, ランチョスの場合, 各ターゲットピクセルについて, その中心の座標がソース座標に逆投影され, 対応するソースピクセルが識別されます. このソースピクセルが無効な場合, ターゲットピクセルはノーデータと見なされます. これらの補間カーネルはノンゼロカーネル半径を持っているため, このソースピクセルは他のいくつかのソースピクセルの 1 つに過ぎず, これらの他の寄与ソースピクセルに無効な値がある可能性があります. これらの無効な値を考慮するために使用される重みは, それらを無視するためにゼロに設定されます.</p></li>
+<li><p>その他の補間方法の場合, 無効なソースピクセルは無視されます. 有効なもののみが考慮されます. 有効なものがない場合, ターゲットピクセルはノーデータと見なされます.</p></li>
 </ul>
-<p>If using <a class="reference internal" href="#cmdoption-gdalwarp-srcnodata"><code class="xref std std-option docutils literal notranslate"><span class="pre">-srcnodata</span></code></a> for multiple images with different invalid
-values, you need to either (a) pre-process them to have the same to-be-ignored
-value, or (b) set the nodata flag for each file. Use (b) if you need to preserve
-the original values for some reason, for example:</p>
+<p>異なる無効値を持つ複数の画像に <a class="reference internal" href="#cmdoption-gdalwarp-srcnodata"><code class="xref std std-option docutils literal notranslate"><span class="pre">-srcnodata</span></code></a> を使用する場合, それらを同じ無視される値にするために事前処理するか, または各ファイルにノーデータフラグを設定する必要があります. 何らかの理由で元の値を保持する必要がある場合は, (b) を使用してください. たとえば:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># for this image we want to ignore black (0)</span>
 gdalwarp<span class="w"> </span>-srcnodata<span class="w"> </span><span class="m">0</span><span class="w"> </span>-dstnodata<span class="w"> </span><span class="m">0</span><span class="w"> </span>orig-ignore-black.tif<span class="w"> </span>black-nodata.tif
 
@@ -858,142 +675,75 @@ gdalwarp<span class="w"> </span>black-nodata.tif<span class="w"> </span>grey-nod
 </div>
 </section>
 <section id="approximate-transformation">
-<h2>Approximate transformation<a class="headerlink" href="#approximate-transformation" title="Link to this heading"></a></h2>
-<p>By default <strong class="program">gdalwarp</strong> uses a linear approximator for the
-transformations with a permitted error of 0.125 pixels. The approximator
-basically transforms three points on a scanline: the start, end and middle.
-Then it compares the linear approximation of the center based on the end points
-to the real thing and checks the error. If the error is less than the error
-threshold then the remaining points are approximated (in two chunks utilizing
-the center point). If the error exceeds the threshold, the scanline is split
-into two sections, and the approximator is recursively applied to each section
-until the error is less than the threshold or all points have been exactly
-computed.</p>
-<p>The error threshold (in pixels) can be controlled with the gdalwarp
-<a class="reference internal" href="#cmdoption-gdalwarp-et"><code class="xref std std-option docutils literal notranslate"><span class="pre">-et</span></code></a> switch. If you want to compare a true pixel-by-pixel reprojection
-use <a class="reference internal" href="#cmdoption-gdalwarp-et"><code class="xref std std-option docutils literal notranslate"><span class="pre">-et</span> <span class="pre">0</span></code></a> which disables this approximator entirely.</p>
+<h2>近似変換<a class="headerlink" href="#approximate-transformation" title="Link to this heading"></a></h2>
+<p>デフォルトでは, <strong class="program">gdalwarp</strong> は許容誤差 0.125 ピクセルで変換に対して線形近似器を使用します. 近似器は基本的にスキャンライン上の 3 つの点を変換します: 開始, 終了, および中間. 次に, 真のものと比較して中心の線形近似をエンドポイントに基づいて行い, エラーをチェックします. エラーがエラー閾値未満の場合, 残りの点が近似されます (中心点を利用して 2 つのチャンクに分割されます). エラーが閾値を超えると, スキャンラインは 2 つのセクションに分割され, エラーが閾値未満になるか, すべての点が正確に計算されるまで, 近似器が再帰的に各セクションに適用されます.</p>
+<p>エラー閾値 (ピクセル単位) は gdalwarp <a class="reference internal" href="#cmdoption-gdalwarp-et"><code class="xref std std-option docutils literal notranslate"><span class="pre">-et</span></code></a> スイッチで制御できます. 真のピクセル単位の再投影を比較する場合は, <a class="reference internal" href="#cmdoption-gdalwarp-et"><code class="xref std std-option docutils literal notranslate"><span class="pre">-et</span> <span class="pre">0</span></code></a> を使用してこの近似器を完全に無効にします.</p>
 </section>
 <section id="vertical-transformation">
-<h2>Vertical transformation<a class="headerlink" href="#vertical-transformation" title="Link to this heading"></a></h2>
-<p>While gdalwarp can essentially perform coordinate transformations in the 2D
-space, it can perform as well vertical transformations. This is automatically
-enabled when the 2 following conditions are met:</p>
+<h2>垂直変換<a class="headerlink" href="#vertical-transformation" title="Link to this heading"></a></h2>
+<p>gdalwarp は基本的に 2D 空間で座標変換を実行できますが, 垂直変換も実行できます. これは, 次の 2 つの条件が満たされると自動的に有効になります:</p>
 <ul class="simple">
-<li><p>at least one of the source or target CRS has an explicit vertical CRS
-(as part of a compound CRS) or is a 3D (generally geographic) CRS,</p></li>
-<li><p>and the raster has a single band.</p></li>
+<li><p>ソースまたはターゲットのいずれかに少なくとも 1 つの明示的な垂直 CRS (複合 CRS の一部) があるか, 3D (一般的に地理的) CRS である,</p></li>
+<li><p>およびラスタに単一バンドがある.</p></li>
 </ul>
-<p>This mode can also be forced by using the <a class="reference internal" href="#cmdoption-gdalwarp-vshift"><code class="xref std std-option docutils literal notranslate"><span class="pre">-vshift</span></code></a> (this is
-essentially useful when the CRS involved are not explicitly 3D, but a
-transformation pipeline is specified with <a class="reference internal" href="#cmdoption-gdalwarp-ct"><code class="xref std std-option docutils literal notranslate"><span class="pre">-ct</span></code></a>), or disabled with
-<a class="reference internal" href="#cmdoption-gdalwarp-novshift"><code class="xref std std-option docutils literal notranslate"><span class="pre">-novshift</span></code></a>.</p>
-<p>When a vertical transformation is involved, typically a shift value read in a
-geoid grid will be applied. This may require such grid(s) to be installed, or
-PROJ networking capabilities to be enabled. Consult <a class="reference external" href="https://proj.org">PROJ</a>
-documentation for more details. In addition to a shift, the raster values may
-be multiplied by a factor to take into account vertical unit changes.
-In priority, the value returned by <a class="reference internal" href="../api/gdalrasterband_cpp.html#_CPPv4N14GDALRasterBand11GetUnitTypeEv" title="GDALRasterBand::GetUnitType"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALRasterBand::GetUnitType()</span></code></a> is
-used. The following values are currently recognized: <code class="docutils literal notranslate"><span class="pre">m</span></code>, <code class="docutils literal notranslate"><span class="pre">metre</span></code>, <code class="docutils literal notranslate"><span class="pre">metre</span></code>,
-<code class="docutils literal notranslate"><span class="pre">ft</span></code>, <code class="docutils literal notranslate"><span class="pre">foot</span></code>, <code class="docutils literal notranslate"><span class="pre">US</span> <span class="pre">survey</span> <span class="pre">foot</span></code>. If there is no defined unit type at the
-band level, the vertical unit of the source CRS is used. The vertical unit of
-the target CRS is also used to determine that conversion factor. The conversion
-factor may be overridden by setting the <code class="docutils literal notranslate"><span class="pre">MULT_FACTOR_VERTICAL_SHIFT</span></code> warping
-option with <a class="reference internal" href="#cmdoption-gdalwarp-wo"><code class="xref std std-option docutils literal notranslate"><span class="pre">-wo</span></code></a>. For example <code class="docutils literal notranslate"><span class="pre">-wo</span> <span class="pre">MULT_FACTOR_VERTICAL_SHIFT=1</span></code> to
-disable any vertical unit change.</p>
+<p>このモードは, <a class="reference internal" href="#cmdoption-gdalwarp-vshift"><code class="xref std std-option docutils literal notranslate"><span class="pre">-vshift</span></code></a> を使用して強制することもできます (<a class="reference internal" href="#cmdoption-gdalwarp-ct"><code class="xref std std-option docutils literal notranslate"><span class="pre">-ct</span></code></a> で指定された変換パイプラインが明示的に 3D でない CRS が関係している場合に実質的に有用です), または <a class="reference internal" href="#cmdoption-gdalwarp-novshift"><code class="xref std std-option docutils literal notranslate"><span class="pre">-novshift</span></code></a> で無効にすることもできます.</p>
+<p>垂直変換が関係している場合, 通常, ジオイドグリッドから読み取ったシフト値が適用されます. これには, そのようなグリッドをインストールするか, PROJ ネットワーキング機能を有効にする必要があります. 詳細については <a class="reference external" href="https://proj.org">PROJ</a> のドキュメントを参照してください. シフトに加えて, ラスタ値は垂直単位の変更を考慮するために因子で乗算される場合があります. 優先的に, <a class="reference internal" href="../api/gdalrasterband_cpp.html#_CPPv4N14GDALRasterBand11GetUnitTypeEv" title="GDALRasterBand::GetUnitType"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALRasterBand::GetUnitType()</span></code></a> が返す値が使用されます. 現在認識されている値は次のとおりです: <code class="docutils literal notranslate"><span class="pre">m</span></code>, <code class="docutils literal notranslate"><span class="pre">metre</span></code>, <code class="docutils literal notranslate"><span class="pre">metre</span></code>, <code class="docutils literal notranslate"><span class="pre">ft</span></code>, <code class="docutils literal notranslate"><span class="pre">foot</span></code>, <code class="docutils literal notranslate"><span class="pre">US</span> <span class="pre">survey</span> <span class="pre">foot</span></code>. バンドレベルで定義された単位タイプがない場合, ソース CRS の垂直単位が使用されます. ターゲット CRS の垂直単位も, その変換係数を決定するために使用されます. 変換係数は,  <a class="reference internal" href="#cmdoption-gdalwarp-wo"><code class="xref std std-option docutils literal notranslate"><span class="pre">-wo</span></code></a> で <code class="docutils literal notranslate"><span class="pre">MULT_FACTOR_VERTICAL_SHIFT</span></code> ワーピングオプションを設定することで上書きできます. たとえば, 垂直単位の変更を無効にするには <code class="docutils literal notranslate"><span class="pre">-wo</span> <span class="pre">MULT_FACTOR_VERTICAL_SHIFT=1</span></code> のようにします.</p>
 </section>
 <section id="memory-usage">
-<h2>Memory usage<a class="headerlink" href="#memory-usage" title="Link to this heading"></a></h2>
-<p>Adding RAM will almost certainly increase the speed of <strong class="program">gdalwarp</strong>.
-That's not at all the same as saying that it is worth it, or that the speed
-increase will be significant. Disks are the slowest part of the process.  By
-default <strong class="program">gdalwarp</strong> won't take much advantage of RAM. Using the flag
-<a class="reference internal" href="#cmdoption-gdalwarp-wm"><code class="xref std std-option docutils literal notranslate"><span class="pre">-wm</span> <span class="pre">500</span></code></a> will operate on 500MB chunks at a time which is better than
-the default. The warp memory specified by <a class="reference internal" href="#cmdoption-gdalwarp-wm"><code class="xref std std-option docutils literal notranslate"><span class="pre">-wm</span></code></a> is shared among all
-threads, so it is especially beneficial to increase this value when running
-<strong class="program">gdalwarp</strong> with <a class="reference internal" href="#cmdoption-gdalwarp-wo"><code class="xref std std-option docutils literal notranslate"><span class="pre">-wo</span> <span class="pre">NUM_THREADS</span></code></a> (or its equivalent
-<a class="reference internal" href="../user/configoptions.html#config-GDAL_NUM_THREADS"><code class="docutils literal notranslate"><span class="pre">GDAL_NUM_THREADS</span></code></a>) greater than 1.</p>
-<p>Increasing the I/O block cache size may also help. This can be done by
-setting the <a class="reference internal" href="../user/configoptions.html#config-GDAL_CACHEMAX"><code class="docutils literal notranslate"><span class="pre">GDAL_CACHEMAX</span></code></a> configuration like:</p>
+<h2>メモリ使用量<a class="headerlink" href="#memory-usage" title="Link to this heading"></a></h2>
+<p>RAM を追加すると, <strong class="program">gdalwarp</strong> の速度がほぼ確実に向上します. それはそれが価値があるかどうか, または速度の向上が著しいかどうかとは全く異なるものです. ディスクはプロセスの中で最も遅い部分です. デフォルトでは, <strong class="program">gdalwarp</strong> はRAM をあまり活用しません. フラグ <a class="reference internal" href="#cmdoption-gdalwarp-wm"><code class="xref std std-option docutils literal notranslate"><span class="pre">-wm</span> <span class="pre">500</span></code></a> を使用すると, 一度に 500MB のチャンクで操作されるため, デフォルトよりも良いです. <a class="reference internal" href="#cmdoption-gdalwarp-wm"><code class="xref std std-option docutils literal notranslate"><span class="pre">-wm</span></code></a> で指定されたワープメモリはすべてのスレッドで共有されるため, <a class="reference internal" href="#cmdoption-gdalwarp-wo"><code class="xref std std-option docutils literal notranslate"><span class="pre">-wo</span> <span class="pre">NUM_THREADS</span></code></a> ( <a class="reference internal" href="../user/configoptions.html#config-GDAL_NUM_THREADS"><code class="docutils literal notranslate"><span class="pre">GDAL_NUM_THREADS</span></code></a> の場合も) が 1 より大きい場合に <strong class="program">gdalwarp</strong> を実行するときにこの値を増やすと特に有益です.</p>
+<p>I/O ブロックキャッシュサイズを増やすことも役立ちます. これは, 次のように <a class="reference internal" href="../user/configoptions.html#config-GDAL_CACHEMAX"><code class="docutils literal notranslate"><span class="pre">GDAL_CACHEMAX</span></code></a> 設定を行うことで行うことができます:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdalwarp<span class="w"> </span>--config<span class="w"> </span>GDAL_CACHEMAX<span class="w"> </span><span class="m">500</span><span class="w"> </span>-wm<span class="w"> </span><span class="m">500</span><span class="w"> </span>...
 </pre></div>
 </div>
-<p>This uses 500MB of RAM for read/write caching, and 500MB of RAM for working
-buffers during the warp. Beyond that it is doubtful more memory will make a
-substantial difference.</p>
-<p>Check CPU usage while <strong class="program">gdalwarp</strong> is running. If it is substantially
-less than 100% then you know things are IO bound. Otherwise they are CPU bound.
-The <code class="docutils literal notranslate"><span class="pre">--debug</span></code> option may also provide useful information. For instance, after
-running the following:</p>
+<p>これは, 読み書きキャッシングに 500MB の RAM を使用し, ワープ中の作業バッファに 500MB の RAM を使用します. それ以上のメモリを使用しても, 大きな違いはないと疑われます.</p>
+<p><strong class="program">gdalwarp</strong> が実行中に CPU 使用率をチェックしてください. それが 100% 未満である場合, それは IO に制約されていることがわかります. それ以外の場合は CPU に制約されています. <code class="docutils literal notranslate"><span class="pre">--debug</span></code> オプションも有用な情報を提供する場合があります. たとえば, 次のように実行した後:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdalwarp<span class="w"> </span>--debug<span class="w"> </span>on<span class="w"> </span>abc.tif<span class="w"> </span>def.tif
 </pre></div>
 </div>
-<p>a message like the following will be output:</p>
+<p>次のようなメッセージが出力されます:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GDAL</span><span class="p">:</span> <span class="mi">224</span> <span class="n">block</span> <span class="n">reads</span> <span class="n">on</span> <span class="mi">32</span> <span class="n">block</span> <span class="n">band</span> <span class="mi">1</span> <span class="n">of</span> <span class="n">utm</span><span class="o">.</span><span class="n">tif</span>
 </pre></div>
 </div>
-<p>In this case it is saying that band 1 of <code class="file docutils literal notranslate"><span class="pre">utm.tif</span></code> has 32 blocks, but
-that 224 block reads were done, implying that lots of data was having to be
-re-read, presumably because of a limited IO cache. You will also see messages
-like:</p>
+<p>この場合, <code class="file docutils literal notranslate"><span class="pre">utm.tif</span></code> のバンド 1 には 32 ブロックがありますが, 224 ブロックの読み取りが行われたと言っており, 多くのデータが再読み込みされていることを示しています. おそらく, 限られた IO キャッシュのためです. また, 次のようなメッセージも表示されます:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GDAL</span><span class="p">:</span> <span class="n">GDALWarpKernel</span><span class="p">()::</span><span class="n">GWKNearestNoMasksByte</span><span class="p">()</span>
 <span class="n">Src</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">512</span><span class="n">x512</span> <span class="n">Dst</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">512</span><span class="n">x512</span>
 </pre></div>
 </div>
-<p>The Src/Dst windows show you the &quot;chunk size&quot; being used. In this case my whole
-image which is very small. If you find things are being broken into a lot of
-chunks increasing <a class="reference internal" href="#cmdoption-gdalwarp-wm"><code class="xref std std-option docutils literal notranslate"><span class="pre">-wm</span></code></a> may help somewhat.</p>
-<p>But far more important than memory are ensuring you are going through an
-optimized path in the warper. If you ever see it reporting
-<code class="docutils literal notranslate"><span class="pre">GDALWarpKernel()::GWKGeneralCase()</span></code> you know things will be relatively slow.
-Basically, the fastest situations are nearest neighbour resampling on 8bit data
-without nodata or alpha masking in effect.</p>
+<p>Src/Dst ウィンドウは使用されている &quot;チャンクサイズ&quot; を示しています. この場合, とても小さい私の全画像です. チャンクに分割されていることがわかった場合, <a class="reference internal" href="#cmdoption-gdalwarp-wm"><code class="xref std std-option docutils literal notranslate"><span class="pre">-wm</span></code></a> を増やすと多少助けになるかもしれません.</p>
+<p>メモリよりもはるかに重要なのは, ワーパーで最適化されたパスを通ることを確認することです. いつでも <code class="docutils literal notranslate"><span class="pre">GDALWarpKernel()::GWKGeneralCase()</span></code> と報告されている場合, それは比較的遅いことを知っています. 基本的に, 最速の状況は, ノードータやアルファマスキングが有効でない 8 ビットデータの最近傍補間です.</p>
 </section>
 <section id="compressed-output">
-<h2>Compressed output<a class="headerlink" href="#compressed-output" title="Link to this heading"></a></h2>
-<p>In some cases, the output of <strong class="program">gdalwarp</strong> may be much larger than the
-original, even if the same compression algorithm is used. By default,
-<strong class="program">gdalwarp</strong> operates on chunks that are not necessarily aligned with
-the boundaries of the blocks/tiles/strips of the output format, so this might
-cause repeated compression/decompression of partial blocks, leading to lost
-space in the output format.</p>
-<p>The situation can be improved by using the <code class="docutils literal notranslate"><span class="pre">OPTIMIZE_SIZE</span></code> warping option
-(<a class="reference internal" href="#cmdoption-gdalwarp-wo"><code class="xref std std-option docutils literal notranslate"><span class="pre">-wo</span> <span class="pre">OPTIMIZE_SIZE=YES</span></code></a>), but note that depending on the source and
-target projections, it might also significantly slow down the warping process.</p>
-<p>Another possibility is to use <strong class="program">gdalwarp</strong> without compression and then
-follow up with <strong class="program">gdal_translate</strong> with compression:</p>
+<h2>圧縮された出力<a class="headerlink" href="#compressed-output" title="Link to this heading"></a></h2>
+<p>場合によっては, <strong class="program">gdalwarp</strong> の出力が元のものよりもはるかに大きくなることがあります. 同じ圧縮アルゴリズムが使用されていてもです. デフォルトでは, <strong class="program">gdalwarp</strong> は出力フォーマットのブロック/タイル/ストリップの境界に必ずしも整列していないチャンクで動作するため, これにより部分ブロックの繰り返し圧縮/解凍が発生し, 出力フォーマットでのスペースが失われる可能性があります.</p>
+<p>状況は, <code class="docutils literal notranslate"><span class="pre">OPTIMIZE_SIZE</span></code> ワーピングオプション (<a class="reference internal" href="#cmdoption-gdalwarp-wo"><code class="xref std std-option docutils literal notranslate"><span class="pre">-wo</span> <span class="pre">OPTIMIZE_SIZE=YES</span></code></a>) を使用することで改善できますが, ソースとターゲットの投影によっては, ワーピングプロセスが大幅に遅くなる可能性もあることに注意してください.</p>
+<p>別の可能性は, 圧縮なしで <strong class="program">gdalwarp</strong> を使用して, 圧縮を伴う <strong class="program">gdal_translate</strong> を後に続けることです:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdalwarp<span class="w"> </span>infile<span class="w"> </span>tempfile.tif<span class="w"> </span>...options...
 gdal_translate<span class="w"> </span>tempfile.tif<span class="w"> </span>outfile.tif<span class="w"> </span>-co<span class="w"> </span><span class="nv">compress</span><span class="o">=</span>lzw<span class="w"> </span>...etc.
 </pre></div>
 </div>
-<p>Alternatively, you can use a VRT file as the output format of <strong class="program">gdalwarp</strong>. The
-VRT file is just an XML file that will be created immediately. The
-<strong class="program">gdal_translate</strong> operations will be of course a bit slower as it will do the
-real warping operation.</p>
+<p>または, <strong class="program">gdalwarp</strong> の出力フォーマットとして VRT ファイルを使用することもできます. VRT ファイルはすぐに作成されるXML ファイルです. <strong class="program">gdal_translate</strong> 操作はもちろん少し遅くなりますが, 実際のワーピング操作を行います.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdalwarp<span class="w"> </span>-of<span class="w"> </span>VRT<span class="w"> </span>infile<span class="w"> </span>tempfile.vrt<span class="w"> </span>...options...
 gdal_translate<span class="w"> </span>tempfile.vrt<span class="w"> </span>outfile.tif<span class="w"> </span>-co<span class="w"> </span><span class="nv">compress</span><span class="o">=</span>lzw<span class="w"> </span>...etc.
 </pre></div>
 </div>
 </section>
 <section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
+<h2>例<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p>Basic transformation:</p></li>
+<li><p>基本的な変換:</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdalwarp<span class="w"> </span>-t_srs<span class="w"> </span>EPSG:4326<span class="w"> </span>input.tif<span class="w"> </span>output.tif
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>For instance, an eight bit spot scene stored in GeoTIFF with
-control points mapping the corners to lat/long could be warped to a UTM
-projection with a command like this:</p></li>
+<li><p>たとえば, 四隅を緯度/経度にマッピングするコントロールポイントで保存された GeoTIFF の 8 ビットスポットシーンを, 次のようなコマンドでUTM 投影に変換できます:</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdalwarp<span class="w"> </span>-t_srs<span class="w"> </span><span class="s1">&#39;+proj=utm +zone=11 +datum=WGS84&#39;</span><span class="w"> </span>-overwrite<span class="w"> </span>raw_spot.tif<span class="w"> </span>utm11.tif
 </pre></div>
 </div>
 <ul>
-<li><p>For instance, the second channel of an ASTER image stored in HDF with
-control points mapping the corners to lat/long could be warped to a UTM
-projection with a command like this:</p>
+<li><p>たとえば, 四隅を緯度/経度にマッピングするコントロールポイントで保存された HDF の ASTER 画像の 2 番目のチャンネルを, 次のようなコマンドで UTM 投影に変換できます:</p>
 <blockquote>
 <div><div class="versionadded">
 <p><span class="versionmodified added">Added in version 2.2.</span></p>
@@ -1006,19 +756,19 @@ projection with a command like this:</p>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>To apply a cutline on a un-georeferenced image and clip from pixel (220,60) to pixel (1160,690):</p></li>
+<li><p>ジオリファレンスされていない画像にカットラインを適用し, ピクセル (220,60) からピクセル (1160,690) までクリップするには:</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdalwarp<span class="w"> </span>-overwrite<span class="w"> </span>-to<span class="w"> </span><span class="nv">SRC_METHOD</span><span class="o">=</span>NO_GEOTRANSFORM<span class="w"> </span>-to<span class="w"> </span><span class="nv">DST_METHOD</span><span class="o">=</span>NO_GEOTRANSFORM<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-te<span class="w"> </span><span class="m">220</span><span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="m">1160</span><span class="w"> </span><span class="m">690</span><span class="w"> </span>-cutline<span class="w"> </span>cutline.csv<span class="w"> </span><span class="k">in</span>.png<span class="w"> </span>out.tif
 </pre></div>
 </div>
-<p>where cutline.csv content is like:</p>
+<p>cutline.csv の内容は次のようになります:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">id</span><span class="p">,</span><span class="n">WKT</span>
 <span class="mi">1</span><span class="p">,</span><span class="s2">&quot;POLYGON((....))&quot;</span>
 </pre></div>
 </div>
 <ul>
-<li><p>To transform a DEM from geoid elevations (using EGM96) to WGS84 ellipsoidal heights:</p>
+<li><p>ジオイド標高 (EGM96 を使用) から WGS84 楕円体高に DEM を変換するには:</p>
 <blockquote>
 <div><div class="versionadded">
 <p><span class="versionmodified added">Added in version 2.2.</span></p>
@@ -1032,11 +782,11 @@ projection with a command like this:</p>
 </section>
 <section id="c-api">
 <h2>C API<a class="headerlink" href="#c-api" title="Link to this heading"></a></h2>
-<p>This utility is also callable from C with <a class="reference internal" href="../api/gdal_utils.html#_CPPv48GDALWarpPKc12GDALDatasetHiP12GDALDatasetHPK18GDALWarpAppOptionsPi" title="GDALWarp"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALWarp()</span></code></a>.</p>
+<p>このユーティリティは, <a class="reference internal" href="../api/gdal_utils.html#_CPPv48GDALWarpPKc12GDALDatasetHiP12GDALDatasetHPK18GDALWarpAppOptionsPi" title="GDALWarp"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALWarp()</span></code></a> で C からも呼び出すことができます.</p>
 </section>
 <section id="see-also">
-<h2>See also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>
-<p><a class="reference external" href="https://trac.osgeo.org/gdal/wiki/UserDocs/GdalWarp">Wiki page discussing options and behaviours of gdalwarp</a></p>
+<h2>関連項目<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://trac.osgeo.org/gdal/wiki/UserDocs/GdalWarp">gdalwarp のオプションと動作について説明する Wiki ページ</a></p>
 </section>
 </section>
 

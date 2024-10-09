@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ogrinfo &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=75499f83" />
 
   
     <link rel="shortcut icon" href="../_static/favicon.png"/>
@@ -58,10 +58,10 @@
 <li class="toctree-l2 current"><a class="reference internal" href="index.html#vector-programs">ベクタープログラム</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="vector_common_options.html">共通オプション</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">ogrinfo</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#synopsis">Synopsis</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#synopsis">概要</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#description">説明</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#c-api">C API</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#examples">例</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="ogr2ogr.html">ogr2ogr</a></li>
@@ -156,10 +156,9 @@
              
   <section id="ogrinfo">
 <span id="id1"></span><h1>ogrinfo<a class="headerlink" href="#ogrinfo" title="Link to this heading"></a></h1>
-<p>Lists information about an OGR-supported data source. With SQL statements
-it is also possible to edit data.</p>
+<p>OGR がサポートするデータソースに関する情報をリストします. SQL ステートメントを使用してデータを編集することも可能です.</p>
 <section id="synopsis">
-<span id="index-0"></span><h2>Synopsis<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
+<span id="index-0"></span><h2>概要<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ogrinfo</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="o">-</span><span class="n">general</span><span class="p">]</span>
         <span class="p">[</span><span class="o">-</span><span class="k">if</span> <span class="o">&lt;</span><span class="n">driver_name</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">json</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">ro</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">q</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">where</span> <span class="o">&lt;</span><span class="n">restricted_where</span><span class="o">&gt;|</span><span class="nd">@f</span><span class="o">&lt;</span><span class="n">ilename</span><span class="o">&gt;</span><span class="p">]</span>
         <span class="p">[</span><span class="o">-</span><span class="n">spat</span> <span class="o">&lt;</span><span class="n">xmin</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">ymin</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">xmax</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">ymax</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">geomfield</span> <span class="o">&lt;</span><span class="n">field</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">fid</span> <span class="o">&lt;</span><span class="n">fid</span><span class="o">&gt;</span><span class="p">]</span>
@@ -175,31 +174,24 @@ it is also possible to edit data.</p>
 </div>
 </section>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
-<p>The <strong class="program">ogrinfo</strong> program lists various information about an OGR-supported data
-source to stdout (the terminal). By executing SQL statements it is also possible to
-edit data.</p>
+<h2>説明<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p><strong class="program">ogrinfo</strong> プログラムは, OGR がサポートするデータソースに関するさまざまな情報を標準出力 (端末) にリストします. SQL ステートメントを実行することでデータを編集することも可能です.</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-ogrinfo-help">
 <span class="sig-name descname"><span class="pre">--help</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-ogrinfo-help" title="Link to this definition"></a></dt>
-<dd><p>Show this help message and exit</p>
+<dd><p>このヘルプメッセージを表示して終了します</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-ogrinfo-help-general">
 <span class="sig-name descname"><span class="pre">--help-general</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-ogrinfo-help-general" title="Link to this definition"></a></dt>
-<dd><p>Gives a brief usage message for the generic GDAL commandline options and exit.</p>
+<dd><p>一般的な GDAL コマンドラインオプションの使用方法についての簡単なメッセージを表示して終了します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-ogrinfo-if">
 <span class="sig-name descname"><span class="pre">-if</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;format&gt;</span></span><a class="headerlink" href="#cmdoption-ogrinfo-if" title="Link to this definition"></a></dt>
-<dd><p>Format/driver name to be attempted to open the input file(s). It is generally
-not necessary to specify it, but it can be used to skip automatic driver
-detection, when it fails to select the appropriate driver.
-This option can be repeated several times to specify several candidate drivers.
-Note that it does not force those drivers to open the dataset. In particular,
-some drivers have requirements on file extensions.</p>
+<dd><p>入力ファイルを開こうとするフォーマット/ドライバ名です. 通常は指定する必要はありませんが, 適切なドライバを選択できない場合に自動ドライバ検出をスキップするために使用できます. このオプションは複数回繰り返して複数の候補ドライバを指定することができます. これらのドライバにデータセットを開かせることは強制されません. 特に, 一部のドライバはファイル拡張子に要件を持っています.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.2.</span></p>
 </div>
@@ -208,9 +200,7 @@ some drivers have requirements on file extensions.</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-ogrinfo-json">
 <span class="sig-name descname"><span class="pre">-json</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-ogrinfo-json" title="Link to this definition"></a></dt>
-<dd><p>Display the output in json format, conforming to the
-<a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/apps/data/ogrinfo_output.schema.json">ogrinfo_output.schema.json</a>
-schema.</p>
+<dd><p>出力を JSON 形式で表示し, <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/apps/data/ogrinfo_output.schema.json">ogrinfo_output.schema.json</a>  スキーマに準拠します.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.7.</span></p>
 </div>
@@ -219,27 +209,19 @@ schema.</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-ogrinfo-ro">
 <span class="sig-name descname"><span class="pre">-ro</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-ogrinfo-ro" title="Link to this definition"></a></dt>
-<dd><p>Open the data source in read-only mode.</p>
+<dd><p>データソースを読み取り専用モードで開きます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-ogrinfo-al">
 <span class="sig-name descname"><span class="pre">-al</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-ogrinfo-al" title="Link to this definition"></a></dt>
-<dd><p>List all layers (used instead of having to give layer names
-as arguments).
-In the default text output, this also enables listing
-all features, which can be disabled with <a class="reference internal" href="#cmdoption-ogrinfo-so"><code class="xref std std-option docutils literal notranslate"><span class="pre">-so</span></code></a>.
-In JSON output, -al is implicit, but listing of features must be
-explicitly enabled with <a class="reference internal" href="#cmdoption-ogrinfo-features"><code class="xref std std-option docutils literal notranslate"><span class="pre">-features</span></code></a>.</p>
+<dd><p>すべてのレイヤーをリストします (引数としてレイヤー名を指定する代わりに使用されます). デフォルトのテキスト出力では, これによりすべての地物がリストされるため,  <a class="reference internal" href="#cmdoption-ogrinfo-so"><code class="xref std std-option docutils literal notranslate"><span class="pre">-so</span></code></a> で無効にできます. JSON 出力では, -al は暗黙的になりますが, フィーチャのリストは <a class="reference internal" href="#cmdoption-ogrinfo-features"><code class="xref std std-option docutils literal notranslate"><span class="pre">-features</span></code></a> で明示的に有効にする必要があります.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-ogrinfo-rl">
 <span class="sig-name descname"><span class="pre">-rl</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-ogrinfo-rl" title="Link to this definition"></a></dt>
-<dd><p>Enable random layer reading mode, i.e. iterate over features in the order
-they are found in the dataset, and not layer per layer. This can be
-significantly faster for some formats (for example OSM, GMLAS).
--rl cannot be used with -sql.</p>
+<dd><p>ランダムレイヤー読み取りモードを有効にします. つまり, データセットで見つかった順に 地物を反復処理し, レイヤーごとにではなくなります. これは一部のフォーマット (たとえば OSM, GMLAS) でかなり高速になります. -rl は -sql と一緒に使用できません.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 2.2.</span></p>
 </div>
@@ -248,20 +230,14 @@ significantly faster for some formats (for example OSM, GMLAS).
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-ogrinfo-so">
 <span class="sig-name descname"><span class="pre">-so</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-ogrinfo-so" title="Link to this definition"></a></dt>
-<dd><p>Summary Only: suppress listing of individual features and show only
-summary information like projection, schema, feature count and extents.
-In JSON output, -so is implicit and listing of features can be enabled
-with <a class="reference internal" href="#cmdoption-ogrinfo-features"><code class="xref std std-option docutils literal notranslate"><span class="pre">-features</span></code></a>.</p>
+<dd><p>サマリーのみ: 個々のフィーチャのリストを抑制し, 投影, スキーマ, フィーチャ数, 範囲などのサマリー情報のみを表示します. JSON 出力では, -so は暗黙的であり, 地物のリストは <a class="reference internal" href="#cmdoption-ogrinfo-features"><code class="xref std std-option docutils literal notranslate"><span class="pre">-features</span></code></a> で有効にできます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-ogrinfo-features">
 <span class="sig-name descname"><span class="pre">-features</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-ogrinfo-features" title="Link to this definition"></a></dt>
-<dd><p>Enable listing of features. This has the opposite effect of <a class="reference internal" href="#cmdoption-ogrinfo-so"><code class="xref std std-option docutils literal notranslate"><span class="pre">-so</span></code></a>.</p>
-<p>This option should be used with caution if using the library function
-<a class="reference internal" href="../api/gdal_utils.html#_CPPv414GDALVectorInfo12GDALDatasetHPK21GDALVectorInfoOptions" title="GDALVectorInfo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALVectorInfo()</span></code></a> and/or <a class="reference internal" href="#cmdoption-ogrinfo-json"><code class="xref std std-option docutils literal notranslate"><span class="pre">-json</span></code></a>, as the whole output of
-ogrinfo will be built in memory. Consequently, when used on a large
-collection of features, RAM may be exhausted.</p>
+<dd><p>地物のリストを有効にします. これは <a class="reference internal" href="#cmdoption-ogrinfo-so"><code class="xref std std-option docutils literal notranslate"><span class="pre">-so</span></code></a> の逆の効果があります.</p>
+<p>ライブラリ関数 <a class="reference internal" href="../api/gdal_utils.html#_CPPv414GDALVectorInfo12GDALDatasetHPK21GDALVectorInfoOptions" title="GDALVectorInfo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALVectorInfo()</span></code></a> および/または <a class="reference internal" href="#cmdoption-ogrinfo-json"><code class="xref std std-option docutils literal notranslate"><span class="pre">-json</span></code></a> を使用する場合は, ogrinfo の全出力がメモリに構築されるため, このオプションは注意して使用する必要があります. その結果, 大量の地物に使用すると, RAM が枯渇する可能性があります.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.7.</span></p>
 </div>
@@ -273,24 +249,20 @@ collection of features, RAM may be exhausted.</p>
 <dd><div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.9.</span></p>
 </div>
-<p>Limit the number of features per layer.</p>
+<p>レイヤーごとの地物数を制限します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-ogrinfo-q">
 <span class="sig-name descname"><span class="pre">-q</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-ogrinfo-q" title="Link to this definition"></a></dt>
-<dd><p>Quiet verbose reporting of various information, including coordinate
-system, layer schema, extents, and feature count.</p>
+<dd><p>座標系, レイヤースキーマ, 範囲, 地物数などのさまざまな情報の静かな冗長な報告.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-ogrinfo-where">
 <span class="sig-name descname"><span class="pre">-where</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;restricted_where&gt;</span></span><a class="headerlink" href="#cmdoption-ogrinfo-where" title="Link to this definition"></a></dt>
-<dd><p>An attribute query in a restricted form of the queries used in the SQL
-<cite>WHERE</cite> statement. Only features matching the attribute query will be
-reported. Starting with GDAL 2.1, the <code class="docutils literal notranslate"><span class="pre">&#64;&lt;filename&gt;</span></code> syntax can be used to
-indicate that the content is in the pointed filename.</p>
-<p>Example of <code class="docutils literal notranslate"><span class="pre">-where</span></code> and quoting:</p>
+<dd><p>SQL の <cite>WHERE</cite> ステートメントで使用されるクエリの制限された形式の属性クエリ. 属性クエリに一致する地物のみが報告されます. GDAL 2.1 以降, <code class="docutils literal notranslate"><span class="pre">&#64;&lt;filename&gt;</span></code> 構文を使用して, コンテンツが指定されたファイル名にあることを示すことができます.</p>
+<p><code class="docutils literal notranslate"><span class="pre">-where</span></code> と引用符の例:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-where<span class="w"> </span><span class="s2">&quot;\&quot;Corner Point Identifier\&quot; LIKE &#39;%__00_00&#39;&quot;</span>
 </pre></div>
 </div>
@@ -299,50 +271,37 @@ indicate that the content is in the pointed filename.</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-ogrinfo-sql">
 <span class="sig-name descname"><span class="pre">-sql</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;statement&gt;|&#64;&lt;filename&gt;</span></span><a class="headerlink" href="#cmdoption-ogrinfo-sql" title="Link to this definition"></a></dt>
-<dd><p>Execute the indicated SQL statement and return the result. Starting with
-GDAL 2.1, the <code class="docutils literal notranslate"><span class="pre">&#64;&lt;filename&gt;</span></code> syntax can be used to indicate that the content is
-in the pointed filename (e.g <code class="docutils literal notranslate"><span class="pre">&#64;my_select.txt</span></code> where my_select.txt is a file
-in the current directory). Data can also be edited with SQL INSERT, UPDATE,
-DELETE, DROP TABLE, ALTER TABLE etc. Editing capabilities depend on the selected
-dialect with <a class="reference internal" href="#cmdoption-ogrinfo-dialect"><code class="xref std std-option docutils literal notranslate"><span class="pre">-dialect</span></code></a>.</p>
+<dd><p>指定された SQL ステートメントを実行して結果を返します. GDAL 2.1 以降, <code class="docutils literal notranslate"><span class="pre">&#64;&lt;filename&gt;</span></code> 構文を使用して, コンテンツが指定されたファイル名にあることを示すことができます (たとえば, <code class="docutils literal notranslate"><span class="pre">&#64;my_select.txt</span></code> で my_select.txt が現在のディレクトリにあるファイルです). データは SQL INSERT, UPDATE, DELETE, DROP TABLE, ALTER TABLE などで編集することもできます. 編集機能は, <a class="reference internal" href="#cmdoption-ogrinfo-dialect"><code class="xref std std-option docutils literal notranslate"><span class="pre">-dialect</span></code></a> で選択された方言に依存します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-ogrinfo-dialect">
 <span class="sig-name descname"><span class="pre">-dialect</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;dialect&gt;</span></span><a class="headerlink" href="#cmdoption-ogrinfo-dialect" title="Link to this definition"></a></dt>
-<dd><p>SQL dialect. In some cases can be used to use (unoptimized) <a class="reference internal" href="../user/ogr_sql_dialect.html#ogr-sql-dialect"><span class="std std-ref">OGR SQL 方言</span></a> instead
-of the native SQL of an RDBMS by passing the <code class="docutils literal notranslate"><span class="pre">OGRSQL</span></code> dialect value.
-The <a class="reference internal" href="../user/sql_sqlite_dialect.html#sql-sqlite-dialect"><span class="std std-ref">SQL SQLite方言</span></a> can be selected with the <code class="docutils literal notranslate"><span class="pre">SQLITE</span></code>
-and <code class="docutils literal notranslate"><span class="pre">INDIRECT_SQLITE</span></code> dialect values, and this can be used with any datasource.</p>
+<dd><p>SQL 方言. 一部の場合には, ネイティブ SQL ではなく (最適化されていない) <a class="reference internal" href="../user/ogr_sql_dialect.html#ogr-sql-dialect"><span class="std std-ref">OGR SQL 方言</span></a> を使用するために, <code class="docutils literal notranslate"><span class="pre">OGRSQL</span></code> 方言値を渡すことができます. <a class="reference internal" href="../user/sql_sqlite_dialect.html#sql-sqlite-dialect"><span class="std std-ref">SQL SQLite方言</span></a> は <code class="docutils literal notranslate"><span class="pre">SQLITE</span></code> および <code class="docutils literal notranslate"><span class="pre">INDIRECT_SQLITE</span></code> 方言値で選択でき, これは任意のデータソースで使用できます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-ogrinfo-spat">
 <span class="sig-name descname"><span class="pre">-spat</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;xmin&gt;</span> <span class="pre">&lt;ymin&gt;</span> <span class="pre">&lt;xmax&gt;</span> <span class="pre">&lt;ymax&gt;</span></span><a class="headerlink" href="#cmdoption-ogrinfo-spat" title="Link to this definition"></a></dt>
-<dd><p>The area of interest. Only features within the rectangle will be reported.</p>
+<dd><p>興味のある領域. 長方形内の地物のみが報告されます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-ogrinfo-geomfield">
 <span class="sig-name descname"><span class="pre">-geomfield</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;field&gt;</span></span><a class="headerlink" href="#cmdoption-ogrinfo-geomfield" title="Link to this definition"></a></dt>
-<dd><p>Name of the geometry field on which the spatial filter operates.</p>
+<dd><p>空間フィルタが作用するジオメトリフィールドの名前.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-ogrinfo-fid">
 <span class="sig-name descname"><span class="pre">-fid</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;fid&gt;</span></span><a class="headerlink" href="#cmdoption-ogrinfo-fid" title="Link to this definition"></a></dt>
-<dd><p>If provided, only the feature with this feature id will be reported.
-Operates exclusive of the spatial or attribute queries. Note: if you want
-to select several features based on their feature id, you can also use the
-fact the 'fid' is a special field recognized by OGR SQL. So, <cite>-where &quot;fid in (1,3,5)&quot;</cite>
-would select features 1, 3 and 5.</p>
+<dd><p>指定された場合, このフィーチャ ID のフィーチャのみが報告されます. 空間または属性クエリと排他的に作用します. 注: フィーチャ ID に基づいて複数のフィーチャを選択したい場合は, OGR SQL によって認識される特別なフィールドである 'fid' があることを利用することもできます. したがって, <cite>-where &quot;fid in (1,3,5)&quot;</cite> はフィーチャ 1, 3, 5 を選択します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-ogrinfo-fields">
 <span class="sig-name descname"><span class="pre">-fields</span></span><span class="sig-prename descclassname"><span class="pre">=YES|NO</span></span><a class="headerlink" href="#cmdoption-ogrinfo-fields" title="Link to this definition"></a></dt>
-<dd><p>If set to <code class="docutils literal notranslate"><span class="pre">NO</span></code>, the feature dump will not display field values. Default value
-is <code class="docutils literal notranslate"><span class="pre">YES</span></code>.</p>
+<dd><p><code class="docutils literal notranslate"><span class="pre">NO</span></code> に設定されている場合, フィーチャダンプはフィールド値を表示しません. デフォルト値は <code class="docutils literal notranslate"><span class="pre">YES</span></code> です.</p>
 </dd></dl>
 
 <dl class="std option">
@@ -351,56 +310,49 @@ is <code class="docutils literal notranslate"><span class="pre">YES</span></code
 <dd><div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.3.</span></p>
 </div>
-<p>Display details about a field domain.</p>
+<p>フィールドドメインに関する詳細を表示します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-ogrinfo-geom">
 <span class="sig-name descname"><span class="pre">-geom</span></span><span class="sig-prename descclassname"><span class="pre">=YES|NO|SUMMARY|WKT|ISO_WKT</span></span><a class="headerlink" href="#cmdoption-ogrinfo-geom" title="Link to this definition"></a></dt>
-<dd><p>If set to <code class="docutils literal notranslate"><span class="pre">NO</span></code>, the feature dump will not display the geometry. If set to
-<code class="docutils literal notranslate"><span class="pre">SUMMARY</span></code>, only a summary of the geometry will be displayed. If set to
-<code class="docutils literal notranslate"><span class="pre">YES</span></code> or <code class="docutils literal notranslate"><span class="pre">ISO_WKT</span></code>, the geometry will be reported in full OGC WKT format.
-If set to <code class="docutils literal notranslate"><span class="pre">WKT</span></code> the geometry will be reported in legacy <code class="docutils literal notranslate"><span class="pre">WKT</span></code>. Default
-value is <code class="docutils literal notranslate"><span class="pre">YES</span></code>. (WKT and <code class="docutils literal notranslate"><span class="pre">ISO_WKT</span></code> are available starting with GDAL 2.1,
-which also changes the default to ISO_WKT)</p>
+<dd><p><code class="docutils literal notranslate"><span class="pre">NO</span></code> に設定されている場合, フィーチャダンプはジオメトリを表示しません. <code class="docutils literal notranslate"><span class="pre">SUMMARY</span></code> に設定されている場合, ジオメトリのサマリーのみが表示されます. <code class="docutils literal notranslate"><span class="pre">YES</span></code> または <code class="docutils literal notranslate"><span class="pre">ISO_WKT</span></code> に設定されている場合, ジオメトリは完全な OGC WKT 形式で報告されます. <code class="docutils literal notranslate"><span class="pre">WKT</span></code> に設定されている場合, ジオメトリはレガシー <code class="docutils literal notranslate"><span class="pre">WKT</span></code> で報告されます. デフォルト値は <code class="docutils literal notranslate"><span class="pre">YES</span></code> です. (WKT および <code class="docutils literal notranslate"><span class="pre">ISO_WKT</span></code> は GDAL 2.1 から利用可能であり, デフォルトも ISO_WKT に変更されます)</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-ogrinfo-oo">
 <span class="sig-name descname"><span class="pre">-oo</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></span><a class="headerlink" href="#cmdoption-ogrinfo-oo" title="Link to this definition"></a></dt>
-<dd><p>Dataset open option (format-specific)</p>
+<dd><p>データセットオープンオプション (フォーマット固有)</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-ogrinfo-nomd">
 <span class="sig-name descname"><span class="pre">-nomd</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-ogrinfo-nomd" title="Link to this definition"></a></dt>
-<dd><p>Suppress metadata printing. Some datasets may contain a lot of metadata
-strings.</p>
+<dd><p>メタデータの印刷を抑制します. 一部のデータセットには多くのメタデータ文字列が含まれている場合があります.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-ogrinfo-listmdd">
 <span class="sig-name descname"><span class="pre">-listmdd</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-ogrinfo-listmdd" title="Link to this definition"></a></dt>
-<dd><p>List all metadata domains available for the dataset.</p>
+<dd><p>データセットで利用可能なすべてのメタデータドメインをリストします.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-ogrinfo-mdd">
 <span class="sig-name descname"><span class="pre">-mdd</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;domain&gt;</span></span><a class="headerlink" href="#cmdoption-ogrinfo-mdd" title="Link to this definition"></a></dt>
-<dd><p>Report metadata for the specified domain. <code class="docutils literal notranslate"><span class="pre">all</span></code> can be used to report
-metadata in all domains.</p>
+<dd><p>指定されたドメインのメタデータを報告します. <code class="docutils literal notranslate"><span class="pre">all</span></code> を使用してすべてのドメインのメタデータを報告できます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-ogrinfo-nocount">
 <span class="sig-name descname"><span class="pre">-nocount</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-ogrinfo-nocount" title="Link to this definition"></a></dt>
-<dd><p>Suppress feature count printing.</p>
+<dd><p>地物数の出力を抑制します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-ogrinfo-noextent">
 <span class="sig-name descname"><span class="pre">-noextent</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-ogrinfo-noextent" title="Link to this definition"></a></dt>
-<dd><p>Suppress spatial extent printing.</p>
+<dd><p>空間範囲の出力を抑制します.</p>
 </dd></dl>
 
 <dl class="std option">
@@ -409,15 +361,13 @@ metadata in all domains.</p>
 <dd><div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.9.</span></p>
 </div>
-<p>Request a 3D extent to be reported (the default is 2D only). Note that this
-operation might be slower than requesting the 2D extent, depending on format
-and driver capabilities.</p>
+<p>報告される 3D 範囲をリクエストします (デフォルトは 2D のみ). フォーマットとドライバの機能によっては, この操作が 2D 範囲をリクエストするよりも遅くなる可能性があります.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-ogrinfo-nogeomtype">
 <span class="sig-name descname"><span class="pre">-nogeomtype</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-ogrinfo-nogeomtype" title="Link to this definition"></a></dt>
-<dd><p>Suppress layer geometry type printing.</p>
+<dd><p>レイヤーのジオメトリタイプの出力を抑制します.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.1.</span></p>
 </div>
@@ -426,33 +376,23 @@ and driver capabilities.</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-ogrinfo-formats">
 <span class="sig-name descname"><span class="pre">--formats</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-ogrinfo-formats" title="Link to this definition"></a></dt>
-<dd><p>List all vector formats supported by this GDAL build (read-only and
-read-write) and exit. The format support is indicated as follows:</p>
+<dd><p>この GDAL ビルドでサポートされているすべてのベクトルフォーマット (読み取り専用および読み書き) をリストして終了します. フォーマットサポートは次のように示されます:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">ro</span></code> is read-only driver</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">rw</span></code> is read or write (i.e. supports <a class="reference internal" href="../api/gdaldriver_cpp.html#_CPPv4N10GDALDriver10CreateCopyEPKcP11GDALDataseti12CSLConstList16GDALProgressFuncPv" title="GDALDriver::CreateCopy"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::CreateCopy()</span></code></a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">rw+</span></code> is read, write and update (i.e. supports <a class="reference internal" href="../api/gdaldriver_cpp.html#_CPPv4N10GDALDriver6CreateEPKciii12GDALDataType12CSLConstList" title="GDALDriver::Create"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::Create()</span></code></a>)</p></li>
-<li><p>A <code class="docutils literal notranslate"><span class="pre">v</span></code> is appended for formats supporting virtual IO (<code class="docutils literal notranslate"><span class="pre">/vsimem</span></code>, <code class="docutils literal notranslate"><span class="pre">/vsigzip</span></code>, <code class="docutils literal notranslate"><span class="pre">/vsizip</span></code>, etc).</p></li>
-<li><p>A <code class="docutils literal notranslate"><span class="pre">s</span></code> is appended for formats supporting subdatasets.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ro</span></code> は読み取り専用ドライバです</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rw</span></code> は読み取りまたは書き込み (つまり, <a class="reference internal" href="../api/gdaldriver_cpp.html#_CPPv4N10GDALDriver10CreateCopyEPKcP11GDALDataseti12CSLConstList16GDALProgressFuncPv" title="GDALDriver::CreateCopy"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::CreateCopy()</span></code></a> をサポート)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rw+</span></code> は読み取り, 書き込み, 更新 (つまり, <a class="reference internal" href="../api/gdaldriver_cpp.html#_CPPv4N10GDALDriver6CreateEPKciii12GDALDataType12CSLConstList" title="GDALDriver::Create"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALDriver::Create()</span></code></a> をサポート)</p></li>
+<li><p>A <code class="docutils literal notranslate"><span class="pre">v</span></code> は仮想 IO (<code class="docutils literal notranslate"><span class="pre">/vsimem</span></code>, <code class="docutils literal notranslate"><span class="pre">/vsigzip</span></code>, <code class="docutils literal notranslate"><span class="pre">/vsizip</span></code> など) をサポートするフォーマットに追加されます.</p></li>
+<li><p>A <code class="docutils literal notranslate"><span class="pre">s</span></code> はサブデータセットをサポートするフォーマットに追加されます.</p></li>
 </ul>
-<p>The order in which drivers are listed is the one in which they are registered,
-which determines the order in which they are successively probed when opening
-a dataset. Most of the time, this order does not matter, but in some situations,
-several drivers may recognize the same file. The <code class="docutils literal notranslate"><span class="pre">-if</span></code> option of some utilities
-can be specified to restrict opening the dataset with a subset of drivers (generally one).
-Note that it does not force those drivers to open the dataset. In particular,
-some drivers have requirements on file extensions.
-Alternatively, the <a class="reference internal" href="../user/configoptions.html#config-GDAL_SKIP"><code class="docutils literal notranslate"><span class="pre">GDAL_SKIP</span></code></a> configuration option can also be used
-to exclude one or several drivers.</p>
+<p>ドライバがリストされる順序は, データセットを開くときに連続的に調査される順序を決定する登録された順序です. ほとんどの場合, この順序は重要ではありませんが, いくつかの状況では, 複数のドライバが同じファイルを認識することがあります. 一部のユーティリティの <code class="docutils literal notranslate"><span class="pre">-if</span></code> オプションを使用して, データセットをドライバのサブセット (通常は 1 つ) で開くように制限できます. これらのドライバにデータセットを開かせることは強制されません. 特に, 一部のドライバはファイル拡張子に要件を持っています. 代わりに, <a class="reference internal" href="../user/configoptions.html#config-GDAL_SKIP"><code class="docutils literal notranslate"><span class="pre">GDAL_SKIP</span></code></a> 構成オプションを使用して, 1 つまたは複数のドライバを除外することもできます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-ogrinfo-wkt_format">
 <span class="sig-name descname"><span class="pre">-wkt_format</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;format&gt;</span></span><a class="headerlink" href="#cmdoption-ogrinfo-wkt_format" title="Link to this definition"></a></dt>
-<dd><p>The WKT format used to display the SRS.
-Currently supported values for the <code class="docutils literal notranslate"><span class="pre">format</span></code> are:</p>
+<dd><p>SRS を表示するために使用される WKT 形式. 現在サポートされている <code class="docutils literal notranslate"><span class="pre">format</span></code> の値は次のとおりです:</p>
 <p><code class="docutils literal notranslate"><span class="pre">WKT1</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">WKT2</span></code> (latest WKT version, currently <em>WKT2_2018</em>)</p>
+<p><code class="docutils literal notranslate"><span class="pre">WKT2</span></code> (最新の WKT バージョン, 現在 <em>WKT2_2018</em> です)</p>
 <p><code class="docutils literal notranslate"><span class="pre">WKT2_2015</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">WKT2_2018</span></code></p>
 <div class="versionadded">
@@ -463,33 +403,27 @@ Currently supported values for the <code class="docutils literal notranslate"><s
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-ogrinfo-arg-datasource_name">
 <span class="sig-name descname"><span class="pre">&lt;datasource_name&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-ogrinfo-arg-datasource_name" title="Link to this definition"></a></dt>
-<dd><p>The data source to open. May be a filename, directory or other virtual
-name. See the OGR Vector Formats list for supported datasources.</p>
+<dd><p>開くデータソース. ファイル名, ディレクトリ, または他の仮想名にすることができます. サポートされているデータソースについては, OGR ベクトルフォーマットリストを参照してください.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-ogrinfo-arg-layer">
 <span class="sig-name descname"><span class="pre">&lt;layer&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-ogrinfo-arg-layer" title="Link to this definition"></a></dt>
-<dd><p>One or more layer names may be reported.  If no layer names are passed then
-ogrinfo will report a list of available layers (and their layer wide
-geometry type). If layer name(s) are given then their extents, coordinate
-system, feature count, geometry type, schema and all features matching
-query parameters will be reported to the terminal. If no query parameters
-are provided, all features are reported.</p>
+<dd><p>1 つ以上のレイヤー名が報告される場合があります. レイヤー名が渡されない場合, ogrinfo は利用可能なレイヤーのリスト (およびレイヤー全体のジオメトリタイプ) を報告します. レイヤー名が指定されている場合, その範囲, 座標系, 地物数, ジオメトリタイプ, スキーマ, およびクエリパラメータに一致するすべての地物が端末に報告されます. クエリパラメータが提供されていない場合, すべての地物が報告されます.</p>
 </dd></dl>
 
-<p>Geometries are reported in OGC WKT format.</p>
+<p>ジオメトリは OGC WKT 形式で報告されます.</p>
 </section>
 <section id="c-api">
 <h2>C API<a class="headerlink" href="#c-api" title="Link to this heading"></a></h2>
-<p>This utility is also callable from C with <a class="reference internal" href="../api/gdal_utils.html#_CPPv414GDALVectorInfo12GDALDatasetHPK21GDALVectorInfoOptions" title="GDALVectorInfo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALVectorInfo()</span></code></a>.</p>
+<p>このユーティリティは <a class="reference internal" href="../api/gdal_utils.html#_CPPv414GDALVectorInfo12GDALDatasetHPK21GDALVectorInfoOptions" title="GDALVectorInfo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALVectorInfo()</span></code></a> を使用して C からも呼び出すことができます.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.7.</span></p>
 </div>
 </section>
 <section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
-<p>Example of reporting the names of the layers in a NTF file:</p>
+<h2>例<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
+<p>NTF ファイルのレイヤー名を報告する例:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ogrinfo wrk/SHETLAND_ISLANDS.NTF
 
 INFO: Open of `wrk/SHETLAND_ISLANDS.NTF&#39;
@@ -500,7 +434,7 @@ using driver `UK .NTF&#39; successful.
 4: FEATURE_CLASSES (None)
 </pre></div>
 </div>
-<p>Example of retrieving a summary (<code class="docutils literal notranslate"><span class="pre">-so</span></code>) of a layer without showing details about every single feature:</p>
+<p>各個別地物の詳細を表示しないでレイヤーのサマリー  (<code class="docutils literal notranslate"><span class="pre">-so</span></code>)  を取得する例:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ogrinfo \
   -so \
   natural_earth_vector.gpkg \
@@ -531,7 +465,7 @@ using driver `UK .NTF&#39; successful.
   featurecla: String (50.0)
 </pre></div>
 </div>
-<p>Example of retrieving information on a file in JSON format without showing details about every single feature:</p>
+<p>各個別地物の詳細を表示せずに JSON 形式でファイルの情報を取得する例:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ogrinfo</span> <span class="o">-</span><span class="n">json</span> <span class="n">poly</span><span class="o">.</span><span class="n">shp</span>
 </pre></div>
 </div>
@@ -730,8 +664,7 @@ using driver `UK .NTF&#39; successful.
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Example of using -q and an attribute query, to restrict the output to
-certain features in a layer:</p>
+<p>-q と属性クエリを使用して, レイヤー内の特定の地物に出力を制限する例:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogrinfo<span class="w"> </span>-q<span class="w"> </span>-ro<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-where<span class="w"> </span><span class="s1">&#39;GLOBAL_LINK_ID=185878&#39;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>wrk/SHETLAND_ISLANDS.NTF<span class="w"> </span>BL2000_LINK
@@ -746,16 +679,15 @@ OGRFeature<span class="o">(</span>BL2000_LINK<span class="o">)</span>:2
 <span class="w">  </span>LINESTRING<span class="w"> </span><span class="o">(</span><span class="m">419832</span>.100<span class="w"> </span><span class="m">1069046</span>.300,419820.100<span class="w"> </span><span class="m">1069043</span>.800,...
 </pre></div>
 </div>
-<p>Example of updating a value of an attribute in a shapefile with SQL by using the SQLite dialect:</p>
+<p>SQLite 方言を使用して SQL でシェープファイルの属性の値を更新する例:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogrinfo<span class="w"> </span>test.shp<span class="w"> </span>-dialect<span class="w"> </span>sqlite<span class="w"> </span>-sql<span class="w"> </span><span class="s2">&quot;update test set attr=&#39;bar&#39; where attr=&#39;foo&#39;&quot;</span>
 </pre></div>
 </div>
-<p>Adding a column to an input file:</p>
+<p>入力ファイルに列を追加する:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogrinfo<span class="w"> </span>input.shp<span class="w"> </span>-sql<span class="w"> </span><span class="s2">&quot;ALTER TABLE input ADD fieldX float&quot;</span>
 </pre></div>
 </div>
-<p>Sometimes there is no input file involved in a calculation. In such cases one may
-use the <code class="docutils literal notranslate"><span class="pre">:memory:</span></code> input file which is a in-memory empty SQLite file (and the SQLite SQL dialect will be implicitly used).</p>
+<p>計算に入力ファイルが関与していない場合があります. そのような場合には, 空のメモリ内 SQLite ファイルである <code class="docutils literal notranslate"><span class="pre">:memory:</span></code> 入力ファイルを使用できます (および SQLite SQL 方言が暗黙的に使用されます).</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogrinfo<span class="w"> </span>:memory:<span class="w"> </span>-sql<span class="w"> </span><span class="s2">&quot;SELECT ST_Buffer(ST_GeomFromText(&#39;POINT(0 0)&#39;), 1)&quot;</span>
 </pre></div>
 </div>

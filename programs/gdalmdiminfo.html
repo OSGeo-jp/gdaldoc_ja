@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>gdalmdiminfo &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=75499f83" />
 
   
     <link rel="shortcut icon" href="../_static/favicon.png"/>
@@ -56,10 +56,10 @@
 <li class="toctree-l2"><a class="reference internal" href="index.html#raster-programs">ラスタープログラム</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html#multidimensional-raster-programs">多次元ラスタープログラム</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">gdalmdiminfo</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#synopsis">Synopsis</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#synopsis">概要</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#description">説明</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#c-api">C API</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#examples">例</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="gdalmdimtranslate.html">gdalmdimtranslate</a></li>
@@ -154,9 +154,9 @@
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.1.</span></p>
 </div>
-<p>Reports structure and content of a multidimensional dataset.</p>
+<p>多次元データセットの構造と内容を報告します.</p>
 <section id="synopsis">
-<span id="index-0"></span><h2>Synopsis<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
+<span id="index-0"></span><h2>概要<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdalmdiminfo</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="o">-</span><span class="n">general</span><span class="p">]</span>
              <span class="p">[</span><span class="o">-</span><span class="n">oo</span> <span class="o">&lt;</span><span class="n">NAME</span><span class="o">&gt;=&lt;</span><span class="n">VALUE</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span> <span class="p">[</span><span class="o">-</span><span class="n">arrayoption</span> <span class="o">&lt;</span><span class="n">NAME</span><span class="o">&gt;=&lt;</span><span class="n">VALUE</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span>
              <span class="p">[</span><span class="o">-</span><span class="n">detailed</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">nopretty</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">array</span> <span class="o">&lt;</span><span class="n">array_name</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">limit</span> <span class="o">&lt;</span><span class="n">number</span><span class="o">&gt;</span><span class="p">]</span>
@@ -165,69 +165,61 @@
 </div>
 </section>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
-<p><strong class="program">gdalmdiminfo</strong> program lists various information about a GDAL supported
-multidimensional raster dataset as JSON output. It follows the
-following <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/data/gdalmdiminfo_output.schema.json">JSON schema</a></p>
-<p>The following command line parameters can appear in any order</p>
+<h2>説明<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p><strong class="program">gdalmdiminfo</strong> プログラムは, GDAL がサポートする多次元ラスターデータセットについてのさまざまな情報を JSON 出力でリストします. 以下の <a class="reference external" href="https://github.com/OSGeo/gdal/blob/master/data/gdalmdiminfo_output.schema.json">JSON スキーマ</a> に従います.</p>
+<p>以下のコマンドラインパラメータは任意の順序で現れることができます</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalmdiminfo-help">
 <span class="sig-name descname"><span class="pre">--help</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalmdiminfo-help" title="Link to this definition"></a></dt>
-<dd><p>Show this help message and exit</p>
+<dd><p>このヘルプメッセージを表示して終了します</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalmdiminfo-help-general">
 <span class="sig-name descname"><span class="pre">--help-general</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalmdiminfo-help-general" title="Link to this definition"></a></dt>
-<dd><p>Gives a brief usage message for the generic GDAL commandline options and exit.</p>
+<dd><p>一般的な GDAL コマンドラインオプションの使用方法の簡単なメッセージを表示して終了します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalmdiminfo-detailed">
 <span class="sig-name descname"><span class="pre">-detailed</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalmdiminfo-detailed" title="Link to this definition"></a></dt>
-<dd><p>Most verbose output. Report attribute data types and array values.</p>
+<dd><p>大多数の冗長な出力. 属性データ型と配列値を報告します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalmdiminfo-nopretty">
 <span class="sig-name descname"><span class="pre">-nopretty</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalmdiminfo-nopretty" title="Link to this definition"></a></dt>
-<dd><p>Outputs on a single line without any indentation.</p>
+<dd><p>インデントなしで 1 行に出力します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalmdiminfo-array">
 <span class="sig-name descname"><span class="pre">-array</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;array_name&gt;</span></span><a class="headerlink" href="#cmdoption-gdalmdiminfo-array" title="Link to this definition"></a></dt>
-<dd><p>Name of the array used to restrict the output to the specified array.</p>
+<dd><p>出力を指定された配列に制限するために使用される配列の名前.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalmdiminfo-limit">
 <span class="sig-name descname"><span class="pre">-limit</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;number&gt;</span></span><a class="headerlink" href="#cmdoption-gdalmdiminfo-limit" title="Link to this definition"></a></dt>
-<dd><p>Number of values in each dimension that is used to limit the display of
-array values. By default, unlimited. Only taken into account if used with
--detailed.</p>
+<dd><p>各次元の値の数. 配列値の表示を制限するために使用されます. デフォルトでは無制限です. -detailed と一緒に使用された場合のみ考慮されます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalmdiminfo-oo">
 <span class="sig-name descname"><span class="pre">-oo</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></span><a class="headerlink" href="#cmdoption-gdalmdiminfo-oo" title="Link to this definition"></a></dt>
-<dd><p>Dataset open option (format specific).
-This option may be used several times.</p>
+<dd><p>データセットオープンオプション (フォーマット固有). このオプションは複数回使用できます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalmdiminfo-arrayoption">
 <span class="sig-name descname"><span class="pre">-arrayoption</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></span><a class="headerlink" href="#cmdoption-gdalmdiminfo-arrayoption" title="Link to this definition"></a></dt>
-<dd><p>Option passed to <a class="reference internal" href="../api/gdalgroup_cpp.html#_CPPv4NK9GDALGroup15GetMDArrayNamesE12CSLConstList" title="GDALGroup::GetMDArrayNames"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALGroup::GetMDArrayNames()</span></code></a> to filter reported
-arrays. Such option is format specific. Consult driver documentation.
-This option may be used several times.</p>
+<dd><p>報告される配列をフィルタリングするために <a class="reference internal" href="../api/gdalgroup_cpp.html#_CPPv4NK9GDALGroup15GetMDArrayNamesE12CSLConstList" title="GDALGroup::GetMDArrayNames"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALGroup::GetMDArrayNames()</span></code></a> に渡されるオプション. このようなオプションはフォーマット固有です. ドライバのドキュメントを参照してください. このオプションは複数回使用できます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalmdiminfo-stats">
 <span class="sig-name descname"><span class="pre">-stats</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalmdiminfo-stats" title="Link to this definition"></a></dt>
-<dd><p>Read and display image statistics. Force computation if no
-statistics are stored in an image.</p>
+<dd><p>画像統計を読み込んで表示します. 画像に統計が保存されていない場合は計算を強制します.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.2.</span></p>
 </div>
@@ -236,12 +228,7 @@ statistics are stored in an image.</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalmdiminfo-if">
 <span class="sig-name descname"><span class="pre">-if</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;format&gt;</span></span><a class="headerlink" href="#cmdoption-gdalmdiminfo-if" title="Link to this definition"></a></dt>
-<dd><p>Format/driver name to be attempted to open the input file(s). It is generally
-not necessary to specify it, but it can be used to skip automatic driver
-detection, when it fails to select the appropriate driver.
-This option can be repeated several times to specify several candidate drivers.
-Note that it does not force those drivers to open the dataset. In particular,
-some drivers have requirements on file extensions.</p>
+<dd><p>入力ファイルを開こうとするフォーマット/ドライバ名. 通常は指定する必要はありませんが, 適切なドライバを選択できない場合に自動ドライバ検出をスキップするために使用できます. このオプションは複数回繰り返すことができ, 複数の候補ドライバを指定するために使用できます. これらのドライバをデータセットを開くように強制するわけではないことに注意してください. 特に, 一部のドライバはファイル拡張子に要件を持っています.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.2.</span></p>
 </div>
@@ -250,12 +237,12 @@ some drivers have requirements on file extensions.</p>
 </section>
 <section id="c-api">
 <h2>C API<a class="headerlink" href="#c-api" title="Link to this heading"></a></h2>
-<p>This utility is also callable from C with <a class="reference internal" href="../api/gdal_utils.html#_CPPv416GDALMultiDimInfo12GDALDatasetHPK23GDALMultiDimInfoOptions" title="GDALMultiDimInfo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMultiDimInfo()</span></code></a>.</p>
+<p>このユーティリティは <a class="reference internal" href="../api/gdal_utils.html#_CPPv416GDALMultiDimInfo12GDALDatasetHPK23GDALMultiDimInfoOptions" title="GDALMultiDimInfo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMultiDimInfo()</span></code></a> を使用して C からも呼び出すことができます.</p>
 </section>
 <section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
+<h2>例<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p>Display general structure1</p></li>
+<li><p>一般的な構造1を表示</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ gdalmdiminfo netcdf-4d.nc
 </pre></div>
@@ -362,7 +349,7 @@ some drivers have requirements on file extensions.</p>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Display detailed information about a given array</p></li>
+<li><p>指定された配列に関する詳細情報を表示</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ gdalmdiminfo netcdf-4d.nc -array t -detailed -limit 3
 </pre></div>

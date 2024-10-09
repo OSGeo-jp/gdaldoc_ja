@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>gdalmdimtranslate &mdash; GDAL  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=e152ac3b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=75499f83" />
 
   
     <link rel="shortcut icon" href="../_static/favicon.png"/>
@@ -57,10 +57,10 @@
 <li class="toctree-l2 current"><a class="reference internal" href="index.html#multidimensional-raster-programs">多次元ラスタープログラム</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="gdalmdiminfo.html">gdalmdiminfo</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">gdalmdimtranslate</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#synopsis">Synopsis</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#synopsis">概要</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#description">説明</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#c-api">C API</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#examples">例</a></li>
 </ul>
 </li>
 </ul>
@@ -154,9 +154,9 @@
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.1.</span></p>
 </div>
-<p>Converts multidimensional data between different formats, and perform subsetting.</p>
+<p>異なる形式間で多次元データを変換し, サブセットを実行します.</p>
 <section id="synopsis">
-<span id="index-0"></span><h2>Synopsis<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
+<span id="index-0"></span><h2>概要<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdalmdimtranslate</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span><span class="o">-</span><span class="n">general</span><span class="p">]</span>
                   <span class="p">[</span><span class="o">-</span><span class="k">if</span> <span class="o">&lt;</span><span class="nb">format</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span> <span class="p">[</span><span class="o">-</span><span class="n">of</span> <span class="o">&lt;</span><span class="nb">format</span><span class="o">&gt;</span><span class="p">]</span>
                   <span class="p">[</span><span class="o">-</span><span class="n">co</span> <span class="o">&lt;</span><span class="n">NAME</span><span class="o">&gt;=&lt;</span><span class="n">VALUE</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span>
@@ -172,32 +172,25 @@
 </div>
 </section>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
-<p><strong class="program">gdalmdimtranslate</strong> program converts multidimensional raster between
-different formats, and/or can perform selective conversion of specific arrays
-and groups, and/or subsetting operations.</p>
-<p>The following command line parameters can appear in any order.</p>
+<h2>説明<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<p><strong class="program">gdalmdimtranslate</strong> プログラムは, 異なる形式間で多次元ラスターを変換し, 特定の配列やグループの選択的な変換, および/またはサブセット操作を実行できます.</p>
+<p>以下のコマンドラインパラメータは任意の順序で現れることができます.</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalmdimtranslate-help">
 <span class="sig-name descname"><span class="pre">--help</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalmdimtranslate-help" title="Link to this definition"></a></dt>
-<dd><p>Show this help message and exit</p>
+<dd><p>このヘルプメッセージを表示して終了します</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalmdimtranslate-help-general">
 <span class="sig-name descname"><span class="pre">--help-general</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalmdimtranslate-help-general" title="Link to this definition"></a></dt>
-<dd><p>Gives a brief usage message for the generic GDAL commandline options and exit.</p>
+<dd><p>一般的な GDAL コマンドラインオプションの使用方法の簡単なメッセージを表示して終了します.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalmdimtranslate-if">
 <span class="sig-name descname"><span class="pre">-if</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;format&gt;</span></span><a class="headerlink" href="#cmdoption-gdalmdimtranslate-if" title="Link to this definition"></a></dt>
-<dd><p>Format/driver name to be attempted to open the input file(s). It is generally
-not necessary to specify it, but it can be used to skip automatic driver
-detection, when it fails to select the appropriate driver.
-This option can be repeated several times to specify several candidate drivers.
-Note that it does not force those drivers to open the dataset. In particular,
-some drivers have requirements on file extensions.</p>
+<dd><p>入力ファイルを開こうとするフォーマット/ドライバ名です. 通常は指定する必要はありませんが, 適切なドライバを選択できない場合に自動ドライバ検出をスキップするために使用できます. このオプションは複数回繰り返すことができ, 複数の候補ドライバを指定することができます. これらのドライバにデータセットを開かせるわけではないことに注意してください. 特に, 一部のドライバはファイル拡張子に要件を持っています.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.2.</span></p>
 </div>
@@ -206,52 +199,33 @@ some drivers have requirements on file extensions.</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalmdimtranslate-of">
 <span class="sig-name descname"><span class="pre">-of</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;format&gt;</span></span><a class="headerlink" href="#cmdoption-gdalmdimtranslate-of" title="Link to this definition"></a></dt>
-<dd><p>Select the output format. This can be a format that supports multidimensional
-output (such as <a class="reference internal" href="../drivers/raster/netcdf.html#raster-netcdf"><span class="std std-ref">NetCDF: Network Common Data Form</span></a>, <a class="reference internal" href="../drivers/raster/vrt_multidimensional.html#vrt-multidimensional"><span class="std std-ref">Multidimensional VRT</span></a>), or a &quot;classic&quot; 2D formats, if only one single 2D array
-results of the other specified conversion operations. When this option is
-not specified, the format is guessed when possible from the extension of the
-destination filename.</p>
+<dd><p>出力形式を選択します. これは多次元出力をサポートする形式 (<a class="reference internal" href="../drivers/raster/netcdf.html#raster-netcdf"><span class="std std-ref">NetCDF: Network Common Data Form</span></a>, <a class="reference internal" href="../drivers/raster/vrt_multidimensional.html#vrt-multidimensional"><span class="std std-ref">Multidimensional VRT</span></a>) であるか, 他の指定された変換操作の結果が 1 つの 2D 配列のみの場合は &quot;クラシック&quot; 2D 形式であるかのいずれかです. このオプションが指定されていない場合, 可能な場合は出力ファイル名の拡張子から形式が推測されます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalmdimtranslate-co">
 <span class="sig-name descname"><span class="pre">-co</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;NAME&gt;=&lt;VALUE&gt;</span></span><a class="headerlink" href="#cmdoption-gdalmdimtranslate-co" title="Link to this definition"></a></dt>
-<dd><p>Many formats have one or more optional creation options that can be
-used to control particulars about the file created.</p>
-<p>The creation options available vary by format driver, and some
-simple formats have no creation options at all. A list of options
-supported for a format can be listed with the
-<a class="reference internal" href="raster_common_options.html#raster-common-options-formats"><span class="std std-ref">--formats</span></a>
-command line option but the documentation for the format is the
-definitive source of information on driver creation options.
-See <a class="reference internal" href="../drivers/raster/index.html#raster-drivers"><span class="std std-ref">ラスタードライバー</span></a> format
-specific documentation for legal creation options for each format.</p>
-<p>Array-level creation options may be passed by prefixing them with <code class="docutils literal notranslate"><span class="pre">ARRAY:</span></code>.
-See <a class="reference internal" href="../api/gdalgroup_cpp.html#_CPPv4N9GDALGroup8CopyFromERKNSt10shared_ptrI9GDALGroupEEP11GDALDatasetRKNSt10shared_ptrI9GDALGroupEEbR7GUInt64K7GUInt6416GDALProgressFuncPv12CSLConstList" title="GDALGroup::CopyFrom"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALGroup::CopyFrom()</span></code></a> for further details regarding such options.</p>
+<dd><p>多くの形式には, 作成されるファイルについての詳細を制御するために使用できる 1 つ以上の オプションがあります.</p>
+<p>利用可能な作成オプションはフォーマットドライバによって異なり, 一部のシンプルな形式には 全く作成オプションがありません. フォーマットでサポートされているオプションのリストは <a class="reference internal" href="raster_common_options.html#raster-common-options-formats"><span class="std std-ref">--formats</span></a> コマンドラインオプションでリストアップできますが, フォーマットのドキュメントがドライバ作成オプションに関する情報の決定的なソースです. 各フォーマットの法的な作成オプションについては, <a class="reference internal" href="../drivers/raster/index.html#raster-drivers"><span class="std std-ref">ラスタードライバー</span></a> フォーマット固有のドキュメントを参照してください.</p>
+<p>配列レベルの作成オプションは <code class="docutils literal notranslate"><span class="pre">ARRAY:</span></code> で接頭辞を付けて渡すことができます. このようなオプションに関する詳細については, <a class="reference internal" href="../api/gdalgroup_cpp.html#_CPPv4N9GDALGroup8CopyFromERKNSt10shared_ptrI9GDALGroupEEP11GDALDatasetRKNSt10shared_ptrI9GDALGroupEEbR7GUInt64K7GUInt6416GDALProgressFuncPv12CSLConstList" title="GDALGroup::CopyFrom"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALGroup::CopyFrom()</span></code></a> を参照してください.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalmdimtranslate-array">
 <span class="sig-name descname"><span class="pre">-array</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;array_spec&gt;</span></span><a class="headerlink" href="#cmdoption-gdalmdimtranslate-array" title="Link to this definition"></a></dt>
-<dd><p>Instead of converting the whole dataset, select one array, and possibly
-perform operations on it. This option can be specified several times to
-operate on different arrays.</p>
-<p>&lt;array_spec&gt; may be just an array name, potentially using a fully qualified
-syntax (/group/subgroup/array_name). Or it can be a combination of options
-with the syntax:
-name={src_array_name}[,dstname={dst_array_name}][,resample=yes][,transpose=[{axis1},{axis2},...][,view={view_expr}]</p>
-<p>The following options are processed in that order:</p>
+<dd><p>データセット全体を変換する代わりに, 1 つの配列を選択し, おそらくそれに操作を行います. このオプションは異なる配列に対して操作を行うために複数回指定できます.</p>
+<p>&lt;array_spec&gt; は単に配列名であるかもしれず, 完全修飾構文 (/group/subgroup/array_name) を使用するかもしれません. または, 次の構文を使用してオプションの組み合わせにすることができます: name={src_array_name}[,dstname={dst_array_name}][,resample=yes][,transpose=[{axis1},{axis2},...][,view={view_expr}]</p>
+<p>以下のオプションはその順序で処理されます:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">resample=yes</span></code> asks for the array to run through <a class="reference internal" href="../api/gdalmdarray_cpp.html#_CPPv4NK11GDALMDArray12GetResampledERKNSt6vectorINSt10shared_ptrI13GDALDimensionEEEE18GDALRIOResampleAlgPK19OGRSpatialReference12CSLConstList" title="GDALMDArray::GetResampled"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArray::GetResampled()</span></code></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">resample=yes</span></code> は配列が <a class="reference internal" href="../api/gdalmdarray_cpp.html#_CPPv4NK11GDALMDArray12GetResampledERKNSt6vectorINSt10shared_ptrI13GDALDimensionEEEE18GDALRIOResampleAlgPK19OGRSpatialReference12CSLConstList" title="GDALMDArray::GetResampled"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArray::GetResampled()</span></code></a> を通過するように要求します.</p></li>
 <li><dl class="simple">
-<dt>[{axis1},{axis2},...] is the argument of  <a class="reference internal" href="../api/gdalmdarray_cpp.html#_CPPv4NK11GDALMDArray9TransposeERKNSt6vectorIiEE" title="GDALMDArray::Transpose"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArray::Transpose()</span></code></a>.</dt><dd><p>For example, transpose=[1,0] switches the axis order of a 2D array.</p>
+<dt>[{axis1},{axis2},...] は <a class="reference internal" href="../api/gdalmdarray_cpp.html#_CPPv4NK11GDALMDArray9TransposeERKNSt6vectorIiEE" title="GDALMDArray::Transpose"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArray::Transpose()</span></code></a> の引数です.</dt><dd><p>たとえば, transpose=[1,0] は 2D 配列の軸の順序を切り替えます.</p>
 </dd>
 </dl>
 </li>
-<li><p>{view_expr} is the value of the <em>viewExpr</em> argument of <a class="reference internal" href="../api/gdalmdarray_cpp.html#_CPPv4NK11GDALMDArray7GetViewERKNSt6stringE" title="GDALMDArray::GetView"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArray::GetView()</span></code></a></p></li>
+<li><p>{view_expr} は <a class="reference internal" href="../api/gdalmdarray_cpp.html#_CPPv4NK11GDALMDArray7GetViewERKNSt6stringE" title="GDALMDArray::GetView"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMDArray::GetView()</span></code></a> の <em>viewExpr</em> 引数の値です.</p></li>
 </ul>
-<p>When specifying a view_expr that performs a slicing or subsetting on a dimension, the
-equivalent operation will be applied to the corresponding indexing variable.</p>
+<p>次元にスライスまたはサブセットを実行する view_expr を指定すると, 対応するインデックス変数に等価な操作が適用されます.</p>
 </dd></dl>
 
 <dl class="std option">
@@ -260,60 +234,37 @@ equivalent operation will be applied to the corresponding indexing variable.</p>
 <dd><div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.9.</span></p>
 </div>
-<p>Option passed to <a class="reference internal" href="../api/gdalgroup_cpp.html#_CPPv4NK9GDALGroup15GetMDArrayNamesE12CSLConstList" title="GDALGroup::GetMDArrayNames"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALGroup::GetMDArrayNames()</span></code></a> to filter reported
-arrays. Such option is format specific. Consult driver documentation.
-This option may be used several times.</p>
+<p>報告される配列をフィルタリングするために <a class="reference internal" href="../api/gdalgroup_cpp.html#_CPPv4NK9GDALGroup15GetMDArrayNamesE12CSLConstList" title="GDALGroup::GetMDArrayNames"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALGroup::GetMDArrayNames()</span></code></a> に渡されるオプション. このようなオプションはフォーマット固有です. ドライバのドキュメントを参照してください. このオプションは複数回使用できます.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalmdimtranslate-group">
 <span class="sig-name descname"><span class="pre">-group</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;group_spec&gt;</span></span><a class="headerlink" href="#cmdoption-gdalmdimtranslate-group" title="Link to this definition"></a></dt>
-<dd><p>Instead of converting the whole dataset, select one group, and possibly
-perform operations on it. This option can be specified several times to
-operate on different groups. If only one group is specified, its content will be
-copied directly to the target root group. If several ones are specified,
-they are copied under the target root group</p>
-<p>&lt;group_spec&gt; may be just a group name, potentially using a fully qualified
-syntax (/group/subgroup/subsubgroup_name). Or it can be a combination of options
-with the syntax:
-name={src_group_name}[,dstname={dst_group_name}][,recursive=no]</p>
+<dd><p>データセット全体を変換する代わりに, 1 つのグループを選択し, おそらくそれに操作を行います. このオプションは異なるグループに対して操作を行うために複数回指定できます. 1 つのグループのみが指定された場合, その内容はターゲットルートグループに直接コピーされます. 複数の場合は, ターゲットルートグループの下にコピーされます</p>
+<p>&lt;group_spec&gt; は単にグループ名であるかもしれず, 完全修飾構文 (/group/subgroup/subsubgroup_name) を使用するかもしれません. または, 次の構文を使用してオプションの組み合わせにすることができます: name={src_group_name}[,dstname={dst_group_name}][,recursive=no]</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalmdimtranslate-subset">
 <span class="sig-name descname"><span class="pre">-subset</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;subset_spec&gt;</span></span><a class="headerlink" href="#cmdoption-gdalmdimtranslate-subset" title="Link to this definition"></a></dt>
-<dd><p>Performs a subsetting (trimming or slicing) operation along a dimension,
-provided that it is indexed by a 1D variable of numeric or string data type,
-and whose values are monotonically sorted.
-&lt;subset_spec&gt; follows exactly the <a class="reference external" href="https://portal.opengeospatial.org/files/09-147r3">OGC WCS 2.0 KVP encoding</a>
-for subsetting.</p>
-<p>That is dim_name(min_val,max_val) or dim_name(sliced_val)
-The first syntax will subset the dimension dim_name to values in the
-[min_val,max_val] range. The second syntax will slice the dimension dim_name
-to value sliced_val (and this dimension will be removed from the arrays
-that reference to it)</p>
-<p>Using -subset is incompatible of specifying a <em>view</em> option in -array.</p>
+<dd><p>次元に沿ったサブセット (トリミングまたはスライス) 操作を実行します. これは, 数値または文字列データ型の 1D 変数でインデックス付けされ, その値が単調にソートされている場合に提供されます. &lt;subset_spec&gt; は, サブセットのための <a class="reference external" href="https://portal.opengeospatial.org/files/09-147r3">OGC WCS 2.0 KVP エンコーディング</a> に厳密に従います.</p>
+<p>これは dim_name(min_val,max_val) または dim_name(sliced_val) です. 最初の構文は, 次元 dim_name を [min_val,max_val] の範囲の値にサブセットします. 2 番目の構文は, 次元 dim_name を値 sliced_val にスライスします (およびこれに参照する配列からこの次元が削除されます)</p>
+<p>-subset を使用すると, -array で <em>view</em> オプションを指定することはできません.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalmdimtranslate-scaleaxes">
 <span class="sig-name descname"><span class="pre">-scaleaxes</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;scaleaxes_spec&gt;</span></span><a class="headerlink" href="#cmdoption-gdalmdimtranslate-scaleaxes" title="Link to this definition"></a></dt>
-<dd><p>Applies a integral scale factor to one or several dimensions, that is
-extract 1 value every N values (without resampling).</p>
-<p>&lt;scaleaxes_spec&gt; follows exactly the syntax of the KVP encoding of the
-SCALEAXES parameter of
-<a class="reference external" href="https://portal.opengeospatial.org/files/12-039">OGC WCS 2.0 Scaling Extension</a>,
-but limited to integer scale factors.</p>
-<p>That is &lt;dim1_name&gt;(&lt;scale_factor&gt;)[,&lt;dim2_name&gt;(&lt;scale_factor&gt;)]...</p>
-<p>Using -scaleaxes is incompatible of specifying a <em>view</em> option in -array.</p>
+<dd><p>1 つまたは複数の次元に整数スケールファクタを適用し, N 値ごとに 1 つの値を抽出します (リサンプリングなし).</p>
+<p>&lt;scaleaxes_spec&gt; は, <a class="reference external" href="https://portal.opengeospatial.org/files/12-039">OGC WCS 2.0 Scaling Extension の SCALEAXES パラメータの KVP エンコーディング</a> の構文に厳密に従いますが, 整数スケールファクタに制限されています.</p>
+<p>つまり &lt;dim1_name&gt;(&lt;scale_factor&gt;)[,&lt;dim2_name&gt;(&lt;scale_factor&gt;)]...</p>
+<p>-scaleaxes を使用すると, -array で <em>view</em> オプションを指定することはできません.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalmdimtranslate-strict">
 <span class="sig-name descname"><span class="pre">-strict</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalmdimtranslate-strict" title="Link to this definition"></a></dt>
-<dd><p>By default, some failures during the translation are tolerated, such as not
-being able to write group attributes. When setting this option, such
-failures will cause the process to fail.</p>
+<dd><p>デフォルトでは, 変換中のいくつかの失敗 (グループ属性の書き込みができないなど) が許容されます. このオプションを設定すると, そのような失敗がプロセスの失敗を引き起こします.</p>
 </dd></dl>
 
 <dl class="std option">
@@ -322,55 +273,54 @@ failures will cause the process to fail.</p>
 <dd><div class="versionadded">
 <p><span class="versionmodified added">Added in version 3.4.</span></p>
 </div>
-<p>Source dataset open option (format specific)</p>
+<p>ソースデータセットオープンオプション (フォーマット固有)</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalmdimtranslate-arg-src_dataset">
 <span class="sig-name descname"><span class="pre">&lt;src_dataset&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalmdimtranslate-arg-src_dataset" title="Link to this definition"></a></dt>
-<dd><p>The source dataset name.</p>
+<dd><p>ソースデータセット名.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-gdalmdimtranslate-arg-dst_dataset">
 <span class="sig-name descname"><span class="pre">&lt;dst_dataset&gt;</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-gdalmdimtranslate-arg-dst_dataset" title="Link to this definition"></a></dt>
-<dd><p>The destination file name.</p>
+<dd><p>宛先ファイル名.</p>
 </dd></dl>
 
 </section>
 <section id="c-api">
 <h2>C API<a class="headerlink" href="#c-api" title="Link to this heading"></a></h2>
-<p>This utility is also callable from C with <a class="reference internal" href="../api/gdal_utils.html#_CPPv421GDALMultiDimTranslatePKc12GDALDatasetHiP12GDALDatasetHPK28GDALMultiDimTranslateOptionsPi" title="GDALMultiDimTranslate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMultiDimTranslate()</span></code></a>.</p>
+<p>このユーティリティは <a class="reference internal" href="../api/gdal_utils.html#_CPPv421GDALMultiDimTranslatePKc12GDALDatasetHiP12GDALDatasetHPK28GDALMultiDimTranslateOptionsPi" title="GDALMultiDimTranslate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GDALMultiDimTranslate()</span></code></a> を使用して C からも呼び出すことができます.</p>
 </section>
 <section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
+<h2>例<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p>Convert a netCDF file to a multidimensional VRT file</p></li>
+<li><p>netCDF ファイルを多次元 VRT ファイルに変換します</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ gdalmdimtranslate in.nc out.vrt
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Extract a 2D slice of a time,Y,X array</p></li>
+<li><p>time,Y,X 配列の 2D スライスを抽出します</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ gdalmdimtranslate in.nc out.tif -subset &#39;time(&quot;2010-01-01&quot;)&#39; -array temperature
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Subsample along X and Y axis</p></li>
+<li><p>X 軸と Y 軸に沿ってサブサンプリングします</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ gdalmdimtranslate in.nc out.nc -scaleaxes &quot;X(2),Y(2)&quot;
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Reorder the values of a time,Y,X array along the Y axis from top-to-bottom
-to bottom-to-top (or the reverse)</p></li>
+<li><p>Y 軸を上から下に並べ替えて下から上に並べ替える (またはその逆) time,Y,X 配列の値を並べ替えます</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ gdalmdimtranslate in.nc out.nc -array &quot;name=temperature,view=[:,::-1,:]&quot;
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Transpose an array that has X,Y,time dimension order to time,Y,X</p></li>
+<li><p>X,Y,time 次元順序を time,Y,X に変換する配列を転置します</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ gdalmdimtranslate in.nc out.nc -array &quot;name=temperature,transpose=[2,1,0]&quot;
 </pre></div>

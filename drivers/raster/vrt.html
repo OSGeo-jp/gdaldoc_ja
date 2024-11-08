@@ -182,6 +182,7 @@
 <li class="toctree-l2"><a class="reference internal" href="rasterlite2.html">RasterLite2 - Rasters in SQLite DB</a></li>
 <li class="toctree-l2"><a class="reference internal" href="r.html">R -- R Object Data Store</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rdb.html">RDB - <em>RIEGL</em> Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rcm.html">RCM -- RADARSAT Constellation Mission Product</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rik.html">RIK -- Swedish Grid Maps</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rmf.html">RMF -- Raster Matrix Format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="roi_pac.html">ROI_PAC -- ROI_PAC</a></li>
@@ -270,7 +271,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">どのように貢献できますか?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../thanks.html">Thanks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../thanks.html">謝辞</a></li>
 </ul>
 
         </div>
@@ -692,6 +693,27 @@ cubicspline,lanczos,average,mode.</p>
 <span class="w">  </span><span class="nt">&lt;SourceProperties</span><span class="w"> </span><span class="na">RasterXSize=</span><span class="s">&quot;256&quot;</span><span class="w"> </span><span class="na">RasterYSize=</span><span class="s">&quot;256&quot;</span><span class="w"> </span><span class="na">DataType=</span><span class="s">&quot;Byte&quot;</span><span class="w"> </span><span class="na">BlockXSize=</span><span class="s">&quot;128&quot;</span><span class="w"> </span><span class="na">BlockYSize=</span><span class="s">&quot;128&quot;</span><span class="nt">/&gt;</span>
 <span class="w">  </span><span class="nt">&lt;SrcRect</span><span class="w"> </span><span class="na">xOff=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">yOff=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">xSize=</span><span class="s">&quot;256&quot;</span><span class="w"> </span><span class="na">ySize=</span><span class="s">&quot;256&quot;</span><span class="nt">/&gt;</span>
 <span class="w">  </span><span class="nt">&lt;DstRect</span><span class="w"> </span><span class="na">xOff=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">yOff=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">xSize=</span><span class="s">&quot;128&quot;</span><span class="w"> </span><span class="na">ySize=</span><span class="s">&quot;128&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/SimpleSource&gt;</span>
+</pre></div>
+</div>
+<p>Starting with GDAL 3.11, it is also possible to use a in-line VRTDataset as
+the source by using the VRTDataset element instead of SourceFilename.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;SimpleSource&gt;</span>
+<span class="w">  </span><span class="nt">&lt;VRTDataset</span><span class="w"> </span><span class="na">rasterXSize=</span><span class="s">&quot;20&quot;</span><span class="w"> </span><span class="na">rasterYSize=</span><span class="s">&quot;20&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;VRTRasterBand</span><span class="w"> </span><span class="na">dataType=</span><span class="s">&quot;Byte&quot;</span><span class="w"> </span><span class="na">band=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;SimpleSource&gt;</span>
+<span class="w">        </span><span class="nt">&lt;SourceFilename</span><span class="w"> </span><span class="na">relativeToVRT=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>../byte.tif<span class="nt">&lt;/SourceFilename&gt;</span>
+<span class="w">        </span><span class="nt">&lt;SourceBand&gt;</span>1<span class="nt">&lt;/SourceBand&gt;</span>
+<span class="w">        </span><span class="nt">&lt;SourceProperties</span><span class="w"> </span><span class="na">RasterXSize=</span><span class="s">&quot;20&quot;</span><span class="w"> </span><span class="na">RasterYSize=</span><span class="s">&quot;20&quot;</span><span class="w"> </span><span class="na">DataType=</span><span class="s">&quot;Byte&quot;</span><span class="w"> </span><span class="na">BlockXSize=</span><span class="s">&quot;20&quot;</span><span class="w"> </span><span class="na">BlockYSize=</span><span class="s">&quot;20&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;SrcRect</span><span class="w"> </span><span class="na">xOff=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">yOff=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">xSize=</span><span class="s">&quot;20&quot;</span><span class="w"> </span><span class="na">ySize=</span><span class="s">&quot;20&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;DstRect</span><span class="w"> </span><span class="na">xOff=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">yOff=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">xSize=</span><span class="s">&quot;20&quot;</span><span class="w"> </span><span class="na">ySize=</span><span class="s">&quot;20&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/SimpleSource&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/VRTRasterBand&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/VRTDataset&gt;</span>
+<span class="w">  </span><span class="nt">&lt;SourceBand&gt;</span>1<span class="nt">&lt;/SourceBand&gt;</span>
+<span class="w">  </span><span class="nt">&lt;SourceProperties</span><span class="w"> </span><span class="na">RasterXSize=</span><span class="s">&quot;20&quot;</span><span class="w"> </span><span class="na">RasterYSize=</span><span class="s">&quot;20&quot;</span><span class="w"> </span><span class="na">DataType=</span><span class="s">&quot;Byte&quot;</span><span class="w"> </span><span class="na">BlockXSize=</span><span class="s">&quot;20&quot;</span><span class="w"> </span><span class="na">BlockYSize=</span><span class="s">&quot;20&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;SrcRect</span><span class="w"> </span><span class="na">xOff=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">yOff=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">xSize=</span><span class="s">&quot;20&quot;</span><span class="w"> </span><span class="na">ySize=</span><span class="s">&quot;20&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;DstRect</span><span class="w"> </span><span class="na">xOff=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">yOff=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">xSize=</span><span class="s">&quot;20&quot;</span><span class="w"> </span><span class="na">ySize=</span><span class="s">&quot;20&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/SimpleSource&gt;</span>
 </pre></div>
 </div>

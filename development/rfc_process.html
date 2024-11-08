@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Request For Comments (RFC) process for code changes &mdash; GDAL  ドキュメント</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d10597a4" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/gdal.css?v=b9fa0a98" />
+      <link rel="stylesheet" type="text/css" href="../_static/announcement.css?v=0642f2f4" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="canonical" href="https://gdal.org/development/rfc_process.html"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=c033477b"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/translations.js?v=91613774"></script>
+        <script src="../_static/announcement.js?v=b6f31f9f"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="このドキュメントについて" href="../about.html" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="RFC list" href="rfc/index.html" />
+    <link rel="prev" title="Cmake プロジェクトでの GDAL の利用" href="cmake.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/gdalicon.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../download.html">ダウンロード</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programs/index.html">プログラム</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/raster/index.html">ラスタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drivers/vector/index.html">ベクタードライバー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/index.html">ユーザー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">チュートリアル</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">開発</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="building_from_source.html">GDAL のソースからのビルド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_environment.html">開発環境の設定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_practices.html">開発プラクティス</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html">自動テスト</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_documentation.html">文書のビルド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmake.html">Cmake プロジェクトでの GDAL の利用</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Request For Comments (RFC) process for code changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rfc/index.html">RFC list</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../community/index.html">コミュニティ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">スポンサー</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/index.html">どのように貢献できますか?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">ライセンス</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../thanks.html">謝辞</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GDAL</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html"> GDAL  ドキュメント </a> &raquo;</li>
+      
+          <li><a href="index.html">開発</a> &raquo;</li>
+      
+      <li>Request For Comments (RFC) process for code changes</li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/OSGeo/gdal/edit/master/doc/source/development/rfc_process.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="rfc/index.html" class="btn btn-neutral float-right" title="RFC list" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="cmake.html" class="btn btn-neutral float-left" title="Cmake プロジェクトでの GDAL の利用" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+  </div>
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="request-for-comments-rfc-process-for-code-changes">
+<span id="rfc-process"></span><h1>Request For Comments (RFC) process for code changes<a class="headerlink" href="#request-for-comments-rfc-process-for-code-changes" title="Link to this heading"></a></h1>
+<p>While most bug fixes and small enhancements following the existing logic of code
+do not require a RFC and can be done using pull requests, we require contributors
+to write a RFC and go through a formal adoption process in the following cases:</p>
+<ul class="simple">
+<li><p>Anything that could cause backward compatibility issues.</p></li>
+<li><p>Adding substantial amounts of new code (see <a class="reference internal" href="rfc/rfc85_policy_code_additions.html#rfc-85"><span class="std std-ref">RFC 85: Policy regarding substantial code additions</span></a>)</p></li>
+<li><p>Changing inter-subsystem APIs, or objects.</p></li>
+<li><p>Anything that might be controversial.</p></li>
+</ul>
+<p>A good rule of thumb is that if you wonder &quot;does this require a RFC?&quot;, the
+answer is generally &quot;yes&quot;.</p>
+<p>The RFC process is the following one:</p>
+<ul class="simple">
+<li><p>add a new .rst file in <code class="file docutils literal notranslate"><span class="pre">doc/source/development/rfc</span></code> with the RFC text,
+and references it in <code class="file docutils literal notranslate"><span class="pre">doc/source/development/rfc/index.rst</span></code>, and issue
+a pull request.
+You can look at <a class="reference external" href="https://github.com/OSGeo/gdal/pull/10913">https://github.com/OSGeo/gdal/pull/10913</a> as a potential example
+for the expected content. Typical sections are:</p>
+<ul>
+<li><p>Title: RFC {XYZ}: {Description of the RFC in a short sentence}</p></li>
+<li><p>Author: your name.</p></li>
+<li><p>Contact: your email.</p></li>
+<li><p>Started: date at which this is started.</p></li>
+<li><p>Status: &quot;Draft&quot;, when the RFC is started.</p></li>
+<li><p>Summary: what the RFC accomplishes in a few sentences.</p></li>
+<li><p>Motivation: Paragraph describing why this RFC is needed.</p></li>
+<li><p>Technical solution: organized in several sub-paragraph depending on the
+complexity of the RFC. You may need to mention new API calls, impacted
+files, etc., and other needed details.</p></li>
+<li><p>Backward compatibility: API, ABI, and other compatibility concerns.</p></li>
+<li><p>Performance impacts.</p></li>
+<li><p>Documentation: how this will be documented.</p></li>
+<li><p>Testing: how this will be tested.</p></li>
+<li><p>Related issues and PRs: points at potential existing tickets about the topic,
+and pull request with a candidate implementation</p></li>
+<li><p>Voting history: &quot;TBD&quot; (to be defined), when the RFC is started</p></li>
+</ul>
+</li>
+<li><p>Send an email to the <a class="reference internal" href="../community/index.html#mailing-list"><span class="std std-ref">gdal-dev mailing list</span></a> with a title like:
+&quot;Call for discussion on RFC {XYZ}: {Description of the RFC in a short sentence}&quot;
+where you point to the pull request. You may get feedback both in the pull
+request or in the mailing list.</p></li>
+<li><p>Wait for feedback (give readers at least one week, or more if holiday season).
+If it seems positive and reasonable consensus can be reached, you can start
+working on a candidate implementation, and issue a pull request for it,
+separate for the pull request with the RFC text.
+Reference this candidate implementation pull request in the &quot;Related issues
+and PRs&quot; section of the RFC text.</p></li>
+<li><p>Once your candidate implementation is representative enough, and you and other
+contributors can have a good confidence that the RFC can be implemented in the
+way it has been described, send an email to the gdal-dev mailing list with
+a title like &quot;Motion: adopt RFC {XYZ}: {Description of the RFC in a short sentence}&quot;
+where you point to the pull request.
+All subscribers can vote, but only votes from members of the GDAL Project
+Steering Committee are binding. The voting rules are covered by <a class="reference internal" href="rfc/rfc1_pmc.html#rfc-1"><span class="std std-ref">RFC 1: Project Management Committee Guidelines</span></a>.</p></li>
+<li><p>Once the RFC is approved, finish your candidate implementation if not already
+finished, and wait for the review process and for it to be merged.</p></li>
+<li><p>Update the Status to &quot;Adopted, implemented&quot; and Voting history sections of the
+RFC text.</p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="rfc/index.html" class="btn btn-neutral float-right" title="RFC list" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="cmake.html" class="btn btn-neutral float-left" title="Cmake プロジェクトでの GDAL の利用" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <div class="info">
+      <a class="logo-link" href="https://osgeo.org">
+        <div class="osgeo-logo"></div>
+      </a>
+      <div class="copyright">
+      
+
+      &copy; 1998-2024 <a href="https://github.com/warmerdam">Frank Warmerdam</a>,
+      <a href="https://github.com/rouault">Even Rouault</a>, and
+      <a href="https://github.com/OSGeo/gdal/graphs/contributors">others</a>
+
+
+      
+      </div>
+    </div>
+  </div>
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

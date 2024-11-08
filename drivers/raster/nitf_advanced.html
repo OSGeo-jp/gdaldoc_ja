@@ -170,6 +170,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#data-extension-segments-xml-des">Data Extension Segments (xml:DES)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#raw-file-image-headers">Raw File / Image Headers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#writing-multiple-image-segments">Writing multiple Image Segments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reading-sar-products">Reading SAR products</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="nitf.html#driver-capabilities">Driver capabilities</a></li>
@@ -203,6 +204,7 @@
 <li class="toctree-l2"><a class="reference internal" href="rasterlite2.html">RasterLite2 - Rasters in SQLite DB</a></li>
 <li class="toctree-l2"><a class="reference internal" href="r.html">R -- R Object Data Store</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rdb.html">RDB - <em>RIEGL</em> Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rcm.html">RCM -- RADARSAT Constellation Mission Product</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rik.html">RIK -- Swedish Grid Maps</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rmf.html">RMF -- Raster Matrix Format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="roi_pac.html">ROI_PAC -- ROI_PAC</a></li>
@@ -253,7 +255,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">どのように貢献できますか?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../thanks.html">Thanks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../thanks.html">謝辞</a></li>
 </ul>
 
         </div>
@@ -615,6 +617,13 @@ creation option.</p>
 <span class="n">gdal_translate</span> <span class="n">third_image</span><span class="o">.</span><span class="n">tif</span>  <span class="n">dest</span><span class="o">.</span><span class="n">tif</span> <span class="o">-</span><span class="n">co</span> <span class="n">APPEND_SUBDATASET</span><span class="o">=</span><span class="n">YES</span> <span class="o">-</span><span class="n">co</span> <span class="n">IC</span><span class="o">=</span><span class="n">C8</span> <span class="o">-</span><span class="n">co</span> <span class="n">IDLVL</span><span class="o">=</span><span class="mi">3</span> <span class="o">-</span><span class="n">co</span> <span class="s2">&quot;DES=DES1=</span><span class="si">{des_content}</span><span class="s2">&quot;</span>
 </pre></div>
 </div>
+</section>
+<section id="reading-sar-products">
+<h2>Reading SAR products<a class="headerlink" href="#reading-sar-products" title="Link to this heading"></a></h2>
+<p>Starting with GDAL 3.11, NITF products whose <code class="docutils literal notranslate"><span class="pre">ICAT</span></code> field is set to <code class="docutils literal notranslate"><span class="pre">SAR</span></code>
+and which have bands with <code class="docutils literal notranslate"><span class="pre">I</span></code> (in-phase) and <code class="docutils literal notranslate"><span class="pre">Q</span></code> (quadrature) <code class="docutils literal notranslate"><span class="pre">ISUBCAT</span></code>
+values will be represented as a single-band of complex type where in-phase is
+the real part and quadrature the imaginary part.</p>
 </section>
 </section>
 

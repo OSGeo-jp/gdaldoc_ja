@@ -27,7 +27,7 @@
     <link rel="author" title="このドキュメントについて" href="../../about.html" />
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="検索" href="../../search.html" />
-    <link rel="next" title="AmigoCloud" href="amigocloud.html" />
+    <link rel="next" title="Artificial intelligence powered vector driver" href="aivector.html" />
     <link rel="prev" title="ベクタードライバー" href="index.html" /> 
 </head>
 
@@ -65,6 +65,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="aivector.html">Artificial intelligence powered vector driver</a></li>
 <li class="toctree-l2"><a class="reference internal" href="amigocloud.html">AmigoCloud</a></li>
 <li class="toctree-l2"><a class="reference internal" href="arrow.html">(Geo)Arrow IPC File Format / Stream</a></li>
 <li class="toctree-l2"><a class="reference internal" href="avcbin.html">Arc/Info Binary Coverage</a></li>
@@ -161,7 +162,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">どのように貢献できますか?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../thanks.html">Thanks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../thanks.html">謝辞</a></li>
 </ul>
 
         </div>
@@ -218,7 +219,7 @@
   
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
-        <a href="amigocloud.html" class="btn btn-neutral float-right" title="AmigoCloud" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="aivector.html" class="btn btn-neutral float-right" title="Artificial intelligence powered vector driver" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral float-left" title="ベクタードライバー" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -292,6 +293,11 @@ layer from the dataset.</p>
 driver specific.
 For example <code class="docutils literal notranslate"><span class="pre">ADBC_OPTION_uri=some_value</span></code> to pass the <code class="docutils literal notranslate"><span class="pre">uri</span></code> option.</p>
 </li>
+<li><p id="drivers/vector/adbc-oo-PRELUDE_STATEMENTS"><strong>PRELUDE_STATEMENTS=&lt;string&gt;: </strong>SQL-like statement recognized by the driver that must be executed before
+discovering layers. Can be repeated multiple times.
+For example <code class="docutils literal notranslate"><span class="pre">PRELUDE_STATEMENTS=INSTALL</span> <span class="pre">spatial</span></code> and
+<code class="docutils literal notranslate"><span class="pre">PRELUDE_STATEMENTS=LOAD</span> <span class="pre">spatial</span></code> to load DuckDB spatial extension.</p>
+</li>
 </ul>
 </section>
 <section id="table-list-special-layer">
@@ -350,7 +356,7 @@ LD_LIBRARY_PATH on Linux, DYLD_LIBRARY_PATH on MacOSX or PATH on Windows).</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="amigocloud.html" class="btn btn-neutral float-right" title="AmigoCloud" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="aivector.html" class="btn btn-neutral float-right" title="Artificial intelligence powered vector driver" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral float-left" title="ベクタードライバー" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

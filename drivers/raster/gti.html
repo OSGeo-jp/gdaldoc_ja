@@ -192,6 +192,7 @@
 <li class="toctree-l2"><a class="reference internal" href="rasterlite2.html">RasterLite2 - Rasters in SQLite DB</a></li>
 <li class="toctree-l2"><a class="reference internal" href="r.html">R -- R Object Data Store</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rdb.html">RDB - <em>RIEGL</em> Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rcm.html">RCM -- RADARSAT Constellation Mission Product</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rik.html">RIK -- Swedish Grid Maps</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rmf.html">RMF -- Raster Matrix Format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="roi_pac.html">ROI_PAC -- ROI_PAC</a></li>
@@ -242,7 +243,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../contributing/index.html">どのように貢献できますか?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">ライセンス</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../thanks.html">Thanks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../thanks.html">謝辞</a></li>
 </ul>
 
         </div>
@@ -350,7 +351,8 @@ overlapping tiles.</p></li>
 <li><p>Contrary to the VRT driver, the GTI driver does not enable to alter
 characteristics of referenced tiles, such as their georeferencing, nodata value,
 etc. If such behavior is desired, the tiles must be for example wrapped
-individually in a VRT file before being referenced in the GTI index.</p></li>
+individually in a VRT file (or <cite>vrt://</cite> connection string) before being referenced
+in the GTI index.</p></li>
 </ul>
 </section>
 <section id="connection-strings">

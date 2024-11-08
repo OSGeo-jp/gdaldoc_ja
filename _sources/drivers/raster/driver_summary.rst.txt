@@ -776,6 +776,12 @@
      - **Yes**
      - **Yes**
      - libsqlite3, librasterlite2, libspatialite
+   * - :ref:`RCM <raster.rcm>`
+     - RADARSAT Constellation Mission Product
+     - No
+     - No
+     - **Yes**
+     - Built-in by default
    * - :ref:`RDB <raster.rdb>`
      - *RIEGL* Database
      - No

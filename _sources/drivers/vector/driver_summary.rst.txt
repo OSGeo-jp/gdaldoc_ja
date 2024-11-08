@@ -18,6 +18,11 @@
      - No
      - No
      - ???
+   * - :ref:`AIVector <vector.aivector>`
+     - Artificial intelligence powered vector driver
+     - No
+     - No
+     - Built-in by default
    * - :ref:`AmigoCloud <vector.amigocloud>`
      - AmigoCloud
      - **Yes**

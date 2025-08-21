@@ -3,14 +3,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>検索 &mdash; GDAL  ドキュメント</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d10597a4" />
-      <link rel="stylesheet" type="text/css" href="_static/css/gdal.css?v=b9fa0a98" />
-      <link rel="stylesheet" type="text/css" href="_static/announcement.css?v=0642f2f4" />
+  <title>検索 &mdash; QGIS Documentation  ドキュメント</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/qgis_docs.css?v=01847ad1" />
+      <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
 
   
-    <link rel="shortcut icon" href="_static/favicon.png"/>
-    <link rel="canonical" href="https://gdal.org/search.html"/>
+    <link rel="shortcut icon" href="_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/search.html"/>
     
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
@@ -21,103 +22,130 @@
         <script src="_static/documentation_options.js?v=c033477b"></script>
         <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="_static/togglebutton.js?v=4a39c7ea"></script>
         <script src="_static/translations.js?v=91613774"></script>
-        <script src="_static/announcement.js?v=b6f31f9f"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/js/theme.js"></script>
     <script src="_static/searchtools.js"></script>
     <script src="_static/language_data.js"></script>
-    <link rel="author" title="このドキュメントについて" href="about.html" />
     <link rel="index" title="索引" href="genindex.html" />
-    <link rel="search" title="検索" href="#" /> 
+    <link rel="search" title="検索" href="#" />
+  <meta name="description" content="QGIS 3.40 documentation: 検索">
+  <script>
+    var _paq = window._paq = window._paq || [];
+    _paq.push(["disableCookies"]);
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+      var u="//matomo.qgis.org/";
+      _paq.push(['setTrackerUrl', u+'matomo.php']);
+      _paq.push(['setSiteId', '1']);
+      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+      g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+    })();
+  </script>
 </head>
 
-<body class="wy-body-for-nav"> 
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+  </nav>
+
+   
+
+ 
   <div class="wy-grid-for-nav">
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search"  style="background: white" >
+        <div class="wy-side-nav-search" >
+   
 
           
           
-          <a href="index.html">
-            
-              <img src="_static/gdalicon.png" class="logo" alt="Logo"/>
+          <a href="docs/index.html" class="icon icon-home">
+            QGIS Documentation
+              <img src="_static/logo.png" class="logo" alt="Logo"/>
           </a>
+              <div class="version">
+                3.40
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="#" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
+   <a href= "genindex.html">索引</a>
+ 
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
-<li class="toctree-l1"><a class="reference internal" href="download.html">ダウンロード</a></li>
-<li class="toctree-l1"><a class="reference internal" href="programs/index.html">プログラム</a></li>
-<li class="toctree-l1"><a class="reference internal" href="drivers/raster/index.html">ラスタードライバー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="drivers/vector/index.html">ベクタードライバー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="user/index.html">ユーザー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/index.html">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorials/index.html">チュートリアル</a></li>
-<li class="toctree-l1"><a class="reference internal" href="development/index.html">開発</a></li>
-<li class="toctree-l1"><a class="reference internal" href="community/index.html">コミュニティ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sponsors/index.html">スポンサー</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contributing/index.html">どのように貢献できますか?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="license.html">ライセンス</a></li>
-<li class="toctree-l1"><a class="reference internal" href="thanks.html">謝辞</a></li>
+              <p class="caption" role="heading"><span class="caption-text">About QGIS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docs/about/preamble.html">はじめに</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/about/foreword.html">序文</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/about/conventions.html">表記規則</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/about/features.html">機能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/about/help_and_support.html">ヘルプとサポート</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/about/contributors.html">協力者</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/about/license/index.html">Complying with Licenses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ユーザ向け</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docs/user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS 3.40)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/server_manual/index.html">QGIS Server Guide/Manual (QGIS 3.40)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/training_manual/index.html">トレーニングマニュアル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/gentle_gis_introduction/index.html">やさしい GIS 入門</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ドキュメント執筆者向け</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docs/documentation_guidelines/index.html">ドキュメント作成のガイドライン</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開発者向け</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docs/pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS 3.40)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/developers_guide/index.html">開発者ガイド</a></li>
 </ul>
 
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">GDAL</a>
+          <a href="docs/index.html">QGIS Documentation</a>
       </nav>
 
       <div class="wy-nav-content">
         <div class="rst-content">
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="index.html"> GDAL  ドキュメント </a> &raquo;</li>
-      
-      <li>検索</li>
-    
+      <li><a href="docs/index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">検索</li>
 
-    
+    <li style="float: right; text-align: right;">
+	<ul>
+		
       <li class="wy-breadcrumbs-aside">
-        
-            
-            
-              <a href="https://github.com/OSGeo/gdal/edit/master/doc/source/search" class="fa fa-github"> Edit on GitHub</a>
-            
-          
-        
       </li>
-    
-  </ul>
+	</ul>
 
-  
+        <!-- Add a button to guide potential contributors
+	     To do: add a more generic page for contributing in QGIS docs to keep users in the same website
+	     <a class="qgis-edit-guidelines" href="https://docs.qgis.org/3.40/ja/docs/documentation_guidelines/index.html">
+	-->
+	<a class="qgis-edit-guidelines" href="https://qgis.org/community/involve/">
+		Learn how to contribute!
+	</a>
+    </li>
+
+
+  </ul>
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -139,34 +167,154 @@
            </div>
           </div>
           <footer>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <div class="info">
-      <a class="logo-link" href="https://osgeo.org">
-        <div class="osgeo-logo"></div>
-      </a>
-      <div class="copyright">
-      
-
-      &copy; 1998-2024 <a href="https://github.com/warmerdam">Frank Warmerdam</a>,
-      <a href="https://github.com/rouault">Even Rouault</a>, and
-      <a href="https://github.com/OSGeo/gdal/graphs/contributors">others</a>
-
-
-      
-      </div>
-    </div>
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">最終更新: 2025 8月 22, 07:58 +0900
+      </span></p>
   </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
 </footer>
         </div>
       </div>
     </section>
   </div>
-  
-<script>
+  <!-- Transifex follows a particular logic to build target pages:
+Expected French translation link for https://docs.qgis.org/3.28/en/docs/user_manual/print_composer/overview_composer.html
+would return https://app.transifex.com/qgis/qgis-documentation/translate/#fr/aa6d8bc653526d38b295ca94bf8eee5e
+with the md5 value of "github#qgis/QGIS-Documentation#release_3.28#locale/en/LC_MESSAGES/docs/user_manual/print_composer/overview_composer.po"-->
+<!--Make sure that mismatching language codes between Transifex and Sphinx are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: 3.40
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.40/en/search.html">en</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.40/cs/search.html">cs</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.40/de/search.html">de</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.40/es/search.html">es</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.40/fr/search.html">fr</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.40/hu/search.html">hu</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.40/it/search.html">it</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.40/ja/search.html">ja</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.40/ko/search.html">ko</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.40/lt/search.html">lt</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.40/nl/search.html">nl</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.40/pl/search.html">pl</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.40/pt_BR/search.html">pt_BR</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.40/pt_PT/search.html">pt_PT</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.40/ro/search.html">ro</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.40/ru/search.html">ru</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.40/sv/search.html">sv</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.40/zh-Hans/search.html">zh-Hans</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/ja/search.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/ja/search.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.40/ja/search.html">3.40</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.34/ja/search.html">3.34</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.28/ja/search.html">3.28</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.22/ja/search.html">3.22</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/ja/search.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/ja/search.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/ja/search.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/ja/search.html">2.18</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/3.40/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.40/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/search.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://app.transifex.com/qgis/qgis-documentation/translate/#ja/2353d4152f7601e08e5439f95ec0e064" target="_blank" rel="noopener noreferrer">Translate Page</a>
+          </dd>
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/3.40" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/3.40" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/release-3_40" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
